@@ -14,6 +14,7 @@ struct DailyForecastView: View {
     var body: some View {
         HStack(alignment: .center, spacing: 18) {
             ForecastWeatherIcon(name: item.symbolName)
+                .frame(width: 25, alignment: .center)
 
             VStack(alignment: .leading, spacing: 5) {
                 HStack(alignment: .firstTextBaseline, spacing: 18) {
@@ -27,7 +28,7 @@ struct DailyForecastView: View {
                             .color(Color.primary.opacity(0.65))
                     }
                 }
-                .font(Font.system(size: 18).weight(.semibold))
+                .font(Font.system(size: 18).weight(.bold))
 
                 HStack(alignment: .firstTextBaseline, spacing: 18) {
                     Text(item.description)
