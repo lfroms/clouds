@@ -1,0 +1,135 @@
+
+query Weather($region: Region!, $code: Int!) {
+    weather(region: $region, code: $code) {
+        location {
+            name {
+                value
+            }
+        }
+        currentConditions {
+            dateTime(zone: "UTC") {
+                timeStamp
+            }
+            station {
+                value
+            }
+            temperature {
+                value
+            }
+            relativeHumidity {
+                value
+                units
+            }
+            pressure {
+                value
+                units
+            }
+            windChill {
+                value
+            }
+            humidex {
+                value
+            }
+            wind {
+                direction
+                speed {
+                    value
+                    units
+                }
+                gust {
+                    value
+                    units
+                }
+            }
+            visibility {
+                value
+                units
+            }
+            dewpoint {
+                value
+            }
+            iconCode {
+                value
+            }
+            condition
+        }
+        warnings {
+            url
+            events {
+                dateTime(zone: "UTC") {
+                    timeStamp
+                }
+                priority
+                description
+                type
+            }
+        }
+        forecastGroup {
+            dateTime(zone: "UTC") {
+                timeStamp
+            }
+            regionalNormals {
+                temperature {
+                    value
+                    class
+                }
+            }
+            forecast {
+                abbreviatedForecast {
+                    textSummary
+                    iconCode {
+                        value
+                    }
+                    pop {
+                        value
+                    }
+                }
+                period {
+                    textForecastName
+                }
+                temperatures {
+                    temperature {
+                        value
+                    }
+                }
+            }
+        }
+        hourlyForecastGroup {
+            hourlyForecast {
+                dateTimeUTC
+                temperature {
+                    value
+                    units
+                }
+                wind {
+                    speed {
+                        value
+                        units
+                    }
+                }
+                iconCode {
+                    value
+                }
+                lop {
+                    value
+                }
+            }
+        }
+        riseSet {
+            dateTime(zone: "UTC") {
+                timeStamp
+                name
+            }
+        }
+        yesterdayConditions {
+            temperature {
+                value
+                class
+            }
+            precip {
+                value
+                units
+            }
+        }
+    }
+}
