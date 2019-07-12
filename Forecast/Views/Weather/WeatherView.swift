@@ -13,7 +13,7 @@ struct WeatherView: View {
 
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            Image("image-02")
+            Image("image-\(iconName())")
                 .shadow(color: Color.black.opacity(0.25), radius: 13, x: 0, y: 2)
 
             ScrollView(.vertical, showsIndicators: false) {
@@ -40,6 +40,10 @@ struct WeatherView: View {
         let gradient = Gradient(colors: [Color("color-00"), Color("color-00-alt")])
 
         return LinearGradient(gradient: gradient, startPoint: .topTrailing, endPoint: .bottomLeading)
+    }
+
+    private func iconName() -> String {
+        return provider.weather?.currentConditions.iconCode?.value ?? "00"
     }
 }
 
