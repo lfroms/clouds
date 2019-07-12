@@ -23,9 +23,9 @@ struct WeatherView: View {
                     VStack(alignment: .leading, spacing: 32) {
                         HourlyForecastSection(viewModel: .init(weather: provider.weather))
                         DailyForecastSection(viewModel: .init(weather: provider.weather))
-                        SunriseSunsetSection()
-                        YesterdayConditionsSection()
-                        RegionalNormalsSection()
+                        SunriseSunsetSection(viewModel: .init(weather: provider.weather))
+                        YesterdayConditionsSection(viewModel: .init(weather: provider.weather))
+                        RegionalNormalsSection(viewModel: .init(weather: provider.weather))
                     }
 
                     BottomSafeAreaSpacer()

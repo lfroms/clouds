@@ -38,6 +38,9 @@
 		8062DE7722D5848400AAD6FB /* LabeledSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062DE7622D5848400AAD6FB /* LabeledSection.swift */; };
 		8062DE7922D5866900AAD6FB /* HourlyForecastSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062DE7822D5866900AAD6FB /* HourlyForecastSection.swift */; };
 		8062DE7C22D586FA00AAD6FB /* LabeledSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062DE7B22D586FA00AAD6FB /* LabeledSectionHeader.swift */; };
+		808104F022D7FEE300E40D5D /* RiseSetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808104EF22D7FEE300E40D5D /* RiseSetViewModel.swift */; };
+		808104F222D802D800E40D5D /* YesterdayConditionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808104F122D802D800E40D5D /* YesterdayConditionsViewModel.swift */; };
+		808104F422D8044300E40D5D /* RegionalNormalsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808104F322D8044300E40D5D /* RegionalNormalsViewModel.swift */; };
 		8081AA3D22D05B2C0049DD59 /* HomeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8081AA3C22D05B2C0049DD59 /* HomeSection.swift */; };
 		80AD06E322D6655800220FEE /* PopLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD06E222D6655800220FEE /* PopLabel.swift */; };
 		80AD06E522D66AF400220FEE /* DailyForecastSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD06E422D66AF400220FEE /* DailyForecastSection.swift */; };
@@ -98,6 +101,9 @@
 		8062DE7622D5848400AAD6FB /* LabeledSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledSection.swift; sourceTree = "<group>"; };
 		8062DE7822D5866900AAD6FB /* HourlyForecastSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastSection.swift; sourceTree = "<group>"; };
 		8062DE7B22D586FA00AAD6FB /* LabeledSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledSectionHeader.swift; sourceTree = "<group>"; };
+		808104EF22D7FEE300E40D5D /* RiseSetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiseSetViewModel.swift; sourceTree = "<group>"; };
+		808104F122D802D800E40D5D /* YesterdayConditionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesterdayConditionsViewModel.swift; sourceTree = "<group>"; };
+		808104F322D8044300E40D5D /* RegionalNormalsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionalNormalsViewModel.swift; sourceTree = "<group>"; };
 		8081AA3C22D05B2C0049DD59 /* HomeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSection.swift; sourceTree = "<group>"; };
 		80AD06E222D6655800220FEE /* PopLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopLabel.swift; sourceTree = "<group>"; };
 		80AD06E422D66AF400220FEE /* DailyForecastSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastSection.swift; sourceTree = "<group>"; };
@@ -214,6 +220,9 @@
 				80D0D86222D6B2DD00B8C711 /* HomeSectionViewModel.swift */,
 				8039627E22D6CB88003FEAB3 /* HourlyForecastSectionViewModel.swift */,
 				8039628622D6D51B003FEAB3 /* DailyForecastSectionViewModel.swift */,
+				808104EF22D7FEE300E40D5D /* RiseSetViewModel.swift */,
+				808104F122D802D800E40D5D /* YesterdayConditionsViewModel.swift */,
+				808104F322D8044300E40D5D /* RegionalNormalsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -560,11 +569,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				80AD070922D68E7B00220FEE /* WeatherProvider.swift in Sources */,
+				808104F022D7FEE300E40D5D /* RiseSetViewModel.swift in Sources */,
 				805D7BD822D123FA00A12C4D /* WeatherView.swift in Sources */,
 				80AD06F822D6772100220FEE /* RegionalNormalsSection.swift in Sources */,
 				8039628522D6CD6F003FEAB3 /* ForecastIcon.swift in Sources */,
 				805A174622C53ADB00E1B4E2 /* AppDelegate.swift in Sources */,
 				805D7BD022D10A0800A12C4D /* DetailBlockDescriptor.swift in Sources */,
+				808104F222D802D800E40D5D /* YesterdayConditionsViewModel.swift in Sources */,
 				80AD06F422D675BA00220FEE /* IconDetailCollection.swift in Sources */,
 				80D0D86322D6B2DD00B8C711 /* HomeSectionViewModel.swift in Sources */,
 				80D1896D22D03A2F00E56DB1 /* HighLowView.swift in Sources */,
@@ -581,6 +592,7 @@
 				8039628322D6CC4B003FEAB3 /* HourlyForecastItem.swift in Sources */,
 				803028D522CEE42C0053F639 /* TemperatureView.swift in Sources */,
 				805D7BCE22D109EE00A12C4D /* DetailBlockRow.swift in Sources */,
+				808104F422D8044300E40D5D /* RegionalNormalsViewModel.swift in Sources */,
 				80AD06F622D675D500220FEE /* IconDetailDescriptor.swift in Sources */,
 				803028E822CEEB0F0053F639 /* DetailBlockView.swift in Sources */,
 				805A174822C53ADB00E1B4E2 /* SceneDelegate.swift in Sources */,

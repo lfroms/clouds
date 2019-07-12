@@ -8,16 +8,12 @@
 
 import SwiftUI
 
-private let TEST_YESTERDAY = [
-    IconDetailDescriptor(symbolName: "arrow.up", text: "20°"),
-    IconDetailDescriptor(symbolName: "arrow.down", text: "15°"),
-    IconDetailDescriptor(symbolName: "cloud.rain.fill", text: "15mm"),
-]
-
 struct YesterdayConditionsSection: View {
+    let viewModel: YesterdayConditionsViewModel
+
     var body: some View {
         LabeledSection(label: "Yesterday", headerPadding: 36, tinted: false) {
-            IconDetailCollection(items: TEST_YESTERDAY)
+            IconDetailCollection(items: self.viewModel.items)
                 .padding(.horizontal, 36)
         }
     }
@@ -26,7 +22,7 @@ struct YesterdayConditionsSection: View {
 #if DEBUG
 struct YesterdayConditionsSection_Previews: PreviewProvider {
     static var previews: some View {
-        YesterdayConditionsSection()
+        YesterdayConditionsSection(viewModel: .init(weather: nil))
     }
 }
 #endif

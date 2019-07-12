@@ -8,15 +8,12 @@
 
 import SwiftUI
 
-private let TEST_RN = [
-    IconDetailDescriptor(symbolName: "arrow.up", text: "25°"),
-    IconDetailDescriptor(symbolName: "arrow.down", text: "16°"),
-]
-
 struct RegionalNormalsSection: View {
+    let viewModel: RegionalNormalsViewModel
+
     var body: some View {
         LabeledSection(label: "Regional Normals", headerPadding: 36, tinted: false) {
-            IconDetailCollection(items: TEST_RN)
+            IconDetailCollection(items: self.viewModel.items)
                 .padding(.horizontal, 36)
         }
     }
@@ -25,7 +22,7 @@ struct RegionalNormalsSection: View {
 #if DEBUG
 struct RegionalNormalsSection_Previews: PreviewProvider {
     static var previews: some View {
-        RegionalNormalsSection()
+        RegionalNormalsSection(viewModel: .init(weather: nil))
     }
 }
 #endif

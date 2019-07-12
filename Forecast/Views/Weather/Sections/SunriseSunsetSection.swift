@@ -8,15 +8,12 @@
 
 import SwiftUI
 
-private let TEST_RISESET = [
-    DetailBlockDescriptor(symbolName: "sunrise.fill", value: "7:40 EST", label: "Sunrise"),
-    DetailBlockDescriptor(symbolName: "sunset.fill", value: "16:23 EST", label: "Sunset")
-]
-
 struct SunriseSunsetSection: View {
+    let viewModel: RiseSetViewModel
+
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            DetailBlockCollection(items: TEST_RISESET, rows: 1, spacing: 10)
+            DetailBlockCollection(items: self.viewModel.items, rows: 1, spacing: 10)
                 .padding(.horizontal, 18)
         }
     }
@@ -25,7 +22,7 @@ struct SunriseSunsetSection: View {
 #if DEBUG
 struct SunriseSunsetSection_Previews: PreviewProvider {
     static var previews: some View {
-        SunriseSunsetSection()
+        SunriseSunsetSection(viewModel: .init(weather: nil))
     }
 }
 #endif
