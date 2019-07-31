@@ -10,23 +10,23 @@ import SwiftDate
 import SwiftUI
 
 struct HourlyForecastView: View {
-    let item: HourlyForecastItem
+    let viewModel: HourlyForecastViewModel
 
     var body: some View {
         VStack(alignment: .center, spacing: 18) {
             VStack(spacing: 26) {
                 HStack(alignment: .firstTextBaseline, spacing: 2) {
-                    Text("\(item.date.toFormat("h"))")
-                    Text("\(item.date.toFormat("a").lowercased())")
+                    Text("\(viewModel.date.toFormat("h"))")
+                    Text("\(viewModel.date.toFormat("a").lowercased())")
                         .color(Color.primary.opacity(0.65))
                 }
                 .font(Font.system(size: 14).weight(.heavy))
 
-                ForecastWeatherIcon(name: item.symbolName)
+                ForecastWeatherIcon(name: viewModel.symbolName)
 
                 HStack(alignment: .firstTextBaseline, spacing: 2) {
-                    Text("\(item.temperature)")
-                    Text("°\(item.temperatureUnits)")
+                    Text("\(viewModel.temperature)")
+                    Text("°\(viewModel.temperatureUnits)")
                         .color(Color.primary.opacity(0.64))
                 }
                 .font(Font.system(size: 16).weight(.bold))
@@ -42,15 +42,15 @@ struct HourlyForecastView: View {
     }
 
     private func getWindSpeedText() -> String {
-        if let windSpeed = item.windSpeed {
-            return "\(windSpeed) \(item.windSpeedUnits)"
+        if let windSpeed = viewModel.windSpeed {
+            return "\(windSpeed) \(viewModel.windSpeedUnits)"
         }
 
         return "Calm"
     }
 
     private func renderPopLabel() -> PopLabel? {
-        guard let pop = item.pop else {
+        guard let pop = viewModel.pop else {
             return nil
         }
 
@@ -67,7 +67,7 @@ struct HourlyForecastView: View {
 struct HourlyForecastView_Previews: PreviewProvider {
     static var previews: some View {
         HourlyForecastView(
-            item: HourlyForecastItem(
+            viewModel: HourlyForecastViewModel(
                 date: DateInRegion(),
                 symbolName: "cloud.rain.fill",
                 temperature: 24,

@@ -20,7 +20,7 @@ struct HighLowView: View {
         .opacity(0.4)
     }
 
-    fileprivate func renderIcon() -> _ModifiedContent<Image, _EnvironmentKeyWritingModifier<Font?>> {
+    fileprivate func renderIcon() -> some View {
         let symbolName = highOrLow == .high ? "arrow.up" : "arrow.down"
 
         return Image(systemName: symbolName)

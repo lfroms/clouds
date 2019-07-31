@@ -12,15 +12,15 @@ import SwiftDate
 struct HourlyForecastSectionViewModel {
     let weather: WeatherQuery.Data.Weather?
     
-    var items: [HourlyForecastItem] {
+    var items: [HourlyForecastViewModel] {
         let hourlyForecastEntries = weather?.hourlyForecastGroup?.hourlyForecast
         
-        var hourlyForecastItems: [HourlyForecastItem] = []
+        var hourlyForecastItems: [HourlyForecastViewModel] = []
         
         hourlyForecastEntries?.forEach(
             { item in
                 
-                let forecastItem = HourlyForecastItem(
+                let forecastItem = HourlyForecastViewModel(
                     date: getDateFrom(string: item.dateTimeUtc),
                     symbolName: ForecastIcon.forCode(item.iconCode.value ?? "00"),
                     temperature: Temperature.toPreferredUnitInt(item.temperature.value),

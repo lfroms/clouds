@@ -23,24 +23,24 @@ struct DetailBlockView: View {
         .cornerRadius(8)
     }
 
-    fileprivate func renderIcon() -> _ModifiedContent<Image, _EnvironmentKeyWritingModifier<Font?>> {
+    fileprivate func renderIcon() -> some View {
         return Image(systemName: data.symbolName)
             .font(Font.system(size: 18).weight(.bold))
     }
 
-    fileprivate func renderLabelValue() -> VStack<TupleView<(Text, HStack<TupleView<(Text?, Text)>>)>> {
+    fileprivate func renderLabelValue() -> some View {
         return VStack(alignment: .leading, spacing: 2) {
             Text(data.label.uppercased())
                 .font(.system(size: 11))
                 .fontWeight(.heavy)
-                .color(Color.primary.opacity(0.6))
+                .foregroundColor(Color.primary.opacity(0.6))
 
             HStack(alignment: .firstTextBaseline, spacing: 2) {
                 if data.valuePrefix != nil {
                     Text(data.valuePrefix!)
                         .font(.system(size: 13))
                         .fontWeight(.heavy)
-                        .color(Color.primary.opacity(0.8))
+                        .foregroundColor(Color.primary.opacity(0.8))
                 }
 
                 Text(data.value)

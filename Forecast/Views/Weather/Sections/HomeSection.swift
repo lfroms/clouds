@@ -8,15 +8,6 @@
 
 import SwiftUI
 
-private let TEST_OBSERVATIONS = [
-    DetailBlockDescriptor(symbolName: "circle.grid.hex.fill", value: "25%", label: "Humidity"),
-    DetailBlockDescriptor(symbolName: "speedometer", value: "101.5 kPa", label: "Pressure"),
-    DetailBlockDescriptor(symbolName: "wind", value: "15 km/h", valuePrefix: "WNW", label: "Wind"),
-    DetailBlockDescriptor(symbolName: "thermometer", value: "15°", label: "Dewpoint"),
-    DetailBlockDescriptor(symbolName: "scope", value: "24.1 km", label: "Visibility"),
-    DetailBlockDescriptor(symbolName: "thermometer.sun", value: "32°", label: "Humidex")
-]
-
 struct HomeSection: View {
     let viewModel: HomeSectionViewModel
 

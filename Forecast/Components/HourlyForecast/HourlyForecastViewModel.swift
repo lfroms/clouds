@@ -1,5 +1,5 @@
 //
-//  HourlyForecastItem.swift
+//  HourlyForecastViewModel.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-07-10.
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftDate
 
-struct HourlyForecastItem {
+struct HourlyForecastViewModel {
     let id = UUID()
     
     let date: DateInRegion

@@ -12,17 +12,17 @@ import Foundation
 import SwiftUI
 
 class WeatherProvider: BindableObject {
-    var didChange = PassthroughSubject<WeatherProvider, Never>()
+    var willChange = PassthroughSubject<WeatherProvider, Never>()
     
     var weather: WeatherQuery.Data.Weather? {
-        didSet {
-            didChange.send(self)
+        willSet {
+            willChange.send(self)
         }
     }
     
     var error: Error? {
-        didSet {
-            didChange.send(self)
+        willSet {
+            willChange.send(self)
         }
     }
     
