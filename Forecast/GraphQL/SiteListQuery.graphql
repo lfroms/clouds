@@ -1,8 +1,0 @@
-
-query SiteList {
-    sites {
-        code
-        name
-        province
-    }
-}
