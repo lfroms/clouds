@@ -79,7 +79,7 @@ struct HomeSectionViewModel {
         if let pressure = cc.pressure,
             let value = pressure.value {
             let item = DetailBlockDescriptor(
-                symbolName: "speedometer",
+                symbolName: "gauge",
                 value: "\(value) \(pressure.units)",
                 label: "Pressure"
             )

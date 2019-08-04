@@ -14,12 +14,13 @@ struct PopLabel: View {
     var body: some View {
         let foregroundColor: Color = Color.primary.opacity(0.65)
 
-        return HStack(alignment: .bottom, spacing: 4) {
-            Image(systemName: "cloud.rain.fill")
+        return HStack(alignment: .lastTextBaseline, spacing: 4) {
+            Image(systemName: "umbrella.fill")
                 .foregroundColor(foregroundColor)
 
             Text("\(pop)%")
                 .foregroundColor(foregroundColor)
+                .fixedSize()
         }
         .font(Font.system(size: 12).weight(.heavy))
     }

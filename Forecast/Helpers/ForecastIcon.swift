@@ -12,6 +12,7 @@ class ForecastIcon {
     private enum AvailableIcon: String {
         case sunny = "sun.max.fill"
         case partlySunny = "cloud.sun.fill"
+        case chanceOfShowers = "cloud.sun.rain.fill"
         case rainy = "cloud.rain.fill"
         case heavyRain = "cloud.heavyrain.fill"
         case drizzle = "cloud.drizzle.fill"
@@ -28,7 +29,7 @@ class ForecastIcon {
         case thunderstormNight = "cloud.moon.bolt.fill"
         case windy = "wind"
         case windSnow = "wind.snow"
-        case smoke
+        case smoke = "smoke.fill"
     }
 
     static func forCode(_ code: String) -> String {
@@ -46,7 +47,7 @@ class ForecastIcon {
         3: .partlySunny,
         4: .partlySunny,
         5: .sunny,
-        6: .drizzle,
+        6: .chanceOfShowers,
         7: .sleet,
         8: .sleet,
         9: .thunderstorm,

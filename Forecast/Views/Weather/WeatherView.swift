@@ -37,7 +37,7 @@ struct WeatherView: View {
     }
 
     private var backgroundGradient: LinearGradient {
-        let gradient = Gradient(colors: [Color("color-00"), Color("color-00-alt")])
+        let gradient = Gradient(colors: [Color("color-\(iconName())"), Color("color-\(iconName())-alt")])
 
         return LinearGradient(gradient: gradient, startPoint: .topTrailing, endPoint: .bottomLeading)
     }

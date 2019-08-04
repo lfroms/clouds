@@ -16,7 +16,8 @@ struct DetailBlockView: View {
             renderIcon()
             renderLabelValue()
         }
-        .padding(.horizontal, 16)
+        .padding(.leading, 18)
+        .padding(.trailing, 20)
         .frame(height: 60, alignment: .leading)
         .background(Color.primary.opacity(0.06))
         .shadow(color: Color.black.opacity(0.06), radius: 2, x: 0, y: 2)
