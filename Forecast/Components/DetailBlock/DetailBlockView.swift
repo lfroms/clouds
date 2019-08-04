@@ -19,7 +19,7 @@ struct DetailBlockView: View {
         .padding(.horizontal, 16)
         .frame(height: 60, alignment: .leading)
         .background(Color.primary.opacity(0.06))
-        .shadow(color: Color.black.opacity(0.1), radius: 2, x: 0, y: 2)
+        .shadow(color: Color.black.opacity(0.06), radius: 2, x: 0, y: 2)
         .cornerRadius(8)
         .fixedSize()
     }

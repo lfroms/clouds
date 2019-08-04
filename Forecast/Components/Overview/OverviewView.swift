@@ -26,6 +26,7 @@ struct OverviewView: View {
                     TemperatureView(value: temperature)
                     ObservationView(observation: observation)
                 }
+                .fixedSize()
 
                 Spacer()
 

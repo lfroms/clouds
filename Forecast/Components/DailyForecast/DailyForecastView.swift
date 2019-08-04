@@ -19,6 +19,7 @@ struct DailyForecastView: View {
             VStack(alignment: .leading, spacing: 5) {
                 HStack(alignment: .firstTextBaseline, spacing: 18) {
                     Text(item.title)
+                        .fontWeight(.semibold)
 
                     Spacer()
 

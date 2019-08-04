@@ -16,6 +16,7 @@ struct TemperatureView: View {
             .font(.system(size: 72))
             .fontWeight(.heavy)
             .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
+            .lineLimit(1)
     }
 }
 

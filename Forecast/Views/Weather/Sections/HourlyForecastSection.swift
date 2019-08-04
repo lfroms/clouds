@@ -19,7 +19,8 @@ struct HourlyForecastSection: View {
                         HourlyForecastView(viewModel: item)
                     }
                 }
-                .padding(26)
+                .padding([.horizontal, .bottom], 26)
+                .padding(.top, 23)
             }
         }
     }
