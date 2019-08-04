@@ -14,7 +14,7 @@ struct DailyForecastSection: View {
     var body: some View {
         LabeledSection(label: "Daily", headerPadding: 36) {
             VStack(spacing: 26) {
-                ForEach(self.viewModel.items.identified(by: \.id)) { item in
+                ForEach(self.viewModel.items, id: \.id) { item in
                     DailyForecastView(item: item)
                 }
             }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct IconDetailDescriptor {
+struct IconDetailDescriptor: Identifiable {
     let id = UUID()
 
     let symbolName: String

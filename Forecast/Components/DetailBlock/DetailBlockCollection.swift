@@ -11,7 +11,7 @@ import SwiftUI
 struct DetailBlockCollection: View {
     let items: [DetailBlockDescriptor]
     let rows: Int
-    let spacing: Length
+    let spacing: CGFloat
 
     var body: some View {
         VStack(alignment: .leading, spacing: spacing) {
@@ -19,7 +19,7 @@ struct DetailBlockCollection: View {
         }
     }
 
-    fileprivate func generateRows(rows: Int) -> Group<ForEach<Range<Int>, DetailBlockRow>> {
+    fileprivate func generateRows(rows: Int) -> some View {
         var itemRows: [[DetailBlockDescriptor]] = []
 
         for row in 0 ... rows - 1 {

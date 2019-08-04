@@ -9,7 +9,9 @@
 import Foundation
 import SwiftDate
 
-struct HourlyForecastSectionViewModel {
+struct HourlyForecastSectionViewModel:Identifiable {
+    var id = UUID()
+    
     let weather: WeatherQuery.Data.Weather?
     
     var items: [HourlyForecastViewModel] {

@@ -25,7 +25,7 @@ struct DailyForecastView: View {
                     HStack(alignment: .firstTextBaseline, spacing: 2) {
                         Text("\(item.temperature)")
                         Text("°\(item.temperatureUnits)")
-                            .color(Color.primary.opacity(0.65))
+                            .foregroundColor(Color.primary.opacity(0.65))
                     }
                 }
                 .font(Font.system(size: 18).weight(.bold))
@@ -33,7 +33,7 @@ struct DailyForecastView: View {
                 HStack(alignment: .firstTextBaseline, spacing: 18) {
                     Text(item.description)
                         .font(Font.system(size: 12).weight(.heavy))
-                        .color(Color.primary.opacity(0.65))
+                        .foregroundColor(Color.primary.opacity(0.65))
 
                     renderPopLabel()
                 }

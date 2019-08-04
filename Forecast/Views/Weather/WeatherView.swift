@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct WeatherView: View {
-    @ObjectBinding var provider = WeatherProvider()
+    @ObservedObject private var provider: WeatherProvider = WeatherProvider()
 
     var body: some View {
         ZStack(alignment: .topTrailing) {
@@ -33,7 +33,7 @@ struct WeatherView: View {
                 }
             }
         }
-        .background(backgroundGradient, cornerRadius: 0)
+        .background(backgroundGradient)
     }
 
     private var backgroundGradient: LinearGradient {

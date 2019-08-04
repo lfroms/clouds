@@ -15,7 +15,7 @@ struct LabeledSectionHeader: View {
         Text(text.uppercased())
             .font(.system(size: 13))
             .fontWeight(.heavy)
-            .color(Color.primary.opacity(0.5))
+            .foregroundColor(Color.primary.opacity(0.5))
     }
 }
 

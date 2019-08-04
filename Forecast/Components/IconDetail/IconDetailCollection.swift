@@ -13,7 +13,7 @@ struct IconDetailCollection: View {
 
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: 24) {
-            ForEach(items.identified(by: \.id)) { item in
+            ForEach(items, id: \.id) { item in
                 IconDetailView(symbolName: item.symbolName, text: item.text)
             }
         }

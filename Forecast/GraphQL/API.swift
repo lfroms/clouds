@@ -174,6 +174,8 @@ public final class WeatherQuery: GraphQLQuery {
   public let operationDefinition =
     "query Weather($region: Region!, $code: Int!) {\n  weather(region: $region, code: $code) {\n    __typename\n    location {\n      __typename\n      name {\n        __typename\n        value\n      }\n    }\n    currentConditions {\n      __typename\n      dateTime(zone: \"UTC\") {\n        __typename\n        timeStamp\n      }\n      station {\n        __typename\n        value\n      }\n      temperature {\n        __typename\n        value\n      }\n      relativeHumidity {\n        __typename\n        value\n        units\n      }\n      pressure {\n        __typename\n        value\n        units\n      }\n      windChill {\n        __typename\n        value\n      }\n      humidex {\n        __typename\n        value\n      }\n      wind {\n        __typename\n        direction\n        speed {\n          __typename\n          value\n          units\n        }\n        gust {\n          __typename\n          value\n          units\n        }\n      }\n      visibility {\n        __typename\n        value\n        units\n      }\n      dewpoint {\n        __typename\n        value\n      }\n      iconCode {\n        __typename\n        value\n      }\n      condition\n    }\n    warnings {\n      __typename\n      url\n      events {\n        __typename\n        dateTime(zone: \"UTC\") {\n          __typename\n          timeStamp\n        }\n        priority\n        description\n        type\n      }\n    }\n    forecastGroup {\n      __typename\n      dateTime(zone: \"UTC\") {\n        __typename\n        timeStamp\n      }\n      regionalNormals {\n        __typename\n        temperature {\n          __typename\n          value\n          class\n        }\n      }\n      forecast {\n        __typename\n        abbreviatedForecast {\n          __typename\n          textSummary\n          iconCode {\n            __typename\n            value\n          }\n          pop {\n            __typename\n            value\n          }\n        }\n        period {\n          __typename\n          textForecastName\n        }\n        temperatures {\n          __typename\n          temperature {\n            __typename\n            value\n          }\n        }\n      }\n    }\n    hourlyForecastGroup {\n      __typename\n      hourlyForecast {\n        __typename\n        dateTimeUTC\n        temperature {\n          __typename\n          value\n          units\n        }\n        wind {\n          __typename\n          speed {\n            __typename\n            value\n            units\n          }\n        }\n        iconCode {\n          __typename\n          value\n        }\n        lop {\n          __typename\n          value\n        }\n      }\n    }\n    riseSet {\n      __typename\n      dateTime(zone: \"UTC\") {\n        __typename\n        timeStamp\n        name\n      }\n    }\n    yesterdayConditions {\n      __typename\n      temperature {\n        __typename\n        value\n        class\n      }\n      precip {\n        __typename\n        value\n        units\n      }\n    }\n  }\n}"
 
+  public let operationName = "Weather"
+
   public var region: Region
   public var code: Int
 
@@ -2250,99 +2252,6 @@ public final class WeatherQuery: GraphQLQuery {
               resultMap.updateValue(newValue, forKey: "units")
             }
           }
-        }
-      }
-    }
-  }
-}
-
-public final class SiteListQuery: GraphQLQuery {
-  public let operationDefinition =
-    "query SiteList {\n  sites {\n    __typename\n    code\n    name\n    province\n  }\n}"
-
-  public init() {
-  }
-
-  public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["Query"]
-
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("sites", type: .list(.nonNull(.object(Site.selections)))),
-    ]
-
-    public private(set) var resultMap: ResultMap
-
-    public init(unsafeResultMap: ResultMap) {
-      self.resultMap = unsafeResultMap
-    }
-
-    public init(sites: [Site]? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Query", "sites": sites.flatMap { (value: [Site]) -> [ResultMap] in value.map { (value: Site) -> ResultMap in value.resultMap } }])
-    }
-
-    /// Retrieve the entire site list or search by coordinates.
-    public var sites: [Site]? {
-      get {
-        return (resultMap["sites"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Site] in value.map { (value: ResultMap) -> Site in Site(unsafeResultMap: value) } }
-      }
-      set {
-        resultMap.updateValue(newValue.flatMap { (value: [Site]) -> [ResultMap] in value.map { (value: Site) -> ResultMap in value.resultMap } }, forKey: "sites")
-      }
-    }
-
-    public struct Site: GraphQLSelectionSet {
-      public static let possibleTypes = ["Site"]
-
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("code", type: .nonNull(.scalar(Int.self))),
-        GraphQLField("name", type: .nonNull(.scalar(String.self))),
-        GraphQLField("province", type: .nonNull(.scalar(Region.self))),
-      ]
-
-      public private(set) var resultMap: ResultMap
-
-      public init(unsafeResultMap: ResultMap) {
-        self.resultMap = unsafeResultMap
-      }
-
-      public init(code: Int, name: String, province: Region) {
-        self.init(unsafeResultMap: ["__typename": "Site", "code": code, "name": name, "province": province])
-      }
-
-      public var __typename: String {
-        get {
-          return resultMap["__typename"]! as! String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "__typename")
-        }
-      }
-
-      public var code: Int {
-        get {
-          return resultMap["code"]! as! Int
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "code")
-        }
-      }
-
-      public var name: String {
-        get {
-          return resultMap["name"]! as! String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "name")
-        }
-      }
-
-      public var province: Region {
-        get {
-          return resultMap["province"]! as! Region
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "province")
         }
       }
     }

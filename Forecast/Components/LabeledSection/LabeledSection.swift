@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LabeledSection<Content: View>: View {
     let label: String
-    let headerPadding: Length
+    let headerPadding: CGFloat
     var tinted: Bool?
 
     let content: () -> Content

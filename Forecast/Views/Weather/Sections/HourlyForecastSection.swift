@@ -15,7 +15,7 @@ struct HourlyForecastSection: View {
         LabeledSection(label: "Hourly", headerPadding: 36, tinted: true) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 36) {
-                    ForEach(self.viewModel.items.identified(by: \.id)) { item in
+                    ForEach(self.viewModel.items, id: \.id) { item in
                         HourlyForecastView(viewModel: item)
                     }
                 }

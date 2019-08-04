@@ -10,11 +10,11 @@ import SwiftUI
 
 struct DetailBlockRow: View {
     var items: [DetailBlockDescriptor]
-    var spacing: Length
+    var spacing: CGFloat
 
     var body: some View {
         HStack(alignment: .center, spacing: spacing) {
-            ForEach(items.identified(by: \.id)) { item in
+            ForEach(items) { item in
                 DetailBlockView(data: item)
             }
         }

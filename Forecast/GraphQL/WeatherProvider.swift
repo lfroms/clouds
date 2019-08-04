@@ -11,20 +11,9 @@ import Combine
 import Foundation
 import SwiftUI
 
-class WeatherProvider: BindableObject {
-    var willChange = PassthroughSubject<WeatherProvider, Never>()
-    
-    var weather: WeatherQuery.Data.Weather? {
-        willSet {
-            willChange.send(self)
-        }
-    }
-    
-    var error: Error? {
-        willSet {
-            willChange.send(self)
-        }
-    }
+class WeatherProvider: ObservableObject {
+    @Published private(set) var weather: WeatherQuery.Data.Weather? = nil
+    @Published private(set) var error: Error? = nil
     
     init() {
         fetchData()
@@ -33,14 +22,12 @@ class WeatherProvider: BindableObject {
     private func fetchData() {
         let query = WeatherQuery(region: .on, code: 430)
         
-        apollo.fetch(query: query) { result, error in
-            self.error = error
-            
-            guard let result = result else {
+        apollo.fetch(query: query) { result in
+            guard let data = try? result.get().data else {
                 return
             }
             
-            self.weather = result.data?.weather
+            self.weather = data.weather
         }
     }
 }

@@ -4,5 +4,5 @@ target 'Forecast' do
     # Pods for Forecast
 
     pod 'SwiftDate', '~> 6.0.3'
-    pod 'Apollo', '~> 0.10.1'
+    pod 'Apollo', '~> 0.13.0'
 end

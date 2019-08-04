@@ -61,10 +61,3 @@ class UserPreferences {
         return UserDefaults.standard.string(forKey: DefaultKeys.tempUnits.rawValue) != nil
     }
 }
-
-extension SiteListQuery.Data.Site {
-    func saveAsDefault() {
-        UserDefaults.standard.set(self.code, forKey: UserPreferences.DefaultKeys.siteCode.rawValue)
-        UserDefaults.standard.set(self.province.rawValue, forKey: UserPreferences.DefaultKeys.provinceCode.rawValue)
-    }
-}

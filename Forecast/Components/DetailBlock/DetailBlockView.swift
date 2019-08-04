@@ -21,6 +21,7 @@ struct DetailBlockView: View {
         .background(Color.primary.opacity(0.06))
         .shadow(color: Color.black.opacity(0.1), radius: 2, x: 0, y: 2)
         .cornerRadius(8)
+        .fixedSize()
     }
 
     fileprivate func renderIcon() -> some View {
@@ -34,6 +35,7 @@ struct DetailBlockView: View {
                 .font(.system(size: 11))
                 .fontWeight(.heavy)
                 .foregroundColor(Color.primary.opacity(0.6))
+                .lineLimit(1)
 
             HStack(alignment: .firstTextBaseline, spacing: 2) {
                 if data.valuePrefix != nil {
@@ -41,11 +43,13 @@ struct DetailBlockView: View {
                         .font(.system(size: 13))
                         .fontWeight(.heavy)
                         .foregroundColor(Color.primary.opacity(0.8))
+                        .lineLimit(1)
                 }
 
                 Text(data.value)
                     .font(.system(size: 16))
                     .fontWeight(.heavy)
+                    .lineLimit(1)
             }
         }
     }

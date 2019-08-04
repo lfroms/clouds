@@ -18,7 +18,7 @@ struct HourlyForecastView: View {
                 HStack(alignment: .firstTextBaseline, spacing: 2) {
                     Text("\(viewModel.date.toFormat("h"))")
                     Text("\(viewModel.date.toFormat("a").lowercased())")
-                        .color(Color.primary.opacity(0.65))
+                        .foregroundColor(Color.primary.opacity(0.65))
                 }
                 .font(Font.system(size: 14).weight(.heavy))
 
@@ -27,14 +27,14 @@ struct HourlyForecastView: View {
                 HStack(alignment: .firstTextBaseline, spacing: 2) {
                     Text("\(viewModel.temperature)")
                     Text("°\(viewModel.temperatureUnits)")
-                        .color(Color.primary.opacity(0.64))
+                        .foregroundColor(Color.primary.opacity(0.64))
                 }
                 .font(Font.system(size: 16).weight(.bold))
             }
 
             VStack(spacing: 10) {
                 Text(getWindSpeedText())
-                    .color(Color.primary.opacity(0.65))
+                    .foregroundColor(Color.primary.opacity(0.65))
                 renderPopLabel()
             }
             .font(Font.system(size: 12).weight(.heavy))

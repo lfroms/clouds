@@ -9,7 +9,9 @@
 import Foundation
 import SwiftDate
 
-struct DailyForecastSectionViewModel {
+struct DailyForecastSectionViewModel: Identifiable {
+    var id = UUID()
+    
     let weather: WeatherQuery.Data.Weather?
     
     var items: [DailyForecastItem] {

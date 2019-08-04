@@ -42,6 +42,8 @@
 		808104F222D802D800E40D5D /* YesterdayConditionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808104F122D802D800E40D5D /* YesterdayConditionsViewModel.swift */; };
 		808104F422D8044300E40D5D /* RegionalNormalsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808104F322D8044300E40D5D /* RegionalNormalsViewModel.swift */; };
 		8081AA3D22D05B2C0049DD59 /* HomeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8081AA3C22D05B2C0049DD59 /* HomeSection.swift */; };
+		809833B922F678BE001C1590 /* WeatherQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 809833B822F678BE001C1590 /* WeatherQuery.graphql */; };
+		809833BB22F67B11001C1590 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809833BA22F67B11001C1590 /* API.swift */; };
 		80AD06E322D6655800220FEE /* PopLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD06E222D6655800220FEE /* PopLabel.swift */; };
 		80AD06E522D66AF400220FEE /* DailyForecastSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD06E422D66AF400220FEE /* DailyForecastSection.swift */; };
 		80AD06E822D66B1C00220FEE /* DailyForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD06E722D66B1C00220FEE /* DailyForecastView.swift */; };
@@ -53,10 +55,7 @@
 		80AD06F622D675D500220FEE /* IconDetailDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD06F522D675D500220FEE /* IconDetailDescriptor.swift */; };
 		80AD06F822D6772100220FEE /* RegionalNormalsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD06F722D6772100220FEE /* RegionalNormalsSection.swift */; };
 		80AD06FB22D678B300220FEE /* BottomSafeAreaSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD06FA22D678B300220FEE /* BottomSafeAreaSpacer.swift */; };
-		80AD070322D68C4900220FEE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD06FF22D68C4900220FEE /* API.swift */; };
 		80AD070422D68C4900220FEE /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 80AD070022D68C4900220FEE /* schema.json */; };
-		80AD070522D68C4900220FEE /* WeatherQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 80AD070122D68C4900220FEE /* WeatherQuery.graphql */; };
-		80AD070622D68C4900220FEE /* SiteListQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 80AD070222D68C4900220FEE /* SiteListQuery.graphql */; };
 		80AD070922D68E7B00220FEE /* WeatherProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD070822D68E7B00220FEE /* WeatherProvider.swift */; };
 		80D0D86322D6B2DD00B8C711 /* HomeSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D0D86222D6B2DD00B8C711 /* HomeSectionViewModel.swift */; };
 		80D0D86722D6B56800B8C711 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D0D86522D6B56700B8C711 /* UserPreferences.swift */; };
@@ -105,6 +104,8 @@
 		808104F122D802D800E40D5D /* YesterdayConditionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesterdayConditionsViewModel.swift; sourceTree = "<group>"; };
 		808104F322D8044300E40D5D /* RegionalNormalsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionalNormalsViewModel.swift; sourceTree = "<group>"; };
 		8081AA3C22D05B2C0049DD59 /* HomeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSection.swift; sourceTree = "<group>"; };
+		809833B822F678BE001C1590 /* WeatherQuery.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WeatherQuery.graphql; sourceTree = "<group>"; };
+		809833BA22F67B11001C1590 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		80AD06E222D6655800220FEE /* PopLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopLabel.swift; sourceTree = "<group>"; };
 		80AD06E422D66AF400220FEE /* DailyForecastSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastSection.swift; sourceTree = "<group>"; };
 		80AD06E722D66B1C00220FEE /* DailyForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastView.swift; sourceTree = "<group>"; };
@@ -116,10 +117,7 @@
 		80AD06F522D675D500220FEE /* IconDetailDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconDetailDescriptor.swift; sourceTree = "<group>"; };
 		80AD06F722D6772100220FEE /* RegionalNormalsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionalNormalsSection.swift; sourceTree = "<group>"; };
 		80AD06FA22D678B300220FEE /* BottomSafeAreaSpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSafeAreaSpacer.swift; sourceTree = "<group>"; };
-		80AD06FF22D68C4900220FEE /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		80AD070022D68C4900220FEE /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		80AD070122D68C4900220FEE /* WeatherQuery.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WeatherQuery.graphql; sourceTree = "<group>"; };
-		80AD070222D68C4900220FEE /* SiteListQuery.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SiteListQuery.graphql; sourceTree = "<group>"; };
 		80AD070822D68E7B00220FEE /* WeatherProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherProvider.swift; sourceTree = "<group>"; };
 		80D0D86222D6B2DD00B8C711 /* HomeSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionViewModel.swift; sourceTree = "<group>"; };
 		80D0D86522D6B56700B8C711 /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
@@ -395,10 +393,9 @@
 		80AD06FE22D68C2000220FEE /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
-				80AD06FF22D68C4900220FEE /* API.swift */,
 				80AD070022D68C4900220FEE /* schema.json */,
-				80AD070222D68C4900220FEE /* SiteListQuery.graphql */,
-				80AD070122D68C4900220FEE /* WeatherQuery.graphql */,
+				809833BA22F67B11001C1590 /* API.swift */,
+				809833B822F678BE001C1590 /* WeatherQuery.graphql */,
 				80AD070822D68E7B00220FEE /* WeatherProvider.swift */,
 			);
 			path = GraphQL;
@@ -484,12 +481,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				805A175222C53ADD00E1B4E2 /* LaunchScreen.storyboard in Resources */,
-				80AD070622D68C4900220FEE /* SiteListQuery.graphql in Resources */,
 				805D7BDC22D1244800A12C4D /* Images.xcassets in Resources */,
 				805D7BDA22D1243F00A12C4D /* Colors.xcassets in Resources */,
 				805A174F22C53ADD00E1B4E2 /* Preview Assets.xcassets in Resources */,
 				80AD070422D68C4900220FEE /* schema.json in Resources */,
-				80AD070522D68C4900220FEE /* WeatherQuery.graphql in Resources */,
+				809833B922F678BE001C1590 /* WeatherQuery.graphql in Resources */,
 				805A174C22C53ADD00E1B4E2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,7 +533,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-cli.sh codegen:generate --queries=\"$(find . -name '*.graphql')\" --schema=GraphQL/schema.json GraphQL/API.swift\n";
+			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/check-and-run-apollo-cli.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"GraphQL/schema.json\" GraphQL/API.swift\n";
 		};
 		9410ED66C4D5041B3B936888 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -602,6 +598,7 @@
 				803028E022CEE5F70053F639 /* StationView.swift in Sources */,
 				805D7BDF22D1285500A12C4D /* MenuButton.swift in Sources */,
 				805D7BE222D1287900A12C4D /* BlurView.swift in Sources */,
+				809833BB22F67B11001C1590 /* API.swift in Sources */,
 				80D0D86722D6B56800B8C711 /* UserPreferences.swift in Sources */,
 				805A174A22C53ADB00E1B4E2 /* ContentView.swift in Sources */,
 				803028D822CEE56D0053F639 /* ObservationView.swift in Sources */,
@@ -614,7 +611,6 @@
 				80D0D86822D6B56800B8C711 /* Temperature.swift in Sources */,
 				80AD06F222D6752B00220FEE /* IconDetailView.swift in Sources */,
 				80AD06EF22D674E900220FEE /* YesterdayConditionsSection.swift in Sources */,
-				80AD070322D68C4900220FEE /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

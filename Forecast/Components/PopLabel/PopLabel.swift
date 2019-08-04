@@ -19,7 +19,7 @@ struct PopLabel: View {
                 .foregroundColor(foregroundColor)
 
             Text("\(pop)%")
-                .color(foregroundColor)
+                .foregroundColor(foregroundColor)
         }
         .font(Font.system(size: 12).weight(.heavy))
     }
