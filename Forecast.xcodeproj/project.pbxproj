@@ -44,6 +44,8 @@
 		8081AA3D22D05B2C0049DD59 /* HomeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8081AA3C22D05B2C0049DD59 /* HomeSection.swift */; };
 		809833B922F678BE001C1590 /* WeatherQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 809833B822F678BE001C1590 /* WeatherQuery.graphql */; };
 		809833BB22F67B11001C1590 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809833BA22F67B11001C1590 /* API.swift */; };
+		809C147422F752DA00F6A771 /* WarningsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C147322F752DA00F6A771 /* WarningsHeader.swift */; };
+		809C147622F752E700F6A771 /* WarningItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C147522F752E700F6A771 /* WarningItem.swift */; };
 		80AD06E322D6655800220FEE /* PopLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD06E222D6655800220FEE /* PopLabel.swift */; };
 		80AD06E522D66AF400220FEE /* DailyForecastSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD06E422D66AF400220FEE /* DailyForecastSection.swift */; };
 		80AD06E822D66B1C00220FEE /* DailyForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD06E722D66B1C00220FEE /* DailyForecastView.swift */; };
@@ -106,6 +108,8 @@
 		8081AA3C22D05B2C0049DD59 /* HomeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSection.swift; sourceTree = "<group>"; };
 		809833B822F678BE001C1590 /* WeatherQuery.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WeatherQuery.graphql; sourceTree = "<group>"; };
 		809833BA22F67B11001C1590 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		809C147322F752DA00F6A771 /* WarningsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningsHeader.swift; sourceTree = "<group>"; };
+		809C147522F752E700F6A771 /* WarningItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningItem.swift; sourceTree = "<group>"; };
 		80AD06E222D6655800220FEE /* PopLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopLabel.swift; sourceTree = "<group>"; };
 		80AD06E422D66AF400220FEE /* DailyForecastSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastSection.swift; sourceTree = "<group>"; };
 		80AD06E722D66B1C00220FEE /* DailyForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastView.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 		803028D222CEE40D0053F639 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				809C147222F752C800F6A771 /* WarningsHeader */,
 				80AD070A22D6AB9900220FEE /* PopLabel */,
 				80AD06F922D678A600220FEE /* BottomSafeAreaSpacer */,
 				80AD06F022D6752000220FEE /* IconDetail */,
@@ -339,6 +344,15 @@
 				80D0A37822F74E1700E6AE39 /* RegionalNormals */,
 			);
 			path = Sections;
+			sourceTree = "<group>";
+		};
+		809C147222F752C800F6A771 /* WarningsHeader */ = {
+			isa = PBXGroup;
+			children = (
+				809C147322F752DA00F6A771 /* WarningsHeader.swift */,
+				809C147522F752E700F6A771 /* WarningItem.swift */,
+			);
+			path = WarningsHeader;
 			sourceTree = "<group>";
 		};
 		80AD06E622D66B0900220FEE /* DailyForecast */ = {
@@ -610,6 +624,7 @@
 				80AD06F822D6772100220FEE /* RegionalNormalsSection.swift in Sources */,
 				8039628522D6CD6F003FEAB3 /* ForecastIcon.swift in Sources */,
 				805A174622C53ADB00E1B4E2 /* AppDelegate.swift in Sources */,
+				809C147622F752E700F6A771 /* WarningItem.swift in Sources */,
 				805D7BD022D10A0800A12C4D /* DetailBlockDescriptor.swift in Sources */,
 				808104F222D802D800E40D5D /* YesterdayConditionsViewModel.swift in Sources */,
 				80AD06F422D675BA00220FEE /* IconDetailCollection.swift in Sources */,
@@ -621,6 +636,7 @@
 				8062DE7922D5866900AAD6FB /* HourlyForecastSection.swift in Sources */,
 				80AD06EB22D66B7800220FEE /* ForecastWeatherIcon.swift in Sources */,
 				803028E222CEE5FE0053F639 /* MetadataView.swift in Sources */,
+				809C147422F752DA00F6A771 /* WarningsHeader.swift in Sources */,
 				80AD06E322D6655800220FEE /* PopLabel.swift in Sources */,
 				8062DE7C22D586FA00AAD6FB /* LabeledSectionHeader.swift in Sources */,
 				8050327F22D25C7500D376C3 /* HighLowStackView.swift in Sources */,
