@@ -24,13 +24,17 @@ struct OverviewView: View {
             HStack(alignment: .bottom) {
                 VStack(alignment: .leading, spacing: 4) {
                     TemperatureView(value: temperature)
+
+                    // FIXME: Text should wrap, not truncate.
                     ObservationView(observation: observation)
+                        .lineLimit(2)
                 }
-                .fixedSize()
+                .layoutPriority(1)
 
                 Spacer()
 
                 HighLowStackView(highTemp: highTemp, lowTemp: lowTemp)
+                    .layoutPriority(1)
             }
         }
     }

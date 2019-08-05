@@ -488,8 +488,8 @@ public final class WeatherQuery: GraphQLQuery {
           GraphQLField("temperature", type: .scalar(Double.self)),
           GraphQLField("humidity", type: .scalar(Int.self)),
           GraphQLField("pressure", type: .scalar(Double.self)),
-          GraphQLField("windChill", type: .scalar(Double.self)),
-          GraphQLField("humidex", type: .scalar(Double.self)),
+          GraphQLField("windChill", type: .scalar(Int.self)),
+          GraphQLField("humidex", type: .scalar(Int.self)),
           GraphQLField("wind", type: .object(Wind.selections)),
           GraphQLField("visibility", type: .scalar(Double.self)),
           GraphQLField("dewPoint", type: .scalar(Double.self)),
@@ -503,7 +503,7 @@ public final class WeatherQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(time: Int, station: Station, temperature: Double? = nil, humidity: Int? = nil, pressure: Double? = nil, windChill: Double? = nil, humidex: Double? = nil, wind: Wind? = nil, visibility: Double? = nil, dewPoint: Double? = nil, iconCode: Int? = nil, summary: String? = nil) {
+        public init(time: Int, station: Station, temperature: Double? = nil, humidity: Int? = nil, pressure: Double? = nil, windChill: Int? = nil, humidex: Int? = nil, wind: Wind? = nil, visibility: Double? = nil, dewPoint: Double? = nil, iconCode: Int? = nil, summary: String? = nil) {
           self.init(unsafeResultMap: ["__typename": "CurrentConditions", "time": time, "station": station.resultMap, "temperature": temperature, "humidity": humidity, "pressure": pressure, "windChill": windChill, "humidex": humidex, "wind": wind.flatMap { (value: Wind) -> ResultMap in value.resultMap }, "visibility": visibility, "dewPoint": dewPoint, "iconCode": iconCode, "summary": summary])
         }
 
@@ -561,18 +561,18 @@ public final class WeatherQuery: GraphQLQuery {
           }
         }
 
-        public var windChill: Double? {
+        public var windChill: Int? {
           get {
-            return resultMap["windChill"] as? Double
+            return resultMap["windChill"] as? Int
           }
           set {
             resultMap.updateValue(newValue, forKey: "windChill")
           }
         }
 
-        public var humidex: Double? {
+        public var humidex: Int? {
           get {
-            return resultMap["humidex"] as? Double
+            return resultMap["humidex"] as? Int
           }
           set {
             resultMap.updateValue(newValue, forKey: "humidex")
@@ -982,8 +982,8 @@ public final class WeatherQuery: GraphQLQuery {
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("high", type: .scalar(Double.self)),
-          GraphQLField("low", type: .scalar(Double.self)),
+          GraphQLField("high", type: .scalar(Int.self)),
+          GraphQLField("low", type: .scalar(Int.self)),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -992,7 +992,7 @@ public final class WeatherQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(high: Double? = nil, low: Double? = nil) {
+        public init(high: Int? = nil, low: Int? = nil) {
           self.init(unsafeResultMap: ["__typename": "Normals", "high": high, "low": low])
         }
 
@@ -1005,18 +1005,18 @@ public final class WeatherQuery: GraphQLQuery {
           }
         }
 
-        public var high: Double? {
+        public var high: Int? {
           get {
-            return resultMap["high"] as? Double
+            return resultMap["high"] as? Int
           }
           set {
             resultMap.updateValue(newValue, forKey: "high")
           }
         }
 
-        public var low: Double? {
+        public var low: Int? {
           get {
-            return resultMap["low"] as? Double
+            return resultMap["low"] as? Int
           }
           set {
             resultMap.updateValue(newValue, forKey: "low")
