@@ -13,39 +13,19 @@ struct RiseSetViewModel {
     let weather: WeatherQuery.Data.Weather?
 
     var items: [DetailBlockDescriptor] {
-        guard let dateTime = weather?.riseSet.dateTime else {
+        guard let sun = weather?.sun else {
             return []
         }
 
-        return dateTime.compactMap({ dateTime in
-            guard let timeStamp = dateTime.timeStamp,
-                let time = formattedTime(timeStamp) else {
-                return nil
-            }
-
-            return DetailBlockDescriptor(
-                symbolName: symbolNameFor(name: dateTime.name),
-                value: time,
-                label: dateTime.name
-            )
-        })
+        return [
+            DetailBlockDescriptor(symbolName: "sunrise.fill", value: formattedTime(sun.riseTime), label: "Sunrise"),
+            DetailBlockDescriptor(symbolName: "sunset.fill", value: formattedTime(sun.setTime), label: "Sunset")
+        ]
     }
 
-    private func formattedTime(_ timestamp: String) -> String? {
-        timestamp
-            .toDate("yyyyMMddHHmmss", region: .UTC)?
+    private func formattedTime(_ timestamp: Int) -> String {
+        return Date(seconds: TimeInterval(timestamp), region: .UTC)
             .convertTo(region: .current)
             .toFormat("H:mm z", locale: Locales.current)
-    }
-
-    private func symbolNameFor(name: String) -> String {
-        switch name {
-        case "sunrise":
-            return "sunrise.fill"
-        case "sunset":
-            return "sunset.fill"
-        default:
-            return "sun.fill"
-        }
     }
 }

@@ -32,8 +32,8 @@ class ForecastIcon {
         case smoke = "smoke.fill"
     }
 
-    static func forCode(_ code: String) -> String {
-        guard let codeInt = Int(code), let iconName = icon[codeInt]?.rawValue else {
+    static func forCode(_ code: Int) -> String {
+        guard let iconName = icon[code]?.rawValue else {
             return AvailableIcon.sunny.rawValue
         }
 

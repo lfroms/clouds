@@ -12,24 +12,19 @@ struct RegionalNormalsViewModel {
     let weather: WeatherQuery.Data.Weather?
     
     var items: [IconDetailDescriptor] {
-        guard let regionalNormals = weather?.forecastGroup.regionalNormals else {
+        guard let normals = weather?.normals else {
             return []
         }
         
         var regionalNormalsItems: [IconDetailDescriptor] = []
         
-        if let high = regionalNormals.temperature.first(where: { $0.class == "high" }) {
-            let temperature = Temperature.toPreferredUnitInt(high.value)
-            let item = IconDetailDescriptor(symbolName: "arrow.up", text: "\(temperature)°")
-            
-            regionalNormalsItems.append(item)
+        if let high = normals.high {
+            regionalNormalsItems.append(IconDetailDescriptor(symbolName: "arrow.up", text: "\(high)°"))
         }
         
-        if let low = regionalNormals.temperature.first(where: { $0.class == "low" }) {
-            let temperature = Temperature.toPreferredUnitInt(low.value)
-            let item = IconDetailDescriptor(symbolName: "arrow.down", text: "\(temperature)°")
-            
-            regionalNormalsItems.append(item)
+        if let low = normals.low {
+            regionalNormalsItems.append(IconDetailDescriptor(symbolName: "arrow.down", text: "\(low)°")
+            )
         }
         
         return regionalNormalsItems

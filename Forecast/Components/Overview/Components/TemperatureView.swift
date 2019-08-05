@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TemperatureView: View {
-    var value: Int
+    var value: String
 
     var body: some View {
         Text("\(value)°")
@@ -23,7 +23,7 @@ struct TemperatureView: View {
 #if DEBUG
 struct TemperatureView_Previews: PreviewProvider {
     static var previews: some View {
-        TemperatureView(value: 10)
+        TemperatureView(value: "10")
     }
 }
 #endif

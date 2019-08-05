@@ -12,7 +12,7 @@ struct HomeSection: View {
     let viewModel: HomeSectionViewModel
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 36) {
+        VStack(alignment: HorizontalAlignment.leading, spacing: 36) {
             OverviewView(
                 timestamp: viewModel.dateStamp,
                 stationName: viewModel.stationName,

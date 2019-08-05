@@ -9,27 +9,29 @@
 import Foundation
 import SwiftDate
 
-struct HourlyForecastSectionViewModel:Identifiable {
+struct HourlyForecastSectionViewModel: Identifiable {
     var id = UUID()
     
     let weather: WeatherQuery.Data.Weather?
     
     var items: [HourlyForecastViewModel] {
-        let hourlyForecastEntries = weather?.hourlyForecastGroup?.hourlyForecast
-        
         var hourlyForecastItems: [HourlyForecastViewModel] = []
         
-        hourlyForecastEntries?.forEach(
+        guard let weather = weather else {
+            return []
+        }
+        
+        weather.hourlyForecast?.hours?.forEach(
             { item in
                 
                 let forecastItem = HourlyForecastViewModel(
-                    date: getDateFrom(string: item.dateTimeUtc),
-                    symbolName: ForecastIcon.forCode(item.iconCode.value ?? "00"),
-                    temperature: Temperature.toPreferredUnitInt(item.temperature.value),
-                    temperatureUnits: Temperature.currentUnit(),
-                    windSpeedUnits: item.wind.speed.units,
-                    windSpeed: parseStringAsOptionalInt(item.wind.speed.value),
-                    pop: parseStringAsOptionalInt(item.lop.value)
+                    date: getDateFrom(item.time),
+                    symbolName: ForecastIcon.forCode(item.iconCode),
+                    temperature: Int(item.temperature),
+                    temperatureUnits: weather.units.temperature,
+                    windSpeedUnits: weather.units.speed,
+                    windSpeed: item.wind?.speed,
+                    pop: item.precipProbability
                 )
                 
                 hourlyForecastItems.append(forecastItem)
@@ -39,8 +41,9 @@ struct HourlyForecastSectionViewModel:Identifiable {
         return hourlyForecastItems
     }
     
-    private func getDateFrom(string: String) -> DateInRegion {
-        return string.toDate("yyyyMMddHHmm", region: .UTC)?.convertTo(region: .current) ?? DateInRegion()
+    private func getDateFrom(_ timeStamp: Int) -> DateInRegion {
+        return Date(seconds: TimeInterval(timeStamp), region: .UTC)
+            .convertTo(region: .current)
     }
     
     private func parseStringAsOptionalInt(_ value: String?) -> Int? {

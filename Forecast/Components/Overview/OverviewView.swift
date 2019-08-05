@@ -11,7 +11,7 @@ import SwiftUI
 struct OverviewView: View {
     let timestamp: Date
     let stationName: String
-    let temperature: Int
+    let temperature: String
     let observation: String
 
     var highTemp: Int?
@@ -42,7 +42,7 @@ struct OverviewView_Previews: PreviewProvider {
         OverviewView(
             timestamp: Date(),
             stationName: "Ottawa (Kanata – Orléans)",
-            temperature: 17,
+            temperature: "17",
             observation: "Partly Cloudy"
         )
     }

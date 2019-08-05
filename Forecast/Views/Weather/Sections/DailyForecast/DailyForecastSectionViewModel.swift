@@ -15,22 +15,20 @@ struct DailyForecastSectionViewModel: Identifiable {
     let weather: WeatherQuery.Data.Weather?
     
     var items: [DailyForecastItem] {
-        guard let forecastEntries = weather?.forecastGroup.forecast else {
+        guard let weather = weather, let forecastEntries = weather.dailyForecast?.days else {
             return []
         }
         
         var dailyForecastItems: [DailyForecastItem] = []
         
         for item in forecastEntries {
-            let temperature = item.temperatures.temperature.first?.value ?? ""
-            
             let forecastItem = DailyForecastItem(
-                title: item.period.textForecastName,
-                description: item.abbreviatedForecast.textSummary ?? "",
-                temperature: Temperature.toPreferredUnitInt(temperature),
-                temperatureUnits: Temperature.currentUnit(),
-                symbolName: ForecastIcon.forCode(item.abbreviatedForecast.iconCode?.value ?? "00"),
-                pop: parseStringAsOptionalInt(item.abbreviatedForecast.pop?.value)
+                title: item.when,
+                description: item.shortSummary,
+                temperature: Int(item.temperature),
+                temperatureUnits: weather.units.temperature,
+                symbolName: ForecastIcon.forCode(item.iconCode),
+                pop: item.precipProbability
             )
             
             dailyForecastItems.append(forecastItem)

@@ -3,7 +3,7 @@
 import Apollo
 
 /// A two or three character province code.
-public enum Region: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+public enum Province: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, Apollo.JSONEncodable {
   public typealias RawValue = String
   case ab
   case bc
@@ -62,7 +62,7 @@ public enum Region: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable,
     }
   }
 
-  public static func == (lhs: Region, rhs: Region) -> Bool {
+  public static func == (lhs: Province, rhs: Province) -> Bool {
     switch (lhs, rhs) {
       case (.ab, .ab): return true
       case (.bc, .bc): return true
@@ -84,41 +84,66 @@ public enum Region: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable,
   }
 }
 
-public enum WarningPriority: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+public enum Units: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, Apollo.JSONEncodable {
   public typealias RawValue = String
-  case urgent
-  case high
-  case medium
-  case low
+  case imperial
+  case metric
   /// Auto generated constant for unknown enum values
   case __unknown(RawValue)
 
   public init?(rawValue: RawValue) {
     switch rawValue {
-      case "urgent": self = .urgent
-      case "high": self = .high
-      case "medium": self = .medium
-      case "low": self = .low
+      case "imperial": self = .imperial
+      case "metric": self = .metric
       default: self = .__unknown(rawValue)
     }
   }
 
   public var rawValue: RawValue {
     switch self {
-      case .urgent: return "urgent"
-      case .high: return "high"
-      case .medium: return "medium"
-      case .low: return "low"
+      case .imperial: return "imperial"
+      case .metric: return "metric"
       case .__unknown(let value): return value
     }
   }
 
-  public static func == (lhs: WarningPriority, rhs: WarningPriority) -> Bool {
+  public static func == (lhs: Units, rhs: Units) -> Bool {
     switch (lhs, rhs) {
-      case (.urgent, .urgent): return true
-      case (.high, .high): return true
-      case (.medium, .medium): return true
-      case (.low, .low): return true
+      case (.imperial, .imperial): return true
+      case (.metric, .metric): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+}
+
+public enum Language: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  case e
+  case f
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "e": self = .e
+      case "f": self = .f
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .e: return "e"
+      case .f: return "f"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: Language, rhs: Language) -> Bool {
+    switch (lhs, rhs) {
+      case (.e, .e): return true
+      case (.f, .f): return true
       case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
       default: return false
     }
@@ -170,29 +195,74 @@ public enum WarningType: RawRepresentable, Equatable, Hashable, Apollo.JSONDecod
   }
 }
 
+public enum WarningPriority: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  case urgent
+  case high
+  case medium
+  case low
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "urgent": self = .urgent
+      case "high": self = .high
+      case "medium": self = .medium
+      case "low": self = .low
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .urgent: return "urgent"
+      case .high: return "high"
+      case .medium: return "medium"
+      case .low: return "low"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: WarningPriority, rhs: WarningPriority) -> Bool {
+    switch (lhs, rhs) {
+      case (.urgent, .urgent): return true
+      case (.high, .high): return true
+      case (.medium, .medium): return true
+      case (.low, .low): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+}
+
 public final class WeatherQuery: GraphQLQuery {
   public let operationDefinition =
-    "query Weather($region: Region!, $code: Int!) {\n  weather(region: $region, code: $code) {\n    __typename\n    location {\n      __typename\n      name {\n        __typename\n        value\n      }\n    }\n    currentConditions {\n      __typename\n      dateTime(zone: \"UTC\") {\n        __typename\n        timeStamp\n      }\n      station {\n        __typename\n        value\n      }\n      temperature {\n        __typename\n        value\n      }\n      relativeHumidity {\n        __typename\n        value\n        units\n      }\n      pressure {\n        __typename\n        value\n        units\n      }\n      windChill {\n        __typename\n        value\n      }\n      humidex {\n        __typename\n        value\n      }\n      wind {\n        __typename\n        direction\n        speed {\n          __typename\n          value\n          units\n        }\n        gust {\n          __typename\n          value\n          units\n        }\n      }\n      visibility {\n        __typename\n        value\n        units\n      }\n      dewpoint {\n        __typename\n        value\n      }\n      iconCode {\n        __typename\n        value\n      }\n      condition\n    }\n    warnings {\n      __typename\n      url\n      events {\n        __typename\n        dateTime(zone: \"UTC\") {\n          __typename\n          timeStamp\n        }\n        priority\n        description\n        type\n      }\n    }\n    forecastGroup {\n      __typename\n      dateTime(zone: \"UTC\") {\n        __typename\n        timeStamp\n      }\n      regionalNormals {\n        __typename\n        temperature {\n          __typename\n          value\n          class\n        }\n      }\n      forecast {\n        __typename\n        abbreviatedForecast {\n          __typename\n          textSummary\n          iconCode {\n            __typename\n            value\n          }\n          pop {\n            __typename\n            value\n          }\n        }\n        period {\n          __typename\n          textForecastName\n        }\n        temperatures {\n          __typename\n          temperature {\n            __typename\n            value\n          }\n        }\n      }\n    }\n    hourlyForecastGroup {\n      __typename\n      hourlyForecast {\n        __typename\n        dateTimeUTC\n        temperature {\n          __typename\n          value\n          units\n        }\n        wind {\n          __typename\n          speed {\n            __typename\n            value\n            units\n          }\n        }\n        iconCode {\n          __typename\n          value\n        }\n        lop {\n          __typename\n          value\n        }\n      }\n    }\n    riseSet {\n      __typename\n      dateTime(zone: \"UTC\") {\n        __typename\n        timeStamp\n        name\n      }\n    }\n    yesterdayConditions {\n      __typename\n      temperature {\n        __typename\n        value\n        class\n      }\n      precip {\n        __typename\n        value\n        units\n      }\n    }\n  }\n}"
+    "query Weather($province: Province!, $siteCode: Int!, $units: Units!, $language: Language!) {\n  weather(province: $province, siteCode: $siteCode, units: $units, language: $language) {\n    __typename\n    location {\n      __typename\n      weatherFor\n      country\n      province\n      region\n    }\n    currentConditions {\n      __typename\n      time\n      station {\n        __typename\n        name\n        code\n        latitude\n        longitude\n      }\n      temperature\n      humidity\n      pressure\n      windChill\n      humidex\n      wind {\n        __typename\n        direction\n        speed\n        gust\n      }\n      visibility\n      dewPoint\n      iconCode\n      summary\n    }\n    todaySummary {\n      __typename\n      high\n      low\n    }\n    units {\n      __typename\n      temperature\n      pressure\n      distance\n      speed\n    }\n    warnings {\n      __typename\n      url\n      events {\n        __typename\n        time\n        summary\n        type\n        priority\n      }\n    }\n    normals {\n      __typename\n      high\n      low\n    }\n    dailyForecast {\n      __typename\n      time\n      days {\n        __typename\n        when\n        summary\n        shortSummary\n        iconCode\n        precipProbability\n        temperature\n        humidex\n        windChill\n        winds {\n          __typename\n          direction\n          speed\n          gust\n        }\n      }\n    }\n    hourlyForecast {\n      __typename\n      time\n      hours {\n        __typename\n        time\n        summary\n        iconCode\n        precipProbability\n        temperature\n        humidex\n        windChill\n        wind {\n          __typename\n          direction\n          speed\n          gust\n        }\n      }\n    }\n    sun {\n      __typename\n      riseTime\n      setTime\n    }\n    yesterday {\n      __typename\n      high\n      low\n      precip\n    }\n  }\n}"
 
   public let operationName = "Weather"
 
-  public var region: Region
-  public var code: Int
+  public var province: Province
+  public var siteCode: Int
+  public var units: Units
+  public var language: Language
 
-  public init(region: Region, code: Int) {
-    self.region = region
-    self.code = code
+  public init(province: Province, siteCode: Int, units: Units, language: Language) {
+    self.province = province
+    self.siteCode = siteCode
+    self.units = units
+    self.language = language
   }
 
   public var variables: GraphQLMap? {
-    return ["region": region, "code": code]
+    return ["province": province, "siteCode": siteCode, "units": units, "language": language]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("weather", arguments: ["region": GraphQLVariable("region"), "code": GraphQLVariable("code")], type: .object(Weather.selections)),
+      GraphQLField("weather", arguments: ["province": GraphQLVariable("province"), "siteCode": GraphQLVariable("siteCode"), "units": GraphQLVariable("units"), "language": GraphQLVariable("language")], type: .object(Weather.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -216,17 +286,20 @@ public final class WeatherQuery: GraphQLQuery {
     }
 
     public struct Weather: GraphQLSelectionSet {
-      public static let possibleTypes = ["SiteData"]
+      public static let possibleTypes = ["WeatherReport"]
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("location", type: .nonNull(.object(Location.selections))),
-        GraphQLField("currentConditions", type: .nonNull(.object(CurrentCondition.selections))),
-        GraphQLField("warnings", type: .nonNull(.object(Warning.selections))),
-        GraphQLField("forecastGroup", type: .nonNull(.object(ForecastGroup.selections))),
-        GraphQLField("hourlyForecastGroup", type: .object(HourlyForecastGroup.selections)),
-        GraphQLField("riseSet", type: .nonNull(.object(RiseSet.selections))),
-        GraphQLField("yesterdayConditions", type: .nonNull(.object(YesterdayCondition.selections))),
+        GraphQLField("currentConditions", type: .object(CurrentCondition.selections)),
+        GraphQLField("todaySummary", type: .object(TodaySummary.selections)),
+        GraphQLField("units", type: .nonNull(.object(Unit.selections))),
+        GraphQLField("warnings", type: .object(Warning.selections)),
+        GraphQLField("normals", type: .object(Normal.selections)),
+        GraphQLField("dailyForecast", type: .object(DailyForecast.selections)),
+        GraphQLField("hourlyForecast", type: .object(HourlyForecast.selections)),
+        GraphQLField("sun", type: .object(Sun.selections)),
+        GraphQLField("yesterday", type: .object(Yesterday.selections)),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -235,8 +308,8 @@ public final class WeatherQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(location: Location, currentConditions: CurrentCondition, warnings: Warning, forecastGroup: ForecastGroup, hourlyForecastGroup: HourlyForecastGroup? = nil, riseSet: RiseSet, yesterdayConditions: YesterdayCondition) {
-        self.init(unsafeResultMap: ["__typename": "SiteData", "location": location.resultMap, "currentConditions": currentConditions.resultMap, "warnings": warnings.resultMap, "forecastGroup": forecastGroup.resultMap, "hourlyForecastGroup": hourlyForecastGroup.flatMap { (value: HourlyForecastGroup) -> ResultMap in value.resultMap }, "riseSet": riseSet.resultMap, "yesterdayConditions": yesterdayConditions.resultMap])
+      public init(location: Location, currentConditions: CurrentCondition? = nil, todaySummary: TodaySummary? = nil, units: Unit, warnings: Warning? = nil, normals: Normal? = nil, dailyForecast: DailyForecast? = nil, hourlyForecast: HourlyForecast? = nil, sun: Sun? = nil, yesterday: Yesterday? = nil) {
+        self.init(unsafeResultMap: ["__typename": "WeatherReport", "location": location.resultMap, "currentConditions": currentConditions.flatMap { (value: CurrentCondition) -> ResultMap in value.resultMap }, "todaySummary": todaySummary.flatMap { (value: TodaySummary) -> ResultMap in value.resultMap }, "units": units.resultMap, "warnings": warnings.flatMap { (value: Warning) -> ResultMap in value.resultMap }, "normals": normals.flatMap { (value: Normal) -> ResultMap in value.resultMap }, "dailyForecast": dailyForecast.flatMap { (value: DailyForecast) -> ResultMap in value.resultMap }, "hourlyForecast": hourlyForecast.flatMap { (value: HourlyForecast) -> ResultMap in value.resultMap }, "sun": sun.flatMap { (value: Sun) -> ResultMap in value.resultMap }, "yesterday": yesterday.flatMap { (value: Yesterday) -> ResultMap in value.resultMap }])
       }
 
       public var __typename: String {
@@ -257,57 +330,84 @@ public final class WeatherQuery: GraphQLQuery {
         }
       }
 
-      public var currentConditions: CurrentCondition {
+      public var currentConditions: CurrentCondition? {
         get {
-          return CurrentCondition(unsafeResultMap: resultMap["currentConditions"]! as! ResultMap)
+          return (resultMap["currentConditions"] as? ResultMap).flatMap { CurrentCondition(unsafeResultMap: $0) }
         }
         set {
-          resultMap.updateValue(newValue.resultMap, forKey: "currentConditions")
+          resultMap.updateValue(newValue?.resultMap, forKey: "currentConditions")
         }
       }
 
-      public var warnings: Warning {
+      public var todaySummary: TodaySummary? {
         get {
-          return Warning(unsafeResultMap: resultMap["warnings"]! as! ResultMap)
+          return (resultMap["todaySummary"] as? ResultMap).flatMap { TodaySummary(unsafeResultMap: $0) }
         }
         set {
-          resultMap.updateValue(newValue.resultMap, forKey: "warnings")
+          resultMap.updateValue(newValue?.resultMap, forKey: "todaySummary")
         }
       }
 
-      public var forecastGroup: ForecastGroup {
+      public var units: Unit {
         get {
-          return ForecastGroup(unsafeResultMap: resultMap["forecastGroup"]! as! ResultMap)
+          return Unit(unsafeResultMap: resultMap["units"]! as! ResultMap)
         }
         set {
-          resultMap.updateValue(newValue.resultMap, forKey: "forecastGroup")
+          resultMap.updateValue(newValue.resultMap, forKey: "units")
         }
       }
 
-      public var hourlyForecastGroup: HourlyForecastGroup? {
+      public var warnings: Warning? {
         get {
-          return (resultMap["hourlyForecastGroup"] as? ResultMap).flatMap { HourlyForecastGroup(unsafeResultMap: $0) }
+          return (resultMap["warnings"] as? ResultMap).flatMap { Warning(unsafeResultMap: $0) }
         }
         set {
-          resultMap.updateValue(newValue?.resultMap, forKey: "hourlyForecastGroup")
+          resultMap.updateValue(newValue?.resultMap, forKey: "warnings")
         }
       }
 
-      public var riseSet: RiseSet {
+      public var normals: Normal? {
         get {
-          return RiseSet(unsafeResultMap: resultMap["riseSet"]! as! ResultMap)
+          return (resultMap["normals"] as? ResultMap).flatMap { Normal(unsafeResultMap: $0) }
         }
         set {
-          resultMap.updateValue(newValue.resultMap, forKey: "riseSet")
+          resultMap.updateValue(newValue?.resultMap, forKey: "normals")
         }
       }
 
-      public var yesterdayConditions: YesterdayCondition {
+      public var dailyForecast: DailyForecast? {
         get {
-          return YesterdayCondition(unsafeResultMap: resultMap["yesterdayConditions"]! as! ResultMap)
+          return (resultMap["dailyForecast"] as? ResultMap).flatMap { DailyForecast(unsafeResultMap: $0) }
         }
         set {
-          resultMap.updateValue(newValue.resultMap, forKey: "yesterdayConditions")
+          resultMap.updateValue(newValue?.resultMap, forKey: "dailyForecast")
+        }
+      }
+
+      public var hourlyForecast: HourlyForecast? {
+        get {
+          return (resultMap["hourlyForecast"] as? ResultMap).flatMap { HourlyForecast(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "hourlyForecast")
+        }
+      }
+
+      public var sun: Sun? {
+        get {
+          return (resultMap["sun"] as? ResultMap).flatMap { Sun(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "sun")
+        }
+      }
+
+      public var yesterday: Yesterday? {
+        get {
+          return (resultMap["yesterday"] as? ResultMap).flatMap { Yesterday(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "yesterday")
         }
       }
 
@@ -316,7 +416,10 @@ public final class WeatherQuery: GraphQLQuery {
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("name", type: .nonNull(.object(Name.selections))),
+          GraphQLField("weatherFor", type: .nonNull(.scalar(String.self))),
+          GraphQLField("country", type: .nonNull(.scalar(String.self))),
+          GraphQLField("province", type: .nonNull(.scalar(String.self))),
+          GraphQLField("region", type: .nonNull(.scalar(String.self))),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -325,8 +428,8 @@ public final class WeatherQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(name: Name) {
-          self.init(unsafeResultMap: ["__typename": "Location", "name": name.resultMap])
+        public init(weatherFor: String, country: String, province: String, region: String) {
+          self.init(unsafeResultMap: ["__typename": "Location", "weatherFor": weatherFor, "country": country, "province": province, "region": region])
         }
 
         public var __typename: String {
@@ -338,49 +441,39 @@ public final class WeatherQuery: GraphQLQuery {
           }
         }
 
-        public var name: Name {
+        public var weatherFor: String {
           get {
-            return Name(unsafeResultMap: resultMap["name"]! as! ResultMap)
+            return resultMap["weatherFor"]! as! String
           }
           set {
-            resultMap.updateValue(newValue.resultMap, forKey: "name")
+            resultMap.updateValue(newValue, forKey: "weatherFor")
           }
         }
 
-        public struct Name: GraphQLSelectionSet {
-          public static let possibleTypes = ["Name"]
-
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("value", type: .nonNull(.scalar(String.self))),
-          ]
-
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
+        public var country: String {
+          get {
+            return resultMap["country"]! as! String
           }
-
-          public init(value: String) {
-            self.init(unsafeResultMap: ["__typename": "Name", "value": value])
+          set {
+            resultMap.updateValue(newValue, forKey: "country")
           }
+        }
 
-          public var __typename: String {
-            get {
-              return resultMap["__typename"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
+        public var province: String {
+          get {
+            return resultMap["province"]! as! String
           }
+          set {
+            resultMap.updateValue(newValue, forKey: "province")
+          }
+        }
 
-          public var value: String {
-            get {
-              return resultMap["value"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "value")
-            }
+        public var region: String {
+          get {
+            return resultMap["region"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "region")
           }
         }
       }
@@ -390,18 +483,18 @@ public final class WeatherQuery: GraphQLQuery {
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("dateTime", arguments: ["zone": "UTC"], type: .object(DateTime.selections)),
-          GraphQLField("station", type: .object(Station.selections)),
-          GraphQLField("temperature", type: .object(Temperature.selections)),
-          GraphQLField("relativeHumidity", type: .object(RelativeHumidity.selections)),
-          GraphQLField("pressure", type: .object(Pressure.selections)),
-          GraphQLField("windChill", type: .object(WindChill.selections)),
-          GraphQLField("humidex", type: .object(Humidex.selections)),
+          GraphQLField("time", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("station", type: .nonNull(.object(Station.selections))),
+          GraphQLField("temperature", type: .scalar(Double.self)),
+          GraphQLField("humidity", type: .scalar(Int.self)),
+          GraphQLField("pressure", type: .scalar(Double.self)),
+          GraphQLField("windChill", type: .scalar(Double.self)),
+          GraphQLField("humidex", type: .scalar(Double.self)),
           GraphQLField("wind", type: .object(Wind.selections)),
-          GraphQLField("visibility", type: .object(Visibility.selections)),
-          GraphQLField("dewpoint", type: .object(Dewpoint.selections)),
-          GraphQLField("iconCode", type: .object(IconCode.selections)),
-          GraphQLField("condition", type: .scalar(String.self)),
+          GraphQLField("visibility", type: .scalar(Double.self)),
+          GraphQLField("dewPoint", type: .scalar(Double.self)),
+          GraphQLField("iconCode", type: .scalar(Int.self)),
+          GraphQLField("summary", type: .scalar(String.self)),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -410,8 +503,8 @@ public final class WeatherQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(dateTime: DateTime? = nil, station: Station? = nil, temperature: Temperature? = nil, relativeHumidity: RelativeHumidity? = nil, pressure: Pressure? = nil, windChill: WindChill? = nil, humidex: Humidex? = nil, wind: Wind? = nil, visibility: Visibility? = nil, dewpoint: Dewpoint? = nil, iconCode: IconCode? = nil, condition: String? = nil) {
-          self.init(unsafeResultMap: ["__typename": "CurrentConditions", "dateTime": dateTime.flatMap { (value: DateTime) -> ResultMap in value.resultMap }, "station": station.flatMap { (value: Station) -> ResultMap in value.resultMap }, "temperature": temperature.flatMap { (value: Temperature) -> ResultMap in value.resultMap }, "relativeHumidity": relativeHumidity.flatMap { (value: RelativeHumidity) -> ResultMap in value.resultMap }, "pressure": pressure.flatMap { (value: Pressure) -> ResultMap in value.resultMap }, "windChill": windChill.flatMap { (value: WindChill) -> ResultMap in value.resultMap }, "humidex": humidex.flatMap { (value: Humidex) -> ResultMap in value.resultMap }, "wind": wind.flatMap { (value: Wind) -> ResultMap in value.resultMap }, "visibility": visibility.flatMap { (value: Visibility) -> ResultMap in value.resultMap }, "dewpoint": dewpoint.flatMap { (value: Dewpoint) -> ResultMap in value.resultMap }, "iconCode": iconCode.flatMap { (value: IconCode) -> ResultMap in value.resultMap }, "condition": condition])
+        public init(time: Int, station: Station, temperature: Double? = nil, humidity: Int? = nil, pressure: Double? = nil, windChill: Double? = nil, humidex: Double? = nil, wind: Wind? = nil, visibility: Double? = nil, dewPoint: Double? = nil, iconCode: Int? = nil, summary: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "CurrentConditions", "time": time, "station": station.resultMap, "temperature": temperature, "humidity": humidity, "pressure": pressure, "windChill": windChill, "humidex": humidex, "wind": wind.flatMap { (value: Wind) -> ResultMap in value.resultMap }, "visibility": visibility, "dewPoint": dewPoint, "iconCode": iconCode, "summary": summary])
         }
 
         public var __typename: String {
@@ -423,66 +516,66 @@ public final class WeatherQuery: GraphQLQuery {
           }
         }
 
-        public var dateTime: DateTime? {
+        public var time: Int {
           get {
-            return (resultMap["dateTime"] as? ResultMap).flatMap { DateTime(unsafeResultMap: $0) }
+            return resultMap["time"]! as! Int
           }
           set {
-            resultMap.updateValue(newValue?.resultMap, forKey: "dateTime")
+            resultMap.updateValue(newValue, forKey: "time")
           }
         }
 
-        public var station: Station? {
+        public var station: Station {
           get {
-            return (resultMap["station"] as? ResultMap).flatMap { Station(unsafeResultMap: $0) }
+            return Station(unsafeResultMap: resultMap["station"]! as! ResultMap)
           }
           set {
-            resultMap.updateValue(newValue?.resultMap, forKey: "station")
+            resultMap.updateValue(newValue.resultMap, forKey: "station")
           }
         }
 
-        public var temperature: Temperature? {
+        public var temperature: Double? {
           get {
-            return (resultMap["temperature"] as? ResultMap).flatMap { Temperature(unsafeResultMap: $0) }
+            return resultMap["temperature"] as? Double
           }
           set {
-            resultMap.updateValue(newValue?.resultMap, forKey: "temperature")
+            resultMap.updateValue(newValue, forKey: "temperature")
           }
         }
 
-        public var relativeHumidity: RelativeHumidity? {
+        public var humidity: Int? {
           get {
-            return (resultMap["relativeHumidity"] as? ResultMap).flatMap { RelativeHumidity(unsafeResultMap: $0) }
+            return resultMap["humidity"] as? Int
           }
           set {
-            resultMap.updateValue(newValue?.resultMap, forKey: "relativeHumidity")
+            resultMap.updateValue(newValue, forKey: "humidity")
           }
         }
 
-        public var pressure: Pressure? {
+        public var pressure: Double? {
           get {
-            return (resultMap["pressure"] as? ResultMap).flatMap { Pressure(unsafeResultMap: $0) }
+            return resultMap["pressure"] as? Double
           }
           set {
-            resultMap.updateValue(newValue?.resultMap, forKey: "pressure")
+            resultMap.updateValue(newValue, forKey: "pressure")
           }
         }
 
-        public var windChill: WindChill? {
+        public var windChill: Double? {
           get {
-            return (resultMap["windChill"] as? ResultMap).flatMap { WindChill(unsafeResultMap: $0) }
+            return resultMap["windChill"] as? Double
           }
           set {
-            resultMap.updateValue(newValue?.resultMap, forKey: "windChill")
+            resultMap.updateValue(newValue, forKey: "windChill")
           }
         }
 
-        public var humidex: Humidex? {
+        public var humidex: Double? {
           get {
-            return (resultMap["humidex"] as? ResultMap).flatMap { Humidex(unsafeResultMap: $0) }
+            return resultMap["humidex"] as? Double
           }
           set {
-            resultMap.updateValue(newValue?.resultMap, forKey: "humidex")
+            resultMap.updateValue(newValue, forKey: "humidex")
           }
         }
 
@@ -495,76 +588,39 @@ public final class WeatherQuery: GraphQLQuery {
           }
         }
 
-        public var visibility: Visibility? {
+        public var visibility: Double? {
           get {
-            return (resultMap["visibility"] as? ResultMap).flatMap { Visibility(unsafeResultMap: $0) }
+            return resultMap["visibility"] as? Double
           }
           set {
-            resultMap.updateValue(newValue?.resultMap, forKey: "visibility")
+            resultMap.updateValue(newValue, forKey: "visibility")
           }
         }
 
-        public var dewpoint: Dewpoint? {
+        public var dewPoint: Double? {
           get {
-            return (resultMap["dewpoint"] as? ResultMap).flatMap { Dewpoint(unsafeResultMap: $0) }
+            return resultMap["dewPoint"] as? Double
           }
           set {
-            resultMap.updateValue(newValue?.resultMap, forKey: "dewpoint")
+            resultMap.updateValue(newValue, forKey: "dewPoint")
           }
         }
 
-        public var iconCode: IconCode? {
+        public var iconCode: Int? {
           get {
-            return (resultMap["iconCode"] as? ResultMap).flatMap { IconCode(unsafeResultMap: $0) }
+            return resultMap["iconCode"] as? Int
           }
           set {
-            resultMap.updateValue(newValue?.resultMap, forKey: "iconCode")
+            resultMap.updateValue(newValue, forKey: "iconCode")
           }
         }
 
-        public var condition: String? {
+        public var summary: String? {
           get {
-            return resultMap["condition"] as? String
+            return resultMap["summary"] as? String
           }
           set {
-            resultMap.updateValue(newValue, forKey: "condition")
-          }
-        }
-
-        public struct DateTime: GraphQLSelectionSet {
-          public static let possibleTypes = ["DateTime"]
-
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("timeStamp", type: .scalar(String.self)),
-          ]
-
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
-          }
-
-          public init(timeStamp: String? = nil) {
-            self.init(unsafeResultMap: ["__typename": "DateTime", "timeStamp": timeStamp])
-          }
-
-          public var __typename: String {
-            get {
-              return resultMap["__typename"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var timeStamp: String? {
-            get {
-              return resultMap["timeStamp"] as? String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "timeStamp")
-            }
+            resultMap.updateValue(newValue, forKey: "summary")
           }
         }
 
@@ -573,7 +629,10 @@ public final class WeatherQuery: GraphQLQuery {
 
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("value", type: .scalar(String.self)),
+            GraphQLField("name", type: .nonNull(.scalar(String.self))),
+            GraphQLField("code", type: .nonNull(.scalar(String.self))),
+            GraphQLField("latitude", type: .nonNull(.scalar(String.self))),
+            GraphQLField("longitude", type: .nonNull(.scalar(String.self))),
           ]
 
           public private(set) var resultMap: ResultMap
@@ -582,8 +641,8 @@ public final class WeatherQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(value: String? = nil) {
-            self.init(unsafeResultMap: ["__typename": "Station", "value": value])
+          public init(name: String, code: String, latitude: String, longitude: String) {
+            self.init(unsafeResultMap: ["__typename": "Station", "name": name, "code": code, "latitude": latitude, "longitude": longitude])
           }
 
           public var __typename: String {
@@ -595,217 +654,39 @@ public final class WeatherQuery: GraphQLQuery {
             }
           }
 
-          public var value: String? {
+          public var name: String {
             get {
-              return resultMap["value"] as? String
+              return resultMap["name"]! as! String
             }
             set {
-              resultMap.updateValue(newValue, forKey: "value")
+              resultMap.updateValue(newValue, forKey: "name")
             }
           }
-        }
 
-        public struct Temperature: GraphQLSelectionSet {
-          public static let possibleTypes = ["Temperature"]
-
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("value", type: .scalar(String.self)),
-          ]
-
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
-          }
-
-          public init(value: String? = nil) {
-            self.init(unsafeResultMap: ["__typename": "Temperature", "value": value])
-          }
-
-          public var __typename: String {
+          public var code: String {
             get {
-              return resultMap["__typename"]! as! String
+              return resultMap["code"]! as! String
             }
             set {
-              resultMap.updateValue(newValue, forKey: "__typename")
+              resultMap.updateValue(newValue, forKey: "code")
             }
           }
 
-          public var value: String? {
+          public var latitude: String {
             get {
-              return resultMap["value"] as? String
+              return resultMap["latitude"]! as! String
             }
             set {
-              resultMap.updateValue(newValue, forKey: "value")
+              resultMap.updateValue(newValue, forKey: "latitude")
             }
           }
-        }
 
-        public struct RelativeHumidity: GraphQLSelectionSet {
-          public static let possibleTypes = ["RelativeHumidity"]
-
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("value", type: .scalar(String.self)),
-            GraphQLField("units", type: .scalar(String.self)),
-          ]
-
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
-          }
-
-          public init(value: String? = nil, units: String? = nil) {
-            self.init(unsafeResultMap: ["__typename": "RelativeHumidity", "value": value, "units": units])
-          }
-
-          public var __typename: String {
+          public var longitude: String {
             get {
-              return resultMap["__typename"]! as! String
+              return resultMap["longitude"]! as! String
             }
             set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var value: String? {
-            get {
-              return resultMap["value"] as? String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "value")
-            }
-          }
-
-          public var units: String? {
-            get {
-              return resultMap["units"] as? String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "units")
-            }
-          }
-        }
-
-        public struct Pressure: GraphQLSelectionSet {
-          public static let possibleTypes = ["Pressure"]
-
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("value", type: .scalar(String.self)),
-            GraphQLField("units", type: .nonNull(.scalar(String.self))),
-          ]
-
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
-          }
-
-          public init(value: String? = nil, units: String) {
-            self.init(unsafeResultMap: ["__typename": "Pressure", "value": value, "units": units])
-          }
-
-          public var __typename: String {
-            get {
-              return resultMap["__typename"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var value: String? {
-            get {
-              return resultMap["value"] as? String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "value")
-            }
-          }
-
-          public var units: String {
-            get {
-              return resultMap["units"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "units")
-            }
-          }
-        }
-
-        public struct WindChill: GraphQLSelectionSet {
-          public static let possibleTypes = ["CalculatedWindChill"]
-
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("value", type: .scalar(String.self)),
-          ]
-
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
-          }
-
-          public init(value: String? = nil) {
-            self.init(unsafeResultMap: ["__typename": "CalculatedWindChill", "value": value])
-          }
-
-          public var __typename: String {
-            get {
-              return resultMap["__typename"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var value: String? {
-            get {
-              return resultMap["value"] as? String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "value")
-            }
-          }
-        }
-
-        public struct Humidex: GraphQLSelectionSet {
-          public static let possibleTypes = ["CalculatedHumidex"]
-
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("value", type: .scalar(String.self)),
-          ]
-
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
-          }
-
-          public init(value: String? = nil) {
-            self.init(unsafeResultMap: ["__typename": "CalculatedHumidex", "value": value])
-          }
-
-          public var __typename: String {
-            get {
-              return resultMap["__typename"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var value: String? {
-            get {
-              return resultMap["value"] as? String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "value")
+              resultMap.updateValue(newValue, forKey: "longitude")
             }
           }
         }
@@ -815,9 +696,9 @@ public final class WeatherQuery: GraphQLQuery {
 
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("direction", type: .nonNull(.scalar(String.self))),
-            GraphQLField("speed", type: .nonNull(.object(Speed.selections))),
-            GraphQLField("gust", type: .nonNull(.object(Gust.selections))),
+            GraphQLField("direction", type: .scalar(String.self)),
+            GraphQLField("speed", type: .nonNull(.scalar(String.self))),
+            GraphQLField("gust", type: .scalar(Int.self)),
           ]
 
           public private(set) var resultMap: ResultMap
@@ -826,8 +707,8 @@ public final class WeatherQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(direction: String, speed: Speed, gust: Gust) {
-            self.init(unsafeResultMap: ["__typename": "Wind", "direction": direction, "speed": speed.resultMap, "gust": gust.resultMap])
+          public init(direction: String? = nil, speed: String, gust: Int? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Wind", "direction": direction, "speed": speed, "gust": gust])
           }
 
           public var __typename: String {
@@ -839,257 +720,42 @@ public final class WeatherQuery: GraphQLQuery {
             }
           }
 
-          public var direction: String {
+          public var direction: String? {
             get {
-              return resultMap["direction"]! as! String
+              return resultMap["direction"] as? String
             }
             set {
               resultMap.updateValue(newValue, forKey: "direction")
             }
           }
 
-          public var speed: Speed {
+          public var speed: String {
             get {
-              return Speed(unsafeResultMap: resultMap["speed"]! as! ResultMap)
+              return resultMap["speed"]! as! String
             }
             set {
-              resultMap.updateValue(newValue.resultMap, forKey: "speed")
+              resultMap.updateValue(newValue, forKey: "speed")
             }
           }
 
-          public var gust: Gust {
+          public var gust: Int? {
             get {
-              return Gust(unsafeResultMap: resultMap["gust"]! as! ResultMap)
+              return resultMap["gust"] as? Int
             }
             set {
-              resultMap.updateValue(newValue.resultMap, forKey: "gust")
-            }
-          }
-
-          public struct Speed: GraphQLSelectionSet {
-            public static let possibleTypes = ["Speed"]
-
-            public static let selections: [GraphQLSelection] = [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("value", type: .scalar(String.self)),
-              GraphQLField("units", type: .nonNull(.scalar(String.self))),
-            ]
-
-            public private(set) var resultMap: ResultMap
-
-            public init(unsafeResultMap: ResultMap) {
-              self.resultMap = unsafeResultMap
-            }
-
-            public init(value: String? = nil, units: String) {
-              self.init(unsafeResultMap: ["__typename": "Speed", "value": value, "units": units])
-            }
-
-            public var __typename: String {
-              get {
-                return resultMap["__typename"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "__typename")
-              }
-            }
-
-            public var value: String? {
-              get {
-                return resultMap["value"] as? String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "value")
-              }
-            }
-
-            public var units: String {
-              get {
-                return resultMap["units"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "units")
-              }
-            }
-          }
-
-          public struct Gust: GraphQLSelectionSet {
-            public static let possibleTypes = ["Gust"]
-
-            public static let selections: [GraphQLSelection] = [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("value", type: .scalar(String.self)),
-              GraphQLField("units", type: .nonNull(.scalar(String.self))),
-            ]
-
-            public private(set) var resultMap: ResultMap
-
-            public init(unsafeResultMap: ResultMap) {
-              self.resultMap = unsafeResultMap
-            }
-
-            public init(value: String? = nil, units: String) {
-              self.init(unsafeResultMap: ["__typename": "Gust", "value": value, "units": units])
-            }
-
-            public var __typename: String {
-              get {
-                return resultMap["__typename"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "__typename")
-              }
-            }
-
-            public var value: String? {
-              get {
-                return resultMap["value"] as? String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "value")
-              }
-            }
-
-            public var units: String {
-              get {
-                return resultMap["units"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "units")
-              }
-            }
-          }
-        }
-
-        public struct Visibility: GraphQLSelectionSet {
-          public static let possibleTypes = ["Visibility"]
-
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("value", type: .scalar(String.self)),
-            GraphQLField("units", type: .nonNull(.scalar(String.self))),
-          ]
-
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
-          }
-
-          public init(value: String? = nil, units: String) {
-            self.init(unsafeResultMap: ["__typename": "Visibility", "value": value, "units": units])
-          }
-
-          public var __typename: String {
-            get {
-              return resultMap["__typename"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var value: String? {
-            get {
-              return resultMap["value"] as? String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "value")
-            }
-          }
-
-          public var units: String {
-            get {
-              return resultMap["units"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "units")
-            }
-          }
-        }
-
-        public struct Dewpoint: GraphQLSelectionSet {
-          public static let possibleTypes = ["Temperature"]
-
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("value", type: .scalar(String.self)),
-          ]
-
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
-          }
-
-          public init(value: String? = nil) {
-            self.init(unsafeResultMap: ["__typename": "Temperature", "value": value])
-          }
-
-          public var __typename: String {
-            get {
-              return resultMap["__typename"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var value: String? {
-            get {
-              return resultMap["value"] as? String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "value")
-            }
-          }
-        }
-
-        public struct IconCode: GraphQLSelectionSet {
-          public static let possibleTypes = ["IconCode"]
-
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("value", type: .scalar(String.self)),
-          ]
-
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
-          }
-
-          public init(value: String? = nil) {
-            self.init(unsafeResultMap: ["__typename": "IconCode", "value": value])
-          }
-
-          public var __typename: String {
-            get {
-              return resultMap["__typename"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var value: String? {
-            get {
-              return resultMap["value"] as? String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "value")
+              resultMap.updateValue(newValue, forKey: "gust")
             }
           }
         }
       }
 
-      public struct Warning: GraphQLSelectionSet {
-        public static let possibleTypes = ["Warnings"]
+      public struct TodaySummary: GraphQLSelectionSet {
+        public static let possibleTypes = ["TodaySummary"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("url", type: .scalar(String.self)),
-          GraphQLField("events", type: .list(.nonNull(.object(Event.selections)))),
+          GraphQLField("high", type: .scalar(Double.self)),
+          GraphQLField("low", type: .scalar(Double.self)),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -1098,8 +764,8 @@ public final class WeatherQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(url: String? = nil, events: [Event]? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Warnings", "url": url, "events": events.flatMap { (value: [Event]) -> [ResultMap] in value.map { (value: Event) -> ResultMap in value.resultMap } }])
+        public init(high: Double? = nil, low: Double? = nil) {
+          self.init(unsafeResultMap: ["__typename": "TodaySummary", "high": high, "low": low])
         }
 
         public var __typename: String {
@@ -1111,33 +777,147 @@ public final class WeatherQuery: GraphQLQuery {
           }
         }
 
-        public var url: String? {
+        public var high: Double? {
           get {
-            return resultMap["url"] as? String
+            return resultMap["high"] as? Double
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "high")
+          }
+        }
+
+        public var low: Double? {
+          get {
+            return resultMap["low"] as? Double
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "low")
+          }
+        }
+      }
+
+      public struct Unit: GraphQLSelectionSet {
+        public static let possibleTypes = ["ResponseUnits"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("temperature", type: .nonNull(.scalar(String.self))),
+          GraphQLField("pressure", type: .nonNull(.scalar(String.self))),
+          GraphQLField("distance", type: .nonNull(.scalar(String.self))),
+          GraphQLField("speed", type: .nonNull(.scalar(String.self))),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(temperature: String, pressure: String, distance: String, speed: String) {
+          self.init(unsafeResultMap: ["__typename": "ResponseUnits", "temperature": temperature, "pressure": pressure, "distance": distance, "speed": speed])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var temperature: String {
+          get {
+            return resultMap["temperature"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "temperature")
+          }
+        }
+
+        public var pressure: String {
+          get {
+            return resultMap["pressure"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "pressure")
+          }
+        }
+
+        public var distance: String {
+          get {
+            return resultMap["distance"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "distance")
+          }
+        }
+
+        public var speed: String {
+          get {
+            return resultMap["speed"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "speed")
+          }
+        }
+      }
+
+      public struct Warning: GraphQLSelectionSet {
+        public static let possibleTypes = ["Warnings"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("url", type: .nonNull(.scalar(String.self))),
+          GraphQLField("events", type: .nonNull(.list(.nonNull(.object(Event.selections))))),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(url: String, events: [Event]) {
+          self.init(unsafeResultMap: ["__typename": "Warnings", "url": url, "events": events.map { (value: Event) -> ResultMap in value.resultMap }])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var url: String {
+          get {
+            return resultMap["url"]! as! String
           }
           set {
             resultMap.updateValue(newValue, forKey: "url")
           }
         }
 
-        public var events: [Event]? {
+        public var events: [Event] {
           get {
-            return (resultMap["events"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Event] in value.map { (value: ResultMap) -> Event in Event(unsafeResultMap: value) } }
+            return (resultMap["events"] as! [ResultMap]).map { (value: ResultMap) -> Event in Event(unsafeResultMap: value) }
           }
           set {
-            resultMap.updateValue(newValue.flatMap { (value: [Event]) -> [ResultMap] in value.map { (value: Event) -> ResultMap in value.resultMap } }, forKey: "events")
+            resultMap.updateValue(newValue.map { (value: Event) -> ResultMap in value.resultMap }, forKey: "events")
           }
         }
 
         public struct Event: GraphQLSelectionSet {
-          public static let possibleTypes = ["WarningEvent"]
+          public static let possibleTypes = ["Event"]
 
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("dateTime", arguments: ["zone": "UTC"], type: .object(DateTime.selections)),
-            GraphQLField("priority", type: .nonNull(.scalar(WarningPriority.self))),
-            GraphQLField("description", type: .nonNull(.scalar(String.self))),
+            GraphQLField("time", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("summary", type: .nonNull(.scalar(String.self))),
             GraphQLField("type", type: .nonNull(.scalar(WarningType.self))),
+            GraphQLField("priority", type: .nonNull(.scalar(WarningPriority.self))),
           ]
 
           public private(set) var resultMap: ResultMap
@@ -1146,8 +926,8 @@ public final class WeatherQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(dateTime: DateTime? = nil, priority: WarningPriority, description: String, type: WarningType) {
-            self.init(unsafeResultMap: ["__typename": "WarningEvent", "dateTime": dateTime.flatMap { (value: DateTime) -> ResultMap in value.resultMap }, "priority": priority, "description": description, "type": type])
+          public init(time: Int, summary: String, type: WarningType, priority: WarningPriority) {
+            self.init(unsafeResultMap: ["__typename": "Event", "time": time, "summary": summary, "type": type, "priority": priority])
           }
 
           public var __typename: String {
@@ -1159,30 +939,21 @@ public final class WeatherQuery: GraphQLQuery {
             }
           }
 
-          public var dateTime: DateTime? {
+          public var time: Int {
             get {
-              return (resultMap["dateTime"] as? ResultMap).flatMap { DateTime(unsafeResultMap: $0) }
+              return resultMap["time"]! as! Int
             }
             set {
-              resultMap.updateValue(newValue?.resultMap, forKey: "dateTime")
+              resultMap.updateValue(newValue, forKey: "time")
             }
           }
 
-          public var priority: WarningPriority {
+          public var summary: String {
             get {
-              return resultMap["priority"]! as! WarningPriority
+              return resultMap["summary"]! as! String
             }
             set {
-              resultMap.updateValue(newValue, forKey: "priority")
-            }
-          }
-
-          public var description: String {
-            get {
-              return resultMap["description"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "description")
+              resultMap.updateValue(newValue, forKey: "summary")
             }
           }
 
@@ -1195,53 +966,24 @@ public final class WeatherQuery: GraphQLQuery {
             }
           }
 
-          public struct DateTime: GraphQLSelectionSet {
-            public static let possibleTypes = ["DateTime"]
-
-            public static let selections: [GraphQLSelection] = [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("timeStamp", type: .scalar(String.self)),
-            ]
-
-            public private(set) var resultMap: ResultMap
-
-            public init(unsafeResultMap: ResultMap) {
-              self.resultMap = unsafeResultMap
+          public var priority: WarningPriority {
+            get {
+              return resultMap["priority"]! as! WarningPriority
             }
-
-            public init(timeStamp: String? = nil) {
-              self.init(unsafeResultMap: ["__typename": "DateTime", "timeStamp": timeStamp])
-            }
-
-            public var __typename: String {
-              get {
-                return resultMap["__typename"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "__typename")
-              }
-            }
-
-            public var timeStamp: String? {
-              get {
-                return resultMap["timeStamp"] as? String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "timeStamp")
-              }
+            set {
+              resultMap.updateValue(newValue, forKey: "priority")
             }
           }
         }
       }
 
-      public struct ForecastGroup: GraphQLSelectionSet {
-        public static let possibleTypes = ["ForecastGroup"]
+      public struct Normal: GraphQLSelectionSet {
+        public static let possibleTypes = ["Normals"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("dateTime", arguments: ["zone": "UTC"], type: .object(DateTime.selections)),
-          GraphQLField("regionalNormals", type: .nonNull(.object(RegionalNormal.selections))),
-          GraphQLField("forecast", type: .nonNull(.list(.nonNull(.object(Forecast.selections))))),
+          GraphQLField("high", type: .scalar(Double.self)),
+          GraphQLField("low", type: .scalar(Double.self)),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -1250,8 +992,8 @@ public final class WeatherQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(dateTime: DateTime? = nil, regionalNormals: RegionalNormal, forecast: [Forecast]) {
-          self.init(unsafeResultMap: ["__typename": "ForecastGroup", "dateTime": dateTime.flatMap { (value: DateTime) -> ResultMap in value.resultMap }, "regionalNormals": regionalNormals.resultMap, "forecast": forecast.map { (value: Forecast) -> ResultMap in value.resultMap }])
+        public init(high: Double? = nil, low: Double? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Normals", "high": high, "low": low])
         }
 
         public var __typename: String {
@@ -1263,460 +1005,32 @@ public final class WeatherQuery: GraphQLQuery {
           }
         }
 
-        public var dateTime: DateTime? {
+        public var high: Double? {
           get {
-            return (resultMap["dateTime"] as? ResultMap).flatMap { DateTime(unsafeResultMap: $0) }
+            return resultMap["high"] as? Double
           }
           set {
-            resultMap.updateValue(newValue?.resultMap, forKey: "dateTime")
+            resultMap.updateValue(newValue, forKey: "high")
           }
         }
 
-        public var regionalNormals: RegionalNormal {
+        public var low: Double? {
           get {
-            return RegionalNormal(unsafeResultMap: resultMap["regionalNormals"]! as! ResultMap)
+            return resultMap["low"] as? Double
           }
           set {
-            resultMap.updateValue(newValue.resultMap, forKey: "regionalNormals")
-          }
-        }
-
-        public var forecast: [Forecast] {
-          get {
-            return (resultMap["forecast"] as! [ResultMap]).map { (value: ResultMap) -> Forecast in Forecast(unsafeResultMap: value) }
-          }
-          set {
-            resultMap.updateValue(newValue.map { (value: Forecast) -> ResultMap in value.resultMap }, forKey: "forecast")
-          }
-        }
-
-        public struct DateTime: GraphQLSelectionSet {
-          public static let possibleTypes = ["DateTime"]
-
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("timeStamp", type: .scalar(String.self)),
-          ]
-
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
-          }
-
-          public init(timeStamp: String? = nil) {
-            self.init(unsafeResultMap: ["__typename": "DateTime", "timeStamp": timeStamp])
-          }
-
-          public var __typename: String {
-            get {
-              return resultMap["__typename"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var timeStamp: String? {
-            get {
-              return resultMap["timeStamp"] as? String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "timeStamp")
-            }
-          }
-        }
-
-        public struct RegionalNormal: GraphQLSelectionSet {
-          public static let possibleTypes = ["RegionalNormals"]
-
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("temperature", type: .nonNull(.list(.nonNull(.object(Temperature.selections))))),
-          ]
-
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
-          }
-
-          public init(temperature: [Temperature]) {
-            self.init(unsafeResultMap: ["__typename": "RegionalNormals", "temperature": temperature.map { (value: Temperature) -> ResultMap in value.resultMap }])
-          }
-
-          public var __typename: String {
-            get {
-              return resultMap["__typename"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var temperature: [Temperature] {
-            get {
-              return (resultMap["temperature"] as! [ResultMap]).map { (value: ResultMap) -> Temperature in Temperature(unsafeResultMap: value) }
-            }
-            set {
-              resultMap.updateValue(newValue.map { (value: Temperature) -> ResultMap in value.resultMap }, forKey: "temperature")
-            }
-          }
-
-          public struct Temperature: GraphQLSelectionSet {
-            public static let possibleTypes = ["Temperature"]
-
-            public static let selections: [GraphQLSelection] = [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("value", type: .scalar(String.self)),
-              GraphQLField("class", type: .scalar(String.self)),
-            ]
-
-            public private(set) var resultMap: ResultMap
-
-            public init(unsafeResultMap: ResultMap) {
-              self.resultMap = unsafeResultMap
-            }
-
-            public init(value: String? = nil, `class`: String? = nil) {
-              self.init(unsafeResultMap: ["__typename": "Temperature", "value": value, "class": `class`])
-            }
-
-            public var __typename: String {
-              get {
-                return resultMap["__typename"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "__typename")
-              }
-            }
-
-            public var value: String? {
-              get {
-                return resultMap["value"] as? String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "value")
-              }
-            }
-
-            public var `class`: String? {
-              get {
-                return resultMap["class"] as? String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "class")
-              }
-            }
-          }
-        }
-
-        public struct Forecast: GraphQLSelectionSet {
-          public static let possibleTypes = ["Forecast"]
-
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("abbreviatedForecast", type: .nonNull(.object(AbbreviatedForecast.selections))),
-            GraphQLField("period", type: .nonNull(.object(Period.selections))),
-            GraphQLField("temperatures", type: .nonNull(.object(Temperature.selections))),
-          ]
-
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
-          }
-
-          public init(abbreviatedForecast: AbbreviatedForecast, period: Period, temperatures: Temperature) {
-            self.init(unsafeResultMap: ["__typename": "Forecast", "abbreviatedForecast": abbreviatedForecast.resultMap, "period": period.resultMap, "temperatures": temperatures.resultMap])
-          }
-
-          public var __typename: String {
-            get {
-              return resultMap["__typename"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var abbreviatedForecast: AbbreviatedForecast {
-            get {
-              return AbbreviatedForecast(unsafeResultMap: resultMap["abbreviatedForecast"]! as! ResultMap)
-            }
-            set {
-              resultMap.updateValue(newValue.resultMap, forKey: "abbreviatedForecast")
-            }
-          }
-
-          public var period: Period {
-            get {
-              return Period(unsafeResultMap: resultMap["period"]! as! ResultMap)
-            }
-            set {
-              resultMap.updateValue(newValue.resultMap, forKey: "period")
-            }
-          }
-
-          public var temperatures: Temperature {
-            get {
-              return Temperature(unsafeResultMap: resultMap["temperatures"]! as! ResultMap)
-            }
-            set {
-              resultMap.updateValue(newValue.resultMap, forKey: "temperatures")
-            }
-          }
-
-          public struct AbbreviatedForecast: GraphQLSelectionSet {
-            public static let possibleTypes = ["AbbreviatedForecast"]
-
-            public static let selections: [GraphQLSelection] = [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("textSummary", type: .scalar(String.self)),
-              GraphQLField("iconCode", type: .object(IconCode.selections)),
-              GraphQLField("pop", type: .object(Pop.selections)),
-            ]
-
-            public private(set) var resultMap: ResultMap
-
-            public init(unsafeResultMap: ResultMap) {
-              self.resultMap = unsafeResultMap
-            }
-
-            public init(textSummary: String? = nil, iconCode: IconCode? = nil, pop: Pop? = nil) {
-              self.init(unsafeResultMap: ["__typename": "AbbreviatedForecast", "textSummary": textSummary, "iconCode": iconCode.flatMap { (value: IconCode) -> ResultMap in value.resultMap }, "pop": pop.flatMap { (value: Pop) -> ResultMap in value.resultMap }])
-            }
-
-            public var __typename: String {
-              get {
-                return resultMap["__typename"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "__typename")
-              }
-            }
-
-            public var textSummary: String? {
-              get {
-                return resultMap["textSummary"] as? String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "textSummary")
-              }
-            }
-
-            public var iconCode: IconCode? {
-              get {
-                return (resultMap["iconCode"] as? ResultMap).flatMap { IconCode(unsafeResultMap: $0) }
-              }
-              set {
-                resultMap.updateValue(newValue?.resultMap, forKey: "iconCode")
-              }
-            }
-
-            public var pop: Pop? {
-              get {
-                return (resultMap["pop"] as? ResultMap).flatMap { Pop(unsafeResultMap: $0) }
-              }
-              set {
-                resultMap.updateValue(newValue?.resultMap, forKey: "pop")
-              }
-            }
-
-            public struct IconCode: GraphQLSelectionSet {
-              public static let possibleTypes = ["IconCode"]
-
-              public static let selections: [GraphQLSelection] = [
-                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-                GraphQLField("value", type: .scalar(String.self)),
-              ]
-
-              public private(set) var resultMap: ResultMap
-
-              public init(unsafeResultMap: ResultMap) {
-                self.resultMap = unsafeResultMap
-              }
-
-              public init(value: String? = nil) {
-                self.init(unsafeResultMap: ["__typename": "IconCode", "value": value])
-              }
-
-              public var __typename: String {
-                get {
-                  return resultMap["__typename"]! as! String
-                }
-                set {
-                  resultMap.updateValue(newValue, forKey: "__typename")
-                }
-              }
-
-              public var value: String? {
-                get {
-                  return resultMap["value"] as? String
-                }
-                set {
-                  resultMap.updateValue(newValue, forKey: "value")
-                }
-              }
-            }
-
-            public struct Pop: GraphQLSelectionSet {
-              public static let possibleTypes = ["Pop"]
-
-              public static let selections: [GraphQLSelection] = [
-                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-                GraphQLField("value", type: .scalar(String.self)),
-              ]
-
-              public private(set) var resultMap: ResultMap
-
-              public init(unsafeResultMap: ResultMap) {
-                self.resultMap = unsafeResultMap
-              }
-
-              public init(value: String? = nil) {
-                self.init(unsafeResultMap: ["__typename": "Pop", "value": value])
-              }
-
-              public var __typename: String {
-                get {
-                  return resultMap["__typename"]! as! String
-                }
-                set {
-                  resultMap.updateValue(newValue, forKey: "__typename")
-                }
-              }
-
-              public var value: String? {
-                get {
-                  return resultMap["value"] as? String
-                }
-                set {
-                  resultMap.updateValue(newValue, forKey: "value")
-                }
-              }
-            }
-          }
-
-          public struct Period: GraphQLSelectionSet {
-            public static let possibleTypes = ["Period"]
-
-            public static let selections: [GraphQLSelection] = [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("textForecastName", type: .nonNull(.scalar(String.self))),
-            ]
-
-            public private(set) var resultMap: ResultMap
-
-            public init(unsafeResultMap: ResultMap) {
-              self.resultMap = unsafeResultMap
-            }
-
-            public init(textForecastName: String) {
-              self.init(unsafeResultMap: ["__typename": "Period", "textForecastName": textForecastName])
-            }
-
-            public var __typename: String {
-              get {
-                return resultMap["__typename"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "__typename")
-              }
-            }
-
-            public var textForecastName: String {
-              get {
-                return resultMap["textForecastName"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "textForecastName")
-              }
-            }
-          }
-
-          public struct Temperature: GraphQLSelectionSet {
-            public static let possibleTypes = ["Temperatures"]
-
-            public static let selections: [GraphQLSelection] = [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("temperature", type: .nonNull(.list(.nonNull(.object(Temperature.selections))))),
-            ]
-
-            public private(set) var resultMap: ResultMap
-
-            public init(unsafeResultMap: ResultMap) {
-              self.resultMap = unsafeResultMap
-            }
-
-            public init(temperature: [Temperature]) {
-              self.init(unsafeResultMap: ["__typename": "Temperatures", "temperature": temperature.map { (value: Temperature) -> ResultMap in value.resultMap }])
-            }
-
-            public var __typename: String {
-              get {
-                return resultMap["__typename"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "__typename")
-              }
-            }
-
-            public var temperature: [Temperature] {
-              get {
-                return (resultMap["temperature"] as! [ResultMap]).map { (value: ResultMap) -> Temperature in Temperature(unsafeResultMap: value) }
-              }
-              set {
-                resultMap.updateValue(newValue.map { (value: Temperature) -> ResultMap in value.resultMap }, forKey: "temperature")
-              }
-            }
-
-            public struct Temperature: GraphQLSelectionSet {
-              public static let possibleTypes = ["Temperature"]
-
-              public static let selections: [GraphQLSelection] = [
-                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-                GraphQLField("value", type: .scalar(String.self)),
-              ]
-
-              public private(set) var resultMap: ResultMap
-
-              public init(unsafeResultMap: ResultMap) {
-                self.resultMap = unsafeResultMap
-              }
-
-              public init(value: String? = nil) {
-                self.init(unsafeResultMap: ["__typename": "Temperature", "value": value])
-              }
-
-              public var __typename: String {
-                get {
-                  return resultMap["__typename"]! as! String
-                }
-                set {
-                  resultMap.updateValue(newValue, forKey: "__typename")
-                }
-              }
-
-              public var value: String? {
-                get {
-                  return resultMap["value"] as? String
-                }
-                set {
-                  resultMap.updateValue(newValue, forKey: "value")
-                }
-              }
-            }
+            resultMap.updateValue(newValue, forKey: "low")
           }
         }
       }
 
-      public struct HourlyForecastGroup: GraphQLSelectionSet {
-        public static let possibleTypes = ["HourlyForecastGroup"]
+      public struct DailyForecast: GraphQLSelectionSet {
+        public static let possibleTypes = ["DailyForecast"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("hourlyForecast", type: .nonNull(.list(.nonNull(.object(HourlyForecast.selections))))),
+          GraphQLField("time", type: .scalar(Int.self)),
+          GraphQLField("days", type: .list(.nonNull(.object(Day.selections)))),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -1725,8 +1039,8 @@ public final class WeatherQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(hourlyForecast: [HourlyForecast]) {
-          self.init(unsafeResultMap: ["__typename": "HourlyForecastGroup", "hourlyForecast": hourlyForecast.map { (value: HourlyForecast) -> ResultMap in value.resultMap }])
+        public init(time: Int? = nil, days: [Day]? = nil) {
+          self.init(unsafeResultMap: ["__typename": "DailyForecast", "time": time, "days": days.flatMap { (value: [Day]) -> [ResultMap] in value.map { (value: Day) -> ResultMap in value.resultMap } }])
         }
 
         public var __typename: String {
@@ -1738,25 +1052,38 @@ public final class WeatherQuery: GraphQLQuery {
           }
         }
 
-        public var hourlyForecast: [HourlyForecast] {
+        public var time: Int? {
           get {
-            return (resultMap["hourlyForecast"] as! [ResultMap]).map { (value: ResultMap) -> HourlyForecast in HourlyForecast(unsafeResultMap: value) }
+            return resultMap["time"] as? Int
           }
           set {
-            resultMap.updateValue(newValue.map { (value: HourlyForecast) -> ResultMap in value.resultMap }, forKey: "hourlyForecast")
+            resultMap.updateValue(newValue, forKey: "time")
           }
         }
 
-        public struct HourlyForecast: GraphQLSelectionSet {
-          public static let possibleTypes = ["HourlyForecast"]
+        public var days: [Day]? {
+          get {
+            return (resultMap["days"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Day] in value.map { (value: ResultMap) -> Day in Day(unsafeResultMap: value) } }
+          }
+          set {
+            resultMap.updateValue(newValue.flatMap { (value: [Day]) -> [ResultMap] in value.map { (value: Day) -> ResultMap in value.resultMap } }, forKey: "days")
+          }
+        }
+
+        public struct Day: GraphQLSelectionSet {
+          public static let possibleTypes = ["Day"]
 
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("dateTimeUTC", type: .nonNull(.scalar(String.self))),
-            GraphQLField("temperature", type: .nonNull(.object(Temperature.selections))),
-            GraphQLField("wind", type: .nonNull(.object(Wind.selections))),
-            GraphQLField("iconCode", type: .nonNull(.object(IconCode.selections))),
-            GraphQLField("lop", type: .nonNull(.object(Lop.selections))),
+            GraphQLField("when", type: .nonNull(.scalar(String.self))),
+            GraphQLField("summary", type: .nonNull(.scalar(String.self))),
+            GraphQLField("shortSummary", type: .nonNull(.scalar(String.self))),
+            GraphQLField("iconCode", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("precipProbability", type: .scalar(Int.self)),
+            GraphQLField("temperature", type: .nonNull(.scalar(Double.self))),
+            GraphQLField("humidex", type: .scalar(Double.self)),
+            GraphQLField("windChill", type: .scalar(Double.self)),
+            GraphQLField("winds", type: .nonNull(.list(.nonNull(.object(Wind.selections))))),
           ]
 
           public private(set) var resultMap: ResultMap
@@ -1765,8 +1092,8 @@ public final class WeatherQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(dateTimeUtc: String, temperature: Temperature, wind: Wind, iconCode: IconCode, lop: Lop) {
-            self.init(unsafeResultMap: ["__typename": "HourlyForecast", "dateTimeUTC": dateTimeUtc, "temperature": temperature.resultMap, "wind": wind.resultMap, "iconCode": iconCode.resultMap, "lop": lop.resultMap])
+          public init(when: String, summary: String, shortSummary: String, iconCode: Int, precipProbability: Int? = nil, temperature: Double, humidex: Double? = nil, windChill: Double? = nil, winds: [Wind]) {
+            self.init(unsafeResultMap: ["__typename": "Day", "when": when, "summary": summary, "shortSummary": shortSummary, "iconCode": iconCode, "precipProbability": precipProbability, "temperature": temperature, "humidex": humidex, "windChill": windChill, "winds": winds.map { (value: Wind) -> ResultMap in value.resultMap }])
           }
 
           public var __typename: String {
@@ -1778,104 +1105,95 @@ public final class WeatherQuery: GraphQLQuery {
             }
           }
 
-          public var dateTimeUtc: String {
+          public var when: String {
             get {
-              return resultMap["dateTimeUTC"]! as! String
+              return resultMap["when"]! as! String
             }
             set {
-              resultMap.updateValue(newValue, forKey: "dateTimeUTC")
+              resultMap.updateValue(newValue, forKey: "when")
             }
           }
 
-          public var temperature: Temperature {
+          public var summary: String {
             get {
-              return Temperature(unsafeResultMap: resultMap["temperature"]! as! ResultMap)
+              return resultMap["summary"]! as! String
             }
             set {
-              resultMap.updateValue(newValue.resultMap, forKey: "temperature")
+              resultMap.updateValue(newValue, forKey: "summary")
             }
           }
 
-          public var wind: Wind {
+          public var shortSummary: String {
             get {
-              return Wind(unsafeResultMap: resultMap["wind"]! as! ResultMap)
+              return resultMap["shortSummary"]! as! String
             }
             set {
-              resultMap.updateValue(newValue.resultMap, forKey: "wind")
+              resultMap.updateValue(newValue, forKey: "shortSummary")
             }
           }
 
-          public var iconCode: IconCode {
+          public var iconCode: Int {
             get {
-              return IconCode(unsafeResultMap: resultMap["iconCode"]! as! ResultMap)
+              return resultMap["iconCode"]! as! Int
             }
             set {
-              resultMap.updateValue(newValue.resultMap, forKey: "iconCode")
+              resultMap.updateValue(newValue, forKey: "iconCode")
             }
           }
 
-          public var lop: Lop {
+          public var precipProbability: Int? {
             get {
-              return Lop(unsafeResultMap: resultMap["lop"]! as! ResultMap)
+              return resultMap["precipProbability"] as? Int
             }
             set {
-              resultMap.updateValue(newValue.resultMap, forKey: "lop")
+              resultMap.updateValue(newValue, forKey: "precipProbability")
             }
           }
 
-          public struct Temperature: GraphQLSelectionSet {
-            public static let possibleTypes = ["Temperature"]
-
-            public static let selections: [GraphQLSelection] = [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("value", type: .scalar(String.self)),
-              GraphQLField("units", type: .nonNull(.scalar(String.self))),
-            ]
-
-            public private(set) var resultMap: ResultMap
-
-            public init(unsafeResultMap: ResultMap) {
-              self.resultMap = unsafeResultMap
+          public var temperature: Double {
+            get {
+              return resultMap["temperature"]! as! Double
             }
-
-            public init(value: String? = nil, units: String) {
-              self.init(unsafeResultMap: ["__typename": "Temperature", "value": value, "units": units])
+            set {
+              resultMap.updateValue(newValue, forKey: "temperature")
             }
+          }
 
-            public var __typename: String {
-              get {
-                return resultMap["__typename"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "__typename")
-              }
+          public var humidex: Double? {
+            get {
+              return resultMap["humidex"] as? Double
             }
-
-            public var value: String? {
-              get {
-                return resultMap["value"] as? String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "value")
-              }
+            set {
+              resultMap.updateValue(newValue, forKey: "humidex")
             }
+          }
 
-            public var units: String {
-              get {
-                return resultMap["units"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "units")
-              }
+          public var windChill: Double? {
+            get {
+              return resultMap["windChill"] as? Double
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "windChill")
+            }
+          }
+
+          public var winds: [Wind] {
+            get {
+              return (resultMap["winds"] as! [ResultMap]).map { (value: ResultMap) -> Wind in Wind(unsafeResultMap: value) }
+            }
+            set {
+              resultMap.updateValue(newValue.map { (value: Wind) -> ResultMap in value.resultMap }, forKey: "winds")
             }
           }
 
           public struct Wind: GraphQLSelectionSet {
-            public static let possibleTypes = ["WindHourly"]
+            public static let possibleTypes = ["Wind"]
 
             public static let selections: [GraphQLSelection] = [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("speed", type: .nonNull(.object(Speed.selections))),
+              GraphQLField("direction", type: .scalar(String.self)),
+              GraphQLField("speed", type: .nonNull(.scalar(String.self))),
+              GraphQLField("gust", type: .scalar(Int.self)),
             ]
 
             public private(set) var resultMap: ResultMap
@@ -1884,8 +1202,8 @@ public final class WeatherQuery: GraphQLQuery {
               self.resultMap = unsafeResultMap
             }
 
-            public init(speed: Speed) {
-              self.init(unsafeResultMap: ["__typename": "WindHourly", "speed": speed.resultMap])
+            public init(direction: String? = nil, speed: String, gust: Int? = nil) {
+              self.init(unsafeResultMap: ["__typename": "Wind", "direction": direction, "speed": speed, "gust": gust])
             }
 
             public var __typename: String {
@@ -1897,145 +1215,43 @@ public final class WeatherQuery: GraphQLQuery {
               }
             }
 
-            public var speed: Speed {
+            public var direction: String? {
               get {
-                return Speed(unsafeResultMap: resultMap["speed"]! as! ResultMap)
+                return resultMap["direction"] as? String
               }
               set {
-                resultMap.updateValue(newValue.resultMap, forKey: "speed")
+                resultMap.updateValue(newValue, forKey: "direction")
               }
             }
 
-            public struct Speed: GraphQLSelectionSet {
-              public static let possibleTypes = ["Speed"]
-
-              public static let selections: [GraphQLSelection] = [
-                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-                GraphQLField("value", type: .scalar(String.self)),
-                GraphQLField("units", type: .nonNull(.scalar(String.self))),
-              ]
-
-              public private(set) var resultMap: ResultMap
-
-              public init(unsafeResultMap: ResultMap) {
-                self.resultMap = unsafeResultMap
-              }
-
-              public init(value: String? = nil, units: String) {
-                self.init(unsafeResultMap: ["__typename": "Speed", "value": value, "units": units])
-              }
-
-              public var __typename: String {
-                get {
-                  return resultMap["__typename"]! as! String
-                }
-                set {
-                  resultMap.updateValue(newValue, forKey: "__typename")
-                }
-              }
-
-              public var value: String? {
-                get {
-                  return resultMap["value"] as? String
-                }
-                set {
-                  resultMap.updateValue(newValue, forKey: "value")
-                }
-              }
-
-              public var units: String {
-                get {
-                  return resultMap["units"]! as! String
-                }
-                set {
-                  resultMap.updateValue(newValue, forKey: "units")
-                }
-              }
-            }
-          }
-
-          public struct IconCode: GraphQLSelectionSet {
-            public static let possibleTypes = ["IconCode"]
-
-            public static let selections: [GraphQLSelection] = [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("value", type: .scalar(String.self)),
-            ]
-
-            public private(set) var resultMap: ResultMap
-
-            public init(unsafeResultMap: ResultMap) {
-              self.resultMap = unsafeResultMap
-            }
-
-            public init(value: String? = nil) {
-              self.init(unsafeResultMap: ["__typename": "IconCode", "value": value])
-            }
-
-            public var __typename: String {
+            public var speed: String {
               get {
-                return resultMap["__typename"]! as! String
+                return resultMap["speed"]! as! String
               }
               set {
-                resultMap.updateValue(newValue, forKey: "__typename")
+                resultMap.updateValue(newValue, forKey: "speed")
               }
             }
 
-            public var value: String? {
+            public var gust: Int? {
               get {
-                return resultMap["value"] as? String
+                return resultMap["gust"] as? Int
               }
               set {
-                resultMap.updateValue(newValue, forKey: "value")
-              }
-            }
-          }
-
-          public struct Lop: GraphQLSelectionSet {
-            public static let possibleTypes = ["Lop"]
-
-            public static let selections: [GraphQLSelection] = [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("value", type: .scalar(String.self)),
-            ]
-
-            public private(set) var resultMap: ResultMap
-
-            public init(unsafeResultMap: ResultMap) {
-              self.resultMap = unsafeResultMap
-            }
-
-            public init(value: String? = nil) {
-              self.init(unsafeResultMap: ["__typename": "Lop", "value": value])
-            }
-
-            public var __typename: String {
-              get {
-                return resultMap["__typename"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "__typename")
-              }
-            }
-
-            public var value: String? {
-              get {
-                return resultMap["value"] as? String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "value")
+                resultMap.updateValue(newValue, forKey: "gust")
               }
             }
           }
         }
       }
 
-      public struct RiseSet: GraphQLSelectionSet {
-        public static let possibleTypes = ["RiseSet"]
+      public struct HourlyForecast: GraphQLSelectionSet {
+        public static let possibleTypes = ["HourlyForecast"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("dateTime", arguments: ["zone": "UTC"], type: .list(.nonNull(.object(DateTime.selections)))),
+          GraphQLField("time", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("hours", type: .list(.nonNull(.object(Hour.selections)))),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -2044,8 +1260,8 @@ public final class WeatherQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(dateTime: [DateTime]? = nil) {
-          self.init(unsafeResultMap: ["__typename": "RiseSet", "dateTime": dateTime.flatMap { (value: [DateTime]) -> [ResultMap] in value.map { (value: DateTime) -> ResultMap in value.resultMap } }])
+        public init(time: Int, hours: [Hour]? = nil) {
+          self.init(unsafeResultMap: ["__typename": "HourlyForecast", "time": time, "hours": hours.flatMap { (value: [Hour]) -> [ResultMap] in value.map { (value: Hour) -> ResultMap in value.resultMap } }])
         }
 
         public var __typename: String {
@@ -2057,22 +1273,37 @@ public final class WeatherQuery: GraphQLQuery {
           }
         }
 
-        public var dateTime: [DateTime]? {
+        public var time: Int {
           get {
-            return (resultMap["dateTime"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [DateTime] in value.map { (value: ResultMap) -> DateTime in DateTime(unsafeResultMap: value) } }
+            return resultMap["time"]! as! Int
           }
           set {
-            resultMap.updateValue(newValue.flatMap { (value: [DateTime]) -> [ResultMap] in value.map { (value: DateTime) -> ResultMap in value.resultMap } }, forKey: "dateTime")
+            resultMap.updateValue(newValue, forKey: "time")
           }
         }
 
-        public struct DateTime: GraphQLSelectionSet {
-          public static let possibleTypes = ["DateTime"]
+        public var hours: [Hour]? {
+          get {
+            return (resultMap["hours"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Hour] in value.map { (value: ResultMap) -> Hour in Hour(unsafeResultMap: value) } }
+          }
+          set {
+            resultMap.updateValue(newValue.flatMap { (value: [Hour]) -> [ResultMap] in value.map { (value: Hour) -> ResultMap in value.resultMap } }, forKey: "hours")
+          }
+        }
+
+        public struct Hour: GraphQLSelectionSet {
+          public static let possibleTypes = ["Hour"]
 
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("timeStamp", type: .scalar(String.self)),
-            GraphQLField("name", type: .nonNull(.scalar(String.self))),
+            GraphQLField("time", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("summary", type: .nonNull(.scalar(String.self))),
+            GraphQLField("iconCode", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("precipProbability", type: .scalar(Int.self)),
+            GraphQLField("temperature", type: .nonNull(.scalar(Double.self))),
+            GraphQLField("humidex", type: .scalar(Double.self)),
+            GraphQLField("windChill", type: .scalar(Double.self)),
+            GraphQLField("wind", type: .object(Wind.selections)),
           ]
 
           public private(set) var resultMap: ResultMap
@@ -2081,8 +1312,8 @@ public final class WeatherQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(timeStamp: String? = nil, name: String) {
-            self.init(unsafeResultMap: ["__typename": "DateTime", "timeStamp": timeStamp, "name": name])
+          public init(time: Int, summary: String, iconCode: Int, precipProbability: Int? = nil, temperature: Double, humidex: Double? = nil, windChill: Double? = nil, wind: Wind? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Hour", "time": time, "summary": summary, "iconCode": iconCode, "precipProbability": precipProbability, "temperature": temperature, "humidex": humidex, "windChill": windChill, "wind": wind.flatMap { (value: Wind) -> ResultMap in value.resultMap }])
           }
 
           public var __typename: String {
@@ -2094,33 +1325,144 @@ public final class WeatherQuery: GraphQLQuery {
             }
           }
 
-          public var timeStamp: String? {
+          public var time: Int {
             get {
-              return resultMap["timeStamp"] as? String
+              return resultMap["time"]! as! Int
             }
             set {
-              resultMap.updateValue(newValue, forKey: "timeStamp")
+              resultMap.updateValue(newValue, forKey: "time")
             }
           }
 
-          public var name: String {
+          public var summary: String {
             get {
-              return resultMap["name"]! as! String
+              return resultMap["summary"]! as! String
             }
             set {
-              resultMap.updateValue(newValue, forKey: "name")
+              resultMap.updateValue(newValue, forKey: "summary")
+            }
+          }
+
+          public var iconCode: Int {
+            get {
+              return resultMap["iconCode"]! as! Int
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "iconCode")
+            }
+          }
+
+          public var precipProbability: Int? {
+            get {
+              return resultMap["precipProbability"] as? Int
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "precipProbability")
+            }
+          }
+
+          public var temperature: Double {
+            get {
+              return resultMap["temperature"]! as! Double
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "temperature")
+            }
+          }
+
+          public var humidex: Double? {
+            get {
+              return resultMap["humidex"] as? Double
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "humidex")
+            }
+          }
+
+          public var windChill: Double? {
+            get {
+              return resultMap["windChill"] as? Double
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "windChill")
+            }
+          }
+
+          public var wind: Wind? {
+            get {
+              return (resultMap["wind"] as? ResultMap).flatMap { Wind(unsafeResultMap: $0) }
+            }
+            set {
+              resultMap.updateValue(newValue?.resultMap, forKey: "wind")
+            }
+          }
+
+          public struct Wind: GraphQLSelectionSet {
+            public static let possibleTypes = ["Wind"]
+
+            public static let selections: [GraphQLSelection] = [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("direction", type: .scalar(String.self)),
+              GraphQLField("speed", type: .nonNull(.scalar(String.self))),
+              GraphQLField("gust", type: .scalar(Int.self)),
+            ]
+
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public init(direction: String? = nil, speed: String, gust: Int? = nil) {
+              self.init(unsafeResultMap: ["__typename": "Wind", "direction": direction, "speed": speed, "gust": gust])
+            }
+
+            public var __typename: String {
+              get {
+                return resultMap["__typename"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            public var direction: String? {
+              get {
+                return resultMap["direction"] as? String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "direction")
+              }
+            }
+
+            public var speed: String {
+              get {
+                return resultMap["speed"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "speed")
+              }
+            }
+
+            public var gust: Int? {
+              get {
+                return resultMap["gust"] as? Int
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "gust")
+              }
             }
           }
         }
       }
 
-      public struct YesterdayCondition: GraphQLSelectionSet {
-        public static let possibleTypes = ["YesterdayConditions"]
+      public struct Sun: GraphQLSelectionSet {
+        public static let possibleTypes = ["Sun"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("temperature", type: .nonNull(.list(.nonNull(.object(Temperature.selections))))),
-          GraphQLField("precip", type: .nonNull(.list(.nonNull(.object(Precip.selections))))),
+          GraphQLField("riseTime", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("setTime", type: .nonNull(.scalar(Int.self))),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -2129,8 +1471,8 @@ public final class WeatherQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(temperature: [Temperature], precip: [Precip]) {
-          self.init(unsafeResultMap: ["__typename": "YesterdayConditions", "temperature": temperature.map { (value: Temperature) -> ResultMap in value.resultMap }, "precip": precip.map { (value: Precip) -> ResultMap in value.resultMap }])
+        public init(riseTime: Int, setTime: Int) {
+          self.init(unsafeResultMap: ["__typename": "Sun", "riseTime": riseTime, "setTime": setTime])
         }
 
         public var __typename: String {
@@ -2142,115 +1484,78 @@ public final class WeatherQuery: GraphQLQuery {
           }
         }
 
-        public var temperature: [Temperature] {
+        public var riseTime: Int {
           get {
-            return (resultMap["temperature"] as! [ResultMap]).map { (value: ResultMap) -> Temperature in Temperature(unsafeResultMap: value) }
+            return resultMap["riseTime"]! as! Int
           }
           set {
-            resultMap.updateValue(newValue.map { (value: Temperature) -> ResultMap in value.resultMap }, forKey: "temperature")
+            resultMap.updateValue(newValue, forKey: "riseTime")
           }
         }
 
-        public var precip: [Precip] {
+        public var setTime: Int {
           get {
-            return (resultMap["precip"] as! [ResultMap]).map { (value: ResultMap) -> Precip in Precip(unsafeResultMap: value) }
+            return resultMap["setTime"]! as! Int
           }
           set {
-            resultMap.updateValue(newValue.map { (value: Precip) -> ResultMap in value.resultMap }, forKey: "precip")
+            resultMap.updateValue(newValue, forKey: "setTime")
+          }
+        }
+      }
+
+      public struct Yesterday: GraphQLSelectionSet {
+        public static let possibleTypes = ["Yesterday"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("high", type: .scalar(Double.self)),
+          GraphQLField("low", type: .scalar(Double.self)),
+          GraphQLField("precip", type: .scalar(String.self)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(high: Double? = nil, low: Double? = nil, precip: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Yesterday", "high": high, "low": low, "precip": precip])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
           }
         }
 
-        public struct Temperature: GraphQLSelectionSet {
-          public static let possibleTypes = ["Temperature"]
-
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("value", type: .scalar(String.self)),
-            GraphQLField("class", type: .scalar(String.self)),
-          ]
-
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
+        public var high: Double? {
+          get {
+            return resultMap["high"] as? Double
           }
-
-          public init(value: String? = nil, `class`: String? = nil) {
-            self.init(unsafeResultMap: ["__typename": "Temperature", "value": value, "class": `class`])
-          }
-
-          public var __typename: String {
-            get {
-              return resultMap["__typename"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var value: String? {
-            get {
-              return resultMap["value"] as? String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "value")
-            }
-          }
-
-          public var `class`: String? {
-            get {
-              return resultMap["class"] as? String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "class")
-            }
+          set {
+            resultMap.updateValue(newValue, forKey: "high")
           }
         }
 
-        public struct Precip: GraphQLSelectionSet {
-          public static let possibleTypes = ["HistoricPrecipitation"]
-
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("value", type: .scalar(String.self)),
-            GraphQLField("units", type: .nonNull(.scalar(String.self))),
-          ]
-
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
+        public var low: Double? {
+          get {
+            return resultMap["low"] as? Double
           }
-
-          public init(value: String? = nil, units: String) {
-            self.init(unsafeResultMap: ["__typename": "HistoricPrecipitation", "value": value, "units": units])
+          set {
+            resultMap.updateValue(newValue, forKey: "low")
           }
+        }
 
-          public var __typename: String {
-            get {
-              return resultMap["__typename"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
+        public var precip: String? {
+          get {
+            return resultMap["precip"] as? String
           }
-
-          public var value: String? {
-            get {
-              return resultMap["value"] as? String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "value")
-            }
-          }
-
-          public var units: String {
-            get {
-              return resultMap["units"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "units")
-            }
+          set {
+            resultMap.updateValue(newValue, forKey: "precip")
           }
         }
       }

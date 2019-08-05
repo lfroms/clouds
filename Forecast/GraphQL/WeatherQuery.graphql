@@ -1,135 +1,100 @@
-
-query Weather($region: Region!, $code: Int!) {
-    weather(region: $region, code: $code) {
+query Weather($province: Province!, $siteCode: Int!, $units: Units!, $language: Language!) {
+    weather(province: $province, siteCode: $siteCode, units: $units, language: $language) {
         location {
-            name {
-                value
-            }
+            weatherFor
+            country
+            province
+            region
         }
         currentConditions {
-            dateTime(zone: "UTC") {
-                timeStamp
-            }
+            time
             station {
-                value
+                name
+                code
+                latitude
+                longitude
             }
-            temperature {
-                value
-            }
-            relativeHumidity {
-                value
-                units
-            }
-            pressure {
-                value
-                units
-            }
-            windChill {
-                value
-            }
-            humidex {
-                value
-            }
+            temperature
+            humidity
+            pressure
+            windChill
+            humidex
             wind {
                 direction
-                speed {
-                    value
-                    units
-                }
-                gust {
-                    value
-                    units
-                }
+                speed
+                gust
             }
-            visibility {
-                value
-                units
-            }
-            dewpoint {
-                value
-            }
-            iconCode {
-                value
-            }
-            condition
+            visibility
+            dewPoint
+            iconCode
+            summary
+        }
+        todaySummary {
+            high
+            low
+        }
+        units {
+            temperature
+            pressure
+            distance
+            speed
         }
         warnings {
             url
             events {
-                dateTime(zone: "UTC") {
-                    timeStamp
-                }
-                priority
-                description
+                time
+                summary
                 type
+                priority
             }
         }
-        forecastGroup {
-            dateTime(zone: "UTC") {
-                timeStamp
-            }
-            regionalNormals {
-                temperature {
-                    value
-                    class
-                }
-            }
-            forecast {
-                abbreviatedForecast {
-                    textSummary
-                    iconCode {
-                        value
-                    }
-                    pop {
-                        value
-                    }
-                }
-                period {
-                    textForecastName
-                }
-                temperatures {
-                    temperature {
-                        value
-                    }
+        normals {
+            high
+            low
+        }
+        dailyForecast {
+            time
+            days {
+                when
+                summary
+                shortSummary
+                iconCode
+                precipProbability
+                temperature
+                humidex
+                windChill
+                winds {
+                    direction
+                    speed
+                    gust
                 }
             }
         }
-        hourlyForecastGroup {
-            hourlyForecast {
-                dateTimeUTC
-                temperature {
-                    value
-                    units
-                }
+        hourlyForecast {
+            time
+            hours {
+                time
+                summary
+                iconCode
+                precipProbability
+                temperature
+                humidex
+                windChill
                 wind {
-                    speed {
-                        value
-                        units
-                    }
-                }
-                iconCode {
-                    value
-                }
-                lop {
-                    value
+                    direction
+                    speed
+                    gust
                 }
             }
         }
-        riseSet {
-            dateTime(zone: "UTC") {
-                timeStamp
-                name
-            }
+        sun {
+            riseTime
+            setTime
         }
-        yesterdayConditions {
-            temperature {
-                value
-                class
-            }
-            precip {
-                value
-                units
-            }
+        yesterday {
+            high
+            low
+            precip
         }
     }
 }

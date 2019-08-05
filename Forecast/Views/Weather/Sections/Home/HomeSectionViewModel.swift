@@ -11,50 +11,47 @@ import Foundation
 struct HomeSectionViewModel {
     let weather: WeatherQuery.Data.Weather?
     
-    var currentTemperature: Int {
-        let currentConditions = weather?.currentConditions
-        return Temperature.toPreferredUnitInt(currentConditions?.temperature?.value ?? "")
+    var currentTemperature: String {
+        guard let temperature = weather?.currentConditions?.temperature else {
+            return "--"
+        }
+        
+        return "\(Int(temperature.rounded() + 0.0))"
     }
     
     var observation: String {
-        return weather?.currentConditions.condition ?? ""
+        return weather?.currentConditions?.summary ?? ""
     }
     
     var forecastHigh: Int? {
-        let forecast = weather?.forecastGroup.forecast
-        let todayForecast = forecast?.first(where: { $0.period.textForecastName == "Today" })
-        let temperature = todayForecast?.temperatures.temperature.first?.value
-        
-        if let temperature = temperature {
-            return Int(temperature)
+        guard let high = weather?.todaySummary?.high else {
+            return nil
         }
         
-        return nil
+        return Int(high.rounded())
     }
     
     var forecastLow: Int? {
-        let forecast = weather?.forecastGroup.forecast
-        let todayForecast = forecast?.first(where: { $0.period.textForecastName == "Tonight" })
-        let temperature = todayForecast?.temperatures.temperature.first?.value
-        
-        if let temperature = temperature {
-            return Int(temperature)
+        guard let low = weather?.todaySummary?.low else {
+            return nil
         }
         
-        return nil
+        return Int(low.rounded())
     }
     
     var dateStamp: Date {
-        let date = weather?.currentConditions.dateTime?.timeStamp
-        return date?.toDate("yyyyMMddHHmmss", region: .UTC)?.convertTo(region: .current).date ?? Date()
+        let parsedUnixTime = Double(weather?.currentConditions?.time ?? 0)
+        
+        return Date(seconds: parsedUnixTime, region: .UTC)
+            .convertTo(region: .current).date
     }
     
     var stationName: String {
-        return weather?.location.name.value ?? ""
+        return weather?.location.weatherFor ?? ""
     }
     
     var observations: [DetailBlockDescriptor] {
-        guard let cc = weather?.currentConditions else {
+        guard let units = weather?.units, let cc = weather?.currentConditions else {
             return []
         }
         
@@ -62,12 +59,10 @@ struct HomeSectionViewModel {
         
         // MARK: - Humidity 💧
         
-        if let humidity = cc.relativeHumidity,
-            let value = humidity.value,
-            let units = humidity.units {
+        if let humidity = cc.humidity {
             let item = DetailBlockDescriptor(
                 symbolName: "drop.triangle",
-                value: value + units,
+                value: "\(humidity)%",
                 label: "Humidity"
             )
             
@@ -76,11 +71,10 @@ struct HomeSectionViewModel {
         
         // MARK: - Atmospheric Pressure 📈
         
-        if let pressure = cc.pressure,
-            let value = pressure.value {
+        if let pressure = cc.pressure {
             let item = DetailBlockDescriptor(
                 symbolName: "gauge",
-                value: "\(value) \(pressure.units)",
+                value: "\(pressure) \(units.pressure)",
                 label: "Pressure"
             )
             
@@ -89,11 +83,10 @@ struct HomeSectionViewModel {
         
         // MARK: - Wind Chill ❄️
         
-        if let windChill = cc.windChill,
-            let value = windChill.value {
+        if let windChill = cc.windChill {
             let item = DetailBlockDescriptor(
                 symbolName: "thermometer.snowflake",
-                value: createTemperatureValueFrom(value),
+                value: "\(windChill) °\(units.temperature)",
                 label: "Wind Chill"
             )
             
@@ -102,11 +95,10 @@ struct HomeSectionViewModel {
         
         // MARK: - Humidex ☀️
         
-        if let humidex = cc.humidex,
-            let value = humidex.value {
+        if let humidex = cc.humidex {
             let item = DetailBlockDescriptor(
                 symbolName: "thermometer.sun",
-                value: createTemperatureValueFrom(value),
+                value: "\(humidex) °\(units.temperature)",
                 label: "Humidex"
             )
             
@@ -116,35 +108,32 @@ struct HomeSectionViewModel {
         // MARK: - Wind 💨
         
         if let wind = cc.wind {
-            if let speed = wind.speed.value {
-                let item = DetailBlockDescriptor(
-                    symbolName: "wind",
-                    value: "\(speed) \(wind.speed.units)",
-                    valuePrefix: wind.direction,
-                    label: "Wind"
-                )
-                
-                observations.append(item)
-            }
+            let item = DetailBlockDescriptor(
+                symbolName: "wind",
+                value: "\(wind.speed) \(units.speed)",
+                valuePrefix: wind.direction,
+                label: "Wind"
+            )
             
-            if let gust = wind.gust.value {
-                let item = DetailBlockDescriptor(
-                    symbolName: "arrow.right",
-                    value: "\(gust) \(wind.gust.units)",
-                    label: "Wind Gust"
-                )
-                
-                observations.append(item)
-            }
+            observations.append(item)
+        }
+        
+        if let gust = cc.wind?.gust {
+            let item = DetailBlockDescriptor(
+                symbolName: "arrow.right",
+                value: "\(gust) \(units.speed)",
+                label: "Wind Gust"
+            )
+            
+            observations.append(item)
         }
         
         // MARK: - Visibility 📏
         
-        if let visibility = cc.visibility,
-            let value = visibility.value {
+        if let visibility = cc.visibility {
             let item = DetailBlockDescriptor(
                 symbolName: "scope",
-                value: "\(value) \(visibility.units)",
+                value: "\(visibility) \(units.distance)",
                 label: "Visibility"
             )
             
@@ -153,11 +142,10 @@ struct HomeSectionViewModel {
         
         // MARK: - Dewpoint 🌡
         
-        if let dewpoint = cc.dewpoint,
-            let value = dewpoint.value {
+        if let dewPoint = cc.dewPoint {
             let item = DetailBlockDescriptor(
                 symbolName: "thermometer",
-                value: createTemperatureValueFrom(value),
+                value: "\(dewPoint) °\(units.temperature)",
                 label: "Dewpoint"
             )
             

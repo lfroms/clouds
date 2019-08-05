@@ -79,7 +79,7 @@ struct HourlyForecastView_Previews: PreviewProvider {
                 temperature: 24,
                 temperatureUnits: "C",
                 windSpeedUnits: "km/h",
-                windSpeed: 32,
+                windSpeed: "32",
                 pop: 54
             )
         )

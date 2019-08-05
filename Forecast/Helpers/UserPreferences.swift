@@ -22,7 +22,7 @@ class UserPreferences {
 
     struct SavedSite {
         var code: Int
-        var region: Region
+        var region: Province
     }
 
     static func defaultSite() -> SavedSite? {
@@ -32,13 +32,13 @@ class UserPreferences {
 
         let siteCode = UserDefaults.standard.integer(forKey: DefaultKeys.siteCode.rawValue)
         let provinceCode = UserDefaults.standard.string(forKey: DefaultKeys.provinceCode.rawValue)
-        let region = Region(rawValue: provinceCode!)
+        let province = Province(rawValue: provinceCode!)
 
-        guard region != nil else {
+        guard province != nil else {
             return nil
         }
 
-        return SavedSite(code: siteCode, region: region!)
+        return SavedSite(code: siteCode, region: province!)
     }
 
     private static func defaultSiteExists() -> Bool {

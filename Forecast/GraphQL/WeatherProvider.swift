@@ -20,7 +20,7 @@ class WeatherProvider: ObservableObject {
     }
     
     private func fetchData() {
-        let query = WeatherQuery(region: .on, code: 430)
+        let query = WeatherQuery(province: .on, siteCode: 430, units: .metric, language: .e)
         
         apollo.fetch(query: query) { result in
             guard let data = try? result.get().data else {
