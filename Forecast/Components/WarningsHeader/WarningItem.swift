@@ -6,13 +6,16 @@
 //  Copyright © 2019 Lukas Romsicki. All rights reserved.
 //
 
+import SafariServices
+import SwiftDate
 import SwiftUI
 
 struct WarningItem: View {
     let color: Color
+    let symbolName: String
     let text: String
-    let date: Date
-    let url: URL? = nil
+    let date: DateInRegion
+    var url: String?
 
     var body: some View {
         Button(action: handleAction, label: renderContents)
@@ -22,14 +25,14 @@ struct WarningItem: View {
 
     private func renderContents() -> some View {
         HStack(alignment: .center, spacing: 14) {
-            Image(systemName: "info.circle.fill")
+            Image(systemName: symbolName)
                 .font(Font.system(size: 16).weight(.heavy))
 
             VStack(alignment: .leading, spacing: 0) {
                 Text(text.uppercased())
                     .font(Font.system(size: 13).weight(.heavy))
 
-                Text(date.toString())
+                Text(date.toFormat("MMM d h:mm a", locale: Locales.current).uppercased())
                     .font(Font.system(size: 10).weight(.bold))
                     .foregroundColor(Color.primary.opacity(0.75))
             }
@@ -40,7 +43,15 @@ struct WarningItem: View {
     }
 
     private func handleAction() {
-        print("action")
+        guard let url = url, let urlObject = URL(string: url) else {
+            return
+        }
+
+        let svc = SFSafariViewController(url: urlObject)
+
+        UIApplication.shared.keyWindow?
+            .rootViewController?
+            .present(svc, animated: true, completion: nil)
     }
 }
 
@@ -49,8 +60,9 @@ struct WarningItem_Previews: PreviewProvider {
     static var previews: some View {
         WarningItem(
             color: .red,
+            symbolName: "info.circle.fill",
             text: "Warning",
-            date: Date()
+            date: DateInRegion()
         )
     }
 }

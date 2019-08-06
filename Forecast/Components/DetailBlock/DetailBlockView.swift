@@ -20,6 +20,7 @@ struct DetailBlockView: View {
         .padding(.trailing, 20)
         .frame(height: 60, alignment: .leading)
         .background(Color.primary.opacity(0.06))
+        .clipped()
         .shadow(color: Color.black.opacity(0.06), radius: 2, x: 0, y: 2)
         .cornerRadius(8)
         .fixedSize()

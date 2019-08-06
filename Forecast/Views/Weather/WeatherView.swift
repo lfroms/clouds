@@ -32,8 +32,18 @@ struct WeatherView: View {
                         .padding(.bottom, 36)
                 }
             }
+
+            renderWarningBanner()
         }
         .background(backgroundGradient)
+    }
+
+    private func renderWarningBanner() -> WarningsHeader? {
+        guard let warnings = provider.weather?.warnings else {
+            return nil
+        }
+
+        return WarningsHeader(warnings: warnings.events, url: warnings.url)
     }
 
     private var backgroundGradient: LinearGradient {
@@ -43,7 +53,7 @@ struct WeatherView: View {
     }
 
     private var iconCode: Int {
-        return provider.weather?.currentConditions?.iconCode ?? 00
+        return provider.weather?.currentConditions?.iconCode ?? 06
     }
 }
 

@@ -39,6 +39,8 @@
 		8062DE7922D5866900AAD6FB /* HourlyForecastSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062DE7822D5866900AAD6FB /* HourlyForecastSection.swift */; };
 		8062DE7C22D586FA00AAD6FB /* LabeledSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062DE7B22D586FA00AAD6FB /* LabeledSectionHeader.swift */; };
 		806CC54B22F8F27100D0D2F6 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 806CC54A22F8F27000D0D2F6 /* schema.json */; };
+		806CC54E22F90B5100D0D2F6 /* WarningPriority+IconName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806CC54C22F90B5100D0D2F6 /* WarningPriority+IconName.swift */; };
+		806CC54F22F90B5100D0D2F6 /* WarningPriority+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806CC54D22F90B5100D0D2F6 /* WarningPriority+Color.swift */; };
 		808104F022D7FEE300E40D5D /* RiseSetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808104EF22D7FEE300E40D5D /* RiseSetViewModel.swift */; };
 		808104F222D802D800E40D5D /* YesterdayConditionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808104F122D802D800E40D5D /* YesterdayConditionsViewModel.swift */; };
 		808104F422D8044300E40D5D /* RegionalNormalsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808104F322D8044300E40D5D /* RegionalNormalsViewModel.swift */; };
@@ -103,6 +105,8 @@
 		8062DE7822D5866900AAD6FB /* HourlyForecastSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastSection.swift; sourceTree = "<group>"; };
 		8062DE7B22D586FA00AAD6FB /* LabeledSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledSectionHeader.swift; sourceTree = "<group>"; };
 		806CC54A22F8F27000D0D2F6 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		806CC54C22F90B5100D0D2F6 /* WarningPriority+IconName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WarningPriority+IconName.swift"; sourceTree = "<group>"; };
+		806CC54D22F90B5100D0D2F6 /* WarningPriority+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WarningPriority+Color.swift"; sourceTree = "<group>"; };
 		808104EF22D7FEE300E40D5D /* RiseSetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiseSetViewModel.swift; sourceTree = "<group>"; };
 		808104F122D802D800E40D5D /* YesterdayConditionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesterdayConditionsViewModel.swift; sourceTree = "<group>"; };
 		808104F322D8044300E40D5D /* RegionalNormalsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionalNormalsViewModel.swift; sourceTree = "<group>"; };
@@ -466,6 +470,8 @@
 		80D0D86422D6B55D00B8C711 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				806CC54D22F90B5100D0D2F6 /* WarningPriority+Color.swift */,
+				806CC54C22F90B5100D0D2F6 /* WarningPriority+IconName.swift */,
 				80D0D86622D6B56800B8C711 /* Temperature.swift */,
 				80D0D86522D6B56700B8C711 /* UserPreferences.swift */,
 				8039628422D6CD6F003FEAB3 /* ForecastIcon.swift */,
@@ -636,12 +642,14 @@
 				8062DE7922D5866900AAD6FB /* HourlyForecastSection.swift in Sources */,
 				80AD06EB22D66B7800220FEE /* ForecastWeatherIcon.swift in Sources */,
 				803028E222CEE5FE0053F639 /* MetadataView.swift in Sources */,
+				806CC54E22F90B5100D0D2F6 /* WarningPriority+IconName.swift in Sources */,
 				809C147422F752DA00F6A771 /* WarningsHeader.swift in Sources */,
 				80AD06E322D6655800220FEE /* PopLabel.swift in Sources */,
 				8062DE7C22D586FA00AAD6FB /* LabeledSectionHeader.swift in Sources */,
 				8050327F22D25C7500D376C3 /* HighLowStackView.swift in Sources */,
 				805A1E6622D65ADB001B8CC3 /* HourlyForecastView.swift in Sources */,
 				8039628322D6CC4B003FEAB3 /* HourlyForecastViewModel.swift in Sources */,
+				806CC54F22F90B5100D0D2F6 /* WarningPriority+Color.swift in Sources */,
 				803028D522CEE42C0053F639 /* TemperatureView.swift in Sources */,
 				805D7BCE22D109EE00A12C4D /* DetailBlockRow.swift in Sources */,
 				808104F422D8044300E40D5D /* RegionalNormalsViewModel.swift in Sources */,

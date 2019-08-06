@@ -6,19 +6,35 @@
 //  Copyright © 2019 Lukas Romsicki. All rights reserved.
 //
 
+import Foundation
+import SwiftDate
 import SwiftUI
 
 struct WarningsHeader: View {
     typealias WarningEvent = WeatherQuery.Data.Weather.Warning.Event
     let warnings: [WarningEvent]?
+    var url: String?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            WarningItem(color: .red, text: "Special Weather Statement", date: Date())
-            WarningItem(color: .red, text: "Special Weather Statement", date: Date())
+            ForEach(warnings ?? [], id: \.time) { warning in
+                WarningItem(
+                    color: warning.priority.color,
+                    symbolName: warning.priority.iconName,
+                    text: warning.summary,
+                    date: self.getDate(timeStamp: warning.time),
+                    url: self.url
+                )
+            }
         }
         .padding(.top, getTopSafeMargin())
-        .background(Color.red)
+        .background(warnings?.first?.priority.color)
+        .clipped()
+        .shadow(color: Color.black.opacity(0.4), radius: 33)
+    }
+
+    private func getDate(timeStamp: Int) -> DateInRegion {
+        return Date(seconds: Double(timeStamp), region: .UTC).convertTo(region: .current)
     }
 
     private func getTopSafeMargin() -> CGFloat {
