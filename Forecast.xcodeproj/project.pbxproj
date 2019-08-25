@@ -46,6 +46,8 @@
 		808104F422D8044300E40D5D /* RegionalNormalsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808104F322D8044300E40D5D /* RegionalNormalsViewModel.swift */; };
 		8081AA3D22D05B2C0049DD59 /* HomeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8081AA3C22D05B2C0049DD59 /* HomeSection.swift */; };
 		809833B922F678BE001C1590 /* WeatherQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 809833B822F678BE001C1590 /* WeatherQuery.graphql */; };
+		8099A20D23130B8500EE4F30 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8099A20C23130B8500EE4F30 /* SafariView.swift */; };
+		8099A20F23130CED00EE4F30 /* CustomSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8099A20E23130CED00EE4F30 /* CustomSafariViewController.swift */; };
 		809C147422F752DA00F6A771 /* WarningsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C147322F752DA00F6A771 /* WarningsHeader.swift */; };
 		809C147622F752E700F6A771 /* WarningItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C147522F752E700F6A771 /* WarningItem.swift */; };
 		809C147E22F7D05F00F6A771 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C147D22F7D05E00F6A771 /* API.swift */; };
@@ -112,6 +114,8 @@
 		808104F322D8044300E40D5D /* RegionalNormalsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionalNormalsViewModel.swift; sourceTree = "<group>"; };
 		8081AA3C22D05B2C0049DD59 /* HomeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSection.swift; sourceTree = "<group>"; };
 		809833B822F678BE001C1590 /* WeatherQuery.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WeatherQuery.graphql; sourceTree = "<group>"; };
+		8099A20C23130B8500EE4F30 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		8099A20E23130CED00EE4F30 /* CustomSafariViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSafariViewController.swift; sourceTree = "<group>"; };
 		809C147322F752DA00F6A771 /* WarningsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningsHeader.swift; sourceTree = "<group>"; };
 		809C147522F752E700F6A771 /* WarningItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningItem.swift; sourceTree = "<group>"; };
 		809C147D22F7D05E00F6A771 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -289,6 +293,7 @@
 		805D7BD522D123DF00A12C4D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8099A20B23130B7400EE4F30 /* Safari */,
 				805D7BD622D123E600A12C4D /* Weather */,
 				805A174922C53ADB00E1B4E2 /* ContentView.swift */,
 			);
@@ -348,6 +353,15 @@
 				80D0A37822F74E1700E6AE39 /* RegionalNormals */,
 			);
 			path = Sections;
+			sourceTree = "<group>";
+		};
+		8099A20B23130B7400EE4F30 /* Safari */ = {
+			isa = PBXGroup;
+			children = (
+				8099A20C23130B8500EE4F30 /* SafariView.swift */,
+				8099A20E23130CED00EE4F30 /* CustomSafariViewController.swift */,
+			);
+			path = Safari;
 			sourceTree = "<group>";
 		};
 		809C147222F752C800F6A771 /* WarningsHeader */ = {
@@ -642,6 +656,7 @@
 				8062DE7922D5866900AAD6FB /* HourlyForecastSection.swift in Sources */,
 				80AD06EB22D66B7800220FEE /* ForecastWeatherIcon.swift in Sources */,
 				803028E222CEE5FE0053F639 /* MetadataView.swift in Sources */,
+				8099A20F23130CED00EE4F30 /* CustomSafariViewController.swift in Sources */,
 				806CC54E22F90B5100D0D2F6 /* WarningPriority+IconName.swift in Sources */,
 				809C147422F752DA00F6A771 /* WarningsHeader.swift in Sources */,
 				80AD06E322D6655800220FEE /* PopLabel.swift in Sources */,
@@ -652,6 +667,7 @@
 				806CC54F22F90B5100D0D2F6 /* WarningPriority+Color.swift in Sources */,
 				803028D522CEE42C0053F639 /* TemperatureView.swift in Sources */,
 				805D7BCE22D109EE00A12C4D /* DetailBlockRow.swift in Sources */,
+				8099A20D23130B8500EE4F30 /* SafariView.swift in Sources */,
 				808104F422D8044300E40D5D /* RegionalNormalsViewModel.swift in Sources */,
 				80AD06F622D675D500220FEE /* IconDetailDescriptor.swift in Sources */,
 				803028E822CEEB0F0053F639 /* DetailBlockView.swift in Sources */,

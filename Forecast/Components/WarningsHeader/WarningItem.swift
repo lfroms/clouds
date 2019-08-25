@@ -15,7 +15,7 @@ struct WarningItem: View {
     let symbolName: String
     let text: String
     let date: DateInRegion
-    var url: String?
+    var action: (() -> Void)?
 
     var body: some View {
         Button(action: handleAction, label: renderContents)
@@ -43,15 +43,11 @@ struct WarningItem: View {
     }
 
     private func handleAction() {
-        guard let url = url, let urlObject = URL(string: url) else {
+        guard let action = action else {
             return
         }
 
-        let svc = SFSafariViewController(url: urlObject)
-
-        UIApplication.shared.keyWindow?
-            .rootViewController?
-            .present(svc, animated: true, completion: nil)
+        action()
     }
 }
 

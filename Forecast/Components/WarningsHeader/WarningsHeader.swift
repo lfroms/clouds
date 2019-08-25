@@ -15,6 +15,8 @@ struct WarningsHeader: View {
     let warnings: [WarningEvent]?
     var url: String?
 
+    @State var showWarningDetails = false
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             ForEach(warnings ?? [], id: \.time) { warning in
@@ -23,7 +25,7 @@ struct WarningsHeader: View {
                     symbolName: warning.priority.iconName,
                     text: warning.summary,
                     date: self.getDate(timeStamp: warning.time),
-                    url: self.url
+                    action: self.toggleSafariViewSheet
                 )
             }
         }
@@ -31,6 +33,7 @@ struct WarningsHeader: View {
         .background(warnings?.first?.priority.color)
         .clipped()
         .shadow(color: Color.black.opacity(0.4), radius: 33)
+        .sheet(isPresented: $showWarningDetails, content: renderSheet)
     }
 
     private func getDate(timeStamp: Int) -> DateInRegion {
@@ -43,6 +46,15 @@ struct WarningsHeader: View {
         }
 
         return window.safeAreaInsets.top
+    }
+
+    private func renderSheet() -> some View {
+        let urlObj = URL(string: url ?? "http://weather.gc.ca")
+        return SafariView(url: urlObj).edgesIgnoringSafeArea(.all)
+    }
+
+    private func toggleSafariViewSheet() {
+        self.showWarningDetails.toggle()
     }
 }
 
