@@ -17,10 +17,19 @@ struct WarningItem: View {
     let date: DateInRegion
     var action: (() -> Void)?
 
+    @State var pushed: Bool = false
+
     var body: some View {
-        Button(action: handleAction, label: renderContents)
+        return Button(action: handleAction, label: renderContents)
             .frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
             .background(color)
+            .cornerRadius(8)
+            .onLongPressGesture(minimumDuration: 0, maximumDistance: 0, pressing: { pressing in
+                self.pushed = pressing
+            }, perform: {})
+            .scaleEffect(self.pushed ? 0.97 : 1)
+            .animation(.spring(response: 0.3, dampingFraction: 0.55, blendDuration: 0))
+            .shadow(color: Color.black.opacity(0.4), radius: 33)
     }
 
     private func renderContents() -> some View {
@@ -29,16 +38,16 @@ struct WarningItem: View {
                 .font(Font.system(size: 16).weight(.heavy))
 
             VStack(alignment: .leading, spacing: 0) {
-                Text(text.uppercased())
-                    .font(Font.system(size: 13).weight(.heavy))
+                Text(text)
+                    .font(Font.system(size: 15).weight(.heavy))
 
-                Text(date.toFormat("MMM d h:mm a", locale: Locales.current).uppercased())
-                    .font(Font.system(size: 10).weight(.bold))
-                    .foregroundColor(Color.primary.opacity(0.75))
+                Text(date.toFormat("MMMM d h:mm a", locale: Locales.current))
+                    .font(Font.system(size: 10).weight(.heavy))
+                    .foregroundColor(Color.primary.opacity(0.85))
             }
         }
-        .padding(.horizontal, 36)
-        .padding(.vertical, 8)
+        .padding(.horizontal, 20)
+        .padding(.vertical, 14)
         .foregroundColor(.primary)
     }
 

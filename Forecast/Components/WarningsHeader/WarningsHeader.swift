@@ -18,7 +18,7 @@ struct WarningsHeader: View {
     @State var showWarningDetails = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .leading, spacing: 8) {
             ForEach(warnings ?? [], id: \.time) { warning in
                 WarningItem(
                     color: warning.priority.color,
@@ -30,9 +30,7 @@ struct WarningsHeader: View {
             }
         }
         .padding(.top, getTopSafeMargin())
-        .background(warnings?.first?.priority.color)
-        .clipped()
-        .shadow(color: Color.black.opacity(0.4), radius: 33)
+        .padding([.leading, .trailing, .bottom], 18)
         .sheet(isPresented: $showWarningDetails, content: renderSheet)
     }
 
