@@ -15,7 +15,7 @@ struct TimestampView: View {
     var body: some View {
         Text(parsedDate())
             .font(.system(size: 13))
-            .fontWeight(.heavy)
+            .fontWeight(.bold)
             .opacity(0.45)
     }
 

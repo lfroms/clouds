@@ -22,7 +22,7 @@ struct DetailBlockView: View {
         .background(Color.primary.opacity(0.06))
         .clipped()
         .shadow(color: Color.black.opacity(0.06), radius: 2, x: 0, y: 2)
-        .cornerRadius(8)
+        .cornerRadius(22)
         .fixedSize()
     }
 

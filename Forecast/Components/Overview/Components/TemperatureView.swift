@@ -12,11 +12,15 @@ struct TemperatureView: View {
     var value: String
 
     var body: some View {
-        Text("\(value)°")
-            .font(.system(size: 72))
-            .fontWeight(.heavy)
-            .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
-            .lineLimit(1)
+        HStack(alignment: .firstTextBaseline, spacing: 0) {
+            Text(value)
+                .fontWeight(.black)
+            Text("°")
+                .fontWeight(.medium)
+        }
+        .font(.system(size: 72))
+        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
+        .lineLimit(1)
     }
 }
 
