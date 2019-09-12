@@ -34,8 +34,7 @@ struct DetailBlockView: View {
     fileprivate func renderLabelValue() -> some View {
         return VStack(alignment: .leading, spacing: 2) {
             Text(data.label.uppercased())
-                .font(.system(size: 11))
-                .fontWeight(.heavy)
+                .font(.system(size: 11, weight: .bold, design: .rounded))
                 .foregroundColor(Color.primary.opacity(0.6))
                 .lineLimit(1)
 
