@@ -22,7 +22,7 @@ struct PopLabel: View {
                 .foregroundColor(foregroundColor)
                 .fixedSize()
         }
-        .font(Font.system(size: 12).weight(.heavy))
+        .font(Font.system(size: 12).weight(.bold))
     }
 }
 

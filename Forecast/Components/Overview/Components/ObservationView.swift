@@ -14,7 +14,7 @@ struct ObservationView: View {
     var body: some View {
         Text(observation)
             .font(.system(size: 20))
-            .fontWeight(.heavy)
+            .fontWeight(.bold)
             .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
     }
 }

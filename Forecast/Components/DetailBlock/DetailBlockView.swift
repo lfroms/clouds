@@ -22,7 +22,7 @@ struct DetailBlockView: View {
         .background(Color.primary.opacity(0.06))
         .clipped()
         .shadow(color: Color.black.opacity(0.06), radius: 2, x: 0, y: 2)
-        .cornerRadius(18)
+        .cornerRadius(30)
         .fixedSize()
     }
 
@@ -42,14 +42,14 @@ struct DetailBlockView: View {
                 if data.valuePrefix != nil {
                     Text(data.valuePrefix!)
                         .font(.system(size: 13))
-                        .fontWeight(.heavy)
+                        .fontWeight(.bold)
                         .foregroundColor(Color.primary.opacity(0.8))
                         .lineLimit(1)
                 }
 
                 Text(data.value)
                     .font(.system(size: 16))
-                    .fontWeight(.heavy)
+                    .fontWeight(.bold)
                     .lineLimit(1)
             }
         }

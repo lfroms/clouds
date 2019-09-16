@@ -14,7 +14,7 @@ struct TemperatureView: View {
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: 0) {
             Text(value)
-                .fontWeight(.black)
+                .fontWeight(.heavy)
             Text("°")
                 .fontWeight(.medium)
         }

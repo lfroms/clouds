@@ -13,7 +13,7 @@ struct ForecastWeatherIcon: View {
 
     var body: some View {
         Image(systemName: name)
-            .font(.system(size: 24))
+            .font(.system(size: 23))
     }
 }
 

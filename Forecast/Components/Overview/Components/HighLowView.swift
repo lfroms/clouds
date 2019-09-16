@@ -24,13 +24,13 @@ struct HighLowView: View {
         let symbolName = highOrLow == .high ? "arrow.up" : "arrow.down"
 
         return Image(systemName: symbolName)
-            .font(Font.system(size: 19).weight(.heavy))
+            .font(Font.system(size: 19).weight(.bold))
     }
 
     fileprivate func renderTemperature() -> Text {
         return Text("\(temperature)°")
             .font(.system(size: 36))
-            .fontWeight(.heavy)
+            .fontWeight(.bold)
     }
 
     enum HighLow {

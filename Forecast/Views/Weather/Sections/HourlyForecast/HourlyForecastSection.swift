@@ -12,16 +12,14 @@ struct HourlyForecastSection: View {
     let viewModel: HourlyForecastSectionViewModel
 
     var body: some View {
-        LabeledSection(label: "Hourly", headerPadding: 36, tinted: true) {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(alignment: .top, spacing: 36) {
-                    ForEach(self.viewModel.items, id: \.id) { item in
-                        HourlyForecastView(viewModel: item)
-                    }
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(alignment: .top, spacing: 14) {
+                ForEach(self.viewModel.items, id: \.id) { item in
+                    HourlyForecastView(viewModel: item)
                 }
-                .padding([.horizontal, .bottom], 26)
-                .padding(.top, 23)
             }
+            .padding(.horizontal, 26)
+            .frame(minHeight: 0, maxHeight: .infinity, alignment: .top)
         }
     }
 }
@@ -29,7 +27,7 @@ struct HourlyForecastSection: View {
 #if DEBUG
 struct HourlyForecastSection_Previews: PreviewProvider {
     static var previews: some View {
-        HourlyForecastSection(viewModel: HourlyForecastSectionViewModel(weather: nil))
+        HourlyForecastSection(viewModel: .init(weather: nil))
     }
 }
 #endif

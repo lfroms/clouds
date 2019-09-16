@@ -14,7 +14,7 @@ struct StationView: View {
     var body: some View {
         Text(stationName)
             .font(.system(size: 16))
-            .fontWeight(.heavy)
+            .fontWeight(.bold)
             .opacity(0.75)
     }
 }

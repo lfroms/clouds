@@ -33,7 +33,7 @@ struct DailyForecastView: View {
 
                 HStack(alignment: .firstTextBaseline, spacing: 18) {
                     Text(item.description)
-                        .font(Font.system(size: 12).weight(.heavy))
+                        .font(Font.system(size: 12).weight(.bold))
                         .foregroundColor(Color.primary.opacity(0.65))
 
                     renderPopLabel()
