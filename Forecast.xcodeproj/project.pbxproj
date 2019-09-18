@@ -25,6 +25,8 @@
 		8039628722D6D51B003FEAB3 /* DailyForecastSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8039628622D6D51B003FEAB3 /* DailyForecastSectionViewModel.swift */; };
 		8039628922D6D547003FEAB3 /* DailyForecastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8039628822D6D547003FEAB3 /* DailyForecastItem.swift */; };
 		8050327F22D25C7500D376C3 /* HighLowStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050327E22D25C7500D376C3 /* HighLowStackView.swift */; };
+		80504F782332DB4700DB4FAD /* HourlyForecastDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80504F772332DB4700DB4FAD /* HourlyForecastDetail.swift */; };
+		80504F7A2332E76700DB4FAD /* String+IsInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80504F792332E76700DB4FAD /* String+IsInt.swift */; };
 		805A174622C53ADB00E1B4E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A174522C53ADB00E1B4E2 /* AppDelegate.swift */; };
 		805A174822C53ADB00E1B4E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A174722C53ADB00E1B4E2 /* SceneDelegate.swift */; };
 		805A174A22C53ADB00E1B4E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A174922C53ADB00E1B4E2 /* ContentView.swift */; };
@@ -98,6 +100,8 @@
 		8039628622D6D51B003FEAB3 /* DailyForecastSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastSectionViewModel.swift; sourceTree = "<group>"; };
 		8039628822D6D547003FEAB3 /* DailyForecastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastItem.swift; sourceTree = "<group>"; };
 		8050327E22D25C7500D376C3 /* HighLowStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLowStackView.swift; sourceTree = "<group>"; };
+		80504F772332DB4700DB4FAD /* HourlyForecastDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastDetail.swift; sourceTree = "<group>"; };
+		80504F792332E76700DB4FAD /* String+IsInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+IsInt.swift"; sourceTree = "<group>"; };
 		805A174222C53ADB00E1B4E2 /* Forecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		805A174522C53ADB00E1B4E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		805A174722C53ADB00E1B4E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -459,6 +463,7 @@
 				80B8DB93232C7BBF00BAD200 /* BackgroundColor.swift */,
 				801BDBCF232D660C007FE4AB /* DrawerHandle.swift */,
 				801BDBD1232D6826007FE4AB /* DrawerCard.swift */,
+				80504F772332DB4700DB4FAD /* HourlyForecastDetail.swift */,
 			);
 			path = "Temporary Group";
 			sourceTree = "<group>";
@@ -526,6 +531,7 @@
 				80D0D86522D6B56700B8C711 /* UserPreferences.swift */,
 				8039628422D6CD6F003FEAB3 /* ForecastIcon.swift */,
 				8085B7B3232DD0D500D4AEE4 /* Comparable+Clamped.swift */,
+				80504F792332E76700DB4FAD /* String+IsInt.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -695,6 +701,7 @@
 				80AD06EB22D66B7800220FEE /* ForecastWeatherIcon.swift in Sources */,
 				803028E222CEE5FE0053F639 /* MetadataView.swift in Sources */,
 				8099A20F23130CED00EE4F30 /* CustomSafariViewController.swift in Sources */,
+				80504F782332DB4700DB4FAD /* HourlyForecastDetail.swift in Sources */,
 				8085B7B4232DD0D500D4AEE4 /* Comparable+Clamped.swift in Sources */,
 				806CC54E22F90B5100D0D2F6 /* WarningPriority+IconName.swift in Sources */,
 				809C147422F752DA00F6A771 /* WarningsHeader.swift in Sources */,
@@ -714,6 +721,7 @@
 				80AD06F622D675D500220FEE /* IconDetailDescriptor.swift in Sources */,
 				803028E822CEEB0F0053F639 /* DetailBlockView.swift in Sources */,
 				805A174822C53ADB00E1B4E2 /* SceneDelegate.swift in Sources */,
+				80504F7A2332E76700DB4FAD /* String+IsInt.swift in Sources */,
 				803028E522CEE7970053F639 /* OverviewView.swift in Sources */,
 				8062DE7722D5848400AAD6FB /* LabeledSection.swift in Sources */,
 				801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */,

@@ -107,10 +107,10 @@ struct HomeSectionViewModel {
         
         // MARK: - Wind 💨
         
-        if let wind = cc.wind {
+        if let wind = cc.wind, let speed = wind.speed {
             let item = DetailBlockDescriptor(
                 symbolName: "wind",
-                value: "\(wind.speed) \(units.speed)",
+                value: "\(speed) \(units.speed)",
                 valuePrefix: wind.direction,
                 label: "Wind"
             )

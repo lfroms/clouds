@@ -28,21 +28,9 @@ struct HourlyForecastView: View {
             Spacer()
 
             if expanded {
-                VStack(alignment: .center, spacing: 4) {
-                    Image(systemName: "wind").font(.system(size: 13, weight: .bold))
-                    FixedSizeText(getWindSpeedText())
-                        .font(.system(size: 11, weight: .bold))
-                        .foregroundColor(.primary)
-                }
-
+                HourlyForecastDetail(iconName: "wind", label: getWindSpeedText())
                 Spacer()
-
-                VStack(alignment: .center, spacing: 4) {
-                    Image(systemName: "umbrella.fill").font(.system(size: 13, weight: .bold))
-                    FixedSizeText("\(viewModel.pop ?? 0)%")
-                        .font(.system(size: 11, weight: .bold))
-                        .foregroundColor(.primary)
-                }
+                HourlyForecastDetail(iconName: "umbrella.fill", label: viewModel.pop)
 
             } else {
                 ForecastWeatherIcon(name: self.viewModel.symbolName)
@@ -111,7 +99,11 @@ struct HourlyForecastView: View {
     }
 
     private func getWindSpeedText() -> String {
-        if let windSpeed = viewModel.windSpeed {
+        guard let windSpeed = viewModel.windSpeed else {
+            return "N/A"
+        }
+
+        if windSpeed.isInt {
             return "\(windSpeed) \(viewModel.windSpeedUnits)"
         }
 
@@ -139,7 +131,7 @@ struct HourlyForecastView_Previews: PreviewProvider {
                 temperatureUnits: "C",
                 windSpeedUnits: "km/h",
                 windSpeed: "32",
-                pop: 54
+                pop: "Nil"
             )
         )
     }

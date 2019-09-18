@@ -21,5 +21,5 @@ struct HourlyForecastViewModel {
     let windSpeedUnits: String
 
     var windSpeed: String?
-    var pop: Int?
+    var pop: String
 }

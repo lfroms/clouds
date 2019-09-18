@@ -697,7 +697,7 @@ public final class WeatherQuery: GraphQLQuery {
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("direction", type: .scalar(String.self)),
-            GraphQLField("speed", type: .nonNull(.scalar(String.self))),
+            GraphQLField("speed", type: .scalar(String.self)),
             GraphQLField("gust", type: .scalar(Int.self)),
           ]
 
@@ -707,7 +707,7 @@ public final class WeatherQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(direction: String? = nil, speed: String, gust: Int? = nil) {
+          public init(direction: String? = nil, speed: String? = nil, gust: Int? = nil) {
             self.init(unsafeResultMap: ["__typename": "Wind", "direction": direction, "speed": speed, "gust": gust])
           }
 
@@ -729,9 +729,9 @@ public final class WeatherQuery: GraphQLQuery {
             }
           }
 
-          public var speed: String {
+          public var speed: String? {
             get {
-              return resultMap["speed"]! as! String
+              return resultMap["speed"] as? String
             }
             set {
               resultMap.updateValue(newValue, forKey: "speed")
@@ -1192,7 +1192,7 @@ public final class WeatherQuery: GraphQLQuery {
             public static let selections: [GraphQLSelection] = [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
               GraphQLField("direction", type: .scalar(String.self)),
-              GraphQLField("speed", type: .nonNull(.scalar(String.self))),
+              GraphQLField("speed", type: .scalar(String.self)),
               GraphQLField("gust", type: .scalar(Int.self)),
             ]
 
@@ -1202,7 +1202,7 @@ public final class WeatherQuery: GraphQLQuery {
               self.resultMap = unsafeResultMap
             }
 
-            public init(direction: String? = nil, speed: String, gust: Int? = nil) {
+            public init(direction: String? = nil, speed: String? = nil, gust: Int? = nil) {
               self.init(unsafeResultMap: ["__typename": "Wind", "direction": direction, "speed": speed, "gust": gust])
             }
 
@@ -1224,9 +1224,9 @@ public final class WeatherQuery: GraphQLQuery {
               }
             }
 
-            public var speed: String {
+            public var speed: String? {
               get {
-                return resultMap["speed"]! as! String
+                return resultMap["speed"] as? String
               }
               set {
                 resultMap.updateValue(newValue, forKey: "speed")
@@ -1299,7 +1299,7 @@ public final class WeatherQuery: GraphQLQuery {
             GraphQLField("time", type: .nonNull(.scalar(Int.self))),
             GraphQLField("summary", type: .nonNull(.scalar(String.self))),
             GraphQLField("iconCode", type: .nonNull(.scalar(Int.self))),
-            GraphQLField("precipProbability", type: .scalar(Int.self)),
+            GraphQLField("precipProbability", type: .nonNull(.scalar(String.self))),
             GraphQLField("temperature", type: .nonNull(.scalar(Double.self))),
             GraphQLField("humidex", type: .scalar(Double.self)),
             GraphQLField("windChill", type: .scalar(Double.self)),
@@ -1312,7 +1312,7 @@ public final class WeatherQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(time: Int, summary: String, iconCode: Int, precipProbability: Int? = nil, temperature: Double, humidex: Double? = nil, windChill: Double? = nil, wind: Wind? = nil) {
+          public init(time: Int, summary: String, iconCode: Int, precipProbability: String, temperature: Double, humidex: Double? = nil, windChill: Double? = nil, wind: Wind? = nil) {
             self.init(unsafeResultMap: ["__typename": "Hour", "time": time, "summary": summary, "iconCode": iconCode, "precipProbability": precipProbability, "temperature": temperature, "humidex": humidex, "windChill": windChill, "wind": wind.flatMap { (value: Wind) -> ResultMap in value.resultMap }])
           }
 
@@ -1352,9 +1352,9 @@ public final class WeatherQuery: GraphQLQuery {
             }
           }
 
-          public var precipProbability: Int? {
+          public var precipProbability: String {
             get {
-              return resultMap["precipProbability"] as? Int
+              return resultMap["precipProbability"]! as! String
             }
             set {
               resultMap.updateValue(newValue, forKey: "precipProbability")
@@ -1403,7 +1403,7 @@ public final class WeatherQuery: GraphQLQuery {
             public static let selections: [GraphQLSelection] = [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
               GraphQLField("direction", type: .scalar(String.self)),
-              GraphQLField("speed", type: .nonNull(.scalar(String.self))),
+              GraphQLField("speed", type: .scalar(String.self)),
               GraphQLField("gust", type: .scalar(Int.self)),
             ]
 
@@ -1413,7 +1413,7 @@ public final class WeatherQuery: GraphQLQuery {
               self.resultMap = unsafeResultMap
             }
 
-            public init(direction: String? = nil, speed: String, gust: Int? = nil) {
+            public init(direction: String? = nil, speed: String? = nil, gust: Int? = nil) {
               self.init(unsafeResultMap: ["__typename": "Wind", "direction": direction, "speed": speed, "gust": gust])
             }
 
@@ -1435,9 +1435,9 @@ public final class WeatherQuery: GraphQLQuery {
               }
             }
 
-            public var speed: String {
+            public var speed: String? {
               get {
-                return resultMap["speed"]! as! String
+                return resultMap["speed"] as? String
               }
               set {
                 resultMap.updateValue(newValue, forKey: "speed")
