@@ -15,7 +15,7 @@ struct MetadataView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             TimestampView(date: timestamp)
-            StationView(stationName: stationName)
+            StationView(stationName: stationName, action: {})
         }
     }
 }
