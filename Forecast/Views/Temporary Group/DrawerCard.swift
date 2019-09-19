@@ -39,7 +39,7 @@ struct DrawerCard<Content: View>: View {
 
     private func createBlurView(_ geometry: GeometryProxy) -> some View {
         let percentage = self.animationProgress(geometry)
-        let targetSaturation: CGFloat = 2.5
+        let targetSaturation: CGFloat = 3
 
         let saturation = (targetSaturation * percentage).clamped(to: 1...targetSaturation)
         let shadowOpacity = (3 * percentage).clamped(to: 0...1)
