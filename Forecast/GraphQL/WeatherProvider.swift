@@ -12,10 +12,19 @@ import Foundation
 import SwiftUI
 
 class WeatherProvider: ObservableObject {
-    @Published private(set) var weather: WeatherQuery.Data.Weather? = nil
-    @Published private(set) var error: Error? = nil
+    @Published private(set) var weather: WeatherQuery.Data.Weather?
+    @Published private(set) var error: Error?
     
     init() {
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.willEnterForegroundNotification,
+            object: nil,
+            queue: nil,
+            using: fetchFromNotification
+        )
+    }
+    
+    private func fetchFromNotification(_ notification: Notification) {
         fetchData()
     }
     
