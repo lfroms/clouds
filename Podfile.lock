@@ -1,11 +1,11 @@
 PODS:
-  - Apollo (0.13.0):
-    - Apollo/Core (= 0.13.0)
-  - Apollo/Core (0.13.0)
+  - Apollo (0.15.3):
+    - Apollo/Core (= 0.15.3)
+  - Apollo/Core (0.15.3)
   - SwiftDate (6.1.0)
 
 DEPENDENCIES:
-  - Apollo (~> 0.13.0)
+  - Apollo (~> 0.15.3)
   - SwiftDate (~> 6.1.0)
 
 SPEC REPOS:
@@ -14,9 +14,9 @@ SPEC REPOS:
     - SwiftDate
 
 SPEC CHECKSUMS:
-  Apollo: 603a59c12046c50f3188f4e5dfdae080d20ded55
+  Apollo: bec38cb63711f7c3f3c7c2faae3be9139d2a8a57
   SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
 
-PODFILE CHECKSUM: 585b2ecb41f5834f818f060fdb6b7c35f183cc94
+PODFILE CHECKSUM: 74bc6e7e2c1370adefe4b228948c612a73e8c9d1
 
 COCOAPODS: 1.6.1

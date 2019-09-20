@@ -3,7 +3,7 @@
 import Apollo
 
 /// A two or three character province code.
-public enum Province: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+public enum Province: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
   public typealias RawValue = String
   case ab
   case bc
@@ -82,9 +82,28 @@ public enum Province: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodabl
       default: return false
     }
   }
+
+  public static var allCases: [Province] {
+    return [
+      .ab,
+      .bc,
+      .hef,
+      .mb,
+      .nb,
+      .nl,
+      .ns,
+      .nt,
+      .nu,
+      .on,
+      .pe,
+      .qc,
+      .sk,
+      .yt,
+    ]
+  }
 }
 
-public enum Units: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+public enum Units: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
   public typealias RawValue = String
   case imperial
   case metric
@@ -115,9 +134,16 @@ public enum Units: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, 
       default: return false
     }
   }
+
+  public static var allCases: [Units] {
+    return [
+      .imperial,
+      .metric,
+    ]
+  }
 }
 
-public enum Language: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+public enum Language: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
   public typealias RawValue = String
   case e
   case f
@@ -148,9 +174,16 @@ public enum Language: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodabl
       default: return false
     }
   }
+
+  public static var allCases: [Language] {
+    return [
+      .e,
+      .f,
+    ]
+  }
 }
 
-public enum WarningType: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+public enum WarningType: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
   public typealias RawValue = String
   case advisory
   case warning
@@ -193,9 +226,19 @@ public enum WarningType: RawRepresentable, Equatable, Hashable, Apollo.JSONDecod
       default: return false
     }
   }
+
+  public static var allCases: [WarningType] {
+    return [
+      .advisory,
+      .warning,
+      .watch,
+      .ended,
+      .statement,
+    ]
+  }
 }
 
-public enum WarningPriority: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+public enum WarningPriority: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
   public typealias RawValue = String
   case urgent
   case high
@@ -234,11 +277,138 @@ public enum WarningPriority: RawRepresentable, Equatable, Hashable, Apollo.JSOND
       default: return false
     }
   }
+
+  public static var allCases: [WarningPriority] {
+    return [
+      .urgent,
+      .high,
+      .medium,
+      .low,
+    ]
+  }
 }
 
 public final class WeatherQuery: GraphQLQuery {
+  /// query Weather($province: Province!, $siteCode: Int!, $units: Units!, $language: Language!) {
+  ///   weather(province: $province, siteCode: $siteCode, units: $units, language: $language) {
+  ///     __typename
+  ///     location {
+  ///       __typename
+  ///       weatherFor
+  ///       country
+  ///       province
+  ///       region
+  ///     }
+  ///     currentConditions {
+  ///       __typename
+  ///       time
+  ///       station {
+  ///         __typename
+  ///         name
+  ///         code
+  ///         latitude
+  ///         longitude
+  ///       }
+  ///       temperature
+  ///       humidity
+  ///       pressure
+  ///       windChill
+  ///       humidex
+  ///       wind {
+  ///         __typename
+  ///         direction
+  ///         speed
+  ///         gust
+  ///       }
+  ///       visibility
+  ///       dewPoint
+  ///       iconCode
+  ///       summary
+  ///     }
+  ///     todaySummary {
+  ///       __typename
+  ///       high
+  ///       low
+  ///     }
+  ///     units {
+  ///       __typename
+  ///       temperature
+  ///       pressure
+  ///       distance
+  ///       speed
+  ///     }
+  ///     warnings {
+  ///       __typename
+  ///       url
+  ///       events {
+  ///         __typename
+  ///         time
+  ///         summary
+  ///         type
+  ///         priority
+  ///       }
+  ///     }
+  ///     normals {
+  ///       __typename
+  ///       high
+  ///       low
+  ///     }
+  ///     dailyForecast {
+  ///       __typename
+  ///       time
+  ///       days {
+  ///         __typename
+  ///         when
+  ///         summary
+  ///         shortSummary
+  ///         iconCode
+  ///         precipProbability
+  ///         temperature
+  ///         humidex
+  ///         windChill
+  ///         winds {
+  ///           __typename
+  ///           direction
+  ///           speed
+  ///           gust
+  ///         }
+  ///       }
+  ///     }
+  ///     hourlyForecast {
+  ///       __typename
+  ///       time
+  ///       hours {
+  ///         __typename
+  ///         time
+  ///         summary
+  ///         iconCode
+  ///         precipProbability
+  ///         temperature
+  ///         humidex
+  ///         windChill
+  ///         wind {
+  ///           __typename
+  ///           direction
+  ///           speed
+  ///           gust
+  ///         }
+  ///       }
+  ///     }
+  ///     sun {
+  ///       __typename
+  ///       riseTime
+  ///       setTime
+  ///     }
+  ///     yesterday {
+  ///       __typename
+  ///       high
+  ///       low
+  ///       precip
+  ///     }
+  ///   }
+  /// }
   public let operationDefinition =
-    "query Weather($province: Province!, $siteCode: Int!, $units: Units!, $language: Language!) {\n  weather(province: $province, siteCode: $siteCode, units: $units, language: $language) {\n    __typename\n    location {\n      __typename\n      weatherFor\n      country\n      province\n      region\n    }\n    currentConditions {\n      __typename\n      time\n      station {\n        __typename\n        name\n        code\n        latitude\n        longitude\n      }\n      temperature\n      humidity\n      pressure\n      windChill\n      humidex\n      wind {\n        __typename\n        direction\n        speed\n        gust\n      }\n      visibility\n      dewPoint\n      iconCode\n      summary\n    }\n    todaySummary {\n      __typename\n      high\n      low\n    }\n    units {\n      __typename\n      temperature\n      pressure\n      distance\n      speed\n    }\n    warnings {\n      __typename\n      url\n      events {\n        __typename\n        time\n        summary\n        type\n        priority\n      }\n    }\n    normals {\n      __typename\n      high\n      low\n    }\n    dailyForecast {\n      __typename\n      time\n      days {\n        __typename\n        when\n        summary\n        shortSummary\n        iconCode\n        precipProbability\n        temperature\n        humidex\n        windChill\n        winds {\n          __typename\n          direction\n          speed\n          gust\n        }\n      }\n    }\n    hourlyForecast {\n      __typename\n      time\n      hours {\n        __typename\n        time\n        summary\n        iconCode\n        precipProbability\n        temperature\n        humidex\n        windChill\n        wind {\n          __typename\n          direction\n          speed\n          gust\n        }\n      }\n    }\n    sun {\n      __typename\n      riseTime\n      setTime\n    }\n    yesterday {\n      __typename\n      high\n      low\n      precip\n    }\n  }\n}"
+    "query Weather($province: Province!, $siteCode: Int!, $units: Units!, $language: Language!) { weather(province: $province, siteCode: $siteCode, units: $units, language: $language) { __typename location { __typename weatherFor country province region } currentConditions { __typename time station { __typename name code latitude longitude } temperature humidity pressure windChill humidex wind { __typename direction speed gust } visibility dewPoint iconCode summary } todaySummary { __typename high low } units { __typename temperature pressure distance speed } warnings { __typename url events { __typename time summary type priority } } normals { __typename high low } dailyForecast { __typename time days { __typename when summary shortSummary iconCode precipProbability temperature humidex windChill winds { __typename direction speed gust } } } hourlyForecast { __typename time hours { __typename time summary iconCode precipProbability temperature humidex windChill wind { __typename direction speed gust } } } sun { __typename riseTime setTime } yesterday { __typename high low precip } } }"
 
   public let operationName = "Weather"
 
