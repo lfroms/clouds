@@ -76,6 +76,7 @@
 		80D0D86722D6B56800B8C711 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D0D86522D6B56700B8C711 /* UserPreferences.swift */; };
 		80D0D86822D6B56800B8C711 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D0D86622D6B56800B8C711 /* Temperature.swift */; };
 		80D1896D22D03A2F00E56DB1 /* HighLowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D1896C22D03A2F00E56DB1 /* HighLowView.swift */; };
+		80E32BAE233454DD0087DBB3 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E32BAD233454DD0087DBB3 /* ActivityIndicator.swift */; };
 		DE83DE1A905B433212F3881C /* Pods_Forecast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CEF039C10F06C9770F491F4 /* Pods_Forecast.framework */; };
 /* End PBXBuildFile section */
 
@@ -153,6 +154,7 @@
 		80D0D86522D6B56700B8C711 /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		80D0D86622D6B56800B8C711 /* Temperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		80D1896C22D03A2F00E56DB1 /* HighLowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLowView.swift; sourceTree = "<group>"; };
+		80E32BAD233454DD0087DBB3 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		D0E045FDCF32DE6FCF323EC7 /* Pods-Forecast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Forecast.debug.xcconfig"; path = "Target Support Files/Pods-Forecast/Pods-Forecast.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -464,6 +466,7 @@
 				801BDBCF232D660C007FE4AB /* DrawerHandle.swift */,
 				801BDBD1232D6826007FE4AB /* DrawerCard.swift */,
 				80504F772332DB4700DB4FAD /* HourlyForecastDetail.swift */,
+				80E32BAD233454DD0087DBB3 /* ActivityIndicator.swift */,
 			);
 			path = "Temporary Group";
 			sourceTree = "<group>";
@@ -706,6 +709,7 @@
 				806CC54E22F90B5100D0D2F6 /* WarningPriority+IconName.swift in Sources */,
 				809C147422F752DA00F6A771 /* WarningsHeader.swift in Sources */,
 				80AD06E322D6655800220FEE /* PopLabel.swift in Sources */,
+				80E32BAE233454DD0087DBB3 /* ActivityIndicator.swift in Sources */,
 				80B8DB94232C7BBF00BAD200 /* BackgroundColor.swift in Sources */,
 				8062DE7C22D586FA00AAD6FB /* LabeledSectionHeader.swift in Sources */,
 				8050327F22D25C7500D376C3 /* HighLowStackView.swift in Sources */,

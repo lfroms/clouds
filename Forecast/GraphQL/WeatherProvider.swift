@@ -14,6 +14,7 @@ import SwiftUI
 class WeatherProvider: ObservableObject {
     @Published private(set) var weather: WeatherQuery.Data.Weather?
     @Published private(set) var error: Error?
+    @Published private(set) var loading: Bool = false
     
     init() {
         NotificationCenter.default.addObserver(
@@ -31,7 +32,11 @@ class WeatherProvider: ObservableObject {
     private func fetchData() {
         let query = WeatherQuery(province: .on, siteCode: 430, units: .metric, language: .e)
         
+        loading = true
+        
         apollo.fetch(query: query) { result in
+            self.loading = false
+            
             guard let data = try? result.get().data else {
                 return
             }
