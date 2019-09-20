@@ -34,7 +34,7 @@ class WeatherProvider: ObservableObject {
         
         loading = true
         
-        apollo.fetch(query: query) { result in
+        apollo.fetch(query: query, cachePolicy: .returnCacheDataAndFetch) { result in
             self.loading = false
             
             guard let data = try? result.get().data else {
