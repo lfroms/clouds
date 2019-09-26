@@ -47,10 +47,12 @@ struct ContentView: View {
             }
             .edgesIgnoringSafeArea(.vertical)
 
-            MenuButton(action: handleMenuButtonPress)
-                .position(x: 50, y: 36)
+            VStack(alignment: .leading, spacing: 0) {
+                renderWarningBanner()
 
-            renderWarningBanner()
+                MenuButton(action: handleMenuButtonPress)
+                    .position(x: 50, y: 36)
+            }
         }
         .colorScheme(.dark)
     }

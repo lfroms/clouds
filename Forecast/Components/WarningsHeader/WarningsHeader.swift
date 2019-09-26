@@ -29,21 +29,12 @@ struct WarningsHeader: View {
                 )
             }
         }
-        .padding(.top, getTopSafeMargin())
-        .padding([.leading, .trailing, .bottom], 18)
+        .padding(.horizontal, 18)
         .sheet(isPresented: $showWarningDetails, content: renderSheet)
     }
 
     private func getDate(timeStamp: Int) -> DateInRegion {
         return Date(seconds: Double(timeStamp), region: .UTC).convertTo(region: .current)
-    }
-
-    private func getTopSafeMargin() -> CGFloat {
-        guard let window = UIApplication.shared.windows.first else {
-            return 0
-        }
-
-        return window.safeAreaInsets.top
     }
 
     private func renderSheet() -> some View {
