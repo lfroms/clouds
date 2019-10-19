@@ -1,6 +1,7 @@
 //  This file was automatically generated and should not be edited.
 
 import Apollo
+import Foundation
 
 /// A two or three character province code.
 public enum Province: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
@@ -289,126 +290,128 @@ public enum WarningPriority: RawRepresentable, Equatable, Hashable, CaseIterable
 }
 
 public final class WeatherQuery: GraphQLQuery {
-  /// query Weather($province: Province!, $siteCode: Int!, $units: Units!, $language: Language!) {
-  ///   weather(province: $province, siteCode: $siteCode, units: $units, language: $language) {
-  ///     __typename
-  ///     location {
-  ///       __typename
-  ///       weatherFor
-  ///       country
-  ///       province
-  ///       region
-  ///     }
-  ///     currentConditions {
-  ///       __typename
-  ///       time
-  ///       station {
-  ///         __typename
-  ///         name
-  ///         code
-  ///         latitude
-  ///         longitude
-  ///       }
-  ///       temperature
-  ///       humidity
-  ///       pressure
-  ///       windChill
-  ///       humidex
-  ///       wind {
-  ///         __typename
-  ///         direction
-  ///         speed
-  ///         gust
-  ///       }
-  ///       visibility
-  ///       dewPoint
-  ///       iconCode
-  ///       summary
-  ///     }
-  ///     todaySummary {
-  ///       __typename
-  ///       high
-  ///       low
-  ///     }
-  ///     units {
-  ///       __typename
-  ///       temperature
-  ///       pressure
-  ///       distance
-  ///       speed
-  ///     }
-  ///     warnings {
-  ///       __typename
-  ///       url
-  ///       events {
-  ///         __typename
-  ///         time
-  ///         summary
-  ///         type
-  ///         priority
-  ///       }
-  ///     }
-  ///     normals {
-  ///       __typename
-  ///       high
-  ///       low
-  ///     }
-  ///     dailyForecast {
-  ///       __typename
-  ///       time
-  ///       days {
-  ///         __typename
-  ///         when
-  ///         summary
-  ///         shortSummary
-  ///         iconCode
-  ///         precipProbability
-  ///         temperature
-  ///         humidex
-  ///         windChill
-  ///         winds {
-  ///           __typename
-  ///           direction
-  ///           speed
-  ///           gust
-  ///         }
-  ///       }
-  ///     }
-  ///     hourlyForecast {
-  ///       __typename
-  ///       time
-  ///       hours {
-  ///         __typename
-  ///         time
-  ///         summary
-  ///         iconCode
-  ///         precipProbability
-  ///         temperature
-  ///         humidex
-  ///         windChill
-  ///         wind {
-  ///           __typename
-  ///           direction
-  ///           speed
-  ///           gust
-  ///         }
-  ///       }
-  ///     }
-  ///     sun {
-  ///       __typename
-  ///       riseTime
-  ///       setTime
-  ///     }
-  ///     yesterday {
-  ///       __typename
-  ///       high
-  ///       low
-  ///       precip
-  ///     }
-  ///   }
-  /// }
+  /// The raw GraphQL definition of this operation.
   public let operationDefinition =
-    "query Weather($province: Province!, $siteCode: Int!, $units: Units!, $language: Language!) { weather(province: $province, siteCode: $siteCode, units: $units, language: $language) { __typename location { __typename weatherFor country province region } currentConditions { __typename time station { __typename name code latitude longitude } temperature humidity pressure windChill humidex wind { __typename direction speed gust } visibility dewPoint iconCode summary } todaySummary { __typename high low } units { __typename temperature pressure distance speed } warnings { __typename url events { __typename time summary type priority } } normals { __typename high low } dailyForecast { __typename time days { __typename when summary shortSummary iconCode precipProbability temperature humidex windChill winds { __typename direction speed gust } } } hourlyForecast { __typename time hours { __typename time summary iconCode precipProbability temperature humidex windChill wind { __typename direction speed gust } } } sun { __typename riseTime setTime } yesterday { __typename high low precip } } }"
+    """
+    query Weather($province: Province!, $siteCode: Int!, $units: Units!, $language: Language!) {
+      weather(province: $province, siteCode: $siteCode, units: $units, language: $language) {
+        __typename
+        location {
+          __typename
+          weatherFor
+          country
+          province
+          region
+        }
+        currentConditions {
+          __typename
+          time
+          station {
+            __typename
+            name
+            code
+            latitude
+            longitude
+          }
+          temperature
+          humidity
+          pressure
+          windChill
+          humidex
+          wind {
+            __typename
+            direction
+            speed
+            gust
+          }
+          visibility
+          dewPoint
+          iconCode
+          summary
+        }
+        todaySummary {
+          __typename
+          high
+          low
+        }
+        units {
+          __typename
+          temperature
+          pressure
+          distance
+          speed
+        }
+        warnings {
+          __typename
+          url
+          events {
+            __typename
+            time
+            summary
+            type
+            priority
+          }
+        }
+        normals {
+          __typename
+          high
+          low
+        }
+        dailyForecast {
+          __typename
+          time
+          days {
+            __typename
+            when
+            summary
+            shortSummary
+            iconCode
+            precipProbability
+            temperature
+            humidex
+            windChill
+            winds {
+              __typename
+              direction
+              speed
+              gust
+            }
+          }
+        }
+        hourlyForecast {
+          __typename
+          time
+          hours {
+            __typename
+            time
+            summary
+            iconCode
+            precipProbability
+            temperature
+            humidex
+            windChill
+            wind {
+              __typename
+              direction
+              speed
+              gust
+            }
+          }
+        }
+        sun {
+          __typename
+          riseTime
+          setTime
+        }
+        yesterday {
+          __typename
+          high
+          low
+          precip
+        }
+      }
+    }
+    """
 
   public let operationName = "Weather"
 
