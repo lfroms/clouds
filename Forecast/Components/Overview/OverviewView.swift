@@ -25,7 +25,6 @@ struct OverviewView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     TemperatureView(value: temperature)
 
-                    // FIXME: Text should wrap, not truncate.
                     ObservationView(observation: observation)
                         .lineLimit(2)
                 }

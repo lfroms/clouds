@@ -33,14 +33,7 @@ struct ContentView: View {
                         VStack(spacing: 0) {
                             HourlyForecastSection(viewModel: .init(weather: self.provider.weather))
                                 .frame(height: self.firstSectionHeight, alignment: .top)
-
-                            CurrentData(viewModel: .init(weather: self.provider.weather))
                         }
-
-                        DailyForecastSection(viewModel: .init(weather: self.provider.weather))
-                        SunriseSunsetSection(viewModel: .init(weather: self.provider.weather))
-                        YesterdayConditionsSection(viewModel: .init(weather: self.provider.weather))
-                        RegionalNormalsSection(viewModel: .init(weather: self.provider.weather))
                     }
                 }
                 .padding(.top, DrawerCardConstants.initialDistanceFromTop)
@@ -49,9 +42,6 @@ struct ContentView: View {
 
             VStack(alignment: .leading, spacing: 0) {
                 renderWarningBanner()
-
-                MenuButton(action: handleMenuButtonPress)
-                    .position(x: 50, y: 36)
             }
         }
         .colorScheme(.dark)
