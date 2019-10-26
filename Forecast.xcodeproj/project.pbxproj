@@ -14,9 +14,6 @@
 		8020F9532363D2390029FEB6 /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020F9522363D2390029FEB6 /* MasterView.swift */; };
 		803028D522CEE42C0053F639 /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028D422CEE42C0053F639 /* TemperatureView.swift */; };
 		803028D822CEE56D0053F639 /* ObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028D722CEE56D0053F639 /* ObservationView.swift */; };
-		803028DE22CEE5ED0053F639 /* TimestampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028DD22CEE5ED0053F639 /* TimestampView.swift */; };
-		803028E022CEE5F70053F639 /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028DF22CEE5F70053F639 /* StationView.swift */; };
-		803028E222CEE5FE0053F639 /* MetadataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028E122CEE5FE0053F639 /* MetadataView.swift */; };
 		803028E522CEE7970053F639 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028E422CEE7970053F639 /* OverviewView.swift */; };
 		8039627F22D6CB88003FEAB3 /* HourlyForecastSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8039627E22D6CB88003FEAB3 /* HourlyForecastSectionViewModel.swift */; };
 		8039628322D6CC4B003FEAB3 /* HourlyForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8039628222D6CC4B003FEAB3 /* HourlyForecastViewModel.swift */; };
@@ -75,9 +72,6 @@
 		8020F9522363D2390029FEB6 /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
 		803028D422CEE42C0053F639 /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
 		803028D722CEE56D0053F639 /* ObservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationView.swift; sourceTree = "<group>"; };
-		803028DD22CEE5ED0053F639 /* TimestampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampView.swift; sourceTree = "<group>"; };
-		803028DF22CEE5F70053F639 /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
-		803028E122CEE5FE0053F639 /* MetadataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataView.swift; sourceTree = "<group>"; };
 		803028E422CEE7970053F639 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		8039627E22D6CB88003FEAB3 /* HourlyForecastSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastSectionViewModel.swift; sourceTree = "<group>"; };
 		8039628222D6CC4B003FEAB3 /* HourlyForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastViewModel.swift; sourceTree = "<group>"; };
@@ -144,6 +138,7 @@
 		8020F9502363D1A10029FEB6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				803028E322CEE78D0053F639 /* Overview */,
 				80C816212363D9CD00D33669 /* OmniBar */,
 				80C8161E2363D8AB00D33669 /* Backgrounds */,
 				8020F9512363D2010029FEB6 /* Master */,
@@ -168,26 +163,6 @@
 				80AD06E922D66B6C00220FEE /* ForecastWeatherIcon */,
 				805A1E6422D65ACA001B8CC3 /* HourlyForecast */,
 				805D7BE022D1287100A12C4D /* Blur */,
-				803028E322CEE78D0053F639 /* Overview */,
-				803028D922CEE5B80053F639 /* Metadata */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		803028D922CEE5B80053F639 /* Metadata */ = {
-			isa = PBXGroup;
-			children = (
-				803028DA22CEE5C20053F639 /* Components */,
-				803028E122CEE5FE0053F639 /* MetadataView.swift */,
-			);
-			path = Metadata;
-			sourceTree = "<group>";
-		};
-		803028DA22CEE5C20053F639 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				803028DD22CEE5ED0053F639 /* TimestampView.swift */,
-				803028DF22CEE5F70053F639 /* StationView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -538,7 +513,6 @@
 				8081AA3D22D05B2C0049DD59 /* HomeSection.swift in Sources */,
 				8062DE7922D5866900AAD6FB /* HourlyForecastSection.swift in Sources */,
 				80AD06EB22D66B7800220FEE /* ForecastWeatherIcon.swift in Sources */,
-				803028E222CEE5FE0053F639 /* MetadataView.swift in Sources */,
 				8099A20F23130CED00EE4F30 /* CustomSafariViewController.swift in Sources */,
 				80504F782332DB4700DB4FAD /* HourlyForecastDetail.swift in Sources */,
 				8085B7B4232DD0D500D4AEE4 /* Comparable+Clamped.swift in Sources */,
@@ -563,7 +537,6 @@
 				803028E522CEE7970053F639 /* OverviewView.swift in Sources */,
 				801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */,
 				80C8162F2363E6DF00D33669 /* OmniBarBackground.swift in Sources */,
-				803028E022CEE5F70053F639 /* StationView.swift in Sources */,
 				800194DD232EDC8100066D37 /* ShadowView.swift in Sources */,
 				805D7BE222D1287900A12C4D /* BlurView.swift in Sources */,
 				80D0D86722D6B56800B8C711 /* UserPreferences.swift in Sources */,
@@ -573,7 +546,6 @@
 				80AD06FB22D678B300220FEE /* BottomSafeAreaSpacer.swift in Sources */,
 				80C8162A2363E2D700D33669 /* OmniBarSettingsButton.swift in Sources */,
 				8039627F22D6CB88003FEAB3 /* HourlyForecastSectionViewModel.swift in Sources */,
-				803028DE22CEE5ED0053F639 /* TimestampView.swift in Sources */,
 				80D0D86822D6B56800B8C711 /* Temperature.swift in Sources */,
 				809C147E22F7D05F00F6A771 /* API.swift in Sources */,
 			);

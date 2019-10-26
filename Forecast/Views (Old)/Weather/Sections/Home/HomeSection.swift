@@ -13,14 +13,12 @@ struct HomeSection: View {
 
     var body: some View {
         OverviewView(
-            timestamp: viewModel.dateStamp,
-            stationName: viewModel.stationName,
             temperature: viewModel.currentTemperature,
             observation: viewModel.observation,
             highTemp: viewModel.forecastHigh,
             lowTemp: viewModel.forecastLow
         )
-        .padding(.horizontal, 36)
+            .padding(.horizontal, 36)
     }
 }
 

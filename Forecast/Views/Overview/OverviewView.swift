@@ -9,8 +9,6 @@
 import SwiftUI
 
 struct OverviewView: View {
-    let timestamp: Date
-    let stationName: String
     let temperature: String
     let observation: String
 
@@ -19,8 +17,6 @@ struct OverviewView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
-            MetadataView(timestamp: timestamp, stationName: stationName)
-
             HStack(alignment: .bottom) {
                 VStack(alignment: .leading, spacing: 4) {
                     TemperatureView(value: temperature)
@@ -43,8 +39,6 @@ struct OverviewView: View {
 struct OverviewView_Previews: PreviewProvider {
     static var previews: some View {
         OverviewView(
-            timestamp: Date(),
-            stationName: "Ottawa (Kanata – Orléans)",
             temperature: "17",
             observation: "Partly Cloudy"
         )

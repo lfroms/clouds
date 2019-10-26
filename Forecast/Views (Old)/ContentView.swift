@@ -17,7 +17,11 @@ struct ContentView: View {
                 .edgesIgnoringSafeArea(.all)
 
             MasterView(iconCode: 6) {
-                EmptyView()
+                VStack(spacing: 32) {
+                    HomeSection(viewModel: .init(weather: self.provider.weather))
+                    HourlyForecastSection(viewModel: .init(weather: self.provider.weather))
+                        .frame(height: 140, alignment: .top)
+                }
             }
             .edgesIgnoringSafeArea(.top)
 
