@@ -55,7 +55,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
-class RootViewController: UIHostingController<ContentView> {
+class RootViewController<Content>: UIHostingController<Content> where Content: View {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
