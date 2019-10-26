@@ -40,7 +40,9 @@ struct OverviewView_Previews: PreviewProvider {
     static var previews: some View {
         OverviewView(
             temperature: "17",
-            observation: "Partly Cloudy"
+            observation: "Partly Cloudy",
+            highTemp: 10,
+            lowTemp: 2
         )
     }
 }

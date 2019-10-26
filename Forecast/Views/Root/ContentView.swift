@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject private var provider: WeatherProvider = WeatherProvider()
+    @EnvironmentObject var weatherProvider: WeatherProvider
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -17,11 +17,7 @@ struct ContentView: View {
                 .edgesIgnoringSafeArea(.all)
 
             MasterView(iconCode: 6) {
-                VStack(spacing: 32) {
-                    HomeSection(viewModel: .init(weather: self.provider.weather))
-                    HourlyForecastSection(viewModel: .init(weather: self.provider.weather))
-                        .frame(height: 140, alignment: .top)
-                }
+                NowTab()
             }
             .edgesIgnoringSafeArea(.top)
 
@@ -35,7 +31,7 @@ struct ContentView: View {
     }
 
     private var iconCode: Int {
-        return provider.weather?.currentConditions?.iconCode ?? 06
+        return weatherProvider.weather?.currentConditions?.iconCode ?? 06
     }
 }
 
@@ -43,6 +39,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(WeatherProvider())
     }
 }
 #endif
