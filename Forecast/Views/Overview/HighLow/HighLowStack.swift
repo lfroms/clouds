@@ -1,5 +1,5 @@
 //
-//  HighLowStackView.swift
+//  HighLowStack.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-07-07.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct HighLowStackView: View {
+struct HighLowStack: View {
     let highTemp: Int?
     let lowTemp: Int?
 
@@ -26,9 +26,9 @@ struct HighLowStackView: View {
 }
 
 #if DEBUG
-struct HighLowStackView_Previews: PreviewProvider {
+struct HighLowStack_Previews: PreviewProvider {
     static var previews: some View {
-        HighLowStackView(highTemp: 12, lowTemp: 5)
+        HighLowStack(highTemp: 12, lowTemp: 5)
     }
 }
 #endif

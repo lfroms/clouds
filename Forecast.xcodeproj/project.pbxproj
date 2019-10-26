@@ -18,7 +18,7 @@
 		8039627F22D6CB88003FEAB3 /* HourlyForecastSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8039627E22D6CB88003FEAB3 /* HourlyForecastSectionViewModel.swift */; };
 		8039628322D6CC4B003FEAB3 /* HourlyForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8039628222D6CC4B003FEAB3 /* HourlyForecastViewModel.swift */; };
 		8039628522D6CD6F003FEAB3 /* ForecastIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8039628422D6CD6F003FEAB3 /* ForecastIcon.swift */; };
-		8050327F22D25C7500D376C3 /* HighLowStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050327E22D25C7500D376C3 /* HighLowStackView.swift */; };
+		8050327F22D25C7500D376C3 /* HighLowStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050327E22D25C7500D376C3 /* HighLowStack.swift */; };
 		80504F782332DB4700DB4FAD /* HourlyForecastDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80504F772332DB4700DB4FAD /* HourlyForecastDetail.swift */; };
 		80504F7A2332E76700DB4FAD /* String+IsInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80504F792332E76700DB4FAD /* String+IsInt.swift */; };
 		805A174622C53ADB00E1B4E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A174522C53ADB00E1B4E2 /* AppDelegate.swift */; };
@@ -76,7 +76,7 @@
 		8039627E22D6CB88003FEAB3 /* HourlyForecastSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastSectionViewModel.swift; sourceTree = "<group>"; };
 		8039628222D6CC4B003FEAB3 /* HourlyForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastViewModel.swift; sourceTree = "<group>"; };
 		8039628422D6CD6F003FEAB3 /* ForecastIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastIcon.swift; sourceTree = "<group>"; };
-		8050327E22D25C7500D376C3 /* HighLowStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLowStackView.swift; sourceTree = "<group>"; };
+		8050327E22D25C7500D376C3 /* HighLowStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLowStack.swift; sourceTree = "<group>"; };
 		80504F772332DB4700DB4FAD /* HourlyForecastDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastDetail.swift; sourceTree = "<group>"; };
 		80504F792332E76700DB4FAD /* String+IsInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+IsInt.swift"; sourceTree = "<group>"; };
 		805A174222C53ADB00E1B4E2 /* Forecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,8 +170,10 @@
 		803028E322CEE78D0053F639 /* Overview */ = {
 			isa = PBXGroup;
 			children = (
-				805D7BD122D1139100A12C4D /* Components */,
+				80A755F42364EB3800724213 /* HighLow */,
 				803028E422CEE7970053F639 /* OverviewView.swift */,
+				803028D722CEE56D0053F639 /* ObservationView.swift */,
+				803028D422CEE42C0053F639 /* TemperatureView.swift */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
@@ -229,17 +231,6 @@
 			path = HourlyForecast;
 			sourceTree = "<group>";
 		};
-		805D7BD122D1139100A12C4D /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				8050327E22D25C7500D376C3 /* HighLowStackView.swift */,
-				803028D422CEE42C0053F639 /* TemperatureView.swift */,
-				80D1896C22D03A2F00E56DB1 /* HighLowView.swift */,
-				803028D722CEE56D0053F639 /* ObservationView.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		805D7BD522D123DF00A12C4D /* Views (Old) */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +285,15 @@
 				809C147522F752E700F6A771 /* WarningItem.swift */,
 			);
 			path = WarningsHeader;
+			sourceTree = "<group>";
+		};
+		80A755F42364EB3800724213 /* HighLow */ = {
+			isa = PBXGroup;
+			children = (
+				8050327E22D25C7500D376C3 /* HighLowStack.swift */,
+				80D1896C22D03A2F00E56DB1 /* HighLowView.swift */,
+			);
+			path = HighLow;
 			sourceTree = "<group>";
 		};
 		80AD06E922D66B6C00220FEE /* ForecastWeatherIcon */ = {
@@ -522,7 +522,7 @@
 				80AD06E322D6655800220FEE /* PopLabel.swift in Sources */,
 				80E32BAE233454DD0087DBB3 /* ActivityIndicator.swift in Sources */,
 				80B8DB94232C7BBF00BAD200 /* BackgroundColor.swift in Sources */,
-				8050327F22D25C7500D376C3 /* HighLowStackView.swift in Sources */,
+				8050327F22D25C7500D376C3 /* HighLowStack.swift in Sources */,
 				805A1E6622D65ADB001B8CC3 /* HourlyForecastView.swift in Sources */,
 				800194DF232EDCCF00066D37 /* UIShadowView.swift in Sources */,
 				80B8DB92232C768000BAD200 /* WeatherIllustration.swift in Sources */,

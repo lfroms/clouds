@@ -28,7 +28,7 @@ struct OverviewView: View {
 
                 Spacer()
 
-                HighLowStackView(highTemp: highTemp, lowTemp: lowTemp)
+                HighLowStack(highTemp: highTemp, lowTemp: lowTemp)
                     .layoutPriority(1)
             }
         }
