@@ -11,6 +11,7 @@
 		800194DF232EDCCF00066D37 /* UIShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800194DE232EDCCF00066D37 /* UIShadowView.swift */; };
 		801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801BDBCF232D660C007FE4AB /* DrawerHandle.swift */; };
 		801BDBD2232D6826007FE4AB /* DrawerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801BDBD1232D6826007FE4AB /* DrawerCard.swift */; };
+		8020F9532363D2390029FEB6 /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020F9522363D2390029FEB6 /* MasterView.swift */; };
 		803028D522CEE42C0053F639 /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028D422CEE42C0053F639 /* TemperatureView.swift */; };
 		803028D822CEE56D0053F639 /* ObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028D722CEE56D0053F639 /* ObservationView.swift */; };
 		803028DE22CEE5ED0053F639 /* TimestampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028DD22CEE5ED0053F639 /* TimestampView.swift */; };
@@ -51,6 +52,11 @@
 		80AD070922D68E7B00220FEE /* WeatherProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD070822D68E7B00220FEE /* WeatherProvider.swift */; };
 		80B8DB92232C768000BAD200 /* WeatherIllustration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B8DB91232C768000BAD200 /* WeatherIllustration.swift */; };
 		80B8DB94232C7BBF00BAD200 /* BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B8DB93232C7BBF00BAD200 /* BackgroundColor.swift */; };
+		80C816202363D8C800D33669 /* BlackBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8161F2363D8C800D33669 /* BlackBackground.swift */; };
+		80C816232363D9DA00D33669 /* OmniBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816222363D9DA00D33669 /* OmniBar.swift */; };
+		80C816262363DCFE00D33669 /* OmniBarTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816252363DCFE00D33669 /* OmniBarTextField.swift */; };
+		80C816282363DEBB00D33669 /* OmniBarPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816272363DEBB00D33669 /* OmniBarPlaceholder.swift */; };
+		80C8162A2363E2D700D33669 /* OmniBarSettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816292363E2D700D33669 /* OmniBarSettingsButton.swift */; };
 		80D0CE81235B6D95002A3EFD /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 80D0CE80235B6D95002A3EFD /* SwiftDate */; };
 		80D0CE84235B6DA5002A3EFD /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 80D0CE83235B6DA5002A3EFD /* Apollo */; };
 		80D0D86322D6B2DD00B8C711 /* HomeSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D0D86222D6B2DD00B8C711 /* HomeSectionViewModel.swift */; };
@@ -65,6 +71,7 @@
 		800194DE232EDCCF00066D37 /* UIShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIShadowView.swift; sourceTree = "<group>"; };
 		801BDBCF232D660C007FE4AB /* DrawerHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerHandle.swift; sourceTree = "<group>"; };
 		801BDBD1232D6826007FE4AB /* DrawerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerCard.swift; sourceTree = "<group>"; };
+		8020F9522363D2390029FEB6 /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
 		803028D422CEE42C0053F639 /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
 		803028D722CEE56D0053F639 /* ObservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationView.swift; sourceTree = "<group>"; };
 		803028DD22CEE5ED0053F639 /* TimestampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampView.swift; sourceTree = "<group>"; };
@@ -107,6 +114,11 @@
 		80AD070822D68E7B00220FEE /* WeatherProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherProvider.swift; sourceTree = "<group>"; };
 		80B8DB91232C768000BAD200 /* WeatherIllustration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIllustration.swift; sourceTree = "<group>"; };
 		80B8DB93232C7BBF00BAD200 /* BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColor.swift; sourceTree = "<group>"; };
+		80C8161F2363D8C800D33669 /* BlackBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackBackground.swift; sourceTree = "<group>"; };
+		80C816222363D9DA00D33669 /* OmniBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBar.swift; sourceTree = "<group>"; };
+		80C816252363DCFE00D33669 /* OmniBarTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarTextField.swift; sourceTree = "<group>"; };
+		80C816272363DEBB00D33669 /* OmniBarPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarPlaceholder.swift; sourceTree = "<group>"; };
+		80C816292363E2D700D33669 /* OmniBarSettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarSettingsButton.swift; sourceTree = "<group>"; };
 		80D0D86222D6B2DD00B8C711 /* HomeSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionViewModel.swift; sourceTree = "<group>"; };
 		80D0D86522D6B56700B8C711 /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		80D0D86622D6B56800B8C711 /* Temperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
@@ -127,6 +139,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8020F9502363D1A10029FEB6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				80C816212363D9CD00D33669 /* OmniBar */,
+				80C8161E2363D8AB00D33669 /* Backgrounds */,
+				8020F9512363D2010029FEB6 /* Master */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8020F9512363D2010029FEB6 /* Master */ = {
+			isa = PBXGroup;
+			children = (
+				8020F9522363D2390029FEB6 /* MasterView.swift */,
+			);
+			path = Master;
+			sourceTree = "<group>";
+		};
 		803028D222CEE40D0053F639 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +218,7 @@
 		805A174422C53ADB00E1B4E2 /* Forecast */ = {
 			isa = PBXGroup;
 			children = (
+				8020F9502363D1A10029FEB6 /* Views */,
 				80D0D86422D6B55D00B8C711 /* Helpers */,
 				80AD06FE22D68C2000220FEE /* GraphQL */,
 				805D7BD522D123DF00A12C4D /* Views (Old) */,
@@ -327,13 +358,32 @@
 			isa = PBXGroup;
 			children = (
 				80B8DB91232C768000BAD200 /* WeatherIllustration.swift */,
-				80B8DB93232C7BBF00BAD200 /* BackgroundColor.swift */,
 				801BDBCF232D660C007FE4AB /* DrawerHandle.swift */,
 				801BDBD1232D6826007FE4AB /* DrawerCard.swift */,
 				80504F772332DB4700DB4FAD /* HourlyForecastDetail.swift */,
 				80E32BAD233454DD0087DBB3 /* ActivityIndicator.swift */,
 			);
 			path = "Temporary Group";
+			sourceTree = "<group>";
+		};
+		80C8161E2363D8AB00D33669 /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				80B8DB93232C7BBF00BAD200 /* BackgroundColor.swift */,
+				80C8161F2363D8C800D33669 /* BlackBackground.swift */,
+			);
+			path = Backgrounds;
+			sourceTree = "<group>";
+		};
+		80C816212363D9CD00D33669 /* OmniBar */ = {
+			isa = PBXGroup;
+			children = (
+				80C816222363D9DA00D33669 /* OmniBar.swift */,
+				80C816252363DCFE00D33669 /* OmniBarTextField.swift */,
+				80C816272363DEBB00D33669 /* OmniBarPlaceholder.swift */,
+				80C816292363E2D700D33669 /* OmniBarSettingsButton.swift */,
+			);
+			path = OmniBar;
 			sourceTree = "<group>";
 		};
 		80D0A37322F74DDA00E6AE39 /* Home */ = {
@@ -478,6 +528,7 @@
 				801BDBD2232D6826007FE4AB /* DrawerCard.swift in Sources */,
 				8039628522D6CD6F003FEAB3 /* ForecastIcon.swift in Sources */,
 				805A174622C53ADB00E1B4E2 /* AppDelegate.swift in Sources */,
+				8020F9532363D2390029FEB6 /* MasterView.swift in Sources */,
 				809C147622F752E700F6A771 /* WarningItem.swift in Sources */,
 				80D0D86322D6B2DD00B8C711 /* HomeSectionViewModel.swift in Sources */,
 				80D1896D22D03A2F00E56DB1 /* HighLowView.swift in Sources */,
@@ -490,6 +541,7 @@
 				8085B7B4232DD0D500D4AEE4 /* Comparable+Clamped.swift in Sources */,
 				806CC54E22F90B5100D0D2F6 /* WarningPriority+IconName.swift in Sources */,
 				809C147422F752DA00F6A771 /* WarningsHeader.swift in Sources */,
+				80C816202363D8C800D33669 /* BlackBackground.swift in Sources */,
 				80AD06E322D6655800220FEE /* PopLabel.swift in Sources */,
 				80E32BAE233454DD0087DBB3 /* ActivityIndicator.swift in Sources */,
 				80B8DB94232C7BBF00BAD200 /* BackgroundColor.swift in Sources */,
@@ -502,16 +554,20 @@
 				803028D522CEE42C0053F639 /* TemperatureView.swift in Sources */,
 				8099A20D23130B8500EE4F30 /* SafariView.swift in Sources */,
 				805A174822C53ADB00E1B4E2 /* SceneDelegate.swift in Sources */,
+				80C816262363DCFE00D33669 /* OmniBarTextField.swift in Sources */,
 				80504F7A2332E76700DB4FAD /* String+IsInt.swift in Sources */,
+				80C816232363D9DA00D33669 /* OmniBar.swift in Sources */,
 				803028E522CEE7970053F639 /* OverviewView.swift in Sources */,
 				801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */,
 				803028E022CEE5F70053F639 /* StationView.swift in Sources */,
 				800194DD232EDC8100066D37 /* ShadowView.swift in Sources */,
 				805D7BE222D1287900A12C4D /* BlurView.swift in Sources */,
 				80D0D86722D6B56800B8C711 /* UserPreferences.swift in Sources */,
+				80C816282363DEBB00D33669 /* OmniBarPlaceholder.swift in Sources */,
 				805A174A22C53ADB00E1B4E2 /* ContentView.swift in Sources */,
 				803028D822CEE56D0053F639 /* ObservationView.swift in Sources */,
 				80AD06FB22D678B300220FEE /* BottomSafeAreaSpacer.swift in Sources */,
+				80C8162A2363E2D700D33669 /* OmniBarSettingsButton.swift in Sources */,
 				8039627F22D6CB88003FEAB3 /* HourlyForecastSectionViewModel.swift in Sources */,
 				803028DE22CEE5ED0053F639 /* TimestampView.swift in Sources */,
 				80D0D86822D6B56800B8C711 /* Temperature.swift in Sources */,

@@ -12,8 +12,17 @@ struct ContentView: View {
     @ObservedObject private var provider: WeatherProvider = WeatherProvider()
 
     var body: some View {
-        ZStack(alignment: Alignment.topTrailing) {
-            EmptyView()
+        ZStack(alignment: .topTrailing) {
+            BlackBackground()
+                .edgesIgnoringSafeArea(.all)
+
+            MasterView(iconCode: 6) {
+                EmptyView()
+            }
+            .edgesIgnoringSafeArea(.top)
+
+            OmniBar(textFieldValue: "Ottawa (Kanata – Orléans)", primaryIcon: "location.fill")
+                .padding(20)
         }
         .colorScheme(.dark)
     }
