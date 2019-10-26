@@ -190,7 +190,7 @@
 			children = (
 				80D0D86422D6B55D00B8C711 /* Helpers */,
 				80AD06FE22D68C2000220FEE /* GraphQL */,
-				805D7BD522D123DF00A12C4D /* Views */,
+				805D7BD522D123DF00A12C4D /* Views (Old) */,
 				803028D222CEE40D0053F639 /* Components */,
 				805A174522C53ADB00E1B4E2 /* AppDelegate.swift */,
 				805A174722C53ADB00E1B4E2 /* SceneDelegate.swift */,
@@ -232,7 +232,7 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		805D7BD522D123DF00A12C4D /* Views */ = {
+		805D7BD522D123DF00A12C4D /* Views (Old) */ = {
 			isa = PBXGroup;
 			children = (
 				80B8DB90232C766900BAD200 /* Temporary Group */,
@@ -240,7 +240,7 @@
 				805D7BD622D123E600A12C4D /* Weather */,
 				805A174922C53ADB00E1B4E2 /* ContentView.swift */,
 			);
-			path = Views;
+			path = "Views (Old)";
 			sourceTree = "<group>";
 		};
 		805D7BD622D123E600A12C4D /* Weather */ = {
