@@ -57,6 +57,7 @@
 		80C816262363DCFE00D33669 /* OmniBarTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816252363DCFE00D33669 /* OmniBarTextField.swift */; };
 		80C816282363DEBB00D33669 /* OmniBarPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816272363DEBB00D33669 /* OmniBarPlaceholder.swift */; };
 		80C8162A2363E2D700D33669 /* OmniBarSettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816292363E2D700D33669 /* OmniBarSettingsButton.swift */; };
+		80C8162F2363E6DF00D33669 /* OmniBarBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8162E2363E6DE00D33669 /* OmniBarBackground.swift */; };
 		80D0CE81235B6D95002A3EFD /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 80D0CE80235B6D95002A3EFD /* SwiftDate */; };
 		80D0CE84235B6DA5002A3EFD /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 80D0CE83235B6DA5002A3EFD /* Apollo */; };
 		80D0D86322D6B2DD00B8C711 /* HomeSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D0D86222D6B2DD00B8C711 /* HomeSectionViewModel.swift */; };
@@ -119,6 +120,7 @@
 		80C816252363DCFE00D33669 /* OmniBarTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarTextField.swift; sourceTree = "<group>"; };
 		80C816272363DEBB00D33669 /* OmniBarPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarPlaceholder.swift; sourceTree = "<group>"; };
 		80C816292363E2D700D33669 /* OmniBarSettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarSettingsButton.swift; sourceTree = "<group>"; };
+		80C8162E2363E6DE00D33669 /* OmniBarBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OmniBarBackground.swift; sourceTree = "<group>"; };
 		80D0D86222D6B2DD00B8C711 /* HomeSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionViewModel.swift; sourceTree = "<group>"; };
 		80D0D86522D6B56700B8C711 /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		80D0D86622D6B56800B8C711 /* Temperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				80C816252363DCFE00D33669 /* OmniBarTextField.swift */,
 				80C816272363DEBB00D33669 /* OmniBarPlaceholder.swift */,
 				80C816292363E2D700D33669 /* OmniBarSettingsButton.swift */,
+				80C8162E2363E6DE00D33669 /* OmniBarBackground.swift */,
 			);
 			path = OmniBar;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				80C816232363D9DA00D33669 /* OmniBar.swift in Sources */,
 				803028E522CEE7970053F639 /* OverviewView.swift in Sources */,
 				801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */,
+				80C8162F2363E6DF00D33669 /* OmniBarBackground.swift in Sources */,
 				803028E022CEE5F70053F639 /* StationView.swift in Sources */,
 				800194DD232EDC8100066D37 /* ShadowView.swift in Sources */,
 				805D7BE222D1287900A12C4D /* BlurView.swift in Sources */,
