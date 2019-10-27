@@ -12,20 +12,28 @@ struct ContentView: View {
     @EnvironmentObject var weatherProvider: WeatherProvider
 
     var body: some View {
-        ZStack(alignment: .top) {
+        ZStack {
             BlackBackground()
                 .edgesIgnoringSafeArea(.all)
 
-            MasterView(iconCode: 6) {
-                NowTab()
+            VStack(alignment: .leading, spacing: 18) {
+                ZStack(alignment: .top) {
+                    MasterView(iconCode: 6) {
+                        NowTab()
+                    }
+                    .edgesIgnoringSafeArea(.top)
+
+                    OmniBarBackground()
+                        .edgesIgnoringSafeArea(.top)
+
+                    OmniBar(textFieldValue: "Ottawa (Kanata – Orléans)", primaryIcon: "location.fill")
+                        .padding(20)
+                }
+
+                NavigationBar(tabs: [])
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 8)
             }
-            .edgesIgnoringSafeArea(.top)
-
-            OmniBarBackground()
-                .edgesIgnoringSafeArea(.top)
-
-            OmniBar(textFieldValue: "Ottawa (Kanata – Orléans)", primaryIcon: "location.fill")
-                .padding(20)
         }
         .colorScheme(.dark)
     }
