@@ -18,8 +18,10 @@ struct ContentView: View {
 
             VStack(alignment: .leading, spacing: 18) {
                 ZStack(alignment: .top) {
-                    MasterView(iconCode: 6) {
-                        NowTab()
+                    SlidingPanel {
+                        MasterView(iconCode: 6) {
+                            NowTab()
+                        }
                     }
                     .edgesIgnoringSafeArea(.top)
 

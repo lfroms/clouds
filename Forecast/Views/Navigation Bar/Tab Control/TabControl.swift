@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TabControl: View {
-    let tabs: [TabDescriptor]
+    let tabs: [String]
 
     var body: some View {
         HStack(alignment: .center, spacing: 0) {

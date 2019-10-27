@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct NavigationBar: View {
-    let tabs: [TabDescriptor]
+    let tabs: [String]
 
     var body: some View {
         HStack(alignment: .center, spacing: 20) {
