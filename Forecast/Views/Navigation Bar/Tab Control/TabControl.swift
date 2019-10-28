@@ -23,7 +23,7 @@ struct TabControl: View {
                 .frame(width: tabWidths[activeTab], height: tabHeights[activeTab])
                 .offset(x: tabOffsets[activeTab])
                 .foregroundColor(Color.primary.opacity(0.15))
-                .animation(.easeInOut)
+                .animation(.spring(response: 0.3, dampingFraction: 0.7, blendDuration: 0))
 
             HStack(alignment: .firstTextBaseline, spacing: 0) {
                 ForEach(tabs, id: \.self) { tab in
