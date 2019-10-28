@@ -8,18 +8,6 @@
 
 import SwiftUI
 
-struct TextGeometry: View {
-    var body: some View {
-        GeometryReader { (geometry: GeometryProxy) in
-            Rectangle()
-                .foregroundColor(.clear)
-                .preference(key: TabWidthPreferenceKey.self, value: geometry.size.width)
-                .preference(key: TabHeightPreferenceKey.self, value: geometry.size.height)
-                .preference(key: TabOffsetPreferenceKey.self, value: geometry.frame(in: .global).origin.x - 20)
-        }
-    }
-}
-
 struct TabControl: View {
     @Binding var activeTab: Int
     let tabs: [String]
@@ -44,10 +32,10 @@ struct TabControl: View {
                         action: self.didPressTab(named: tab),
                         isActive: self.isActive(tab: tab)
                     )
-                    .padding(.vertical, 6)
+                        .padding(.vertical, 6)
                     .padding(.horizontal, 16)
                     .fixedSize()
-                    .background(TextGeometry())
+                    .background(TabGeometry(xOffset: 20))
                     .onPreferenceChange(TabWidthPreferenceKey.self, perform: {
                         self.tabWidths[self.indexOfTab(named: tab)] = $0
                     })
