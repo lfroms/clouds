@@ -10,6 +10,9 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var weatherProvider: WeatherProvider
+    @State private var activeTabIndex: Int = 0
+
+    private static let tabs: [String] = ["Now", "Week", "Radar"]
 
     var body: some View {
         ZStack {
@@ -32,8 +35,7 @@ struct ContentView: View {
                         .padding(20)
                 }
 
-                NavigationBar(tabs: [])
-                    .padding(.horizontal, 20)
+                NavigationBar(activeTabIndex: $activeTabIndex, tabs: Self.tabs)
                     .padding(.bottom, 8)
             }
         }

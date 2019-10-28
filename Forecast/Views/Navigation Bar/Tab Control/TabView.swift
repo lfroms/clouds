@@ -9,18 +9,27 @@
 import SwiftUI
 
 struct TabView: View {
+    let text: String
+    let action: () -> Void
+    var isActive: Bool
+
     var body: some View {
-        Text("Now")
-            .font(Font.callout.bold())
-            .padding(.vertical, 6)
-            .padding(.horizontal, 16)
-            .background(Color.primary.opacity(0.15))
-            .cornerRadius(.infinity)
+        Button(action: action) {
+            Text(text)
+                .font(Font.callout.bold())
+                .foregroundColor(.primary)
+                .opacity(opacity)
+                .animation(.easeInOut(duration: 0.2))
+        }
+    }
+
+    private var opacity: Double {
+        isActive ? 1 : 0.6
     }
 }
 
 struct TabView_Previews: PreviewProvider {
     static var previews: some View {
-        TabView()
+        TabView(text: "Tab", action: {}, isActive: false)
     }
 }
