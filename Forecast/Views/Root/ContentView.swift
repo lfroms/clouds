@@ -23,7 +23,7 @@ struct ContentView: View {
                 ZStack(alignment: .top) {
                     SlidingPanel {
                         MasterView(iconCode: 6) {
-                            NowTab()
+                            ActiveTab(index: self.$activeTabIndex)
                         }
                     }
                     .edgesIgnoringSafeArea(.top)

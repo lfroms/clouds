@@ -12,6 +12,7 @@
 		801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801BDBCF232D660C007FE4AB /* DrawerHandle.swift */; };
 		801BDBD2232D6826007FE4AB /* DrawerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801BDBD1232D6826007FE4AB /* DrawerCard.swift */; };
 		8020F9532363D2390029FEB6 /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020F9522363D2390029FEB6 /* MasterView.swift */; };
+		802C0D982368FE32009A22BA /* ActiveTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C0D972368FE32009A22BA /* ActiveTab.swift */; };
 		803028D522CEE42C0053F639 /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028D422CEE42C0053F639 /* TemperatureView.swift */; };
 		803028D822CEE56D0053F639 /* ObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028D722CEE56D0053F639 /* ObservationView.swift */; };
 		803028E522CEE7970053F639 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028E422CEE7970053F639 /* OverviewView.swift */; };
@@ -81,6 +82,7 @@
 		801BDBCF232D660C007FE4AB /* DrawerHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerHandle.swift; sourceTree = "<group>"; };
 		801BDBD1232D6826007FE4AB /* DrawerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerCard.swift; sourceTree = "<group>"; };
 		8020F9522363D2390029FEB6 /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
+		802C0D972368FE32009A22BA /* ActiveTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTab.swift; sourceTree = "<group>"; };
 		803028D422CEE42C0053F639 /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
 		803028D722CEE56D0053F639 /* ObservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationView.swift; sourceTree = "<group>"; };
 		803028E422CEE7970053F639 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				8066FDEC2364EE030067F362 /* NowTab.swift */,
+				802C0D972368FE32009A22BA /* ActiveTab.swift */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -636,6 +639,7 @@
 				800194DF232EDCCF00066D37 /* UIShadowView.swift in Sources */,
 				80B8DB92232C768000BAD200 /* WeatherIllustration.swift in Sources */,
 				8057DB4E2364F0C40087FBF7 /* AlertStack.swift in Sources */,
+				802C0D982368FE32009A22BA /* ActiveTab.swift in Sources */,
 				8039628322D6CC4B003FEAB3 /* HourlyForecastViewModel.swift in Sources */,
 				8099ED3723667E8D00B8E1CA /* TabOffsetPreferenceKey.swift in Sources */,
 				8057DB562364F12B0087FBF7 /* TabControl.swift in Sources */,
