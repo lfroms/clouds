@@ -10,7 +10,7 @@ import SwiftUI
 
 struct NowTab: View {
     @EnvironmentObject private var weatherProvider: WeatherProvider
-    
+
     var body: some View {
         VStack(spacing: 32) {
             HomeSection(viewModel: .init(weather: self.weatherProvider.weather))

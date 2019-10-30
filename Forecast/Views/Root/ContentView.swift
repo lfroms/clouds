@@ -8,11 +8,11 @@
 
 import SwiftUI
 
+private let tabs: [String] = ["Now", "Week", "Radar"]
+
 struct ContentView: View {
     @EnvironmentObject var weatherProvider: WeatherProvider
     @State private var activeTabIndex: Int = 0
-
-    private static let tabs: [String] = ["Now", "Week", "Radar"]
 
     var body: some View {
         ZStack {
@@ -22,20 +22,16 @@ struct ContentView: View {
             VStack(alignment: .leading, spacing: 18) {
                 ZStack(alignment: .top) {
                     SlidingPanel {
-                        MasterView(iconCode: 6) {
+                        MasterView(iconCode: 1) {
                             ActiveTab(index: self.$activeTabIndex)
                         }
                     }
                     .edgesIgnoringSafeArea(.top)
 
-                    OmniBarBackground()
-                        .edgesIgnoringSafeArea(.top)
-
-                    OmniBar(textFieldValue: "Ottawa (Kanata – Orléans)", primaryIcon: "location.fill")
-                        .padding(20)
+                    Header()
                 }
 
-                NavigationBar(activeTabIndex: $activeTabIndex, tabs: Self.tabs)
+                NavigationBar(activeTabIndex: $activeTabIndex, tabs: tabs)
                     .padding(.bottom, 8)
             }
         }
