@@ -43,6 +43,8 @@
 		8061292123690D06005EEB2A /* ForecastDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8061292023690D06005EEB2A /* ForecastDetailView.swift */; };
 		8061292323690F5F005EEB2A /* LabelledForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8061292223690F5F005EEB2A /* LabelledForecastView.swift */; };
 		806129262369122D005EEB2A /* PagedScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806129252369122D005EEB2A /* PagedScrollView.swift */; };
+		8061292823691365005EEB2A /* PagedScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8061292723691365005EEB2A /* PagedScrollViewController.swift */; };
+		8061292A236915D4005EEB2A /* WeekTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80612929236915D4005EEB2A /* WeekTab.swift */; };
 		8062DE7922D5866900AAD6FB /* HourlyForecastSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062DE7822D5866900AAD6FB /* HourlyForecastSection.swift */; };
 		8066FDED2364EE030067F362 /* NowTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8066FDEC2364EE030067F362 /* NowTab.swift */; };
 		806CC54B22F8F27100D0D2F6 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 806CC54A22F8F27000D0D2F6 /* schema.json */; };
@@ -121,6 +123,8 @@
 		8061292023690D06005EEB2A /* ForecastDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDetailView.swift; sourceTree = "<group>"; };
 		8061292223690F5F005EEB2A /* LabelledForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelledForecastView.swift; sourceTree = "<group>"; };
 		806129252369122D005EEB2A /* PagedScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedScrollView.swift; sourceTree = "<group>"; };
+		8061292723691365005EEB2A /* PagedScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedScrollViewController.swift; sourceTree = "<group>"; };
+		80612929236915D4005EEB2A /* WeekTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTab.swift; sourceTree = "<group>"; };
 		8062DE7822D5866900AAD6FB /* HourlyForecastSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastSection.swift; sourceTree = "<group>"; };
 		8066FDEC2364EE030067F362 /* NowTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowTab.swift; sourceTree = "<group>"; };
 		806CC54A22F8F27000D0D2F6 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
@@ -357,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				806129252369122D005EEB2A /* PagedScrollView.swift */,
+				8061292723691365005EEB2A /* PagedScrollViewController.swift */,
 			);
 			path = "Paged Scroll View";
 			sourceTree = "<group>";
@@ -390,6 +395,7 @@
 			children = (
 				8066FDEC2364EE030067F362 /* NowTab.swift */,
 				802C0D972368FE32009A22BA /* ActiveTab.swift */,
+				80612929236915D4005EEB2A /* WeekTab.swift */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -671,6 +677,7 @@
 				80504F782332DB4700DB4FAD /* HourlyForecastDetail.swift in Sources */,
 				8085B7B4232DD0D500D4AEE4 /* Comparable+Clamped.swift in Sources */,
 				806CC54E22F90B5100D0D2F6 /* WarningPriority+IconName.swift in Sources */,
+				8061292A236915D4005EEB2A /* WeekTab.swift in Sources */,
 				809C147422F752DA00F6A771 /* WarningsHeader.swift in Sources */,
 				8099ED3523667E8400B8E1CA /* TabHeightPreferenceKey.swift in Sources */,
 				80C816202363D8C800D33669 /* BlackBackground.swift in Sources */,
@@ -710,6 +717,7 @@
 				805A174A22C53ADB00E1B4E2 /* ContentView.swift in Sources */,
 				8057DB512364F0F20087FBF7 /* AlertIndicator.swift in Sources */,
 				803028D822CEE56D0053F639 /* ObservationView.swift in Sources */,
+				8061292823691365005EEB2A /* PagedScrollViewController.swift in Sources */,
 				8076F72623651CD000FB85D1 /* SlidingPanel.swift in Sources */,
 				80AD06FB22D678B300220FEE /* BottomSafeAreaSpacer.swift in Sources */,
 				80C8162A2363E2D700D33669 /* OmniBarSettingsButton.swift in Sources */,

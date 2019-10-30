@@ -8,14 +8,31 @@
 
 import SwiftUI
 
-struct PagedScrollView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+struct PagedScrollView<Content>: UIViewControllerRepresentable where Content: View {
+    typealias UIViewControllerType = PagedScrollViewController
 
-struct PagedScrollView_Previews: PreviewProvider {
-    static var previews: some View {
-        PagedScrollView()
+    var content: () -> Content
+
+    var pageWidth: CGFloat
+    var pageCount: Int
+
+    init(pageWidth: CGFloat, pageCount: Int, @ViewBuilder content: @escaping () -> Content) {
+        self.pageWidth = pageWidth
+        self.pageCount = pageCount
+
+        self.content = content
+    }
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<PagedScrollView<Content>>) -> PagedScrollViewController<Content> {
+        let pagedViewController = PagedScrollViewController<Content>(nibName: nil, bundle: nil)
+
+        pagedViewController.add(content: content)
+
+        return pagedViewController
+    }
+
+    func updateUIViewController(_ pagedViewController: PagedScrollViewController<Content>, context: UIViewControllerRepresentableContext<PagedScrollView<Content>>) {
+        pagedViewController.pageWidth = pageWidth
+        pagedViewController.pageCount = pageCount
     }
 }

@@ -14,7 +14,7 @@ struct ActiveTab: View {
     var body: some View {
         Group {
             if index == 1 {
-                Text("hi")
+                WeekTab()
             }
             else if index == 2 {
                 Text("3")
