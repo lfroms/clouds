@@ -17,6 +17,9 @@ struct ForecastView: View {
                 HStack(alignment: .firstTextBaseline, spacing: 5) {
                     Image(systemName: "cloud.sun.fill")
                     Text("25º")
+
+                    // Needed to push to full width
+                    Spacer(minLength: 0)
                 }
                 .font(Font.system(size: 22).bold())
 
