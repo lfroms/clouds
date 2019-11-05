@@ -11,6 +11,8 @@ import SwiftUI
 struct MasterView<Content: View>: View {
     var useAsContainer: Bool = false
 
+    @Binding var drawerHandleHidden: Bool
+
     let iconCode: Int
     let content: () -> Content
 
@@ -34,7 +36,10 @@ struct MasterView<Content: View>: View {
 
             VStack(alignment: .center, spacing: 0) {
                 content()
-                DrawerHandle(height: 20)
+
+                if !drawerHandleHidden {
+                    DrawerHandle(height: 20)
+                }
             }
         }
     }
@@ -42,7 +47,7 @@ struct MasterView<Content: View>: View {
 
 struct MasterView_Previews: PreviewProvider {
     static var previews: some View {
-        MasterView(iconCode: 6) {
+        MasterView(drawerHandleHidden: .constant(false), iconCode: 6) {
             Text("Test content")
         }
     }

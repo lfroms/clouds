@@ -19,6 +19,7 @@ struct WeekTab: View {
                 LabelledForecastView()
                 LabelledForecastView()
             }
+            .padding(.horizontal, 20)
         }
         .frame(height: 200)
     }

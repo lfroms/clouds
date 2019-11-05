@@ -10,9 +10,20 @@ import SwiftUI
 
 private let tabs: [String] = ["Now", "Week", "Radar"]
 
+class ContentViewModel: ObservableObject {
+    @Published var activeTabIndex: Int = 0 {
+        didSet {
+            slidingPanelLocked = activeTabIndex != 0
+        }
+    }
+
+    @Published var slidingPanelLocked = false
+}
+
 struct ContentView: View {
     @EnvironmentObject var weatherProvider: WeatherProvider
-    @State private var activeTabIndex: Int = 0
+
+    @ObservedObject var vm = ContentViewModel()
 
     var body: some View {
         ZStack {
@@ -21,9 +32,9 @@ struct ContentView: View {
 
             VStack(alignment: .leading, spacing: 18) {
                 ZStack(alignment: .top) {
-                    SlidingPanel {
-                        MasterView(iconCode: 1) {
-                            ActiveTab(index: self.$activeTabIndex)
+                    SlidingPanel(locked: $vm.slidingPanelLocked) {
+                        MasterView(drawerHandleHidden: self.$vm.slidingPanelLocked, iconCode: 1) {
+                            ActiveTab(index: self.$vm.activeTabIndex)
                         }
                     }
                     .edgesIgnoringSafeArea(.top)
@@ -31,7 +42,7 @@ struct ContentView: View {
                     Header()
                 }
 
-                NavigationBar(activeTabIndex: $activeTabIndex, tabs: tabs)
+                NavigationBar(activeTabIndex: $vm.activeTabIndex, tabs: tabs)
                     .padding(.bottom, 8)
             }
         }

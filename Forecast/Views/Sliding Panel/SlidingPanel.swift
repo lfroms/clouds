@@ -9,8 +9,10 @@
 import SwiftUI
 
 struct SlidingPanel<Content: View>: View {
+    @Binding var locked: Bool
+    
     @GestureState private var dragState: DragState = .inactive
-    @State var cardState: CardState = .closed
+    @State private var cardState: CardState = .closed
     
     var content: () -> Content
     
@@ -22,9 +24,14 @@ struct SlidingPanel<Content: View>: View {
             .onEnded(onDragEnded)
         
         return content()
-            .offset(y: logConstraintValueForYPoisition(yPosition: self.cardState.rawValue + self.dragState.translation.height, translation: self.dragState.translation.height))
+            .offset(
+                y: logConstraintValueForYPoisition(
+                    yPosition: self.cardState.rawValue + self.dragState.translation.height,
+                    translation: self.dragState.translation.height
+                )
+            )
             .animation(animation)
-            .gesture(drag)
+            .gesture(locked ? nil : drag)
     }
     
     private func onDragEnded(drag: DragGesture.Value) {
@@ -99,7 +106,7 @@ enum DragState {
 
 struct SlidingPanel_Previews: PreviewProvider {
     static var previews: some View {
-        SlidingPanel {
+        SlidingPanel(locked: .constant(false)) {
             EmptyView()
         }
     }

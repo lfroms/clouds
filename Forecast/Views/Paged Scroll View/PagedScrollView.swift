@@ -9,8 +9,6 @@
 import SwiftUI
 
 struct PagedScrollView<Content>: UIViewControllerRepresentable where Content: View {
-    typealias UIViewControllerType = PagedScrollViewController
-
     var content: () -> Content
 
     var pageWidth: CGFloat
