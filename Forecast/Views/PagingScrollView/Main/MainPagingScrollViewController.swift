@@ -38,12 +38,12 @@ final class MainPagingScrollViewController: UIViewController, UIScrollViewDelega
 
         self.scrollView.delegate = self
 
-        self.view.addSubview(self.scrollView)
-        self.scrollView.pinEdges(to: self.view)
+        view.addSubview(self.scrollView)
+        self.scrollView.pinEdges([.all], to: self.view)
 
         self.hostingController.willMove(toParent: self)
         self.scrollView.addSubview(self.hostingController.view)
-        self.hostingController.view.pinEdges(to: self.scrollView)
+        self.hostingController.view.pinEdges([.all], to: self.scrollView)
         self.hostingController.didMove(toParent: self)
 
         self.hostingController.view.backgroundColor = .clear

@@ -9,28 +9,19 @@
 import SwiftUI
 
 struct HorizontalPagingScrollView<Content>: UIViewControllerRepresentable where Content: View {
+    var pageWidth: CGFloat
+
     var content: () -> Content
 
-    var pageWidth: CGFloat
-    var pageCount: Int
-
-    init(pageWidth: CGFloat, pageCount: Int, @ViewBuilder content: @escaping () -> Content) {
-        self.pageWidth = pageWidth
-        self.pageCount = pageCount
-
-        self.content = content
+    func makeUIViewController(context: Context) -> HorizontalPagingScrollViewController {
+        let vc = HorizontalPagingScrollViewController()
+        vc.hostingController.rootView = AnyView(content())
+        return vc
     }
 
-    func makeUIViewController(context: UIViewControllerRepresentableContext<HorizontalPagingScrollView<Content>>) -> HorizontalPagingScrollViewController<Content> {
-        let pagedViewController = HorizontalPagingScrollViewController<Content>(nibName: nil, bundle: nil)
-
-        pagedViewController.add(content: content)
-
-        return pagedViewController
-    }
-
-    func updateUIViewController(_ pagedViewController: HorizontalPagingScrollViewController<Content>, context: UIViewControllerRepresentableContext<HorizontalPagingScrollView<Content>>) {
-        pagedViewController.pageWidth = pageWidth
-        pagedViewController.pageCount = pageCount
+    func updateUIViewController(_ viewController: HorizontalPagingScrollViewController, context: Context) {
+        viewController.hostingController.rootView = AnyView(content())
+        viewController.pageWidth = pageWidth
+        viewController.updateScrollViewContentWidth()
     }
 }

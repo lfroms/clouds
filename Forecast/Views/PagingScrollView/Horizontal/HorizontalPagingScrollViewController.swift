@@ -9,24 +9,13 @@
 import SwiftUI
 import UIKit
 
-class HorizontalPagingScrollViewController<Content>: UIViewController, UIScrollViewDelegate where Content: View {
-    var pageWidth: CGFloat = 0.0 {
-        didSet {
-            adjustDimensions()
-        }
-    }
-
-    var pageCount: Int = 0 {
-        didSet {
-            adjustDimensions()
-        }
-    }
-
+class HorizontalPagingScrollViewController: UIViewController, UIScrollViewDelegate {
+    var pageWidth: CGFloat = 0
     var activePage: Int = 0
 
     private var pageWidthConstraint: NSLayoutConstraint!
 
-    let scrollView: UIScrollView = {
+    private let scrollView: UIScrollView = {
         let v = UIScrollView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.showsVerticalScrollIndicator = false
@@ -35,66 +24,49 @@ class HorizontalPagingScrollViewController<Content>: UIViewController, UIScrollV
         v.alwaysBounceHorizontal = true
         v.isPagingEnabled = true
         v.clipsToBounds = false
+        v.insetsLayoutMarginsFromSafeArea = false
+        v.contentInsetAdjustmentBehavior = .never
         return v
     }()
 
-    let clipView: TouchPassthroughView = {
+    private let touchPassthroughView: TouchPassthroughView = {
         let v = TouchPassthroughView()
         v.translatesAutoresizingMaskIntoConstraints = false
+        v.insetsLayoutMarginsFromSafeArea = false
         return v
     }()
+
+    var hostingController: UIHostingController<AnyView> = UIHostingController(rootView: AnyView(EmptyView()))
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         scrollView.delegate = self
 
-        clipView.addSubview(scrollView)
-        view.addSubview(clipView)
+        touchPassthroughView.addSubview(scrollView)
+        view.addSubview(touchPassthroughView)
 
-        scrollView.leftAnchor.constraint(equalTo: clipView.leftAnchor, constant: 0).isActive = true
-        scrollView.topAnchor.constraint(equalTo: clipView.topAnchor, constant: 0).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: clipView.bottomAnchor, constant: 0).isActive = true
+        touchPassthroughView.pinEdges([.all], to: view)
+        scrollView.pinEdges([.leading, .top, .bottom], to: touchPassthroughView)
 
-        clipView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        clipView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        clipView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-        clipView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        hostingController.willMove(toParent: self)
+        scrollView.addSubview(hostingController.view)
+        hostingController.view.pinEdges([.all], to: scrollView)
+        hostingController.didMove(toParent: self)
+
+        hostingController.view.backgroundColor = .clear
 
         pageWidthConstraint = scrollView.widthAnchor.constraint(equalToConstant: pageWidth)
         NSLayoutConstraint.activate([pageWidthConstraint])
 
-        adjustDimensions()
+        updateScrollViewContentWidth()
     }
 
-    private func adjustDimensions() {
+    func updateScrollViewContentWidth() {
+        scrollView.contentSize.width = pageWidth
         pageWidthConstraint.constant = pageWidth
 
-        let contentWidth = pageWidth * CGFloat(pageCount)
-        scrollView.contentSize = CGSize(width: contentWidth, height: 0)
-
         scrollView.setNeedsLayout()
-    }
-
-    var contentView: UIView!
-
-    var contentVC: UIViewController!
-
-    func add(@ViewBuilder content: @escaping () -> Content) {
-        contentVC = UIHostingController(rootView: content())
-        contentView = contentVC.view!
-        contentView.backgroundColor = .clear
-
-        scrollView.addSubview(contentView)
-
-        contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-
-        contentView.widthAnchor.constraint(greaterThanOrEqualTo: scrollView.widthAnchor).isActive = true
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
