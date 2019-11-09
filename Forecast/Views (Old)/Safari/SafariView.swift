@@ -13,6 +13,7 @@ struct SafariView: UIViewControllerRepresentable {
     typealias UIViewControllerType = CustomSafariViewController
 
     var url: URL?
+    var readerMode: Bool?
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<SafariView>) -> CustomSafariViewController {
         return CustomSafariViewController()
@@ -20,5 +21,6 @@ struct SafariView: UIViewControllerRepresentable {
 
     func updateUIViewController(_ safariViewController: CustomSafariViewController, context: UIViewControllerRepresentableContext<SafariView>) {
         safariViewController.url = url
+        safariViewController.readerMode = readerMode
     }
 }

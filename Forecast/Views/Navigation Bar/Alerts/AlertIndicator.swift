@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct AlertIndicator: View {
+    var style: AlertType
+
     var body: some View {
         ZStack(alignment: .center) {
             Circle()
@@ -24,6 +26,6 @@ struct AlertIndicator: View {
 
 struct AlertIndicator_Previews: PreviewProvider {
     static var previews: some View {
-        AlertIndicator()
+        AlertIndicator(style: .warning)
     }
 }

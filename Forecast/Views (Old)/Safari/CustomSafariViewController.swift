@@ -16,6 +16,12 @@ final class CustomSafariViewController: UIViewController {
         }
     }
 
+    var readerMode: Bool? {
+        didSet {
+            configureChildViewController()
+        }
+    }
+
     private var safariViewController: SFSafariViewController?
 
     override func viewDidLoad() {
@@ -34,7 +40,10 @@ final class CustomSafariViewController: UIViewController {
 
         guard let url = url else { return }
 
-        let newSafariViewController = SFSafariViewController(url: url)
+        let config = SFSafariViewController.Configuration()
+        config.entersReaderIfAvailable = readerMode ?? false
+
+        let newSafariViewController = SFSafariViewController(url: url, configuration: config)
         addChild(newSafariViewController)
         newSafariViewController.view.frame = view.bounds
         view.addSubview(newSafariViewController.view)
