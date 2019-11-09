@@ -10,7 +10,7 @@ import SwiftUI
 
 struct WeekTab: View {
     var body: some View {
-        PagedScrollView(pageWidth: 229, pageCount: 6) {
+        HorizontalPagingScrollView(pageWidth: 229, pageCount: 6) {
             HStack(spacing: 14) {
                 LabelledForecastView()
                 LabelledForecastView()

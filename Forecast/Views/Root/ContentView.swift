@@ -26,18 +26,26 @@ struct ContentView: View {
     @ObservedObject var vm = ContentViewModel()
 
     var body: some View {
-        ZStack {
+        return ZStack {
             BlackBackground()
                 .edgesIgnoringSafeArea(.all)
 
             VStack(alignment: .leading, spacing: 18) {
                 ZStack(alignment: .top) {
-                    SlidingPanel(locked: $vm.slidingPanelLocked) {
-                        MasterView(drawerHandleHidden: self.$vm.slidingPanelLocked, iconCode: 1) {
-                            ActiveTab(index: self.$vm.activeTabIndex)
+                    ZStack(alignment: .bottom) {
+                        Text("text")
+
+                        SlidingPanel(locked: self.$vm.slidingPanelLocked) {
+                            MasterView(
+                                useAsContainer: self.vm.activeTabIndex == 2,
+                                drawerHandleHidden: self.$vm.slidingPanelLocked,
+                                iconCode: 1
+                            ) {
+                                ActiveTab(index: self.$vm.activeTabIndex)
+                            }
                         }
+                        .edgesIgnoringSafeArea(.top)
                     }
-                    .edgesIgnoringSafeArea(.top)
 
                     Header()
                 }

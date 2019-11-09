@@ -1,5 +1,5 @@
 //
-//  PagedScrollViewController.swift
+//  HorizontalPagingScrollViewController.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-10-29.
@@ -9,7 +9,7 @@
 import SwiftUI
 import UIKit
 
-class PagedScrollViewController<Content>: UIViewController, UIScrollViewDelegate where Content: View {
+class HorizontalPagingScrollViewController<Content>: UIViewController, UIScrollViewDelegate where Content: View {
     var pageWidth: CGFloat = 0.0 {
         didSet {
             adjustDimensions()
@@ -21,6 +21,8 @@ class PagedScrollViewController<Content>: UIViewController, UIScrollViewDelegate
             adjustDimensions()
         }
     }
+
+    var activePage: Int = 0
 
     private var pageWidthConstraint: NSLayoutConstraint!
 
@@ -36,8 +38,8 @@ class PagedScrollViewController<Content>: UIViewController, UIScrollViewDelegate
         return v
     }()
 
-    let clipView: HitTestView = {
-        let v = HitTestView()
+    let clipView: TouchPassthroughView = {
+        let v = TouchPassthroughView()
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
@@ -94,14 +96,8 @@ class PagedScrollViewController<Content>: UIViewController, UIScrollViewDelegate
 
         contentView.widthAnchor.constraint(greaterThanOrEqualTo: scrollView.widthAnchor).isActive = true
     }
-}
 
-class HitTestView: UIView {
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        let child = super.hitTest(point, with: event)
-        if child == self, subviews.count > 0 {
-            return subviews[0]
-        }
-        return child
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        activePage = Int(scrollView.contentOffset.x / scrollView.bounds.size.width)
     }
 }

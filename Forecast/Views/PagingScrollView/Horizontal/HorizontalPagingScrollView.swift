@@ -1,5 +1,5 @@
 //
-//  PagedScrollView.swift
+//  HorizontalPagingScrollView.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-10-29.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct PagedScrollView<Content>: UIViewControllerRepresentable where Content: View {
+struct HorizontalPagingScrollView<Content>: UIViewControllerRepresentable where Content: View {
     var content: () -> Content
 
     var pageWidth: CGFloat
@@ -21,15 +21,15 @@ struct PagedScrollView<Content>: UIViewControllerRepresentable where Content: Vi
         self.content = content
     }
 
-    func makeUIViewController(context: UIViewControllerRepresentableContext<PagedScrollView<Content>>) -> PagedScrollViewController<Content> {
-        let pagedViewController = PagedScrollViewController<Content>(nibName: nil, bundle: nil)
+    func makeUIViewController(context: UIViewControllerRepresentableContext<HorizontalPagingScrollView<Content>>) -> HorizontalPagingScrollViewController<Content> {
+        let pagedViewController = HorizontalPagingScrollViewController<Content>(nibName: nil, bundle: nil)
 
         pagedViewController.add(content: content)
 
         return pagedViewController
     }
 
-    func updateUIViewController(_ pagedViewController: PagedScrollViewController<Content>, context: UIViewControllerRepresentableContext<PagedScrollView<Content>>) {
+    func updateUIViewController(_ pagedViewController: HorizontalPagingScrollViewController<Content>, context: UIViewControllerRepresentableContext<HorizontalPagingScrollView<Content>>) {
         pagedViewController.pageWidth = pageWidth
         pagedViewController.pageCount = pageCount
     }
