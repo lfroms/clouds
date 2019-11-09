@@ -49,11 +49,4 @@ struct HomeSectionViewModel {
     var stationName: String {
         return weather?.location.weatherFor ?? ""
     }
-    
-    private func createTemperatureValueFrom(_ value: String) -> String {
-        let parsedValue = Temperature.toPreferredUnitFloat(value)
-        let parsedUnits = Temperature.currentUnit(symbol: true)
-        
-        return "\(parsedValue)" + parsedUnits
-    }
 }
