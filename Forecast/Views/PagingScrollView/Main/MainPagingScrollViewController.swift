@@ -11,8 +11,13 @@ import UIKit
 
 final class MainPagingScrollViewController: UIViewController, UIScrollViewDelegate {
     var travelDistance: CGFloat = 0.0
+    var isLocked: Bool = false {
+        didSet {
+            self.lockSettingDidChange()
+        }
+    }
 
-    let scrollView: UIScrollView = {
+    private let scrollView: UIScrollView = {
         let v = UIScrollView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.showsVerticalScrollIndicator = false
@@ -51,5 +56,10 @@ final class MainPagingScrollViewController: UIViewController, UIScrollViewDelega
         self.scrollView.contentSize.height = height
 
         self.scrollView.setNeedsLayout()
+    }
+
+    private func lockSettingDidChange() {
+        self.scrollView.isScrollEnabled = !self.isLocked
+        self.scrollView.scrollToTop()
     }
 }

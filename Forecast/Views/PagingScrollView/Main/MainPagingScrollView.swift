@@ -9,14 +9,10 @@
 import SwiftUI
 
 struct MainPagingScrollView<Content>: UIViewControllerRepresentable where Content: View {
-    var content: () -> Content
-
     var travelDistance: CGFloat
+    @Binding var locked: Bool
 
-    init(travelDistance: CGFloat, @ViewBuilder content: @escaping () -> Content) {
-        self.travelDistance = travelDistance
-        self.content = content
-    }
+    var content: () -> Content
 
     func makeUIViewController(context: Context) -> MainPagingScrollViewController {
         let vc = MainPagingScrollViewController()
@@ -28,5 +24,6 @@ struct MainPagingScrollView<Content>: UIViewControllerRepresentable where Conten
         viewController.hostingController.rootView = AnyView(self.content())
         viewController.travelDistance = self.travelDistance
         viewController.updateScrollViewContentHeight()
+        viewController.isLocked = self.locked
     }
 }

@@ -15,7 +15,7 @@ struct SlidingPanel<Content: View>: View {
 
     var body: some View {
         GeometryReader { (geometry: GeometryProxy) in
-            MainPagingScrollView(travelDistance: 200) {
+            MainPagingScrollView(travelDistance: 200, locked: self.$locked) {
                 self.content()
                     .frame(height: geometry.size.height)
                     .padding(.bottom, 200)

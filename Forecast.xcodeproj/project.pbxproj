@@ -86,6 +86,7 @@
 		80D1896D22D03A2F00E56DB1 /* HighLowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D1896C22D03A2F00E56DB1 /* HighLowView.swift */; };
 		80E32BAE233454DD0087DBB3 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E32BAD233454DD0087DBB3 /* ActivityIndicator.swift */; };
 		80E5D61C23773B46004A1D6B /* UIView+PinEdges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5D61B23773B46004A1D6B /* UIView+PinEdges.swift */; };
+		80E5D61E23774150004A1D6B /* UIScrollView+ScrollToTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5D61D23774150004A1D6B /* UIScrollView+ScrollToTop.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -168,6 +169,7 @@
 		80D1896C22D03A2F00E56DB1 /* HighLowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLowView.swift; sourceTree = "<group>"; };
 		80E32BAD233454DD0087DBB3 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		80E5D61B23773B46004A1D6B /* UIView+PinEdges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+PinEdges.swift"; sourceTree = "<group>"; };
+		80E5D61D23774150004A1D6B /* UIScrollView+ScrollToTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+ScrollToTop.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -592,6 +594,7 @@
 			isa = PBXGroup;
 			children = (
 				80E5D61B23773B46004A1D6B /* UIView+PinEdges.swift */,
+				80E5D61D23774150004A1D6B /* UIScrollView+ScrollToTop.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -754,6 +757,7 @@
 				80A01605237665B700A72C2F /* TouchPassthroughView.swift in Sources */,
 				80504F7A2332E76700DB4FAD /* String+IsInt.swift in Sources */,
 				80C816232363D9DA00D33669 /* OmniBar.swift in Sources */,
+				80E5D61E23774150004A1D6B /* UIScrollView+ScrollToTop.swift in Sources */,
 				803028E522CEE7970053F639 /* OverviewView.swift in Sources */,
 				801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */,
 				80C8162F2363E6DF00D33669 /* OmniBarBackground.swift in Sources */,
