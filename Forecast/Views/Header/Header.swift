@@ -9,18 +9,29 @@
 import SwiftUI
 
 struct Header: View {
+    @EnvironmentObject private var provider: WeatherProvider
+    @State private var textFieldValue: String?
+
     var body: some View {
         ZStack(alignment: .top) {
             OmniBarBackground()
                 .edgesIgnoringSafeArea(.top)
 
             VStack(alignment: .leading, spacing: 20) {
-                OmniBar(textFieldValue: "Ottawa (Kanata – Orléans)", primaryIcon: "location.fill")
+                OmniBar(textFieldValue: textFieldValueBinding, primaryIcon: "location.fill")
 
                 RiseSetView()
             }
             .padding(20)
         }
+    }
+
+    private var textFieldValueBinding: Binding<String> {
+        .init(get: {
+            self.textFieldValue ?? self.provider.weather?.location.weatherFor ?? ""
+        }, set: { value in
+            self.textFieldValue = value
+        })
     }
 }
 

@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct OmniBar: View {
-    @State var textFieldValue: String = ""
+    @Binding var textFieldValue: String
 
     var isReadOnly: Bool = false
     var primaryIcon: String
@@ -54,7 +54,7 @@ struct OmniBar_Previews: PreviewProvider {
         ZStack {
             Color.blue
 
-            OmniBar(primaryIcon: "location.fill")
+            OmniBar(textFieldValue: .constant("Test value"), primaryIcon: "location.fill")
                 .padding(20)
         }
         .edgesIgnoringSafeArea(.all)

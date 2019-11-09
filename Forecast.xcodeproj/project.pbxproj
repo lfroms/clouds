@@ -291,7 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				80E5D61A23773B2A004A1D6B /* Extensions */,
-				8099ED3123667E5C00B8E1CA /* Preference Keys */,
+				8099ED3123667E5C00B8E1CA /* PreferenceKey */,
 				8020F9502363D1A10029FEB6 /* Views */,
 				80D0D86422D6B55D00B8C711 /* Helpers */,
 				80AD06FE22D68C2000220FEE /* GraphQL */,
@@ -424,12 +424,12 @@
 			path = Safari;
 			sourceTree = "<group>";
 		};
-		8099ED3123667E5C00B8E1CA /* Preference Keys */ = {
+		8099ED3123667E5C00B8E1CA /* PreferenceKey */ = {
 			isa = PBXGroup;
 			children = (
 				8099ED3223667E7A00B8E1CA /* FramePreferenceKey.swift */,
 			);
-			path = "Preference Keys";
+			path = PreferenceKey;
 			sourceTree = "<group>";
 		};
 		809C147222F752C800F6A771 /* WarningsHeader */ = {

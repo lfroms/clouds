@@ -39,7 +39,7 @@ struct ContentView: View {
                             MasterView(
                                 useAsContainer: self.vm.activeTabIndex == 2,
                                 drawerHandleHidden: self.$vm.slidingPanelLocked,
-                                iconCode: 1
+                                iconCode: self.iconCode
                             ) {
                                 ActiveTab(index: self.$vm.activeTabIndex)
                             }
