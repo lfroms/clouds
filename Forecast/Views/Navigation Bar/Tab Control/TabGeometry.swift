@@ -15,9 +15,7 @@ struct TabGeometry: View {
         GeometryReader { (geometry: GeometryProxy) in
             Rectangle()
                 .foregroundColor(.clear)
-                .preference(key: TabWidthPreferenceKey.self, value: geometry.size.width)
-                .preference(key: TabHeightPreferenceKey.self, value: geometry.size.height)
-                .preference(key: TabOffsetPreferenceKey.self, value: geometry.frame(in: .global).origin.x - self.xOffset)
+                .preference(key: FramePreferenceKey.self, value: geometry.frame(in: .global).offsetBy(dx: -1 * self.xOffset, dy: 0))
         }
     }
 }

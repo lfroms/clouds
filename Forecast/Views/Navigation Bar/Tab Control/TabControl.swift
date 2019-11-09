@@ -13,17 +13,14 @@ struct TabControl: View {
 
     let tabs: [String]
 
-    @State private var tabWidths: DimensionDictionary = [:]
-    @State private var tabHeights: DimensionDictionary = [:]
-    @State private var tabOffsets: DimensionDictionary = [:]
-
-    private typealias DimensionDictionary = [Int: CGFloat]
+    @State private var tabFrames: DimensionDictionary = [:]
+    private typealias DimensionDictionary = [Int: CGRect]
 
     var body: some View {
         ZStack(alignment: Alignment.leading) {
             RoundedRectangle(cornerRadius: .infinity)
-                .frame(width: activeTabSize.width, height: activeTabSize.height)
-                .offset(x: activeTabOffset)
+                .frame(width: activeTabFrame.width, height: activeTabFrame.height)
+                .offset(x: activeTabFrame.minX)
                 .foregroundColor(Self.indicatorColor)
                 .animation(Self.tabHighlightAnimation)
 
@@ -38,33 +35,20 @@ struct TabControl: View {
                     .padding(.horizontal, 16)
                     .fixedSize()
                     .background(TabGeometry(xOffset: 20))
-                    .onPreferenceChange(TabWidthPreferenceKey.self, perform: {
-                        self.tabWidths[self.indexOfTab(tab)] = $0
-                    })
-                    .onPreferenceChange(TabHeightPreferenceKey.self, perform: {
-                        self.tabHeights[self.indexOfTab(tab)] = $0
-                    })
-                    .onPreferenceChange(TabOffsetPreferenceKey.self, perform: {
-                        self.tabOffsets[self.indexOfTab(tab)] = $0
+                    .onPreferenceChange(FramePreferenceKey.self, perform: {
+                        self.tabFrames[self.indexOfTab(tab)] = $0
                     })
                 }
             }
         }
     }
 
-    private var activeTabSize: CGSize {
-        .init(
-            width: getWithDefaultValue(from: tabWidths, key: activeTab),
-            height: getWithDefaultValue(from: tabHeights, key: activeTab)
-        )
-    }
-
-    private var activeTabOffset: CGFloat {
-        getWithDefaultValue(from: tabOffsets, key: activeTab)
+    private var activeTabFrame: CGRect {
+        getWithDefaultValue(from: tabFrames, key: activeTab)
     }
 
     private func getWithDefaultValue(from dictionary: DimensionDictionary, key: Int) -> DimensionDictionary.Value {
-        dictionary[key, default: 0]
+        dictionary[key, default: CGRect(x: 0, y: 0, width: 0, height: 0)]
     }
 
     private static var tabHighlightAnimation: Animation {
