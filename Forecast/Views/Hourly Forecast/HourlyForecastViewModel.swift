@@ -11,7 +11,7 @@ import SwiftDate
 
 struct HourlyForecastViewModel {
     let id = UUID()
-    
+
     let date: DateInRegion
     let symbolName: String
 
