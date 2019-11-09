@@ -27,10 +27,21 @@ struct AlertStack: View {
             identifiableAlerts.append(identifiable)
         })
 
-        return ForEach(identifiableAlerts) { _ in
+        return ForEach(identifiableAlerts) { alert in
             Button(action: { self.showWarningDetails.toggle() }) {
-                AlertIndicator(style: .info)
+                AlertIndicator(style: self.alertTypeFor(alert: alert))
             }
+        }
+    }
+
+    private func alertTypeFor(alert: IdentifiableAlert) -> AlertType {
+        switch alert.event.type {
+        case .warning:
+            return .warning
+        case .watch:
+            return .watch
+        default:
+            return .info
         }
     }
 
