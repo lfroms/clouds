@@ -33,7 +33,7 @@ struct ContentView: View {
             VStack(alignment: .leading, spacing: 18) {
                 ZStack(alignment: .top) {
                     ZStack(alignment: .bottom) {
-                        Text("text")
+                        CurrentConditionsView()
 
                         SlidingPanel(locked: self.$vm.slidingPanelLocked) {
                             MasterView(
