@@ -15,16 +15,23 @@ struct ObservedAtTime: View {
     private let timer = Timer.publish(every: 1, on: .current, in: .common).autoconnect()
 
     var body: some View {
-        HStack(alignment: .lastTextBaseline, spacing: 5) {
-            Image(systemName: "clock.fill")
+        Button(action: provider.fetchData) {
+            HStack(alignment: VerticalAlignment.lastTextBaseline, spacing: 5) {
+                if provider.loading {
+                    LineActivityIndicator(color: .secondary)
 
-            Text(text)
-                .onReceive(timer) { _ in
-                    self.now = Date()
+                } else {
+                    Image(systemName: "clock.fill")
                 }
+
+                Text(text)
+                    .onReceive(timer) { _ in
+                        self.now = Date()
+                    }
+            }
+            .font(Font.subheadline.weight(.semibold))
+            .foregroundColor(.secondary)
         }
-        .font(Font.subheadline.weight(.semibold))
-        .foregroundColor(.secondary)
     }
 
     private var text: String {

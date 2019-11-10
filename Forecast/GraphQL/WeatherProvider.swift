@@ -29,13 +29,15 @@ class WeatherProvider: ObservableObject {
         fetchData()
     }
     
-    private func fetchData() {
+    func fetchData() {
         let query = WeatherQuery(province: .on, siteCode: 430, units: .metric, language: .e)
         
         loading = true
         
         apollo.fetch(query: query, cachePolicy: .returnCacheDataAndFetch) { result in
-            self.loading = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.loading = false
+            }
             
             guard let data = try? result.get().data else {
                 return
