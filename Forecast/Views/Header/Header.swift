@@ -20,7 +20,11 @@ struct Header: View {
             VStack(alignment: .leading, spacing: 20) {
                 OmniBar(textFieldValue: textFieldValueBinding, primaryIcon: "location.fill")
 
-                SunriseSunsetTime()
+                HStack {
+                    SunriseSunsetTime()
+                    Spacer()
+                    ObservedAtTime()
+                }
             }
             .padding(20)
         }
