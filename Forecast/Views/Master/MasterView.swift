@@ -32,6 +32,7 @@ struct MasterView<Content: View>: View {
             ZStack(alignment: .topTrailing) {
                 BackgroundColor(iconCode: iconCode)
                 WeatherIllustration(iconCode: iconCode)
+                    .padding(.top, topSafeAreaInset)
             }
 
             VStack(alignment: .center, spacing: 0) {
@@ -42,6 +43,11 @@ struct MasterView<Content: View>: View {
                 }
             }
         }
+    }
+
+    private var topSafeAreaInset: CGFloat {
+        let window = UIApplication.shared.windows.first
+        return window?.safeAreaInsets.top ?? 0
     }
 }
 
