@@ -13,15 +13,10 @@ struct WeatherIllustration: View {
 
     var body: some View {
         Image(imageName)
-            .shadow(color: Self.shadowColor, radius: 13, x: 0, y: 2)
     }
 
     private var imageName: String {
         "image-\(iconCode)"
-    }
-
-    private static var shadowColor: Color {
-        Color.black.opacity(0.25)
     }
 }
 

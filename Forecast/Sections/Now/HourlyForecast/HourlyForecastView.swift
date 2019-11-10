@@ -82,7 +82,7 @@ struct HourlyForecastView: View {
     }
 
     private var backgroundColor: Color {
-        (expanded ? Color.white : Color.black).opacity(0.1)
+        expanded ? Color.white.opacity(0.1) : Color.black.opacity(0.06)
     }
 
     private var height: CGFloat {
