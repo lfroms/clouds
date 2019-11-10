@@ -17,18 +17,20 @@ struct BackgroundColor: View {
         return LinearGradient(gradient: gradient, startPoint: .topTrailing, endPoint: .bottomLeading)
     }
 
-    private var colorName: String {
-        "color-\(iconCode)"
+    private static let colorPrefix = "color"
+
+    private var highColorName: String {
+        "\(Self.colorPrefix)-\(iconCode)-high"
     }
 
-    private var altColorName: String {
-        "\(colorName)-alt"
+    private var lowColorName: String {
+        "\(Self.colorPrefix)-\(iconCode)-low"
     }
 
     private var gradientSteps: [Color] {
         [
-            Color(colorName),
-            Color(altColorName)
+            Color(highColorName),
+            Color(lowColorName)
         ]
     }
 }
