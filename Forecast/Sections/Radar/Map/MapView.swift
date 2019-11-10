@@ -61,11 +61,24 @@ final class RadarTileOverlay: MKTileOverlay {
     }
 
     override func url(forTilePath path: MKTileOverlayPath) -> URL {
+        let size = Int(tileSize.width)
+
         var components = URLComponents()
         components.scheme = "https"
         components.host = "tilecache.rainviewer.com"
-        components.path = "/v2/radar/\(timeStamp)/\(tileSize.width)/\(path.z)/\(path.x)/\(path.y)/1/0_1.png"
+        components.path = "/v2/radar/\(timeStamp)/\(size)/\(path.z)/\(path.x)/\(path.y)/\(ColorScheme.nextradLevel3.rawValue)/0_1.png"
 
         return components.url ?? super.url(forTilePath: path)
+    }
+
+    private enum ColorScheme: Int {
+        case blackAndWhite = 0
+        case original = 1
+        case universalBlue = 2
+        case titan = 3
+        case theWeatherChannel = 4
+        case meteored = 5
+        case nextradLevel3 = 6
+        case rainbowSelexIS = 7
     }
 }
