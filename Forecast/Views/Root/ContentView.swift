@@ -22,6 +22,7 @@ class ContentViewModel: ObservableObject {
 
 struct ContentView: View {
     @EnvironmentObject var weatherProvider: WeatherProvider
+    @EnvironmentObject var appState: AppState
 
     @ObservedObject var vm = ContentViewModel()
 
@@ -39,7 +40,7 @@ struct ContentView: View {
                             MasterView(
                                 useAsContainer: self.vm.activeTabIndex == 2,
                                 drawerHandleHidden: self.$vm.slidingPanelLocked,
-                                iconCode: self.iconCode
+                                iconCode: self.appState.masterViewIconCode
                             ) {
                                 CurrentSection(index: self.$vm.activeTabIndex)
                             }

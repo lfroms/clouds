@@ -20,7 +20,7 @@ struct OmniBar: View {
         ZStack {
             ShadowView(radius: 20, opacity: 0.3, color: .black, cornerRadius: 22)
 
-            BlurView(style: .regular, tint: 0.3)
+            BlurView(style: .light, tint: 0.3)
                 .cornerRadius(26)
 
             HStack(alignment: .center, spacing: 12) {

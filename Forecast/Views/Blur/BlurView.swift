@@ -12,7 +12,7 @@ struct BlurView: UIViewRepresentable {
     let style: UIBlurEffect.Style
     var tint: CGFloat?
 
-    var blurPercentage: CGFloat? = 1
+    var blurPercentage: CGFloat?
 
     func makeUIView(context: UIViewRepresentableContext<BlurView>) -> UIView {
         let view = UIView(frame: .zero)
@@ -28,25 +28,32 @@ struct BlurView: UIViewRepresentable {
             blurView.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
 
-        context.coordinator.animator = UIViewPropertyAnimator(duration: 1, curve: .linear) {
-            blurView.effect = UIBlurEffect(style: .light)
-            view.backgroundColor = self.backgroundColor
-        }
+        if blurPercentage != nil {
+            context.coordinator.animator = UIViewPropertyAnimator(duration: 1, curve: .linear) {
+                blurView.effect = UIBlurEffect(style: self.style)
+                view.backgroundColor = self.backgroundColor
+            }
 
-        // Prevent animation reset when application loses focus.
-        context.coordinator.animator.pausesOnCompletion = true
+            // Prevent animation reset when application loses focus.
+            context.coordinator.animator.pausesOnCompletion = true
+        } else {
+            blurView.effect = UIBlurEffect(style: style)
+            view.backgroundColor = backgroundColor
+        }
 
         return view
     }
 
     func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<BlurView>) {
-        guard let percentage = blurPercentage else {
-            context.coordinator.animator.fractionComplete = 1
+        if blurPercentage != nil {
+            guard let percentage = blurPercentage else {
+                context.coordinator.animator.fractionComplete = 1
 
-            return
+                return
+            }
+
+            context.coordinator.animator.fractionComplete = percentage
         }
-
-        context.coordinator.animator.fractionComplete = percentage
     }
 
     private var backgroundColor: UIColor {

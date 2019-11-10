@@ -66,6 +66,8 @@
 		80C395A8237888CD0004B71D /* IndicatorShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395A7237888CD0004B71D /* IndicatorShape.swift */; };
 		80C395AA23788A6B0004B71D /* LineActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395A923788A6B0004B71D /* LineActivityIndicator.swift */; };
 		80C395AD23789FDD0004B71D /* RoundedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */; };
+		80C395AF2378A1DA0004B71D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395AE2378A1DA0004B71D /* AppState.swift */; };
+		80C395B22378B2340004B71D /* RadarControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395B12378B2340004B71D /* RadarControls.swift */; };
 		80C816202363D8C800D33669 /* BlackBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8161F2363D8C800D33669 /* BlackBackground.swift */; };
 		80C816232363D9DA00D33669 /* OmniBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816222363D9DA00D33669 /* OmniBar.swift */; };
 		80C816262363DCFE00D33669 /* OmniBarTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816252363DCFE00D33669 /* OmniBarTextField.swift */; };
@@ -147,6 +149,8 @@
 		80C395A7237888CD0004B71D /* IndicatorShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorShape.swift; sourceTree = "<group>"; };
 		80C395A923788A6B0004B71D /* LineActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineActivityIndicator.swift; sourceTree = "<group>"; };
 		80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerShape.swift; sourceTree = "<group>"; };
+		80C395AE2378A1DA0004B71D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		80C395B12378B2340004B71D /* RadarControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarControls.swift; sourceTree = "<group>"; };
 		80C8161F2363D8C800D33669 /* BlackBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackBackground.swift; sourceTree = "<group>"; };
 		80C816222363D9DA00D33669 /* OmniBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBar.swift; sourceTree = "<group>"; };
 		80C816252363DCFE00D33669 /* OmniBarTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarTextField.swift; sourceTree = "<group>"; };
@@ -478,6 +482,14 @@
 			path = RoundedCornerShape;
 			sourceTree = "<group>";
 		};
+		80C395B02378B2240004B71D /* RadarControls */ = {
+			isa = PBXGroup;
+			children = (
+				80C395B12378B2340004B71D /* RadarControls.swift */,
+			);
+			path = RadarControls;
+			sourceTree = "<group>";
+		};
 		80C667BF2377733E008E9A11 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
@@ -512,6 +524,7 @@
 		80C667C2237776AE008E9A11 /* Radar */ = {
 			isa = PBXGroup;
 			children = (
+				80C395B02378B2240004B71D /* RadarControls */,
 				8026FF5123779873007962DB /* Map */,
 				80FECAF423778361008AC653 /* RadarSection.swift */,
 			);
@@ -534,6 +547,7 @@
 			children = (
 				80D0D86522D6B56700B8C711 /* UserPreferences.swift */,
 				8039628422D6CD6F003FEAB3 /* ForecastIcon.swift */,
+				80C395AE2378A1DA0004B71D /* AppState.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -729,11 +743,13 @@
 				8039628522D6CD6F003FEAB3 /* ForecastIcon.swift in Sources */,
 				8099ED3923667F8C00B8E1CA /* TabGeometry.swift in Sources */,
 				805A174622C53ADB00E1B4E2 /* AppDelegate.swift in Sources */,
+				80C395AF2378A1DA0004B71D /* AppState.swift in Sources */,
 				80C395A8237888CD0004B71D /* IndicatorShape.swift in Sources */,
 				8020F9532363D2390029FEB6 /* MasterView.swift in Sources */,
 				80C395A323787B9B0004B71D /* ObservedAtTime.swift in Sources */,
 				8066FDED2364EE030067F362 /* NowSection.swift in Sources */,
 				80D1896D22D03A2F00E56DB1 /* HighLowView.swift in Sources */,
+				80C395B22378B2340004B71D /* RadarControls.swift in Sources */,
 				8099ED3323667E7A00B8E1CA /* FramePreferenceKey.swift in Sources */,
 				807B8E4C2377AAFD0075F131 /* CurrentConditionsView.swift in Sources */,
 				8099A20F23130CED00EE4F30 /* CustomSafariViewController.swift in Sources */,

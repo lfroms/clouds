@@ -11,7 +11,17 @@ import SwiftUI
 
 struct MapView: UIViewRepresentable {
     func makeUIView(context: Context) -> MKMapView {
-        MKMapView()
+        let mapView = MKMapView()
+
+        if let safeAreaInsets = UIApplication.shared.windows.first?.safeAreaInsets {
+            // TODO: - Store these values as constants or calculate them.
+            let topInset = safeAreaInsets.top + 92 + 40
+            let layoutMargins = UIEdgeInsets(top: topInset, left: 5, bottom: 20 + 50, right: 5)
+
+            mapView.layoutMargins = layoutMargins
+        }
+
+        return mapView
     }
 
     func updateUIView(_ uiView: MKMapView, context: Context) {}

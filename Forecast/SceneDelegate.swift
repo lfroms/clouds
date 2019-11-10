@@ -22,7 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
 
             let weatherProvider = WeatherProvider()
-            let rootView = ContentView().environmentObject(weatherProvider)
+            let appState = AppState()
+            let rootView = ContentView()
+                .environmentObject(weatherProvider)
+                .environmentObject(appState)
 
             window.rootViewController = RootViewController(rootView: rootView)
             self.window = window

@@ -10,7 +10,11 @@ import SwiftUI
 
 struct RadarSection: View {
     var body: some View {
-        MapView()
+        ZStack(alignment: .bottom) {
+            MapView()
+            RadarControls()
+        }
+        .frame(width: UIScreen.main.bounds.width)
     }
 }
 
