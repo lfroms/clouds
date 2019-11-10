@@ -12,7 +12,7 @@ extension Date {
     func timeAgo(relativeTo: Date?) -> String {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .abbreviated
-        formatter.allowedUnits = [.year, .month, .day, .hour, .minute, .second]
+        formatter.allowedUnits = [.hour, .minute, .second]
         formatter.zeroFormattingBehavior = .dropAll
         formatter.maximumUnitCount = 1
         return String(format: formatter.string(from: self, to: relativeTo ?? Date()) ?? "", locale: .current) + " ago"
