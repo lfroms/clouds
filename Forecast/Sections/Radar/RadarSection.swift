@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RadarSection: View {
     var body: some View {
-        Text("Radar")
+        MapView()
     }
 }
 

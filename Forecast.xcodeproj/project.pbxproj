@@ -11,6 +11,7 @@
 		800194DF232EDCCF00066D37 /* UIShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800194DE232EDCCF00066D37 /* UIShadowView.swift */; };
 		801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801BDBCF232D660C007FE4AB /* DrawerHandle.swift */; };
 		8020F9532363D2390029FEB6 /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020F9522363D2390029FEB6 /* MasterView.swift */; };
+		8026FF5323779881007962DB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026FF5223779881007962DB /* MapView.swift */; };
 		802C0D982368FE32009A22BA /* CurrentSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C0D972368FE32009A22BA /* CurrentSection.swift */; };
 		802C0D9C236903C6009A22BA /* SunriseSunsetTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C0D9B236903C6009A22BA /* SunriseSunsetTime.swift */; };
 		802C0D9E236903CD009A22BA /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C0D9D236903CD009A22BA /* Header.swift */; };
@@ -82,6 +83,7 @@
 		800194DE232EDCCF00066D37 /* UIShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIShadowView.swift; sourceTree = "<group>"; };
 		801BDBCF232D660C007FE4AB /* DrawerHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerHandle.swift; sourceTree = "<group>"; };
 		8020F9522363D2390029FEB6 /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
+		8026FF5223779881007962DB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		802C0D972368FE32009A22BA /* CurrentSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSection.swift; sourceTree = "<group>"; };
 		802C0D9B236903C6009A22BA /* SunriseSunsetTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetTime.swift; sourceTree = "<group>"; };
 		802C0D9D236903CD009A22BA /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
@@ -211,6 +213,14 @@
 				800194DE232EDCCF00066D37 /* UIShadowView.swift */,
 			);
 			path = Shadow;
+			sourceTree = "<group>";
+		};
+		8026FF5123779873007962DB /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				8026FF5223779881007962DB /* MapView.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		802C0D9A236903A8009A22BA /* Header */ = {
@@ -450,6 +460,7 @@
 		80C667C2237776AE008E9A11 /* Radar */ = {
 			isa = PBXGroup;
 			children = (
+				8026FF5123779873007962DB /* Map */,
 				80FECAF423778361008AC653 /* RadarSection.swift */,
 			);
 			path = Radar;
@@ -698,6 +709,7 @@
 				80E5D622237760BA004A1D6B /* AlertType.swift in Sources */,
 				8099A20D23130B8500EE4F30 /* SafariView.swift in Sources */,
 				805A174822C53ADB00E1B4E2 /* SceneDelegate.swift in Sources */,
+				8026FF5323779881007962DB /* MapView.swift in Sources */,
 				8061292323690F5F005EEB2A /* DailyForecastView.swift in Sources */,
 				80C816262363DCFE00D33669 /* OmniBarTextField.swift in Sources */,
 				802C0D9E236903CD009A22BA /* Header.swift in Sources */,
