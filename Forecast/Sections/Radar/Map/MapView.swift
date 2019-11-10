@@ -21,8 +21,51 @@ struct MapView: UIViewRepresentable {
             mapView.layoutMargins = layoutMargins
         }
 
+        mapView.delegate = context.coordinator
+
+        let overlay = RadarTileOverlay(timeStamp: 1573418400)
+        mapView.addOverlay(overlay, level: .aboveRoads)
+
         return mapView
     }
 
     func updateUIView(_ uiView: MKMapView, context: Context) {}
+
+    func makeCoordinator() -> MapView.Coordinator {
+        return Coordinator()
+    }
+
+    class Coordinator: NSObject, MKMapViewDelegate {
+        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            guard let tileOverlay = overlay as? MKTileOverlay else {
+                return MKOverlayRenderer(overlay: overlay)
+            }
+
+            let overlayRenderer = MKTileOverlayRenderer(tileOverlay: tileOverlay)
+            overlayRenderer.alpha = 0.6
+
+            return overlayRenderer
+        }
+    }
+}
+
+final class RadarTileOverlay: MKTileOverlay {
+    let timeStamp: Int
+
+    init(timeStamp: Int) {
+        self.timeStamp = timeStamp
+
+        super.init(urlTemplate: nil)
+
+        self.tileSize = CGSize(width: 512, height: 512)
+    }
+
+    override func url(forTilePath path: MKTileOverlayPath) -> URL {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "tilecache.rainviewer.com"
+        components.path = "/v2/radar/\(timeStamp)/\(tileSize.width)/\(path.z)/\(path.x)/\(path.y)/1/0_1.png"
+
+        return components.url ?? super.url(forTilePath: path)
+    }
 }
