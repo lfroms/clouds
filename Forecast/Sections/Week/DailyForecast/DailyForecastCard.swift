@@ -1,5 +1,5 @@
 //
-//  ForecastView.swift
+//  DailyForecastCard.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-10-29.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ForecastView: View {
+struct DailyForecastCard: View {
     var body: some View {
         ZStack {
             ShadowView(radius: 30, opacity: 0.08, color: .black, cornerRadius: 18)
@@ -28,8 +28,8 @@ struct ForecastView: View {
                     .fontWeight(.semibold)
 
                 HStack(alignment: .center, spacing: 10) {
-                    ForecastDetailView(symbol: "wind", text: "15 km/h")
-                    ForecastDetailView(symbol: "umbrella.fill", text: "25%")
+                    DailyForecastDetail(symbol: "wind", text: "15 km/h")
+                    DailyForecastDetail(symbol: "umbrella.fill", text: "25%")
                 }
             }
             .padding(16)
@@ -46,7 +46,7 @@ struct ForecastView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             BlackBackground()
-            ForecastView()
+            DailyForecastCard()
         }
         .edgesIgnoringSafeArea(.all)
     }

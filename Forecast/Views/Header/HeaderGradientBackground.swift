@@ -1,5 +1,5 @@
 //
-//  OmniBarBackground.swift
+//  HeaderGradientBackground.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-10-25.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct OmniBarBackground: View {
+struct HeaderGradientBackground: View {
     var body: some View {
         let gradient = Gradient(colors: gradientSteps)
 
@@ -26,6 +26,6 @@ struct OmniBarBackground: View {
 
 struct TopDimGradient_Previews: PreviewProvider {
     static var previews: some View {
-        OmniBarBackground()
+        HeaderGradientBackground()
     }
 }

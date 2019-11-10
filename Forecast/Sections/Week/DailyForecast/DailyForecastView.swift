@@ -1,5 +1,5 @@
 //
-//  LabelledForecastView.swift
+//  DailyForecastView.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-10-29.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct LabelledForecastView: View {
+struct DailyForecastView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             Text("Today")
@@ -16,13 +16,13 @@ struct LabelledForecastView: View {
                 .foregroundColor(.white)
                 .padding(.leading, 16)
 
-            ForecastView()
+            DailyForecastCard()
         }
     }
 }
 
 struct LabelledForecastView_Previews: PreviewProvider {
     static var previews: some View {
-        LabelledForecastView()
+        DailyForecastView()
     }
 }

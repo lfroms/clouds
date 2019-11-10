@@ -33,7 +33,8 @@ struct HourlyForecastView: View {
                 HourlyForecastDetail(iconName: "umbrella.fill", label: viewModel.pop)
 
             } else {
-                ForecastWeatherIcon(name: self.viewModel.symbolName)
+                Image(systemName: self.viewModel.symbolName)
+                    .font(.system(size: 23))
 
                 Spacer()
 

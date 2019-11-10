@@ -1,5 +1,5 @@
 //
-//  NowTab.swift
+//  NowSection.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-10-26.
@@ -9,7 +9,7 @@
 import SwiftDate
 import SwiftUI
 
-struct NowTab: View {
+struct NowSection: View {
     @EnvironmentObject private var provider: WeatherProvider
     
     var body: some View {
@@ -113,6 +113,6 @@ struct NowTab: View {
 
 struct NowTab_Previews: PreviewProvider {
     static var previews: some View {
-        NowTab()
+        NowSection()
     }
 }

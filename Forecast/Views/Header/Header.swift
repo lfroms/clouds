@@ -14,13 +14,13 @@ struct Header: View {
 
     var body: some View {
         ZStack(alignment: .top) {
-            OmniBarBackground()
+            HeaderGradientBackground()
                 .edgesIgnoringSafeArea(.top)
 
             VStack(alignment: .leading, spacing: 20) {
                 OmniBar(textFieldValue: textFieldValueBinding, primaryIcon: "location.fill")
 
-                RiseSetView()
+                SunriseSunsetTime()
             }
             .padding(20)
         }

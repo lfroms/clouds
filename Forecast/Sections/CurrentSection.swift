@@ -1,5 +1,5 @@
 //
-//  ActiveTab.swift
+//  CurrentSection.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-10-29.
@@ -8,19 +8,19 @@
 
 import SwiftUI
 
-struct ActiveTab: View {
+struct CurrentSection: View {
     @Binding var index: Int
 
     var body: some View {
         Group {
             if index == 1 {
-                WeekTab()
+                WeekSection()
             }
             else if index == 2 {
-                Text("3")
+                RadarSection()
             }
             else {
-                NowTab()
+                NowSection()
             }
         }
     }
@@ -28,6 +28,6 @@ struct ActiveTab: View {
 
 struct ActiveTab_Previews: PreviewProvider {
     static var previews: some View {
-        ActiveTab(index: .constant(0))
+        CurrentSection(index: .constant(0))
     }
 }

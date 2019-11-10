@@ -41,7 +41,7 @@ struct ContentView: View {
                                 drawerHandleHidden: self.$vm.slidingPanelLocked,
                                 iconCode: self.iconCode
                             ) {
-                                ActiveTab(index: self.$vm.activeTabIndex)
+                                CurrentSection(index: self.$vm.activeTabIndex)
                             }
                         }
                         .edgesIgnoringSafeArea(.top)

@@ -1,5 +1,5 @@
 //
-//  RiseSetView.swift
+//  SunriseSunsetTime.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-10-29.
@@ -9,7 +9,7 @@
 import SwiftDate
 import SwiftUI
 
-struct RiseSetView: View {
+struct SunriseSunsetTime: View {
     @EnvironmentObject private var provider: WeatherProvider
 
     var body: some View {
@@ -61,6 +61,6 @@ struct RiseSetView: View {
 
 struct RiseSetView_Previews: PreviewProvider {
     static var previews: some View {
-        RiseSetView()
+        SunriseSunsetTime()
     }
 }

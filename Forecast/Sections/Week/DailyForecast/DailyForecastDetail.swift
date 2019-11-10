@@ -1,5 +1,5 @@
 //
-//  ForecastDetailView.swift
+//  DailyForecastDetail.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-10-29.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ForecastDetailView: View {
+struct DailyForecastDetail: View {
     let symbol: String
     let text: String
 
@@ -23,6 +23,6 @@ struct ForecastDetailView: View {
 
 struct ForecastDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ForecastDetailView(symbol: "umbrella.fill", text: "25%")
+        DailyForecastDetail(symbol: "umbrella.fill", text: "25%")
     }
 }

@@ -1,5 +1,5 @@
 //
-//  WeekTab.swift
+//  WeekSection.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-10-29.
@@ -8,16 +8,16 @@
 
 import SwiftUI
 
-struct WeekTab: View {
+struct WeekSection: View {
     var body: some View {
         HorizontalPagingScrollView(pageWidth: 229) {
             HStack(spacing: 14) {
-                LabelledForecastView()
-                LabelledForecastView()
-                LabelledForecastView()
-                LabelledForecastView()
-                LabelledForecastView()
-                LabelledForecastView()
+                DailyForecastView()
+                DailyForecastView()
+                DailyForecastView()
+                DailyForecastView()
+                DailyForecastView()
+                DailyForecastView()
             }
             .padding(.horizontal, 20)
         }
@@ -27,6 +27,6 @@ struct WeekTab: View {
 
 struct WeekTab_Previews: PreviewProvider {
     static var previews: some View {
-        WeekTab()
+        WeekSection()
     }
 }
