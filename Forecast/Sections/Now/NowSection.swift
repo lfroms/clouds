@@ -28,7 +28,7 @@ struct NowSection: View {
                         HourlyForecastView(viewModel: item)
                     }
                 }
-                .padding(.horizontal, 26)
+                .padding(.horizontal, 20)
                 .frame(minHeight: 0, maxHeight: .infinity, alignment: .top)
             }
             .frame(height: 140, alignment: .top)

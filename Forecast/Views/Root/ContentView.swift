@@ -30,7 +30,7 @@ struct ContentView: View {
             BlackBackground()
                 .edgesIgnoringSafeArea(.all)
 
-            VStack(alignment: .leading, spacing: 18) {
+            VStack(alignment: .leading, spacing: 12) {
                 ZStack(alignment: .top) {
                     ZStack(alignment: .bottom) {
                         CurrentConditionsView()
@@ -51,7 +51,7 @@ struct ContentView: View {
                 }
 
                 NavigationBar(activeTabIndex: $vm.activeTabIndex, tabs: tabs)
-                    .padding(.bottom, 8)
+                    .padding(.bottom, 12)
             }
         }
         .colorScheme(.dark)
