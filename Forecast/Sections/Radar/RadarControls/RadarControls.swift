@@ -9,16 +9,23 @@
 import SwiftUI
 
 struct RadarControls: View {
+    @Binding var isPlaying: Bool
+    var totalImages: Int
+    @Binding var currentImage: Int
+
     var body: some View {
         ZStack {
             BlurView(style: .light, tint: 0.5)
                 .cornerRadius(12)
 
             HStack(alignment: .center, spacing: 16) {
-                Image(systemName: "play.fill")
-                    .font(Font.callout.weight(.semibold))
+                Button(action: { self.isPlaying.toggle() }) {
+                    Image(systemName: isPlaying ? "pause.fill" : "play.fill")
+                        .font(Font.callout.weight(.semibold))
+                        .foregroundColor(.primary)
+                }
 
-                Text("Image 2 of 10")
+                Text("Image \(currentImage + 1) of \(totalImages)")
                     .font(Font.callout.weight(.semibold))
 
                 Spacer()
@@ -36,6 +43,6 @@ struct RadarControls: View {
 
 struct RadarControls_Previews: PreviewProvider {
     static var previews: some View {
-        RadarControls()
+        RadarControls(isPlaying: .constant(false), totalImages: 10, currentImage: .constant(2))
     }
 }

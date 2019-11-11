@@ -68,6 +68,8 @@
 		80C395AD23789FDD0004B71D /* RoundedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */; };
 		80C395AF2378A1DA0004B71D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395AE2378A1DA0004B71D /* AppState.swift */; };
 		80C395B22378B2340004B71D /* RadarControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395B12378B2340004B71D /* RadarControls.swift */; };
+		80C395B52378C6490004B71D /* RadarTileOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395B42378C6490004B71D /* RadarTileOverlay.swift */; };
+		80C395B82378C7860004B71D /* TimestampStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395B72378C7860004B71D /* TimestampStore.swift */; };
 		80C816202363D8C800D33669 /* BlackBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8161F2363D8C800D33669 /* BlackBackground.swift */; };
 		80C816232363D9DA00D33669 /* OmniBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816222363D9DA00D33669 /* OmniBar.swift */; };
 		80C816262363DCFE00D33669 /* OmniBarTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816252363DCFE00D33669 /* OmniBarTextField.swift */; };
@@ -151,6 +153,8 @@
 		80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerShape.swift; sourceTree = "<group>"; };
 		80C395AE2378A1DA0004B71D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		80C395B12378B2340004B71D /* RadarControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarControls.swift; sourceTree = "<group>"; };
+		80C395B42378C6490004B71D /* RadarTileOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarTileOverlay.swift; sourceTree = "<group>"; };
+		80C395B72378C7860004B71D /* TimestampStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampStore.swift; sourceTree = "<group>"; };
 		80C8161F2363D8C800D33669 /* BlackBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackBackground.swift; sourceTree = "<group>"; };
 		80C816222363D9DA00D33669 /* OmniBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBar.swift; sourceTree = "<group>"; };
 		80C816252363DCFE00D33669 /* OmniBarTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarTextField.swift; sourceTree = "<group>"; };
@@ -237,6 +241,7 @@
 		8026FF5123779873007962DB /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				80C395B32378C63D0004B71D /* RadarTileOverlay */,
 				8026FF5223779881007962DB /* MapView.swift */,
 			);
 			path = Map;
@@ -490,6 +495,22 @@
 			path = RadarControls;
 			sourceTree = "<group>";
 		};
+		80C395B32378C63D0004B71D /* RadarTileOverlay */ = {
+			isa = PBXGroup;
+			children = (
+				80C395B42378C6490004B71D /* RadarTileOverlay.swift */,
+			);
+			path = RadarTileOverlay;
+			sourceTree = "<group>";
+		};
+		80C395B62378C75C0004B71D /* TimestampStore */ = {
+			isa = PBXGroup;
+			children = (
+				80C395B72378C7860004B71D /* TimestampStore.swift */,
+			);
+			path = TimestampStore;
+			sourceTree = "<group>";
+		};
 		80C667BF2377733E008E9A11 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,6 +545,7 @@
 		80C667C2237776AE008E9A11 /* Radar */ = {
 			isa = PBXGroup;
 			children = (
+				80C395B62378C75C0004B71D /* TimestampStore */,
 				80C395B02378B2240004B71D /* RadarControls */,
 				8026FF5123779873007962DB /* Map */,
 				80FECAF423778361008AC653 /* RadarSection.swift */,
@@ -780,6 +802,7 @@
 				8061292123690D06005EEB2A /* DailyForecastDetail.swift in Sources */,
 				80B1B3282376683A000EA6DD /* MainPagingScrollView.swift in Sources */,
 				80E5D622237760BA004A1D6B /* AlertType.swift in Sources */,
+				80C395B82378C7860004B71D /* TimestampStore.swift in Sources */,
 				8099A20D23130B8500EE4F30 /* SafariView.swift in Sources */,
 				805A174822C53ADB00E1B4E2 /* SceneDelegate.swift in Sources */,
 				8026FF5323779881007962DB /* MapView.swift in Sources */,
@@ -790,6 +813,7 @@
 				80C816232363D9DA00D33669 /* OmniBar.swift in Sources */,
 				80E5D61E23774150004A1D6B /* UIScrollView+ScrollToTop.swift in Sources */,
 				803028E522CEE7970053F639 /* OverviewView.swift in Sources */,
+				80C395B52378C6490004B71D /* RadarTileOverlay.swift in Sources */,
 				80C395AD23789FDD0004B71D /* RoundedCornerShape.swift in Sources */,
 				801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */,
 				80C8162F2363E6DF00D33669 /* HeaderGradientBackground.swift in Sources */,
