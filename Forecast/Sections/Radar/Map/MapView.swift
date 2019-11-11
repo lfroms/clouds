@@ -37,11 +37,15 @@ struct MapView: UIViewRepresentable {
 
         context.coordinator.timestamps = timestamps
 
-        mapView.overlays.forEach { overlay in
-            mapView.removeOverlay(overlay)
+        if mapView.overlays.count < 1 {
+            mapView.addOverlays(context.coordinator.overlays, level: .aboveRoads)
         }
 
-        mapView.addOverlay(context.coordinator.overlays[currentImage], level: .aboveRoads)
+        mapView.overlays.forEach { overlay in
+            mapView.renderer(for: overlay)?.alpha = 0
+        }
+
+        mapView.renderer(for: context.coordinator.overlays[currentImage])?.alpha = 1
     }
 
     func makeCoordinator() -> MapView.Coordinator {
