@@ -24,7 +24,7 @@ struct LineActivityIndicator: View {
     }
 
     private var rotationEffect: Angle {
-        .degrees(isAnimating ? -360 : 0)
+        .degrees(isAnimating ? 360 : 0)
     }
 }
 
