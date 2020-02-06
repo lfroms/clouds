@@ -31,15 +31,14 @@ final class MainPagingScrollViewController: UIViewController, UIScrollViewDelega
         return v
     }()
 
-    var hostingController: UIHostingController<AnyView> = UIHostingController(rootView: AnyView(EmptyView()))
+    lazy var hostingController: UIHostingController<AnyView> = {
+        UIHostingController(rootView: AnyView(EmptyView()))
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.scrollView.delegate = self
-
-        view.addSubview(self.scrollView)
-        self.scrollView.pinEdges([.all], to: self.view)
+        self.addAndConfigureScrollView()
 
         self.hostingController.willMove(toParent: self)
         self.scrollView.addSubview(self.hostingController.view)
@@ -49,6 +48,13 @@ final class MainPagingScrollViewController: UIViewController, UIScrollViewDelega
         self.hostingController.view.backgroundColor = .clear
 
         self.updateScrollViewContentHeight()
+    }
+
+    private func addAndConfigureScrollView() {
+        self.scrollView.delegate = self
+
+        view.addSubview(self.scrollView)
+        self.scrollView.pinEdges([.all], to: self.view)
     }
 
     func updateScrollViewContentHeight() {
