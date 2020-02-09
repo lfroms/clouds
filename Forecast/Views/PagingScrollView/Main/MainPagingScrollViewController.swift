@@ -41,6 +41,8 @@ final class MainPagingScrollViewController: UIViewController, UIScrollViewDelega
         self.addAndConfigureScrollView()
 
         self.hostingController.willMove(toParent: self)
+        addChild(self.hostingController)
+
         self.scrollView.addSubview(self.hostingController.view)
         self.hostingController.view.pinEdges([.all], to: self.scrollView)
         self.hostingController.didMove(toParent: self)

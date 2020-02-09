@@ -21,13 +21,13 @@ struct MasterView<Content: View>: View {
             if useAsContainer {
                 content()
             } else {
-                StandardContentLayout()
+                StandardContentLayout
             }
         }
         .clipShape(RoundedCornerShape(cornerRadius: 22, style: .continuous))
     }
 
-    private func StandardContentLayout() -> some View {
+    private var StandardContentLayout: some View {
         ZStack(alignment: .bottom) {
             ZStack(alignment: .topTrailing) {
                 BackgroundColor(iconCode: iconCode)

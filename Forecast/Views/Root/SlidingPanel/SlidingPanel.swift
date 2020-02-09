@@ -10,15 +10,16 @@ import SwiftUI
 
 struct SlidingPanel<Content: View>: View {
     @Binding var locked: Bool
+    @EnvironmentObject private var appState: AppState
 
     var content: () -> Content
 
     var body: some View {
         GeometryReader { (geometry: GeometryProxy) in
-            MainPagingScrollView(travelDistance: 200, locked: self.$locked) {
+            MainPagingScrollView(travelDistance: self.appState.detailsContentHeight, locked: self.$locked) {
                 self.content()
                     .frame(height: geometry.size.height)
-                    .padding(.bottom, 200)
+                    .edgesIgnoringSafeArea(.all)
             }
         }
     }

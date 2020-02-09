@@ -6,6 +6,7 @@
 //  Copyright © 2019 Lukas Romsicki. All rights reserved.
 //
 
+import Combine
 import SwiftUI
 
 struct CurrentConditionsItemDescriptor: Identifiable {
@@ -19,14 +20,13 @@ struct CurrentConditionsItemDescriptor: Identifiable {
 
 struct CurrentConditionsView: View {
     @EnvironmentObject private var provider: WeatherProvider
+    @EnvironmentObject private var appState: AppState
+    
+    private typealias ConditionPair = (CurrentConditionsItemDescriptor, CurrentConditionsItemDescriptor)
     
     var body: some View {
-        let pairs = stride(from: 0, to: observations.count - 1, by: 2).map {
-            (observations[$0], observations[$0 + 1])
-        }
-        
-        return VStack(alignment: .leading, spacing: 22) {
-            ForEach(pairs, id: \.0.id) { left, right in
+        VStack(alignment: .leading, spacing: 22) {
+            ForEach(conditionPairs, id: \.0.id) { left, right in
                 HStack(spacing: 0) {
                     HStack {
                         CurrentConditionsItem(
@@ -53,6 +53,19 @@ struct CurrentConditionsView: View {
             }
         }
         .padding(30)
+        .onReceive(self.provider.objectWillChange, perform: { _ in
+            self.calculateAndSetHeight()
+        })
+    }
+    
+    private var conditionPairs: [ConditionPair] {
+        stride(from: 0, to: observations.count - 1, by: 2).map {
+            (observations[$0], observations[$0 + 1])
+        }
+    }
+    
+    private func calculateAndSetHeight() {
+        appState.detailsContentHeight = CGFloat((conditionPairs.count * 50) + 30 + 30 + ((conditionPairs.count - 1) * 22))
     }
     
     var observations: [CurrentConditionsItemDescriptor] {
