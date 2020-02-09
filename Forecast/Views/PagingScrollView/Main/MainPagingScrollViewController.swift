@@ -46,6 +46,10 @@ final class MainPagingScrollViewController: UIViewController, UIScrollViewDelega
         self.hostingController.didMove(toParent: self)
 
         self.hostingController.view.backgroundColor = .clear
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
 
         self.updateScrollViewContentHeight()
     }
@@ -57,8 +61,15 @@ final class MainPagingScrollViewController: UIViewController, UIScrollViewDelega
         self.scrollView.pinEdges([.all], to: self.view)
     }
 
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageHeight = self.scrollView.contentSize.height - self.scrollView.frame.size.height
+        let hasReachedEndOfPage = self.scrollView.contentOffset.y >= pageHeight
+
+        scrollView.isPagingEnabled = !hasReachedEndOfPage
+    }
+
     func updateScrollViewContentHeight() {
-        let height = self.travelDistance + self.scrollView.bounds.height
+        let height = self.travelDistance + self.scrollView.frame.height
         self.scrollView.contentSize.height = height
 
         self.scrollView.setNeedsLayout()
