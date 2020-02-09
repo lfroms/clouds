@@ -10,6 +10,7 @@ import SwiftUI
 
 struct Header: View {
     @EnvironmentObject private var provider: WeatherProvider
+    @EnvironmentObject private var appState: AppState
     @State private var textFieldValue: String?
 
     var body: some View {
@@ -18,13 +19,18 @@ struct Header: View {
                 .edgesIgnoringSafeArea(.top)
 
             VStack(alignment: .leading, spacing: 20) {
-                OmniBar(textFieldValue: textFieldValueBinding, primaryIcon: "location.fill")
+                OmniBar(
+                    textFieldValue: textFieldValueBinding,
+                    isReadOnly: !appState.showingLocationPicker,
+                    primaryIcon: "location.fill",
+                    settingsButtonAction: {},
+                    barFocusAction: {
+                        withAnimation(.spring()) {
+                            self.appState.showingLocationPicker.toggle()
+                        }
+                })
 
-                HStack {
-                    SunriseSunsetTime()
-                    Spacer()
-                    ObservedAtTime()
-                }
+                HeaderAccessories()
             }
             .padding(20)
         }

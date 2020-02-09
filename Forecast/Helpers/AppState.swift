@@ -11,13 +11,20 @@ import SwiftUI
 
 final class AppState: ObservableObject {
     @Published var masterViewIconCode: Int = 6
-    @Published var detailsContentHeight: CGFloat = 0
 
+    // MARK: - Sliding Panel
+    
     @Published var activeTabIndex: Int = 0 {
         didSet {
             slidingPanelLocked = activeTabIndex != 0
         }
     }
+    
+    @Published var detailsContentHeight: CGFloat = 0
 
     private(set) var slidingPanelLocked: Bool = false
+    
+    // MARK: - Location Picker
+    
+    @Published var showingLocationPicker: Bool = false
 }

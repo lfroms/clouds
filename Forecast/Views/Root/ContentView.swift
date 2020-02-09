@@ -15,36 +15,43 @@ struct ContentView: View {
     @EnvironmentObject var appState: AppState
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             BlackBackground()
                 .edgesIgnoringSafeArea(.all)
 
             VStack(alignment: .leading, spacing: 12) {
-                ZStack(alignment: .top) {
-                    ZStack(alignment: .bottom) {
-                        CurrentConditionsView()
+                ZStack(alignment: .bottom) {
+                    CurrentConditionsView()
 
-                        SlidingPanel(locked: slidingPanelLocked) {
-                            MasterView(
-                                useAsContainer: self.appState.activeTabIndex == 2,
-                                hasDrawerHandle: self.appState.slidingPanelLocked,
-                                drawerHandleHidden: self.weatherProvider.loading,
-                                iconCode: self.iconCode
-                            ) {
-                                CurrentSection(index: self.$appState.activeTabIndex)
-                            }
+                    SlidingPanel(locked: slidingPanelLocked) {
+                        MasterView(
+                            useAsContainer: self.appState.activeTabIndex == 2,
+                            hasDrawerHandle: self.appState.slidingPanelLocked,
+                            drawerHandleHidden: self.weatherProvider.loading,
+                            iconCode: self.iconCode
+                        ) {
+                            CurrentSection(index: self.$appState.activeTabIndex)
                         }
-                        .edgesIgnoringSafeArea(.top)
                     }
-
-                    Header()
+                    .edgesIgnoringSafeArea(.top)
                 }
 
                 NavigationBar(activeTabIndex: $appState.activeTabIndex, tabs: tabs)
                     .padding(.bottom, 12)
             }
+
+            LocationPickerSection()
+                .offset(searchOffset)
+
+            Header()
         }
         .colorScheme(.dark)
+    }
+
+    private var searchOffset: CGSize {
+        let screenHeight = UIApplication.shared.windows.first?.frame.height ?? 0
+
+        return CGSize(width: 0, height: self.appState.showingLocationPicker ? 0 : screenHeight)
     }
 
     private var slidingPanelLocked: Bool {
