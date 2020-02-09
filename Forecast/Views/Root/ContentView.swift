@@ -24,10 +24,11 @@ struct ContentView: View {
                     ZStack(alignment: .bottom) {
                         CurrentConditionsView()
 
-                        SlidingPanel(locked: self.$appState.slidingPanelLocked) {
+                        SlidingPanel(locked: slidingPanelLocked) {
                             MasterView(
                                 useAsContainer: self.appState.activeTabIndex == 2,
-                                drawerHandleHidden: self.$appState.slidingPanelLocked,
+                                hasDrawerHandle: self.appState.slidingPanelLocked,
+                                drawerHandleHidden: self.weatherProvider.loading,
                                 iconCode: self.iconCode
                             ) {
                                 CurrentSection(index: self.$appState.activeTabIndex)
@@ -46,8 +47,12 @@ struct ContentView: View {
         .colorScheme(.dark)
     }
 
+    private var slidingPanelLocked: Binding<Bool> {
+        .constant(self.appState.slidingPanelLocked || self.weatherProvider.loading)
+    }
+
     private var iconCode: Int {
-        return weatherProvider.weather?.currentConditions?.iconCode ?? 06
+        return self.weatherProvider.weather?.currentConditions?.iconCode ?? 06
     }
 }
 
