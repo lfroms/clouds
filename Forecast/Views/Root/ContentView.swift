@@ -47,8 +47,8 @@ struct ContentView: View {
         .colorScheme(.dark)
     }
 
-    private var slidingPanelLocked: Binding<Bool> {
-        .constant(self.appState.slidingPanelLocked || self.weatherProvider.loading)
+    private var slidingPanelLocked: Bool {
+        self.appState.slidingPanelLocked || self.weatherProvider.loading
     }
 
     private var iconCode: Int {

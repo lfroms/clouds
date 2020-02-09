@@ -19,5 +19,5 @@ final class AppState: ObservableObject {
         }
     }
 
-    @Published var slidingPanelLocked: Bool = false
+    private(set) var slidingPanelLocked: Bool = false
 }

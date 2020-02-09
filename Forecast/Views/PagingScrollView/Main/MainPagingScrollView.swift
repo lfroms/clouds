@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MainPagingScrollView<Content>: UIViewControllerRepresentable where Content: View {
     var travelDistance: CGFloat
-    @Binding var locked: Bool
+    var locked: Bool = false
 
     var content: () -> Content
 

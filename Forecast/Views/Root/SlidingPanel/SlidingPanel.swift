@@ -9,14 +9,14 @@
 import SwiftUI
 
 struct SlidingPanel<Content: View>: View {
-    @Binding var locked: Bool
+    var locked: Bool = false
     @EnvironmentObject private var appState: AppState
 
     var content: () -> Content
 
     var body: some View {
         GeometryReader { (geometry: GeometryProxy) in
-            MainPagingScrollView(travelDistance: self.appState.detailsContentHeight, locked: self.$locked) {
+            MainPagingScrollView(travelDistance: self.appState.detailsContentHeight, locked: self.locked) {
                 self.content()
                     .frame(height: geometry.size.height)
                     .edgesIgnoringSafeArea(.all)
@@ -27,7 +27,7 @@ struct SlidingPanel<Content: View>: View {
 
 struct SlidingPanel_Previews: PreviewProvider {
     static var previews: some View {
-        SlidingPanel(locked: .constant(false)) {
+        SlidingPanel(locked: false) {
             EmptyView()
         }
     }
