@@ -76,10 +76,21 @@ final class MainPagingScrollViewController: UIViewController, UIScrollViewDelega
     private func initHapticEngine() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
 
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.willEnterForegroundNotification,
+            object: nil,
+            queue: nil,
+            using: self.startHapticEngine
+        )
+
         do {
             self.engine = try CHHapticEngine()
-            try self.engine?.start()
+            self.startHapticEngine()
         } catch {}
+
+        self.engine?.resetHandler = { [weak self] in
+            self?.startHapticEngine()
+        }
     }
 
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
@@ -101,6 +112,12 @@ final class MainPagingScrollViewController: UIViewController, UIScrollViewDelega
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentOffset = self.scrollView.contentOffset.y
         scrollView.isPagingEnabled = !self.isOffsetBeyondPage(yContentOffset: contentOffset)
+    }
+
+    private func startHapticEngine(_ notification: Notification? = nil) {
+        do {
+            try self.engine?.start()
+        } catch {}
     }
 
     private func isOffsetBeyondPage(yContentOffset: CGFloat) -> Bool {
