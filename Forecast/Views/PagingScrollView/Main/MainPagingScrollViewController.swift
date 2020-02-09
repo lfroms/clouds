@@ -63,9 +63,11 @@ final class MainPagingScrollViewController: UIViewController, UIScrollViewDelega
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageHeight = self.scrollView.contentSize.height - self.scrollView.frame.size.height
-        let hasReachedEndOfPage = self.scrollView.contentOffset.y >= pageHeight
 
-        scrollView.isPagingEnabled = !hasReachedEndOfPage
+        let contentOffset = self.scrollView.contentOffset.y
+        let isAtEnd = contentOffset >= pageHeight || contentOffset <= 0
+
+        scrollView.isPagingEnabled = !isAtEnd
     }
 
     func updateScrollViewContentHeight() {
