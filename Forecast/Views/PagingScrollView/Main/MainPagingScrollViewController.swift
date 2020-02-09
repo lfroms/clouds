@@ -35,6 +35,8 @@ final class MainPagingScrollViewController: UIViewController, UIScrollViewDelega
         UIHostingController(rootView: AnyView(EmptyView()))
     }()
 
+    private let feedbackGenerator = UISelectionFeedbackGenerator()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -63,11 +65,17 @@ final class MainPagingScrollViewController: UIViewController, UIScrollViewDelega
         self.scrollView.pinEdges([.all], to: self.view)
     }
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let pageHeight = self.scrollView.contentSize.height - self.scrollView.frame.size.height
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.feedbackGenerator.prepare()
+    }
 
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        self.feedbackGenerator.selectionChanged()
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentOffset = self.scrollView.contentOffset.y
-        let isAtEnd = contentOffset >= pageHeight || contentOffset <= 0
+        let isAtEnd = contentOffset >= self.travelDistance || contentOffset <= 0
 
         scrollView.isPagingEnabled = !isAtEnd
     }
