@@ -6,6 +6,7 @@
 //  Copyright © 2019 Lukas Romsicki. All rights reserved.
 //
 
+import CoreHaptics
 import SwiftUI
 import UIKit
 
@@ -35,10 +36,17 @@ final class MainPagingScrollViewController: UIViewController, UIScrollViewDelega
         UIHostingController(rootView: AnyView(EmptyView()))
     }()
 
-    private let feedbackGenerator = UISelectionFeedbackGenerator()
+    private var engine: CHHapticEngine?
+
+    private lazy var hapticEvent: CHHapticEvent = {
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.36)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0)
+        return CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0)
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.initHapticEngine()
 
         self.addAndConfigureScrollView()
 
@@ -65,19 +73,38 @@ final class MainPagingScrollViewController: UIViewController, UIScrollViewDelega
         self.scrollView.pinEdges([.all], to: self.view)
     }
 
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        self.feedbackGenerator.prepare()
+    private func initHapticEngine() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+
+        do {
+            self.engine = try CHHapticEngine()
+            try self.engine?.start()
+        } catch {}
     }
 
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        self.feedbackGenerator.selectionChanged()
+        guard !self.isOffsetBeyondPage(yContentOffset: scrollView.contentOffset.y) else { return }
+
+        self.playThumpHaptic()
+    }
+
+    private func playThumpHaptic() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+
+        do {
+            let pattern = try CHHapticPattern(events: [self.hapticEvent], parameters: [])
+            let player = try engine?.makePlayer(with: pattern)
+            try player?.start(atTime: 0)
+        } catch {}
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentOffset = self.scrollView.contentOffset.y
-        let isAtEnd = contentOffset >= self.travelDistance || contentOffset <= 0
+        scrollView.isPagingEnabled = !self.isOffsetBeyondPage(yContentOffset: contentOffset)
+    }
 
-        scrollView.isPagingEnabled = !isAtEnd
+    private func isOffsetBeyondPage(yContentOffset: CGFloat) -> Bool {
+        return yContentOffset >= self.travelDistance || yContentOffset <= 0
     }
 
     func updateScrollViewContentHeight() {
