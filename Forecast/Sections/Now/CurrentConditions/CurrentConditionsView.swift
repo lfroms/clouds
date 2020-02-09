@@ -65,6 +65,7 @@ struct CurrentConditionsView: View {
     }
     
     private func calculateAndSetHeight() {
+        // TODO: - Remove hardcoded values
         appState.detailsContentHeight = CGFloat((conditionPairs.count * 50) + 30 + 30 + ((conditionPairs.count - 1) * 22))
     }
     

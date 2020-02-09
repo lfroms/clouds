@@ -39,7 +39,7 @@ final class MainPagingScrollViewController: UIViewController, UIScrollViewDelega
     private var engine: CHHapticEngine?
 
     private lazy var hapticEvent: CHHapticEvent = {
-        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.36)
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.38)
         let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0)
         return CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0)
     }()
