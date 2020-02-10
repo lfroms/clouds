@@ -9,18 +9,43 @@
 import SwiftUI
 
 struct HeaderGradientBackground: View {
-    var body: some View {
-        let gradient = Gradient(colors: gradientSteps)
+    @EnvironmentObject private var appState: AppState
 
-        return LinearGradient(gradient: gradient, startPoint: .top, endPoint: .bottom)
-            .frame(height: 170)
+    var body: some View {
+        ZStack {
+            LinearGradient(gradient: self.standardGradient, startPoint: .top, endPoint: .bottom)
+                .frame(height: height)
+
+            LinearGradient(gradient: self.prominentGradient, startPoint: .top, endPoint: .bottom)
+                .frame(height: height)
+                .opacity(self.appState.showingLocationPicker ? 1 : 0)
+        }
     }
 
-    private var gradientSteps: [Color] {
+    private var standardGradient: Gradient {
+        Gradient(stops: standardGradientStops)
+    }
+
+    private var prominentGradient: Gradient {
+        Gradient(stops: prominentGradientStops)
+    }
+
+    private var standardGradientStops: [Gradient.Stop] {
         [
-            Color.black.opacity(0.7),
-            Color.black.opacity(0)
+            Gradient.Stop(color: Color.black.opacity(0.7), location: 0),
+            Gradient.Stop(color: Color.black.opacity(0), location: 1)
         ]
+    }
+
+    private var prominentGradientStops: [Gradient.Stop] {
+        [
+            Gradient.Stop(color: Color.black.opacity(1), location: 0.1),
+            Gradient.Stop(color: Color.black.opacity(0), location: 1)
+        ]
+    }
+
+    private var height: CGFloat {
+        Dimension.System.topSafeMargin + Dimension.Header.omniBarHeight + (Dimension.Header.padding * 2)
     }
 }
 

@@ -13,8 +13,15 @@ final class Dimension {
         static let padding: CGFloat = 20
         static let omniBarHeight: CGFloat = 52
     }
-    
+
     final class LocationPicker {
         static let releaseToDismissThreshold: CGFloat = 80
+    }
+
+    final class System {
+        static var topSafeMargin: CGFloat {
+            let window = UIApplication.shared.windows.first
+            return window?.safeAreaInsets.top ?? 0
+        }
     }
 }
