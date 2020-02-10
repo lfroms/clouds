@@ -54,7 +54,7 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
     }()
 
     private var releaseInstructionLabelBottomConstraint: NSLayoutConstraint?
-    private let initialReleaseLabelTransform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+    private let initialReleaseLabelTransform = CGAffineTransform(scaleX: 0.8, y: 0.8)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +71,12 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
         self.hostingController.view.backgroundColor = .clear
 
         self.addAndConfigureReleaseInstructionLabel()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        NSLayoutConstraint.activate([self.hostingController.view.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor)])
     }
 
     private func addAndConfigureScrollView() {

@@ -17,31 +17,17 @@ struct LocationPickerSection: View {
                 .edgesIgnoringSafeArea(.all)
 
             DismissableScrollView(didPerformDismiss: handlePickerDismiss) {
-                self.memes()
-                self.memes()
-                self.memes()
-                self.memes()
-                self.memes()
-                self.memes()
-                self.memes()
-                self.memes()
-                self.memes()
-                self.memes()
+                VStack(alignment: .leading, spacing: 10) {
+                    LabeledSection(label: "Current location") {
+                        VStack(spacing: 10) {
+                            LocationItem(icon: "location.fill", title: "Ottawa (Kanada – Orléans")
+                        }
+                    }
+                    .padding(.vertical, 10)
+                }
+                .padding(.horizontal, 20)
             }
         }
-    }
-
-    private func memes() -> some View {
-        VStack {
-            Text("moo")
-            Text("moo")
-            Text("moo")
-            Text("moo")
-            Text("moo")
-            Text("moo")
-            Text("moo")
-        }
-        .background(Color.red)
     }
 
     private func handlePickerDismiss() {
