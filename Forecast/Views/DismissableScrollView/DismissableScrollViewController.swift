@@ -48,11 +48,13 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
         label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
         label.textAlignment = .center
         label.alpha = 0
+        label.transform = self.initialReleaseLabelTransform
 
         return label
     }()
 
     private var releaseInstructionLabelBottomConstraint: NSLayoutConstraint?
+    private let initialReleaseLabelTransform = CGAffineTransform(scaleX: 0.9, y: 0.9)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,21 +137,28 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
 
     private func animateReleaseInstructionLabelOpacity() {
         let newAlpha: CGFloat = self.isAbleToDismiss ? 1 : 0
+        let newTransform = self.isAbleToDismiss
+            ? CGAffineTransform(scaleX: 1, y: 1)
+            : self.initialReleaseLabelTransform
 
-        guard newAlpha != self.releaseInstructionLabel.alpha else {
+        guard
+            newAlpha != self.releaseInstructionLabel.alpha
+            || newTransform != self.releaseInstructionLabel.transform
+        else {
             return
         }
 
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 20, options: .curveEaseInOut, animations: {
+            self.releaseInstructionLabel.transform = newTransform
             self.releaseInstructionLabel.alpha = newAlpha
-        }
+        })
     }
 
     internal func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    internal func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let verticalDelta = abs(scrollView.contentOffset.y) - self.topInset
 
         self.releaseInstructionLabelBottomConstraint?.constant = verticalDelta
