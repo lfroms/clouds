@@ -27,7 +27,6 @@ struct LocationPickerSection: View {
                 self.memes()
                 self.memes()
                 self.memes()
-                
             }
         }
     }

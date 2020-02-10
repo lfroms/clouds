@@ -90,7 +90,7 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
         let topConstraint = self.releaseInstructionLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: self.topInset)
         NSLayoutConstraint.activate([topConstraint])
 
-        self.releaseInstructionLabelBottomConstraint = self.releaseInstructionLabel.heightAnchor.constraint(equalToConstant: 0)
+        self.releaseInstructionLabelBottomConstraint = self.releaseInstructionLabel.heightAnchor.constraint(equalToConstant: self.topInset)
 
         if let bottomConstraint = releaseInstructionLabelBottomConstraint {
             NSLayoutConstraint.activate([bottomConstraint])
@@ -148,10 +148,12 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
             return
         }
 
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 20, options: .curveEaseInOut, animations: {
-            self.releaseInstructionLabel.transform = newTransform
-            self.releaseInstructionLabel.alpha = newAlpha
-        })
+        DispatchQueue.main.async {
+            UIViewPropertyAnimator(duration: 0.6, dampingRatio: 0.4) {
+                self.releaseInstructionLabel.alpha = newAlpha
+                self.releaseInstructionLabel.transform = newTransform
+            }.startAnimation()
+        }
     }
 
     internal func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
