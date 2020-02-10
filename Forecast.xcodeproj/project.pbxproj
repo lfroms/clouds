@@ -75,7 +75,7 @@
 		80C816232363D9DA00D33669 /* OmniBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816222363D9DA00D33669 /* OmniBar.swift */; };
 		80C816262363DCFE00D33669 /* OmniBarTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816252363DCFE00D33669 /* OmniBarTextField.swift */; };
 		80C816282363DEBB00D33669 /* OmniBarPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816272363DEBB00D33669 /* OmniBarPlaceholder.swift */; };
-		80C8162A2363E2D700D33669 /* OmniBarSettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816292363E2D700D33669 /* OmniBarSettingsButton.swift */; };
+		80C8162A2363E2D700D33669 /* OmniBarAuxiliaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816292363E2D700D33669 /* OmniBarAuxiliaryButton.swift */; };
 		80C8162F2363E6DF00D33669 /* HeaderGradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8162E2363E6DE00D33669 /* HeaderGradientBackground.swift */; };
 		80D0CE81235B6D95002A3EFD /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 80D0CE80235B6D95002A3EFD /* SwiftDate */; };
 		80D0CE84235B6DA5002A3EFD /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 80D0CE83235B6DA5002A3EFD /* Apollo */; };
@@ -88,6 +88,10 @@
 		80E5D628237765DF004A1D6B /* IdentifiableAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5D627237765DF004A1D6B /* IdentifiableAlert.swift */; };
 		80E5D62A2377721B004A1D6B /* String+IsInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5D6292377721B004A1D6B /* String+IsInt.swift */; };
 		80FC8AB023F0B1E800AEA26F /* HeaderAccessories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC8AAF23F0B1E800AEA26F /* HeaderAccessories.swift */; };
+		80FC8AB323F0B37900AEA26F /* DismissableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC8AB223F0B37900AEA26F /* DismissableScrollView.swift */; };
+		80FC8AB523F0B39D00AEA26F /* DismissableScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC8AB423F0B39D00AEA26F /* DismissableScrollViewController.swift */; };
+		80FC8AB823F0B58E00AEA26F /* HostableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC8AB723F0B58E00AEA26F /* HostableViewController.swift */; };
+		80FC8ABA23F0B80700AEA26F /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC8AB923F0B80700AEA26F /* Dimension.swift */; };
 		80FECAF523778361008AC653 /* RadarSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FECAF423778361008AC653 /* RadarSection.swift */; };
 /* End PBXBuildFile section */
 
@@ -162,7 +166,7 @@
 		80C816222363D9DA00D33669 /* OmniBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBar.swift; sourceTree = "<group>"; };
 		80C816252363DCFE00D33669 /* OmniBarTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarTextField.swift; sourceTree = "<group>"; };
 		80C816272363DEBB00D33669 /* OmniBarPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarPlaceholder.swift; sourceTree = "<group>"; };
-		80C816292363E2D700D33669 /* OmniBarSettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarSettingsButton.swift; sourceTree = "<group>"; };
+		80C816292363E2D700D33669 /* OmniBarAuxiliaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarAuxiliaryButton.swift; sourceTree = "<group>"; };
 		80C8162E2363E6DE00D33669 /* HeaderGradientBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderGradientBackground.swift; sourceTree = "<group>"; };
 		80D0D86522D6B56700B8C711 /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		80D1896C22D03A2F00E56DB1 /* HighLowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLowView.swift; sourceTree = "<group>"; };
@@ -173,6 +177,10 @@
 		80E5D627237765DF004A1D6B /* IdentifiableAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableAlert.swift; sourceTree = "<group>"; };
 		80E5D6292377721B004A1D6B /* String+IsInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+IsInt.swift"; sourceTree = "<group>"; };
 		80FC8AAF23F0B1E800AEA26F /* HeaderAccessories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderAccessories.swift; sourceTree = "<group>"; };
+		80FC8AB223F0B37900AEA26F /* DismissableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableScrollView.swift; sourceTree = "<group>"; };
+		80FC8AB423F0B39D00AEA26F /* DismissableScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableScrollViewController.swift; sourceTree = "<group>"; };
+		80FC8AB723F0B58E00AEA26F /* HostableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostableViewController.swift; sourceTree = "<group>"; };
+		80FC8AB923F0B80700AEA26F /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
 		80FECAF423778361008AC653 /* RadarSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,6 +214,7 @@
 				8057DB4C2364F07E0087FBF7 /* NavigationBar */,
 				8026FF5023779019007962DB /* Shadow */,
 				80A016002376636B00A72C2F /* PagingScrollView */,
+				80FC8AB123F0B35C00AEA26F /* DismissableScrollView */,
 				8099A20B23130B7400EE4F30 /* Safari */,
 				805D7BE022D1287100A12C4D /* Blur */,
 				8066FDE82364ECCE0067F362 /* Indicator */,
@@ -322,6 +331,7 @@
 		805A174422C53ADB00E1B4E2 /* Forecast */ = {
 			isa = PBXGroup;
 			children = (
+				80FC8AB623F0B57600AEA26F /* Unsorted */,
 				80AD06FE22D68C2000220FEE /* GraphQL */,
 				80D0D86422D6B55D00B8C711 /* Helpers */,
 				80E5D61A23773B2A004A1D6B /* Extensions */,
@@ -450,8 +460,8 @@
 		80A016072376668800A72C2F /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				80A016012376638900A72C2F /* MainPagingScrollViewController.swift */,
 				80B1B3272376683A000EA6DD /* MainPagingScrollView.swift */,
+				80A016012376638900A72C2F /* MainPagingScrollViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -573,7 +583,7 @@
 				80C816222363D9DA00D33669 /* OmniBar.swift */,
 				80C816252363DCFE00D33669 /* OmniBarTextField.swift */,
 				80C816272363DEBB00D33669 /* OmniBarPlaceholder.swift */,
-				80C816292363E2D700D33669 /* OmniBarSettingsButton.swift */,
+				80C816292363E2D700D33669 /* OmniBarAuxiliaryButton.swift */,
 			);
 			path = OmniBar;
 			sourceTree = "<group>";
@@ -598,6 +608,24 @@
 				8085B7B3232DD0D500D4AEE4 /* Comparable+Clamped.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		80FC8AB123F0B35C00AEA26F /* DismissableScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				80FC8AB223F0B37900AEA26F /* DismissableScrollView.swift */,
+				80FC8AB423F0B39D00AEA26F /* DismissableScrollViewController.swift */,
+			);
+			path = DismissableScrollView;
+			sourceTree = "<group>";
+		};
+		80FC8AB623F0B57600AEA26F /* Unsorted */ = {
+			isa = PBXGroup;
+			children = (
+				80FC8AB723F0B58E00AEA26F /* HostableViewController.swift */,
+				80FC8AB923F0B80700AEA26F /* Dimension.swift */,
+			);
+			path = Unsorted;
 			sourceTree = "<group>";
 		};
 		80FECAEC237781C5008AC653 /* HourlyForecast */ = {
@@ -783,6 +811,7 @@
 				80C395A8237888CD0004B71D /* IndicatorShape.swift in Sources */,
 				8020F9532363D2390029FEB6 /* MasterView.swift in Sources */,
 				80C395A323787B9B0004B71D /* ObservedAtTime.swift in Sources */,
+				80FC8AB323F0B37900AEA26F /* DismissableScrollView.swift in Sources */,
 				8066FDED2364EE030067F362 /* NowSection.swift in Sources */,
 				80D1896D22D03A2F00E56DB1 /* HighLowView.swift in Sources */,
 				80C395B22378B2340004B71D /* RadarControls.swift in Sources */,
@@ -823,11 +852,14 @@
 				8038DB4923F0ACAD00F7B033 /* LocationPickerSection.swift in Sources */,
 				8061292323690F5F005EEB2A /* DailyForecastView.swift in Sources */,
 				80FC8AB023F0B1E800AEA26F /* HeaderAccessories.swift in Sources */,
+				80FC8AB523F0B39D00AEA26F /* DismissableScrollViewController.swift in Sources */,
 				80C816262363DCFE00D33669 /* OmniBarTextField.swift in Sources */,
 				802C0D9E236903CD009A22BA /* Header.swift in Sources */,
+				80FC8AB823F0B58E00AEA26F /* HostableViewController.swift in Sources */,
 				80A01605237665B700A72C2F /* TouchPassthroughView.swift in Sources */,
 				80C816232363D9DA00D33669 /* OmniBar.swift in Sources */,
 				80E5D61E23774150004A1D6B /* UIScrollView+ScrollToTop.swift in Sources */,
+				80FC8ABA23F0B80700AEA26F /* Dimension.swift in Sources */,
 				803028E522CEE7970053F639 /* OverviewView.swift in Sources */,
 				80C395B52378C6490004B71D /* RadarTileOverlay.swift in Sources */,
 				80C395AD23789FDD0004B71D /* RoundedCornerShape.swift in Sources */,
@@ -846,7 +878,7 @@
 				80C395A523787F660004B71D /* Date+TimeAgo.swift in Sources */,
 				80C395AA23788A6B0004B71D /* LineActivityIndicator.swift in Sources */,
 				8076F72623651CD000FB85D1 /* SlidingPanel.swift in Sources */,
-				80C8162A2363E2D700D33669 /* OmniBarSettingsButton.swift in Sources */,
+				80C8162A2363E2D700D33669 /* OmniBarAuxiliaryButton.swift in Sources */,
 				809C147E22F7D05F00F6A771 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

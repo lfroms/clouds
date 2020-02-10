@@ -10,7 +10,7 @@ import CoreHaptics
 import SwiftUI
 import UIKit
 
-final class MainPagingScrollViewController: UIViewController, UIScrollViewDelegate {
+final class MainPagingScrollViewController: UIViewController, UIScrollViewDelegate, HostableViewController {
     var travelDistance: CGFloat = 0.0
     var isLocked: Bool = false {
         didSet {

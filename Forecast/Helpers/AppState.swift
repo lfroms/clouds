@@ -11,7 +11,7 @@ import SwiftUI
 
 final class AppState: ObservableObject {
     @Published var masterViewIconCode: Int = 6
-
+    
     // MARK: - Sliding Panel
     
     @Published var activeTabIndex: Int = 0 {
@@ -21,10 +21,21 @@ final class AppState: ObservableObject {
     }
     
     @Published var detailsContentHeight: CGFloat = 0
-
+    
     private(set) var slidingPanelLocked: Bool = false
     
     // MARK: - Location Picker
     
     @Published var showingLocationPicker: Bool = false
+    
+    func toggleLocationPicker(animated: Bool) {
+        guard animated else {
+            self.showingLocationPicker.toggle()
+            return
+        }
+        
+        withAnimation(.spring()) {
+            self.showingLocationPicker.toggle()
+        }
+    }
 }

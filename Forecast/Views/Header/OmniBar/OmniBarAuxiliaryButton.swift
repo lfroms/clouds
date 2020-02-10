@@ -1,5 +1,5 @@
 //
-//  OmniBarSettingsButton.swift
+//  OmniBarAuxiliaryButton.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-10-25.
@@ -8,18 +8,19 @@
 
 import SwiftUI
 
-struct OmniBarSettingsButton: View {
+struct OmniBarAuxiliaryButton: View {
+    let icon: String
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
-            Image(systemName: "slider.horizontal.3")
+            Image(systemName: icon)
         }
     }
 }
 
 struct OmniBarSettingsButton_Previews: PreviewProvider {
     static var previews: some View {
-        OmniBarSettingsButton(action: {})
+        OmniBarAuxiliaryButton(icon: "slider.horizontal.3", action: {})
     }
 }

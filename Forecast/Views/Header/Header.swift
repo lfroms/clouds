@@ -18,22 +18,28 @@ struct Header: View {
             HeaderGradientBackground()
                 .edgesIgnoringSafeArea(.top)
 
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: Dimension.Header.padding) {
                 OmniBar(
                     textFieldValue: textFieldValueBinding,
                     isReadOnly: !appState.showingLocationPicker,
                     primaryIcon: "location.fill",
-                    settingsButtonAction: {},
+                    auxiliaryIcon: self.auxiliaryIcon,
+                    auxiliaryButtonAction: {
+                        self.textFieldValue = ""
+                    },
                     barFocusAction: {
-                        withAnimation(.spring()) {
-                            self.appState.showingLocationPicker.toggle()
-                        }
-                })
+                        self.appState.toggleLocationPicker(animated: true)
+                    }
+                )
 
                 HeaderAccessories()
             }
-            .padding(20)
+            .padding(Dimension.Header.padding)
         }
+    }
+
+    private var auxiliaryIcon: String {
+        appState.showingLocationPicker ? "xmark.circle.fill" : "slider.horizontal.3"
     }
 
     private var textFieldValueBinding: Binding<String> {

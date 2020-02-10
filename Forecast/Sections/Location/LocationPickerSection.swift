@@ -9,11 +9,44 @@
 import SwiftUI
 
 struct LocationPickerSection: View {
+    @EnvironmentObject private var appState: AppState
+
     var body: some View {
-        ZStack(alignment: .topLeading) {
+        ZStack(alignment: Alignment.topLeading) {
             BlackBackground()
                 .edgesIgnoringSafeArea(.all)
+
+            DismissableScrollView(didPerformDismiss: handlePickerDismiss) {
+                self.memes()
+                self.memes()
+                self.memes()
+                self.memes()
+                self.memes()
+                self.memes()
+                self.memes()
+                self.memes()
+                self.memes()
+                self.memes()
+                
+            }
         }
+    }
+
+    private func memes() -> some View {
+        VStack {
+            Text("moo")
+            Text("moo")
+            Text("moo")
+            Text("moo")
+            Text("moo")
+            Text("moo")
+            Text("moo")
+        }
+        .background(Color.red)
+    }
+
+    private func handlePickerDismiss() {
+        self.appState.toggleLocationPicker(animated: true)
     }
 }
 

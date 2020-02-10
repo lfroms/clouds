@@ -13,8 +13,9 @@ struct OmniBar: View {
 
     var isReadOnly: Bool = false
     var primaryIcon: String
+    var auxiliaryIcon: String
 
-    var settingsButtonAction: (() -> Void)?
+    var auxiliaryButtonAction: (() -> Void)?
     var barFocusAction: (() -> Void)?
 
     @State private var isPressed: Bool = false
@@ -34,13 +35,13 @@ struct OmniBar: View {
 
                 Spacer()
 
-                OmniBarSettingsButton(action: handleSettingsButtonAction)
+                OmniBarAuxiliaryButton(icon: auxiliaryIcon, action: handleAuxiliaryButtonAction)
             }
             .font(Font.callout.weight(.bold))
             .padding(.horizontal, 20)
         }
         .foregroundColor(.white)
-        .frame(height: 52)
+        .frame(height: Dimension.Header.omniBarHeight)
         .gesture(gesture)
         .scaleEffect(scaleEffect)
         .animation(scaleAnimation)
@@ -68,12 +69,12 @@ struct OmniBar: View {
             }
     }
 
-    private func handleSettingsButtonAction() {
-        guard let settingsButtonAction = settingsButtonAction else {
+    private func handleAuxiliaryButtonAction() {
+        guard let auxiliaryButtonAction = auxiliaryButtonAction else {
             return
         }
 
-        settingsButtonAction()
+        auxiliaryButtonAction()
     }
 }
 
@@ -82,7 +83,7 @@ struct OmniBar_Previews: PreviewProvider {
         ZStack {
             Color.blue
 
-            OmniBar(textFieldValue: .constant("Test value"), primaryIcon: "location.fill")
+            OmniBar(textFieldValue: .constant("Test value"), primaryIcon: "location.fill", auxiliaryIcon: "slider.horizontal.3")
                 .padding(20)
         }
         .edgesIgnoringSafeArea(.all)
