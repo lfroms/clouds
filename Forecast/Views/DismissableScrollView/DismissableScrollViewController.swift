@@ -120,7 +120,7 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
         let panOffset = sender.translation(in: self.scrollView)
         self.isAbleToDismiss = panOffset.y > Dimension.LocationPicker.releaseToDismissThreshold
 
-        self.animateReleaseInstructionLabelOpacity()
+        self.animateReleaseEligibleState()
 
         guard self.isAbleToDismiss else {
             return
@@ -135,6 +135,7 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.releaseInstructionLabel.alpha = 0
+                self.hostingController.view.alpha = 1
             }
 
         default:
@@ -142,24 +143,34 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
         }
     }
 
-    private func animateReleaseInstructionLabelOpacity() {
-        let newAlpha: CGFloat = self.isAbleToDismiss ? 1 : 0
+    private func animateReleaseEligibleState() {
+        let newReleaseLabelAlpha: CGFloat = self.isAbleToDismiss ? 1 : 0
+
         let newTransform = self.isAbleToDismiss
             ? CGAffineTransform(scaleX: 1, y: 1)
             : self.initialReleaseLabelTransform
 
+        let newContentAlpha: CGFloat = self.isAbleToDismiss ? 0.5 : 1
+
         guard
-            newAlpha != self.releaseInstructionLabel.alpha
+            newReleaseLabelAlpha != self.releaseInstructionLabel.alpha
             || newTransform != self.releaseInstructionLabel.transform
+            || newContentAlpha != self.hostingController.view.alpha
         else {
             return
         }
 
         DispatchQueue.main.async {
             UIViewPropertyAnimator(duration: 0.6, dampingRatio: 0.4) {
-                self.releaseInstructionLabel.alpha = newAlpha
                 self.releaseInstructionLabel.transform = newTransform
             }.startAnimation()
+        }
+
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.2) {
+                self.releaseInstructionLabel.alpha = newReleaseLabelAlpha
+                self.hostingController.view.alpha = newContentAlpha
+            }
         }
     }
 
