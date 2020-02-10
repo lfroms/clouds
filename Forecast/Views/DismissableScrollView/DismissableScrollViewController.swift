@@ -45,7 +45,8 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
     private lazy var releaseInstructionLabel: UILabel = {
         let label = UILabel()
         label.text = "Release to Dismiss".uppercased()
-        label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
+        label.font = UIFont.preferredFont(for: .caption2, weight: .semibold)
+        label.adjustsFontForContentSizeCategory = true
         label.textAlignment = .center
         label.alpha = 0
         label.transform = self.initialReleaseLabelTransform

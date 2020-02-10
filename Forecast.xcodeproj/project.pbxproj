@@ -83,6 +83,7 @@
 		80D0CE84235B6DA5002A3EFD /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 80D0CE83235B6DA5002A3EFD /* Apollo */; };
 		80D0D86722D6B56800B8C711 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D0D86522D6B56700B8C711 /* UserPreferences.swift */; };
 		80D1896D22D03A2F00E56DB1 /* HighLowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D1896C22D03A2F00E56DB1 /* HighLowView.swift */; };
+		80D871AF23F1F671001FBA94 /* UIFont+PreferredWithWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D871AE23F1F671001FBA94 /* UIFont+PreferredWithWeight.swift */; };
 		80E32BAE233454DD0087DBB3 /* SystemActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E32BAD233454DD0087DBB3 /* SystemActivityIndicator.swift */; };
 		80E5D61C23773B46004A1D6B /* UIView+PinEdges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5D61B23773B46004A1D6B /* UIView+PinEdges.swift */; };
 		80E5D61E23774150004A1D6B /* UIScrollView+ScrollToTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5D61D23774150004A1D6B /* UIScrollView+ScrollToTop.swift */; };
@@ -174,6 +175,7 @@
 		80C8162E2363E6DE00D33669 /* HeaderGradientBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderGradientBackground.swift; sourceTree = "<group>"; };
 		80D0D86522D6B56700B8C711 /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		80D1896C22D03A2F00E56DB1 /* HighLowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLowView.swift; sourceTree = "<group>"; };
+		80D871AE23F1F671001FBA94 /* UIFont+PreferredWithWeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+PreferredWithWeight.swift"; sourceTree = "<group>"; };
 		80E32BAD233454DD0087DBB3 /* SystemActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemActivityIndicator.swift; sourceTree = "<group>"; };
 		80E5D61B23773B46004A1D6B /* UIView+PinEdges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+PinEdges.swift"; sourceTree = "<group>"; };
 		80E5D61D23774150004A1D6B /* UIScrollView+ScrollToTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+ScrollToTop.swift"; sourceTree = "<group>"; };
@@ -612,6 +614,7 @@
 				80C395A423787F660004B71D /* Date+TimeAgo.swift */,
 				80E5D6292377721B004A1D6B /* String+IsInt.swift */,
 				8085B7B3232DD0D500D4AEE4 /* Comparable+Clamped.swift */,
+				80D871AE23F1F671001FBA94 /* UIFont+PreferredWithWeight.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -869,6 +872,7 @@
 				80E5D61E23774150004A1D6B /* UIScrollView+ScrollToTop.swift in Sources */,
 				80FC8ABA23F0B80700AEA26F /* Dimension.swift in Sources */,
 				803028E522CEE7970053F639 /* OverviewView.swift in Sources */,
+				80D871AF23F1F671001FBA94 /* UIFont+PreferredWithWeight.swift in Sources */,
 				80C395B52378C6490004B71D /* RadarTileOverlay.swift in Sources */,
 				80C395AD23789FDD0004B71D /* RoundedCornerShape.swift in Sources */,
 				801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */,
