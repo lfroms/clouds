@@ -16,8 +16,6 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
 
     var didPerformDismiss: (() -> Void)?
 
-    private lazy var releaseThreshold: CGFloat = self.releaseInstructionLabel.frame.height + 20
-
     private lazy var topInset: CGFloat = {
         (2 * Dimension.Header.padding) + Dimension.Header.omniBarHeight
     }()
@@ -54,6 +52,8 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
         return label
     }()
 
+    private var releaseInstructionLabelBottomConstraint: NSLayoutConstraint?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -87,6 +87,12 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
         self.releaseInstructionLabel.pinEdges([.leading, .trailing], to: self.view)
         let topConstraint = self.releaseInstructionLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: self.topInset)
         NSLayoutConstraint.activate([topConstraint])
+
+        self.releaseInstructionLabelBottomConstraint = self.releaseInstructionLabel.heightAnchor.constraint(equalToConstant: 0)
+
+        if let bottomConstraint = releaseInstructionLabelBottomConstraint {
+            NSLayoutConstraint.activate([bottomConstraint])
+        }
     }
 
     private var isAbleToDismiss: Bool = false {
@@ -103,7 +109,7 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
         }
 
         let panOffset = sender.translation(in: self.scrollView)
-        self.isAbleToDismiss = panOffset.y > self.releaseThreshold
+        self.isAbleToDismiss = panOffset.y > Dimension.LocationPicker.releaseToDismissThreshold
 
         self.animateReleaseInstructionLabelOpacity()
 
@@ -139,7 +145,13 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
         }
     }
 
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    internal func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let verticalDelta = abs(scrollView.contentOffset.y) - self.topInset
+
+        self.releaseInstructionLabelBottomConstraint?.constant = verticalDelta
     }
 }
