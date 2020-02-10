@@ -19,7 +19,7 @@ final class MainPagingScrollViewController: UIViewController, UIScrollViewDelega
     }
 
     private let scrollView: UIScrollView = {
-        let v = UIScrollView()
+        let v = TransparentTouchScrollView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.showsVerticalScrollIndicator = false
         v.showsHorizontalScrollIndicator = false
@@ -29,6 +29,7 @@ final class MainPagingScrollViewController: UIViewController, UIScrollViewDelega
         v.clipsToBounds = false
         v.insetsLayoutMarginsFromSafeArea = false
         v.contentInsetAdjustmentBehavior = .never
+
         return v
     }()
 
