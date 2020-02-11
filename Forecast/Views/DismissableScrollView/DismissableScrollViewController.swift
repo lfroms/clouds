@@ -9,21 +9,14 @@
 import SwiftUI
 import UIKit
 
-class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, HostableViewController, UIGestureRecognizerDelegate {
-    lazy var hostingController: UIHostingController<AnyView> = {
-        let controller = UIHostingController(rootView: AnyView(EmptyView()))
-        controller.view.translatesAutoresizingMaskIntoConstraints = false
-        controller.view.backgroundColor = nil
-        return controller
-    }()
-
+class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
     var didPerformDismiss: (() -> Void)?
 
     private lazy var topInset: CGFloat = {
         (2 * Dimension.Header.padding) + Dimension.Header.omniBarHeight
     }()
 
-    private lazy var scrollView: UIScrollView = {
+    internal private(set) lazy var scrollView: UIScrollView = {
         let v = UIScrollView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.showsVerticalScrollIndicator = true
@@ -65,21 +58,7 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
         super.viewDidLoad()
 
         self.addAndConfigureScrollView()
-
-        self.hostingController.willMove(toParent: self)
-        addChild(self.hostingController)
-
-        self.scrollView.addSubview(self.hostingController.view)
-        self.hostingController.view.pinEdges([.all], to: self.scrollView)
-        self.hostingController.didMove(toParent: self)
-
         self.addAndConfigureReleaseInstructionLabel()
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        NSLayoutConstraint.activate([self.hostingController.view.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor)])
     }
 
     private func addAndConfigureScrollView() {
@@ -136,7 +115,7 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.releaseInstructionLabel.alpha = 0
-                self.hostingController.view.alpha = 1
+                self.scrollView.alpha = 1
             }
 
         default:
@@ -156,7 +135,7 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
         guard
             newReleaseLabelAlpha != self.releaseInstructionLabel.alpha
             || newTransform != self.releaseInstructionLabel.transform
-            || newContentAlpha != self.hostingController.view.alpha
+            || newContentAlpha != self.scrollView.alpha
         else {
             return
         }
@@ -170,7 +149,7 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.2) {
                 self.releaseInstructionLabel.alpha = newReleaseLabelAlpha
-                self.hostingController.view.alpha = newContentAlpha
+                self.scrollView.alpha = newContentAlpha
             }
         }
     }

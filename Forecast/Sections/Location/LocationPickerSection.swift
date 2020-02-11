@@ -17,17 +17,7 @@ struct LocationPickerSection: View {
             BlackBackground()
                 .edgesIgnoringSafeArea(.all)
 
-            DismissableScrollView(didPerformDismiss: handlePickerDismiss) {
-                VStack(alignment: .leading, spacing: 10) {
-                    LabeledSection(label: "Current location") {
-                        VStack(spacing: 10) {
-                            LocationItem(icon: "location.fill", title: self.currentLocationName)
-                        }
-                    }
-                    .padding(.vertical, 10)
-                }
-                .padding(.horizontal, 20)
-            }
+            LocationPickerView(didPerformDismiss: self.handlePickerDismiss)
         }
     }
 
