@@ -10,6 +10,7 @@ import SwiftUI
 
 struct LocationPickerSection: View {
     @EnvironmentObject private var appState: AppState
+    @ObservedObject private var locationManager = LocationManager()
 
     var body: some View {
         ZStack(alignment: Alignment.topLeading) {
@@ -20,7 +21,7 @@ struct LocationPickerSection: View {
                 VStack(alignment: .leading, spacing: 10) {
                     LabeledSection(label: "Current location") {
                         VStack(spacing: 10) {
-                            LocationItem(icon: "location.fill", title: "Ottawa (Kanada – Orléans")
+                            LocationItem(icon: "location.fill", title: self.currentLocationName)
                         }
                     }
                     .padding(.vertical, 10)
@@ -28,6 +29,28 @@ struct LocationPickerSection: View {
                 .padding(.horizontal, 20)
             }
         }
+    }
+
+    private var currentLocationName: String {
+        guard let placemark = locationManager.lastPlacemark else {
+            return ""
+        }
+
+        var components: [String] = []
+
+        if let subLocality = placemark.subLocality {
+            components.append(subLocality)
+        }
+
+        if let locality = placemark.locality {
+            components.append(locality)
+        }
+
+        if let countryCode = placemark.isoCountryCode {
+            components.append(countryCode)
+        }
+
+        return components.joined(separator: ", ")
     }
 
     private func handlePickerDismiss() {

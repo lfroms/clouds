@@ -11,7 +11,10 @@ import UIKit
 
 class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, HostableViewController, UIGestureRecognizerDelegate {
     lazy var hostingController: UIHostingController<AnyView> = {
-        UIHostingController(rootView: AnyView(EmptyView()))
+        let controller = UIHostingController(rootView: AnyView(EmptyView()))
+        controller.view.translatesAutoresizingMaskIntoConstraints = false
+        controller.view.backgroundColor = nil
+        return controller
     }()
 
     var didPerformDismiss: (() -> Void)?
@@ -32,6 +35,7 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
         v.insetsLayoutMarginsFromSafeArea = false
         v.contentInsetAdjustmentBehavior = .never
         v.keyboardDismissMode = .onDrag
+        v.contentInset.top = self.topInset
         v.scrollIndicatorInsets = UIEdgeInsets(top: self.topInset, left: 0, bottom: 0, right: 0)
         return v
     }()
@@ -69,8 +73,6 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
         self.hostingController.view.pinEdges([.all], to: self.scrollView)
         self.hostingController.didMove(toParent: self)
 
-        self.hostingController.view.backgroundColor = .clear
-
         self.addAndConfigureReleaseInstructionLabel()
     }
 
@@ -85,7 +87,6 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, H
 
         view.addSubview(self.scrollView)
         self.scrollView.pinEdges([.all], to: self.view)
-        self.scrollView.contentInset.top = self.topInset
 
         self.scrollView.addGestureRecognizer(self.panGestureRecognizer)
     }
