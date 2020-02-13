@@ -16,6 +16,7 @@ final class Dimension {
 
     final class LocationPicker {
         static let releaseToDismissThreshold: CGFloat = 80
+        static let sectionSpacing: CGFloat = 30
     }
 
     final class System {

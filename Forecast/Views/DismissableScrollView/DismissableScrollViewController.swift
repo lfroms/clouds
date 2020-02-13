@@ -29,7 +29,7 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, U
         v.contentInsetAdjustmentBehavior = .never
         v.keyboardDismissMode = .onDrag
         v.contentInset.top = self.topInset
-        v.scrollIndicatorInsets = UIEdgeInsets(top: self.topInset, left: 0, bottom: 0, right: 0)
+        v.verticalScrollIndicatorInsets.top = self.topInset
         return v
     }()
 

@@ -59,6 +59,10 @@
 		809C147E22F7D05F00F6A771 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C147D22F7D05E00F6A771 /* API.swift */; };
 		80A016022376638900A72C2F /* MainPagingScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A016012376638900A72C2F /* MainPagingScrollViewController.swift */; };
 		80A01605237665B700A72C2F /* TouchPassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A01604237665B700A72C2F /* TouchPassthroughView.swift */; };
+		80A646C223F5DAE400C80633 /* LocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A646C123F5DAE400C80633 /* LocationItem.swift */; };
+		80A646C423F5E95800C80633 /* HostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A646C323F5E95800C80633 /* HostingView.swift */; };
+		80A646C623F5E98900C80633 /* UIStackView+SetBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A646C523F5E98900C80633 /* UIStackView+SetBackground.swift */; };
+		80A646C823F5F71600C80633 /* LocationPickerViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A646C723F5F71600C80633 /* LocationPickerViewBuilder.swift */; };
 		80AD070922D68E7B00220FEE /* WeatherProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD070822D68E7B00220FEE /* WeatherProvider.swift */; };
 		80B1B3282376683A000EA6DD /* MainPagingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B1B3272376683A000EA6DD /* MainPagingScrollView.swift */; };
 		80B8DB92232C768000BAD200 /* WeatherIllustration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B8DB91232C768000BAD200 /* WeatherIllustration.swift */; };
@@ -154,6 +158,10 @@
 		809C147D22F7D05E00F6A771 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		80A016012376638900A72C2F /* MainPagingScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagingScrollViewController.swift; sourceTree = "<group>"; };
 		80A01604237665B700A72C2F /* TouchPassthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchPassthroughView.swift; sourceTree = "<group>"; };
+		80A646C123F5DAE400C80633 /* LocationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationItem.swift; sourceTree = "<group>"; };
+		80A646C323F5E95800C80633 /* HostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingView.swift; sourceTree = "<group>"; };
+		80A646C523F5E98900C80633 /* UIStackView+SetBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+SetBackground.swift"; sourceTree = "<group>"; };
+		80A646C723F5F71600C80633 /* LocationPickerViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerViewBuilder.swift; sourceTree = "<group>"; };
 		80AD070822D68E7B00220FEE /* WeatherProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherProvider.swift; sourceTree = "<group>"; };
 		80B1B3272376683A000EA6DD /* MainPagingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagingScrollView.swift; sourceTree = "<group>"; };
 		80B8DB91232C768000BAD200 /* WeatherIllustration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIllustration.swift; sourceTree = "<group>"; };
@@ -287,6 +295,8 @@
 				80D871B923F2553F001FBA94 /* LocationPickerView.swift */,
 				8038DB4823F0ACAD00F7B033 /* LocationPickerSection.swift */,
 				806EBCA123F2560600086F46 /* LocationPickerViewController.swift */,
+				80A646C123F5DAE400C80633 /* LocationItem.swift */,
+				80A646C723F5F71600C80633 /* LocationPickerViewBuilder.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -627,6 +637,7 @@
 				80E5D6292377721B004A1D6B /* String+IsInt.swift */,
 				8085B7B3232DD0D500D4AEE4 /* Comparable+Clamped.swift */,
 				80D871AE23F1F671001FBA94 /* UIFont+PreferredWithWeight.swift */,
+				80A646C523F5E98900C80633 /* UIStackView+SetBackground.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -644,6 +655,7 @@
 			children = (
 				80FC8AB723F0B58E00AEA26F /* HostableViewController.swift */,
 				80FC8AB923F0B80700AEA26F /* Dimension.swift */,
+				80A646C323F5E95800C80633 /* HostingView.swift */,
 			);
 			path = Unsorted;
 			sourceTree = "<group>";
@@ -843,6 +855,7 @@
 				807B8E4A2377A7250075F131 /* CurrentConditionsItem.swift in Sources */,
 				8085B7B4232DD0D500D4AEE4 /* Comparable+Clamped.swift in Sources */,
 				8061292A236915D4005EEB2A /* WeekSection.swift in Sources */,
+				80A646C623F5E98900C80633 /* UIStackView+SetBackground.swift in Sources */,
 				80D871BA23F2553F001FBA94 /* LocationPickerView.swift in Sources */,
 				80C816202363D8C800D33669 /* BlackBackground.swift in Sources */,
 				80E32BAE233454DD0087DBB3 /* SystemActivityIndicator.swift in Sources */,
@@ -887,6 +900,7 @@
 				80C395B52378C6490004B71D /* RadarTileOverlay.swift in Sources */,
 				80C395AD23789FDD0004B71D /* RoundedCornerShape.swift in Sources */,
 				801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */,
+				80A646C823F5F71600C80633 /* LocationPickerViewBuilder.swift in Sources */,
 				80C8162F2363E6DF00D33669 /* HeaderGradientBackground.swift in Sources */,
 				800194DD232EDC8100066D37 /* ShadowView.swift in Sources */,
 				805D7BE222D1287900A12C4D /* BlurView.swift in Sources */,
@@ -896,8 +910,10 @@
 				8057DB582364F1370087FBF7 /* NavigationBar.swift in Sources */,
 				805A174A22C53ADB00E1B4E2 /* ContentView.swift in Sources */,
 				8057DB512364F0F20087FBF7 /* AlertIndicator.swift in Sources */,
+				80A646C423F5E95800C80633 /* HostingView.swift in Sources */,
 				803028D822CEE56D0053F639 /* ObservationView.swift in Sources */,
 				8061292823691365005EEB2A /* HorizontalPagingScrollViewController.swift in Sources */,
+				80A646C223F5DAE400C80633 /* LocationItem.swift in Sources */,
 				80C395A523787F660004B71D /* Date+TimeAgo.swift in Sources */,
 				80C395AA23788A6B0004B71D /* LineActivityIndicator.swift in Sources */,
 				8076F72623651CD000FB85D1 /* SlidingPanel.swift in Sources */,
