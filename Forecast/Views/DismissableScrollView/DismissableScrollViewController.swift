@@ -6,31 +6,20 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
-import SwiftUI
 import UIKit
 
 class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
+    var releaseToDismissText: String {
+        set { self.releaseLabel.text = newValue.uppercased() }
+        get { self.releaseLabel.text ?? "" }
+    }
+
     var didPerformDismiss: (() -> Void)?
 
-    private lazy var topInset: CGFloat = {
-        (2 * Dimension.Header.padding) + Dimension.Header.omniBarHeight
-    }()
-
-    internal private(set) lazy var scrollView: UIScrollView = {
-        let v = UIScrollView()
-        v.translatesAutoresizingMaskIntoConstraints = false
-        v.showsVerticalScrollIndicator = true
-        v.showsHorizontalScrollIndicator = false
-        v.alwaysBounceVertical = true
-        v.alwaysBounceHorizontal = false
-        v.isPagingEnabled = false
-        v.clipsToBounds = false
-        v.insetsLayoutMarginsFromSafeArea = false
-        v.contentInsetAdjustmentBehavior = .never
-        v.keyboardDismissMode = .onDrag
-        v.contentInset.top = self.topInset
-        v.verticalScrollIndicatorInsets.top = self.topInset
-        return v
+    private(set) lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.delegate = self
+        return scrollView
     }()
 
     private lazy var panGestureRecognizer: UIPanGestureRecognizer = {
@@ -39,7 +28,7 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, U
         return recognizer
     }()
 
-    private lazy var releaseInstructionLabel: UILabel = {
+    private lazy var releaseLabel: UILabel = {
         let label = UILabel()
         label.text = "Release to Dismiss".uppercased()
         label.font = UIFont.preferredFont(for: .caption2, weight: .semibold)
@@ -51,37 +40,31 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, U
         return label
     }()
 
-    private var releaseInstructionLabelBottomConstraint: NSLayoutConstraint?
     private let initialReleaseLabelTransform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+    private var releaseLabelHeightConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.addAndConfigureScrollView()
-        self.addAndConfigureReleaseInstructionLabel()
+        self.configureScrollView()
+        self.configureReleaseLabel()
     }
 
-    private func addAndConfigureScrollView() {
-        self.scrollView.delegate = self
-
+    private func configureScrollView() {
         view.addSubview(self.scrollView)
-        self.scrollView.pinEdges([.all], to: self.view)
-
+        self.scrollView.pinEdges(to: view)
         self.scrollView.addGestureRecognizer(self.panGestureRecognizer)
     }
 
-    private func addAndConfigureReleaseInstructionLabel() {
-        view.addSubview(self.releaseInstructionLabel)
+    private func configureReleaseLabel() {
+        view.addSubview(self.releaseLabel)
 
-        self.releaseInstructionLabel.pinEdges([.leading, .trailing], to: self.view)
-        let topConstraint = self.releaseInstructionLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: self.topInset)
-        NSLayoutConstraint.activate([topConstraint])
+        self.releaseLabel.pinEdges([.leading, .trailing], to: view)
 
-        self.releaseInstructionLabelBottomConstraint = self.releaseInstructionLabel.heightAnchor.constraint(equalToConstant: self.topInset)
+        self.releaseLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: self.scrollView.contentInset.top).isActive = true
 
-        if let bottomConstraint = releaseInstructionLabelBottomConstraint {
-            NSLayoutConstraint.activate([bottomConstraint])
-        }
+        self.releaseLabelHeightConstraint = self.releaseLabel.heightAnchor.constraint(equalToConstant: self.computedVerticalDelta)
+        self.releaseLabelHeightConstraint.isActive = true
     }
 
     private var isAbleToDismiss: Bool = false {
@@ -100,7 +83,7 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, U
         let panOffset = sender.translation(in: self.scrollView)
         self.isAbleToDismiss = panOffset.y > Dimension.LocationPicker.releaseToDismissThreshold
 
-        self.animateReleaseEligibleState()
+        self.animateChangeInReleaseEligibility()
 
         guard self.isAbleToDismiss else {
             return
@@ -114,7 +97,7 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, U
             self.didPerformDismiss?()
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.releaseInstructionLabel.alpha = 0
+                self.releaseLabel.alpha = 0
                 self.scrollView.alpha = 1
             }
 
@@ -123,7 +106,7 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, U
         }
     }
 
-    private func animateReleaseEligibleState() {
+    private func animateChangeInReleaseEligibility() {
         let newReleaseLabelAlpha: CGFloat = self.isAbleToDismiss ? 1 : 0
 
         let newTransform = self.isAbleToDismiss
@@ -133,8 +116,8 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, U
         let newContentAlpha: CGFloat = self.isAbleToDismiss ? 0.5 : 1
 
         guard
-            newReleaseLabelAlpha != self.releaseInstructionLabel.alpha
-            || newTransform != self.releaseInstructionLabel.transform
+            newReleaseLabelAlpha != self.releaseLabel.alpha
+            || newTransform != self.releaseLabel.transform
             || newContentAlpha != self.scrollView.alpha
         else {
             return
@@ -142,13 +125,13 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, U
 
         DispatchQueue.main.async {
             UIViewPropertyAnimator(duration: 0.6, dampingRatio: 0.4) {
-                self.releaseInstructionLabel.transform = newTransform
+                self.releaseLabel.transform = newTransform
             }.startAnimation()
         }
 
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.2) {
-                self.releaseInstructionLabel.alpha = newReleaseLabelAlpha
+                self.releaseLabel.alpha = newReleaseLabelAlpha
                 self.scrollView.alpha = newContentAlpha
             }
         }
@@ -159,8 +142,10 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, U
     }
 
     internal func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let verticalDelta = abs(scrollView.contentOffset.y) - self.topInset
+        self.releaseLabelHeightConstraint?.constant = self.computedVerticalDelta
+    }
 
-        self.releaseInstructionLabelBottomConstraint?.constant = verticalDelta
+    private var computedVerticalDelta: CGFloat {
+        abs(self.scrollView.contentOffset.y) - self.scrollView.contentInset.top
     }
 }

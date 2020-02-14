@@ -17,7 +17,7 @@ struct LocationPickerSection: View {
             BlackBackground()
                 .edgesIgnoringSafeArea(.all)
 
-            LocationPickerView(didPerformDismiss: self.handlePickerDismiss)
+            LocationPickerView(currentLocationName: currentLocationName, didPerformDismiss: self.handlePickerDismiss)
         }
     }
 

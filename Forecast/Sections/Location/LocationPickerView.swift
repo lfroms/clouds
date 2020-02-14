@@ -11,13 +11,18 @@ import SwiftUI
 struct LocationPickerView: UIViewControllerRepresentable {
     internal typealias UIViewControllerType = LocationPickerViewController
 
+    var currentLocationName: String = ""
+
     let didPerformDismiss: (() -> Void)?
 
     internal func makeUIViewController(context: Context) -> UIViewControllerType {
         let vc = UIViewControllerType()
-        vc.didPerformDismiss = self.didPerformDismiss
+        vc.locationName = currentLocationName
+        vc.didPerformDismiss = didPerformDismiss
         return vc
     }
 
-    internal func updateUIViewController(_ viewController: UIViewControllerType, context: Context) {}
+    internal func updateUIViewController(_ viewController: UIViewControllerType, context: Context) {
+        viewController.locationName = currentLocationName
+    }
 }
