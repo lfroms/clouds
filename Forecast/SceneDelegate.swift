@@ -17,10 +17,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
+        saveTestLocations()
+
         // Use a UIHostingController as window root view controller
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = RootViewController(rootView: ContentView())
+
+            let weatherProvider = WeatherProvider()
+            let appState = AppState()
+            let locationManager = LocationManager()
+
+            let rootView = ContentView()
+                .environmentObject(weatherProvider)
+                .environmentObject(appState)
+                .environmentObject(locationManager)
+
+            window.rootViewController = RootViewController(rootView: rootView)
             self.window = window
             window.makeKeyAndVisible()
         }
@@ -55,8 +67,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
-class RootViewController: UIHostingController<ContentView> {
+class RootViewController<Content>: UIHostingController<Content> where Content: View {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+}
+
+// TODO: - Remove this in favour of proper implementation.
+extension SceneDelegate {
+    func saveTestLocations() {
+        let testLocations: [Location] = [
+            .init(name: "Montréal", coordinate: .init()),
+            .init(name: "Toronto", coordinate: .init()),
+            .init(name: "Vancouver", coordinate: .init())
+        ]
+
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(testLocations), forKey: "saved_locations")
     }
 }
