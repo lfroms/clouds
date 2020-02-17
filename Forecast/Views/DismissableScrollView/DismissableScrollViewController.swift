@@ -146,6 +146,6 @@ class DismissableScrollViewController: UIViewController, UIScrollViewDelegate, U
     }
 
     private var computedVerticalDelta: CGFloat {
-        abs(self.scrollView.contentOffset.y) - self.scrollView.contentInset.top
+        max(abs(self.scrollView.contentOffset.y) - self.scrollView.contentInset.top, 0)
     }
 }
