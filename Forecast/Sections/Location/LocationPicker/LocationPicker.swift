@@ -44,8 +44,18 @@ struct LocationPicker {
 
         return LocationPickerData(
             currentLocation: currentLocation,
-            savedLocations: [],
+            savedLocations: savedLocations,
             state: .normal)
+    }
+
+    private var savedLocations: [Location] {
+        if let data = UserDefaults.standard.value(forKey: "saved_locations") as? Data {
+            let locations = try? PropertyListDecoder().decode([Location].self, from: data)
+
+            return locations ?? []
+        }
+
+        return []
     }
 }
 
