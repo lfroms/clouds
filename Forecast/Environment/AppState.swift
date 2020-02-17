@@ -39,25 +39,9 @@ final class AppState: ObservableObject {
         }
     }
     
-    @Published var favoriteLocations: [Location] = loadFavoriteLocations() {
+    @Published var favoriteLocations: [Location] = UserDefaultsHelper.getFavoriteLocations() {
         didSet {
-            Self.saveFavoriteLocations(newLocations: favoriteLocations)
+            UserDefaultsHelper.saveFavoriteLocations(newLocations: favoriteLocations)
         }
-    }
-    
-    static let savedLocationsKey = "saved_locations"
-    
-    private static func loadFavoriteLocations() -> [Location] {
-        if let data = UserDefaults.standard.value(forKey: savedLocationsKey) as? Data {
-            let locations = try? PropertyListDecoder().decode([Location].self, from: data)
-            
-            return locations ?? []
-        }
-        
-        return []
-    }
-    
-    private static func saveFavoriteLocations(newLocations: [Location]) {
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(newLocations), forKey: savedLocationsKey)
     }
 }

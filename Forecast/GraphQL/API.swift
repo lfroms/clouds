@@ -1,7 +1,118 @@
+// @generated
 //  This file was automatically generated and should not be edited.
 
 import Apollo
 import Foundation
+
+/// Coordinates.
+public struct Coordinate: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  /// - Parameters:
+  ///   - latitude
+  ///   - longitude
+  public init(latitude: Swift.Optional<Double?> = nil, longitude: Swift.Optional<Double?> = nil) {
+    graphQLMap = ["latitude": latitude, "longitude": longitude]
+  }
+
+  public var latitude: Swift.Optional<Double?> {
+    get {
+      return graphQLMap["latitude"] as? Swift.Optional<Double?> ?? Swift.Optional<Double?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "latitude")
+    }
+  }
+
+  public var longitude: Swift.Optional<Double?> {
+    get {
+      return graphQLMap["longitude"] as? Swift.Optional<Double?> ?? Swift.Optional<Double?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "longitude")
+    }
+  }
+}
+
+public enum Units: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  case imperial
+  case metric
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "imperial": self = .imperial
+      case "metric": self = .metric
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .imperial: return "imperial"
+      case .metric: return "metric"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: Units, rhs: Units) -> Bool {
+    switch (lhs, rhs) {
+      case (.imperial, .imperial): return true
+      case (.metric, .metric): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+
+  public static var allCases: [Units] {
+    return [
+      .imperial,
+      .metric,
+    ]
+  }
+}
+
+public enum Language: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  case e
+  case f
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "e": self = .e
+      case "f": self = .f
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .e: return "e"
+      case .f: return "f"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: Language, rhs: Language) -> Bool {
+    switch (lhs, rhs) {
+      case (.e, .e): return true
+      case (.f, .f): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+
+  public static var allCases: [Language] {
+    return [
+      .e,
+      .f,
+    ]
+  }
+}
 
 /// A two or three character province code.
 public enum Province: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
@@ -100,86 +211,6 @@ public enum Province: RawRepresentable, Equatable, Hashable, CaseIterable, Apoll
       .qc,
       .sk,
       .yt,
-    ]
-  }
-}
-
-public enum Units: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
-  public typealias RawValue = String
-  case imperial
-  case metric
-  /// Auto generated constant for unknown enum values
-  case __unknown(RawValue)
-
-  public init?(rawValue: RawValue) {
-    switch rawValue {
-      case "imperial": self = .imperial
-      case "metric": self = .metric
-      default: self = .__unknown(rawValue)
-    }
-  }
-
-  public var rawValue: RawValue {
-    switch self {
-      case .imperial: return "imperial"
-      case .metric: return "metric"
-      case .__unknown(let value): return value
-    }
-  }
-
-  public static func == (lhs: Units, rhs: Units) -> Bool {
-    switch (lhs, rhs) {
-      case (.imperial, .imperial): return true
-      case (.metric, .metric): return true
-      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
-      default: return false
-    }
-  }
-
-  public static var allCases: [Units] {
-    return [
-      .imperial,
-      .metric,
-    ]
-  }
-}
-
-public enum Language: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
-  public typealias RawValue = String
-  case e
-  case f
-  /// Auto generated constant for unknown enum values
-  case __unknown(RawValue)
-
-  public init?(rawValue: RawValue) {
-    switch rawValue {
-      case "e": self = .e
-      case "f": self = .f
-      default: self = .__unknown(rawValue)
-    }
-  }
-
-  public var rawValue: RawValue {
-    switch self {
-      case .e: return "e"
-      case .f: return "f"
-      case .__unknown(let value): return value
-    }
-  }
-
-  public static func == (lhs: Language, rhs: Language) -> Bool {
-    switch (lhs, rhs) {
-      case (.e, .e): return true
-      case (.f, .f): return true
-      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
-      default: return false
-    }
-  }
-
-  public static var allCases: [Language] {
-    return [
-      .e,
-      .f,
     ]
   }
 }
@@ -289,9 +320,154 @@ public enum WarningPriority: RawRepresentable, Equatable, Hashable, CaseIterable
   }
 }
 
+public final class FavoriteLocationsWeatherQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query FavoriteLocationsWeather($coordinates: [Coordinate!]!, $units: Units!, $language: Language!) {
+      bulkWeatherByCoordinates(coordinates: $coordinates, units: $units, language: $language) {
+        __typename
+        currentConditions {
+          __typename
+          temperature
+          iconCode
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "FavoriteLocationsWeather"
+
+  public var coordinates: [Coordinate]
+  public var units: Units
+  public var language: Language
+
+  public init(coordinates: [Coordinate], units: Units, language: Language) {
+    self.coordinates = coordinates
+    self.units = units
+    self.language = language
+  }
+
+  public var variables: GraphQLMap? {
+    return ["coordinates": coordinates, "units": units, "language": language]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("bulkWeatherByCoordinates", arguments: ["coordinates": GraphQLVariable("coordinates"), "units": GraphQLVariable("units"), "language": GraphQLVariable("language")], type: .nonNull(.list(.object(BulkWeatherByCoordinate.selections)))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(bulkWeatherByCoordinates: [BulkWeatherByCoordinate?]) {
+      self.init(unsafeResultMap: ["__typename": "Query", "bulkWeatherByCoordinates": bulkWeatherByCoordinates.map { (value: BulkWeatherByCoordinate?) -> ResultMap? in value.flatMap { (value: BulkWeatherByCoordinate) -> ResultMap in value.resultMap } }])
+    }
+
+    /// Get weather information for multiple weather stations by list of coordinates.
+    public var bulkWeatherByCoordinates: [BulkWeatherByCoordinate?] {
+      get {
+        return (resultMap["bulkWeatherByCoordinates"] as! [ResultMap?]).map { (value: ResultMap?) -> BulkWeatherByCoordinate? in value.flatMap { (value: ResultMap) -> BulkWeatherByCoordinate in BulkWeatherByCoordinate(unsafeResultMap: value) } }
+      }
+      set {
+        resultMap.updateValue(newValue.map { (value: BulkWeatherByCoordinate?) -> ResultMap? in value.flatMap { (value: BulkWeatherByCoordinate) -> ResultMap in value.resultMap } }, forKey: "bulkWeatherByCoordinates")
+      }
+    }
+
+    public struct BulkWeatherByCoordinate: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["WeatherReport"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("currentConditions", type: .object(CurrentCondition.selections)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(currentConditions: CurrentCondition? = nil) {
+        self.init(unsafeResultMap: ["__typename": "WeatherReport", "currentConditions": currentConditions.flatMap { (value: CurrentCondition) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var currentConditions: CurrentCondition? {
+        get {
+          return (resultMap["currentConditions"] as? ResultMap).flatMap { CurrentCondition(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "currentConditions")
+        }
+      }
+
+      public struct CurrentCondition: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["CurrentConditions"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("temperature", type: .scalar(Double.self)),
+          GraphQLField("iconCode", type: .scalar(Int.self)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(temperature: Double? = nil, iconCode: Int? = nil) {
+          self.init(unsafeResultMap: ["__typename": "CurrentConditions", "temperature": temperature, "iconCode": iconCode])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var temperature: Double? {
+          get {
+            return resultMap["temperature"] as? Double
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "temperature")
+          }
+        }
+
+        public var iconCode: Int? {
+          get {
+            return resultMap["iconCode"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "iconCode")
+          }
+        }
+      }
+    }
+  }
+}
+
 public final class WeatherQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
-  public let operationDefinition =
+  public let operationDefinition: String =
     """
     query Weather($province: Province!, $siteCode: Int!, $units: Units!, $language: Language!) {
       weather(province: $province, siteCode: $siteCode, units: $units, language: $language) {
@@ -413,7 +589,7 @@ public final class WeatherQuery: GraphQLQuery {
     }
     """
 
-  public let operationName = "Weather"
+  public let operationName: String = "Weather"
 
   public var province: Province
   public var siteCode: Int
@@ -432,7 +608,7 @@ public final class WeatherQuery: GraphQLQuery {
   }
 
   public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["Query"]
+    public static let possibleTypes: [String] = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
       GraphQLField("weather", arguments: ["province": GraphQLVariable("province"), "siteCode": GraphQLVariable("siteCode"), "units": GraphQLVariable("units"), "language": GraphQLVariable("language")], type: .object(Weather.selections)),
@@ -459,7 +635,7 @@ public final class WeatherQuery: GraphQLQuery {
     }
 
     public struct Weather: GraphQLSelectionSet {
-      public static let possibleTypes = ["WeatherReport"]
+      public static let possibleTypes: [String] = ["WeatherReport"]
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -585,7 +761,7 @@ public final class WeatherQuery: GraphQLQuery {
       }
 
       public struct Location: GraphQLSelectionSet {
-        public static let possibleTypes = ["Location"]
+        public static let possibleTypes: [String] = ["Location"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -652,7 +828,7 @@ public final class WeatherQuery: GraphQLQuery {
       }
 
       public struct CurrentCondition: GraphQLSelectionSet {
-        public static let possibleTypes = ["CurrentConditions"]
+        public static let possibleTypes: [String] = ["CurrentConditions"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -798,7 +974,7 @@ public final class WeatherQuery: GraphQLQuery {
         }
 
         public struct Station: GraphQLSelectionSet {
-          public static let possibleTypes = ["Station"]
+          public static let possibleTypes: [String] = ["Station"]
 
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -865,7 +1041,7 @@ public final class WeatherQuery: GraphQLQuery {
         }
 
         public struct Wind: GraphQLSelectionSet {
-          public static let possibleTypes = ["Wind"]
+          public static let possibleTypes: [String] = ["Wind"]
 
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -923,7 +1099,7 @@ public final class WeatherQuery: GraphQLQuery {
       }
 
       public struct TodaySummary: GraphQLSelectionSet {
-        public static let possibleTypes = ["TodaySummary"]
+        public static let possibleTypes: [String] = ["TodaySummary"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -970,7 +1146,7 @@ public final class WeatherQuery: GraphQLQuery {
       }
 
       public struct Unit: GraphQLSelectionSet {
-        public static let possibleTypes = ["ResponseUnits"]
+        public static let possibleTypes: [String] = ["ResponseUnits"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -1037,7 +1213,7 @@ public final class WeatherQuery: GraphQLQuery {
       }
 
       public struct Warning: GraphQLSelectionSet {
-        public static let possibleTypes = ["Warnings"]
+        public static let possibleTypes: [String] = ["Warnings"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -1083,7 +1259,7 @@ public final class WeatherQuery: GraphQLQuery {
         }
 
         public struct Event: GraphQLSelectionSet {
-          public static let possibleTypes = ["Event"]
+          public static let possibleTypes: [String] = ["Event"]
 
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -1151,7 +1327,7 @@ public final class WeatherQuery: GraphQLQuery {
       }
 
       public struct Normal: GraphQLSelectionSet {
-        public static let possibleTypes = ["Normals"]
+        public static let possibleTypes: [String] = ["Normals"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -1198,7 +1374,7 @@ public final class WeatherQuery: GraphQLQuery {
       }
 
       public struct DailyForecast: GraphQLSelectionSet {
-        public static let possibleTypes = ["DailyForecast"]
+        public static let possibleTypes: [String] = ["DailyForecast"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -1244,7 +1420,7 @@ public final class WeatherQuery: GraphQLQuery {
         }
 
         public struct Day: GraphQLSelectionSet {
-          public static let possibleTypes = ["Day"]
+          public static let possibleTypes: [String] = ["Day"]
 
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -1360,7 +1536,7 @@ public final class WeatherQuery: GraphQLQuery {
           }
 
           public struct Wind: GraphQLSelectionSet {
-            public static let possibleTypes = ["Wind"]
+            public static let possibleTypes: [String] = ["Wind"]
 
             public static let selections: [GraphQLSelection] = [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -1419,7 +1595,7 @@ public final class WeatherQuery: GraphQLQuery {
       }
 
       public struct HourlyForecast: GraphQLSelectionSet {
-        public static let possibleTypes = ["HourlyForecast"]
+        public static let possibleTypes: [String] = ["HourlyForecast"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -1465,7 +1641,7 @@ public final class WeatherQuery: GraphQLQuery {
         }
 
         public struct Hour: GraphQLSelectionSet {
-          public static let possibleTypes = ["Hour"]
+          public static let possibleTypes: [String] = ["Hour"]
 
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -1571,7 +1747,7 @@ public final class WeatherQuery: GraphQLQuery {
           }
 
           public struct Wind: GraphQLSelectionSet {
-            public static let possibleTypes = ["Wind"]
+            public static let possibleTypes: [String] = ["Wind"]
 
             public static let selections: [GraphQLSelection] = [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -1630,7 +1806,7 @@ public final class WeatherQuery: GraphQLQuery {
       }
 
       public struct Sun: GraphQLSelectionSet {
-        public static let possibleTypes = ["Sun"]
+        public static let possibleTypes: [String] = ["Sun"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -1677,7 +1853,7 @@ public final class WeatherQuery: GraphQLQuery {
       }
 
       public struct Yesterday: GraphQLSelectionSet {
-        public static let possibleTypes = ["Yesterday"]
+        public static let possibleTypes: [String] = ["Yesterday"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),

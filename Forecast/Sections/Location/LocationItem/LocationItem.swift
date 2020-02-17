@@ -16,8 +16,15 @@ struct LocationItem: View {
         HStack(alignment: .center, spacing: Dimension.Spacing.barItems) {
             Image(systemName: icon)
                 .font(Font.callout.weight(.bold))
-            Text(location.name)
-                .font(Font.callout.weight(.bold))
+
+            VStack(alignment: .leading, spacing: 0) {
+                Text(location.name)
+                    .font(Font.callout.weight(.bold))
+
+                Text(location.regionName)
+                    .font(Font.caption.bold())
+                    .foregroundColor(Color.primary.opacity(0.6))
+            }
 
             Spacer()
         }

@@ -16,14 +16,14 @@ final class LocationPickerData {
     }
 
     private(set) var currentLocation: Location?
-    private(set) var savedLocations: [Location]
+    private(set) var favoriteLocations: [Location]
     private(set) var state: State
 
     private(set) var searchResults: [Location]?
 
-    init(currentLocation: Location?, savedLocations: [Location], state: State, searchResults: [Location]? = nil) {
+    init(currentLocation: Location?, favoriteLocations: [Location], state: State, searchResults: [Location]? = nil) {
         self.currentLocation = currentLocation
-        self.savedLocations = savedLocations
+        self.favoriteLocations = favoriteLocations
         self.state = state
         self.searchResults = searchResults
     }
@@ -34,7 +34,7 @@ extension LocationPickerData: Equatable {
         return
             lhs.state == rhs.state &&
             lhs.currentLocation == rhs.currentLocation &&
-            lhs.savedLocations == rhs.savedLocations &&
+            lhs.favoriteLocations == rhs.favoriteLocations &&
             lhs.searchResults == rhs.searchResults
     }
 }

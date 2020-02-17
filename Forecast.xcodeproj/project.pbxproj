@@ -47,7 +47,6 @@
 		8061292823691365005EEB2A /* HorizontalPagingScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8061292723691365005EEB2A /* HorizontalPagingScrollViewController.swift */; };
 		8061292A236915D4005EEB2A /* WeekSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80612929236915D4005EEB2A /* WeekSection.swift */; };
 		8066FDED2364EE030067F362 /* NowSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8066FDEC2364EE030067F362 /* NowSection.swift */; };
-		806CC54B22F8F27100D0D2F6 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 806CC54A22F8F27000D0D2F6 /* schema.json */; };
 		806EBCA223F2560600086F46 /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EBCA123F2560600086F46 /* LocationPickerViewController.swift */; };
 		8076F72623651CD000FB85D1 /* SlidingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076F72523651CD000FB85D1 /* SlidingPanel.swift */; };
 		807B8E4A2377A7250075F131 /* CurrentConditionsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807B8E492377A7250075F131 /* CurrentConditionsItem.swift */; };
@@ -58,7 +57,6 @@
 		8099A20F23130CED00EE4F30 /* CustomSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8099A20E23130CED00EE4F30 /* CustomSafariViewController.swift */; };
 		8099ED3323667E7A00B8E1CA /* FramePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8099ED3223667E7A00B8E1CA /* FramePreferenceKey.swift */; };
 		8099ED3923667F8C00B8E1CA /* TabGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8099ED3823667F8C00B8E1CA /* TabGeometry.swift */; };
-		809C147E22F7D05F00F6A771 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C147D22F7D05E00F6A771 /* API.swift */; };
 		80A016022376638900A72C2F /* MainPagingScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A016012376638900A72C2F /* MainPagingScrollViewController.swift */; };
 		80A01605237665B700A72C2F /* TouchPassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A01604237665B700A72C2F /* TouchPassthroughView.swift */; };
 		80A646C223F5DAE400C80633 /* LocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A646C123F5DAE400C80633 /* LocationItem.swift */; };
@@ -81,6 +79,10 @@
 		80C395B22378B2340004B71D /* RadarControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395B12378B2340004B71D /* RadarControls.swift */; };
 		80C395B52378C6490004B71D /* RadarTileOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395B42378C6490004B71D /* RadarTileOverlay.swift */; };
 		80C395B82378C7860004B71D /* TimestampStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395B72378C7860004B71D /* TimestampStore.swift */; };
+		80C777CB23FB2B74004ABB2E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777CA23FB2B74004ABB2E /* API.swift */; };
+		80C777CD23FB2BEC004ABB2E /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777CC23FB2BEC004ABB2E /* UserDefaultsHelper.swift */; };
+		80C777D123FB3239004ABB2E /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 80C777D023FB3239004ABB2E /* schema.json */; };
+		80C777D323FB3415004ABB2E /* CLLocationCoordinate2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777D223FB3415004ABB2E /* CLLocationCoordinate2D.swift */; };
 		80C816202363D8C800D33669 /* BlackBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8161F2363D8C800D33669 /* BlackBackground.swift */; };
 		80C816232363D9DA00D33669 /* OmniBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816222363D9DA00D33669 /* OmniBar.swift */; };
 		80C816262363DCFE00D33669 /* OmniBarTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816252363DCFE00D33669 /* OmniBarTextField.swift */; };
@@ -112,6 +114,7 @@
 		800194DC232EDC8100066D37 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		800194DE232EDCCF00066D37 /* UIShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIShadowView.swift; sourceTree = "<group>"; };
 		800420D323FB11BB00C2879A /* String+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Empty.swift"; sourceTree = "<group>"; };
+		8010FE4E23FB298300861403 /* FavoriteLocationsWeatherQuery.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FavoriteLocationsWeatherQuery.graphql; sourceTree = "<group>"; };
 		801BDBCF232D660C007FE4AB /* DrawerHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerHandle.swift; sourceTree = "<group>"; };
 		8020F9522363D2390029FEB6 /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
 		8026FF5223779881007962DB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -151,7 +154,6 @@
 		8061292723691365005EEB2A /* HorizontalPagingScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPagingScrollViewController.swift; sourceTree = "<group>"; };
 		80612929236915D4005EEB2A /* WeekSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSection.swift; sourceTree = "<group>"; };
 		8066FDEC2364EE030067F362 /* NowSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowSection.swift; sourceTree = "<group>"; };
-		806CC54A22F8F27000D0D2F6 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		806EBCA123F2560600086F46 /* LocationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
 		8076F72523651CD000FB85D1 /* SlidingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingPanel.swift; sourceTree = "<group>"; };
 		807B8E492377A7250075F131 /* CurrentConditionsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentConditionsItem.swift; sourceTree = "<group>"; };
@@ -162,7 +164,6 @@
 		8099A20E23130CED00EE4F30 /* CustomSafariViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSafariViewController.swift; sourceTree = "<group>"; };
 		8099ED3223667E7A00B8E1CA /* FramePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramePreferenceKey.swift; sourceTree = "<group>"; };
 		8099ED3823667F8C00B8E1CA /* TabGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabGeometry.swift; sourceTree = "<group>"; };
-		809C147D22F7D05E00F6A771 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		80A016012376638900A72C2F /* MainPagingScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagingScrollViewController.swift; sourceTree = "<group>"; };
 		80A01604237665B700A72C2F /* TouchPassthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchPassthroughView.swift; sourceTree = "<group>"; };
 		80A646C123F5DAE400C80633 /* LocationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationItem.swift; sourceTree = "<group>"; };
@@ -185,6 +186,10 @@
 		80C395B12378B2340004B71D /* RadarControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarControls.swift; sourceTree = "<group>"; };
 		80C395B42378C6490004B71D /* RadarTileOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarTileOverlay.swift; sourceTree = "<group>"; };
 		80C395B72378C7860004B71D /* TimestampStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampStore.swift; sourceTree = "<group>"; };
+		80C777CA23FB2B74004ABB2E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		80C777CC23FB2BEC004ABB2E /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		80C777D023FB3239004ABB2E /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		80C777D223FB3415004ABB2E /* CLLocationCoordinate2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationCoordinate2D.swift; sourceTree = "<group>"; };
 		80C8161F2363D8C800D33669 /* BlackBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackBackground.swift; sourceTree = "<group>"; };
 		80C816222363D9DA00D33669 /* OmniBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBar.swift; sourceTree = "<group>"; };
 		80C816252363DCFE00D33669 /* OmniBarTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarTextField.swift; sourceTree = "<group>"; };
@@ -509,9 +514,10 @@
 		80AD06FE22D68C2000220FEE /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
-				809C147D22F7D05E00F6A771 /* API.swift */,
-				806CC54A22F8F27000D0D2F6 /* schema.json */,
+				80C777CA23FB2B74004ABB2E /* API.swift */,
+				80C777D023FB3239004ABB2E /* schema.json */,
 				809833B822F678BE001C1590 /* WeatherQuery.graphql */,
+				8010FE4E23FB298300861403 /* FavoriteLocationsWeatherQuery.graphql */,
 				80AD070822D68E7B00220FEE /* WeatherProvider.swift */,
 			);
 			path = GraphQL;
@@ -575,6 +581,7 @@
 			children = (
 				80C395AE2378A1DA0004B71D /* AppState.swift */,
 				80D871B723F20F87001FBA94 /* LocationManager.swift */,
+				80C777CC23FB2BEC004ABB2E /* UserDefaultsHelper.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -703,6 +710,7 @@
 				80B5E7A123FA3DAF001729E0 /* UIStackView+AddArrangedSubviews.swift */,
 				80C1693523FA435D00F22812 /* CLLocationCoordinate2D+Codable.swift */,
 				800420D323FB11BB00C2879A /* String+Empty.swift */,
+				80C777D223FB3415004ABB2E /* CLLocationCoordinate2D.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -851,7 +859,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				806CC54B22F8F27100D0D2F6 /* schema.json in Resources */,
+				80C777D123FB3239004ABB2E /* schema.json in Resources */,
 				805A175222C53ADD00E1B4E2 /* LaunchScreen.storyboard in Resources */,
 				805D7BDC22D1244800A12C4D /* Images.xcassets in Resources */,
 				805D7BDA22D1243F00A12C4D /* Colors.xcassets in Resources */,
@@ -866,7 +874,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		80AD070722D68C7400220FEE /* Generate Apollo GraphQL API */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -879,9 +887,9 @@
 			outputPaths = (
 				"$(SRCROOT)/GraphQL/API.swift",
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"GraphQL/schema.json\" GraphQL/API.swift\n";
+			shellScript = "# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"GraphQL/schema.json\" GraphQL/API.swift\necho >&2 \"asdfasdfsd\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -904,6 +912,7 @@
 				80C395B22378B2340004B71D /* RadarControls.swift in Sources */,
 				8099ED3323667E7A00B8E1CA /* FramePreferenceKey.swift in Sources */,
 				807B8E4C2377AAFD0075F131 /* CurrentConditionsView.swift in Sources */,
+				80C777CD23FB2BEC004ABB2E /* UserDefaultsHelper.swift in Sources */,
 				8099A20F23130CED00EE4F30 /* CustomSafariViewController.swift in Sources */,
 				802C0D9C236903C6009A22BA /* SunriseSunsetTime.swift in Sources */,
 				80504F782332DB4700DB4FAD /* HourlyForecastDetail.swift in Sources */,
@@ -924,6 +933,7 @@
 				800194DF232EDCCF00066D37 /* UIShadowView.swift in Sources */,
 				80E5D628237765DF004A1D6B /* IdentifiableAlert.swift in Sources */,
 				80B8DB92232C768000BAD200 /* WeatherIllustration.swift in Sources */,
+				80C777CB23FB2B74004ABB2E /* API.swift in Sources */,
 				8057DB4E2364F0C40087FBF7 /* AlertStack.swift in Sources */,
 				806EBCA223F2560600086F46 /* LocationPickerViewController.swift in Sources */,
 				80B5E7A523FA3DDD001729E0 /* Location.swift in Sources */,
@@ -977,8 +987,8 @@
 				80C395A523787F660004B71D /* Date+TimeAgo.swift in Sources */,
 				80C395AA23788A6B0004B71D /* LineActivityIndicator.swift in Sources */,
 				8076F72623651CD000FB85D1 /* SlidingPanel.swift in Sources */,
+				80C777D323FB3415004ABB2E /* CLLocationCoordinate2D.swift in Sources */,
 				80C8162A2363E2D700D33669 /* OmniBarAuxiliaryButton.swift in Sources */,
-				809C147E22F7D05F00F6A771 /* API.swift in Sources */,
 				80D871B823F20F87001FBA94 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

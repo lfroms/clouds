@@ -16,8 +16,8 @@ class LocationPickerViewBuilder {
             sections.append(currentLocationSection(currentLocation: currentLocation))
         }
         
-        if data.savedLocations.count > 0 {
-            sections.append(favoriteLocationsSection(favoriteLocations: data.savedLocations))
+        if data.favoriteLocations.count > 0 {
+            sections.append(favoriteLocationsSection(favoriteLocations: data.favoriteLocations))
         }
         
         return sections
@@ -38,7 +38,7 @@ class LocationPickerViewBuilder {
         ]
         
         favoriteLocations.forEach { favoriteLocation in
-            favoriteLocationSubviews.append(locationItem(icon: "star.fill", location: favoriteLocation))
+            favoriteLocationSubviews.append(favoriteLocationItem(icon: "star.fill", location: favoriteLocation))
         }
         
         return sectionStack(items: favoriteLocationSubviews)
@@ -48,6 +48,10 @@ class LocationPickerViewBuilder {
     
     private func locationItem(icon: String, location: Location) -> UIView {
         return HostingView(rootView: LocationItem(icon: icon, location: location))
+    }
+    
+    private func favoriteLocationItem(icon: String, location: Location) -> UIView {
+        return HostingView(rootView: FavoriteLocationItem(icon: icon, location: location))
     }
     
     private func sectionLabel(text: String) -> UILabel {

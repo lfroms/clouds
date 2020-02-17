@@ -77,6 +77,130 @@
             "deprecationReason": null
           },
           {
+            "name": "weatherByCoordinate",
+            "description": "Get weather information for a station closest to given coordinates.",
+            "args": [
+              {
+                "name": "latitude",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Float",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "longitude",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Float",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "units",
+                "description": "",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "ENUM",
+                    "name": "Units",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "language",
+                "description": "",
+                "type": {
+                  "kind": "ENUM",
+                  "name": "Language",
+                  "ofType": null
+                },
+                "defaultValue": "e"
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "WeatherReport",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "bulkWeatherByCoordinates",
+            "description": "Get weather information for multiple weather stations by list of coordinates.",
+            "args": [
+              {
+                "name": "coordinates",
+                "description": "",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "name": null,
+                      "ofType": {
+                        "kind": "INPUT_OBJECT",
+                        "name": "Coordinate",
+                        "ofType": null
+                      }
+                    }
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "units",
+                "description": "",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "ENUM",
+                    "name": "Units",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "language",
+                "description": "",
+                "type": {
+                  "kind": "ENUM",
+                  "name": "Language",
+                  "ofType": null
+                },
+                "defaultValue": "e"
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "WeatherReport",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "sites",
             "description": "Retrieve the entire site list or search by coordinates.",
             "args": [
@@ -1726,6 +1850,37 @@
         ],
         "inputFields": null,
         "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "Coordinate",
+        "description": "Coordinates.",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "latitude",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "longitude",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
         "enumValues": null,
         "possibleTypes": null
       },
