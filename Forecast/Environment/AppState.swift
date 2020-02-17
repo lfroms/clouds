@@ -30,12 +30,34 @@ final class AppState: ObservableObject {
     
     func toggleLocationPicker(animated: Bool) {
         guard animated else {
-            self.showingLocationPicker.toggle()
+            showingLocationPicker.toggle()
             return
         }
         
         withAnimation(.spring()) {
             self.showingLocationPicker.toggle()
         }
+    }
+    
+    @Published var favoriteLocations: [Location] = loadFavoriteLocations() {
+        didSet {
+            Self.saveFavoriteLocations(newLocations: favoriteLocations)
+        }
+    }
+    
+    static let savedLocationsKey = "saved_locations"
+    
+    private static func loadFavoriteLocations() -> [Location] {
+        if let data = UserDefaults.standard.value(forKey: savedLocationsKey) as? Data {
+            let locations = try? PropertyListDecoder().decode([Location].self, from: data)
+            
+            return locations ?? []
+        }
+        
+        return []
+    }
+    
+    private static func saveFavoriteLocations(newLocations: [Location]) {
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(newLocations), forKey: savedLocationsKey)
     }
 }

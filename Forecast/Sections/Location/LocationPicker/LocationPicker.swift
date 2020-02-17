@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct LocationPicker {
+    @EnvironmentObject private var appState: AppState
     @EnvironmentObject private var locationManager: LocationManager
 
     let didPerformDismiss: (() -> Void)?
@@ -44,18 +45,8 @@ struct LocationPicker {
 
         return LocationPickerData(
             currentLocation: currentLocation,
-            savedLocations: savedLocations,
+            savedLocations: appState.favoriteLocations,
             state: .normal)
-    }
-
-    private var savedLocations: [Location] {
-        if let data = UserDefaults.standard.value(forKey: "saved_locations") as? Data {
-            let locations = try? PropertyListDecoder().decode([Location].self, from: data)
-
-            return locations ?? []
-        }
-
-        return []
     }
 }
 
