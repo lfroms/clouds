@@ -13,7 +13,7 @@ class LocationPickerViewBuilder {
         var sections: [UIView] = []
         
         if let currentLocation = data.currentLocation {
-            sections.append(currentLocationSection(currentLocation: currentLocation))
+            sections.append(currentLocationSection(currentLocation: currentLocation, loading: data.loadingCurrentLocation))
         }
         
         if data.favoriteLocations.count > 0 {
@@ -23,10 +23,10 @@ class LocationPickerViewBuilder {
         return sections
     }
     
-    func currentLocationSection(currentLocation: Location) -> UIStackView {
+    func currentLocationSection(currentLocation: Location, loading: Bool) -> UIStackView {
         let currentLocationSubviews: [UIView] = [
-            sectionLabel(text: "Current location"),
-            locationItem(icon: "location.fill", location: currentLocation)
+            loadableSectionHeader(header: sectionLabel(text: "Current location"), loading: loading),
+            currentLocationItem(icon: "location.fill", location: currentLocation)
         ]
         
         return sectionStack(items: currentLocationSubviews)
@@ -46,8 +46,12 @@ class LocationPickerViewBuilder {
     
     // MARK: - Atoms
     
-    private func locationItem(icon: String, location: Location) -> UIView {
-        return HostingView(rootView: LocationItem(icon: icon, location: location))
+    private func currentLocationItem(icon: String, location: Location) -> UIView {
+        return HostingView(rootView: CurrentLocationItem(icon: icon, location: location))
+    }
+    
+    private func locationSearchResult(location: Location) -> UIView {
+        return HostingView(rootView: LocationSearchResultItem(location: location))
     }
     
     private func favoriteLocationItem(icon: String, location: Location) -> UIView {

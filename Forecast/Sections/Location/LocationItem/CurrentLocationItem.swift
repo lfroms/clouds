@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct FavoriteLocationItem: View {
+struct CurrentLocationItem: View {
     @EnvironmentObject private var provider: FavoritesWeatherProvider
 
     let icon: String
@@ -52,9 +52,9 @@ struct FavoriteLocationItem: View {
     }
 }
 
-struct FavoriteLocationItem_Previews: PreviewProvider {
+struct CurrentLocationItem_Previews: PreviewProvider {
     static var previews: some View {
-        FavoriteLocationItem(
+        CurrentLocationItem(
             icon: "location.fill",
             location: Location(
                 name: "Ottawa",
