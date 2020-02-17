@@ -35,12 +35,12 @@ struct LocationPicker {
         return components.joined(separator: ", ")
     }
 
-    private var locationData: LocationPickerData? {
-        guard let name = currentLocationName, let location = locationManager.lastLocation else {
-            return nil
-        }
+    private var locationPickerData: LocationPickerData {
+        var currentLocation: Location?
 
-        let currentLocation = Location(name: name, coordinate: location.coordinate)
+        if let name = currentLocationName, let location = locationManager.lastLocation {
+            currentLocation = Location(name: name, coordinate: location.coordinate)
+        }
 
         return LocationPickerData(
             currentLocation: currentLocation,
@@ -64,12 +64,12 @@ extension LocationPicker: UIViewControllerRepresentable {
 
     internal func makeUIViewController(context: Context) -> UIViewControllerType {
         let viewController = UIViewControllerType()
-        viewController.data = locationData
+        viewController.data = locationPickerData
         viewController.didPerformDismiss = didPerformDismiss
         return viewController
     }
 
     internal func updateUIViewController(_ viewController: UIViewControllerType, context: Context) {
-        viewController.data = locationData
+        viewController.data = locationPickerData
     }
 }
