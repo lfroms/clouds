@@ -69,6 +69,7 @@
 		80B5E7A523FA3DDD001729E0 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B5E7A423FA3DDD001729E0 /* Location.swift */; };
 		80B8DB92232C768000BAD200 /* WeatherIllustration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B8DB91232C768000BAD200 /* WeatherIllustration.swift */; };
 		80B8DB94232C7BBF00BAD200 /* BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B8DB93232C7BBF00BAD200 /* BackgroundColor.swift */; };
+		80C1693623FA435D00F22812 /* CLLocationCoordinate2D+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C1693523FA435D00F22812 /* CLLocationCoordinate2D+Codable.swift */; };
 		80C395A323787B9B0004B71D /* ObservedAtTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395A223787B9B0004B71D /* ObservedAtTime.swift */; };
 		80C395A523787F660004B71D /* Date+TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395A423787F660004B71D /* Date+TimeAgo.swift */; };
 		80C395A8237888CD0004B71D /* IndicatorShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395A7237888CD0004B71D /* IndicatorShape.swift */; };
@@ -170,6 +171,7 @@
 		80B5E7A423FA3DDD001729E0 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		80B8DB91232C768000BAD200 /* WeatherIllustration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIllustration.swift; sourceTree = "<group>"; };
 		80B8DB93232C7BBF00BAD200 /* BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColor.swift; sourceTree = "<group>"; };
+		80C1693523FA435D00F22812 /* CLLocationCoordinate2D+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Codable.swift"; sourceTree = "<group>"; };
 		80C395A223787B9B0004B71D /* ObservedAtTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedAtTime.swift; sourceTree = "<group>"; };
 		80C395A423787F660004B71D /* Date+TimeAgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+TimeAgo.swift"; sourceTree = "<group>"; };
 		80C395A7237888CD0004B71D /* IndicatorShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorShape.swift; sourceTree = "<group>"; };
@@ -694,6 +696,7 @@
 				80D871AE23F1F671001FBA94 /* UIFont+PreferredWithWeight.swift */,
 				80A646C523F5E98900C80633 /* UIStackView+SetBackground.swift */,
 				80B5E7A123FA3DAF001729E0 /* UIStackView+AddArrangedSubviews.swift */,
+				80C1693523FA435D00F22812 /* CLLocationCoordinate2D+Codable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -950,6 +953,7 @@
 				80A646C823F5F71600C80633 /* LocationPickerViewBuilder.swift in Sources */,
 				80C8162F2363E6DF00D33669 /* HeaderGradientBackground.swift in Sources */,
 				800194DD232EDC8100066D37 /* ShadowView.swift in Sources */,
+				80C1693623FA435D00F22812 /* CLLocationCoordinate2D+Codable.swift in Sources */,
 				805D7BE222D1287900A12C4D /* BlurView.swift in Sources */,
 				80D0D86722D6B56800B8C711 /* UserPreferences.swift in Sources */,
 				80C816282363DEBB00D33669 /* OmniBarPlaceholder.swift in Sources */,

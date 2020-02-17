@@ -28,6 +28,8 @@ class LocationPickerViewBuilder {
         return sectionStack(items: currentLocationSubviews)
     }
     
+    // MARK: - Atoms
+    
     private func locationItem(icon: String, location: Location) -> UIView {
         return HostingView(rootView: LocationItem(icon: icon, location: location))
     }

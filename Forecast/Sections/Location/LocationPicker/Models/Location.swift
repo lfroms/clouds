@@ -9,7 +9,7 @@
 import CoreLocation
 import Foundation
 
-struct Location {
+struct Location: Codable {
     let name: String
     let coordinate: CLLocationCoordinate2D
     let isFavorite: Bool = false
