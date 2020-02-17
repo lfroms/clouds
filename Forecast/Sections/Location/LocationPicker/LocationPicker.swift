@@ -64,6 +64,7 @@ extension LocationPicker: UIViewControllerRepresentable {
 
     internal func makeUIViewController(context: Context) -> UIViewControllerType {
         let viewController = UIViewControllerType()
+        viewController.data = locationData
         viewController.didPerformDismiss = didPerformDismiss
         return viewController
     }
