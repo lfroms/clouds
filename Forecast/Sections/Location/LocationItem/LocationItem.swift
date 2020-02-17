@@ -10,14 +10,13 @@ import SwiftUI
 
 struct LocationItem: View {
     let icon: String
-    let title: String
-    var subtitle: String?
+    let location: Location
 
     var body: some View {
         HStack {
             Image(systemName: icon)
                 .font(Font.callout.weight(.bold))
-            Text(title)
+            Text(location.name)
                 .font(Font.callout.weight(.bold))
             Spacer()
         }
@@ -30,6 +29,12 @@ struct LocationItem: View {
 
 struct LocationItem_Previews: PreviewProvider {
     static var previews: some View {
-        LocationItem(icon: "location.fill", title: "Ottawa")
+        LocationItem(
+            icon: "location.fill",
+            location: Location(
+                name: "Ottawa",
+                location: .init(latitude: 0.0, longitude: 0.0)
+            )
+        )
     }
 }

@@ -12,10 +12,9 @@ import UIKit
 class LocationPickerViewController: DismissableScrollViewController {
     private let viewBuilder = LocationPickerViewBuilder()
 
-    // TODO: - Remove/temporary
-    var locationName: String = "" {
+    var data: LocationPickerData? {
         didSet {
-            render()
+            renderIfNeeded(oldValue: oldValue)
         }
     }
 
@@ -23,7 +22,7 @@ class LocationPickerViewController: DismissableScrollViewController {
         (2 * Dimension.Header.padding) + Dimension.Header.omniBarHeight
     }()
 
-    private lazy var stackView: UIStackView = {
+    private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = Dimension.LocationPicker.sectionSpacing
@@ -35,33 +34,28 @@ class LocationPickerViewController: DismissableScrollViewController {
     override func viewDidLoad() {
         configureScrollView()
 
-        scrollView.addSubview(stackView)
+        scrollView.addSubview(mainStackView)
         configureStackViewConstraints()
 
         super.viewDidLoad()
     }
 
-    private func render() {
-        stackView.subviews.forEach { subview in
-            subview.removeFromSuperview()
+    private func renderIfNeeded(oldValue: LocationPickerData?) {
+        guard data != nil, oldValue != data else {
+            return
         }
 
-        let currentLocationLabel = UILabel()
-        currentLocationLabel.text = "Current location"
-        currentLocationLabel.font = UIFont.preferredFont(for: .callout, weight: .semibold)
-        currentLocationLabel.textColor = .white
+        render()
+    }
 
-        let currentLocationStack = UIStackView()
-        currentLocationStack.axis = .vertical
-        currentLocationStack.distribution = .equalSpacing
-        currentLocationStack.spacing = 10
-        currentLocationStack.alignment = .fill
+    private func render() {
+        mainStackView.clear()
 
-        currentLocationStack.addArrangedSubview(currentLocationLabel)
+        guard let data = data else {
+            return
+        }
 
-        currentLocationStack.addArrangedSubview(viewBuilder.locationItem(icon: "location.fill", title: locationName))
-
-        stackView.addArrangedSubview(currentLocationStack)
+        mainStackView.addArrangedSubviews(viewBuilder.sections(data: data))
     }
 
     private func configureScrollView() {
@@ -83,9 +77,9 @@ class LocationPickerViewController: DismissableScrollViewController {
     }
 
     private func configureStackViewConstraints() {
-        stackView.pinEdges([.leading, .trailing], to: scrollView, usingLayoutMargins: true)
+        mainStackView.pinEdges([.leading, .trailing], to: scrollView, usingLayoutMargins: true)
 
-        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Dimension.Header.padding).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        mainStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Dimension.Header.padding).isActive = true
+        mainStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
     }
 }
