@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct FavoriteLocationItem: View {
-    @EnvironmentObject private var provider: WeatherProvider
+    @EnvironmentObject private var provider: FavoritesWeatherProvider
 
     let icon: String
     let location: Location

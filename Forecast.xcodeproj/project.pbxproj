@@ -83,6 +83,8 @@
 		80C777CD23FB2BEC004ABB2E /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777CC23FB2BEC004ABB2E /* UserDefaultsHelper.swift */; };
 		80C777D123FB3239004ABB2E /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 80C777D023FB3239004ABB2E /* schema.json */; };
 		80C777D323FB3415004ABB2E /* CLLocationCoordinate2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777D223FB3415004ABB2E /* CLLocationCoordinate2D.swift */; };
+		80C777D523FB3BD0004ABB2E /* FavoritesWeatherProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777D423FB3BD0004ABB2E /* FavoritesWeatherProvider.swift */; };
+		80C777D723FB3BF7004ABB2E /* FavoriteLocationWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777D623FB3BF7004ABB2E /* FavoriteLocationWeather.swift */; };
 		80C816202363D8C800D33669 /* BlackBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8161F2363D8C800D33669 /* BlackBackground.swift */; };
 		80C816232363D9DA00D33669 /* OmniBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816222363D9DA00D33669 /* OmniBar.swift */; };
 		80C816262363DCFE00D33669 /* OmniBarTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816252363DCFE00D33669 /* OmniBarTextField.swift */; };
@@ -190,6 +192,8 @@
 		80C777CC23FB2BEC004ABB2E /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		80C777D023FB3239004ABB2E /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		80C777D223FB3415004ABB2E /* CLLocationCoordinate2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationCoordinate2D.swift; sourceTree = "<group>"; };
+		80C777D423FB3BD0004ABB2E /* FavoritesWeatherProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesWeatherProvider.swift; sourceTree = "<group>"; };
+		80C777D623FB3BF7004ABB2E /* FavoriteLocationWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocationWeather.swift; sourceTree = "<group>"; };
 		80C8161F2363D8C800D33669 /* BlackBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackBackground.swift; sourceTree = "<group>"; };
 		80C816222363D9DA00D33669 /* OmniBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBar.swift; sourceTree = "<group>"; };
 		80C816252363DCFE00D33669 /* OmniBarTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarTextField.swift; sourceTree = "<group>"; };
@@ -519,6 +523,7 @@
 				809833B822F678BE001C1590 /* WeatherQuery.graphql */,
 				8010FE4E23FB298300861403 /* FavoriteLocationsWeatherQuery.graphql */,
 				80AD070822D68E7B00220FEE /* WeatherProvider.swift */,
+				80C777D423FB3BD0004ABB2E /* FavoritesWeatherProvider.swift */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -528,6 +533,7 @@
 			children = (
 				80B5E7A423FA3DDD001729E0 /* Location.swift */,
 				80DFF9F923FA2B1100908B86 /* LocationPickerData.swift */,
+				80C777D623FB3BF7004ABB2E /* FavoriteLocationWeather.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -913,6 +919,7 @@
 				8099ED3323667E7A00B8E1CA /* FramePreferenceKey.swift in Sources */,
 				807B8E4C2377AAFD0075F131 /* CurrentConditionsView.swift in Sources */,
 				80C777CD23FB2BEC004ABB2E /* UserDefaultsHelper.swift in Sources */,
+				80C777D723FB3BF7004ABB2E /* FavoriteLocationWeather.swift in Sources */,
 				8099A20F23130CED00EE4F30 /* CustomSafariViewController.swift in Sources */,
 				802C0D9C236903C6009A22BA /* SunriseSunsetTime.swift in Sources */,
 				80504F782332DB4700DB4FAD /* HourlyForecastDetail.swift in Sources */,
@@ -962,6 +969,7 @@
 				80A01605237665B700A72C2F /* TouchPassthroughView.swift in Sources */,
 				80C816232363D9DA00D33669 /* OmniBar.swift in Sources */,
 				80E5D61E23774150004A1D6B /* UIScrollView+ScrollToTop.swift in Sources */,
+				80C777D523FB3BD0004ABB2E /* FavoritesWeatherProvider.swift in Sources */,
 				80FC8ABA23F0B80700AEA26F /* Dimension.swift in Sources */,
 				803028E522CEE7970053F639 /* OverviewView.swift in Sources */,
 				80D871AF23F1F671001FBA94 /* UIFont+PreferredWithWeight.swift in Sources */,
