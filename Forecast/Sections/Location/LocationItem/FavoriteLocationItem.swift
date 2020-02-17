@@ -8,9 +8,11 @@
 
 import SwiftUI
 
-struct LocationItem: View {
+struct FavoriteLocationItem: View {
     let icon: String
     let location: Location
+    let colorCode: Int
+    let temperature: Int
 
     var body: some View {
         HStack(alignment: .center, spacing: Dimension.Spacing.barItems) {
@@ -20,15 +22,22 @@ struct LocationItem: View {
                 .font(Font.callout.weight(.bold))
 
             Spacer()
+
+            Text(temperatureLabelText)
+                .font(Font.title.weight(.bold))
         }
         .padding(.horizontal, 20)
-        .frame(height: Dimension.LocationPicker.itemHeight)
+        .frame(height: 57)
         .background(Color.blue)
         .cornerRadius(14)
     }
+
+    private var temperatureLabelText: String {
+        "\(temperature)°"
+    }
 }
 
-struct LocationItem_Previews: PreviewProvider {
+struct FavoriteLocationItem_Previews: PreviewProvider {
     static var previews: some View {
         LocationItem(
             icon: "location.fill",

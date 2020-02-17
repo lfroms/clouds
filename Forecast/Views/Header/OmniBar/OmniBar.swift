@@ -27,7 +27,7 @@ struct OmniBar: View {
             BlurView(style: .light, tint: 0.3)
                 .cornerRadius(26)
 
-            HStack(alignment: .center, spacing: 12) {
+            HStack(alignment: .center, spacing: Dimension.Spacing.barItems) {
                 Image(systemName: primaryIcon)
 
                 OmniBarTextField(placeholder: OmniBarPlaceholder(), text: $textFieldValue)

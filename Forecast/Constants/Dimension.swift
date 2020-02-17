@@ -14,10 +14,15 @@ final class Dimension {
         static let omniBarHeight: CGFloat = 52
     }
 
+    final class Spacing {
+        static let barItems: CGFloat = 12
+    }
+
     final class LocationPicker {
         static let releaseToDismissThreshold: CGFloat = 80
         static let sectionSpacing: CGFloat = 30
         static let itemSpacing: CGFloat = 10
+        static let itemHeight: CGFloat = 57
     }
 
     final class System {

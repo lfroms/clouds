@@ -19,11 +19,15 @@ struct LocationPicker {
             return nil
         }
 
-        var components: [String] = []
+        return placemark.locality
+    }
 
-        if let city = placemark.locality {
-            components.append(city)
+    private var currentRegionName: String? {
+        guard let placemark = locationManager.lastPlacemark else {
+            return nil
         }
+
+        var components: [String] = []
 
         if let administrativeArea = placemark.administrativeArea {
             components.append(administrativeArea)
@@ -39,8 +43,8 @@ struct LocationPicker {
     private var locationPickerData: LocationPickerData {
         var currentLocation: Location?
 
-        if let name = currentLocationName, let location = locationManager.lastLocation {
-            currentLocation = Location(name: name, coordinate: location.coordinate)
+        if let name = currentLocationName, let regionName = currentRegionName, let location = locationManager.lastLocation {
+            currentLocation = Location(name: name, regionName: regionName, coordinate: location.coordinate)
         }
 
         return LocationPickerData(
