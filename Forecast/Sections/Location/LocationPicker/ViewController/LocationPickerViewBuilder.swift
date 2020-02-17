@@ -17,7 +17,7 @@ class LocationPickerViewBuilder {
         }
         
         if data.favoriteLocations.count > 0 {
-            sections.append(favoriteLocationsSection(favoriteLocations: data.favoriteLocations))
+            sections.append(favoriteLocationsSection(favoriteLocations: data.favoriteLocations, loading: data.loadingFavorites))
         }
         
         return sections
@@ -32,9 +32,9 @@ class LocationPickerViewBuilder {
         return sectionStack(items: currentLocationSubviews)
     }
     
-    func favoriteLocationsSection(favoriteLocations: [Location]) -> UIStackView {
+    func favoriteLocationsSection(favoriteLocations: [Location], loading: Bool) -> UIStackView {
         var favoriteLocationSubviews: [UIView] = [
-            sectionLabel(text: "Favourites")
+            loadableSectionHeader(header: sectionLabel(text: "Favourites"), loading: loading)
         ]
         
         favoriteLocations.forEach { favoriteLocation in
@@ -63,6 +63,23 @@ class LocationPickerViewBuilder {
         return label
     }
     
+    private func loadableSectionHeader(header: UIView, loading: Bool) -> UIStackView {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = Dimension.LocationPicker.itemSpacing
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .center
+        
+        stackView.addArrangedSubview(header)
+        
+        if loading {
+            let spinner = HostingView(rootView: LineActivityIndicator(color: .secondary))
+            stackView.addArrangedSubview(spinner)
+        }
+        
+        return stackView
+    }
+    
     private func sectionStack(items: [UIView]) -> UIStackView {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -70,9 +87,7 @@ class LocationPickerViewBuilder {
         stackView.distribution = .equalSpacing
         stackView.alignment = .fill
         
-        items.forEach { item in
-            stackView.addArrangedSubview(item)
-        }
+        stackView.addArrangedSubviews(items)
         
         return stackView
     }

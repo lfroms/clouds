@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LocationPicker {
     @EnvironmentObject private var appState: AppState
-    @EnvironmentObject private var provider: WeatherProvider
+    @EnvironmentObject private var favoritesProvider: FavoritesWeatherProvider
     @EnvironmentObject private var locationManager: LocationManager
 
     let didPerformDismiss: (() -> Void)?
@@ -51,7 +51,13 @@ struct LocationPicker {
         return LocationPickerData(
             currentLocation: currentLocation,
             favoriteLocations: appState.favoriteLocations,
-            state: .normal)
+            state: .normal,
+            // TODO: Implement
+            loadingCurrentLocation: false,
+            loadingFavorites: favoritesProvider.loading,
+            // TODO: Implement
+            loadingSearch: false
+        )
     }
 }
 
