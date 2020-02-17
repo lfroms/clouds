@@ -25,7 +25,7 @@ struct MasterView<Content: View>: View {
                 StandardContentLayout
             }
         }
-        .clipShape(RoundedCornerShape(cornerRadius: 22, style: .continuous))
+        .clipShape(RoundedCornerShape(cornerRadius: 22, style: .continuous, corners: [.bottomLeft, .bottomRight]))
     }
 
     private var StandardContentLayout: some View {

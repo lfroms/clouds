@@ -12,8 +12,9 @@ struct LocationPickerSection: View {
     @EnvironmentObject private var appState: AppState
 
     var body: some View {
-        ZStack(alignment: Alignment.topLeading) {
+        ZStack(alignment: .topLeading) {
             BlackBackground()
+                .clipShape(RoundedCornerShape(cornerRadius: 22, style: .continuous, corners: [.topLeft, .topRight]))
                 .edgesIgnoringSafeArea(.all)
 
             LocationPicker(didPerformDismiss: self.handlePickerDismiss)
