@@ -14,7 +14,9 @@ struct SunriseSunsetTime: View {
 
     var body: some View {
         HStack(alignment: .lastTextBaseline, spacing: 5) {
-            Image(systemName: symbolName).padding(.bottom, 3)
+            if !symbolName.isEmpty {
+                Image(systemName: symbolName).padding(.bottom, 3)
+            }
 
             Text(text)
         }
@@ -24,7 +26,7 @@ struct SunriseSunsetTime: View {
 
     private var symbolName: String {
         guard let sun = provider.weather?.sun else {
-            return ""
+            return .empty
         }
 
         let riseTime = inUTCTime(time: sun.riseTime)
@@ -44,7 +46,7 @@ struct SunriseSunsetTime: View {
 
     private var text: String {
         guard let sun = provider.weather?.sun else {
-            return ""
+            return .empty
         }
 
         let riseTime = inUTCTime(time: sun.riseTime).convertTo(region: .current)
