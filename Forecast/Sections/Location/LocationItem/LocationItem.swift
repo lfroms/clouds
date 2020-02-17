@@ -33,7 +33,7 @@ struct LocationItem_Previews: PreviewProvider {
             icon: "location.fill",
             location: Location(
                 name: "Ottawa",
-                location: .init(latitude: 0.0, longitude: 0.0)
+                coordinate: .init(latitude: 0.0, longitude: 0.0)
             )
         )
     }

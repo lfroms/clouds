@@ -40,7 +40,7 @@ struct LocationPicker {
             return nil
         }
 
-        let currentLocation = Location(name: name, location: location)
+        let currentLocation = Location(name: name, coordinate: location.coordinate)
 
         return LocationPickerData(
             currentLocation: currentLocation,

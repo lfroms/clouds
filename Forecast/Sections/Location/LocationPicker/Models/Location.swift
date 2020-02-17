@@ -11,7 +11,7 @@ import Foundation
 
 struct Location {
     let name: String
-    let location: CLLocation
+    let coordinate: CLLocationCoordinate2D
     let isFavorite: Bool = false
 }
 
@@ -19,8 +19,8 @@ extension Location: Equatable {
     static func == (lhs: Location, rhs: Location) -> Bool {
         return
             lhs.name == rhs.name &&
-            lhs.location.coordinate.latitude == rhs.location.coordinate.latitude &&
-            lhs.location.coordinate.longitude == rhs.location.coordinate.longitude &&
+            lhs.coordinate.latitude == rhs.coordinate.latitude &&
+            lhs.coordinate.longitude == rhs.coordinate.longitude &&
             lhs.isFavorite == rhs.isFavorite
     }
 }
