@@ -33,7 +33,7 @@ class FavoritesWeatherProvider: ObservableObject {
     }
     
     func fetchData() {
-        let locations = UserDefaultsHelper.getFavoriteLocations()
+        let locations = UserSettings.getFavoriteLocations()
         let coordinates = getCoordinatesFromFavoriteLocations(locations: locations)
         
         // TODO: - Should adjust to the user's preference.

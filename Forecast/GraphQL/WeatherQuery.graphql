@@ -1,5 +1,5 @@
-query Weather($province: Province!, $siteCode: Int!, $units: Units!, $language: Language!) {
-    weather(province: $province, siteCode: $siteCode, units: $units, language: $language) {
+query Weather($latitude: Float!, $longitude: Float!, $units: Units!, $language: Language!) {
+    weatherByCoordinate(latitude: $latitude, longitude: $longitude, units: $units, language: $language) {
         location {
             weatherFor
             country

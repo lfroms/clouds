@@ -114,107 +114,6 @@ public enum Language: RawRepresentable, Equatable, Hashable, CaseIterable, Apoll
   }
 }
 
-/// A two or three character province code.
-public enum Province: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
-  public typealias RawValue = String
-  case ab
-  case bc
-  case hef
-  case mb
-  case nb
-  case nl
-  case ns
-  case nt
-  case nu
-  case on
-  case pe
-  case qc
-  case sk
-  case yt
-  /// Auto generated constant for unknown enum values
-  case __unknown(RawValue)
-
-  public init?(rawValue: RawValue) {
-    switch rawValue {
-      case "AB": self = .ab
-      case "BC": self = .bc
-      case "HEF": self = .hef
-      case "MB": self = .mb
-      case "NB": self = .nb
-      case "NL": self = .nl
-      case "NS": self = .ns
-      case "NT": self = .nt
-      case "NU": self = .nu
-      case "ON": self = .on
-      case "PE": self = .pe
-      case "QC": self = .qc
-      case "SK": self = .sk
-      case "YT": self = .yt
-      default: self = .__unknown(rawValue)
-    }
-  }
-
-  public var rawValue: RawValue {
-    switch self {
-      case .ab: return "AB"
-      case .bc: return "BC"
-      case .hef: return "HEF"
-      case .mb: return "MB"
-      case .nb: return "NB"
-      case .nl: return "NL"
-      case .ns: return "NS"
-      case .nt: return "NT"
-      case .nu: return "NU"
-      case .on: return "ON"
-      case .pe: return "PE"
-      case .qc: return "QC"
-      case .sk: return "SK"
-      case .yt: return "YT"
-      case .__unknown(let value): return value
-    }
-  }
-
-  public static func == (lhs: Province, rhs: Province) -> Bool {
-    switch (lhs, rhs) {
-      case (.ab, .ab): return true
-      case (.bc, .bc): return true
-      case (.hef, .hef): return true
-      case (.mb, .mb): return true
-      case (.nb, .nb): return true
-      case (.nl, .nl): return true
-      case (.ns, .ns): return true
-      case (.nt, .nt): return true
-      case (.nu, .nu): return true
-      case (.on, .on): return true
-      case (.pe, .pe): return true
-      case (.qc, .qc): return true
-      case (.sk, .sk): return true
-      case (.yt, .yt): return true
-      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
-      default: return false
-    }
-  }
-
-  public static var allCases: [Province] {
-    return [
-      .ab,
-      .bc,
-      .hef,
-      .mb,
-      .nb,
-      .nl,
-      .ns,
-      .nt,
-      .nu,
-      .on,
-      .pe,
-      .qc,
-      .sk,
-      .yt,
-    ]
-  }
-}
-
 public enum WarningType: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
   public typealias RawValue = String
   case advisory
@@ -469,8 +368,8 @@ public final class WeatherQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query Weather($province: Province!, $siteCode: Int!, $units: Units!, $language: Language!) {
-      weather(province: $province, siteCode: $siteCode, units: $units, language: $language) {
+    query Weather($latitude: Float!, $longitude: Float!, $units: Units!, $language: Language!) {
+      weatherByCoordinate(latitude: $latitude, longitude: $longitude, units: $units, language: $language) {
         __typename
         location {
           __typename
@@ -591,27 +490,27 @@ public final class WeatherQuery: GraphQLQuery {
 
   public let operationName: String = "Weather"
 
-  public var province: Province
-  public var siteCode: Int
+  public var latitude: Double
+  public var longitude: Double
   public var units: Units
   public var language: Language
 
-  public init(province: Province, siteCode: Int, units: Units, language: Language) {
-    self.province = province
-    self.siteCode = siteCode
+  public init(latitude: Double, longitude: Double, units: Units, language: Language) {
+    self.latitude = latitude
+    self.longitude = longitude
     self.units = units
     self.language = language
   }
 
   public var variables: GraphQLMap? {
-    return ["province": province, "siteCode": siteCode, "units": units, "language": language]
+    return ["latitude": latitude, "longitude": longitude, "units": units, "language": language]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("weather", arguments: ["province": GraphQLVariable("province"), "siteCode": GraphQLVariable("siteCode"), "units": GraphQLVariable("units"), "language": GraphQLVariable("language")], type: .object(Weather.selections)),
+      GraphQLField("weatherByCoordinate", arguments: ["latitude": GraphQLVariable("latitude"), "longitude": GraphQLVariable("longitude"), "units": GraphQLVariable("units"), "language": GraphQLVariable("language")], type: .object(WeatherByCoordinate.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -620,21 +519,21 @@ public final class WeatherQuery: GraphQLQuery {
       self.resultMap = unsafeResultMap
     }
 
-    public init(weather: Weather? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Query", "weather": weather.flatMap { (value: Weather) -> ResultMap in value.resultMap }])
+    public init(weatherByCoordinate: WeatherByCoordinate? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "weatherByCoordinate": weatherByCoordinate.flatMap { (value: WeatherByCoordinate) -> ResultMap in value.resultMap }])
     }
 
-    /// Get weather information for a given station.
-    public var weather: Weather? {
+    /// Get weather information for a station closest to given coordinates.
+    public var weatherByCoordinate: WeatherByCoordinate? {
       get {
-        return (resultMap["weather"] as? ResultMap).flatMap { Weather(unsafeResultMap: $0) }
+        return (resultMap["weatherByCoordinate"] as? ResultMap).flatMap { WeatherByCoordinate(unsafeResultMap: $0) }
       }
       set {
-        resultMap.updateValue(newValue?.resultMap, forKey: "weather")
+        resultMap.updateValue(newValue?.resultMap, forKey: "weatherByCoordinate")
       }
     }
 
-    public struct Weather: GraphQLSelectionSet {
+    public struct WeatherByCoordinate: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["WeatherReport"]
 
       public static let selections: [GraphQLSelection] = [

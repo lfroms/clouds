@@ -84,9 +84,13 @@
                 "name": "latitude",
                 "description": "",
                 "type": {
-                  "kind": "SCALAR",
-                  "name": "Float",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Float",
+                    "ofType": null
+                  }
                 },
                 "defaultValue": null
               },
@@ -94,9 +98,13 @@
                 "name": "longitude",
                 "description": "",
                 "type": {
-                  "kind": "SCALAR",
-                  "name": "Float",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Float",
+                    "ofType": null
+                  }
                 },
                 "defaultValue": null
               },

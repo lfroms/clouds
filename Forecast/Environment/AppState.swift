@@ -39,9 +39,9 @@ final class AppState: ObservableObject {
         }
     }
     
-    @Published var favoriteLocations: [Location] = UserDefaultsHelper.getFavoriteLocations() {
+    @Published var favoriteLocations: [Location] = UserSettings.getFavoriteLocations() {
         didSet {
-            UserDefaultsHelper.saveFavoriteLocations(newLocations: favoriteLocations)
+            UserSettings.saveFavoriteLocations(newLocations: favoriteLocations)
         }
     }
 }

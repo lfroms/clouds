@@ -12,9 +12,13 @@ import Foundation
 import SwiftUI
 
 class WeatherProvider: ObservableObject {
-    @Published private(set) var weather: WeatherQuery.Data.Weather?
+    @Published private(set) var weather: WeatherQuery.Data.WeatherByCoordinate?
     @Published private(set) var error: Error?
     @Published private(set) var loading: Bool = false
+    
+    @Published var locationManager: LocationManager = LocationManager()
+    
+    private var locationToFetch: Location? = UserSettings.getActiveLocation()
     
     init() {
         NotificationCenter.default.addObserver(
@@ -30,11 +34,36 @@ class WeatherProvider: ObservableObject {
     }
     
     func fetchData() {
-        let mainQuery = WeatherQuery(province: .on, siteCode: 430, units: .metric, language: .e)
+        var variableQuery: WeatherQuery?
+        
+        if let lastLocation = locationManager.lastLocation {
+            variableQuery = WeatherQuery(
+                latitude: lastLocation.coordinate.latitude,
+                longitude: lastLocation.coordinate.longitude,
+                units: .metric,
+                language: .e
+            )
+            
+        } else {
+            guard let locationToFetch = locationToFetch else {
+                return
+            }
+            
+            variableQuery = WeatherQuery(
+                latitude: locationToFetch.coordinate.latitude,
+                longitude: locationToFetch.coordinate.longitude,
+                units: .metric,
+                language: .e
+            )
+        }
+        
+        guard let query = variableQuery else {
+            return
+        }
         
         loading = true
         
-        apollo.fetch(query: mainQuery, cachePolicy: .fetchIgnoringCacheData) { result in
+        apollo.fetch(query: query, cachePolicy: .fetchIgnoringCacheData) { result in
             guard let data = try? result.get().data else {
                 return
             }
@@ -43,7 +72,7 @@ class WeatherProvider: ObservableObject {
                 self.loading = false
             }
             
-            self.weather = data.weather
+            self.weather = data.weatherByCoordinate
         }
     }
 }

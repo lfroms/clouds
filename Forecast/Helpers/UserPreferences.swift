@@ -10,41 +10,12 @@ import Foundation
 
 class UserPreferences {
     enum DefaultKeys: String {
-        case siteCode = "defaultSiteCode"
-        case provinceCode = "defaultProvinceCode"
         case tempUnits
     }
 
     enum TemperatureUnit: String {
         case c = "C"
         case f = "F"
-    }
-
-    struct SavedSite {
-        var code: Int
-        var region: Province
-    }
-
-    static func defaultSite() -> SavedSite? {
-        guard self.defaultSiteExists() else {
-            return nil
-        }
-
-        let siteCode = UserDefaults.standard.integer(forKey: DefaultKeys.siteCode.rawValue)
-        let provinceCode = UserDefaults.standard.string(forKey: DefaultKeys.provinceCode.rawValue)
-        let province = Province(rawValue: provinceCode!)
-
-        guard province != nil else {
-            return nil
-        }
-
-        return SavedSite(code: siteCode, region: province!)
-    }
-
-    private static func defaultSiteExists() -> Bool {
-        return
-            UserDefaults.standard.integer(forKey: DefaultKeys.siteCode.rawValue) != 0 &&
-            UserDefaults.standard.string(forKey: DefaultKeys.provinceCode.rawValue) != nil
     }
 
     static func preferredTemperature() -> TemperatureUnit {
