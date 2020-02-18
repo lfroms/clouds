@@ -48,11 +48,11 @@ struct OmniBar: View {
     }
 
     private var scaleAnimation: Animation? {
-        isReadOnly ? .easeInOut(duration: 0.2) : nil
+        isReadOnly ? AnimationPreset.Touch.shrink : nil
     }
 
     private var scaleEffect: CGFloat {
-        isPressed ? 0.95 : 1.0
+        isPressed ? Dimension.Animation.shrinkAmount : 1.0
     }
 
     private var gesture: _EndedGesture<_ChangedGesture<DragGesture>>? {

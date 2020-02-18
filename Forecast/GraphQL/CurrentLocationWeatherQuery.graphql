@@ -1,0 +1,8 @@
+query CurrentLocationWeather($latitude: Float!, $longitude: Float!, $units: Units!, $language: Language!) {
+    weatherByCoordinate(latitude: $latitude, longitude: $longitude, units: $units, language: $language) {
+        currentConditions {
+            temperature
+            iconCode
+        }
+    }
+}

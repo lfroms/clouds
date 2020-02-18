@@ -1,5 +1,5 @@
 //
-//  FavoriteLocationWeather.swift
+//  ShortFormWeather.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2020-02-17.
@@ -9,7 +9,7 @@
 import CoreLocation
 import Foundation
 
-struct FavoriteLocationWeather {
+struct ShortFormWeather {
     let coordinate: CLLocationCoordinate2D
     let temperature: Double?
     let iconCode: Int?

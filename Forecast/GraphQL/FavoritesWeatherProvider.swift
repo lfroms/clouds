@@ -13,7 +13,7 @@ import Foundation
 import SwiftUI
 
 class FavoritesWeatherProvider: ObservableObject {
-    @Published private(set) var favoriteLocationsWeather: [FavoriteLocationWeather] = []
+    @Published private(set) var favoriteLocationsWeather: [ShortFormWeather] = []
     @Published private(set) var error: Error?
     @Published private(set) var loading: Bool = false
     
@@ -51,13 +51,13 @@ class FavoritesWeatherProvider: ObservableObject {
         }
     }
     
-    private func mapBulkWeather(items: [ReturnedWeatherEntry], coordinates: [Coordinate]) -> [FavoriteLocationWeather] {
+    private func mapBulkWeather(items: [ReturnedWeatherEntry], coordinates: [Coordinate]) -> [ShortFormWeather] {
         return items.enumerated().compactMap { index, weather in
             guard let weather = weather else {
                 return nil
             }
             
-            return FavoriteLocationWeather(
+            return ShortFormWeather(
                 coordinate: .init(
                     latitude: coordinates[index].latitude!!,
                     longitude: coordinates[index].longitude!!

@@ -11,12 +11,12 @@ import Combine
 import Foundation
 import SwiftUI
 
-class WeatherProvider: ObservableObject {
-    @Published private(set) var weather: WeatherQuery.Data.WeatherByCoordinate?
+class CurrentLocationWeatherProvider: ObservableObject {
+    @Published private(set) var weather: CurrentLocationWeatherQuery.Data.WeatherByCoordinate?
     @Published private(set) var error: Error?
     @Published private(set) var loading: Bool = false
     
-    private var locationManager = LocationManager.shared
+    @ObservedObject var locationManager: LocationManager = LocationManager.shared
     private var anyCancellable: AnyCancellable?
     
     init() {
@@ -37,35 +37,16 @@ class WeatherProvider: ObservableObject {
     }
     
     func fetchData() {
-        let locationToFetch: Location? = UserSettings.getActiveLocation()
-        
-        var variableQuery: WeatherQuery?
-        
-        if locationToFetch == nil {
-            if let lastLocation = locationManager.lastLocation {
-                variableQuery = WeatherQuery(
-                    latitude: lastLocation.coordinate.latitude,
-                    longitude: lastLocation.coordinate.longitude,
-                    units: .metric,
-                    language: .e
-                )
-            }
-        } else {
-            guard let locationToFetch = locationToFetch else {
-                return
-            }
-            
-            variableQuery = WeatherQuery(
-                latitude: locationToFetch.coordinate.latitude,
-                longitude: locationToFetch.coordinate.longitude,
-                units: .metric,
-                language: .e
-            )
-        }
-        
-        guard let query = variableQuery else {
+        guard let lastLocation = locationManager.lastLocation else {
             return
         }
+        
+        let query = CurrentLocationWeatherQuery(
+            latitude: lastLocation.coordinate.latitude,
+            longitude: lastLocation.coordinate.longitude,
+            units: .metric,
+            language: .e
+        )
         
         loading = true
         

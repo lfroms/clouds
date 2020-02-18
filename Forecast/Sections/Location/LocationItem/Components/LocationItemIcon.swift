@@ -14,6 +14,7 @@ struct LocationItemIcon: View {
     var body: some View {
         Image(systemName: name)
             .font(Font.callout.weight(.bold))
+            .foregroundColor(.primary)
     }
 }
 

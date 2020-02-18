@@ -4,36 +4,6 @@
 import Apollo
 import Foundation
 
-/// Coordinates.
-public struct Coordinate: GraphQLMapConvertible {
-  public var graphQLMap: GraphQLMap
-
-  /// - Parameters:
-  ///   - latitude
-  ///   - longitude
-  public init(latitude: Swift.Optional<Double?> = nil, longitude: Swift.Optional<Double?> = nil) {
-    graphQLMap = ["latitude": latitude, "longitude": longitude]
-  }
-
-  public var latitude: Swift.Optional<Double?> {
-    get {
-      return graphQLMap["latitude"] as? Swift.Optional<Double?> ?? Swift.Optional<Double?>.none
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "latitude")
-    }
-  }
-
-  public var longitude: Swift.Optional<Double?> {
-    get {
-      return graphQLMap["longitude"] as? Swift.Optional<Double?> ?? Swift.Optional<Double?>.none
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "longitude")
-    }
-  }
-}
-
 public enum Units: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
   public typealias RawValue = String
   case imperial
@@ -111,6 +81,36 @@ public enum Language: RawRepresentable, Equatable, Hashable, CaseIterable, Apoll
       .e,
       .f,
     ]
+  }
+}
+
+/// Coordinates.
+public struct Coordinate: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  /// - Parameters:
+  ///   - latitude
+  ///   - longitude
+  public init(latitude: Swift.Optional<Double?> = nil, longitude: Swift.Optional<Double?> = nil) {
+    graphQLMap = ["latitude": latitude, "longitude": longitude]
+  }
+
+  public var latitude: Swift.Optional<Double?> {
+    get {
+      return graphQLMap["latitude"] as? Swift.Optional<Double?> ?? Swift.Optional<Double?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "latitude")
+    }
+  }
+
+  public var longitude: Swift.Optional<Double?> {
+    get {
+      return graphQLMap["longitude"] as? Swift.Optional<Double?> ?? Swift.Optional<Double?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "longitude")
+    }
   }
 }
 
@@ -216,6 +216,153 @@ public enum WarningPriority: RawRepresentable, Equatable, Hashable, CaseIterable
       .medium,
       .low,
     ]
+  }
+}
+
+public final class CurrentLocationWeatherQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query CurrentLocationWeather($latitude: Float!, $longitude: Float!, $units: Units!, $language: Language!) {
+      weatherByCoordinate(latitude: $latitude, longitude: $longitude, units: $units, language: $language) {
+        __typename
+        currentConditions {
+          __typename
+          temperature
+          iconCode
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "CurrentLocationWeather"
+
+  public var latitude: Double
+  public var longitude: Double
+  public var units: Units
+  public var language: Language
+
+  public init(latitude: Double, longitude: Double, units: Units, language: Language) {
+    self.latitude = latitude
+    self.longitude = longitude
+    self.units = units
+    self.language = language
+  }
+
+  public var variables: GraphQLMap? {
+    return ["latitude": latitude, "longitude": longitude, "units": units, "language": language]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("weatherByCoordinate", arguments: ["latitude": GraphQLVariable("latitude"), "longitude": GraphQLVariable("longitude"), "units": GraphQLVariable("units"), "language": GraphQLVariable("language")], type: .object(WeatherByCoordinate.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(weatherByCoordinate: WeatherByCoordinate? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "weatherByCoordinate": weatherByCoordinate.flatMap { (value: WeatherByCoordinate) -> ResultMap in value.resultMap }])
+    }
+
+    /// Get weather information for a station closest to given coordinates.
+    public var weatherByCoordinate: WeatherByCoordinate? {
+      get {
+        return (resultMap["weatherByCoordinate"] as? ResultMap).flatMap { WeatherByCoordinate(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "weatherByCoordinate")
+      }
+    }
+
+    public struct WeatherByCoordinate: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["WeatherReport"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("currentConditions", type: .object(CurrentCondition.selections)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(currentConditions: CurrentCondition? = nil) {
+        self.init(unsafeResultMap: ["__typename": "WeatherReport", "currentConditions": currentConditions.flatMap { (value: CurrentCondition) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var currentConditions: CurrentCondition? {
+        get {
+          return (resultMap["currentConditions"] as? ResultMap).flatMap { CurrentCondition(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "currentConditions")
+        }
+      }
+
+      public struct CurrentCondition: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["CurrentConditions"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("temperature", type: .scalar(Double.self)),
+          GraphQLField("iconCode", type: .scalar(Int.self)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(temperature: Double? = nil, iconCode: Int? = nil) {
+          self.init(unsafeResultMap: ["__typename": "CurrentConditions", "temperature": temperature, "iconCode": iconCode])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var temperature: Double? {
+          get {
+            return resultMap["temperature"] as? Double
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "temperature")
+          }
+        }
+
+        public var iconCode: Int? {
+          get {
+            return resultMap["iconCode"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "iconCode")
+          }
+        }
+      }
+    }
   }
 }
 

@@ -14,6 +14,10 @@ final class Dimension {
         static let omniBarHeight: CGFloat = 52
     }
 
+    final class Animation {
+        static let shrinkAmount: CGFloat = 0.95
+    }
+
     final class Spacing {
         static let barItems: CGFloat = 12
     }

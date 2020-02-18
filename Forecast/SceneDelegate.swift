@@ -22,6 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
 
             let weatherProvider = WeatherProvider()
+            let currentLocationWeatherProvider = CurrentLocationWeatherProvider()
             let favoritesWeatherProvider = FavoritesWeatherProvider()
             let appState = AppState()
 
@@ -29,6 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 .environmentObject(weatherProvider)
                 .environmentObject(appState)
                 .environmentObject(favoritesWeatherProvider)
+                .environmentObject(currentLocationWeatherProvider)
 
             window.rootViewController = RootViewController(rootView: rootView)
             self.window = window

@@ -11,9 +11,11 @@ import CoreLocation
 import Foundation
 
 class LocationManager: NSObject, ObservableObject {
+    static let shared = LocationManager()
+
     private let locationManager = CLLocationManager()
 
-    override init() {
+    private override init() {
         super.init()
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
