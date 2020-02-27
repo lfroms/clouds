@@ -11,7 +11,7 @@ import SwiftUI
 struct Header: View {
     @EnvironmentObject private var provider: WeatherProvider
     @EnvironmentObject private var appState: AppState
-    @State private var textFieldValue: String?
+    @State private var textFieldValue: String = ""
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -22,7 +22,7 @@ struct Header: View {
                 OmniBar(
                     textFieldValue: textFieldValueBinding,
                     isReadOnly: !appState.showingLocationPicker,
-                    primaryIcon: "location.fill",
+                    primaryIcon: primaryIcon,
                     auxiliaryIcon: self.auxiliaryIcon,
                     auxiliaryButtonAction: {
                         self.textFieldValue = ""
@@ -36,6 +36,19 @@ struct Header: View {
             }
             .padding(Dimension.Header.padding)
         }
+        .onReceive(appState.objectWillChange, perform: clearIfAboutToClose)
+    }
+
+    private var primaryIcon: String {
+        if appState.showingLocationPicker || textFieldTextToDisplay.isEmpty {
+            return "magnifyingglass"
+        }
+
+        if UserSettings.getActiveLocation() != nil {
+            return "star.fill"
+        }
+
+        return "location.fill"
     }
 
     private var auxiliaryIcon: String {
@@ -43,11 +56,34 @@ struct Header: View {
     }
 
     private var textFieldValueBinding: Binding<String> {
-        .init(get: {
-            self.textFieldValue ?? self.provider.activeLocation?.location.weatherFor ?? ""
+        return .init(get: {
+            self.textFieldTextToDisplay
+
         }, set: { value in
             self.textFieldValue = value
         })
+    }
+
+    private var textFieldTextToDisplay: String {
+        if appState.showingLocationPicker {
+            return textFieldValue
+        }
+
+        if let activeLocation = UserSettings.getActiveLocation() {
+            return activeLocation.regionName
+        }
+
+        if let locality = provider.locationManager.lastPlacemark?.locality {
+            return locality
+        }
+
+        return ""
+    }
+
+    private func clearIfAboutToClose(_: AppState.ObjectWillChangePublisher.Output) {
+        if !appState.showingLocationPicker {
+            textFieldValue = ""
+        }
     }
 }
 

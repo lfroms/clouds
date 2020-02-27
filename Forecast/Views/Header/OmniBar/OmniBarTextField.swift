@@ -21,6 +21,8 @@ struct OmniBarTextField<Placeholder: View>: View {
             }
 
             TextField("", text: $text, onEditingChanged: editingChanged, onCommit: commit)
+                .textFieldStyle(PlainTextFieldStyle())
+                .disableAutocorrection(true)
                 // TextField is shifted upwards by 2 by default
                 .padding(.top, 2)
         }

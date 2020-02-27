@@ -10,7 +10,7 @@ import SwiftUI
 
 struct OmniBarPlaceholder: View {
     var body: some View {
-        Text("Start typing...")
+        Text("Tap to search")
             .fontWeight(.semibold)
             .opacity(0.3)
     }
