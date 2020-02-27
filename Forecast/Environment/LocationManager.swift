@@ -20,7 +20,7 @@ class LocationManager: NSObject, ObservableObject {
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.distanceFilter = 100
+        self.locationManager.distanceFilter = 1_000 // m
         self.locationManager.startUpdatingLocation()
     }
 
