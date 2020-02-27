@@ -70,7 +70,7 @@ struct CurrentConditionsView: View {
     }
     
     var observations: [CurrentConditionsItemDescriptor] {
-        guard let units = provider.weather?.units, let cc = provider.weather?.currentConditions else {
+        guard let units = provider.activeLocation?.units, let cc = provider.activeLocation?.currentConditions else {
             return []
         }
         

@@ -10,7 +10,6 @@ import SwiftUI
 
 struct FavoriteLocationItem: View {
     @EnvironmentObject private var weatherProvider: WeatherProvider
-    @EnvironmentObject private var favoritesWeatherProvider: FavoritesWeatherProvider
     @EnvironmentObject private var appState: AppState
 
     let icon: String
@@ -34,7 +33,7 @@ struct FavoriteLocationItem: View {
     }
 
     private var matchingLocation: ShortFormWeather? {
-        favoritesWeatherProvider.favoriteLocationsWeather.first(where: { item in
+        weatherProvider.favoriteLocations.first(where: { item in
             item.coordinate == location.coordinate
         })
     }

@@ -81,30 +81,12 @@
             "description": "Get weather information for a station closest to given coordinates.",
             "args": [
               {
-                "name": "latitude",
+                "name": "coordinate",
                 "description": "",
                 "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "Float",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "longitude",
-                "description": "",
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "Float",
-                    "ofType": null
-                  }
+                  "kind": "INPUT_OBJECT",
+                  "name": "Coordinate",
+                  "ofType": null
                 },
                 "defaultValue": null
               },
@@ -1871,9 +1853,13 @@
             "name": "latitude",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "Float",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -1881,9 +1867,13 @@
             "name": "longitude",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "Float",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              }
             },
             "defaultValue": null
           }

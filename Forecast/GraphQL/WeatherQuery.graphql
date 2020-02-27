@@ -1,5 +1,17 @@
-query Weather($latitude: Float!, $longitude: Float!, $units: Units!, $language: Language!) {
-    weatherByCoordinate(latitude: $latitude, longitude: $longitude, units: $units, language: $language) {
+query Weather($currentLocation: Coordinate, $activeLocation: Coordinate, $favoriteCoordinates: [Coordinate!]!, $units: Units!, $language: Language!) {
+    currentLocationWeather: weatherByCoordinate(coordinate: $currentLocation, units: $units, language: $language) {
+        currentConditions {
+            temperature
+            iconCode
+        }
+    }
+    favoriteLocationWeather: bulkWeatherByCoordinates(coordinates: $favoriteCoordinates, units: $units, language: $language) {
+        currentConditions {
+            temperature
+            iconCode
+        }
+    }
+    activeLocationWeather: weatherByCoordinate(coordinate: $activeLocation, units: $units, language: $language) {
         location {
             weatherFor
             country

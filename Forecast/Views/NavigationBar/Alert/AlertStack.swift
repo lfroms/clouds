@@ -18,14 +18,14 @@ struct AlertStack: View {
     }
 
     private func alertIndicators() -> some View {
-        let events = provider.weather?.warnings?.events
+        let events = provider.activeLocation?.warnings?.events
 
         var identifiableAlerts: [IdentifiableAlert] = []
 
-        events?.forEach({ event in
+        events?.forEach { event in
             let identifiable = IdentifiableAlert(event: event)
             identifiableAlerts.append(identifiable)
-        })
+        }
 
         return ForEach(identifiableAlerts) { alert in
             Button(action: { self.showWarningDetails.toggle() }) {
@@ -46,7 +46,7 @@ struct AlertStack: View {
     }
 
     private var alertURL: String? {
-        provider.weather?.warnings?.url
+        provider.activeLocation?.warnings?.url
     }
 
     private func renderSheet() -> some View {

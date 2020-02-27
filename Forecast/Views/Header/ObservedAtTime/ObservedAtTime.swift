@@ -39,7 +39,7 @@ struct ObservedAtTime: View {
     }
 
     private var parsedDate: Date? {
-        guard let time = provider.weather?.currentConditions?.time else {
+        guard let time = provider.activeLocation?.currentConditions?.time else {
             return nil
         }
 

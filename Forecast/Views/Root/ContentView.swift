@@ -59,7 +59,7 @@ struct ContentView: View {
     }
 
     private var iconCode: Int {
-        return self.weatherProvider.weather?.currentConditions?.iconCode ?? 06
+        return self.weatherProvider.activeLocation?.currentConditions?.iconCode ?? 06
     }
 }
 

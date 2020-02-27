@@ -1,8 +1,0 @@
-query FavoriteLocationsWeather($coordinates: [Coordinate!]!, $units: Units!, $language: Language!) {
-    bulkWeatherByCoordinates(coordinates: $coordinates, units: $units, language: $language) {
-        currentConditions {
-            temperature
-            iconCode
-        }
-    }
-}

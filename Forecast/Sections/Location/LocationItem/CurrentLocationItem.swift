@@ -11,7 +11,6 @@ import SwiftUI
 struct CurrentLocationItem: View {
     @EnvironmentObject private var appState: AppState
     @EnvironmentObject private var weatherProvider: WeatherProvider
-    @EnvironmentObject private var currentLocationWeatherProvider: CurrentLocationWeatherProvider
 
     let icon: String
     let location: Location
@@ -26,7 +25,7 @@ struct CurrentLocationItem: View {
     }
 
     private var temperatureLabelText: String {
-        guard let temperature = currentLocationWeatherProvider.weather?.currentConditions?.temperature else {
+        guard let temperature = weatherProvider.currentLocation?.currentConditions?.temperature else {
             return .empty
         }
 
@@ -44,7 +43,7 @@ struct CurrentLocationItem: View {
     }
 
     private var colorCode: Int? {
-        currentLocationWeatherProvider.weather?.currentConditions?.iconCode
+        weatherProvider.currentLocation?.currentConditions?.iconCode
     }
 
     private func onPressAction() {

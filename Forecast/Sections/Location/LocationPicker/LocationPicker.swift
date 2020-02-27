@@ -11,13 +11,11 @@ import SwiftUI
 struct LocationPicker {
     @EnvironmentObject private var appState: AppState
     @EnvironmentObject private var provider: WeatherProvider
-    @EnvironmentObject private var currentLocationProvider: CurrentLocationWeatherProvider
-    @EnvironmentObject private var favoritesProvider: FavoritesWeatherProvider
 
     let didPerformDismiss: (() -> Void)?
 
     private var currentLocationName: String? {
-        guard let placemark = currentLocationProvider.locationManager.lastPlacemark else {
+        guard let placemark = provider.locationManager.lastPlacemark else {
             return nil
         }
 
@@ -25,7 +23,7 @@ struct LocationPicker {
     }
 
     private var currentRegionName: String? {
-        guard let placemark = currentLocationProvider.locationManager.lastPlacemark else {
+        guard let placemark = provider.locationManager.lastPlacemark else {
             return nil
         }
 
@@ -45,7 +43,7 @@ struct LocationPicker {
     private var locationPickerData: LocationPickerData {
         var currentLocation: Location?
 
-        if let name = currentLocationName, let regionName = currentRegionName, let location = currentLocationProvider.locationManager.lastLocation {
+        if let name = currentLocationName, let regionName = currentRegionName, let location = provider.locationManager.lastLocation {
             currentLocation = Location(name: name, regionName: regionName, coordinate: location.coordinate)
         }
 
@@ -53,8 +51,8 @@ struct LocationPicker {
             currentLocation: currentLocation,
             favoriteLocations: appState.favoriteLocations,
             state: .normal,
-            loadingCurrentLocation: currentLocationProvider.loading,
-            loadingFavorites: favoritesProvider.loading,
+            loadingCurrentLocation: provider.loading,
+            loadingFavorites: provider.loading,
             // TODO: Implement
             loadingSearch: false
         )

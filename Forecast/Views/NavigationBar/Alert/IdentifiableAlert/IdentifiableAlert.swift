@@ -10,5 +10,5 @@ import SwiftUI
 
 struct IdentifiableAlert: Identifiable {
     var id = UUID()
-    var event: WeatherQuery.Data.WeatherByCoordinate.Warning.Event
+    var event: WeatherQuery.Data.ActiveLocationWeather.Warning.Event
 }

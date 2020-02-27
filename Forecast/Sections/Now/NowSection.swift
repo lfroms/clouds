@@ -36,7 +36,7 @@ struct NowSection: View {
     }
     
     var currentTemperature: String {
-        guard let temperature = provider.weather?.currentConditions?.temperature else {
+        guard let temperature = provider.activeLocation?.currentConditions?.temperature else {
             return "--"
         }
         
@@ -44,11 +44,11 @@ struct NowSection: View {
     }
     
     var observation: String {
-        return provider.weather?.currentConditions?.summary ?? ""
+        return provider.activeLocation?.currentConditions?.summary ?? ""
     }
     
     var forecastHigh: Int? {
-        guard let high = provider.weather?.todaySummary?.high else {
+        guard let high = provider.activeLocation?.todaySummary?.high else {
             return nil
         }
         
@@ -56,7 +56,7 @@ struct NowSection: View {
     }
     
     var forecastLow: Int? {
-        guard let low = provider.weather?.todaySummary?.low else {
+        guard let low = provider.activeLocation?.todaySummary?.low else {
             return nil
         }
         
@@ -64,7 +64,7 @@ struct NowSection: View {
     }
     
     var dateStamp: Date {
-        let parsedUnixTime = Double(provider.weather?.currentConditions?.time ?? 0)
+        let parsedUnixTime = Double(provider.activeLocation?.currentConditions?.time ?? 0)
         
         return Date(seconds: parsedUnixTime, region: .UTC)
             .convertTo(region: .current).date
@@ -73,7 +73,7 @@ struct NowSection: View {
     var items: [HourlyForecastViewModel] {
         var hourlyForecastItems: [HourlyForecastViewModel] = []
         
-        guard let weather = provider.weather else {
+        guard let weather = provider.activeLocation else {
             return []
         }
         

@@ -12,11 +12,14 @@ import Foundation
 import SwiftUI
 
 class WeatherProvider: ObservableObject {
-    @Published private(set) var weather: WeatherQuery.Data.WeatherByCoordinate?
+    @Published private(set) var activeLocation: WeatherQuery.Data.ActiveLocationWeather?
+    @Published private(set) var currentLocation: WeatherQuery.Data.CurrentLocationWeather?
+    @Published private(set) var favoriteLocations: [ShortFormWeather] = []
+    
     @Published private(set) var error: Error?
     @Published private(set) var loading: Bool = false
     
-    private var locationManager = LocationManager.shared
+    @ObservedObject private(set) var locationManager = LocationManager.shared
     private var anyCancellable: AnyCancellable?
     
     init() {
@@ -37,37 +40,17 @@ class WeatherProvider: ObservableObject {
     }
     
     func fetchData() {
-        let locationToFetch: Location? = UserSettings.getActiveLocation()
-        
-        var variableQuery: WeatherQuery?
-        
-        if locationToFetch == nil {
-            if let lastLocation = locationManager.lastLocation {
-                variableQuery = WeatherQuery(
-                    latitude: lastLocation.coordinate.latitude,
-                    longitude: lastLocation.coordinate.longitude,
-                    units: .metric,
-                    language: .e
-                )
-            }
-        } else {
-            guard let locationToFetch = locationToFetch else {
-                return
-            }
-            
-            variableQuery = WeatherQuery(
-                latitude: locationToFetch.coordinate.latitude,
-                longitude: locationToFetch.coordinate.longitude,
-                units: .metric,
-                language: .e
-            )
-        }
-        
-        guard let query = variableQuery else {
-            return
-        }
-        
         loading = true
+        
+        let favoriteLocationsCoordinates = coordinatesOfFavoriteLocations()
+        
+        let query = WeatherQuery(
+            currentLocation: coordinateForCurrentLocation(),
+            activeLocation: coordinateForActiveLocation(),
+            favoriteCoordinates: favoriteLocationsCoordinates,
+            units: .metric,
+            language: .e
+        )
         
         apollo.fetch(query: query, cachePolicy: .fetchIgnoringCacheData) { result in
             guard let data = try? result.get().data else {
@@ -78,7 +61,61 @@ class WeatherProvider: ObservableObject {
                 self.loading = false
             }
             
-            self.weather = data.weatherByCoordinate
+            self.activeLocation = data.activeLocationWeather
+            self.currentLocation = data.currentLocationWeather
+            self.favoriteLocations = self.mapBulkWeather(items: data.favoriteLocationWeather, coordinates: favoriteLocationsCoordinates)
+        }
+    }
+    
+    private func coordinateForActiveLocation() -> Coordinate? {
+        let locationToFetch: Location? = UserSettings.getActiveLocation()
+        
+        guard let savedActiveLocation = locationToFetch else {
+            return coordinateForCurrentLocation()
+        }
+        
+        return Coordinate(
+            latitude: savedActiveLocation.coordinate.latitude,
+            longitude: savedActiveLocation.coordinate.longitude
+        )
+    }
+    
+    private func coordinateForCurrentLocation() -> Coordinate? {
+        guard let lastLocation = locationManager.lastLocation else {
+            return nil
+        }
+        
+        return Coordinate(
+            latitude: lastLocation.coordinate.latitude,
+            longitude: lastLocation.coordinate.longitude
+        )
+    }
+    
+    private func coordinatesOfFavoriteLocations() -> [Coordinate] {
+        let locations = UserSettings.getFavoriteLocations()
+        
+        return locations.map { location -> Coordinate in
+            Coordinate(
+                latitude: location.coordinate.latitude,
+                longitude: location.coordinate.longitude
+            )
+        }
+    }
+    
+    private func mapBulkWeather(items: [WeatherQuery.Data.FavoriteLocationWeather?], coordinates: [Coordinate]) -> [ShortFormWeather] {
+        return items.enumerated().compactMap { index, weather in
+            guard let weather = weather else {
+                return nil
+            }
+            
+            return ShortFormWeather(
+                coordinate: .init(
+                    latitude: coordinates[index].latitude,
+                    longitude: coordinates[index].longitude
+                ),
+                temperature: weather.currentConditions?.temperature,
+                iconCode: weather.currentConditions?.iconCode
+            )
         }
     }
 }

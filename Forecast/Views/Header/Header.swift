@@ -44,7 +44,7 @@ struct Header: View {
 
     private var textFieldValueBinding: Binding<String> {
         .init(get: {
-            self.textFieldValue ?? self.provider.weather?.location.weatherFor ?? ""
+            self.textFieldValue ?? self.provider.activeLocation?.location.weatherFor ?? ""
         }, set: { value in
             self.textFieldValue = value
         })

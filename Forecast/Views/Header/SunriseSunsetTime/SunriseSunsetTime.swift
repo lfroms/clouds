@@ -25,7 +25,7 @@ struct SunriseSunsetTime: View {
     }
 
     private var symbolName: String {
-        guard let sun = provider.weather?.sun else {
+        guard let sun = provider.activeLocation?.sun else {
             return .empty
         }
 
@@ -45,7 +45,7 @@ struct SunriseSunsetTime: View {
     }
 
     private var text: String {
-        guard let sun = provider.weather?.sun else {
+        guard let sun = provider.activeLocation?.sun else {
             return .empty
         }
 
