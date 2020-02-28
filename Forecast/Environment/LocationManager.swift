@@ -43,7 +43,9 @@ extension LocationManager: CLLocationManagerDelegate {
                 return
             }
 
-            self.lastPlacemark = placemark
+            DispatchQueue.main.async {
+                self.lastPlacemark = placemark
+            }
         }
 
         print(#function, location)

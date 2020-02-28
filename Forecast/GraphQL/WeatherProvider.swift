@@ -53,12 +53,15 @@ class WeatherProvider: ObservableObject {
         )
         
         apollo.fetch(query: query, cachePolicy: .fetchIgnoringCacheData) { result in
+            DispatchQueue.main.async {
+                self.loading = false
+            }
+            
             guard let data = try? result.get().data else {
                 return
             }
             
             DispatchQueue.main.async {
-                self.loading = false
                 self.activeLocation = data.activeLocationWeather
                 self.currentLocation = data.currentLocationWeather
                 self.favoriteLocations = self.mapBulkWeather(items: data.favoriteLocationWeather, coordinates: favoriteLocationsCoordinates)

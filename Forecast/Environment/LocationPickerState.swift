@@ -29,10 +29,15 @@ final class LocationPickerState: NSObject, ObservableObject {
         
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = searchQuery
+        request.resultTypes = .address
         
         let search = MKLocalSearch(request: request)
         
         search.start { response, _ in
+            DispatchQueue.main.async {
+                self.loading = false
+            }
+            
             guard let mapItems = response?.mapItems else {
                 return
             }
@@ -47,7 +52,6 @@ final class LocationPickerState: NSObject, ObservableObject {
             }
             
             DispatchQueue.main.async {
-                self.loading = false
                 self.locationResults = locations
             }
         }
