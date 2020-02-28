@@ -12,12 +12,11 @@ struct FavoriteLocationItem: View {
     @EnvironmentObject private var weatherProvider: WeatherProvider
     @EnvironmentObject private var appState: AppState
 
-    let icon: String
     let location: Location
 
     var body: some View {
         LocationItemContainer(color: color, action: onPressAction) {
-            LocationItemIcon(name: self.icon)
+            LocationItemStarButton(isHighlighted: true, monochrome: true, onPressAction: self.removeFromFavorites)
             LocationItemLabels(title: self.location.name, subtitle: self.location.regionName)
             Spacer()
             LocationItemTemperature(text: self.temperatureLabelText)
@@ -58,12 +57,21 @@ struct FavoriteLocationItem: View {
         UserSettings.saveActiveLocation(location: location)
         weatherProvider.fetchData()
     }
+
+    private func removeFromFavorites() {
+        if appState.favoriteLocations.contains(location) {
+            appState.favoriteLocations.removeAll { location -> Bool in
+                location == location
+            }
+
+            return
+        }
+    }
 }
 
 struct FavoriteLocationItem_Previews: PreviewProvider {
     static var previews: some View {
         FavoriteLocationItem(
-            icon: "location.fill",
             location: Location(
                 name: "Ottawa",
                 regionName: "ON, Canada",

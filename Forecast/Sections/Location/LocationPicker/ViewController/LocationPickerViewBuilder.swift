@@ -76,7 +76,7 @@ class LocationPickerViewBuilder {
     }
     
     private func favoriteLocationItem(icon: String, location: Location) -> UIView {
-        return HostingView(rootView: FavoriteLocationItem(icon: icon, location: location))
+        return HostingView(rootView: FavoriteLocationItem(location: location))
     }
     
     private func searchResultLocationItem(location: Location) -> UIView {

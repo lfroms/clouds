@@ -10,6 +10,7 @@ import SwiftUI
 
 struct LocationItemStarButton: View {
     let isHighlighted: Bool
+    var monochrome: Bool? = false
     let onPressAction: () -> Void
 
     var body: some View {
@@ -17,7 +18,15 @@ struct LocationItemStarButton: View {
             Image(systemName: isHighlighted ? "star.fill" : "star")
         }
         .font(Font.callout.weight(.bold))
-        .foregroundColor(isHighlighted ? .yellow : .secondary)
+        .foregroundColor(color)
+    }
+
+    private var color: Color {
+        if let monochrome = monochrome, monochrome {
+            return .primary
+        }
+
+        return isHighlighted ? .yellow : .secondary
     }
 }
 
