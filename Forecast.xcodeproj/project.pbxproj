@@ -115,6 +115,7 @@
 		80FB6C692408772C0026DD83 /* NSObject+Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB6C682408772C0026DD83 /* NSObject+Debounce.swift */; };
 		80FB6C6B2408A5620026DD83 /* SearchResultLocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB6C6A2408A5620026DD83 /* SearchResultLocationItem.swift */; };
 		80FB6C6D2408A6130026DD83 /* LocationItemStarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB6C6C2408A6130026DD83 /* LocationItemStarButton.swift */; };
+		80FB6C6F2408AA590026DD83 /* LocationNameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB6C6E2408AA590026DD83 /* LocationNameHelper.swift */; };
 		80FC8AB023F0B1E800AEA26F /* HeaderAccessories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC8AAF23F0B1E800AEA26F /* HeaderAccessories.swift */; };
 		80FC8AB523F0B39D00AEA26F /* DismissableScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC8AB423F0B39D00AEA26F /* DismissableScrollViewController.swift */; };
 		80FC8ABA23F0B80700AEA26F /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC8AB923F0B80700AEA26F /* Dimension.swift */; };
@@ -230,6 +231,7 @@
 		80FB6C682408772C0026DD83 /* NSObject+Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Debounce.swift"; sourceTree = "<group>"; };
 		80FB6C6A2408A5620026DD83 /* SearchResultLocationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultLocationItem.swift; sourceTree = "<group>"; };
 		80FB6C6C2408A6130026DD83 /* LocationItemStarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationItemStarButton.swift; sourceTree = "<group>"; };
+		80FB6C6E2408AA590026DD83 /* LocationNameHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNameHelper.swift; sourceTree = "<group>"; };
 		80FC8AAF23F0B1E800AEA26F /* HeaderAccessories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderAccessories.swift; sourceTree = "<group>"; };
 		80FC8AB423F0B39D00AEA26F /* DismissableScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableScrollViewController.swift; sourceTree = "<group>"; };
 		80FC8AB923F0B80700AEA26F /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
@@ -731,6 +733,7 @@
 			children = (
 				80D0D86522D6B56700B8C711 /* UserPreferences.swift */,
 				8039628422D6CD6F003FEAB3 /* ForecastIcon.swift */,
+				80FB6C6E2408AA590026DD83 /* LocationNameHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1006,6 +1009,7 @@
 				80C816262363DCFE00D33669 /* OmniBarTextField.swift in Sources */,
 				802C0D9E236903CD009A22BA /* Header.swift in Sources */,
 				80C777E023FB4A9B004ABB2E /* LocationItemTemperature.swift in Sources */,
+				80FB6C6F2408AA590026DD83 /* LocationNameHelper.swift in Sources */,
 				80A01605237665B700A72C2F /* TouchPassthroughView.swift in Sources */,
 				80C816232363D9DA00D33669 /* OmniBar.swift in Sources */,
 				80E5D61E23774150004A1D6B /* UIScrollView+ScrollToTop.swift in Sources */,

@@ -28,17 +28,7 @@ struct LocationPicker {
             return nil
         }
 
-        var components: [String] = []
-
-        if let administrativeArea = placemark.administrativeArea {
-            components.append(administrativeArea)
-        }
-
-        if let country = placemark.country {
-            components.append(country)
-        }
-
-        return components.joined(separator: ", ")
+        return LocationNameHelper.shared.createRegionNameFrom(placemark: placemark)
     }
 
     private var locationPickerData: LocationPickerData {

@@ -38,14 +38,12 @@ final class LocationPickerState: NSObject, ObservableObject {
             }
             
             let locations = mapItems.compactMap { item -> Location? in
-                guard
-                    let locality = item.placemark.locality,
-                    let state = item.placemark.administrativeArea
-                else {
+                guard let locality = item.placemark.locality else {
                     return nil
                 }
                 
-                return Location(name: locality, regionName: state, coordinate: item.placemark.coordinate)
+                let regionName = LocationNameHelper.shared.createRegionNameFrom(placemark: item.placemark)
+                return Location(name: locality, regionName: regionName, coordinate: item.placemark.coordinate)
             }
             
             DispatchQueue.main.async {

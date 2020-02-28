@@ -70,7 +70,7 @@ struct Header: View {
         }
 
         if let activeLocation = UserSettings.getActiveLocation() {
-            return activeLocation.regionName
+            return activeLocation.name
         }
 
         if let locality = provider.locationManager.lastPlacemark?.locality {
