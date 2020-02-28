@@ -24,9 +24,7 @@ struct Header: View {
                     isReadOnly: !appState.showingLocationPicker,
                     primaryIcon: primaryIcon,
                     auxiliaryIcon: self.auxiliaryIcon,
-                    auxiliaryButtonAction: {
-                        self.locationPickerState.searchQuery = ""
-                    },
+                    auxiliaryButtonAction: self.clearOrClose,
                     barFocusAction: {
                         self.appState.toggleLocationPicker(animated: true)
                     }
@@ -84,6 +82,15 @@ struct Header: View {
         if !appState.showingLocationPicker {
             locationPickerState.searchQuery = ""
         }
+    }
+
+    private func clearOrClose() {
+        if locationPickerState.searchQuery.isEmpty {
+            appState.toggleLocationPicker(animated: true)
+            return
+        }
+
+        locationPickerState.searchQuery.clear()
     }
 }
 
