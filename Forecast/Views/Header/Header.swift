@@ -85,6 +85,11 @@ struct Header: View {
     }
 
     private func clearOrClose() {
+        guard appState.showingLocationPicker else {
+            // TODO: Open Settings
+            return
+        }
+
         if locationPickerState.searchQuery.isEmpty {
             appState.toggleLocationPicker(animated: true)
             return
