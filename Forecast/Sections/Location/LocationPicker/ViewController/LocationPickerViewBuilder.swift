@@ -13,7 +13,7 @@ class LocationPickerViewBuilder {
         var sections: [UIView] = []
         
         if data.state == .searching {
-            sections.append(searchSection(searchResults: data.searchResults, loading: data.loadingSearch))
+            sections.append(searchSection(query: data.searchQuery, searchResults: data.searchResults, loading: data.loadingSearch))
             return sections
         }
         
@@ -49,9 +49,11 @@ class LocationPickerViewBuilder {
         return sectionStack(items: favoriteLocationSubviews)
     }
     
-    func searchSection(searchResults: [Location]?, loading: Bool) -> UIStackView {
+    func searchSection(query: String, searchResults: [Location]?, loading: Bool) -> UIStackView {
+        let sectionHeader = searchResultsDescriptionHeader(query: query, numberOfHits: searchResults?.count ?? 0)
+        
         var searchResultSubviews: [UIView] = [
-            loadableSectionHeader(header: sectionLabel(text: "Results"), loading: loading)
+            loadableSectionHeader(header: sectionHeader, loading: loading)
         ]
         
         if let results = searchResults {
@@ -88,6 +90,26 @@ class LocationPickerViewBuilder {
         label.textColor = .white
         
         return label
+    }
+    
+    private func searchResultsDescriptionHeader(query: String, numberOfHits: Int) -> UIView {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 0
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .firstBaseline
+        
+        let pluralizedResults = numberOfHits == 1 ? "result" : "results"
+        
+        stackView.addArrangedSubview(sectionLabel(text: "\(numberOfHits) \(pluralizedResults) for "))
+        
+        let queryLabel = sectionLabel(text: query)
+        queryLabel.textColor = .systemBlue
+        queryLabel.setContentHuggingPriority(.init(0), for: .horizontal)
+        
+        stackView.addArrangedSubview(queryLabel)
+        
+        return stackView
     }
     
     private func loadableSectionHeader(header: UIView, loading: Bool) -> UIStackView {

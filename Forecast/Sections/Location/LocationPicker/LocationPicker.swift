@@ -41,6 +41,7 @@ struct LocationPicker {
         return LocationPickerData(
             currentLocation: currentLocation,
             favoriteLocations: appState.favoriteLocations,
+            searchQuery: locationPickerState.searchQuery,
             state: locationPickerState.searchQuery.isEmpty ? .normal : .searching,
             searchResults: locationPickerState.locationResults,
             loadingCurrentLocation: provider.loading,

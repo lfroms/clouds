@@ -11,16 +11,19 @@ import Foundation
 final class UserSettings {
     private static let defaults = UserDefaults.standard
     
+    private enum Keys: String {
+        case activeLocationKey = "active_location"
+        case favoriteLocationsKey = "favorite_locations"
+    }
+    
     // MARK: - Active Location
     
-    private static let activeLocationKey: String = "active_location"
-    
     static func getActiveLocation() -> Location? {
-        if let activeLocation = defaults.object(forKey: activeLocationKey) as? Data {
+        if let activeLocation = defaults.object(forKey: Keys.activeLocationKey.rawValue) as? Data {
             let decoder = JSONDecoder()
-            let loadedPerson = try? decoder.decode(Location.self, from: activeLocation)
+            let decodedLocation = try? decoder.decode(Location.self, from: activeLocation)
             
-            return loadedPerson
+            return decodedLocation
         }
         
         return nil
@@ -30,20 +33,18 @@ final class UserSettings {
         let encoder = JSONEncoder()
         
         if let encoded = try? encoder.encode(location) {
-            defaults.set(encoded, forKey: activeLocationKey)
+            defaults.set(encoded, forKey: Keys.activeLocationKey.rawValue)
         }
     }
     
     static func clearActiveLocation() {
-        defaults.removeObject(forKey: activeLocationKey)
+        defaults.removeObject(forKey: Keys.activeLocationKey.rawValue)
     }
     
     // MARK: - Favorite Locations
     
-    private static let favoriteLocationsKey: String = "favorite_locations"
-    
     static func getFavoriteLocations() -> [Location] {
-        if let data = defaults.value(forKey: favoriteLocationsKey) as? Data {
+        if let data = defaults.value(forKey: Keys.favoriteLocationsKey.rawValue) as? Data {
             let locations = try? PropertyListDecoder().decode([Location].self, from: data)
             
             return locations ?? []
@@ -53,6 +54,6 @@ final class UserSettings {
     }
     
     static func saveFavoriteLocations(newLocations: [Location]) {
-        defaults.set(try? PropertyListEncoder().encode(newLocations), forKey: favoriteLocationsKey)
+        defaults.set(try? PropertyListEncoder().encode(newLocations), forKey: Keys.favoriteLocationsKey.rawValue)
     }
 }

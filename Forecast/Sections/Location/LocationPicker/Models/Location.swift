@@ -13,7 +13,6 @@ struct Location: Codable {
     let name: String
     let regionName: String
     let coordinate: CLLocationCoordinate2D
-    let isFavorite: Bool = false
 }
 
 extension Location: Equatable {
@@ -22,7 +21,6 @@ extension Location: Equatable {
             lhs.name == rhs.name &&
             lhs.regionName == rhs.regionName &&
             lhs.coordinate.latitude == rhs.coordinate.latitude &&
-            lhs.coordinate.longitude == rhs.coordinate.longitude &&
-            lhs.isFavorite == rhs.isFavorite
+            lhs.coordinate.longitude == rhs.coordinate.longitude
     }
 }

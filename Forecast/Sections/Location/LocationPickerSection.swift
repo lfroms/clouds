@@ -30,7 +30,7 @@ struct LocationPickerSection: View {
 
     private func handlePickerDismiss() {
         self.appState.toggleLocationPicker(animated: true)
-        self.locationPickerState.searchQuery.removeAll()
+        self.locationPickerState.searchQuery.clear()
     }
 }
 

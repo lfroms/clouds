@@ -17,6 +17,7 @@ final class LocationPickerData {
 
     private(set) var currentLocation: Location?
     private(set) var favoriteLocations: [Location]
+    private(set) var searchQuery: String
     private(set) var state: State
     private(set) var loadingCurrentLocation: Bool
     private(set) var loadingFavorites: Bool
@@ -27,6 +28,7 @@ final class LocationPickerData {
     init(
         currentLocation: Location?,
         favoriteLocations: [Location],
+        searchQuery: String,
         state: State,
         searchResults: [Location]? = nil,
         loadingCurrentLocation: Bool,
@@ -34,6 +36,7 @@ final class LocationPickerData {
         loadingSearch: Bool) {
         self.currentLocation = currentLocation
         self.favoriteLocations = favoriteLocations
+        self.searchQuery = searchQuery
         self.state = state
         self.searchResults = searchResults
         self.loadingCurrentLocation = loadingCurrentLocation
@@ -48,6 +51,7 @@ extension LocationPickerData: Equatable {
             lhs.state == rhs.state &&
             lhs.currentLocation == rhs.currentLocation &&
             lhs.favoriteLocations == rhs.favoriteLocations &&
+            lhs.searchQuery == rhs.searchQuery &&
             lhs.searchResults == rhs.searchResults &&
             lhs.loadingCurrentLocation == rhs.loadingCurrentLocation &&
             lhs.loadingFavorites == rhs.loadingFavorites &&
