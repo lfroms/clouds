@@ -36,9 +36,7 @@ struct SearchResultLocationItem: View {
 
     private func toggleFavorite() {
         if appState.favoriteLocations.contains(location) {
-            appState.favoriteLocations.removeAll { location -> Bool in
-                location == location
-            }
+            appState.favoriteLocations.removeAll { $0 == location }
 
             return
         }

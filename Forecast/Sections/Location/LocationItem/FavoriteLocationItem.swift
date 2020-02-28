@@ -60,9 +60,7 @@ struct FavoriteLocationItem: View {
 
     private func removeFromFavorites() {
         if appState.favoriteLocations.contains(location) {
-            appState.favoriteLocations.removeAll { location -> Bool in
-                location == location
-            }
+            appState.favoriteLocations.removeAll { $0 == location }
 
             return
         }
