@@ -10,14 +10,21 @@ import SwiftUI
 
 struct LocationPickerSection: View {
     @EnvironmentObject private var appState: AppState
+    @EnvironmentObject private var weatherProvider: WeatherProvider
+    @EnvironmentObject private var locationPickerState: LocationPickerState
 
     var body: some View {
-        ZStack(alignment: .topLeading) {
+        ZStack(alignment: Alignment.topLeading) {
             BlackBackground()
                 .clipShape(RoundedCornerShape(cornerRadius: 22, style: .continuous, corners: [.topLeft, .topRight]))
                 .edgesIgnoringSafeArea(.all)
 
-            LocationPicker(didPerformDismiss: self.handlePickerDismiss)
+            LocationPicker(
+                appState: .constant(appState),
+                provider: .constant(weatherProvider),
+                locationPickerState: .constant(locationPickerState),
+                didPerformDismiss: handlePickerDismiss
+            )
         }
     }
 

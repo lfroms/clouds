@@ -12,6 +12,11 @@ class LocationPickerViewBuilder {
     func sections(data: LocationPickerData) -> [UIView] {
         var sections: [UIView] = []
         
+        if data.state == .searching {
+            sections.append(searchSection(searchResults: data.searchResults, loading: data.loadingSearch))
+            return sections
+        }
+        
         if let currentLocation = data.currentLocation {
             sections.append(currentLocationSection(currentLocation: currentLocation, loading: data.loadingCurrentLocation))
         }
@@ -44,6 +49,20 @@ class LocationPickerViewBuilder {
         return sectionStack(items: favoriteLocationSubviews)
     }
     
+    func searchSection(searchResults: [Location]?, loading: Bool) -> UIStackView {
+        var searchResultSubviews: [UIView] = [
+            loadableSectionHeader(header: sectionLabel(text: "Results"), loading: loading)
+        ]
+        
+        if let results = searchResults {
+            results.forEach { location in
+                searchResultSubviews.append(searchResultLocationItem(location: location))
+            }
+        }
+        
+        return sectionStack(items: searchResultSubviews)
+    }
+    
     // MARK: - Atoms
     
     private func currentLocationItem(icon: String, location: Location) -> UIView {
@@ -56,6 +75,10 @@ class LocationPickerViewBuilder {
     
     private func favoriteLocationItem(icon: String, location: Location) -> UIView {
         return HostingView(rootView: FavoriteLocationItem(icon: icon, location: location))
+    }
+    
+    private func searchResultLocationItem(location: Location) -> UIView {
+        return HostingView(rootView: SearchResultLocationItem(location: location))
     }
     
     private func sectionLabel(text: String) -> UILabel {

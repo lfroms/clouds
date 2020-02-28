@@ -111,6 +111,10 @@
 		80E5D62A2377721B004A1D6B /* String+IsInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5D6292377721B004A1D6B /* String+IsInt.swift */; };
 		80F07DDC23FB7D0C005C43A3 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 80F07DDB23FB7D0C005C43A3 /* schema.json */; };
 		80F07DDE23FB8012005C43A3 /* AnimationPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F07DDD23FB8012005C43A3 /* AnimationPreset.swift */; };
+		80FB6C67240873250026DD83 /* LocationPickerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB6C66240873250026DD83 /* LocationPickerState.swift */; };
+		80FB6C692408772C0026DD83 /* NSObject+Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB6C682408772C0026DD83 /* NSObject+Debounce.swift */; };
+		80FB6C6B2408A5620026DD83 /* SearchResultLocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB6C6A2408A5620026DD83 /* SearchResultLocationItem.swift */; };
+		80FB6C6D2408A6130026DD83 /* LocationItemStarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB6C6C2408A6130026DD83 /* LocationItemStarButton.swift */; };
 		80FC8AB023F0B1E800AEA26F /* HeaderAccessories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC8AAF23F0B1E800AEA26F /* HeaderAccessories.swift */; };
 		80FC8AB523F0B39D00AEA26F /* DismissableScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC8AB423F0B39D00AEA26F /* DismissableScrollViewController.swift */; };
 		80FC8ABA23F0B80700AEA26F /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC8AB923F0B80700AEA26F /* Dimension.swift */; };
@@ -222,6 +226,10 @@
 		80E5D6292377721B004A1D6B /* String+IsInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+IsInt.swift"; sourceTree = "<group>"; };
 		80F07DDB23FB7D0C005C43A3 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		80F07DDD23FB8012005C43A3 /* AnimationPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationPreset.swift; sourceTree = "<group>"; };
+		80FB6C66240873250026DD83 /* LocationPickerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerState.swift; sourceTree = "<group>"; };
+		80FB6C682408772C0026DD83 /* NSObject+Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Debounce.swift"; sourceTree = "<group>"; };
+		80FB6C6A2408A5620026DD83 /* SearchResultLocationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultLocationItem.swift; sourceTree = "<group>"; };
+		80FB6C6C2408A6130026DD83 /* LocationItemStarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationItemStarButton.swift; sourceTree = "<group>"; };
 		80FC8AAF23F0B1E800AEA26F /* HeaderAccessories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderAccessories.swift; sourceTree = "<group>"; };
 		80FC8AB423F0B39D00AEA26F /* DismissableScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableScrollViewController.swift; sourceTree = "<group>"; };
 		80FC8AB923F0B80700AEA26F /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
@@ -571,6 +579,7 @@
 				80A646C123F5DAE400C80633 /* LocationSearchResultItem.swift */,
 				8048092D23FB4BC30019ACC2 /* CurrentLocationItem.swift */,
 				803FDCD623FB1A59002BBE4D /* FavoriteLocationItem.swift */,
+				80FB6C6A2408A5620026DD83 /* SearchResultLocationItem.swift */,
 			);
 			path = LocationItem;
 			sourceTree = "<group>";
@@ -598,6 +607,7 @@
 				80C395AE2378A1DA0004B71D /* AppState.swift */,
 				80D871B723F20F87001FBA94 /* LocationManager.swift */,
 				80C777CC23FB2BEC004ABB2E /* UserSettings.swift */,
+				80FB6C66240873250026DD83 /* LocationPickerState.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -700,6 +710,7 @@
 				80C777DB23FB4938004ABB2E /* LocationItemIcon.swift */,
 				80C777DD23FB4985004ABB2E /* LocationItemContainer.swift */,
 				80C777DF23FB4A9B004ABB2E /* LocationItemTemperature.swift */,
+				80FB6C6C2408A6130026DD83 /* LocationItemStarButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -738,6 +749,7 @@
 				80C1693523FA435D00F22812 /* CLLocationCoordinate2D+Codable.swift */,
 				800420D323FB11BB00C2879A /* String+Empty.swift */,
 				80C777D223FB3415004ABB2E /* CLLocationCoordinate2D.swift */,
+				80FB6C682408772C0026DD83 /* NSObject+Debounce.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -940,6 +952,7 @@
 				80C395B22378B2340004B71D /* RadarControls.swift in Sources */,
 				8099ED3323667E7A00B8E1CA /* FramePreferenceKey.swift in Sources */,
 				807B8E4C2377AAFD0075F131 /* CurrentConditionsView.swift in Sources */,
+				80FB6C692408772C0026DD83 /* NSObject+Debounce.swift in Sources */,
 				80C777CD23FB2BEC004ABB2E /* UserSettings.swift in Sources */,
 				80C777D723FB3BF7004ABB2E /* ShortFormWeather.swift in Sources */,
 				8099A20F23130CED00EE4F30 /* CustomSafariViewController.swift in Sources */,
@@ -948,6 +961,7 @@
 				80504F782332DB4700DB4FAD /* HourlyForecastDetail.swift in Sources */,
 				80FECAF523778361008AC653 /* RadarSection.swift in Sources */,
 				807B8E4A2377A7250075F131 /* CurrentConditionsItem.swift in Sources */,
+				80FB6C6B2408A5620026DD83 /* SearchResultLocationItem.swift in Sources */,
 				8085B7B4232DD0D500D4AEE4 /* Comparable+Clamped.swift in Sources */,
 				80B5E7A223FA3DAF001729E0 /* UIStackView+AddArrangedSubviews.swift in Sources */,
 				8061292A236915D4005EEB2A /* WeekSection.swift in Sources */,
@@ -957,6 +971,7 @@
 				800420D423FB11BB00C2879A /* String+Empty.swift in Sources */,
 				80E32BAE233454DD0087DBB3 /* SystemActivityIndicator.swift in Sources */,
 				80B8DB94232C7BBF00BAD200 /* BackgroundColor.swift in Sources */,
+				80FB6C67240873250026DD83 /* LocationPickerState.swift in Sources */,
 				8050327F22D25C7500D376C3 /* HighLowStack.swift in Sources */,
 				805A1E6622D65ADB001B8CC3 /* HourlyForecastView.swift in Sources */,
 				806129262369122D005EEB2A /* HorizontalPagingScrollView.swift in Sources */,
@@ -1010,6 +1025,7 @@
 				80E5D62A2377721B004A1D6B /* String+IsInt.swift in Sources */,
 				8057DB582364F1370087FBF7 /* NavigationBar.swift in Sources */,
 				805A174A22C53ADB00E1B4E2 /* ContentView.swift in Sources */,
+				80FB6C6D2408A6130026DD83 /* LocationItemStarButton.swift in Sources */,
 				8057DB512364F0F20087FBF7 /* AlertIndicator.swift in Sources */,
 				80A646C423F5E95800C80633 /* HostingView.swift in Sources */,
 				80DFF9FA23FA2B1100908B86 /* LocationPickerData.swift in Sources */,

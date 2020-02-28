@@ -57,13 +57,12 @@ class WeatherProvider: ObservableObject {
                 return
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.async {
                 self.loading = false
+                self.activeLocation = data.activeLocationWeather
+                self.currentLocation = data.currentLocationWeather
+                self.favoriteLocations = self.mapBulkWeather(items: data.favoriteLocationWeather, coordinates: favoriteLocationsCoordinates)
             }
-            
-            self.activeLocation = data.activeLocationWeather
-            self.currentLocation = data.currentLocationWeather
-            self.favoriteLocations = self.mapBulkWeather(items: data.favoriteLocationWeather, coordinates: favoriteLocationsCoordinates)
         }
     }
     

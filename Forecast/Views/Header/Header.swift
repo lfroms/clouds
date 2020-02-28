@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct Header: View {
-    @EnvironmentObject private var provider: WeatherProvider
     @EnvironmentObject private var appState: AppState
-    @State private var textFieldValue: String = ""
+    @EnvironmentObject private var provider: WeatherProvider
+    @EnvironmentObject private var locationPickerState: LocationPickerState
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -25,7 +25,7 @@ struct Header: View {
                     primaryIcon: primaryIcon,
                     auxiliaryIcon: self.auxiliaryIcon,
                     auxiliaryButtonAction: {
-                        self.textFieldValue = ""
+                        self.locationPickerState.searchQuery = ""
                     },
                     barFocusAction: {
                         self.appState.toggleLocationPicker(animated: true)
@@ -60,13 +60,13 @@ struct Header: View {
             self.textFieldTextToDisplay
 
         }, set: { value in
-            self.textFieldValue = value
+            self.locationPickerState.searchQuery = value
         })
     }
 
     private var textFieldTextToDisplay: String {
         if appState.showingLocationPicker {
-            return textFieldValue
+            return locationPickerState.searchQuery
         }
 
         if let activeLocation = UserSettings.getActiveLocation() {
@@ -82,7 +82,7 @@ struct Header: View {
 
     private func clearIfAboutToClose(_: AppState.ObjectWillChangePublisher.Output) {
         if !appState.showingLocationPicker {
-            textFieldValue = ""
+            locationPickerState.searchQuery = ""
         }
     }
 }
