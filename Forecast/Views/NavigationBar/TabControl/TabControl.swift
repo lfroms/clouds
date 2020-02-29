@@ -17,7 +17,7 @@ struct TabControl: View {
     private typealias DimensionDictionary = [Int: CGRect]
 
     var body: some View {
-        ZStack(alignment: Alignment.leading) {
+        ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: .infinity)
                 .frame(width: activeTabFrame.width, height: activeTabFrame.height)
                 .offset(x: activeTabFrame.minX)

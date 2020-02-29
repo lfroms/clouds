@@ -18,7 +18,7 @@ struct RadarSection: View {
     @ObservedObject private var timestampStore = TimestampStore()
 
     var body: some View {
-        ZStack(alignment: Alignment.bottom) {
+        ZStack(alignment: .bottom) {
             MapView(timestamps: $timestampStore.timestamps, currentImage: $currentImageIndex)
                 .onReceive(
                     timer.publisher,

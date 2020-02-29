@@ -15,7 +15,7 @@ struct ObservedAtTime: View {
     private let timer = Timer.publish(every: 1, on: .current, in: .common).autoconnect()
 
     var body: some View {
-        HStack(alignment: VerticalAlignment.lastTextBaseline, spacing: 5) {
+        HStack(alignment: .lastTextBaseline, spacing: 5) {
             if provider.loading {
                 LineActivityIndicator(color: .secondary)
 
