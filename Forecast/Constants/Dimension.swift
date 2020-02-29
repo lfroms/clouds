@@ -30,9 +30,14 @@ final class Dimension {
     }
 
     final class System {
+        private static var firstWindow = UIApplication.shared.windows.first
+
         static var topSafeMargin: CGFloat {
-            let window = UIApplication.shared.windows.first
-            return window?.safeAreaInsets.top ?? 0
+            return firstWindow?.safeAreaInsets.top ?? 0
+        }
+
+        static var screenHeight: CGFloat {
+            return firstWindow?.frame.height ?? 0
         }
     }
 }

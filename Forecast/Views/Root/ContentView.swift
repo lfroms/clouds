@@ -52,9 +52,7 @@ struct ContentView: View {
     }
 
     private var searchOffset: CGSize {
-        let screenHeight = UIApplication.shared.windows.first?.frame.height ?? 0
-
-        return CGSize(width: 0, height: self.appState.showingLocationPicker ? 0 : screenHeight)
+        return CGSize(width: 0, height: self.appState.showingLocationPicker ? 0 : Dimension.System.screenHeight)
     }
 
     private var slidingPanelLocked: Bool {
