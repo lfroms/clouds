@@ -44,4 +44,9 @@ final class AppState: ObservableObject {
             UserSettings.saveFavoriteLocations(newLocations: favoriteLocations)
         }
     }
+    
+    // MARK: - Settings Sheet
+    
+    @Published var  showingSettingsSheet: Bool = false
 }
+  

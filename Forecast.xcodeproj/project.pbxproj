@@ -11,6 +11,7 @@
 		800194DF232EDCCF00066D37 /* UIShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800194DE232EDCCF00066D37 /* UIShadowView.swift */; };
 		800420D423FB11BB00C2879A /* String+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800420D323FB11BB00C2879A /* String+Empty.swift */; };
 		801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801BDBCF232D660C007FE4AB /* DrawerHandle.swift */; };
+		802048C7240AE2F300DFB842 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802048C6240AE2F300DFB842 /* SettingsSection.swift */; };
 		8020F9532363D2390029FEB6 /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020F9522363D2390029FEB6 /* MasterView.swift */; };
 		8026FF5323779881007962DB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026FF5223779881007962DB /* MapView.swift */; };
 		802C0D982368FE32009A22BA /* CurrentSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C0D972368FE32009A22BA /* CurrentSection.swift */; };
@@ -127,6 +128,7 @@
 		800194DE232EDCCF00066D37 /* UIShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIShadowView.swift; sourceTree = "<group>"; };
 		800420D323FB11BB00C2879A /* String+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Empty.swift"; sourceTree = "<group>"; };
 		801BDBCF232D660C007FE4AB /* DrawerHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerHandle.swift; sourceTree = "<group>"; };
+		802048C6240AE2F300DFB842 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		8020F9522363D2390029FEB6 /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
 		8026FF5223779881007962DB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		802C0D972368FE32009A22BA /* CurrentSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSection.swift; sourceTree = "<group>"; };
@@ -257,6 +259,14 @@
 				802C0D9B236903C6009A22BA /* SunriseSunsetTime.swift */,
 			);
 			path = SunriseSunsetTime;
+			sourceTree = "<group>";
+		};
+		802048C5240AE2E600DFB842 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				802048C6240AE2F300DFB842 /* SettingsSection.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		8020F9502363D1A10029FEB6 /* Views */ = {
@@ -669,6 +679,7 @@
 				80C667C123777693008E9A11 /* Week */,
 				80C667C2237776AE008E9A11 /* Radar */,
 				8038DB4723F0AC8700F7B033 /* Location */,
+				802048C5240AE2E600DFB842 /* Settings */,
 				802C0D972368FE32009A22BA /* CurrentSection.swift */,
 			);
 			path = Sections;
@@ -979,6 +990,7 @@
 				805A1E6622D65ADB001B8CC3 /* HourlyForecastView.swift in Sources */,
 				806129262369122D005EEB2A /* HorizontalPagingScrollView.swift in Sources */,
 				800194DF232EDCCF00066D37 /* UIShadowView.swift in Sources */,
+				802048C7240AE2F300DFB842 /* SettingsSection.swift in Sources */,
 				80E5D628237765DF004A1D6B /* IdentifiableAlert.swift in Sources */,
 				80B8DB92232C768000BAD200 /* WeatherIllustration.swift in Sources */,
 				80C777CB23FB2B74004ABB2E /* API.swift in Sources */,

@@ -86,7 +86,7 @@ struct Header: View {
 
     private func clearOrClose() {
         guard appState.showingLocationPicker else {
-            // TODO: Open Settings
+            appState.showingSettingsSheet.toggle()
             return
         }
 

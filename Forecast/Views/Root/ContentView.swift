@@ -45,6 +45,9 @@ struct ContentView: View {
 
             Header()
         }
+        .sheet(isPresented: $appState.showingSettingsSheet) {
+            SettingsSection()
+        }
         .colorScheme(.dark)
     }
 
