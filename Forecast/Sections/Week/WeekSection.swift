@@ -13,15 +13,16 @@ struct WeekSection: View {
     @EnvironmentObject private var weather: WeatherProvider
 
     var body: some View {
-        HorizontalPagingScrollView(pageWidth: 229, numberOfPages: self.days.count, didSwitchToPage: self.didSwitchToPage) {
-            HStack(spacing: 14) {
-                ForEach(self.days, id: \.id) { day in
-                    DailyForecastView(data: day)
+        ZStack(alignment: .bottom) {
+            HorizontalPagingScrollView(pageWidth: 229, numberOfPages: self.days.count, didChangePage: self.didChangeToPage) {
+                HStack(spacing: 14) {
+                    ForEach(self.days, id: \.id) { day in
+                        DailyForecastView(data: day)
+                    }
                 }
+                .padding(.horizontal, 20)
             }
-            .padding(.horizontal, 20)
         }
-        .frame(height: 300)
     }
 
     private var days: [DailyForecast] {
@@ -41,7 +42,7 @@ struct WeekSection: View {
         }
     }
 
-    private func didSwitchToPage(page: Int) {
+    private func didChangeToPage(page: Int) {
         withAnimation(.spring()) {
             appState.masterViewIconCode = weather.activeLocation?.dailyForecast?.days?[page].iconCode ?? 0
         }
