@@ -53,9 +53,7 @@ struct BackgroundColor: View {
     }
 
     private func animateGradient(_: AppState.ObjectWillChangePublisher.Output) {
-        withAnimation {
-            setGradient(steps: self.gradientSteps)
-        }
+        setGradient(steps: gradientSteps)
     }
 }
 

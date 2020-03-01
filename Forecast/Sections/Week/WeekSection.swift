@@ -42,7 +42,9 @@ struct WeekSection: View {
     }
 
     private func didSwitchToPage(page: Int) {
-        appState.masterViewIconCode = weather.activeLocation?.dailyForecast?.days?[page].iconCode ?? 0
+        withAnimation(.spring()) {
+            appState.masterViewIconCode = weather.activeLocation?.dailyForecast?.days?[page].iconCode ?? 0
+        }
     }
 }
 

@@ -16,7 +16,7 @@ struct DailyForecastCard: View {
     let pop: Int
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             ShadowView(radius: 30, opacity: 0.08, color: .black, cornerRadius: 18)
 
             VStack(alignment: .leading, spacing: 14) {

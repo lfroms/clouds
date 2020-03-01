@@ -32,7 +32,7 @@ struct MasterView<Content: View>: View {
         ZStack(alignment: .bottom) {
             ZStack(alignment: .topTrailing) {
                 BackgroundColor()
-                WeatherIllustration(iconCode: iconCode)
+                WeatherIllustration()
                     .padding(.top, Dimension.System.topSafeMargin)
             }
 

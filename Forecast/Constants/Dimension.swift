@@ -39,5 +39,9 @@ final class Dimension {
         static var screenHeight: CGFloat {
             return firstWindow?.frame.height ?? 0
         }
+
+        static var screenWidth: CGFloat {
+            return firstWindow?.frame.width ?? 0
+        }
     }
 }
