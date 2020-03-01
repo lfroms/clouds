@@ -11,17 +11,16 @@ import SwiftUI
 struct CurrentSection: View {
     @Binding var index: Int
 
+    @ViewBuilder
     var body: some View {
-        Group {
-            if index == 1 {
-                WeekSection()
-            }
-            else if index == 2 {
-                RadarSection()
-            }
-            else {
-                NowSection()
-            }
+        if index == 1 {
+            WeekSection()
+        }
+        else if index == 2 {
+            RadarSection()
+        }
+        else {
+            NowSection()
         }
     }
 }

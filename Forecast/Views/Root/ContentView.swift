@@ -49,6 +49,9 @@ struct ContentView: View {
             SettingsSection()
         }
         .colorScheme(.dark)
+        .onReceive(weatherProvider.objectWillChange) {
+            self.appState.masterViewIconCode = self.weatherProvider.activeLocation?.currentConditions?.iconCode ?? 6
+        }
     }
 
     private var searchOffset: CGSize {
@@ -60,7 +63,7 @@ struct ContentView: View {
     }
 
     private var iconCode: Int {
-        return self.weatherProvider.activeLocation?.currentConditions?.iconCode ?? 06
+        return self.appState.masterViewIconCode
     }
 }
 

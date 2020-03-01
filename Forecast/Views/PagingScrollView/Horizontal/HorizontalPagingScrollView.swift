@@ -10,18 +10,25 @@ import SwiftUI
 
 struct HorizontalPagingScrollView<Content>: UIViewControllerRepresentable where Content: View {
     var pageWidth: CGFloat
-
+    var numberOfPages: Int
+    var didSwitchToPage: (_ page: Int) -> Void
     var content: () -> Content
 
     func makeUIViewController(context: Context) -> HorizontalPagingScrollViewController {
         let vc = HorizontalPagingScrollViewController()
         vc.hostingController.rootView = AnyView(content())
+        vc.didEndScrolling = scrollViewDidEndDecelerating
         return vc
     }
 
     func updateUIViewController(_ viewController: HorizontalPagingScrollViewController, context: Context) {
         viewController.hostingController.rootView = AnyView(content())
         viewController.pageWidth = pageWidth
+        viewController.numberOfPages = numberOfPages
         viewController.updateScrollViewContentWidth()
+    }
+
+    private func scrollViewDidEndDecelerating(pageNumber: Int) {
+        didSwitchToPage(pageNumber)
     }
 }

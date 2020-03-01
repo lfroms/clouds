@@ -11,7 +11,10 @@ import UIKit
 
 class HorizontalPagingScrollViewController: UIViewController, UIScrollViewDelegate {
     var pageWidth: CGFloat = 0
+    var numberOfPages: Int = 0
     var activePage: Int = 0
+
+    var didEndScrolling: ((_ page: Int) -> Void)?
 
     private var pageWidthConstraint: NSLayoutConstraint!
 
@@ -63,7 +66,7 @@ class HorizontalPagingScrollViewController: UIViewController, UIScrollViewDelega
     }
 
     func updateScrollViewContentWidth() {
-        scrollView.contentSize.width = pageWidth
+        scrollView.contentSize.width = CGFloat(numberOfPages) * pageWidth
         pageWidthConstraint.constant = pageWidth
 
         scrollView.setNeedsLayout()
@@ -71,5 +74,6 @@ class HorizontalPagingScrollViewController: UIViewController, UIScrollViewDelega
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         activePage = Int(scrollView.contentOffset.x / scrollView.bounds.size.width)
+        didEndScrolling?(activePage)
     }
 }

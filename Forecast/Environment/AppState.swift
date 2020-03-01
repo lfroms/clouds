@@ -47,6 +47,5 @@ final class AppState: ObservableObject {
     
     // MARK: - Settings Sheet
     
-    @Published var  showingSettingsSheet: Bool = false
+    @Published var showingSettingsSheet: Bool = false
 }
-  
