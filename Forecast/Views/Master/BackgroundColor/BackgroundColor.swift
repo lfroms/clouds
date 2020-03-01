@@ -9,22 +9,29 @@
 import SwiftUI
 
 struct BackgroundColor: View {
-    let iconCode: Int
+    @EnvironmentObject private var appState: AppState
+
+    @State private var alternateGradient: Bool = false
+    @State private var gradientA: [Color] = []
+    @State private var gradientB: [Color] = []
 
     var body: some View {
-        let gradient = Gradient(colors: gradientSteps)
-
-        return LinearGradient(gradient: gradient, startPoint: .topTrailing, endPoint: .bottomLeading)
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: gradientA), startPoint: .topTrailing, endPoint: .bottomLeading)
+            LinearGradient(gradient: Gradient(colors: gradientB), startPoint: .topTrailing, endPoint: .bottomLeading)
+                .opacity(alternateGradient ? 0 : 1)
+        }
+        .onReceive(appState.objectWillChange, perform: self.animateGradient)
     }
 
     private static let colorPrefix = "color"
 
     private var highColorName: String {
-        "\(Self.colorPrefix)-\(iconCode)-high"
+        "\(Self.colorPrefix)-\(appState.masterViewIconCode)-high"
     }
 
     private var lowColorName: String {
-        "\(Self.colorPrefix)-\(iconCode)-low"
+        "\(Self.colorPrefix)-\(appState.masterViewIconCode)-low"
     }
 
     private var gradientSteps: [Color] {
@@ -33,10 +40,28 @@ struct BackgroundColor: View {
             Color(lowColorName)
         ]
     }
+
+    private func setGradient(steps: [Color]) {
+        if alternateGradient {
+            gradientB = steps
+        }
+        else {
+            gradientA = steps
+        }
+
+        alternateGradient.toggle()
+    }
+
+    private func animateGradient(_: AppState.ObjectWillChangePublisher.Output) {
+        withAnimation {
+            setGradient(steps: self.gradientSteps)
+        }
+    }
 }
 
 struct BackgroundColor_Previews: PreviewProvider {
     static var previews: some View {
-        BackgroundColor(iconCode: 0)
+        BackgroundColor()
+            .environmentObject(AppState())
     }
 }
