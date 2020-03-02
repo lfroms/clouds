@@ -6,11 +6,22 @@
 //  Copyright © 2019 Lukas Romsicki. All rights reserved.
 //
 
+import Combine
 import Foundation
 import SwiftUI
 
 final class AppState: ObservableObject {
-    @Published var masterViewIconCode: Int = 6
+    let iconCodeDidChange = PassthroughSubject<Void, Never>()
+    
+    @Published var masterViewIconCode: Int = 6 {
+        didSet {
+            guard oldValue != masterViewIconCode else {
+                return
+            }
+            
+            self.iconCodeDidChange.send()
+        }
+    }
     
     // MARK: - Sliding Panel
     

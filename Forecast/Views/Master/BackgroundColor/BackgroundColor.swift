@@ -21,7 +21,7 @@ struct BackgroundColor: View {
             LinearGradient(gradient: Gradient(colors: gradientB), startPoint: .topTrailing, endPoint: .bottomLeading)
                 .opacity(alternateGradient ? 0 : 1)
         }
-        .onReceive(appState.objectWillChange, perform: self.animateGradient)
+        .onReceive(appState.iconCodeDidChange, perform: self.animateGradient)
     }
 
     private static let colorPrefix = "color"

@@ -27,7 +27,7 @@ struct WeatherIllustration: View {
             }
         }
         .frame(width: Dimension.System.screenWidth)
-        .onReceive(appState.objectWillChange, perform: self.animateImage)
+        .onReceive(appState.iconCodeDidChange, perform: self.animateImage)
     }
 
     private let transition: AnyTransition = .asymmetric(insertion: AnyTransition.opacity.combined(with: .move(edge: .trailing)), removal: .opacity)
