@@ -33,7 +33,7 @@ struct MasterView<Content: View>: View {
             ZStack(alignment: .topTrailing) {
                 BackgroundColor()
                 WeatherIllustration()
-                    .padding(.top, Dimension.System.topSafeMargin)
+                    .padding(.top, Dimension.Header.illustrationTopPadding)
             }
 
             VStack(alignment: .center, spacing: 0) {

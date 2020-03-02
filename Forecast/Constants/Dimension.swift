@@ -12,6 +12,7 @@ final class Dimension {
     final class Header {
         static let padding: CGFloat = 20
         static let omniBarHeight: CGFloat = 52
+        static let illustrationTopPadding: CGFloat = System.topSafeMargin
     }
 
     final class Animation {
