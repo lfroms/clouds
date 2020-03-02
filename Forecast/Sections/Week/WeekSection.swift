@@ -24,9 +24,8 @@ struct WeekSection: View {
     }
 
     private func didChangeToPage(page: Int) {
-        withAnimation(.spring()) {
-            appState.masterViewIconCode = weather.activeLocation?.dailyForecast?.days?[page].iconCode ?? 0
-        }
+        let newIconCode = weather.activeLocation?.dailyForecast?.days?[page].iconCode
+        appState.setIconCode(to: newIconCode, animated: true)
     }
 }
 

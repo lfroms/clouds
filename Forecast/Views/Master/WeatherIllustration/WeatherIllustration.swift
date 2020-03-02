@@ -52,7 +52,7 @@ struct WeatherIllustration: View {
     }
 
     private var imageName: String {
-        "image-\(appState.masterViewIconCode)"
+        "image-\(appState.iconCode)"
     }
 }
 

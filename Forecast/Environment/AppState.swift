@@ -11,15 +11,32 @@ import Foundation
 import SwiftUI
 
 final class AppState: ObservableObject {
+    // MARK: - Icon Code
+    
     let iconCodeDidChange = PassthroughSubject<Void, Never>()
     
-    @Published var masterViewIconCode: Int = 6 {
+    @Published private(set) var iconCode: Int = 6 {
         didSet {
-            guard oldValue != masterViewIconCode else {
+            self.iconCodeDidChange.send()
+        }
+    }
+    
+    func setIconCode(to newCode: Int?, animated: Bool) {
+        guard iconCode != newCode else {
+            return
+        }
+        
+        let newCode: Int = newCode ?? 0
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            guard animated else {
+                self.iconCode = newCode
                 return
             }
             
-            self.iconCodeDidChange.send()
+            withAnimation(.spring()) {
+                self.iconCode = newCode
+            }
         }
     }
     

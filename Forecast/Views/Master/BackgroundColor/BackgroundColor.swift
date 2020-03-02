@@ -27,11 +27,11 @@ struct BackgroundColor: View {
     private static let colorPrefix = "color"
 
     private var highColorName: String {
-        "\(Self.colorPrefix)-\(appState.masterViewIconCode)-high"
+        "\(Self.colorPrefix)-\(appState.iconCode)-high"
     }
 
     private var lowColorName: String {
-        "\(Self.colorPrefix)-\(appState.masterViewIconCode)-low"
+        "\(Self.colorPrefix)-\(appState.iconCode)-low"
     }
 
     private var gradientSteps: [Color] {

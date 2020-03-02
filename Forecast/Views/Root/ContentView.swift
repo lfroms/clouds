@@ -26,7 +26,7 @@ struct ContentView: View {
                             useAsContainer: self.appState.activeSection == .radar,
                             hasDrawerHandle: self.appState.slidingPanelLocked,
                             drawerHandleHidden: self.weatherProvider.loading,
-                            iconCode: self.iconCode
+                            iconCode: self.appState.iconCode
                         ) {
                             CurrentSection(section: self.$appState.activeSection)
                         }
@@ -47,8 +47,9 @@ struct ContentView: View {
             SettingsSection()
         }
         .colorScheme(.dark)
-        .onReceive(weatherProvider.objectWillChange) {
-            self.appState.masterViewIconCode = self.weatherProvider.activeLocation?.currentConditions?.iconCode ?? 6
+        .onReceive(weatherProvider.objectDidReceiveUpdatedWeather) { _ in
+            let iconCode = self.weatherProvider.activeLocation?.currentConditions?.iconCode
+            self.appState.setIconCode(to: iconCode, animated: true)
         }
     }
 
@@ -58,10 +59,6 @@ struct ContentView: View {
 
     private var slidingPanelLocked: Bool {
         self.appState.slidingPanelLocked || self.weatherProvider.loading
-    }
-
-    private var iconCode: Int {
-        return self.appState.masterViewIconCode
     }
 }
 
