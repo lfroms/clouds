@@ -15,37 +15,11 @@ struct WeekSection: View {
     var body: some View {
         HorizontalPagingScrollView(
             pageWidth: Dimension.WeekSection.pageSize,
-            numberOfPages: self.days.count,
+            numberOfPages: weather.activeLocation?.dailyForecast?.days?.count ?? 0,
             didChangePage: self.didChangeToPage
         ) {
-            VStack {
-                // Push content to bottom
-                Spacer()
-
-                HStack(alignment: .top, spacing: Dimension.WeekSection.cardSpacing) {
-                    ForEach(self.days, id: \.id) { day in
-                        DailyForecastView(data: day)
-                    }
-                }
-                .padding(Dimension.Header.padding)
-            }
-        }
-    }
-
-    private var days: [DailyForecast] {
-        guard let days = weather.activeLocation?.dailyForecast?.days else {
-            return []
-        }
-
-        return days.compactMap { day in
-            DailyForecast(
-                when: day.when,
-                iconCode: day.iconCode,
-                temperature: day.temperature,
-                description: day.summary,
-                windSpeed: day.winds.first?.speed,
-                pop: day.precipProbability
-            )
+            DailyForecastGroup()
+                .environmentObject(self.weather)
         }
     }
 

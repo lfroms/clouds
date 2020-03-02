@@ -49,6 +49,7 @@
 		8061292A236915D4005EEB2A /* WeekSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80612929236915D4005EEB2A /* WeekSection.swift */; };
 		8061746B240B4F68002EC2E0 /* DailyForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8061746A240B4F68002EC2E0 /* DailyForecast.swift */; };
 		80625423240C606A00638C2F /* UIScrollView+Clear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80625422240C606A00638C2F /* UIScrollView+Clear.swift */; };
+		80625425240C8F9C00638C2F /* DailyForecastGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80625424240C8F9C00638C2F /* DailyForecastGroup.swift */; };
 		8066FDED2364EE030067F362 /* NowSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8066FDEC2364EE030067F362 /* NowSection.swift */; };
 		806EBCA223F2560600086F46 /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EBCA123F2560600086F46 /* LocationPickerViewController.swift */; };
 		8076F72623651CD000FB85D1 /* SlidingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076F72523651CD000FB85D1 /* SlidingPanel.swift */; };
@@ -169,6 +170,7 @@
 		80612929236915D4005EEB2A /* WeekSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSection.swift; sourceTree = "<group>"; };
 		8061746A240B4F68002EC2E0 /* DailyForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecast.swift; sourceTree = "<group>"; };
 		80625422240C606A00638C2F /* UIScrollView+Clear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Clear.swift"; sourceTree = "<group>"; };
+		80625424240C8F9C00638C2F /* DailyForecastGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastGroup.swift; sourceTree = "<group>"; };
 		8066FDEC2364EE030067F362 /* NowSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowSection.swift; sourceTree = "<group>"; };
 		806EBCA123F2560600086F46 /* LocationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
 		8076F72523651CD000FB85D1 /* SlidingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingPanel.swift; sourceTree = "<group>"; };
@@ -703,6 +705,7 @@
 			children = (
 				8061291D2369083E005EEB2A /* DailyForecast */,
 				80612929236915D4005EEB2A /* WeekSection.swift */,
+				80625424240C8F9C00638C2F /* DailyForecastGroup.swift */,
 			);
 			path = Week;
 			sourceTree = "<group>";
@@ -1026,6 +1029,7 @@
 				802C0D9E236903CD009A22BA /* Header.swift in Sources */,
 				80C777E023FB4A9B004ABB2E /* LocationItemTemperature.swift in Sources */,
 				80FB6C6F2408AA590026DD83 /* LocationNameHelper.swift in Sources */,
+				80625425240C8F9C00638C2F /* DailyForecastGroup.swift in Sources */,
 				80A01605237665B700A72C2F /* TouchPassthroughView.swift in Sources */,
 				80C816232363D9DA00D33669 /* OmniBar.swift in Sources */,
 				80E5D61E23774150004A1D6B /* UIScrollView+ScrollToTop.swift in Sources */,
