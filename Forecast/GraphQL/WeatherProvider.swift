@@ -69,6 +69,12 @@ class WeatherProvider: ObservableObject {
         }
     }
     
+    func fetchDataWithDelay() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            self.fetchData()
+        }
+    }
+    
     private func coordinateForActiveLocation() -> Coordinate? {
         let locationToFetch: Location? = UserSettings.getActiveLocation()
         

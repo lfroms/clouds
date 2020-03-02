@@ -11,6 +11,10 @@ import Foundation
 import SwiftUI
 
 final class AppState: ObservableObject {
+    init() {
+        iconCodeDidChange.send()
+    }
+    
     // MARK: - Icon Code
     
     let iconCodeDidChange = PassthroughSubject<Void, Never>()
