@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct NavigationBar: View {
-    @Binding var activeTabIndex: Int
-    let tabs: [String]
+    @Binding var activeSection: AppSection
+    let tabs: [AppSection]
 
     var body: some View {
         HStack(alignment: .center, spacing: 20) {
             ScrollView(.horizontal, showsIndicators: false) {
-                TabControl(activeTab: $activeTabIndex, tabs: tabs)
+                TabControl(activeTab: $activeSection, tabs: tabs)
                     .padding(.leading, 20)
             }
             AlertStack()
@@ -27,6 +27,6 @@ struct NavigationBar: View {
 
 struct NavigationBar_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationBar(activeTabIndex: .constant(0), tabs: [])
+        NavigationBar(activeSection: .constant(.now), tabs: [])
     }
 }

@@ -30,7 +30,10 @@ struct WeatherIllustration: View {
         .onReceive(appState.iconCodeDidChange, perform: self.animateImage)
     }
 
-    private let transition: AnyTransition = .asymmetric(insertion: AnyTransition.opacity.combined(with: .move(edge: .trailing)), removal: .opacity)
+    private let transition: AnyTransition = .asymmetric(
+        insertion: AnyTransition.opacity.combined(with: .move(edge: .trailing)),
+        removal: .opacity
+    )
 
     private func setImage(name: String) {
         if alternateImage {

@@ -8,8 +8,6 @@
 
 import SwiftUI
 
-private let tabs: [String] = ["Now", "Week", "Radar"]
-
 struct ContentView: View {
     @EnvironmentObject var weatherProvider: WeatherProvider
     @EnvironmentObject var appState: AppState
@@ -25,18 +23,18 @@ struct ContentView: View {
 
                     SlidingPanel(locked: slidingPanelLocked) {
                         MasterView(
-                            useAsContainer: self.appState.activeTabIndex == 2,
+                            useAsContainer: self.appState.activeSection == .radar,
                             hasDrawerHandle: self.appState.slidingPanelLocked,
                             drawerHandleHidden: self.weatherProvider.loading,
                             iconCode: self.iconCode
                         ) {
-                            CurrentSection(index: self.$appState.activeTabIndex)
+                            CurrentSection(section: self.$appState.activeSection)
                         }
                     }
                     .edgesIgnoringSafeArea(.top)
                 }
 
-                NavigationBar(activeTabIndex: $appState.activeTabIndex, tabs: tabs)
+                NavigationBar(activeSection: $appState.activeSection, tabs: AppSection.list)
                     .padding(.bottom, 12)
             }
 

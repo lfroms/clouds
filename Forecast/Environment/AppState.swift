@@ -25,9 +25,9 @@ final class AppState: ObservableObject {
     
     // MARK: - Sliding Panel
     
-    @Published var activeTabIndex: Int = 0 {
+    @Published var activeSection: AppSection = .now {
         didSet {
-            slidingPanelLocked = activeTabIndex != 0
+            slidingPanelLocked = activeSection != .now
         }
     }
     

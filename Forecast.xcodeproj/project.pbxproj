@@ -50,6 +50,7 @@
 		8061746B240B4F68002EC2E0 /* DailyForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8061746A240B4F68002EC2E0 /* DailyForecast.swift */; };
 		80625423240C606A00638C2F /* UIScrollView+Clear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80625422240C606A00638C2F /* UIScrollView+Clear.swift */; };
 		80625425240C8F9C00638C2F /* DailyForecastGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80625424240C8F9C00638C2F /* DailyForecastGroup.swift */; };
+		80625427240C90CF00638C2F /* AppSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80625426240C90CF00638C2F /* AppSection.swift */; };
 		8066FDED2364EE030067F362 /* NowSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8066FDEC2364EE030067F362 /* NowSection.swift */; };
 		806EBCA223F2560600086F46 /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EBCA123F2560600086F46 /* LocationPickerViewController.swift */; };
 		8076F72623651CD000FB85D1 /* SlidingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076F72523651CD000FB85D1 /* SlidingPanel.swift */; };
@@ -171,6 +172,7 @@
 		8061746A240B4F68002EC2E0 /* DailyForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecast.swift; sourceTree = "<group>"; };
 		80625422240C606A00638C2F /* UIScrollView+Clear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Clear.swift"; sourceTree = "<group>"; };
 		80625424240C8F9C00638C2F /* DailyForecastGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastGroup.swift; sourceTree = "<group>"; };
+		80625426240C90CF00638C2F /* AppSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSection.swift; sourceTree = "<group>"; };
 		8066FDEC2364EE030067F362 /* NowSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowSection.swift; sourceTree = "<group>"; };
 		806EBCA123F2560600086F46 /* LocationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
 		8076F72523651CD000FB85D1 /* SlidingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingPanel.swift; sourceTree = "<group>"; };
@@ -605,6 +607,7 @@
 			children = (
 				80FC8AB923F0B80700AEA26F /* Dimension.swift */,
 				80F07DDD23FB8012005C43A3 /* AnimationPreset.swift */,
+				80625426240C90CF00638C2F /* AppSection.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -982,6 +985,7 @@
 				80FECAF523778361008AC653 /* RadarSection.swift in Sources */,
 				807B8E4A2377A7250075F131 /* CurrentConditionsItem.swift in Sources */,
 				80FB6C6B2408A5620026DD83 /* SearchResultLocationItem.swift in Sources */,
+				80625427240C90CF00638C2F /* AppSection.swift in Sources */,
 				8085B7B4232DD0D500D4AEE4 /* Comparable+Clamped.swift in Sources */,
 				80B5E7A223FA3DAF001729E0 /* UIStackView+AddArrangedSubviews.swift in Sources */,
 				8061292A236915D4005EEB2A /* WeekSection.swift in Sources */,

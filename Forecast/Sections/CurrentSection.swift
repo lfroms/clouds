@@ -9,14 +9,14 @@
 import SwiftUI
 
 struct CurrentSection: View {
-    @Binding var index: Int
+    @Binding var section: AppSection
 
     @ViewBuilder
     var body: some View {
-        if index == 1 {
+        if section == .week {
             WeekSection()
         }
-        else if index == 2 {
+        else if section == .radar {
             RadarSection()
         }
         else {
@@ -27,6 +27,6 @@ struct CurrentSection: View {
 
 struct ActiveTab_Previews: PreviewProvider {
     static var previews: some View {
-        CurrentSection(index: .constant(0))
+        CurrentSection(section: .constant(.now))
     }
 }
