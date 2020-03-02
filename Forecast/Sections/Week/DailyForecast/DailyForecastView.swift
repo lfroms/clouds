@@ -41,7 +41,7 @@ struct LabelledForecastView_Previews: PreviewProvider {
                 iconCode: 6,
                 temperature: 15.5,
                 description: "Some test content.",
-                windSpeed: 15,
+                windSpeed: "15",
                 pop: 25
             )
         )

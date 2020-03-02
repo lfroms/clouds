@@ -12,8 +12,8 @@ struct DailyForecastCard: View {
     let icon: String
     let temperature: Int
     let description: String
-    let windSpeed: Int
-    let pop: Int
+    let windSpeed: String?
+    let pop: Int?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -30,9 +30,16 @@ struct DailyForecastCard: View {
                 .font(.footnote)
                 .fontWeight(.semibold)
 
-            HStack(alignment: .center, spacing: 10) {
-                DailyForecastDetail(symbol: "wind", text: "\(self.windSpeed) km/h")
-                DailyForecastDetail(symbol: "umbrella.fill", text: "\(self.pop)%")
+            if parsedWindSpeed != nil || pop != nil {
+                HStack(alignment: .center, spacing: 10) {
+                    if parsedWindSpeed != nil {
+                        DailyForecastDetail(symbol: "wind", text: parsedWindSpeed!)
+                    }
+
+                    if pop != nil {
+                        DailyForecastDetail(symbol: "umbrella.fill", text: "\(self.pop!)%")
+                    }
+                }
             }
         }
         .padding(16)
@@ -41,6 +48,14 @@ struct DailyForecastCard: View {
         .frame(width: Dimension.WeekSection.dayCardWidth)
         .background(ShadowView(radius: 30, opacity: 0.08, color: .black, cornerRadius: 18))
         .foregroundColor(.white)
+    }
+
+    private var parsedWindSpeed: String? {
+        if let windSpeed = windSpeed, let windSpeedInt = Int(windSpeed) {
+            return "\(windSpeedInt) km/h"
+        }
+
+        return windSpeed
     }
 }
 
@@ -52,7 +67,7 @@ struct ForecastView_Previews: PreviewProvider {
                 icon: "sun.cloud.fill",
                 temperature: 12,
                 description: "Some test content.",
-                windSpeed: 15,
+                windSpeed: "15",
                 pop: 25
             )
         }

@@ -43,8 +43,8 @@ struct WeekSection: View {
                 iconCode: day.iconCode,
                 temperature: day.temperature,
                 description: day.summary,
-                windSpeed: day.winds.first?.gust ?? 0,
-                pop: day.precipProbability ?? 0
+                windSpeed: day.winds.first?.speed,
+                pop: day.precipProbability
             )
         }
     }

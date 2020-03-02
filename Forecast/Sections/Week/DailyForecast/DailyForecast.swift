@@ -16,6 +16,6 @@ struct DailyForecast {
     let iconCode: Int
     let temperature: Double
     let description: String
-    let windSpeed: Int
-    let pop: Int
+    let windSpeed: String?
+    let pop: Int?
 }
