@@ -9,12 +9,12 @@
 import SwiftUI
 
 struct TabControl: View {
-    @Binding var activeTab: Int
+    @Binding var activeTab: AppSection
 
-    let tabs: [String]
+    let tabs: [AppSection]
 
     @State private var tabFrames: DimensionDictionary = [:]
-    private typealias DimensionDictionary = [Int: CGRect]
+    private typealias DimensionDictionary = [String: CGRect]
 
     var body: some View {
         ZStack(alignment: .leading) {
@@ -27,7 +27,7 @@ struct TabControl: View {
             HStack(alignment: .firstTextBaseline, spacing: 0) {
                 ForEach(tabs, id: \.self) { tab in
                     TabView(
-                        text: tab,
+                        text: tab.rawValue,
                         action: self.didPressTab(tab),
                         isActive: self.isActive(tab)
                     )
@@ -36,7 +36,7 @@ struct TabControl: View {
                     .fixedSize()
                     .background(TabGeometry(xOffset: 20))
                     .onPreferenceChange(FramePreferenceKey.self, perform: {
-                        self.tabFrames[self.indexOfTab(tab)] = $0
+                        self.tabFrames[tab.rawValue] = $0
                     })
                 }
             }
@@ -44,10 +44,10 @@ struct TabControl: View {
     }
 
     private var activeTabFrame: CGRect {
-        getWithDefaultValue(from: tabFrames, key: activeTab)
+        getWithDefaultValue(from: tabFrames, key: activeTab.rawValue)
     }
 
-    private func getWithDefaultValue(from dictionary: DimensionDictionary, key: Int) -> DimensionDictionary.Value {
+    private func getWithDefaultValue(from dictionary: DimensionDictionary, key: String) -> DimensionDictionary.Value {
         dictionary[key, default: CGRect(x: 0, y: 0, width: 0, height: 0)]
     }
 
@@ -63,28 +63,28 @@ struct TabControl: View {
         Color.primary.opacity(0.15)
     }
 
-    private func didPressTab(_ tab: String) -> () -> Void {
+    private func didPressTab(_ tab: AppSection) -> () -> Void {
         return {
             if !self.isActive(tab) {
                 let generator = UISelectionFeedbackGenerator()
                 generator.selectionChanged()
             }
 
-            self.activeTab = self.indexOfTab(tab)
+            self.activeTab = tab
         }
     }
 
-    private func indexOfTab(_ tab: String) -> Int {
+    private func indexOfTab(_ tab: AppSection) -> Int {
         return tabs.firstIndex(of: tab) ?? 0
     }
 
-    private func isActive(_ tab: String) -> Bool {
-        return indexOfTab(tab) == activeTab
+    private func isActive(_ tab: AppSection) -> Bool {
+        return tab == activeTab
     }
 }
 
 struct TabControl_Previews: PreviewProvider {
     static var previews: some View {
-        TabControl(activeTab: .constant(0), tabs: [])
+        TabControl(activeTab: .constant(.now), tabs: [])
     }
 }

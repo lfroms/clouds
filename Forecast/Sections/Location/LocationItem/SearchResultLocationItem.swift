@@ -27,7 +27,7 @@ struct SearchResultLocationItem: View {
         appState.toggleLocationPicker(animated: true)
 
         UserSettings.saveActiveLocation(location: location)
-        weatherProvider.fetchData()
+        weatherProvider.fetchDataWithDelay()
     }
 
     private var isFavorite: Bool {

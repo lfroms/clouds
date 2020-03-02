@@ -22,6 +22,8 @@ class WeatherProvider: ObservableObject {
     @ObservedObject private(set) var locationManager = LocationManager.shared
     private var anyCancellable: AnyCancellable?
     
+    let objectDidReceiveUpdatedWeather = PassthroughSubject<Void, Never>()
+    
     init() {
         NotificationCenter.default.addObserver(
             forName: UIApplication.willEnterForegroundNotification,
@@ -53,19 +55,23 @@ class WeatherProvider: ObservableObject {
         )
         
         apollo.fetch(query: query, cachePolicy: .fetchIgnoringCacheData) { result in
-            DispatchQueue.main.async {
-                self.loading = false
-            }
+            self.loading = false
             
             guard let data = try? result.get().data else {
                 return
             }
             
-            DispatchQueue.main.async {
-                self.activeLocation = data.activeLocationWeather
-                self.currentLocation = data.currentLocationWeather
-                self.favoriteLocations = self.mapBulkWeather(items: data.favoriteLocationWeather, coordinates: favoriteLocationsCoordinates)
-            }
+            self.activeLocation = data.activeLocationWeather
+            self.currentLocation = data.currentLocationWeather
+            self.favoriteLocations = self.mapBulkWeather(items: data.favoriteLocationWeather, coordinates: favoriteLocationsCoordinates)
+            
+            self.objectDidReceiveUpdatedWeather.send()
+        }
+    }
+    
+    func fetchDataWithDelay() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            self.fetchData()
         }
     }
     

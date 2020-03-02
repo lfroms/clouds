@@ -46,8 +46,11 @@
 		8061292123690D06005EEB2A /* DailyForecastDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8061292023690D06005EEB2A /* DailyForecastDetail.swift */; };
 		8061292323690F5F005EEB2A /* DailyForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8061292223690F5F005EEB2A /* DailyForecastView.swift */; };
 		806129262369122D005EEB2A /* HorizontalPagingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806129252369122D005EEB2A /* HorizontalPagingScrollView.swift */; };
-		8061292823691365005EEB2A /* HorizontalPagingScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8061292723691365005EEB2A /* HorizontalPagingScrollViewController.swift */; };
 		8061292A236915D4005EEB2A /* WeekSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80612929236915D4005EEB2A /* WeekSection.swift */; };
+		8061746B240B4F68002EC2E0 /* DailyForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8061746A240B4F68002EC2E0 /* DailyForecast.swift */; };
+		80625423240C606A00638C2F /* UIScrollView+Clear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80625422240C606A00638C2F /* UIScrollView+Clear.swift */; };
+		80625425240C8F9C00638C2F /* DailyForecastGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80625424240C8F9C00638C2F /* DailyForecastGroup.swift */; };
+		80625427240C90CF00638C2F /* AppSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80625426240C90CF00638C2F /* AppSection.swift */; };
 		8066FDED2364EE030067F362 /* NowSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8066FDEC2364EE030067F362 /* NowSection.swift */; };
 		806EBCA223F2560600086F46 /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EBCA123F2560600086F46 /* LocationPickerViewController.swift */; };
 		8076F72623651CD000FB85D1 /* SlidingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076F72523651CD000FB85D1 /* SlidingPanel.swift */; };
@@ -165,8 +168,11 @@
 		8061292023690D06005EEB2A /* DailyForecastDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastDetail.swift; sourceTree = "<group>"; };
 		8061292223690F5F005EEB2A /* DailyForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastView.swift; sourceTree = "<group>"; };
 		806129252369122D005EEB2A /* HorizontalPagingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPagingScrollView.swift; sourceTree = "<group>"; };
-		8061292723691365005EEB2A /* HorizontalPagingScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPagingScrollViewController.swift; sourceTree = "<group>"; };
 		80612929236915D4005EEB2A /* WeekSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSection.swift; sourceTree = "<group>"; };
+		8061746A240B4F68002EC2E0 /* DailyForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecast.swift; sourceTree = "<group>"; };
+		80625422240C606A00638C2F /* UIScrollView+Clear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Clear.swift"; sourceTree = "<group>"; };
+		80625424240C8F9C00638C2F /* DailyForecastGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastGroup.swift; sourceTree = "<group>"; };
+		80625426240C90CF00638C2F /* AppSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSection.swift; sourceTree = "<group>"; };
 		8066FDEC2364EE030067F362 /* NowSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowSection.swift; sourceTree = "<group>"; };
 		806EBCA123F2560600086F46 /* LocationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
 		8076F72523651CD000FB85D1 /* SlidingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingPanel.swift; sourceTree = "<group>"; };
@@ -440,6 +446,7 @@
 				8061291E23690883005EEB2A /* DailyForecastCard.swift */,
 				8061292023690D06005EEB2A /* DailyForecastDetail.swift */,
 				8061292223690F5F005EEB2A /* DailyForecastView.swift */,
+				8061746A240B4F68002EC2E0 /* DailyForecast.swift */,
 			);
 			path = DailyForecast;
 			sourceTree = "<group>";
@@ -519,7 +526,6 @@
 		80A016062376668000A72C2F /* Horizontal */ = {
 			isa = PBXGroup;
 			children = (
-				8061292723691365005EEB2A /* HorizontalPagingScrollViewController.swift */,
 				806129252369122D005EEB2A /* HorizontalPagingScrollView.swift */,
 			);
 			path = Horizontal;
@@ -601,6 +607,7 @@
 			children = (
 				80FC8AB923F0B80700AEA26F /* Dimension.swift */,
 				80F07DDD23FB8012005C43A3 /* AnimationPreset.swift */,
+				80625426240C90CF00638C2F /* AppSection.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -701,6 +708,7 @@
 			children = (
 				8061291D2369083E005EEB2A /* DailyForecast */,
 				80612929236915D4005EEB2A /* WeekSection.swift */,
+				80625424240C8F9C00638C2F /* DailyForecastGroup.swift */,
 			);
 			path = Week;
 			sourceTree = "<group>";
@@ -764,6 +772,7 @@
 				800420D323FB11BB00C2879A /* String+Empty.swift */,
 				80C777D223FB3415004ABB2E /* CLLocationCoordinate2D.swift */,
 				80FB6C682408772C0026DD83 /* NSObject+Debounce.swift */,
+				80625422240C606A00638C2F /* UIScrollView+Clear.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -976,6 +985,7 @@
 				80FECAF523778361008AC653 /* RadarSection.swift in Sources */,
 				807B8E4A2377A7250075F131 /* CurrentConditionsItem.swift in Sources */,
 				80FB6C6B2408A5620026DD83 /* SearchResultLocationItem.swift in Sources */,
+				80625427240C90CF00638C2F /* AppSection.swift in Sources */,
 				8085B7B4232DD0D500D4AEE4 /* Comparable+Clamped.swift in Sources */,
 				80B5E7A223FA3DAF001729E0 /* UIStackView+AddArrangedSubviews.swift in Sources */,
 				8061292A236915D4005EEB2A /* WeekSection.swift in Sources */,
@@ -995,6 +1005,7 @@
 				80B8DB92232C768000BAD200 /* WeatherIllustration.swift in Sources */,
 				80C777CB23FB2B74004ABB2E /* API.swift in Sources */,
 				8057DB4E2364F0C40087FBF7 /* AlertStack.swift in Sources */,
+				8061746B240B4F68002EC2E0 /* DailyForecast.swift in Sources */,
 				806EBCA223F2560600086F46 /* LocationPickerViewController.swift in Sources */,
 				80B5E7A523FA3DDD001729E0 /* Location.swift in Sources */,
 				802C0D982368FE32009A22BA /* CurrentSection.swift in Sources */,
@@ -1022,6 +1033,7 @@
 				802C0D9E236903CD009A22BA /* Header.swift in Sources */,
 				80C777E023FB4A9B004ABB2E /* LocationItemTemperature.swift in Sources */,
 				80FB6C6F2408AA590026DD83 /* LocationNameHelper.swift in Sources */,
+				80625425240C8F9C00638C2F /* DailyForecastGroup.swift in Sources */,
 				80A01605237665B700A72C2F /* TouchPassthroughView.swift in Sources */,
 				80C816232363D9DA00D33669 /* OmniBar.swift in Sources */,
 				80E5D61E23774150004A1D6B /* UIScrollView+ScrollToTop.swift in Sources */,
@@ -1046,7 +1058,6 @@
 				80A646C423F5E95800C80633 /* HostingView.swift in Sources */,
 				80DFF9FA23FA2B1100908B86 /* LocationPickerData.swift in Sources */,
 				803028D822CEE56D0053F639 /* ObservationView.swift in Sources */,
-				8061292823691365005EEB2A /* HorizontalPagingScrollViewController.swift in Sources */,
 				80A646C223F5DAE400C80633 /* LocationSearchResultItem.swift in Sources */,
 				80C395A523787F660004B71D /* Date+TimeAgo.swift in Sources */,
 				80C777DE23FB4985004ABB2E /* LocationItemContainer.swift in Sources */,
@@ -1055,6 +1066,7 @@
 				80C777D323FB3415004ABB2E /* CLLocationCoordinate2D.swift in Sources */,
 				80C8162A2363E2D700D33669 /* OmniBarAuxiliaryButton.swift in Sources */,
 				80F07DDE23FB8012005C43A3 /* AnimationPreset.swift in Sources */,
+				80625423240C606A00638C2F /* UIScrollView+Clear.swift in Sources */,
 				80D871B823F20F87001FBA94 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

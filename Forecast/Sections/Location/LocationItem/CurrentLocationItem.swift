@@ -50,7 +50,7 @@ struct CurrentLocationItem: View {
         appState.toggleLocationPicker(animated: true)
 
         UserSettings.clearActiveLocation()
-        weatherProvider.fetchData()
+        weatherProvider.fetchDataWithDelay()
     }
 }
 

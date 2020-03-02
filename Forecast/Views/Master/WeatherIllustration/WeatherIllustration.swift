@@ -9,19 +9,55 @@
 import SwiftUI
 
 struct WeatherIllustration: View {
-    let iconCode: Int
+    @EnvironmentObject private var appState: AppState
+
+    @State private var alternateImage: Bool = false
+    @State private var imageA: String = ""
+    @State private var imageB: String = ""
 
     var body: some View {
-        Image(imageName)
+        ZStack(alignment: .topTrailing) {
+            if !imageA.isEmpty {
+                Image(imageA)
+                    .transition(transition)
+            }
+            if !imageB.isEmpty {
+                Image(imageB)
+                    .transition(transition)
+            }
+        }
+        .frame(width: Dimension.System.screenWidth)
+        .onReceive(appState.iconCodeDidChange, perform: self.animateImage)
+    }
+
+    private let transition: AnyTransition = .asymmetric(
+        insertion: AnyTransition.opacity.combined(with: .move(edge: .trailing)),
+        removal: .opacity
+    )
+
+    private func setImage(name: String) {
+        if alternateImage {
+            imageB = name
+            imageA.clear()
+        } else {
+            imageA = name
+            imageB.clear()
+        }
+
+        alternateImage.toggle()
+    }
+
+    private func animateImage(_: AppState.ObjectWillChangePublisher.Output) {
+        setImage(name: imageName)
     }
 
     private var imageName: String {
-        "image-\(iconCode)"
+        "image-\(appState.iconCode)"
     }
 }
 
 struct WeatherIllustration_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherIllustration(iconCode: 0)
+        WeatherIllustration()
     }
 }

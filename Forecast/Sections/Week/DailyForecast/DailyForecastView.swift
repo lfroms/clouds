@@ -9,20 +9,41 @@
 import SwiftUI
 
 struct DailyForecastView: View {
+    let data: DailyForecast
+
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
-            Text("Today")
+            Text(data.when)
                 .font(Font.callout.bold())
                 .foregroundColor(.white)
                 .padding(.leading, 16)
 
-            DailyForecastCard()
+            DailyForecastCard(
+                icon: ForecastIcon.forCode(data.iconCode),
+                temperature: roundedTemperature,
+                description: data.description,
+                windSpeed: data.windSpeed,
+                pop: data.pop
+            )
         }
+    }
+
+    private var roundedTemperature: Int {
+        return Int(data.temperature.rounded() + 0.0)
     }
 }
 
 struct LabelledForecastView_Previews: PreviewProvider {
     static var previews: some View {
-        DailyForecastView()
+        DailyForecastView(
+            data: .init(
+                when: "Today",
+                iconCode: 6,
+                temperature: 15.5,
+                description: "Some test content.",
+                windSpeed: "15",
+                pop: 25
+            )
+        )
     }
 }

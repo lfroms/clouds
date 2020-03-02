@@ -6,17 +6,49 @@
 //  Copyright © 2019 Lukas Romsicki. All rights reserved.
 //
 
+import Combine
 import Foundation
 import SwiftUI
 
 final class AppState: ObservableObject {
-    @Published var masterViewIconCode: Int = 6
+    init() {
+        iconCodeDidChange.send()
+    }
+    
+    // MARK: - Icon Code
+    
+    let iconCodeDidChange = PassthroughSubject<Void, Never>()
+    
+    @Published private(set) var iconCode: Int = 6 {
+        didSet {
+            self.iconCodeDidChange.send()
+        }
+    }
+    
+    func setIconCode(to newCode: Int?, animated: Bool) {
+        guard iconCode != newCode else {
+            return
+        }
+        
+        let newCode: Int = newCode ?? 0
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            guard animated else {
+                self.iconCode = newCode
+                return
+            }
+            
+            withAnimation(.spring()) {
+                self.iconCode = newCode
+            }
+        }
+    }
     
     // MARK: - Sliding Panel
     
-    @Published var activeTabIndex: Int = 0 {
+    @Published var activeSection: AppSection = .now {
         didSet {
-            slidingPanelLocked = activeTabIndex != 0
+            slidingPanelLocked = activeSection != .now
         }
     }
     
@@ -47,6 +79,5 @@ final class AppState: ObservableObject {
     
     // MARK: - Settings Sheet
     
-    @Published var  showingSettingsSheet: Bool = false
+    @Published var showingSettingsSheet: Bool = false
 }
-  

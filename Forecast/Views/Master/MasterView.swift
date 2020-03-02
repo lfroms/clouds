@@ -31,9 +31,9 @@ struct MasterView<Content: View>: View {
     private var StandardContentLayout: some View {
         ZStack(alignment: .bottom) {
             ZStack(alignment: .topTrailing) {
-                BackgroundColor(iconCode: iconCode)
-                WeatherIllustration(iconCode: iconCode)
-                    .padding(.top, Dimension.System.topSafeMargin)
+                BackgroundColor()
+                WeatherIllustration()
+                    .padding(.top, Dimension.Header.illustrationTopPadding)
             }
 
             VStack(alignment: .center, spacing: 0) {

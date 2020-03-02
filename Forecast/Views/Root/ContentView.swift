@@ -8,8 +8,6 @@
 
 import SwiftUI
 
-private let tabs: [String] = ["Now", "Week", "Radar"]
-
 struct ContentView: View {
     @EnvironmentObject var weatherProvider: WeatherProvider
     @EnvironmentObject var appState: AppState
@@ -25,18 +23,18 @@ struct ContentView: View {
 
                     SlidingPanel(locked: slidingPanelLocked) {
                         MasterView(
-                            useAsContainer: self.appState.activeTabIndex == 2,
+                            useAsContainer: self.appState.activeSection == .radar,
                             hasDrawerHandle: self.appState.slidingPanelLocked,
                             drawerHandleHidden: self.weatherProvider.loading,
-                            iconCode: self.iconCode
+                            iconCode: self.appState.iconCode
                         ) {
-                            CurrentSection(index: self.$appState.activeTabIndex)
+                            CurrentSection(section: self.$appState.activeSection)
                         }
                     }
                     .edgesIgnoringSafeArea(.top)
                 }
 
-                NavigationBar(activeTabIndex: $appState.activeTabIndex, tabs: tabs)
+                NavigationBar(activeSection: $appState.activeSection, tabs: AppSection.list)
                     .padding(.bottom, 12)
             }
 
@@ -49,6 +47,10 @@ struct ContentView: View {
             SettingsSection()
         }
         .colorScheme(.dark)
+        .onReceive(weatherProvider.objectDidReceiveUpdatedWeather) { _ in
+            let iconCode = self.weatherProvider.activeLocation?.currentConditions?.iconCode
+            self.appState.setIconCode(to: iconCode, animated: true)
+        }
     }
 
     private var searchOffset: CGSize {
@@ -57,10 +59,6 @@ struct ContentView: View {
 
     private var slidingPanelLocked: Bool {
         self.appState.slidingPanelLocked || self.weatherProvider.loading
-    }
-
-    private var iconCode: Int {
-        return self.weatherProvider.activeLocation?.currentConditions?.iconCode ?? 06
     }
 }
 

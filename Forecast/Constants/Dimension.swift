@@ -12,6 +12,7 @@ final class Dimension {
     final class Header {
         static let padding: CGFloat = 20
         static let omniBarHeight: CGFloat = 52
+        static let illustrationTopPadding: CGFloat = System.topSafeMargin
     }
 
     final class Animation {
@@ -29,6 +30,12 @@ final class Dimension {
         static let itemHeight: CGFloat = 57
     }
 
+    final class WeekSection {
+        static let dayCardWidth: CGFloat = 215
+        static let cardSpacing: CGFloat = 14
+        static let pageSize = dayCardWidth + cardSpacing
+    }
+
     final class System {
         private static var firstWindow = UIApplication.shared.windows.first
 
@@ -38,6 +45,10 @@ final class Dimension {
 
         static var screenHeight: CGFloat {
             return firstWindow?.frame.height ?? 0
+        }
+
+        static var screenWidth: CGFloat {
+            return firstWindow?.frame.width ?? 0
         }
     }
 }
