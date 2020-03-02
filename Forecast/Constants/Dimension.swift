@@ -29,6 +29,12 @@ final class Dimension {
         static let itemHeight: CGFloat = 57
     }
 
+    final class WeekSection {
+        static let dayCardWidth: CGFloat = 215
+        static let cardSpacing: CGFloat = 14
+        static let pageSize = dayCardWidth + cardSpacing
+    }
+
     final class System {
         private static var firstWindow = UIApplication.shared.windows.first
 

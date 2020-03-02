@@ -25,8 +25,6 @@ struct DailyForecastView: View {
                 windSpeed: data.windSpeed,
                 pop: data.pop
             )
-            
-            Spacer()
         }
     }
 

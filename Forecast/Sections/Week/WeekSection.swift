@@ -13,14 +13,21 @@ struct WeekSection: View {
     @EnvironmentObject private var weather: WeatherProvider
 
     var body: some View {
-        ZStack(alignment: .bottom) {
-            HorizontalPagingScrollView(pageWidth: 229, numberOfPages: self.days.count, didChangePage: self.didChangeToPage) {
-                HStack(spacing: 14) {
+        HorizontalPagingScrollView(
+            pageWidth: Dimension.WeekSection.pageSize,
+            numberOfPages: self.days.count,
+            didChangePage: self.didChangeToPage
+        ) {
+            VStack {
+                // Push content to bottom
+                Spacer()
+
+                HStack(alignment: .top, spacing: Dimension.WeekSection.cardSpacing) {
                     ForEach(self.days, id: \.id) { day in
                         DailyForecastView(data: day)
                     }
                 }
-                .padding(.horizontal, 20)
+                .padding(Dimension.Header.padding)
             }
         }
     }

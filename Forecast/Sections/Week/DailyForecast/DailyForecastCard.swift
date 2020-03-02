@@ -16,34 +16,30 @@ struct DailyForecastCard: View {
     let pop: Int
 
     var body: some View {
-        ZStack(alignment: .top) {
-            ShadowView(radius: 30, opacity: 0.08, color: .black, cornerRadius: 18)
+        VStack(alignment: .leading, spacing: 14) {
+            HStack(alignment: .firstTextBaseline, spacing: 5) {
+                Image(systemName: self.icon)
+                Text("\(self.temperature)°")
 
-            VStack(alignment: .leading, spacing: 14) {
-                HStack(alignment: .firstTextBaseline, spacing: 5) {
-                    Image(systemName: icon)
-                    Text("\(temperature)°")
-
-                    // Needed to push to full width
-                    Spacer(minLength: 0)
-                }
-                .font(Font.system(size: 22).bold())
-
-                Text(description)
-                    .font(.footnote)
-                    .fontWeight(.semibold)
-
-                HStack(alignment: .center, spacing: 10) {
-                    DailyForecastDetail(symbol: "wind", text: "\(windSpeed) km/h")
-                    DailyForecastDetail(symbol: "umbrella.fill", text: "\(pop)%")
-                }
+                // Needed to push to full width
+                Spacer(minLength: 0)
             }
-            .padding(16)
-            .frame(width: 215)
-            .background(Color.white.opacity(0.15))
-            .cornerRadius(18)
+            .font(Font.system(size: 22).bold())
+
+            Text(self.description)
+                .font(.footnote)
+                .fontWeight(.semibold)
+
+            HStack(alignment: .center, spacing: 10) {
+                DailyForecastDetail(symbol: "wind", text: "\(self.windSpeed) km/h")
+                DailyForecastDetail(symbol: "umbrella.fill", text: "\(self.pop)%")
+            }
         }
-        .frame(width: 215)
+        .padding(16)
+        .background(Color.white.opacity(0.15))
+        .cornerRadius(18)
+        .frame(width: Dimension.WeekSection.dayCardWidth)
+        .background(ShadowView(radius: 30, opacity: 0.08, color: .black, cornerRadius: 18))
         .foregroundColor(.white)
     }
 }
