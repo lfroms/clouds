@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct ContentView: View {
-//    @EnvironmentObject var weatherProvider: WeatherProvider
-//    @EnvironmentObject var appState: AppState
+    @EnvironmentObject var weatherProvider: WeatherProvider
+    @EnvironmentObject var appState: AppState
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -21,45 +21,45 @@ struct ContentView: View {
                 ZStack(alignment: .bottom) {
                     CurrentConditionsView()
 
-                    SlidingPanel(locked: false) {
+                    SlidingPanel(locked: slidingPanelLocked) {
                         MasterView(
-                            useAsContainer: false,
-                            hasDrawerHandle: true,
-                            drawerHandleHidden: false,
-                            iconCode: 0
+                            useAsContainer: self.appState.activeSection == .radar,
+                            hasDrawerHandle: self.appState.slidingPanelLocked,
+                            drawerHandleHidden: self.weatherProvider.loading,
+                            iconCode: self.appState.iconCode
                         ) {
-                            CurrentSection(section: .constant(.now))
+                            CurrentSection(section: self.$appState.activeSection)
                         }
                     }
                     .edgesIgnoringSafeArea(.top)
                 }
 
-                NavigationBar(activeSection: .constant(.now), tabs: AppSection.list)
+                NavigationBar(activeSection: $appState.activeSection, tabs: AppSection.list)
                     .padding(.bottom, 12)
             }
 
-//            LocationPickerSection()
-//                .offset(searchOffset)
+            LocationPickerSection()
+                .offset(searchOffset)
 
             Header()
         }
-//        .sheet(isPresented: $appState.showingSettingsSheet) {
-//            SettingsSection()
-//        }
+        .sheet(isPresented: $appState.showingSettingsSheet) {
+            SettingsSection()
+        }
         .colorScheme(.dark)
-//        .onReceive(weatherProvider.objectDidReceiveUpdatedWeather) { _ in
-//            let iconCode = self.weatherProvider.activeLocation?.currentConditions?.iconCode
-//            self.appState.setIconCode(to: iconCode, animated: true)
-//        }
+        .onReceive(weatherProvider.objectDidReceiveUpdatedWeather) { _ in
+            let iconCode = self.weatherProvider.activeLocation?.currentConditions?.iconCode
+            self.appState.setIconCode(to: iconCode, animated: true)
+        }
     }
 
-//    private var searchOffset: CGSize {
-//        return CGSize(width: 0, height: self.appState.showingLocationPicker ? 0 : Dimension.System.screenHeight)
-//    }
-//
-//    private var slidingPanelLocked: Bool {
-//        self.appState.slidingPanelLocked || self.weatherProvider.loading
-//    }
+    private var searchOffset: CGSize {
+        return CGSize(width: 0, height: self.appState.showingLocationPicker ? 0 : Dimension.System.screenHeight)
+    }
+
+    private var slidingPanelLocked: Bool {
+        self.appState.slidingPanelLocked || self.weatherProvider.loading
+    }
 }
 
 #if DEBUG

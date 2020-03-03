@@ -21,8 +21,7 @@ struct OmniBar: View, Equatable {
     var auxiliaryAction: () -> Void
 
     var body: some View {
-        print("OmniBar")
-        return HStack(alignment: .center, spacing: Dimension.Spacing.barItems) {
+        HStack(alignment: .center, spacing: Dimension.Spacing.barItems) {
             Image(systemName: primaryIcon)
                 .equatable()
 
