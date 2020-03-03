@@ -22,6 +22,7 @@
 		803028E522CEE7970053F639 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028E422CEE7970053F639 /* OverviewView.swift */; };
 		8031CBC3240DF2B400C76FE3 /* SFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8031CBC2240DF2B400C76FE3 /* SFSymbol.swift */; };
 		8031CBC6240DF39100C76FE3 /* CGFloat+One.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8031CBC5240DF39100C76FE3 /* CGFloat+One.swift */; };
+		8031CBC9240E035700C76FE3 /* OmniBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8031CBC8240E035700C76FE3 /* OmniBarContainer.swift */; };
 		8038DB4923F0ACAD00F7B033 /* LocationPickerSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038DB4823F0ACAD00F7B033 /* LocationPickerSection.swift */; };
 		8039628322D6CC4B003FEAB3 /* HourlyForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8039628222D6CC4B003FEAB3 /* HourlyForecastViewModel.swift */; };
 		8039628522D6CD6F003FEAB3 /* ForecastIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8039628422D6CD6F003FEAB3 /* ForecastIcon.swift */; };
@@ -144,6 +145,7 @@
 		803028E422CEE7970053F639 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		8031CBC2240DF2B400C76FE3 /* SFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbol.swift; sourceTree = "<group>"; };
 		8031CBC5240DF39100C76FE3 /* CGFloat+One.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+One.swift"; sourceTree = "<group>"; };
+		8031CBC8240E035700C76FE3 /* OmniBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarContainer.swift; sourceTree = "<group>"; };
 		8038DB4823F0ACAD00F7B033 /* LocationPickerSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerSection.swift; sourceTree = "<group>"; };
 		8039628222D6CC4B003FEAB3 /* HourlyForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastViewModel.swift; sourceTree = "<group>"; };
 		8039628422D6CD6F003FEAB3 /* ForecastIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastIcon.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 		802C0D9A236903A8009A22BA /* Header */ = {
 			isa = PBXGroup;
 			children = (
+				8031CBC7240E034800C76FE3 /* Containers */,
 				80C395A123787B810004B71D /* ObservedAtTime */,
 				80C816212363D9CD00D33669 /* OmniBar */,
 				801878C1237783FD00B046B9 /* SunriseSunsetTime */,
@@ -346,6 +349,14 @@
 				802C0D9D236903CD009A22BA /* Header.swift */,
 			);
 			path = Header;
+			sourceTree = "<group>";
+		};
+		8031CBC7240E034800C76FE3 /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				8031CBC8240E035700C76FE3 /* OmniBarContainer.swift */,
+			);
+			path = Containers;
 			sourceTree = "<group>";
 		};
 		8038DB4723F0AC8700F7B033 /* Location */ = {
@@ -1057,6 +1068,7 @@
 				80C1693623FA435D00F22812 /* CLLocationCoordinate2D+Codable.swift in Sources */,
 				805D7BE222D1287900A12C4D /* BlurView.swift in Sources */,
 				80D0D86722D6B56800B8C711 /* UserPreferences.swift in Sources */,
+				8031CBC9240E035700C76FE3 /* OmniBarContainer.swift in Sources */,
 				80C816282363DEBB00D33669 /* OmniBarPlaceholder.swift in Sources */,
 				80E5D62A2377721B004A1D6B /* String+IsInt.swift in Sources */,
 				8057DB582364F1370087FBF7 /* NavigationBar.swift in Sources */,
