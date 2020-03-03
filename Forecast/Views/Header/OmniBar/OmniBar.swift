@@ -9,46 +9,83 @@
 import SwiftUI
 
 struct OmniBar: View {
-    @Binding var textFieldValue: String
-
-    var isReadOnly: Bool = false
-    var primaryIcon: String
-    var auxiliaryIcon: String
-
-    var auxiliaryButtonAction: (() -> Void)?
-    var barFocusAction: (() -> Void)?
+    @EnvironmentObject private var appState: AppState
+    @EnvironmentObject private var weather: WeatherProvider
+    @EnvironmentObject private var locationPickerState: LocationPickerState
 
     @State private var isPressed: Bool = false
 
     var body: some View {
-        ZStack {
-            ShadowView(radius: 20, opacity: 0.3, color: .black, cornerRadius: 22)
+        HStack(alignment: .center, spacing: Dimension.Spacing.barItems) {
+            Image(systemName: primaryIcon)
 
-            BlurView(style: .light, tint: 0.3)
-                .cornerRadius(26)
+            OmniBarTextField(placeholder: OmniBarPlaceholder(), text: textFieldValueBinding)
+                .disabled(textFieldIsReadOnly)
 
-            HStack(alignment: .center, spacing: Dimension.Spacing.barItems) {
-                Image(systemName: primaryIcon)
+            Spacer()
 
-                OmniBarTextField(placeholder: OmniBarPlaceholder(), text: $textFieldValue)
-                    .disabled(isReadOnly)
-
-                Spacer()
-
-                OmniBarAuxiliaryButton(icon: auxiliaryIcon, action: handleAuxiliaryButtonAction)
-            }
-            .font(Font.callout.weight(.bold))
-            .padding(.horizontal, 20)
+            OmniBarAuxiliaryButton(icon: auxiliaryIcon, action: clearOrClose)
         }
+        .font(Font.callout.weight(.bold))
+        .padding(.horizontal, 20)
+
         .foregroundColor(.white)
         .frame(height: Dimension.Header.omniBarHeight)
+        .background(ShadowView(radius: 20, opacity: 0.3, color: .black, cornerRadius: 22))
+        .background(BlurView(style: .light, tint: 0.3).cornerRadius(26))
         .gesture(gesture)
         .scaleEffect(scaleEffect)
         .animation(scaleAnimation)
+        .onReceive(appState.objectWillChange, perform: clearIfAboutToClose)
+    }
+
+    private var textFieldIsReadOnly: Bool {
+        !appState.showingLocationPicker
+    }
+
+    private var textFieldValueBinding: Binding<String> {
+        return .init(get: {
+            self.textFieldTextToDisplay
+
+        }, set: { value in
+            self.locationPickerState.searchQuery = value
+        })
+    }
+
+    private var primaryIcon: String {
+        if appState.showingLocationPicker || textFieldTextToDisplay.isEmpty {
+            return "magnifyingglass"
+        }
+
+        if UserSettings.getActiveLocation() != nil {
+            return "star.fill"
+        }
+
+        return "location.fill"
+    }
+
+    private var auxiliaryIcon: String {
+        appState.showingLocationPicker ? "xmark.circle.fill" : "slider.horizontal.3"
+    }
+
+    private var textFieldTextToDisplay: String {
+        if appState.showingLocationPicker {
+            return locationPickerState.searchQuery
+        }
+
+        if let activeLocation = UserSettings.getActiveLocation() {
+            return activeLocation.name
+        }
+
+        if let locality = weather.locationManager.lastPlacemark?.locality {
+            return locality
+        }
+
+        return ""
     }
 
     private var scaleAnimation: Animation? {
-        isReadOnly ? AnimationPreset.Touch.shrink : nil
+        textFieldIsReadOnly ? AnimationPreset.Touch.shrink : nil
     }
 
     private var scaleEffect: CGFloat {
@@ -56,7 +93,7 @@ struct OmniBar: View {
     }
 
     private var gesture: _EndedGesture<_ChangedGesture<DragGesture>>? {
-        guard isReadOnly else {
+        guard textFieldIsReadOnly else {
             return nil
         }
 
@@ -65,16 +102,29 @@ struct OmniBar: View {
                 self.isPressed = true
             }.onEnded { _ in
                 self.isPressed = false
-                self.barFocusAction?()
+
+                self.appState.toggleLocationPicker(animated: true)
             }
     }
 
-    private func handleAuxiliaryButtonAction() {
-        guard let auxiliaryButtonAction = auxiliaryButtonAction else {
+    private func clearIfAboutToClose(_: AppState.ObjectWillChangePublisher.Output) {
+        if !appState.showingLocationPicker {
+            locationPickerState.searchQuery = ""
+        }
+    }
+
+    private func clearOrClose() {
+        guard appState.showingLocationPicker else {
+            appState.showingSettingsSheet.toggle()
             return
         }
 
-        auxiliaryButtonAction()
+        if locationPickerState.searchQuery.isEmpty {
+            appState.toggleLocationPicker(animated: true)
+            return
+        }
+
+        locationPickerState.searchQuery.clear()
     }
 }
 
@@ -83,7 +133,10 @@ struct OmniBar_Previews: PreviewProvider {
         ZStack {
             Color.blue
 
-            OmniBar(textFieldValue: .constant("Test value"), primaryIcon: "location.fill", auxiliaryIcon: "slider.horizontal.3")
+            OmniBar()
+                .environmentObject(AppState())
+                .environmentObject(WeatherProvider())
+                .environmentObject(LocationPickerState())
                 .padding(20)
         }
         .edgesIgnoringSafeArea(.all)
