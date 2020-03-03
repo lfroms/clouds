@@ -13,6 +13,8 @@ struct SunriseSunsetTime: View, Equatable {
     var sunrise: DateInRegion
     var sunset: DateInRegion
 
+    private static let timeFormat: String = "h:mm a z"
+
     var body: some View {
         HStack(alignment: .lastTextBaseline, spacing: 5) {
             Image(systemName: symbolName)
@@ -27,11 +29,9 @@ struct SunriseSunsetTime: View, Equatable {
     private var symbolName: String {
         let currentTime = Date()
 
-        if currentTime.isInRange(date: sunrise.date, and: sunset.date) {
-            return SFSymbol.sunsetFilled
-        }
-
-        return SFSymbol.sunriseFilled
+        return currentTime.isInRange(date: sunrise.date, and: sunset.date)
+            ? SFSymbol.sunsetFilled
+            : SFSymbol.sunriseFilled
     }
 
     private var text: String {
@@ -39,11 +39,9 @@ struct SunriseSunsetTime: View, Equatable {
         let setTime = sunset.convertTo(region: .current)
         let currentTime = Date().convertTo(region: .current)
 
-        if currentTime.isInRange(date: riseTime, and: setTime) {
-            return setTime.toFormat("h:mm a z")
-        }
-
-        return riseTime.toFormat("h:mm a z")
+        return currentTime.isInRange(date: riseTime, and: setTime)
+            ? setTime.toFormat(Self.timeFormat)
+            : riseTime.toFormat(Self.timeFormat)
     }
 }
 

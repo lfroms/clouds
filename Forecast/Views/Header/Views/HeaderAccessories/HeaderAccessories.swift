@@ -11,8 +11,8 @@ import SwiftUI
 struct HeaderAccessories: View, Equatable {
     var hidden: Bool
 
-    var sunriseSunset: SunriseSunsetDescriptor?
-    var observedAt: ObservedAtDescriptor
+    var sunriseSunset: SunriseSunsetData?
+    var observedAt: ObservedAtData
 
     var body: some View {
         HStack {
@@ -50,7 +50,7 @@ struct HeaderAccessories_Previews: PreviewProvider {
         HeaderAccessories(
             hidden: false,
             sunriseSunset: nil,
-            observedAt: ObservedAtDescriptor(loading: false, timestamp: nil, action: {})
+            observedAt: ObservedAtData(loading: false, timestamp: nil, action: {})
         )
     }
 }

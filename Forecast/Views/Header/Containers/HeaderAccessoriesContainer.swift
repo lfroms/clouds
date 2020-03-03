@@ -21,16 +21,16 @@ struct HeaderAccessoriesContainer: View {
         .equatable()
     }
 
-    private var sunriseSunset: SunriseSunsetDescriptor? {
+    private var sunriseSunset: SunriseSunsetData? {
         guard let sun = weather.activeLocation?.sun else {
             return nil
         }
 
-        return SunriseSunsetDescriptor(sunrise: sun.riseTime, sunset: sun.setTime)
+        return SunriseSunsetData(sunrise: sun.riseTime, sunset: sun.setTime)
     }
 
-    private var observedAt: ObservedAtDescriptor {
-        ObservedAtDescriptor(
+    private var observedAt: ObservedAtData {
+        ObservedAtData(
             loading: weather.loading,
             timestamp: weather.activeLocation?.currentConditions?.time,
             action: weather.fetchData

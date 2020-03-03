@@ -1,5 +1,5 @@
 //
-//  SunriseSunsetDescriptor.swift
+//  SunriseSunsetData.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2020-03-02.
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftDate
 
-struct SunriseSunsetDescriptor {
+struct SunriseSunsetData {
     private var sunrise: UnixTimestamp
     private var sunset: UnixTimestamp
 
@@ -31,4 +31,4 @@ struct SunriseSunsetDescriptor {
     }
 }
 
-extension SunriseSunsetDescriptor: Equatable {}
+extension SunriseSunsetData: Equatable {}

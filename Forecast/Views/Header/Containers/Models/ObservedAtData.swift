@@ -1,5 +1,5 @@
 //
-//  ObservedAtDescriptor.swift
+//  ObservedAtData.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2020-03-02.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ObservedAtDescriptor {
+struct ObservedAtData {
     var loading: Bool
     private var timestamp: UnixTimestamp?
     var action: () -> Void
@@ -28,8 +28,8 @@ struct ObservedAtDescriptor {
     }
 }
 
-extension ObservedAtDescriptor: Equatable {
-    static func == (lhs: ObservedAtDescriptor, rhs: ObservedAtDescriptor) -> Bool {
+extension ObservedAtData: Equatable {
+    static func == (lhs: ObservedAtData, rhs: ObservedAtData) -> Bool {
         lhs.loading == rhs.loading && lhs.timestamp == rhs.timestamp
     }
 }

@@ -20,8 +20,8 @@
 		803028D522CEE42C0053F639 /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028D422CEE42C0053F639 /* TemperatureView.swift */; };
 		803028D822CEE56D0053F639 /* ObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028D722CEE56D0053F639 /* ObservationView.swift */; };
 		803028E522CEE7970053F639 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028E422CEE7970053F639 /* OverviewView.swift */; };
-		80305321240E17FE00FDAC69 /* SunriseSunsetDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80305320240E17FE00FDAC69 /* SunriseSunsetDescriptor.swift */; };
-		80305323240E182300FDAC69 /* ObservedAtDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80305322240E182300FDAC69 /* ObservedAtDescriptor.swift */; };
+		80305321240E17FE00FDAC69 /* SunriseSunsetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80305320240E17FE00FDAC69 /* SunriseSunsetData.swift */; };
+		80305323240E182300FDAC69 /* ObservedAtData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80305322240E182300FDAC69 /* ObservedAtData.swift */; };
 		8031CBC3240DF2B400C76FE3 /* SFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8031CBC2240DF2B400C76FE3 /* SFSymbol.swift */; };
 		8031CBC6240DF39100C76FE3 /* Double+One.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8031CBC5240DF39100C76FE3 /* Double+One.swift */; };
 		8031CBC9240E035700C76FE3 /* OmniBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8031CBC8240E035700C76FE3 /* OmniBarContainer.swift */; };
@@ -149,8 +149,8 @@
 		803028D422CEE42C0053F639 /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
 		803028D722CEE56D0053F639 /* ObservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationView.swift; sourceTree = "<group>"; };
 		803028E422CEE7970053F639 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
-		80305320240E17FE00FDAC69 /* SunriseSunsetDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetDescriptor.swift; sourceTree = "<group>"; };
-		80305322240E182300FDAC69 /* ObservedAtDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedAtDescriptor.swift; sourceTree = "<group>"; };
+		80305320240E17FE00FDAC69 /* SunriseSunsetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetData.swift; sourceTree = "<group>"; };
+		80305322240E182300FDAC69 /* ObservedAtData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedAtData.swift; sourceTree = "<group>"; };
 		8031CBC2240DF2B400C76FE3 /* SFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbol.swift; sourceTree = "<group>"; };
 		8031CBC5240DF39100C76FE3 /* Double+One.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+One.swift"; sourceTree = "<group>"; };
 		8031CBC8240E035700C76FE3 /* OmniBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarContainer.swift; sourceTree = "<group>"; };
@@ -345,7 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				8031CBC7240E034800C76FE3 /* Containers */,
-				8031CBCA240E089600C76FE3 /* Subviews */,
+				8031CBCA240E089600C76FE3 /* Views */,
 				802C0D9D236903CD009A22BA /* Header.swift */,
 			);
 			path = Header;
@@ -373,8 +373,8 @@
 		8030531F240E17F300FDAC69 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				80305320240E17FE00FDAC69 /* SunriseSunsetDescriptor.swift */,
-				80305322240E182300FDAC69 /* ObservedAtDescriptor.swift */,
+				80305320240E17FE00FDAC69 /* SunriseSunsetData.swift */,
+				80305322240E182300FDAC69 /* ObservedAtData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -382,6 +382,7 @@
 		8031CBC7240E034800C76FE3 /* Containers */ = {
 			isa = PBXGroup;
 			children = (
+				8030531F240E17F300FDAC69 /* Models */,
 				8031CBC8240E035700C76FE3 /* OmniBarContainer.swift */,
 				8031CBCB240E0B8D00C76FE3 /* HeaderGradientContainer.swift */,
 				8034A1A7240E10CB00DF02A1 /* HeaderAccessoriesContainer.swift */,
@@ -389,20 +390,19 @@
 			path = Containers;
 			sourceTree = "<group>";
 		};
-		8031CBCA240E089600C76FE3 /* Subviews */ = {
+		8031CBCA240E089600C76FE3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				80C816212363D9CD00D33669 /* OmniBar */,
 				8034A1A9240E10E000DF02A1 /* HeaderAccessories */,
 				80C8162E2363E6DE00D33669 /* HeaderGradient.swift */,
 			);
-			path = Subviews;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8034A1A9240E10E000DF02A1 /* HeaderAccessories */ = {
 			isa = PBXGroup;
 			children = (
-				8030531F240E17F300FDAC69 /* Models */,
 				8030531E240E172F00FDAC69 /* Components */,
 				80FC8AAF23F0B1E800AEA26F /* HeaderAccessories.swift */,
 			);
@@ -1025,7 +1025,7 @@
 				80C777DC23FB4938004ABB2E /* LocationItemIcon.swift in Sources */,
 				8099ED3923667F8C00B8E1CA /* TabGeometry.swift in Sources */,
 				805A174622C53ADB00E1B4E2 /* AppDelegate.swift in Sources */,
-				80305323240E182300FDAC69 /* ObservedAtDescriptor.swift in Sources */,
+				80305323240E182300FDAC69 /* ObservedAtData.swift in Sources */,
 				80C395AF2378A1DA0004B71D /* AppState.swift in Sources */,
 				803FDCD723FB1A59002BBE4D /* FavoriteLocationItem.swift in Sources */,
 				80C395A8237888CD0004B71D /* IndicatorShape.swift in Sources */,
@@ -1102,7 +1102,7 @@
 				80A01605237665B700A72C2F /* TouchPassthroughView.swift in Sources */,
 				80C816232363D9DA00D33669 /* OmniBar.swift in Sources */,
 				80E5D61E23774150004A1D6B /* UIScrollView+ScrollToTop.swift in Sources */,
-				80305321240E17FE00FDAC69 /* SunriseSunsetDescriptor.swift in Sources */,
+				80305321240E17FE00FDAC69 /* SunriseSunsetData.swift in Sources */,
 				80FC8ABA23F0B80700AEA26F /* Dimension.swift in Sources */,
 				803028E522CEE7970053F639 /* OverviewView.swift in Sources */,
 				80D871AF23F1F671001FBA94 /* UIFont+PreferredWithWeight.swift in Sources */,
