@@ -8,27 +8,33 @@
 
 import SwiftUI
 
-struct OmniBar: View {
-    @EnvironmentObject private var appState: AppState
-    @EnvironmentObject private var weather: WeatherProvider
-    @EnvironmentObject private var locationPickerState: LocationPickerState
-
+struct OmniBar: View, Equatable {
     @State private var isPressed: Bool = false
 
+    @Binding var textFieldValue: String
+
+    var readOnly: Bool
+    var primaryIcon: String
+    var auxiliaryIcon: String
+
+    var didBecomeActive: () -> Void
+    var auxiliaryAction: () -> Void
+
     var body: some View {
-        HStack(alignment: .center, spacing: Dimension.Spacing.barItems) {
+        print("OmniBar")
+        return HStack(alignment: .center, spacing: Dimension.Spacing.barItems) {
             Image(systemName: primaryIcon)
+                .equatable()
 
-            OmniBarTextField(placeholder: OmniBarPlaceholder(), text: textFieldValueBinding)
-                .disabled(textFieldIsReadOnly)
+            OmniBarTextField(text: $textFieldValue, placeholder: OmniBarPlaceholder())
+                .equatable()
+                .disabled(readOnly)
 
-            Spacer()
-
-            OmniBarAuxiliaryButton(icon: auxiliaryIcon, action: clearOrClose)
+            OmniBarAuxiliaryButton(icon: auxiliaryIcon, action: auxiliaryAction)
+                .equatable()
         }
         .font(Font.callout.weight(.bold))
-        .padding(.horizontal, 20)
-
+        .padding(.horizontal, Dimension.Header.padding)
         .foregroundColor(.white)
         .frame(height: Dimension.Header.omniBarHeight)
         .background(ShadowView(radius: 20, opacity: 0.3, color: .black, cornerRadius: 22))
@@ -36,95 +42,40 @@ struct OmniBar: View {
         .gesture(gesture)
         .scaleEffect(scaleEffect)
         .animation(scaleAnimation)
-        .onReceive(appState.objectWillChange, perform: clearIfAboutToClose)
     }
 
-    private var textFieldIsReadOnly: Bool {
-        !appState.showingLocationPicker
-    }
-
-    private var textFieldValueBinding: Binding<String> {
-        return .init(get: {
-            self.textFieldTextToDisplay
-
-        }, set: { value in
-            self.locationPickerState.searchQuery = value
-        })
-    }
-
-    private var primaryIcon: String {
-        if appState.showingLocationPicker || textFieldTextToDisplay.isEmpty {
-            return "magnifyingglass"
-        }
-
-        if UserSettings.getActiveLocation() != nil {
-            return "star.fill"
-        }
-
-        return "location.fill"
-    }
-
-    private var auxiliaryIcon: String {
-        appState.showingLocationPicker ? "xmark.circle.fill" : "slider.horizontal.3"
-    }
-
-    private var textFieldTextToDisplay: String {
-        if appState.showingLocationPicker {
-            return locationPickerState.searchQuery
-        }
-
-        if let activeLocation = UserSettings.getActiveLocation() {
-            return activeLocation.name
-        }
-
-        if let locality = weather.locationManager.lastPlacemark?.locality {
-            return locality
-        }
-
-        return ""
-    }
+    // MARK: - Animations & Gestures
 
     private var scaleAnimation: Animation? {
-        textFieldIsReadOnly ? AnimationPreset.Touch.shrink : nil
+        readOnly ? AnimationPreset.Touch.shrink : nil
     }
 
     private var scaleEffect: CGFloat {
-        isPressed ? Dimension.Animation.shrinkAmount : 1.0
+        isPressed ? Dimension.Animation.shrinkAmount : .one
     }
 
     private var gesture: _EndedGesture<_ChangedGesture<DragGesture>>? {
-        guard textFieldIsReadOnly else {
+        guard readOnly else {
             return nil
         }
 
-        return DragGesture(minimumDistance: 0, coordinateSpace: .local)
+        return DragGesture(minimumDistance: .zero, coordinateSpace: .local)
             .onChanged { _ in
                 self.isPressed = true
+
             }.onEnded { _ in
                 self.isPressed = false
-
-                self.appState.toggleLocationPicker(animated: true)
+                self.didBecomeActive()
             }
     }
 
-    private func clearIfAboutToClose(_: AppState.ObjectWillChangePublisher.Output) {
-        if !appState.showingLocationPicker {
-            locationPickerState.searchQuery = ""
-        }
-    }
+    // MARK: - Equatable
 
-    private func clearOrClose() {
-        guard appState.showingLocationPicker else {
-            appState.showingSettingsSheet.toggle()
-            return
-        }
-
-        if locationPickerState.searchQuery.isEmpty {
-            appState.toggleLocationPicker(animated: true)
-            return
-        }
-
-        locationPickerState.searchQuery.clear()
+    static func == (lhs: OmniBar, rhs: OmniBar) -> Bool {
+        lhs.textFieldValue == rhs.textFieldValue
+            && lhs.readOnly == rhs.readOnly
+            && lhs.primaryIcon == rhs.primaryIcon
+            && lhs.auxiliaryIcon == rhs.auxiliaryIcon
     }
 }
 
@@ -133,11 +84,15 @@ struct OmniBar_Previews: PreviewProvider {
         ZStack {
             Color.blue
 
-            OmniBar()
-                .environmentObject(AppState())
-                .environmentObject(WeatherProvider())
-                .environmentObject(LocationPickerState())
-                .padding(20)
+            OmniBar(
+                textFieldValue: .constant("Test"),
+                readOnly: false,
+                primaryIcon: SFSymbol.magnifyingGlass,
+                auxiliaryIcon: SFSymbol.xMarkCircleFilled,
+                didBecomeActive: {},
+                auxiliaryAction: {}
+            )
+            .padding(Dimension.Header.padding)
         }
         .edgesIgnoringSafeArea(.all)
     }

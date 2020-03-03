@@ -8,10 +8,10 @@
 
 import SwiftUI
 
-struct OmniBarTextField<Placeholder: View>: View {
-    var placeholder: Placeholder
+struct OmniBarTextField<Placeholder: View & Equatable>: View, Equatable {
     @Binding var text: String
-    var editingChanged: (Bool) -> () = { _ in }
+
+    var placeholder: Placeholder
     var commit: () -> () = {}
 
     var body: some View {
@@ -20,17 +20,23 @@ struct OmniBarTextField<Placeholder: View>: View {
                 placeholder
             }
 
-            TextField("", text: $text, onEditingChanged: editingChanged, onCommit: commit)
+            TextField(String.empty, text: $text, onCommit: commit)
                 .textFieldStyle(PlainTextFieldStyle())
                 .disableAutocorrection(true)
                 // TextField is shifted upwards by 2 by default
                 .padding(.top, 2)
         }
     }
+
+    // MARK: - Equatable
+
+    static func == (lhs: OmniBarTextField<Placeholder>, rhs: OmniBarTextField<Placeholder>) -> Bool {
+        lhs.text == rhs.text && lhs.placeholder == rhs.placeholder
+    }
 }
 
 struct OmniBarTextField_Previews: PreviewProvider {
     static var previews: some View {
-        OmniBarTextField(placeholder: Text("Placeholder"), text: .constant("Text"))
+        OmniBarTextField(text: .constant("Text"), placeholder: Text("Placeholder"))
     }
 }

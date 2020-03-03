@@ -21,6 +21,7 @@ struct SlidingPanel<Content: View>: View {
                     .frame(height: geometry.size.height)
                     .edgesIgnoringSafeArea(.all)
             }
+            .equatable()
         }
     }
 }

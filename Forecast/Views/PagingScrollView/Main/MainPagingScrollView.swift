@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct MainPagingScrollView<Content>: UIViewControllerRepresentable where Content: View {
+struct MainPagingScrollView<Content>: UIViewControllerRepresentable, Equatable where Content: View {
     var travelDistance: CGFloat
     var locked: Bool = false
 
@@ -21,9 +21,16 @@ struct MainPagingScrollView<Content>: UIViewControllerRepresentable where Conten
     }
 
     func updateUIViewController(_ viewController: MainPagingScrollViewController, context: Context) {
-        viewController.hostingController.rootView = AnyView(self.content())
+//        viewController.hostingController.rootView = AnyView(self.content())
         viewController.travelDistance = self.travelDistance
         viewController.updateScrollViewContentHeight()
         viewController.isLocked = self.locked
+    }
+
+    // MARK: - Equatable
+
+    static func == (lhs: MainPagingScrollView<Content>, rhs: MainPagingScrollView<Content>) -> Bool {
+        lhs.travelDistance == rhs.travelDistance
+            && lhs.locked == rhs.locked
     }
 }

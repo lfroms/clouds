@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct OmniBarPlaceholder: View {
+struct OmniBarPlaceholder: View, Equatable {
     var body: some View {
         Text("Find a location")
             .fontWeight(.semibold)

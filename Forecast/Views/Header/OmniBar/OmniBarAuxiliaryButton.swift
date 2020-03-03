@@ -8,14 +8,20 @@
 
 import SwiftUI
 
-struct OmniBarAuxiliaryButton: View {
-    let icon: String
-    let action: () -> Void
+struct OmniBarAuxiliaryButton: View, Equatable {
+    var icon: String
+    var action: () -> Void
 
     var body: some View {
         Button(action: action) {
             Image(systemName: icon)
         }
+    }
+
+    // MARK: - Equatable
+
+    static func == (lhs: OmniBarAuxiliaryButton, rhs: OmniBarAuxiliaryButton) -> Bool {
+        lhs.icon == rhs.icon
     }
 }
 
