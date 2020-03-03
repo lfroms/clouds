@@ -11,15 +11,15 @@ import SwiftUI
 struct HeaderAccessories: View, Equatable {
     var hidden: Bool
 
-    var sunriseSunset: SunriseSunset?
-    var observedAt: ObservedAt
+    var sunriseSunset: SunriseSunsetDescriptor?
+    var observedAt: ObservedAtDescriptor
 
     var body: some View {
         HStack {
             if sunriseSunset != nil {
                 SunriseSunsetTime(
-                    sunriseUnixTimestamp: sunriseSunset!.sunriseTimestamp,
-                    sunsetUnixTimestamp: sunriseSunset!.sunsetTimestamp
+                    sunrise: sunriseSunset!.sunriseUTC,
+                    sunset: sunriseSunset!.sunsetUTC
                 )
                 .equatable()
             }
@@ -28,7 +28,7 @@ struct HeaderAccessories: View, Equatable {
 
             ObservedAtTime(
                 loading: observedAt.loading,
-                unixTimestamp: observedAt.timestamp,
+                date: observedAt.date,
                 action: observedAt.action
             )
             .equatable()
@@ -50,7 +50,7 @@ struct HeaderAccessories_Previews: PreviewProvider {
         HeaderAccessories(
             hidden: false,
             sunriseSunset: nil,
-            observedAt: ObservedAt(loading: false, timestamp: nil, action: {})
+            observedAt: ObservedAtDescriptor(loading: false, timestamp: nil, action: {})
         )
     }
 }

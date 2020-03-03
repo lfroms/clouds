@@ -12,7 +12,7 @@ struct ObservedAtTime: View, Equatable {
     @State private var now = Date()
 
     var loading: Bool
-    var unixTimestamp: Int?
+    var date: Date?
     var action: () -> Void
 
     private let timer = Timer.publish(every: 1, on: .current, in: .common).autoconnect()
@@ -38,21 +38,13 @@ struct ObservedAtTime: View, Equatable {
     }
 
     private var text: String {
-        parsedDate?.timeAgo(relativeTo: now) ?? .empty
-    }
-
-    private var parsedDate: Date? {
-        guard let unixTimestamp = unixTimestamp else {
-            return nil
-        }
-
-        return Date(seconds: TimeInterval(unixTimestamp))
+        date?.timeAgo(relativeTo: now) ?? .empty
     }
 
     // MARK: - Equatable
 
     static func == (lhs: ObservedAtTime, rhs: ObservedAtTime) -> Bool {
-        lhs.loading == rhs.loading && lhs.unixTimestamp == rhs.unixTimestamp
+        lhs.loading == rhs.loading && lhs.date == rhs.date
     }
 }
 
@@ -60,7 +52,8 @@ struct ObservedAtTime_Previews: PreviewProvider {
     static var previews: some View {
         ObservedAtTime(
             loading: false,
-            unixTimestamp: 0
-        ) {}
+            date: Date(),
+            action: {}
+        )
     }
 }

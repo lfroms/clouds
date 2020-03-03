@@ -10,8 +10,8 @@ import SwiftDate
 import SwiftUI
 
 struct SunriseSunsetTime: View, Equatable {
-    var sunriseUnixTimestamp: Int
-    var sunsetUnixTimestamp: Int
+    var sunrise: DateInRegion
+    var sunset: DateInRegion
 
     var body: some View {
         HStack(alignment: .lastTextBaseline, spacing: 5) {
@@ -25,24 +25,18 @@ struct SunriseSunsetTime: View, Equatable {
     }
 
     private var symbolName: String {
-        let riseTime = inUTCTime(time: sunriseUnixTimestamp)
-        let setTime = inUTCTime(time: sunsetUnixTimestamp)
         let currentTime = Date()
 
-        if currentTime.isInRange(date: riseTime.date, and: setTime.date) {
+        if currentTime.isInRange(date: sunrise.date, and: sunset.date) {
             return SFSymbol.sunsetFilled
         }
 
         return SFSymbol.sunriseFilled
     }
 
-    private func inUTCTime(time: Int) -> DateInRegion {
-        DateInRegion(seconds: TimeInterval(time), region: .UTC)
-    }
-
     private var text: String {
-        let riseTime = inUTCTime(time: sunriseUnixTimestamp).convertTo(region: .current)
-        let setTime = inUTCTime(time: sunsetUnixTimestamp).convertTo(region: .current)
+        let riseTime = sunrise.convertTo(region: .current)
+        let setTime = sunset.convertTo(region: .current)
         let currentTime = Date().convertTo(region: .current)
 
         if currentTime.isInRange(date: riseTime, and: setTime) {
@@ -55,6 +49,6 @@ struct SunriseSunsetTime: View, Equatable {
 
 struct RiseSetView_Previews: PreviewProvider {
     static var previews: some View {
-        SunriseSunsetTime(sunriseUnixTimestamp: 0, sunsetUnixTimestamp: 0)
+        SunriseSunsetTime(sunrise: DateInRegion(), sunset: DateInRegion())
     }
 }
