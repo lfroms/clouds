@@ -12,7 +12,7 @@ struct ObservedAtTime: View, Equatable {
     @State private var now = Date()
 
     var loading: Bool
-    var unixTimestamp: Int
+    var unixTimestamp: Int?
     var action: () -> Void
 
     private let timer = Timer.publish(every: 1, on: .current, in: .common).autoconnect()
@@ -38,11 +38,15 @@ struct ObservedAtTime: View, Equatable {
     }
 
     private var text: String {
-        parsedDate?.timeAgo(relativeTo: now) ?? ""
+        parsedDate?.timeAgo(relativeTo: now) ?? .empty
     }
 
     private var parsedDate: Date? {
-        Date(seconds: TimeInterval(unixTimestamp))
+        guard let unixTimestamp = unixTimestamp else {
+            return nil
+        }
+
+        return Date(seconds: TimeInterval(unixTimestamp))
     }
 
     // MARK: - Equatable

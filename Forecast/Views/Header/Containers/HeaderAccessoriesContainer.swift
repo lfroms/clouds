@@ -15,13 +15,26 @@ struct HeaderAccessoriesContainer: View {
     var body: some View {
         HeaderAccessories(
             hidden: appState.showingLocationPicker,
-            sunriseTimestamp: weather.activeLocation?.sun?.riseTime,
-            sunsetTimestamp: weather.activeLocation?.sun?.setTime,
-            observedAtTimestamp: weather.activeLocation?.currentConditions?.time,
-            loading: weather.loading,
-            observedAtAction: weather.fetchData
+            sunriseSunset: sunriseSunset,
+            observedAt: observedAt
         )
         .equatable()
+    }
+
+    private var sunriseSunset: SunriseSunset? {
+        guard let sun = weather.activeLocation?.sun else {
+            return nil
+        }
+
+        return SunriseSunset(sunriseTimestamp: sun.riseTime, sunsetTimestamp: sun.setTime)
+    }
+
+    private var observedAt: ObservedAt {
+        ObservedAt(
+            loading: weather.loading,
+            timestamp: weather.activeLocation?.currentConditions?.time,
+            action: weather.fetchData
+        )
     }
 }
 

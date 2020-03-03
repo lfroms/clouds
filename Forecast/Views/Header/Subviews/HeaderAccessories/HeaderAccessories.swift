@@ -11,33 +11,27 @@ import SwiftUI
 struct HeaderAccessories: View, Equatable {
     var hidden: Bool
 
-    var sunriseTimestamp: Int?
-    var sunsetTimestamp: Int?
-
-    var observedAtTimestamp: Int?
-    var loading: Bool
-    var observedAtAction: () -> Void
+    var sunriseSunset: SunriseSunset?
+    var observedAt: ObservedAt
 
     var body: some View {
         HStack {
-            if sunriseTimestamp != nil && sunsetTimestamp != nil {
+            if sunriseSunset != nil {
                 SunriseSunsetTime(
-                    sunriseUnixTimestamp: sunriseTimestamp!,
-                    sunsetUnixTimestamp: sunsetTimestamp!
+                    sunriseUnixTimestamp: sunriseSunset!.sunriseTimestamp,
+                    sunsetUnixTimestamp: sunriseSunset!.sunsetTimestamp
                 )
                 .equatable()
             }
 
             Spacer()
 
-            if observedAtTimestamp != nil {
-                ObservedAtTime(
-                    loading: loading,
-                    unixTimestamp: observedAtTimestamp!,
-                    action: observedAtAction
-                )
-                .equatable()
-            }
+            ObservedAtTime(
+                loading: observedAt.loading,
+                unixTimestamp: observedAt.timestamp,
+                action: observedAt.action
+            )
+            .equatable()
         }
         .opacity(hidden ? .zero : .one)
     }
@@ -46,10 +40,8 @@ struct HeaderAccessories: View, Equatable {
 
     static func == (lhs: HeaderAccessories, rhs: HeaderAccessories) -> Bool {
         lhs.hidden == rhs.hidden
-            && lhs.sunriseTimestamp == rhs.sunriseTimestamp
-            && lhs.sunsetTimestamp == rhs.sunsetTimestamp
-            && lhs.observedAtTimestamp == rhs.observedAtTimestamp
-            && lhs.loading == rhs.loading
+            && lhs.sunriseSunset == rhs.sunriseSunset
+            && lhs.observedAt == rhs.observedAt
     }
 }
 
@@ -57,11 +49,8 @@ struct HeaderAccessories_Previews: PreviewProvider {
     static var previews: some View {
         HeaderAccessories(
             hidden: false,
-            sunriseTimestamp: 0,
-            sunsetTimestamp: 0,
-            observedAtTimestamp: 0,
-            loading: false,
-            observedAtAction: {}
+            sunriseSunset: nil,
+            observedAt: ObservedAt(loading: false, timestamp: nil, action: {})
         )
     }
 }
