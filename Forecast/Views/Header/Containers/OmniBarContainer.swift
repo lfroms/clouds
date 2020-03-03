@@ -80,7 +80,7 @@ struct OmniBarContainer: View {
             return locality
         }
 
-        return ""
+        return .empty
     }
 
     // MARK: - Icons
