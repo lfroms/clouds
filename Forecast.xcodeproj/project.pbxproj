@@ -87,7 +87,7 @@
 		80C395A323787B9B0004B71D /* ObservedAtTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395A223787B9B0004B71D /* ObservedAtTime.swift */; };
 		80C395A523787F660004B71D /* Date+TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395A423787F660004B71D /* Date+TimeAgo.swift */; };
 		80C395A8237888CD0004B71D /* IndicatorShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395A7237888CD0004B71D /* IndicatorShape.swift */; };
-		80C395AA23788A6B0004B71D /* LineActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395A923788A6B0004B71D /* LineActivityIndicator.swift */; };
+		80C395AA23788A6B0004B71D /* AppActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395A923788A6B0004B71D /* AppActivityIndicator.swift */; };
 		80C395AD23789FDD0004B71D /* RoundedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */; };
 		80C395AF2378A1DA0004B71D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395AE2378A1DA0004B71D /* AppState.swift */; };
 		80C395B22378B2340004B71D /* RadarControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395B12378B2340004B71D /* RadarControls.swift */; };
@@ -218,7 +218,7 @@
 		80C395A223787B9B0004B71D /* ObservedAtTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedAtTime.swift; sourceTree = "<group>"; };
 		80C395A423787F660004B71D /* Date+TimeAgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+TimeAgo.swift"; sourceTree = "<group>"; };
 		80C395A7237888CD0004B71D /* IndicatorShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorShape.swift; sourceTree = "<group>"; };
-		80C395A923788A6B0004B71D /* LineActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineActivityIndicator.swift; sourceTree = "<group>"; };
+		80C395A923788A6B0004B71D /* AppActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppActivityIndicator.swift; sourceTree = "<group>"; };
 		80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerShape.swift; sourceTree = "<group>"; };
 		80C395AE2378A1DA0004B71D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		80C395B12378B2340004B71D /* RadarControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarControls.swift; sourceTree = "<group>"; };
@@ -349,6 +349,23 @@
 				802C0D9D236903CD009A22BA /* Header.swift */,
 			);
 			path = Header;
+			sourceTree = "<group>";
+		};
+		802CA229240EF40D009065C6 /* AppActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				802CA22A240EF43E009065C6 /* Components */,
+				80C395A923788A6B0004B71D /* AppActivityIndicator.swift */,
+			);
+			path = AppActivityIndicator;
+			sourceTree = "<group>";
+		};
+		802CA22A240EF43E009065C6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				80C395A7237888CD0004B71D /* IndicatorShape.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		8030531D240E172000FDAC69 /* Components */ = {
@@ -529,9 +546,8 @@
 		8066FDE82364ECCE0067F362 /* Indicator */ = {
 			isa = PBXGroup;
 			children = (
-				80C395A6237888BE0004B71D /* IndicatorShape */,
+				802CA229240EF40D009065C6 /* AppActivityIndicator */,
 				80E32BAD233454DD0087DBB3 /* SystemActivityIndicator.swift */,
-				80C395A923788A6B0004B71D /* LineActivityIndicator.swift */,
 			);
 			path = Indicator;
 			sourceTree = "<group>";
@@ -695,14 +711,6 @@
 				80FB6C66240873250026DD83 /* LocationPickerState.swift */,
 			);
 			path = Environment;
-			sourceTree = "<group>";
-		};
-		80C395A6237888BE0004B71D /* IndicatorShape */ = {
-			isa = PBXGroup;
-			children = (
-				80C395A7237888CD0004B71D /* IndicatorShape.swift */,
-			);
-			path = IndicatorShape;
 			sourceTree = "<group>";
 		};
 		80C395AB23789FD10004B71D /* RoundedCornerShape */ = {
@@ -1129,7 +1137,7 @@
 				80A646C223F5DAE400C80633 /* LocationSearchResultItem.swift in Sources */,
 				80C395A523787F660004B71D /* Date+TimeAgo.swift in Sources */,
 				80C777DE23FB4985004ABB2E /* LocationItemContainer.swift in Sources */,
-				80C395AA23788A6B0004B71D /* LineActivityIndicator.swift in Sources */,
+				80C395AA23788A6B0004B71D /* AppActivityIndicator.swift in Sources */,
 				8076F72623651CD000FB85D1 /* SlidingPanel.swift in Sources */,
 				80C777D323FB3415004ABB2E /* CLLocationCoordinate2D.swift in Sources */,
 				80C8162A2363E2D700D33669 /* OmniBarAuxiliaryButton.swift in Sources */,

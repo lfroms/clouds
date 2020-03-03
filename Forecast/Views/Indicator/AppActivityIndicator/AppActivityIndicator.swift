@@ -1,5 +1,5 @@
 //
-//  LineActivityIndicator.swift
+//  AppActivityIndicator.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-11-10.
@@ -8,28 +8,30 @@
 
 import SwiftUI
 
-struct LineActivityIndicator: View {
-    var color: Color = .primary
-
+struct AppActivityIndicator: View {
     @State private var isAnimating: Bool = false
+
+    var color: Color = .primary
 
     var body: some View {
         IndicatorShape(size: 12, weight: 2, color: color)
             .rotationEffect(rotationEffect, anchor: .center)
-            .onAppear {
-                withAnimation(Animation.linear(duration: 0.8).repeatForever(autoreverses: false)) {
-                    self.isAnimating.toggle()
-                }
-            }
+            .onAppear(perform: runAnimation)
     }
 
     private var rotationEffect: Angle {
         .degrees(isAnimating ? 360 : 0)
     }
+
+    private func runAnimation() {
+        withAnimation(Animation.linear(duration: 0.8).repeatForever(autoreverses: false)) {
+            self.isAnimating.toggle()
+        }
+    }
 }
 
 struct LineActivityIndicator_Previews: PreviewProvider {
     static var previews: some View {
-        LineActivityIndicator()
+        AppActivityIndicator()
     }
 }
