@@ -21,7 +21,7 @@ struct MainPagingScrollView<Content>: UIViewControllerRepresentable, Equatable w
     }
 
     func updateUIViewController(_ viewController: MainPagingScrollViewController, context: Context) {
-//        viewController.hostingController.rootView = AnyView(self.content())
+        viewController.hostingController.rootView = AnyView(self.content())
         viewController.travelDistance = self.travelDistance
         viewController.updateScrollViewContentHeight()
         viewController.isLocked = self.locked
