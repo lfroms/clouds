@@ -16,7 +16,7 @@ struct Header: View {
 
             VStack(alignment: .leading, spacing: Dimension.Header.padding) {
                 OmniBarContainer()
-                HeaderAccessories()
+                HeaderAccessoriesContainer()
             }
             .padding(Dimension.Header.padding)
         }

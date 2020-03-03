@@ -9,14 +9,14 @@
 import SwiftDate
 import SwiftUI
 
-struct SunriseSunsetTime: View {
-    @EnvironmentObject private var provider: WeatherProvider
+struct SunriseSunsetTime: View, Equatable {
+    var sunriseUnixTimestamp: Int
+    var sunsetUnixTimestamp: Int
 
     var body: some View {
         HStack(alignment: .lastTextBaseline, spacing: 5) {
-            if !symbolName.isEmpty {
-                Image(systemName: symbolName).padding(.bottom, 3)
-            }
+            Image(systemName: symbolName)
+                .padding(.bottom, 3)
 
             Text(text)
         }
@@ -25,19 +25,15 @@ struct SunriseSunsetTime: View {
     }
 
     private var symbolName: String {
-        guard let sun = provider.activeLocation?.sun else {
-            return .empty
-        }
-
-        let riseTime = inUTCTime(time: sun.riseTime)
-        let setTime = inUTCTime(time: sun.setTime)
+        let riseTime = inUTCTime(time: sunriseUnixTimestamp)
+        let setTime = inUTCTime(time: sunsetUnixTimestamp)
         let currentTime = Date()
 
         if currentTime.isInRange(date: riseTime.date, and: setTime.date) {
-            return "sunset.fill"
+            return SFSymbol.sunsetFilled
         }
 
-        return "sunrise.fill"
+        return SFSymbol.sunriseFilled
     }
 
     private func inUTCTime(time: Int) -> DateInRegion {
@@ -45,12 +41,8 @@ struct SunriseSunsetTime: View {
     }
 
     private var text: String {
-        guard let sun = provider.activeLocation?.sun else {
-            return .empty
-        }
-
-        let riseTime = inUTCTime(time: sun.riseTime).convertTo(region: .current)
-        let setTime = inUTCTime(time: sun.setTime).convertTo(region: .current)
+        let riseTime = inUTCTime(time: sunriseUnixTimestamp).convertTo(region: .current)
+        let setTime = inUTCTime(time: sunsetUnixTimestamp).convertTo(region: .current)
         let currentTime = Date().convertTo(region: .current)
 
         if currentTime.isInRange(date: riseTime, and: setTime) {
@@ -63,6 +55,6 @@ struct SunriseSunsetTime: View {
 
 struct RiseSetView_Previews: PreviewProvider {
     static var previews: some View {
-        SunriseSunsetTime()
+        SunriseSunsetTime(sunriseUnixTimestamp: 0, sunsetUnixTimestamp: 0)
     }
 }

@@ -25,6 +25,7 @@
 		8031CBC9240E035700C76FE3 /* OmniBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8031CBC8240E035700C76FE3 /* OmniBarContainer.swift */; };
 		8031CBCC240E0B8D00C76FE3 /* HeaderGradientContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8031CBCB240E0B8D00C76FE3 /* HeaderGradientContainer.swift */; };
 		8034A1A4240E0E6400DF02A1 /* CGFloat+One.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8034A1A3240E0E6300DF02A1 /* CGFloat+One.swift */; };
+		8034A1A8240E10CB00DF02A1 /* HeaderAccessoriesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8034A1A7240E10CB00DF02A1 /* HeaderAccessoriesContainer.swift */; };
 		8038DB4923F0ACAD00F7B033 /* LocationPickerSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038DB4823F0ACAD00F7B033 /* LocationPickerSection.swift */; };
 		8039628322D6CC4B003FEAB3 /* HourlyForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8039628222D6CC4B003FEAB3 /* HourlyForecastViewModel.swift */; };
 		8039628522D6CD6F003FEAB3 /* ForecastIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8039628422D6CD6F003FEAB3 /* ForecastIcon.swift */; };
@@ -150,6 +151,7 @@
 		8031CBC8240E035700C76FE3 /* OmniBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarContainer.swift; sourceTree = "<group>"; };
 		8031CBCB240E0B8D00C76FE3 /* HeaderGradientContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderGradientContainer.swift; sourceTree = "<group>"; };
 		8034A1A3240E0E6300DF02A1 /* CGFloat+One.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+One.swift"; sourceTree = "<group>"; };
+		8034A1A7240E10CB00DF02A1 /* HeaderAccessoriesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderAccessoriesContainer.swift; sourceTree = "<group>"; };
 		8038DB4823F0ACAD00F7B033 /* LocationPickerSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerSection.swift; sourceTree = "<group>"; };
 		8039628222D6CC4B003FEAB3 /* HourlyForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastViewModel.swift; sourceTree = "<group>"; };
 		8039628422D6CD6F003FEAB3 /* ForecastIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastIcon.swift; sourceTree = "<group>"; };
@@ -269,14 +271,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		801878C1237783FD00B046B9 /* SunriseSunsetTime */ = {
-			isa = PBXGroup;
-			children = (
-				802C0D9B236903C6009A22BA /* SunriseSunsetTime.swift */,
-			);
-			path = SunriseSunsetTime;
-			sourceTree = "<group>";
-		};
 		802048C5240AE2E600DFB842 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,6 +350,7 @@
 			children = (
 				8031CBC8240E035700C76FE3 /* OmniBarContainer.swift */,
 				8031CBCB240E0B8D00C76FE3 /* HeaderGradientContainer.swift */,
+				8034A1A7240E10CB00DF02A1 /* HeaderAccessoriesContainer.swift */,
 			);
 			path = Containers;
 			sourceTree = "<group>";
@@ -364,12 +359,20 @@
 			isa = PBXGroup;
 			children = (
 				80C816212363D9CD00D33669 /* OmniBar */,
-				801878C1237783FD00B046B9 /* SunriseSunsetTime */,
-				80C395A123787B810004B71D /* ObservedAtTime */,
+				8034A1A9240E10E000DF02A1 /* HeaderAccessories */,
 				80C8162E2363E6DE00D33669 /* HeaderGradient.swift */,
-				80FC8AAF23F0B1E800AEA26F /* HeaderAccessories.swift */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		8034A1A9240E10E000DF02A1 /* HeaderAccessories */ = {
+			isa = PBXGroup;
+			children = (
+				80FC8AAF23F0B1E800AEA26F /* HeaderAccessories.swift */,
+				802C0D9B236903C6009A22BA /* SunriseSunsetTime.swift */,
+				80C395A223787B9B0004B71D /* ObservedAtTime.swift */,
+			);
+			path = HeaderAccessories;
 			sourceTree = "<group>";
 		};
 		8038DB4723F0AC8700F7B033 /* Location */ = {
@@ -658,14 +661,6 @@
 				80FB6C66240873250026DD83 /* LocationPickerState.swift */,
 			);
 			path = Environment;
-			sourceTree = "<group>";
-		};
-		80C395A123787B810004B71D /* ObservedAtTime */ = {
-			isa = PBXGroup;
-			children = (
-				80C395A223787B9B0004B71D /* ObservedAtTime.swift */,
-			);
-			path = ObservedAtTime;
 			sourceTree = "<group>";
 		};
 		80C395A6237888BE0004B71D /* IndicatorShape */ = {
@@ -993,6 +988,7 @@
 			files = (
 				80AD070922D68E7B00220FEE /* WeatherProvider.swift in Sources */,
 				8039628522D6CD6F003FEAB3 /* ForecastIcon.swift in Sources */,
+				8034A1A8240E10CB00DF02A1 /* HeaderAccessoriesContainer.swift in Sources */,
 				80C777DC23FB4938004ABB2E /* LocationItemIcon.swift in Sources */,
 				8099ED3923667F8C00B8E1CA /* TabGeometry.swift in Sources */,
 				805A174622C53ADB00E1B4E2 /* AppDelegate.swift in Sources */,

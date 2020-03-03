@@ -8,22 +8,25 @@
 
 import SwiftUI
 
-struct ObservedAtTime: View {
-    @EnvironmentObject private var provider: WeatherProvider
+struct ObservedAtTime: View, Equatable {
     @State private var now = Date()
+
+    var loading: Bool
+    var unixTimestamp: Int
+    var action: () -> Void
 
     private let timer = Timer.publish(every: 1, on: .current, in: .common).autoconnect()
 
     var body: some View {
         HStack(alignment: .lastTextBaseline, spacing: 5) {
-            if provider.loading {
+            if loading {
                 LineActivityIndicator(color: .secondary)
 
             } else {
-                Image(systemName: "clock.fill")
+                Image(systemName: SFSymbol.clockFilled)
             }
 
-            Button(action: provider.fetchData) {
+            Button(action: action) {
                 Text(text)
                     .onReceive(timer) { _ in
                         self.now = Date()
@@ -39,16 +42,21 @@ struct ObservedAtTime: View {
     }
 
     private var parsedDate: Date? {
-        guard let time = provider.activeLocation?.currentConditions?.time else {
-            return nil
-        }
+        Date(seconds: TimeInterval(unixTimestamp))
+    }
 
-        return Date(seconds: TimeInterval(time))
+    // MARK: - Equatable
+
+    static func == (lhs: ObservedAtTime, rhs: ObservedAtTime) -> Bool {
+        lhs.loading == rhs.loading && lhs.unixTimestamp == rhs.unixTimestamp
     }
 }
 
 struct ObservedAtTime_Previews: PreviewProvider {
     static var previews: some View {
-        ObservedAtTime()
+        ObservedAtTime(
+            loading: false,
+            unixTimestamp: 0
+        ) {}
     }
 }
