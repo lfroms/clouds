@@ -11,7 +11,7 @@ import SwiftUI
 struct Header: View {
     var body: some View {
         ZStack(alignment: .top) {
-            HeaderGradientBackground()
+            HeaderGradientContainer()
                 .edgesIgnoringSafeArea(.top)
 
             VStack(alignment: .leading, spacing: Dimension.Header.padding) {

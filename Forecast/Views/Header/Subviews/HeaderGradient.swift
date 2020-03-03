@@ -1,5 +1,5 @@
 //
-//  HeaderGradientBackground.swift
+//  HeaderGradient.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-10-25.
@@ -8,8 +8,13 @@
 
 import SwiftUI
 
-struct HeaderGradientBackground: View {
-    @EnvironmentObject private var appState: AppState
+struct HeaderGradient: View, Equatable {
+    var style: Style
+
+    internal enum Style {
+        case normal
+        case prominent
+    }
 
     var body: some View {
         ZStack {
@@ -18,7 +23,16 @@ struct HeaderGradientBackground: View {
 
             LinearGradient(gradient: self.prominentGradient, startPoint: .top, endPoint: .bottom)
                 .frame(height: height)
-                .opacity(self.appState.showingLocationPicker ? 1 : 0)
+                .opacity(opacity)
+        }
+    }
+
+    private var opacity: Double {
+        switch style {
+        case .normal:
+            return .zero
+        case .prominent:
+            return .one
         }
     }
 
@@ -51,6 +65,6 @@ struct HeaderGradientBackground: View {
 
 struct TopDimGradient_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderGradientBackground()
+        HeaderGradient(style: .normal)
     }
 }
