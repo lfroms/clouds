@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct CurrentSection: View {
+struct CurrentSection: View, Equatable {
     @Binding var section: AppSection
 
     @ViewBuilder
@@ -22,6 +22,10 @@ struct CurrentSection: View {
         else {
             NowSection()
         }
+    }
+
+    static func == (lhs: CurrentSection, rhs: CurrentSection) -> Bool {
+        lhs.section == rhs.section
     }
 }
 

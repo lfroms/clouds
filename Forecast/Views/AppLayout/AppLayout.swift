@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  AppLayout.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-06-27.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct AppLayout: View {
     @EnvironmentObject var weatherProvider: WeatherProvider
     @EnvironmentObject var appState: AppState
 
@@ -21,15 +21,16 @@ struct ContentView: View {
                 ZStack(alignment: .bottom) {
                     CurrentConditionsView()
 
-                    SlidingPanel(locked: slidingPanelLocked) {
+                    SlidingPanel(travelDistance: self.appState.detailsContentHeight, locked: slidingPanelLocked) {
                         MasterView(
                             useAsContainer: self.appState.activeSection == .radar,
                             hasDrawerHandle: self.appState.slidingPanelLocked,
-                            drawerHandleHidden: self.weatherProvider.loading,
-                            iconCode: self.appState.iconCode
+                            drawerHandleHidden: self.weatherProvider.loading
                         ) {
                             CurrentSection(section: self.$appState.activeSection)
+                                .equatable()
                         }
+                        .equatable()
                     }
                     .edgesIgnoringSafeArea(.top)
                 }
@@ -65,7 +66,7 @@ struct ContentView: View {
 #if DEBUG
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        AppLayout()
             .environmentObject(WeatherProvider())
     }
 }

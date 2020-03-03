@@ -8,19 +8,24 @@
 
 import SwiftUI
 
-struct MasterView<Content: View>: View {
-    var useAsContainer: Bool = false
-
+struct MasterView<Content: View>: View, Equatable {
+    var useAsContainer: Bool
     var hasDrawerHandle: Bool
     var drawerHandleHidden: Bool
 
-    let iconCode: Int
-    let content: () -> Content
+    var content: Content
+
+    @inlinable init(useAsContainer: Bool = false, hasDrawerHandle: Bool, drawerHandleHidden: Bool, @ViewBuilder content: @escaping () -> Content) {
+        self.useAsContainer = useAsContainer
+        self.hasDrawerHandle = hasDrawerHandle
+        self.drawerHandleHidden = drawerHandleHidden
+        self.content = content()
+    }
 
     var body: some View {
         Group {
             if useAsContainer {
-                content()
+                content
             } else {
                 StandardContentLayout
             }
@@ -37,7 +42,7 @@ struct MasterView<Content: View>: View {
             }
 
             VStack(alignment: .center, spacing: 0) {
-                content()
+                content
 
                 if !hasDrawerHandle {
                     DrawerHandle(height: 20)
@@ -47,11 +52,17 @@ struct MasterView<Content: View>: View {
             }
         }
     }
+
+    // MARK: - Equatable
+
+    static func == (lhs: MasterView<Content>, rhs: MasterView<Content>) -> Bool {
+        lhs.useAsContainer == rhs.useAsContainer && lhs.hasDrawerHandle == rhs.hasDrawerHandle
+    }
 }
 
 struct MasterView_Previews: PreviewProvider {
     static var previews: some View {
-        MasterView(hasDrawerHandle: false, drawerHandleHidden: false, iconCode: 6) {
+        MasterView(hasDrawerHandle: false, drawerHandleHidden: false) {
             Text("Test content")
         }
     }

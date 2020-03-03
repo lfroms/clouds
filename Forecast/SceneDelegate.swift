@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let appState = AppState()
             let locationPickerState = LocationPickerState()
 
-            let rootView = ContentView()
+            let rootView = AppLayout()
                 .environmentObject(locationPickerState)
                 .environmentObject(weatherProvider)
                 .environmentObject(appState)
