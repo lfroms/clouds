@@ -345,6 +345,25 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
+		8030531D240E172000FDAC69 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				80C816252363DCFE00D33669 /* OmniBarTextField.swift */,
+				80C816272363DEBB00D33669 /* OmniBarPlaceholder.swift */,
+				80C816292363E2D700D33669 /* OmniBarAuxiliaryButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		8030531E240E172F00FDAC69 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				802C0D9B236903C6009A22BA /* SunriseSunsetTime.swift */,
+				80C395A223787B9B0004B71D /* ObservedAtTime.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		8031CBC7240E034800C76FE3 /* Containers */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,9 +387,8 @@
 		8034A1A9240E10E000DF02A1 /* HeaderAccessories */ = {
 			isa = PBXGroup;
 			children = (
+				8030531E240E172F00FDAC69 /* Components */,
 				80FC8AAF23F0B1E800AEA26F /* HeaderAccessories.swift */,
-				802C0D9B236903C6009A22BA /* SunriseSunsetTime.swift */,
-				80C395A223787B9B0004B71D /* ObservedAtTime.swift */,
 			);
 			path = HeaderAccessories;
 			sourceTree = "<group>";
@@ -763,10 +781,8 @@
 		80C816212363D9CD00D33669 /* OmniBar */ = {
 			isa = PBXGroup;
 			children = (
+				8030531D240E172000FDAC69 /* Components */,
 				80C816222363D9DA00D33669 /* OmniBar.swift */,
-				80C816252363DCFE00D33669 /* OmniBarTextField.swift */,
-				80C816272363DEBB00D33669 /* OmniBarPlaceholder.swift */,
-				80C816292363E2D700D33669 /* OmniBarAuxiliaryButton.swift */,
 			);
 			path = OmniBar;
 			sourceTree = "<group>";
