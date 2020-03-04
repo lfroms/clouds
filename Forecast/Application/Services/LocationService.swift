@@ -13,7 +13,7 @@ import Foundation
 class LocationService: NSObject, ObservableObject {
     private let locationManager = CLLocationManager()
 
-    let locationDidChange = PassthroughSubject<Void, Never>()
+    let placemarkDidChange = PassthroughSubject<Void, Never>()
 
     override init() {
         super.init()
@@ -30,20 +30,9 @@ class LocationService: NSObject, ObservableObject {
     @Published var lastPlacemark: CLPlacemark? {
         didSet {
             if oldValue != self.lastPlacemark {
-                self.locationDidChange.send()
+                self.placemarkDidChange.send()
             }
         }
-    }
-
-    private func coordinateForCurrentLocation() -> Coordinate? {
-        guard let lastLocation = lastLocation else {
-            return nil
-        }
-
-        return Coordinate(
-            latitude: lastLocation.coordinate.latitude,
-            longitude: lastLocation.coordinate.longitude
-        )
     }
 }
 

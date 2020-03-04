@@ -16,12 +16,12 @@ final class LocationSearchService: NSObject, ObservableObject {
         }
     }
     
-    @Published private(set) var locationResults: [Location] = []
+    @Published private(set) var results: [Location] = []
     @Published private(set) var loading: Bool = false
     
     @objc private func search() {
         guard !searchQuery.isEmpty else {
-            locationResults.removeAll()
+            results.removeAll()
             return
         }
         
@@ -52,7 +52,7 @@ final class LocationSearchService: NSObject, ObservableObject {
             }
             
             DispatchQueue.main.async {
-                self.locationResults = locations
+                self.results = locations
             }
         }
     }

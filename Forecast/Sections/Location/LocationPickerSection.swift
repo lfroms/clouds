@@ -25,7 +25,7 @@ struct LocationPickerSection: View {
                 appState: .constant(appState),
                 weatherService: .constant(weatherService),
                 locationService: .constant(locationService),
-                locationPickerState: .constant(locationSearchService),
+                locationSearchService: .constant(locationSearchService),
                 locationFavoritesService: .constant(locationFavoritesService),
                 didPerformDismiss: handlePickerDismiss)
         }

@@ -12,7 +12,7 @@ struct LocationPicker {
     @Binding private(set) var appState: AppState
     @Binding private(set) var weatherService: WeatherService
     @Binding private(set) var locationService: LocationService
-    @Binding private(set) var locationPickerState: LocationSearchService
+    @Binding private(set) var locationSearchService: LocationSearchService
     @Binding private(set) var locationFavoritesService: LocationFavoritesService
 
     let didPerformDismiss: (() -> Void)?
@@ -43,12 +43,12 @@ struct LocationPicker {
         return LocationPickerData(
             currentLocation: currentLocation,
             favoriteLocations: locationFavoritesService.favoriteLocations,
-            searchQuery: locationPickerState.searchQuery,
-            state: locationPickerState.searchQuery.isEmpty ? .normal : .searching,
-            searchResults: locationPickerState.locationResults,
+            searchQuery: locationSearchService.searchQuery,
+            state: locationSearchService.searchQuery.isEmpty ? .normal : .searching,
+            searchResults: locationSearchService.results,
             loadingCurrentLocation: weatherService.loading,
             loadingFavorites: weatherService.loading,
-            loadingSearch: locationPickerState.loading
+            loadingSearch: locationSearchService.loading
         )
     }
 }

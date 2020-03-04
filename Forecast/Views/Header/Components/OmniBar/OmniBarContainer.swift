@@ -13,7 +13,7 @@ struct OmniBarContainer: Container {
     @EnvironmentObject private var weatherService: WeatherService
     @EnvironmentObject private var locationService: LocationService
     @EnvironmentObject private var locationFavoritesService: LocationFavoritesService
-    @EnvironmentObject private var locationPickerState: LocationSearchService
+    @EnvironmentObject private var locationSearchService: LocationSearchService
 
     var body: some View {
         OmniBar(
@@ -35,8 +35,8 @@ struct OmniBarContainer: Container {
     }
 
     private func clearIfAboutToClose(_: AppState.ObjectWillChangePublisher.Output) {
-        if !appState.showingLocationPicker, !locationPickerState.searchQuery.isEmpty {
-            locationPickerState.searchQuery = .empty
+        if !appState.showingLocationPicker, !locationSearchService.searchQuery.isEmpty {
+            locationSearchService.searchQuery = .empty
         }
     }
 
@@ -46,12 +46,12 @@ struct OmniBarContainer: Container {
             return
         }
 
-        if locationPickerState.searchQuery.isEmpty {
+        if locationSearchService.searchQuery.isEmpty {
             appState.toggleLocationPicker(animated: true)
             return
         }
 
-        locationPickerState.searchQuery.clear()
+        locationSearchService.searchQuery.clear()
     }
 
     // MARK: - Text Field
@@ -65,13 +65,13 @@ struct OmniBarContainer: Container {
             self.textFieldTextToDisplay
 
         }, set: { value in
-            self.locationPickerState.searchQuery = value
+            self.locationSearchService.searchQuery = value
         })
     }
 
     private var textFieldTextToDisplay: String {
         if appState.showingLocationPicker {
-            return locationPickerState.searchQuery
+            return locationSearchService.searchQuery
         }
 
         if let activeLocation = locationFavoritesService.getActiveLocation() {
