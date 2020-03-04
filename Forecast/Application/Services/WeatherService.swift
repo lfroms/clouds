@@ -53,15 +53,19 @@ class WeatherService: ObservableObject {
         currentRequest = apollo.fetch(query: query, cachePolicy: .fetchIgnoringCacheData) { result in
             self.loading = false
             
-            guard let data = try? result.get().data else {
-                return
+            switch result {
+            case .success(let graphQLResult):
+                if let data = graphQLResult.data {
+                    self.activeLocation = data.activeLocationWeather
+                    self.currentLocation = data.currentLocationWeather
+                    self.favoriteLocations = self.mapBulkWeather(items: data.favoriteLocationWeather, coordinates: favoriteLocations.asGraphQLCoordinates)
+                    
+                    self.didLoadUpdatedWeather.send()
+                }
+                
+            case .failure(let error):
+                print(error)
             }
-            
-            self.activeLocation = data.activeLocationWeather
-            self.currentLocation = data.currentLocationWeather
-            self.favoriteLocations = self.mapBulkWeather(items: data.favoriteLocationWeather, coordinates: favoriteLocations.asGraphQLCoordinates)
-            
-            self.didLoadUpdatedWeather.send()
         }
     }
     
