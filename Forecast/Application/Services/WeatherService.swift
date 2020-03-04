@@ -50,7 +50,7 @@ class WeatherService: ObservableObject {
             language: .e
         )
         
-        currentRequest = apollo.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely) { result in
+        currentRequest = GraphQL.shared.apollo.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely) { result in
             self.loading = false
             
             switch result {

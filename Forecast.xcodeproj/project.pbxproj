@@ -52,6 +52,7 @@
 		805D6A0524100A39002DEBAC /* CLLocationCoordinate2D+ToCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D6A0424100A39002DEBAC /* CLLocationCoordinate2D+ToCoordinate.swift */; };
 		805D6A0824100E0A002DEBAC /* WeatherToLocationBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D6A0724100E0A002DEBAC /* WeatherToLocationBinder.swift */; };
 		805D6A0A241015F1002DEBAC /* AppStateToWeatherBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D6A09241015F1002DEBAC /* AppStateToWeatherBinder.swift */; };
+		805D6A0C241039EF002DEBAC /* GraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D6A0B241039EF002DEBAC /* GraphQL.swift */; };
 		805D7BDA22D1243F00A12C4D /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805D7BD922D1243F00A12C4D /* Colors.xcassets */; };
 		805D7BDC22D1244800A12C4D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805D7BDB22D1244800A12C4D /* Images.xcassets */; };
 		805D7BE222D1287900A12C4D /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D7BE122D1287900A12C4D /* BlurView.swift */; };
@@ -196,6 +197,7 @@
 		805D6A0424100A39002DEBAC /* CLLocationCoordinate2D+ToCoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+ToCoordinate.swift"; sourceTree = "<group>"; };
 		805D6A0724100E0A002DEBAC /* WeatherToLocationBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherToLocationBinder.swift; sourceTree = "<group>"; };
 		805D6A09241015F1002DEBAC /* AppStateToWeatherBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateToWeatherBinder.swift; sourceTree = "<group>"; };
+		805D6A0B241039EF002DEBAC /* GraphQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQL.swift; sourceTree = "<group>"; };
 		805D7BD922D1243F00A12C4D /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		805D7BDB22D1244800A12C4D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		805D7BE122D1287900A12C4D /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
@@ -672,6 +674,7 @@
 		80AD06FE22D68C2000220FEE /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
+				805D6A0B241039EF002DEBAC /* GraphQL.swift */,
 				80C777CA23FB2B74004ABB2E /* API.swift */,
 				80F07DDB23FB7D0C005C43A3 /* schema.json */,
 				809833B822F678BE001C1590 /* WeatherQuery.graphql */,
@@ -1158,6 +1161,7 @@
 				8085B7B4232DD0D500D4AEE4 /* Comparable+Clamped.swift in Sources */,
 				80EF84EC240F555C00D4037B /* SlidingPanelContainer.swift in Sources */,
 				80B5E7A223FA3DAF001729E0 /* UIStackView+AddArrangedSubviews.swift in Sources */,
+				805D6A0C241039EF002DEBAC /* GraphQL.swift in Sources */,
 				8061292A236915D4005EEB2A /* WeekSection.swift in Sources */,
 				80A646C623F5E98900C80633 /* UIStackView+SetBackground.swift in Sources */,
 				8031CBC6240DF39100C76FE3 /* Double+One.swift in Sources */,
