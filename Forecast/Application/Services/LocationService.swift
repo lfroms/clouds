@@ -13,7 +13,7 @@ import Foundation
 class LocationService: NSObject, ObservableObject {
     private let locationManager = CLLocationManager()
 
-    let placemarkDidChange = PassthroughSubject<Void, Never>()
+    let locationDidChange = PassthroughSubject<Void, Never>()
 
     override init() {
         super.init()
@@ -26,14 +26,15 @@ class LocationService: NSObject, ObservableObject {
     }
 
     @Published var locationStatus: CLAuthorizationStatus?
-    @Published var lastLocation: CLLocation?
-    @Published var lastPlacemark: CLPlacemark? {
+    @Published var lastLocation: CLLocation? {
         didSet {
-            if oldValue != self.lastPlacemark {
-                self.placemarkDidChange.send()
+            if oldValue?.coordinate != self.lastLocation?.coordinate {
+                self.locationDidChange.send()
             }
         }
     }
+
+    @Published var lastPlacemark: CLPlacemark?
 }
 
 extension LocationService: CLLocationManagerDelegate {

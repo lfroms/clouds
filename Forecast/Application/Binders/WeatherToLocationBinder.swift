@@ -22,12 +22,7 @@ struct WeatherToLocationBinder: ViewModifier {
         self.locationService = locationService
         self.locationFavoritesService = locationFavoritesService
 
-        locationChangedCancellable =
-            locationService.placemarkDidChange
-                .debounce(for: .seconds(1), scheduler: RunLoop.main)
-                .subscribe(on: RunLoop.main)
-                .sink(receiveValue: fetchWeather)
-
+        locationChangedCancellable = locationService.locationDidChange.sink(receiveValue: fetchWeather)
         shouldLoadWeatherCancellable = weatherService.shouldLoadUpdatedWeather.sink(receiveValue: fetchWeather)
     }
 
