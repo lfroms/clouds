@@ -17,4 +17,8 @@ final class SFSymbol {
     static let sunriseFilled: String = "sunrise.fill"
     static let sunsetFilled: String = "sunset.fill"
     static let clockFilled: String = "clock.fill"
+    
+    static let infoCircleFilled: String = "info.circle.fill"
+    static let exclamationMarkCircleFilled: String = "exclamationmark.circle.fill"
+    static let exclamationMarkTriangleFilled: String = "exclamationmark.triangle.fill"
 }

@@ -16,12 +16,20 @@ struct NavigationBar: View {
         HStack(alignment: .center, spacing: 20) {
             ScrollView(.horizontal, showsIndicators: false) {
                 TabControl(activeTab: $activeSection, tabs: tabs)
+                    .equatable()
                     .padding(.leading, 20)
             }
-            AlertStack()
+
+            AlertStackContainer()
         }
         .frame(minHeight: 38)
         .padding(.trailing, 20)
+    }
+}
+
+extension NavigationBar: Equatable {
+    static func == (lhs: NavigationBar, rhs: NavigationBar) -> Bool {
+        lhs.activeSection == rhs.activeSection && lhs.tabs == rhs.tabs
     }
 }
 

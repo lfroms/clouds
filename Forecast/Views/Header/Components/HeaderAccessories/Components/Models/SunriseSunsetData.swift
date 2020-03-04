@@ -19,15 +19,11 @@ struct SunriseSunsetData {
     }
 
     var sunriseUTC: DateInRegion {
-        inUTCTime(time: sunrise)
+        DateHelper.inUTCTime(time: sunrise)
     }
 
     var sunsetUTC: DateInRegion {
-        inUTCTime(time: sunset)
-    }
-
-    private func inUTCTime(time: UnixTimestamp) -> DateInRegion {
-        DateInRegion(seconds: TimeInterval(time), region: .UTC)
+        DateHelper.inUTCTime(time: sunset)
     }
 }
 

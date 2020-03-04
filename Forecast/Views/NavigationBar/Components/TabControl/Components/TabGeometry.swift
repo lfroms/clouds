@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct TabGeometry: View {
+struct TabGeometry: View, Equatable {
     let xOffset: CGFloat
 
     var body: some View {

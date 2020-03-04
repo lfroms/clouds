@@ -9,54 +9,29 @@
 import SwiftUI
 
 struct AlertStack: View {
-    @EnvironmentObject private var weatherService: WeatherService
-    @State private var showWarningDetails: Bool = false
+    var alerts: [WeatherAlert]
+    var action: (WeatherAlert) -> Void
 
     var body: some View {
-        HStack(alignment: .center, spacing: 6, content: alertIndicators)
-            .sheet(isPresented: $showWarningDetails, content: renderSheet)
-    }
-
-    private func alertIndicators() -> some View {
-        let events = weatherService.activeLocation?.warnings?.events
-
-        var identifiableAlerts: [IdentifiableAlert] = []
-
-        events?.forEach { event in
-            let identifiable = IdentifiableAlert(event: event)
-            identifiableAlerts.append(identifiable)
-        }
-
-        return ForEach(identifiableAlerts) { alert in
-            Button(action: { self.showWarningDetails.toggle() }) {
-                AlertIndicator(style: self.alertTypeFor(alert: alert))
+        HStack(alignment: .center, spacing: 6) {
+            ForEach(alerts, id: \.self) { alert in
+                Button(action: { self.action(alert) }) {
+                    AlertIndicator(alert: alert)
+                        .equatable()
+                }
             }
         }
     }
+}
 
-    private func alertTypeFor(alert: IdentifiableAlert) -> AlertType {
-        switch alert.event.type {
-        case .warning:
-            return .warning
-        case .watch:
-            return .watch
-        default:
-            return .info
-        }
-    }
-
-    private var alertURL: String? {
-        weatherService.activeLocation?.warnings?.url
-    }
-
-    private func renderSheet() -> some View {
-        let urlObj = URL(string: alertURL ?? "http://weather.gc.ca")
-        return SafariView(url: urlObj, readerMode: true).edgesIgnoringSafeArea(.all)
+extension AlertStack: Equatable {
+    static func == (lhs: AlertStack, rhs: AlertStack) -> Bool {
+        lhs.alerts == rhs.alerts
     }
 }
 
 struct AlertStack_Previews: PreviewProvider {
     static var previews: some View {
-        AlertStack()
+        AlertStack(alerts: [], action: { _ in })
     }
 }

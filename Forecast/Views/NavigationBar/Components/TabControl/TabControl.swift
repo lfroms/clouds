@@ -31,10 +31,11 @@ struct TabControl: View {
                         action: self.didPressTab(tab),
                         isActive: self.isActive(tab)
                     )
+                    .equatable()
                     .padding(.vertical, 6)
                     .padding(.horizontal, 16)
                     .fixedSize()
-                    .background(TabGeometry(xOffset: 20))
+                    .background(TabGeometry(xOffset: 20).equatable())
                     .onPreferenceChange(FramePreferenceKey.self, perform: {
                         self.tabFrames[tab.rawValue] = $0
                     })
@@ -80,6 +81,12 @@ struct TabControl: View {
 
     private func isActive(_ tab: AppSection) -> Bool {
         return tab == activeTab
+    }
+}
+
+extension TabControl: Equatable {
+    static func == (lhs: TabControl, rhs: TabControl) -> Bool {
+        lhs.activeTab == rhs.activeTab && lhs.tabs == rhs.tabs
     }
 }
 

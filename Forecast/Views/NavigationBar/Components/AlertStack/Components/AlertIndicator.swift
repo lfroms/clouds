@@ -9,23 +9,32 @@
 import SwiftUI
 
 struct AlertIndicator: View {
-    var style: AlertType
+    var alert: WeatherAlert
 
     var body: some View {
         ZStack(alignment: .center) {
             Circle()
-                .foregroundColor(.red)
+                .foregroundColor(alert.color)
                 .frame(width: 38, height: 38)
 
-            Image(systemName: "exclamationmark.triangle.fill")
+            Image(systemName: alert.type.symbolName)
                 .font(Font.callout.bold())
                 .foregroundColor(.white)
         }
     }
 }
 
+extension AlertIndicator: Equatable {}
+
 struct AlertIndicator_Previews: PreviewProvider {
     static var previews: some View {
-        AlertIndicator(style: .warning)
+        AlertIndicator(
+            alert: WeatherAlert(
+                summary: .empty,
+                date: .init(),
+                type: .warning,
+                status: .active
+            )
+        )
     }
 }

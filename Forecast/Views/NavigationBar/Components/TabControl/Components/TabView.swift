@@ -24,7 +24,13 @@ struct TabView: View {
     }
 
     private var opacity: Double {
-        isActive ? 1 : 0.6
+        isActive ? .one : 0.6
+    }
+}
+
+extension TabView: Equatable {
+    static func == (lhs: TabView, rhs: TabView) -> Bool {
+        lhs.text == rhs.text && lhs.isActive == rhs.isActive
     }
 }
 

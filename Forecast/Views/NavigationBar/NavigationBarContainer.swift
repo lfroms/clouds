@@ -13,6 +13,7 @@ struct NavigationBarContainer: Container {
 
     var body: some View {
         NavigationBar(activeSection: $appState.activeSection, tabs: AppSection.list)
+            .equatable()
     }
 }
 
