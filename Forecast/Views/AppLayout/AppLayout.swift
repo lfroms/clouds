@@ -35,11 +35,8 @@ struct AppLayout: View {
     }
 }
 
-#if DEBUG
-struct ContentView_Previews: PreviewProvider {
+struct AppLayout_Previews: PreviewProvider {
     static var previews: some View {
         AppLayout()
-            .environmentObject(WeatherProvider())
     }
 }
-#endif

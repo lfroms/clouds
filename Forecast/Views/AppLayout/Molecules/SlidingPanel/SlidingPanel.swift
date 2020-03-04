@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SlidingPanel<Content: View>: View, Equatable {
+struct SlidingPanel<Content: View>: View {
     var travelDistance: CGFloat
     var locked: Bool = false
     var content: Content
@@ -29,9 +29,9 @@ struct SlidingPanel<Content: View>: View, Equatable {
             .equatable()
         }
     }
+}
 
-    // MARK: - Equatable
-
+extension SlidingPanel: Equatable {
     static func == (lhs: SlidingPanel<Content>, rhs: SlidingPanel<Content>) -> Bool {
         lhs.travelDistance == rhs.travelDistance && lhs.locked == rhs.locked
     }
