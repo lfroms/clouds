@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct MasterViewContainer: View {
+struct MasterViewContainer: Container {
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var weather: WeatherProvider
 

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct HeaderAccessoriesContainer: View {
+struct HeaderAccessoriesContainer: Container {
     @EnvironmentObject private var appState: AppState
     @EnvironmentObject private var weather: WeatherProvider
 

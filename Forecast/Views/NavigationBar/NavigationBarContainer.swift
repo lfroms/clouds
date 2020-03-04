@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct NavigationBarContainer: View {
+struct NavigationBarContainer: Container {
     @EnvironmentObject private var appState: AppState
 
     var body: some View {

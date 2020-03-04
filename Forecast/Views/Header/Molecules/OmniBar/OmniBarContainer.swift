@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct OmniBarContainer: View {
+struct OmniBarContainer: Container {
     @EnvironmentObject private var appState: AppState
     @EnvironmentObject private var weather: WeatherProvider
     @EnvironmentObject private var locationPickerState: LocationPickerState

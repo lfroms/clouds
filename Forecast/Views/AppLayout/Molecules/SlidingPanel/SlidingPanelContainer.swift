@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SlidingPanelContainer<Content: View>: View {
+struct SlidingPanelContainer<Content: View>: Container {
     @EnvironmentObject private var appState: AppState
     @EnvironmentObject private var weather: WeatherProvider
 

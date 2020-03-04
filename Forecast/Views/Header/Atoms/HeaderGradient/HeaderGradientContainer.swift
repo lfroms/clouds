@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct HeaderGradientContainer: View {
+struct HeaderGradientContainer: Container {
     @EnvironmentObject private var appState: AppState
 
     var body: some View {

@@ -129,6 +129,7 @@
 		80EF84EE240F582100D4037B /* HourlyForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF84ED240F582100D4037B /* HourlyForecast.swift */; };
 		80EF84F0240F586A00D4037B /* HourlyForecastContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF84EF240F586A00D4037B /* HourlyForecastContainer.swift */; };
 		80EF84F2240F59D200D4037B /* OverviewViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF84F1240F59D200D4037B /* OverviewViewContainer.swift */; };
+		80EF84F6240F663B00D4037B /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF84F5240F663B00D4037B /* Container.swift */; };
 		80F07DDC23FB7D0C005C43A3 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 80F07DDB23FB7D0C005C43A3 /* schema.json */; };
 		80F07DDE23FB8012005C43A3 /* AnimationPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F07DDD23FB8012005C43A3 /* AnimationPreset.swift */; };
 		80FB6C67240873250026DD83 /* LocationPickerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB6C66240873250026DD83 /* LocationPickerState.swift */; };
@@ -265,6 +266,7 @@
 		80EF84ED240F582100D4037B /* HourlyForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecast.swift; sourceTree = "<group>"; };
 		80EF84EF240F586A00D4037B /* HourlyForecastContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastContainer.swift; sourceTree = "<group>"; };
 		80EF84F1240F59D200D4037B /* OverviewViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewContainer.swift; sourceTree = "<group>"; };
+		80EF84F5240F663B00D4037B /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		80F07DDB23FB7D0C005C43A3 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		80F07DDD23FB8012005C43A3 /* AnimationPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationPreset.swift; sourceTree = "<group>"; };
 		80FB6C66240873250026DD83 /* LocationPickerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerState.swift; sourceTree = "<group>"; };
@@ -291,15 +293,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8019F823240F4CED00AFB0F1 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				8019F824240F4E0000AFB0F1 /* MasterViewLayout */,
-				80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		8019F824240F4E0000AFB0F1 /* MasterViewLayout */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,19 +341,12 @@
 		8020F9512363D2010029FEB6 /* Master */ = {
 			isa = PBXGroup;
 			children = (
-				80EF84E5240F52D300D4037B /* Containers */,
-				8019F823240F4CED00AFB0F1 /* Views */,
+				80EF84F7240F670E00D4037B /* Atoms */,
+				80EF84FA240F684600D4037B /* Molecules */,
 				8020F9522363D2390029FEB6 /* MasterView.swift */,
+				80EF84E6240F52F000D4037B /* MasterViewContainer.swift */,
 			);
 			path = Master;
-			sourceTree = "<group>";
-		};
-		8026FF4F23778FFC007962DB /* IdentifiableAlert */ = {
-			isa = PBXGroup;
-			children = (
-				80E5D627237765DF004A1D6B /* IdentifiableAlert.swift */,
-			);
-			path = IdentifiableAlert;
 			sourceTree = "<group>";
 		};
 		8026FF5023779019007962DB /* Shadow */ = {
@@ -384,8 +370,8 @@
 		802C0D9A236903A8009A22BA /* Header */ = {
 			isa = PBXGroup;
 			children = (
-				8031CBC7240E034800C76FE3 /* Containers */,
-				8031CBCA240E089600C76FE3 /* Views */,
+				80EF84FB240F687D00D4037B /* Atoms */,
+				80EF84FC240F688400D4037B /* Molecules */,
 				802C0D9D236903CD009A22BA /* Header.swift */,
 			);
 			path = Header;
@@ -421,6 +407,7 @@
 		8030531E240E172F00FDAC69 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				8030531F240E17F300FDAC69 /* Models */,
 				802C0D9B236903C6009A22BA /* SunriseSunsetTime.swift */,
 				80C395A223787B9B0004B71D /* ObservedAtTime.swift */,
 			);
@@ -436,32 +423,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		8031CBC7240E034800C76FE3 /* Containers */ = {
-			isa = PBXGroup;
-			children = (
-				8030531F240E17F300FDAC69 /* Models */,
-				8031CBC8240E035700C76FE3 /* OmniBarContainer.swift */,
-				8031CBCB240E0B8D00C76FE3 /* HeaderGradientContainer.swift */,
-				8034A1A7240E10CB00DF02A1 /* HeaderAccessoriesContainer.swift */,
-			);
-			path = Containers;
-			sourceTree = "<group>";
-		};
-		8031CBCA240E089600C76FE3 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				80C816212363D9CD00D33669 /* OmniBar */,
-				8034A1A9240E10E000DF02A1 /* HeaderAccessories */,
-				80C8162E2363E6DE00D33669 /* HeaderGradient.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		8034A1A9240E10E000DF02A1 /* HeaderAccessories */ = {
 			isa = PBXGroup;
 			children = (
 				8030531E240E172F00FDAC69 /* Components */,
 				80FC8AAF23F0B1E800AEA26F /* HeaderAccessories.swift */,
+				8034A1A7240E10CB00DF02A1 /* HeaderAccessoriesContainer.swift */,
 			);
 			path = HeaderAccessories;
 			sourceTree = "<group>";
@@ -479,31 +446,28 @@
 		8057DB4C2364F07E0087FBF7 /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
-				80EF84E8240F532F00D4037B /* Containers */,
-				8057DB522364F0F80087FBF7 /* TabControl */,
-				8057DB4F2364F0D80087FBF7 /* Alert */,
+				80EF8500240F68E700D4037B /* Atoms */,
+				80EF8501240F68EB00D4037B /* Molecules */,
 				8057DB572364F1370087FBF7 /* NavigationBar.swift */,
+				80EF84E9240F533800D4037B /* NavigationBarContainer.swift */,
 			);
 			path = NavigationBar;
 			sourceTree = "<group>";
 		};
-		8057DB4F2364F0D80087FBF7 /* Alert */ = {
+		8057DB4F2364F0D80087FBF7 /* AlertStack */ = {
 			isa = PBXGroup;
 			children = (
-				8026FF4F23778FFC007962DB /* IdentifiableAlert */,
+				80EF84FE240F68C000D4037B /* Components */,
 				8057DB4D2364F0C40087FBF7 /* AlertStack.swift */,
-				8057DB502364F0F20087FBF7 /* AlertIndicator.swift */,
-				80E5D621237760BA004A1D6B /* AlertType.swift */,
 			);
-			path = Alert;
+			path = AlertStack;
 			sourceTree = "<group>";
 		};
 		8057DB522364F0F80087FBF7 /* TabControl */ = {
 			isa = PBXGroup;
 			children = (
-				8057DB532364F10F0087FBF7 /* TabView.swift */,
+				80EF84FD240F68AA00D4037B /* Components */,
 				8057DB552364F12B0087FBF7 /* TabControl.swift */,
-				8099ED3823667F8C00B8E1CA /* TabGeometry.swift */,
 			);
 			path = TabControl;
 			sourceTree = "<group>";
@@ -527,6 +491,7 @@
 		805A174422C53ADB00E1B4E2 /* Forecast */ = {
 			isa = PBXGroup;
 			children = (
+				80EF84F4240F662900D4037B /* Concepts */,
 				80AD06FE22D68C2000220FEE /* GraphQL */,
 				80B5E7A923FA3F61001729E0 /* Constants */,
 				80B5E7AB23FA3F8C001729E0 /* Environment */,
@@ -563,21 +528,12 @@
 			path = Blur;
 			sourceTree = "<group>";
 		};
-		8060A507240EF9EB009CCD94 /* Views */ = {
+		8060A507240EF9EB009CCD94 /* Atoms */ = {
 			isa = PBXGroup;
 			children = (
 				80C8161F2363D8C800D33669 /* BlackBackground.swift */,
-				8076F72523651CD000FB85D1 /* SlidingPanel.swift */,
 			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		8060A508240EF9EF009CCD94 /* Containers */ = {
-			isa = PBXGroup;
-			children = (
-				80EF84EB240F555C00D4037B /* SlidingPanelContainer.swift */,
-			);
-			path = Containers;
+			path = Atoms;
 			sourceTree = "<group>";
 		};
 		8061291D2369083E005EEB2A /* DailyForecast */ = {
@@ -594,8 +550,8 @@
 		8066FDE72364ECA90067F362 /* AppLayout */ = {
 			isa = PBXGroup;
 			children = (
-				8060A508240EF9EF009CCD94 /* Containers */,
-				8060A507240EF9EB009CCD94 /* Views */,
+				8060A507240EF9EB009CCD94 /* Atoms */,
+				80EF84F9240F683100D4037B /* Molecules */,
 				805A174922C53ADB00E1B4E2 /* AppLayout.swift */,
 			);
 			path = AppLayout;
@@ -849,6 +805,7 @@
 			children = (
 				8030531D240E172000FDAC69 /* Components */,
 				80C816222363D9DA00D33669 /* OmniBar.swift */,
+				8031CBC8240E035700C76FE3 /* OmniBarContainer.swift */,
 			);
 			path = OmniBar;
 			sourceTree = "<group>";
@@ -886,20 +843,114 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		80EF84E5240F52D300D4037B /* Containers */ = {
+		80EF84F3240F660D00D4037B /* SlidingPanel */ = {
 			isa = PBXGroup;
 			children = (
-				80EF84E6240F52F000D4037B /* MasterViewContainer.swift */,
+				8076F72523651CD000FB85D1 /* SlidingPanel.swift */,
+				80EF84EB240F555C00D4037B /* SlidingPanelContainer.swift */,
 			);
-			path = Containers;
+			path = SlidingPanel;
 			sourceTree = "<group>";
 		};
-		80EF84E8240F532F00D4037B /* Containers */ = {
+		80EF84F4240F662900D4037B /* Concepts */ = {
 			isa = PBXGroup;
 			children = (
-				80EF84E9240F533800D4037B /* NavigationBarContainer.swift */,
+				80EF84F5240F663B00D4037B /* Container.swift */,
 			);
-			path = Containers;
+			path = Concepts;
+			sourceTree = "<group>";
+		};
+		80EF84F7240F670E00D4037B /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */,
+			);
+			path = Atoms;
+			sourceTree = "<group>";
+		};
+		80EF84F8240F677300D4037B /* HeaderGradient */ = {
+			isa = PBXGroup;
+			children = (
+				80C8162E2363E6DE00D33669 /* HeaderGradient.swift */,
+				8031CBCB240E0B8D00C76FE3 /* HeaderGradientContainer.swift */,
+			);
+			path = HeaderGradient;
+			sourceTree = "<group>";
+		};
+		80EF84F9240F683100D4037B /* Molecules */ = {
+			isa = PBXGroup;
+			children = (
+				80EF84F3240F660D00D4037B /* SlidingPanel */,
+			);
+			path = Molecules;
+			sourceTree = "<group>";
+		};
+		80EF84FA240F684600D4037B /* Molecules */ = {
+			isa = PBXGroup;
+			children = (
+				8019F824240F4E0000AFB0F1 /* MasterViewLayout */,
+			);
+			path = Molecules;
+			sourceTree = "<group>";
+		};
+		80EF84FB240F687D00D4037B /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				80EF84F8240F677300D4037B /* HeaderGradient */,
+			);
+			path = Atoms;
+			sourceTree = "<group>";
+		};
+		80EF84FC240F688400D4037B /* Molecules */ = {
+			isa = PBXGroup;
+			children = (
+				8034A1A9240E10E000DF02A1 /* HeaderAccessories */,
+				80C816212363D9CD00D33669 /* OmniBar */,
+			);
+			path = Molecules;
+			sourceTree = "<group>";
+		};
+		80EF84FD240F68AA00D4037B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8057DB532364F10F0087FBF7 /* TabView.swift */,
+				8099ED3823667F8C00B8E1CA /* TabGeometry.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		80EF84FE240F68C000D4037B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				80EF84FF240F68D600D4037B /* Models */,
+				8057DB502364F0F20087FBF7 /* AlertIndicator.swift */,
+				80E5D621237760BA004A1D6B /* AlertType.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		80EF84FF240F68D600D4037B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				80E5D627237765DF004A1D6B /* IdentifiableAlert.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		80EF8500240F68E700D4037B /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Atoms;
+			sourceTree = "<group>";
+		};
+		80EF8501240F68EB00D4037B /* Molecules */ = {
+			isa = PBXGroup;
+			children = (
+				8057DB4F2364F0D80087FBF7 /* AlertStack */,
+				8057DB522364F0F80087FBF7 /* TabControl */,
+			);
+			path = Molecules;
 			sourceTree = "<group>";
 		};
 		80FC8AB123F0B35C00AEA26F /* DismissableScrollView */ = {
@@ -1101,6 +1152,7 @@
 				80E32BAE233454DD0087DBB3 /* SystemActivityIndicator.swift in Sources */,
 				80B8DB94232C7BBF00BAD200 /* WeatherBackground.swift in Sources */,
 				80FB6C67240873250026DD83 /* LocationPickerState.swift in Sources */,
+				80EF84F6240F663B00D4037B /* Container.swift in Sources */,
 				8050327F22D25C7500D376C3 /* HighLowStack.swift in Sources */,
 				805A1E6622D65ADB001B8CC3 /* HourlyForecastView.swift in Sources */,
 				806129262369122D005EEB2A /* HorizontalPagingScrollView.swift in Sources */,
