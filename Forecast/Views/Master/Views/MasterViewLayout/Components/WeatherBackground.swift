@@ -1,5 +1,5 @@
 //
-//  BackgroundColor.swift
+//  WeatherBackground.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-09-13.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct BackgroundColor: View {
+struct WeatherBackground: View {
     @EnvironmentObject private var appState: AppState
 
     @State private var alternateGradient: Bool = false
@@ -59,7 +59,7 @@ struct BackgroundColor: View {
 
 struct BackgroundColor_Previews: PreviewProvider {
     static var previews: some View {
-        BackgroundColor()
+        WeatherBackground()
             .environmentObject(AppState())
     }
 }

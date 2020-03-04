@@ -23,9 +23,9 @@ struct AppLayout: View {
 
                     SlidingPanel(travelDistance: self.appState.detailsContentHeight, locked: slidingPanelLocked) {
                         MasterView(
-                            useAsContainer: self.appState.activeSection == .radar,
-                            hasDrawerHandle: self.appState.slidingPanelLocked,
-                            drawerHandleHidden: self.weatherProvider.loading
+                            usesStandardLayout: self.appState.activeSection == .radar,
+                            handleExists: !self.appState.slidingPanelLocked,
+                            handleHidden: self.weatherProvider.loading
                         ) {
                             CurrentSection(section: self.$appState.activeSection)
                                 .equatable()

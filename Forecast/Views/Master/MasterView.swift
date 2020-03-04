@@ -8,61 +8,44 @@
 
 import SwiftUI
 
-struct MasterView<Content: View>: View, Equatable {
-    var useAsContainer: Bool
-    var hasDrawerHandle: Bool
-    var drawerHandleHidden: Bool
+struct MasterView<Content: View>: View {
+    var usesStandardLayout: Bool
+    var handleExists: Bool
+    var handleHidden: Bool
 
-    var content: Content
+    var content: () -> Content
 
-    @inlinable init(useAsContainer: Bool = false, hasDrawerHandle: Bool, drawerHandleHidden: Bool, @ViewBuilder content: @escaping () -> Content) {
-        self.useAsContainer = useAsContainer
-        self.hasDrawerHandle = hasDrawerHandle
-        self.drawerHandleHidden = drawerHandleHidden
-        self.content = content()
+    @inlinable init(usesStandardLayout: Bool = false, handleExists: Bool, handleHidden: Bool, @ViewBuilder content: @escaping () -> Content) {
+        self.usesStandardLayout = usesStandardLayout
+        self.handleExists = handleExists
+        self.handleHidden = handleHidden
+        self.content = content
     }
 
     var body: some View {
         Group {
-            if useAsContainer {
-                content
+            if usesStandardLayout {
+                content()
             } else {
-                StandardContentLayout
+                MasterViewLayout(handleExists: handleExists, handleHidden: handleHidden, content: content)
+                    .equatable()
             }
         }
         .clipShape(RoundedCornerShape(cornerRadius: 22, style: .continuous, corners: [.bottomLeft, .bottomRight]))
     }
+}
 
-    private var StandardContentLayout: some View {
-        ZStack(alignment: .bottom) {
-            ZStack(alignment: .topTrailing) {
-                BackgroundColor()
-                WeatherIllustration()
-                    .padding(.top, Dimension.Header.illustrationTopPadding)
-            }
-
-            VStack(alignment: .center, spacing: 0) {
-                content
-
-                if !hasDrawerHandle {
-                    DrawerHandle(height: 20)
-                        .opacity(drawerHandleHidden ? 0 : 1)
-                        .animation(.easeInOut)
-                }
-            }
-        }
-    }
-
-    // MARK: - Equatable
-
+extension MasterView: Equatable {
     static func == (lhs: MasterView<Content>, rhs: MasterView<Content>) -> Bool {
-        lhs.useAsContainer == rhs.useAsContainer && lhs.hasDrawerHandle == rhs.hasDrawerHandle
+        lhs.usesStandardLayout == rhs.usesStandardLayout
+            && lhs.handleExists == rhs.handleExists
+            && lhs.handleHidden == rhs.handleHidden
     }
 }
 
 struct MasterView_Previews: PreviewProvider {
     static var previews: some View {
-        MasterView(hasDrawerHandle: false, drawerHandleHidden: false) {
+        MasterView(usesStandardLayout: true, handleExists: false, handleHidden: false) {
             Text("Test content")
         }
     }
