@@ -35,6 +35,7 @@ struct CurrentConditionsView: View {
                             color: left.color,
                             prefix: left.prefix
                         )
+                        .equatable()
                         Spacer()
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)

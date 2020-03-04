@@ -8,10 +8,10 @@
 
 import SwiftUI
 
-struct CurrentConditionsItem: View {
-    let label: String
-    let value: String
-    let color: Color
+struct CurrentConditionsItem: View, Equatable {
+    var label: String
+    var value: String
+    var color: Color
 
     var prefix: String?
 

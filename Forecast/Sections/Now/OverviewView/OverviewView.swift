@@ -8,9 +8,9 @@
 
 import SwiftUI
 
-struct OverviewView: View {
-    let temperature: String
-    let observation: String
+struct OverviewView: View, Equatable {
+    var temperature: String
+    var observation: String
 
     var highTemp: Int?
     var lowTemp: Int?
@@ -24,12 +24,10 @@ struct OverviewView: View {
                     ObservationView(observation: observation)
                         .lineLimit(2)
                 }
-                .layoutPriority(1)
 
                 Spacer()
 
                 HighLowStack(highTemp: highTemp, lowTemp: lowTemp)
-                    .layoutPriority(1)
             }
         }
     }

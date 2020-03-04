@@ -9,9 +9,7 @@
 import Foundation
 import SwiftDate
 
-struct HourlyForecastViewModel {
-    let id = UUID()
-
+struct HourlyForecastViewModel: Hashable {
     let date: DateInRegion
     let symbolName: String
 
