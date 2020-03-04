@@ -10,22 +10,18 @@ import SwiftUI
 
 struct MasterViewContainer: Container {
     @EnvironmentObject var appState: AppState
-    @EnvironmentObject var weather: WeatherProvider
+    @EnvironmentObject var weatherService: WeatherService
 
     var body: some View {
         MasterView(
             usesStandardLayout: self.appState.activeSection == .radar,
             handleExists: !self.appState.slidingPanelLocked,
-            handleHidden: self.weather.loading
+            handleHidden: self.weatherService.loading
         ) {
             CurrentSection(section: self.$appState.activeSection)
                 .equatable()
         }
         .equatable()
-        .onReceive(weather.objectDidReceiveUpdatedWeather) { _ in
-            let iconCode = self.weather.activeLocation?.currentConditions?.iconCode
-            self.appState.setIconCode(to: iconCode, animated: true)
-        }
         .sheet(isPresented: $appState.showingSettingsSheet) {
             SettingsSection()
         }

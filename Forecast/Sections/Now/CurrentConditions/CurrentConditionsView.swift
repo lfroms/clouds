@@ -19,7 +19,7 @@ struct CurrentConditionsItemDescriptor: Identifiable {
 }
 
 struct CurrentConditionsView: View {
-    @EnvironmentObject private var provider: WeatherProvider
+    @EnvironmentObject private var weatherService: WeatherService
     @EnvironmentObject private var appState: AppState
     
     private typealias ConditionPair = (CurrentConditionsItemDescriptor, CurrentConditionsItemDescriptor)
@@ -54,7 +54,7 @@ struct CurrentConditionsView: View {
             }
         }
         .padding(30)
-        .onReceive(self.provider.objectWillChange, perform: { _ in
+        .onReceive(self.weatherService.objectWillChange, perform: { _ in
             self.calculateAndSetHeight()
         })
     }
@@ -71,7 +71,7 @@ struct CurrentConditionsView: View {
     }
     
     var observations: [CurrentConditionsItemDescriptor] {
-        guard let units = provider.activeLocation?.units, let cc = provider.activeLocation?.currentConditions else {
+        guard let units = weatherService.activeLocation?.units, let cc = weatherService.activeLocation?.currentConditions else {
             return []
         }
         

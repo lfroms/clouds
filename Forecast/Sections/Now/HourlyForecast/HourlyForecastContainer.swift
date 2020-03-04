@@ -10,7 +10,7 @@ import SwiftDate
 import SwiftUI
 
 struct HourlyForecastContainer: View {
-    @EnvironmentObject private var weather: WeatherProvider
+    @EnvironmentObject private var weatherService: WeatherService
     
     var body: some View {
         HourlyForecast(items: items)
@@ -19,7 +19,7 @@ struct HourlyForecastContainer: View {
     var items: [HourlyForecastViewModel] {
         var hourlyForecastItems: [HourlyForecastViewModel] = []
         
-        guard let weather = weather.activeLocation else {
+        guard let weather = weatherService.activeLocation else {
             return []
         }
         

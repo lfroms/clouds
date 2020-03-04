@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SlidingPanelContainer<Content: View>: Container {
     @EnvironmentObject private var appState: AppState
-    @EnvironmentObject private var weather: WeatherProvider
+    @EnvironmentObject private var weatherService: WeatherService
 
     var content: () -> Content
 
@@ -25,7 +25,7 @@ struct SlidingPanelContainer<Content: View>: Container {
     }
 
     private var isLocked: Bool {
-        self.appState.slidingPanelLocked || self.weather.loading
+        self.appState.slidingPanelLocked || self.weatherService.loading
     }
 
     private var travelDistance: CGFloat {

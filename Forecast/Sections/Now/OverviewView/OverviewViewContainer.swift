@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct OverviewViewContainer: View {
-    @EnvironmentObject private var weather: WeatherProvider
+    @EnvironmentObject private var weatherService: WeatherService
     
     var body: some View {
         OverviewView(
@@ -22,7 +22,7 @@ struct OverviewViewContainer: View {
     }
     
     var currentTemperature: String {
-        guard let temperature = weather.activeLocation?.currentConditions?.temperature else {
+        guard let temperature = weatherService.activeLocation?.currentConditions?.temperature else {
             return "--"
         }
         
@@ -30,11 +30,11 @@ struct OverviewViewContainer: View {
     }
     
     var observation: String {
-        return weather.activeLocation?.currentConditions?.summary ?? ""
+        return weatherService.activeLocation?.currentConditions?.summary ?? ""
     }
     
     var forecastHigh: Int? {
-        guard let high = weather.activeLocation?.todaySummary?.high else {
+        guard let high = weatherService.activeLocation?.todaySummary?.high else {
             return nil
         }
         
@@ -42,7 +42,7 @@ struct OverviewViewContainer: View {
     }
     
     var forecastLow: Int? {
-        guard let low = weather.activeLocation?.todaySummary?.low else {
+        guard let low = weatherService.activeLocation?.todaySummary?.low else {
             return nil
         }
         
@@ -50,7 +50,7 @@ struct OverviewViewContainer: View {
     }
     
     var dateStamp: Date {
-        let parsedUnixTime = Double(weather.activeLocation?.currentConditions?.time ?? 0)
+        let parsedUnixTime = Double(weatherService.activeLocation?.currentConditions?.time ?? 0)
         
         return Date(seconds: parsedUnixTime, region: .UTC)
             .convertTo(region: .current).date

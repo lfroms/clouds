@@ -10,8 +10,10 @@ import SwiftUI
 
 struct OmniBarContainer: Container {
     @EnvironmentObject private var appState: AppState
-    @EnvironmentObject private var weather: WeatherProvider
-    @EnvironmentObject private var locationPickerState: LocationPickerState
+    @EnvironmentObject private var weatherService: WeatherService
+    @EnvironmentObject private var locationService: LocationService
+    @EnvironmentObject private var locationFavoritesService: LocationFavoritesService
+    @EnvironmentObject private var locationPickerState: LocationSearchService
 
     var body: some View {
         OmniBar(
@@ -72,11 +74,11 @@ struct OmniBarContainer: Container {
             return locationPickerState.searchQuery
         }
 
-        if let activeLocation = UserSettings.getActiveLocation() {
+        if let activeLocation = locationFavoritesService.getActiveLocation() {
             return activeLocation.name
         }
 
-        if let locality = weather.locationManager.lastPlacemark?.locality {
+        if let locality = locationService.lastPlacemark?.locality {
             return locality
         }
 
@@ -90,7 +92,7 @@ struct OmniBarContainer: Container {
             return SFSymbol.magnifyingGlass
         }
 
-        if UserSettings.getActiveLocation() != nil {
+        if locationFavoritesService.getActiveLocation() != nil {
             return SFSymbol.starFilled
         }
 
@@ -108,7 +110,7 @@ struct OmniBarContainer_Previews: PreviewProvider {
     static var previews: some View {
         OmniBarContainer()
             .environmentObject(AppState())
-            .environmentObject(WeatherProvider())
-            .environmentObject(LocationPickerState())
+            .environmentObject(WeatherService())
+            .environmentObject(LocationSearchService())
     }
 }

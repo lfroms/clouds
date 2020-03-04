@@ -11,10 +11,6 @@ import Foundation
 import SwiftUI
 
 final class AppState: ObservableObject {
-    init() {
-        iconCodeDidChange.send()
-    }
-    
     // MARK: - Icon Code
     
     let iconCodeDidChange = PassthroughSubject<Void, Never>()
@@ -68,12 +64,6 @@ final class AppState: ObservableObject {
         
         withAnimation(.spring()) {
             self.showingLocationPicker.toggle()
-        }
-    }
-    
-    @Published var favoriteLocations: [Location] = UserSettings.getFavoriteLocations() {
-        didSet {
-            UserSettings.saveFavoriteLocations(newLocations: favoriteLocations)
         }
     }
     

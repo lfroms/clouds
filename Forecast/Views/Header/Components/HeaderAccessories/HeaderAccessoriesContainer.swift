@@ -10,7 +10,7 @@ import SwiftUI
 
 struct HeaderAccessoriesContainer: Container {
     @EnvironmentObject private var appState: AppState
-    @EnvironmentObject private var weather: WeatherProvider
+    @EnvironmentObject private var weatherService: WeatherService
 
     var body: some View {
         HeaderAccessories(
@@ -22,7 +22,7 @@ struct HeaderAccessoriesContainer: Container {
     }
 
     private var sunriseSunset: SunriseSunsetData? {
-        guard let sun = weather.activeLocation?.sun else {
+        guard let sun = weatherService.activeLocation?.sun else {
             return nil
         }
 
@@ -31,9 +31,9 @@ struct HeaderAccessoriesContainer: Container {
 
     private var observedAt: ObservedAtData {
         ObservedAtData(
-            loading: weather.loading,
-            timestamp: weather.activeLocation?.currentConditions?.time,
-            action: weather.fetchDebounced
+            loading: weatherService.loading,
+            timestamp: weatherService.activeLocation?.currentConditions?.time,
+            action: weatherService.setShouldFetchUpdatedWeather
         )
     }
 }

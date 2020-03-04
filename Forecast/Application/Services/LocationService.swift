@@ -1,5 +1,5 @@
 //
-//  LocationProvider.swift
+//  LocationService.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2020-02-10.
@@ -10,13 +10,14 @@ import Combine
 import CoreLocation
 import Foundation
 
-class LocationManager: NSObject, ObservableObject {
-    static let shared = LocationManager()
-
+class LocationService: NSObject, ObservableObject {
     private let locationManager = CLLocationManager()
 
-    private override init() {
+    let locationDidChange = PassthroughSubject<Void, Never>()
+
+    override init() {
         super.init()
+
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         self.locationManager.requestWhenInUseAuthorization()
@@ -26,10 +27,27 @@ class LocationManager: NSObject, ObservableObject {
 
     @Published var locationStatus: CLAuthorizationStatus?
     @Published var lastLocation: CLLocation?
-    @Published var lastPlacemark: CLPlacemark?
+    @Published var lastPlacemark: CLPlacemark? {
+        didSet {
+            if oldValue != self.lastPlacemark {
+                self.locationDidChange.send()
+            }
+        }
+    }
+
+    private func coordinateForCurrentLocation() -> Coordinate? {
+        guard let lastLocation = lastLocation else {
+            return nil
+        }
+
+        return Coordinate(
+            latitude: lastLocation.coordinate.latitude,
+            longitude: lastLocation.coordinate.longitude
+        )
+    }
 }
 
-extension LocationManager: CLLocationManagerDelegate {
+extension LocationService: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         self.locationStatus = status
     }
@@ -43,16 +61,14 @@ extension LocationManager: CLLocationManagerDelegate {
                 return
             }
 
-            DispatchQueue.main.async {
-                self.lastPlacemark = placemark
-            }
+            self.lastPlacemark = placemark
         }
 
         print(#function, location)
     }
 }
 
-extension LocationManager {
+extension LocationService {
     func getPlace(for location: CLLocation, completion: @escaping (CLPlacemark?) -> Void) {
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(location) { placemarks, error in

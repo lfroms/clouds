@@ -21,16 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
 
-            let weatherProvider = WeatherProvider()
-            let appState = AppState()
-            let locationPickerState = LocationPickerState()
-
             let rootView = AppLayout()
-                .environmentObject(locationPickerState)
-                .environmentObject(weatherProvider)
-                .environmentObject(appState)
+                .modifier(AppServices())
 
-            window.rootViewController = RootViewController(rootView: rootView)
+            window.rootViewController = AppHostingController(rootView: rootView)
             self.window = window
             window.makeKeyAndVisible()
         }
@@ -62,11 +56,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
-    }
-}
-
-class RootViewController<Content>: UIHostingController<Content> where Content: View {
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
     }
 }

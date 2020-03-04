@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct AlertStack: View {
-    @EnvironmentObject private var provider: WeatherProvider
+    @EnvironmentObject private var weatherService: WeatherService
     @State private var showWarningDetails: Bool = false
 
     var body: some View {
@@ -18,7 +18,7 @@ struct AlertStack: View {
     }
 
     private func alertIndicators() -> some View {
-        let events = provider.activeLocation?.warnings?.events
+        let events = weatherService.activeLocation?.warnings?.events
 
         var identifiableAlerts: [IdentifiableAlert] = []
 
@@ -46,7 +46,7 @@ struct AlertStack: View {
     }
 
     private var alertURL: String? {
-        provider.activeLocation?.warnings?.url
+        weatherService.activeLocation?.warnings?.url
     }
 
     private func renderSheet() -> some View {

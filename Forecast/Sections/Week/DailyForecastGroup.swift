@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct DailyForecastGroup: View {
-    @EnvironmentObject private var weather: WeatherProvider
+    @EnvironmentObject private var weatherService: WeatherService
 
     var body: some View {
         VStack {
@@ -26,7 +26,7 @@ struct DailyForecastGroup: View {
     }
 
     private var days: [DailyForecast] {
-        guard let days = weather.activeLocation?.dailyForecast?.days else {
+        guard let days = weatherService.activeLocation?.dailyForecast?.days else {
             return []
         }
 

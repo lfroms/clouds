@@ -10,7 +10,8 @@ import SwiftUI
 
 struct CurrentLocationItem: View {
     @EnvironmentObject private var appState: AppState
-    @EnvironmentObject private var weatherProvider: WeatherProvider
+    @EnvironmentObject private var weatherService: WeatherService
+    @EnvironmentObject private var locationFavoritesService: LocationFavoritesService
 
     let icon: String
     let location: Location
@@ -25,7 +26,7 @@ struct CurrentLocationItem: View {
     }
 
     private var temperatureLabelText: String {
-        guard let temperature = weatherProvider.currentLocation?.currentConditions?.temperature else {
+        guard let temperature = weatherService.currentLocation?.currentConditions?.temperature else {
             return .empty
         }
 
@@ -43,14 +44,14 @@ struct CurrentLocationItem: View {
     }
 
     private var colorCode: Int? {
-        weatherProvider.currentLocation?.currentConditions?.iconCode
+        weatherService.currentLocation?.currentConditions?.iconCode
     }
 
     private func onPressAction() {
         appState.toggleLocationPicker(animated: true)
 
-        UserSettings.clearActiveLocation()
-        weatherProvider.fetchDataWithDelay()
+        locationFavoritesService.clearActiveLocation()
+        weatherService.setShouldFetchUpdatedWeather()
     }
 }
 

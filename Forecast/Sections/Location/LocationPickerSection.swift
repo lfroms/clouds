@@ -10,8 +10,10 @@ import SwiftUI
 
 struct LocationPickerSection: View {
     @EnvironmentObject private var appState: AppState
-    @EnvironmentObject private var weatherProvider: WeatherProvider
-    @EnvironmentObject private var locationPickerState: LocationPickerState
+    @EnvironmentObject private var weatherService: WeatherService
+    @EnvironmentObject private var locationService: LocationService
+    @EnvironmentObject private var locationSearchService: LocationSearchService
+    @EnvironmentObject private var locationFavoritesService: LocationFavoritesService
 
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -21,10 +23,11 @@ struct LocationPickerSection: View {
 
             LocationPicker(
                 appState: .constant(appState),
-                provider: .constant(weatherProvider),
-                locationPickerState: .constant(locationPickerState),
-                didPerformDismiss: handlePickerDismiss
-            )
+                weatherService: .constant(weatherService),
+                locationService: .constant(locationService),
+                locationPickerState: .constant(locationSearchService),
+                locationFavoritesService: .constant(locationFavoritesService),
+                didPerformDismiss: handlePickerDismiss)
         }
         .offset(searchOffset)
     }
@@ -35,7 +38,7 @@ struct LocationPickerSection: View {
 
     private func handlePickerDismiss() {
         self.appState.toggleLocationPicker(animated: true)
-        self.locationPickerState.searchQuery.clear()
+        self.locationSearchService.searchQuery.clear()
     }
 }
 

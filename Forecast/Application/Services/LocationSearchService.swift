@@ -1,5 +1,5 @@
 //
-//  LocationPickerState.swift
+//  LocationSearchService.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2020-02-27.
@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-final class LocationPickerState: NSObject, ObservableObject {
+final class LocationSearchService: NSObject, ObservableObject {
     @Published var searchQuery: String = "" {
         didSet {
             debounce(#selector(search), after: 0.5)
