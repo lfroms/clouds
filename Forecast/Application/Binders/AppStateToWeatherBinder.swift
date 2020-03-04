@@ -14,12 +14,14 @@ struct AppStateToWeatherBinder: ViewModifier {
     private var weatherService: WeatherService
 
     private lazy var weatherCancellable: AnyCancellable? = nil
+    private lazy var appStateCancellable: AnyCancellable? = nil
 
     init(appState: AppState, weatherService: WeatherService) {
         self.appState = appState
         self.weatherService = weatherService
 
-        weatherCancellable = weatherService.didLoadUpdatedWeather.sink(receiveValue: updateIconCode)
+        weatherCancellable = weatherService.didLoadUpdatedWeather.sink(receiveValue: setIconCodeToCurrentConditions)
+        appStateCancellable = appState.activeSectionDidChange.sink(receiveValue: changeIconCodeBasedOnSection)
     }
 
     func body(content: Content) -> some View {
@@ -28,7 +30,22 @@ struct AppStateToWeatherBinder: ViewModifier {
 
     // MARK: - Binding Functions
 
-    private func updateIconCode() {
+    private func setIconCodeToCurrentConditions() {
         appState.setIconCode(to: weatherService.activeLocation?.currentConditions?.iconCode, animated: true)
+    }
+
+    private func setIconCodeToFirstInDailyForecast() {
+        appState.setIconCode(to: weatherService.activeLocation?.dailyForecast?.days?.first?.iconCode, animated: true)
+    }
+
+    private func changeIconCodeBasedOnSection() {
+        switch appState.activeSection {
+        case .now:
+            setIconCodeToCurrentConditions()
+        case .week:
+            setIconCodeToFirstInDailyForecast()
+        case .radar:
+            break
+        }
     }
 }

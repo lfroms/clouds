@@ -42,9 +42,15 @@ final class AppState: ObservableObject {
     
     // MARK: - Sliding Panel
     
+    let activeSectionDidChange = PassthroughSubject<Void, Never>()
+    
     @Published var activeSection: AppSection = .now {
         didSet {
             slidingPanelLocked = activeSection != .now
+            
+            if oldValue != activeSection {
+                activeSectionDidChange.send()
+            }
         }
     }
     
