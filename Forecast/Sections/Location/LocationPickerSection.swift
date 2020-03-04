@@ -26,6 +26,11 @@ struct LocationPickerSection: View {
                 didPerformDismiss: handlePickerDismiss
             )
         }
+        .offset(searchOffset)
+    }
+
+    private var searchOffset: CGSize {
+        return CGSize(width: 0, height: self.appState.showingLocationPicker ? 0 : Dimension.System.screenHeight)
     }
 
     private func handlePickerDismiss() {

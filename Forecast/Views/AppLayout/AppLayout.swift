@@ -18,7 +18,7 @@ struct AppLayout: View {
                 ZStack(alignment: .bottom) {
                     CurrentConditionsView()
 
-                    SlidingPanel(travelDistance: 100, locked: false) {
+                    SlidingPanelContainer {
                         MasterViewContainer()
                     }
                     .edgesIgnoringSafeArea(.top)
@@ -28,28 +28,11 @@ struct AppLayout: View {
                     .padding(.bottom, 12)
             }
 
-//            LocationPickerSection()
-//                .offset(searchOffset)
-
+            LocationPickerSection()
             Header()
         }
-//        .sheet(isPresented: $appState.showingSettingsSheet) {
-//            SettingsSection()
-//        }
         .colorScheme(.dark)
-//        .onReceive(weatherProvider.objectDidReceiveUpdatedWeather) { _ in
-//            let iconCode = self.weatherProvider.activeLocation?.currentConditions?.iconCode
-//            self.appState.setIconCode(to: iconCode, animated: true)
-//        }
     }
-
-//    private var searchOffset: CGSize {
-//        return CGSize(width: 0, height: self.appState.showingLocationPicker ? 0 : Dimension.System.screenHeight)
-//    }
-//
-//    private var slidingPanelLocked: Bool {
-//        self.appState.slidingPanelLocked || self.weatherProvider.loading
-//    }
 }
 
 #if DEBUG

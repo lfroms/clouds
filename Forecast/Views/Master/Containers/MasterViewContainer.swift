@@ -22,6 +22,13 @@ struct MasterViewContainer: View {
                 .equatable()
         }
         .equatable()
+        .onReceive(weather.objectDidReceiveUpdatedWeather) { _ in
+            let iconCode = self.weather.activeLocation?.currentConditions?.iconCode
+            self.appState.setIconCode(to: iconCode, animated: true)
+        }
+        .sheet(isPresented: $appState.showingSettingsSheet) {
+            SettingsSection()
+        }
     }
 }
 

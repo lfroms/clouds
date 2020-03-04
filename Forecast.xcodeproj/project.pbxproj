@@ -125,6 +125,7 @@
 		80E5D62A2377721B004A1D6B /* String+IsInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5D6292377721B004A1D6B /* String+IsInt.swift */; };
 		80EF84E7240F52F000D4037B /* MasterViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF84E6240F52F000D4037B /* MasterViewContainer.swift */; };
 		80EF84EA240F533800D4037B /* NavigationBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF84E9240F533800D4037B /* NavigationBarContainer.swift */; };
+		80EF84EC240F555C00D4037B /* SlidingPanelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF84EB240F555C00D4037B /* SlidingPanelContainer.swift */; };
 		80F07DDC23FB7D0C005C43A3 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 80F07DDB23FB7D0C005C43A3 /* schema.json */; };
 		80F07DDE23FB8012005C43A3 /* AnimationPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F07DDD23FB8012005C43A3 /* AnimationPreset.swift */; };
 		80FB6C67240873250026DD83 /* LocationPickerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB6C66240873250026DD83 /* LocationPickerState.swift */; };
@@ -257,6 +258,7 @@
 		80E5D6292377721B004A1D6B /* String+IsInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+IsInt.swift"; sourceTree = "<group>"; };
 		80EF84E6240F52F000D4037B /* MasterViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewContainer.swift; sourceTree = "<group>"; };
 		80EF84E9240F533800D4037B /* NavigationBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarContainer.swift; sourceTree = "<group>"; };
+		80EF84EB240F555C00D4037B /* SlidingPanelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingPanelContainer.swift; sourceTree = "<group>"; };
 		80F07DDB23FB7D0C005C43A3 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		80F07DDD23FB8012005C43A3 /* AnimationPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationPreset.swift; sourceTree = "<group>"; };
 		80FB6C66240873250026DD83 /* LocationPickerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerState.swift; sourceTree = "<group>"; };
@@ -567,6 +569,7 @@
 		8060A508240EF9EF009CCD94 /* Containers */ = {
 			isa = PBXGroup;
 			children = (
+				80EF84EB240F555C00D4037B /* SlidingPanelContainer.swift */,
 			);
 			path = Containers;
 			sourceTree = "<group>";
@@ -1076,6 +1079,7 @@
 				80FB6C6B2408A5620026DD83 /* SearchResultLocationItem.swift in Sources */,
 				80625427240C90CF00638C2F /* AppSection.swift in Sources */,
 				8085B7B4232DD0D500D4AEE4 /* Comparable+Clamped.swift in Sources */,
+				80EF84EC240F555C00D4037B /* SlidingPanelContainer.swift in Sources */,
 				80B5E7A223FA3DAF001729E0 /* UIStackView+AddArrangedSubviews.swift in Sources */,
 				8061292A236915D4005EEB2A /* WeekSection.swift in Sources */,
 				80A646C623F5E98900C80633 /* UIStackView+SetBackground.swift in Sources */,
