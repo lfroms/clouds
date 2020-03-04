@@ -21,8 +21,7 @@ struct MasterViewLayout<Content: View>: View {
     }
 
     var body: some View {
-        print("render")
-        return ZStack(alignment: .bottom) {
+        ZStack(alignment: .bottom) {
             ZStack(alignment: .topTrailing) {
                 WeatherBackground()
                 WeatherIllustration()

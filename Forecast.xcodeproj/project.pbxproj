@@ -123,6 +123,8 @@
 		80E5D622237760BA004A1D6B /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5D621237760BA004A1D6B /* AlertType.swift */; };
 		80E5D628237765DF004A1D6B /* IdentifiableAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5D627237765DF004A1D6B /* IdentifiableAlert.swift */; };
 		80E5D62A2377721B004A1D6B /* String+IsInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5D6292377721B004A1D6B /* String+IsInt.swift */; };
+		80EF84E7240F52F000D4037B /* MasterViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF84E6240F52F000D4037B /* MasterViewContainer.swift */; };
+		80EF84EA240F533800D4037B /* NavigationBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF84E9240F533800D4037B /* NavigationBarContainer.swift */; };
 		80F07DDC23FB7D0C005C43A3 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 80F07DDB23FB7D0C005C43A3 /* schema.json */; };
 		80F07DDE23FB8012005C43A3 /* AnimationPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F07DDD23FB8012005C43A3 /* AnimationPreset.swift */; };
 		80FB6C67240873250026DD83 /* LocationPickerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB6C66240873250026DD83 /* LocationPickerState.swift */; };
@@ -253,6 +255,8 @@
 		80E5D621237760BA004A1D6B /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		80E5D627237765DF004A1D6B /* IdentifiableAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableAlert.swift; sourceTree = "<group>"; };
 		80E5D6292377721B004A1D6B /* String+IsInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+IsInt.swift"; sourceTree = "<group>"; };
+		80EF84E6240F52F000D4037B /* MasterViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewContainer.swift; sourceTree = "<group>"; };
+		80EF84E9240F533800D4037B /* NavigationBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarContainer.swift; sourceTree = "<group>"; };
 		80F07DDB23FB7D0C005C43A3 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		80F07DDD23FB8012005C43A3 /* AnimationPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationPreset.swift; sourceTree = "<group>"; };
 		80FB6C66240873250026DD83 /* LocationPickerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerState.swift; sourceTree = "<group>"; };
@@ -336,6 +340,7 @@
 		8020F9512363D2010029FEB6 /* Master */ = {
 			isa = PBXGroup;
 			children = (
+				80EF84E5240F52D300D4037B /* Containers */,
 				8019F823240F4CED00AFB0F1 /* Views */,
 				8020F9522363D2390029FEB6 /* MasterView.swift */,
 			);
@@ -466,6 +471,7 @@
 		8057DB4C2364F07E0087FBF7 /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
+				80EF84E8240F532F00D4037B /* Containers */,
 				8057DB522364F0F80087FBF7 /* TabControl */,
 				8057DB4F2364F0D80087FBF7 /* Alert */,
 				8057DB572364F1370087FBF7 /* NavigationBar.swift */,
@@ -871,6 +877,22 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		80EF84E5240F52D300D4037B /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				80EF84E6240F52F000D4037B /* MasterViewContainer.swift */,
+			);
+			path = Containers;
+			sourceTree = "<group>";
+		};
+		80EF84E8240F532F00D4037B /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				80EF84E9240F533800D4037B /* NavigationBarContainer.swift */,
+			);
+			path = Containers;
+			sourceTree = "<group>";
+		};
 		80FC8AB123F0B35C00AEA26F /* DismissableScrollView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1029,6 +1051,7 @@
 				8099ED3923667F8C00B8E1CA /* TabGeometry.swift in Sources */,
 				805A174622C53ADB00E1B4E2 /* AppDelegate.swift in Sources */,
 				80305323240E182300FDAC69 /* ObservedAtData.swift in Sources */,
+				80EF84EA240F533800D4037B /* NavigationBarContainer.swift in Sources */,
 				80C395AF2378A1DA0004B71D /* AppState.swift in Sources */,
 				803FDCD723FB1A59002BBE4D /* FavoriteLocationItem.swift in Sources */,
 				80C395A8237888CD0004B71D /* IndicatorShape.swift in Sources */,
@@ -1135,6 +1158,7 @@
 				80C777DE23FB4985004ABB2E /* LocationItemContainer.swift in Sources */,
 				80C395AA23788A6B0004B71D /* AppActivityIndicator.swift in Sources */,
 				8076F72623651CD000FB85D1 /* SlidingPanel.swift in Sources */,
+				80EF84E7240F52F000D4037B /* MasterViewContainer.swift in Sources */,
 				80C777D323FB3415004ABB2E /* CLLocationCoordinate2D.swift in Sources */,
 				80C8162A2363E2D700D33669 /* OmniBarAuxiliaryButton.swift in Sources */,
 				80F07DDE23FB8012005C43A3 /* AnimationPreset.swift in Sources */,

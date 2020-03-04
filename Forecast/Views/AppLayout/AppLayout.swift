@@ -9,9 +9,6 @@
 import SwiftUI
 
 struct AppLayout: View {
-    @EnvironmentObject var weatherProvider: WeatherProvider
-    @EnvironmentObject var appState: AppState
-
     var body: some View {
         ZStack(alignment: .top) {
             BlackBackground()
@@ -21,46 +18,38 @@ struct AppLayout: View {
                 ZStack(alignment: .bottom) {
                     CurrentConditionsView()
 
-                    SlidingPanel(travelDistance: self.appState.detailsContentHeight, locked: slidingPanelLocked) {
-                        MasterView(
-                            usesStandardLayout: self.appState.activeSection == .radar,
-                            handleExists: !self.appState.slidingPanelLocked,
-                            handleHidden: self.weatherProvider.loading
-                        ) {
-                            CurrentSection(section: self.$appState.activeSection)
-                                .equatable()
-                        }
-                        .equatable()
+                    SlidingPanel(travelDistance: 100, locked: false) {
+                        MasterViewContainer()
                     }
                     .edgesIgnoringSafeArea(.top)
                 }
 
-                NavigationBar(activeSection: $appState.activeSection, tabs: AppSection.list)
+                NavigationBarContainer()
                     .padding(.bottom, 12)
             }
 
-            LocationPickerSection()
-                .offset(searchOffset)
+//            LocationPickerSection()
+//                .offset(searchOffset)
 
             Header()
         }
-        .sheet(isPresented: $appState.showingSettingsSheet) {
-            SettingsSection()
-        }
+//        .sheet(isPresented: $appState.showingSettingsSheet) {
+//            SettingsSection()
+//        }
         .colorScheme(.dark)
-        .onReceive(weatherProvider.objectDidReceiveUpdatedWeather) { _ in
-            let iconCode = self.weatherProvider.activeLocation?.currentConditions?.iconCode
-            self.appState.setIconCode(to: iconCode, animated: true)
-        }
+//        .onReceive(weatherProvider.objectDidReceiveUpdatedWeather) { _ in
+//            let iconCode = self.weatherProvider.activeLocation?.currentConditions?.iconCode
+//            self.appState.setIconCode(to: iconCode, animated: true)
+//        }
     }
 
-    private var searchOffset: CGSize {
-        return CGSize(width: 0, height: self.appState.showingLocationPicker ? 0 : Dimension.System.screenHeight)
-    }
-
-    private var slidingPanelLocked: Bool {
-        self.appState.slidingPanelLocked || self.weatherProvider.loading
-    }
+//    private var searchOffset: CGSize {
+//        return CGSize(width: 0, height: self.appState.showingLocationPicker ? 0 : Dimension.System.screenHeight)
+//    }
+//
+//    private var slidingPanelLocked: Bool {
+//        self.appState.slidingPanelLocked || self.weatherProvider.loading
+//    }
 }
 
 #if DEBUG
