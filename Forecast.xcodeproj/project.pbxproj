@@ -341,8 +341,7 @@
 		8020F9512363D2010029FEB6 /* Master */ = {
 			isa = PBXGroup;
 			children = (
-				80EF84F7240F670E00D4037B /* Atoms */,
-				80EF84FA240F684600D4037B /* Molecules */,
+				80EF84FA240F684600D4037B /* Components */,
 				8020F9522363D2390029FEB6 /* MasterView.swift */,
 				80EF84E6240F52F000D4037B /* MasterViewContainer.swift */,
 			);
@@ -370,8 +369,7 @@
 		802C0D9A236903A8009A22BA /* Header */ = {
 			isa = PBXGroup;
 			children = (
-				80EF84FB240F687D00D4037B /* Atoms */,
-				80EF84FC240F688400D4037B /* Molecules */,
+				80EF84FC240F688400D4037B /* Components */,
 				802C0D9D236903CD009A22BA /* Header.swift */,
 			);
 			path = Header;
@@ -446,8 +444,7 @@
 		8057DB4C2364F07E0087FBF7 /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
-				80EF8500240F68E700D4037B /* Atoms */,
-				80EF8501240F68EB00D4037B /* Molecules */,
+				80EF8501240F68EB00D4037B /* Components */,
 				8057DB572364F1370087FBF7 /* NavigationBar.swift */,
 				80EF84E9240F533800D4037B /* NavigationBarContainer.swift */,
 			);
@@ -528,14 +525,6 @@
 			path = Blur;
 			sourceTree = "<group>";
 		};
-		8060A507240EF9EB009CCD94 /* Atoms */ = {
-			isa = PBXGroup;
-			children = (
-				80C8161F2363D8C800D33669 /* BlackBackground.swift */,
-			);
-			path = Atoms;
-			sourceTree = "<group>";
-		};
 		8061291D2369083E005EEB2A /* DailyForecast */ = {
 			isa = PBXGroup;
 			children = (
@@ -550,8 +539,7 @@
 		8066FDE72364ECA90067F362 /* AppLayout */ = {
 			isa = PBXGroup;
 			children = (
-				8060A507240EF9EB009CCD94 /* Atoms */,
-				80EF84F9240F683100D4037B /* Molecules */,
+				80EF84F9240F683100D4037B /* Components */,
 				805A174922C53ADB00E1B4E2 /* AppLayout.swift */,
 			);
 			path = AppLayout;
@@ -860,14 +848,6 @@
 			path = Concepts;
 			sourceTree = "<group>";
 		};
-		80EF84F7240F670E00D4037B /* Atoms */ = {
-			isa = PBXGroup;
-			children = (
-				80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */,
-			);
-			path = Atoms;
-			sourceTree = "<group>";
-		};
 		80EF84F8240F677300D4037B /* HeaderGradient */ = {
 			isa = PBXGroup;
 			children = (
@@ -877,37 +857,32 @@
 			path = HeaderGradient;
 			sourceTree = "<group>";
 		};
-		80EF84F9240F683100D4037B /* Molecules */ = {
+		80EF84F9240F683100D4037B /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				80EF84F3240F660D00D4037B /* SlidingPanel */,
+				80C8161F2363D8C800D33669 /* BlackBackground.swift */,
 			);
-			path = Molecules;
+			path = Components;
 			sourceTree = "<group>";
 		};
-		80EF84FA240F684600D4037B /* Molecules */ = {
+		80EF84FA240F684600D4037B /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				8019F824240F4E0000AFB0F1 /* MasterViewLayout */,
+				80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */,
 			);
-			path = Molecules;
+			path = Components;
 			sourceTree = "<group>";
 		};
-		80EF84FB240F687D00D4037B /* Atoms */ = {
-			isa = PBXGroup;
-			children = (
-				80EF84F8240F677300D4037B /* HeaderGradient */,
-			);
-			path = Atoms;
-			sourceTree = "<group>";
-		};
-		80EF84FC240F688400D4037B /* Molecules */ = {
+		80EF84FC240F688400D4037B /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				8034A1A9240E10E000DF02A1 /* HeaderAccessories */,
+				80EF84F8240F677300D4037B /* HeaderGradient */,
 				80C816212363D9CD00D33669 /* OmniBar */,
 			);
-			path = Molecules;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		80EF84FD240F68AA00D4037B /* Components */ = {
@@ -937,20 +912,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		80EF8500240F68E700D4037B /* Atoms */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Atoms;
-			sourceTree = "<group>";
-		};
-		80EF8501240F68EB00D4037B /* Molecules */ = {
+		80EF8501240F68EB00D4037B /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				8057DB4F2364F0D80087FBF7 /* AlertStack */,
 				8057DB522364F0F80087FBF7 /* TabControl */,
 			);
-			path = Molecules;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		80FC8AB123F0B35C00AEA26F /* DismissableScrollView */ = {
@@ -1367,6 +1335,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "Forecast/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8P8574Z65P;
@@ -1379,6 +1348,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.romsicki.Forecast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1388,6 +1358,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "Forecast/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8P8574Z65P;
@@ -1400,6 +1371,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.romsicki.Forecast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

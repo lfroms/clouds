@@ -33,7 +33,7 @@ struct HeaderAccessoriesContainer: Container {
         ObservedAtData(
             loading: weather.loading,
             timestamp: weather.activeLocation?.currentConditions?.time,
-            action: weather.fetchData
+            action: weather.fetchDebounced
         )
     }
 }
