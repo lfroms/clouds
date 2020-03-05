@@ -19,10 +19,8 @@ struct ObservationView: View {
     }
 }
 
-#if DEBUG
 struct ObservationView_Previews: PreviewProvider {
     static var previews: some View {
         ObservationView(observation: "Partly Cloudy")
     }
 }
-#endif

@@ -39,10 +39,8 @@ struct HighLowView: View {
     }
 }
 
-#if DEBUG
 struct HighLowView_Previews: PreviewProvider {
     static var previews: some View {
         HighLowView(highOrLow: .high, temperature: 14)
     }
 }
-#endif

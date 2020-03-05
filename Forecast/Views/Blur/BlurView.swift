@@ -73,10 +73,8 @@ struct BlurView: UIViewRepresentable {
     }
 }
 
-#if DEBUG
 struct BlurView_Previews: PreviewProvider {
     static var previews: some View {
         BlurView(style: .light, tint: nil)
     }
 }
-#endif

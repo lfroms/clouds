@@ -25,10 +25,8 @@ struct HighLowStack: View {
     }
 }
 
-#if DEBUG
 struct HighLowStack_Previews: PreviewProvider {
     static var previews: some View {
         HighLowStack(highTemp: 12, lowTemp: 5)
     }
 }
-#endif

@@ -24,10 +24,8 @@ struct TemperatureView: View {
     }
 }
 
-#if DEBUG
 struct TemperatureView_Previews: PreviewProvider {
     static var previews: some View {
         TemperatureView(value: "10")
     }
 }
-#endif

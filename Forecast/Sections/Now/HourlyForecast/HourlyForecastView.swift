@@ -125,7 +125,6 @@ struct HourlyForecastView: View {
     }
 }
 
-#if DEBUG
 struct HourlyForecastView_Previews: PreviewProvider {
     static var previews: some View {
         HourlyForecastView(
@@ -141,4 +140,3 @@ struct HourlyForecastView_Previews: PreviewProvider {
         )
     }
 }
-#endif

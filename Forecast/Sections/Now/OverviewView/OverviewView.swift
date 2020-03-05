@@ -33,7 +33,6 @@ struct OverviewView: View, Equatable {
     }
 }
 
-#if DEBUG
 struct OverviewView_Previews: PreviewProvider {
     static var previews: some View {
         OverviewView(
@@ -44,4 +43,3 @@ struct OverviewView_Previews: PreviewProvider {
         )
     }
 }
-#endif
