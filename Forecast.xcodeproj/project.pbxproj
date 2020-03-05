@@ -900,6 +900,16 @@
 			path = OmniBar;
 			sourceTree = "<group>";
 		};
+		80CBCBEB2411825C00509DBB /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				80A755F42364EB3800724213 /* HighLow */,
+				803028D422CEE42C0053F639 /* TemperatureView.swift */,
+				803028D722CEE56D0053F639 /* ObservationView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		80D0D86422D6B55D00B8C711 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1047,29 +1057,11 @@
 		80FECAF1237782F5008AC653 /* OverviewView */ = {
 			isa = PBXGroup;
 			children = (
-				80FECAF223778307008AC653 /* TemperatureView */,
-				80FECAF323778310008AC653 /* ObservationView */,
-				80A755F42364EB3800724213 /* HighLow */,
+				80CBCBEB2411825C00509DBB /* Components */,
 				803028E422CEE7970053F639 /* OverviewView.swift */,
 				80EF84F1240F59D200D4037B /* OverviewViewContainer.swift */,
 			);
 			path = OverviewView;
-			sourceTree = "<group>";
-		};
-		80FECAF223778307008AC653 /* TemperatureView */ = {
-			isa = PBXGroup;
-			children = (
-				803028D422CEE42C0053F639 /* TemperatureView.swift */,
-			);
-			path = TemperatureView;
-			sourceTree = "<group>";
-		};
-		80FECAF323778310008AC653 /* ObservationView */ = {
-			isa = PBXGroup;
-			children = (
-				803028D722CEE56D0053F639 /* ObservationView.swift */,
-			);
-			path = ObservationView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

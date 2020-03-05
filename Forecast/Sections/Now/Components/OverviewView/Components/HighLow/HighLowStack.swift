@@ -16,14 +16,18 @@ struct HighLowStack: View {
         VStack(alignment: .leading, spacing: 6) {
             if highTemp != nil {
                 HighLowView(highOrLow: .high, temperature: highTemp!)
+                    .equatable()
             }
 
             if lowTemp != nil {
                 HighLowView(highOrLow: .low, temperature: lowTemp!)
+                    .equatable()
             }
         }
     }
 }
+
+extension HighLowStack: Equatable {}
 
 struct HighLowStack_Previews: PreviewProvider {
     static var previews: some View {

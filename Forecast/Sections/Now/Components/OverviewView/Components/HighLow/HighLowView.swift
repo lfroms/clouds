@@ -39,6 +39,8 @@ struct HighLowView: View {
     }
 }
 
+extension HighLowView: Equatable {}
+
 struct HighLowView_Previews: PreviewProvider {
     static var previews: some View {
         HighLowView(highOrLow: .high, temperature: 14)

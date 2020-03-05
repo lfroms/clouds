@@ -19,6 +19,8 @@ struct ObservationView: View {
     }
 }
 
+extension ObservationView: Equatable {}
+
 struct ObservationView_Previews: PreviewProvider {
     static var previews: some View {
         ObservationView(observation: "Partly Cloudy")

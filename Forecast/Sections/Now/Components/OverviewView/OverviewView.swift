@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct OverviewView: View, Equatable {
+struct OverviewView: View {
     var temperature: String
     var observation: String
 
@@ -20,18 +20,23 @@ struct OverviewView: View, Equatable {
             HStack(alignment: .bottom) {
                 VStack(alignment: .leading, spacing: 4) {
                     TemperatureView(value: temperature)
+                        .equatable()
 
                     ObservationView(observation: observation)
+                        .equatable()
                         .lineLimit(2)
                 }
 
                 Spacer()
 
                 HighLowStack(highTemp: highTemp, lowTemp: lowTemp)
+                    .equatable()
             }
         }
     }
 }
+
+extension OverviewView: Equatable {}
 
 struct OverviewView_Previews: PreviewProvider {
     static var previews: some View {

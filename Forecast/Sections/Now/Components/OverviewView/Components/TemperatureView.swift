@@ -24,6 +24,8 @@ struct TemperatureView: View {
     }
 }
 
+extension TemperatureView: Equatable {}
+
 struct TemperatureView_Previews: PreviewProvider {
     static var previews: some View {
         TemperatureView(value: "10")
