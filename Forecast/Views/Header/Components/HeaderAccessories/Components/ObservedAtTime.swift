@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ObservedAtTime: View, Equatable {
-    @State private var now = Date()
+    @State private var text: String = .empty
 
     var loading: Bool
     var date: Date?
@@ -21,24 +21,27 @@ struct ObservedAtTime: View, Equatable {
         HStack(alignment: .lastTextBaseline, spacing: 5) {
             if loading {
                 AppActivityIndicator(color: .secondary)
+                    .equatable()
 
             } else {
                 Image(systemName: SFSymbol.clockFilled)
+                    .equatable()
             }
 
             Button(action: action) {
                 Text(text)
-                    .onReceive(timer) { _ in
-                        self.now = Date()
-                    }
+                    .equatable()
             }
         }
         .font(Font.subheadline.weight(.semibold))
         .foregroundColor(.secondary)
+        .onReceive(timer) { _ in
+            self.updateText()
+        }
     }
 
-    private var text: String {
-        date?.timeAgo(relativeTo: now) ?? .empty
+    private func updateText() {
+        self.text = self.date?.timeAgo(relativeTo: Date()) ?? .empty
     }
 
     // MARK: - Equatable

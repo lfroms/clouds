@@ -13,11 +13,17 @@ struct MeasurementGridContainer: View {
     @EnvironmentObject private var weatherService: WeatherService
     
     var body: some View {
-        MeasurementGrid(
-            measurements: self.measurements,
-            didCalculateHeight: self.didCalculateHeight
-        )
-        .equatable()
+        Group {
+            if self.measurements.count > 0 {
+                MeasurementGrid(
+                    measurements: self.measurements,
+                    didCalculateHeight: self.didCalculateHeight
+                )
+                .equatable()
+            } else {
+                EmptyView()
+            }
+        }
     }
     
     private func didCalculateHeight(height: CGFloat) {
@@ -37,7 +43,7 @@ struct MeasurementGridContainer: View {
             let item = MeasurementDescriptor(
                 label: "Humidity",
                 value: "\(humidity)%",
-                color: .red
+                color: .blue
             )
             
             observations.append(item)
@@ -49,7 +55,7 @@ struct MeasurementGridContainer: View {
             let item = MeasurementDescriptor(
                 label: "Pressure",
                 value: "\(pressure) \(units.pressure)",
-                color: .blue
+                color: .green
             )
             
             observations.append(item)
@@ -61,7 +67,7 @@ struct MeasurementGridContainer: View {
             let item = MeasurementDescriptor(
                 label: "Wind Chill",
                 value: "\(windChill) °\(units.temperature)",
-                color: .green
+                color: .blue
             )
             
             observations.append(item)
@@ -85,7 +91,7 @@ struct MeasurementGridContainer: View {
             let item = MeasurementDescriptor(
                 label: "Wind",
                 value: "\(speed) \(units.speed)",
-                color: .blue,
+                color: .red,
                 prefix: wind.direction
             )
             
@@ -120,7 +126,7 @@ struct MeasurementGridContainer: View {
             let item = MeasurementDescriptor(
                 label: "Dewpoint",
                 value: "\(dewPoint) °\(units.temperature)",
-                color: .red
+                color: .blue
             )
             
             observations.append(item)

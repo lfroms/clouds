@@ -30,6 +30,12 @@ struct AppActivityIndicator: View {
     }
 }
 
+extension AppActivityIndicator: Equatable {
+    static func == (lhs: AppActivityIndicator, rhs: AppActivityIndicator) -> Bool {
+        lhs.color == rhs.color
+    }
+}
+
 struct LineActivityIndicator_Previews: PreviewProvider {
     static var previews: some View {
         AppActivityIndicator()
