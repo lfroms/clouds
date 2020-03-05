@@ -11,41 +11,28 @@ import SwiftUI
 
 struct HourlyForecastContainer: View {
     @EnvironmentObject private var weatherService: WeatherService
-    
+
     var body: some View {
         HourlyForecast(items: items)
+            .equatable()
     }
-    
-    var items: [HourlyForecastViewModel] {
-        var hourlyForecastItems: [HourlyForecastViewModel] = []
-        
-        guard let weather = weatherService.activeLocation else {
+
+    private var items: [HourlyForecastViewModel] {
+        guard let activeLocation = weatherService.activeLocation else {
             return []
         }
-        
-        weather.hourlyForecast?.hours?.forEach(
-            { item in
-                
-                let forecastItem = HourlyForecastViewModel(
-                    date: getDateFrom(item.time),
-                    symbolName: ForecastIcon.forCode(item.iconCode),
-                    temperature: Int(item.temperature),
-                    temperatureUnits: weather.units.temperature,
-                    windSpeedUnits: weather.units.speed,
-                    windSpeed: item.wind?.speed,
-                    pop: item.precipProbability
-                )
-                
-                hourlyForecastItems.append(forecastItem)
-            }
-        )
-        
-        return hourlyForecastItems
-    }
-    
-    private func getDateFrom(_ timeStamp: Int) -> DateInRegion {
-        return Date(seconds: TimeInterval(timeStamp), region: .UTC)
-            .convertTo(region: .current)
+
+        return activeLocation.hourlyForecast?.hours?.compactMap {
+            HourlyForecastViewModel(
+                date: DateHelper.inUTCTime(time: $0.time).convertTo(region: .current),
+                symbolName: ForecastIcon.forCode($0.iconCode),
+                temperature: Int($0.temperature),
+                temperatureUnits: activeLocation.units.temperature,
+                windSpeedUnits: activeLocation.units.speed,
+                windSpeed: $0.wind?.speed,
+                pop: $0.precipProbability
+            )
+        } ?? []
     }
 }
 
