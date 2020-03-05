@@ -16,7 +16,7 @@ struct AppLayout: View {
 
             VStack(alignment: .leading, spacing: 12) {
                 ZStack(alignment: .bottom) {
-                    CurrentConditionsView()
+                    MeasurementGridContainer()
 
                     SlidingPanelContainer {
                         MasterViewContainer()

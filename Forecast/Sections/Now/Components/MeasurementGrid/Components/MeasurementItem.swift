@@ -1,5 +1,5 @@
 //
-//  CurrentConditionsItem.swift
+//  MeasurementItem.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-11-09.
@@ -8,34 +8,30 @@
 
 import SwiftUI
 
-struct CurrentConditionsItem: View, Equatable {
-    var label: String
-    var value: String
-    var color: Color
-
-    var prefix: String?
+struct MeasurementItem: View {
+    var descriptor: MeasurementDescriptor
 
     var body: some View {
         HStack(alignment: .center, spacing: 22) {
             Rectangle()
                 .frame(width: 2)
-                .foregroundColor(color)
+                .foregroundColor(descriptor.color)
                 .cornerRadius(.infinity)
 
             VStack(alignment: .leading, spacing: 6) {
-                Text(label)
+                Text(descriptor.label)
                     .font(.system(size: 12))
                     .foregroundColor(.secondary)
                     .bold()
 
                 HStack(alignment: .lastTextBaseline, spacing: 4) {
-                    if prefix != nil {
-                        Text(prefix!)
+                    if descriptor.prefix != nil {
+                        Text(descriptor.prefix!)
                             .font(.system(size: 14))
                             .fontWeight(.heavy)
                     }
 
-                    Text(value)
+                    Text(descriptor.value)
                         .font(.system(size: 20))
                         .fontWeight(.bold)
                 }
@@ -45,13 +41,17 @@ struct CurrentConditionsItem: View, Equatable {
     }
 }
 
+extension MeasurementItem: Equatable {}
+
 struct CurrentConditionsItem_Previews: PreviewProvider {
     static var previews: some View {
-        CurrentConditionsItem(
-            label: "Humidity",
-            value: "46%",
-            color: .red,
-            prefix: "N"
+        MeasurementItem(
+            descriptor: MeasurementDescriptor(
+                label: "Humidity",
+                value: "46%",
+                color: .red,
+                prefix: "N"
+            )
         )
     }
 }

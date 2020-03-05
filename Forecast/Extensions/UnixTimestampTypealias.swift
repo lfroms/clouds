@@ -1,5 +1,5 @@
 //
-//  UnixTimestamp-Typealias.swift
+//  UnixTimestampTypealias.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2020-03-03.
