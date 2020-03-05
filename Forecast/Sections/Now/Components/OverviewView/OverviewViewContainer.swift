@@ -55,14 +55,6 @@ struct OverviewViewContainer: View {
         return Date(seconds: parsedUnixTime, region: .UTC)
             .convertTo(region: .current).date
     }
-    
-    private func parseStringAsOptionalInt(_ value: String?) -> Int? {
-        guard let value = value, !value.isEmpty, let asInt = Int(value) else {
-            return nil
-        }
-        
-        return asInt
-    }
 }
 
 struct OverviewViewContainer_Previews: PreviewProvider {
