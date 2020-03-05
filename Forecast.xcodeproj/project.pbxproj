@@ -365,8 +365,8 @@
 		8026FF5023779019007962DB /* Shadow */ = {
 			isa = PBXGroup;
 			children = (
+				805D6A1824107F38002DEBAC /* Components */,
 				800194DC232EDC8100066D37 /* ShadowView.swift */,
-				800194DE232EDCCF00066D37 /* UIShadowView.swift */,
 			);
 			path = Shadow;
 			sourceTree = "<group>";
@@ -572,6 +572,14 @@
 				805D6A142410572F002DEBAC /* TabPreferenceKey.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		805D6A1824107F38002DEBAC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				800194DE232EDCCF00066D37 /* UIShadowView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		805D7BE022D1287100A12C4D /* Blur */ = {
