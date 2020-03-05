@@ -1,5 +1,5 @@
 //
-//  HourlyForecastViewModel.swift
+//  HourlyForecastItemData.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-07-10.
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftDate
 
-struct HourlyForecastViewModel: Hashable {
+struct HourlyForecastItemData: Hashable {
     let date: DateInRegion
     let symbolName: String
 

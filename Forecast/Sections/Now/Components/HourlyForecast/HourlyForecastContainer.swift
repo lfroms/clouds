@@ -17,13 +17,13 @@ struct HourlyForecastContainer: View {
             .equatable()
     }
 
-    private var items: [HourlyForecastViewModel] {
+    private var items: [HourlyForecastItemData] {
         guard let activeLocation = weatherService.activeLocation else {
             return []
         }
 
         return activeLocation.hourlyForecast?.hours?.compactMap {
-            HourlyForecastViewModel(
+            HourlyForecastItemData(
                 date: DateHelper.inUTCTime(time: $0.time).convertTo(region: .current),
                 symbolName: ForecastIcon.forCode($0.iconCode),
                 temperature: Int($0.temperature),

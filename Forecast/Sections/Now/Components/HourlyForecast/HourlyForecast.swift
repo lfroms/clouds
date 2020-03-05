@@ -10,13 +10,13 @@ import SwiftDate
 import SwiftUI
 
 struct HourlyForecast: View {
-    var items: [HourlyForecastViewModel]
+    var items: [HourlyForecastItemData]
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .top, spacing: 14) {
                 ForEach(items, id: \.self) { item in
-                    HourlyForecastView(viewModel: item)
+                    HourlyForecastItem(viewModel: item)
                 }
             }
             .padding(.horizontal, 20)

@@ -1,5 +1,5 @@
 //
-//  HourlyForecastView.swift
+//  HourlyForecastItem.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-07-10.
@@ -9,8 +9,8 @@
 import SwiftDate
 import SwiftUI
 
-struct HourlyForecastView: View {
-    let viewModel: HourlyForecastViewModel
+struct HourlyForecastItem: View {
+    let viewModel: HourlyForecastItemData
 
     @State var expanded: Bool = false
 
@@ -125,10 +125,10 @@ struct HourlyForecastView: View {
     }
 }
 
-struct HourlyForecastView_Previews: PreviewProvider {
+struct HourlyForecastItem_Previews: PreviewProvider {
     static var previews: some View {
-        HourlyForecastView(
-            viewModel: HourlyForecastViewModel(
+        HourlyForecastItem(
+            viewModel: HourlyForecastItemData(
                 date: DateInRegion(),
                 symbolName: "cloud.rain.fill",
                 temperature: 24,
