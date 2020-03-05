@@ -87,7 +87,7 @@
 		80A646C623F5E98900C80633 /* UIStackView+SetBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A646C523F5E98900C80633 /* UIStackView+SetBackground.swift */; };
 		80A646C823F5F71600C80633 /* LocationPickerViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A646C723F5F71600C80633 /* LocationPickerViewBuilder.swift */; };
 		80AD070922D68E7B00220FEE /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD070822D68E7B00220FEE /* WeatherService.swift */; };
-		80B1B3282376683A000EA6DD /* MainPagingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B1B3272376683A000EA6DD /* MainPagingScrollView.swift */; };
+		80B1B3282376683A000EA6DD /* DrawerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B1B3272376683A000EA6DD /* DrawerScrollView.swift */; };
 		80B5E7A223FA3DAF001729E0 /* UIStackView+AddArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B5E7A123FA3DAF001729E0 /* UIStackView+AddArrangedSubviews.swift */; };
 		80B5E7A523FA3DDD001729E0 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B5E7A423FA3DDD001729E0 /* Location.swift */; };
 		80B8DB92232C768000BAD200 /* WeatherIllustration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B8DB91232C768000BAD200 /* WeatherIllustration.swift */; };
@@ -233,7 +233,7 @@
 		80A646C523F5E98900C80633 /* UIStackView+SetBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+SetBackground.swift"; sourceTree = "<group>"; };
 		80A646C723F5F71600C80633 /* LocationPickerViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerViewBuilder.swift; sourceTree = "<group>"; };
 		80AD070822D68E7B00220FEE /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
-		80B1B3272376683A000EA6DD /* MainPagingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagingScrollView.swift; sourceTree = "<group>"; };
+		80B1B3272376683A000EA6DD /* DrawerScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerScrollView.swift; sourceTree = "<group>"; };
 		80B5E7A123FA3DAF001729E0 /* UIStackView+AddArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+AddArrangedSubviews.swift"; sourceTree = "<group>"; };
 		80B5E7A423FA3DDD001729E0 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		80B8DB91232C768000BAD200 /* WeatherIllustration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIllustration.swift; sourceTree = "<group>"; };
@@ -343,7 +343,8 @@
 				8057DB4C2364F07E0087FBF7 /* NavigationBar */,
 				8026FF5023779019007962DB /* Shadow */,
 				80B5E7AA23FA3F6C001729E0 /* Hosting */,
-				80A016002376636B00A72C2F /* PagingScrollView */,
+				80A016072376668800A72C2F /* DrawerScrollView */,
+				80A016062376668000A72C2F /* HorizontalPagingScrollView */,
 				80FC8AB123F0B35C00AEA26F /* DismissableScrollView */,
 				8099A20B23130B7400EE4F30 /* Safari */,
 				805D7BE022D1287100A12C4D /* Blur */,
@@ -582,6 +583,23 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		805D6A202410A2DA002DEBAC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				80A016012376638900A72C2F /* MainPagingScrollViewController.swift */,
+				80D871B223F1FF1E001FBA94 /* TransparentTouchScrollView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		805D6A212410A30F002DEBAC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				80A01604237665B700A72C2F /* TouchPassthroughView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		805D7BE022D1287100A12C4D /* Blur */ = {
 			isa = PBXGroup;
 			children = (
@@ -637,40 +655,23 @@
 			path = Safari;
 			sourceTree = "<group>";
 		};
-		80A016002376636B00A72C2F /* PagingScrollView */ = {
+		80A016062376668000A72C2F /* HorizontalPagingScrollView */ = {
 			isa = PBXGroup;
 			children = (
-				80A016072376668800A72C2F /* Main */,
-				80A016062376668000A72C2F /* Horizontal */,
-				80A01603237664F700A72C2F /* TouchPassthrough */,
-			);
-			path = PagingScrollView;
-			sourceTree = "<group>";
-		};
-		80A01603237664F700A72C2F /* TouchPassthrough */ = {
-			isa = PBXGroup;
-			children = (
-				80A01604237665B700A72C2F /* TouchPassthroughView.swift */,
-			);
-			path = TouchPassthrough;
-			sourceTree = "<group>";
-		};
-		80A016062376668000A72C2F /* Horizontal */ = {
-			isa = PBXGroup;
-			children = (
+				805D6A212410A30F002DEBAC /* Components */,
 				806129252369122D005EEB2A /* HorizontalPagingScrollView.swift */,
 			);
-			path = Horizontal;
+			path = HorizontalPagingScrollView;
 			sourceTree = "<group>";
 		};
-		80A016072376668800A72C2F /* Main */ = {
+		80A016072376668800A72C2F /* DrawerScrollView */ = {
 			isa = PBXGroup;
 			children = (
-				80B1B3272376683A000EA6DD /* MainPagingScrollView.swift */,
-				80A016012376638900A72C2F /* MainPagingScrollViewController.swift */,
-				80D871B223F1FF1E001FBA94 /* TransparentTouchScrollView.swift */,
+				805D6A202410A2DA002DEBAC /* Components */,
+				80B1B3272376683A000EA6DD /* DrawerScrollView.swift */,
 			);
-			path = Main;
+			name = DrawerScrollView;
+			path = PagingScrollView/DrawerScrollView;
 			sourceTree = "<group>";
 		};
 		80A755F42364EB3800724213 /* HighLow */ = {
@@ -1209,7 +1210,7 @@
 				80E5D61C23773B46004A1D6B /* UIView+PinEdges.swift in Sources */,
 				80A016022376638900A72C2F /* MainPagingScrollViewController.swift in Sources */,
 				8061292123690D06005EEB2A /* DailyForecastDetail.swift in Sources */,
-				80B1B3282376683A000EA6DD /* MainPagingScrollView.swift in Sources */,
+				80B1B3282376683A000EA6DD /* DrawerScrollView.swift in Sources */,
 				80D871B323F1FF1E001FBA94 /* TransparentTouchScrollView.swift in Sources */,
 				80C395B82378C7860004B71D /* TimestampStore.swift in Sources */,
 				8099A20D23130B8500EE4F30 /* SafariView.swift in Sources */,

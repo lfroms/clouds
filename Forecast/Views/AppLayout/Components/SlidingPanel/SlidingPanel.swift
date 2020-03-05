@@ -21,7 +21,7 @@ struct SlidingPanel<Content: View>: View {
 
     var body: some View {
         GeometryReader { (geometry: GeometryProxy) in
-            MainPagingScrollView(travelDistance: self.travelDistance, locked: self.locked) {
+            DrawerScrollView(travelDistance: self.travelDistance, locked: self.locked) {
                 self.content
                     .frame(height: geometry.size.height)
                     .edgesIgnoringSafeArea(.all)

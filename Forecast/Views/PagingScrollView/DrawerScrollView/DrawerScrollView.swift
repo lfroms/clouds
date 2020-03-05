@@ -1,5 +1,5 @@
 //
-//  MainPagingScrollView.swift
+//  DrawerScrollView.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-10-29.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct MainPagingScrollView<Content>: UIViewControllerRepresentable, Equatable where Content: View {
+struct DrawerScrollView<Content>: UIViewControllerRepresentable, Equatable where Content: View {
     var travelDistance: CGFloat
     var locked: Bool = false
 
@@ -29,7 +29,7 @@ struct MainPagingScrollView<Content>: UIViewControllerRepresentable, Equatable w
 
     // MARK: - Equatable
 
-    static func == (lhs: MainPagingScrollView<Content>, rhs: MainPagingScrollView<Content>) -> Bool {
+    static func == (lhs: DrawerScrollView<Content>, rhs: DrawerScrollView<Content>) -> Bool {
         lhs.travelDistance == rhs.travelDistance
             && lhs.locked == rhs.locked
     }
