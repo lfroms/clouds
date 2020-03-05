@@ -66,6 +66,8 @@ class WeatherService: ObservableObject {
             case .failure(let error):
                 print(error)
             }
+            
+            self.currentRequest = nil
         }
     }
     

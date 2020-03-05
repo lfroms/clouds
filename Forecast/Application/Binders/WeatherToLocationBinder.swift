@@ -16,19 +16,31 @@ struct WeatherToLocationBinder: ViewModifier {
 
     private lazy var locationChangedCancellable: AnyCancellable? = nil
     private lazy var shouldLoadWeatherCancellable: AnyCancellable? = nil
+    private lazy var didBecomeActiveCancellable: AnyCancellable? = nil
+    private lazy var willResignActiveCancellable: AnyCancellable? = nil
 
     init(weatherService: WeatherService, locationService: LocationService, locationFavoritesService: LocationFavoritesService) {
         self.weatherService = weatherService
         self.locationService = locationService
         self.locationFavoritesService = locationFavoritesService
 
-        locationChangedCancellable = locationService.locationDidChange.sink(receiveValue: fetchWeather)
+        locationChangedCancellable = locationService.locationDidChange
+            .debounce(for: .seconds(0.3), scheduler: RunLoop.main)
+            .sink(receiveValue: fetchWeather)
+
         shouldLoadWeatherCancellable = weatherService.shouldLoadUpdatedWeather.sink(receiveValue: fetchWeather)
+
+        didBecomeActiveCancellable = NotificationCenter.default
+            .publisher(for: UIApplication.didBecomeActiveNotification)
+            .sink(receiveValue: didBecomeActive)
+
+        willResignActiveCancellable = NotificationCenter.default
+            .publisher(for: UIApplication.willResignActiveNotification)
+            .sink(receiveValue: willResignActive)
     }
 
     func body(content: Content) -> some View {
         content
-            .onAppear(perform: observeAppForegroundNotification)
     }
 
     // MARK: - Binding Functions
@@ -41,18 +53,15 @@ struct WeatherToLocationBinder: ViewModifier {
         )
     }
 
-    // MARK: - Notifications
+    private func didBecomeActive(_: Notification) {
+        locationService.startUpdatingLocation()
 
-    private func observeAppForegroundNotification() {
-        NotificationCenter.default.addObserver(
-            forName: UIApplication.willEnterForegroundNotification,
-            object: nil,
-            queue: nil,
-            using: fetchFromNotification
-        )
+        if locationService.locationStatus != .authorizedWhenInUse {
+            fetchWeather()
+        }
     }
 
-    private func fetchFromNotification(_: Notification) {
-        fetchWeather()
+    private func willResignActive(_: Notification) {
+        locationService.stopUpdatingLocation()
     }
 }

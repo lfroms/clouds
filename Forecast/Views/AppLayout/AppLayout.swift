@@ -29,7 +29,7 @@ struct AppLayout: View {
                     .padding(.bottom, 12)
             }
 
-//            LocationPickerSection()
+            LocationPickerSection()
             Header()
         }
     }

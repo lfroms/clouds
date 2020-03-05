@@ -22,7 +22,6 @@ class LocationService: NSObject, ObservableObject {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.distanceFilter = 1_000 // m
-        self.locationManager.startUpdatingLocation()
     }
 
     @Published var locationStatus: CLAuthorizationStatus?
@@ -35,6 +34,14 @@ class LocationService: NSObject, ObservableObject {
     }
 
     @Published var lastPlacemark: CLPlacemark?
+
+    func startUpdatingLocation() {
+        self.locationManager.startUpdatingLocation()
+    }
+
+    func stopUpdatingLocation() {
+        self.locationManager.stopUpdatingLocation()
+    }
 }
 
 extension LocationService: CLLocationManagerDelegate {
