@@ -921,6 +921,32 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		80D65CB32411865C00FB4021 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				80D65CB52411869400FB4021 /* Components */,
+				80D65CB42411868A00FB4021 /* Models */,
+				805A1E6522D65ADB001B8CC3 /* HourlyForecastView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		80D65CB42411868A00FB4021 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8039628222D6CC4B003FEAB3 /* HourlyForecastViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		80D65CB52411869400FB4021 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				80504F772332DB4700DB4FAD /* HourlyForecastDetail.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		80E5D61A23773B2A004A1D6B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1045,9 +1071,7 @@
 		80FECAEC237781C5008AC653 /* HourlyForecast */ = {
 			isa = PBXGroup;
 			children = (
-				805A1E6522D65ADB001B8CC3 /* HourlyForecastView.swift */,
-				8039628222D6CC4B003FEAB3 /* HourlyForecastViewModel.swift */,
-				80504F772332DB4700DB4FAD /* HourlyForecastDetail.swift */,
+				80D65CB32411865C00FB4021 /* Components */,
 				80EF84ED240F582100D4037B /* HourlyForecast.swift */,
 				80EF84EF240F586A00D4037B /* HourlyForecastContainer.swift */,
 			);
