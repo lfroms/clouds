@@ -9,89 +9,51 @@
 import SwiftUI
 
 struct TabControl: View {
+    private typealias RectDictionary = [AppSection: CGRect]
+
+    @State private var rects: RectDictionary = RectDictionary()
+
+    var tabs: [AppSection]
     @Binding var activeTab: AppSection
 
-    let tabs: [AppSection]
-
-    @State private var tabFrames: DimensionDictionary = [:]
-    private typealias DimensionDictionary = [String: CGRect]
-
     var body: some View {
-        ZStack(alignment: .leading) {
-            RoundedRectangle(cornerRadius: .infinity)
-                .frame(width: activeTabFrame.width, height: activeTabFrame.height)
-                .offset(x: activeTabFrame.minX)
-                .foregroundColor(Self.indicatorColor)
-                .animation(Self.tabHighlightAnimation)
-
-            HStack(alignment: .firstTextBaseline, spacing: 0) {
-                ForEach(tabs, id: \.self) { tab in
-                    TabView(
-                        text: tab.rawValue,
-                        action: self.didPressTab(tab),
-                        isActive: self.isActive(tab)
-                    )
+        HStack(alignment: .firstTextBaseline, spacing: 0) {
+            ForEach(self.tabs, id: \.self) { tab in
+                TabView(activeTab: self.$activeTab, tab: tab)
                     .equatable()
-                    .padding(.vertical, 6)
-                    .padding(.horizontal, 16)
-                    .fixedSize()
-                    .background(TabGeometry(xOffset: 20).equatable())
-                    .onPreferenceChange(FramePreferenceKey.self, perform: {
-                        self.tabFrames[tab.rawValue] = $0
-                    })
+            }
+        }
+        .backgroundPreferenceValue(TabPreferenceKey.self) { preferences in
+            GeometryReader { geometry in
+                ZStack {
+                    self.createBackdrop(geometry, preferences)
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             }
         }
     }
 
-    private var activeTabFrame: CGRect {
-        getWithDefaultValue(from: tabFrames, key: activeTab.rawValue)
-    }
+    func createBackdrop(_ geometry: GeometryProxy, _ preferences: [TabPreferenceData]) -> some View {
+        let preference = preferences.first(where: { $0.activeTab == self.activeTab })
+        let bounds = preference != nil ? geometry[preference!.bounds] : .zero
 
-    private func getWithDefaultValue(from dictionary: DimensionDictionary, key: String) -> DimensionDictionary.Value {
-        dictionary[key, default: CGRect(x: 0, y: 0, width: 0, height: 0)]
-    }
-
-    private static var tabHighlightAnimation: Animation {
-        .spring(
-            response: 0.3,
-            dampingFraction: 0.7,
-            blendDuration: 0
-        )
-    }
-
-    private static var indicatorColor: Color {
-        Color.primary.opacity(0.15)
-    }
-
-    private func didPressTab(_ tab: AppSection) -> () -> Void {
-        return {
-            if !self.isActive(tab) {
-                let generator = UISelectionFeedbackGenerator()
-                generator.selectionChanged()
-            }
-
-            self.activeTab = tab
-        }
-    }
-
-    private func indexOfTab(_ tab: AppSection) -> Int {
-        return tabs.firstIndex(of: tab) ?? 0
-    }
-
-    private func isActive(_ tab: AppSection) -> Bool {
-        return tab == activeTab
+        return RoundedRectangle(cornerRadius: .infinity)
+            .frame(width: bounds.size.width, height: bounds.size.height)
+            .fixedSize()
+            .offset(x: bounds.minX, y: bounds.minY)
+            .foregroundColor(Color.primary.opacity(0.15))
+            .animation(AnimationPreset.TabControl.backdropSlide)
     }
 }
 
 extension TabControl: Equatable {
     static func == (lhs: TabControl, rhs: TabControl) -> Bool {
-        lhs.activeTab == rhs.activeTab && lhs.tabs == rhs.tabs
+        lhs.tabs == rhs.tabs && lhs.activeTab == rhs.activeTab
     }
 }
 
 struct TabControl_Previews: PreviewProvider {
     static var previews: some View {
-        TabControl(activeTab: .constant(.now), tabs: [])
+        TabControl(tabs: [.now, .week], activeTab: .constant(.now))
     }
 }

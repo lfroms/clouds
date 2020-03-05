@@ -9,14 +9,10 @@
 import SwiftUI
 
 struct NavigationBar: View {
-    @Binding var activeSection: AppSection
-    let tabs: [AppSection]
-
     var body: some View {
         HStack(alignment: .center, spacing: 20) {
             ScrollView(.horizontal, showsIndicators: false) {
-                TabControl(activeTab: $activeSection, tabs: tabs)
-                    .equatable()
+                TabControlContainer()
                     .padding(.leading, 20)
             }
 
@@ -27,14 +23,10 @@ struct NavigationBar: View {
     }
 }
 
-extension NavigationBar: Equatable {
-    static func == (lhs: NavigationBar, rhs: NavigationBar) -> Bool {
-        lhs.activeSection == rhs.activeSection && lhs.tabs == rhs.tabs
-    }
-}
+extension NavigationBar: Equatable {}
 
 struct NavigationBar_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationBar(activeSection: .constant(.now), tabs: [])
+        NavigationBar()
     }
 }

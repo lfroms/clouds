@@ -24,11 +24,12 @@ struct AppLayout: View {
                     .edgesIgnoringSafeArea(.top)
                 }
 
-                NavigationBarContainer()
+                NavigationBar()
+                    .equatable()
                     .padding(.bottom, 12)
             }
 
-            LocationPickerSection()
+//            LocationPickerSection()
             Header()
         }
     }

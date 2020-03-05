@@ -9,33 +9,43 @@
 import SwiftUI
 
 struct TabView: View {
-    let text: String
-    let action: () -> Void
-    var isActive: Bool
+    @Binding var activeTab: AppSection
+    var tab: AppSection
 
     var body: some View {
-        Button(action: action) {
-            Text(text)
+        Button(action: self.action) {
+            Text(self.tab.name)
                 .font(Font.callout.bold())
                 .foregroundColor(.primary)
                 .opacity(opacity)
                 .animation(.easeInOut(duration: 0.2))
+                .padding(.vertical, 6)
+                .padding(.horizontal, 16)
+                .anchorPreference(
+                    key: TabPreferenceKey.self,
+                    value: .bounds,
+                    transform: { [TabPreferenceData(activeTab: self.tab, bounds: $0)] }
+                )
         }
     }
 
+    private func action() {
+        self.activeTab = self.tab
+    }
+
     private var opacity: Double {
-        isActive ? .one : 0.6
+        self.activeTab == self.tab ? .one : 0.6
     }
 }
 
 extension TabView: Equatable {
     static func == (lhs: TabView, rhs: TabView) -> Bool {
-        lhs.text == rhs.text && lhs.isActive == rhs.isActive
+        lhs.activeTab == rhs.activeTab && lhs.tab == rhs.tab
     }
 }
 
 struct TabView_Previews: PreviewProvider {
     static var previews: some View {
-        TabView(text: "Tab", action: {}, isActive: false)
+        TabView(activeTab: .constant(.now), tab: .now)
     }
 }
