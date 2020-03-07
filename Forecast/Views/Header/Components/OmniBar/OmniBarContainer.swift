@@ -10,7 +10,6 @@ import SwiftUI
 
 struct OmniBarContainer: Container {
     @EnvironmentObject private var appState: AppState
-    @EnvironmentObject private var weatherService: WeatherService
     @EnvironmentObject private var locationService: LocationService
     @EnvironmentObject private var locationFavoritesService: LocationFavoritesService
     @EnvironmentObject private var locationSearchService: LocationSearchService
@@ -110,7 +109,6 @@ struct OmniBarContainer_Previews: PreviewProvider {
     static var previews: some View {
         OmniBarContainer()
             .environmentObject(AppState())
-            .environmentObject(WeatherService())
             .environmentObject(LocationSearchService())
     }
 }

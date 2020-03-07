@@ -21,4 +21,7 @@ final class SFSymbol {
     static let infoCircleFilled: String = "info.circle.fill"
     static let exclamationMarkCircleFilled: String = "exclamationmark.circle.fill"
     static let exclamationMarkTriangleFilled: String = "exclamationmark.triangle.fill"
+    
+    static let wind: String = "wind"
+    static let umbrellaFilled: String = "umbrella.fill"
 }

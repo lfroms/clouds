@@ -11,6 +11,7 @@ import SwiftUI
 final class AnimationPreset {
     final class Touch {
         static let shrink: Animation = .easeInOut(duration: 0.2)
+        static let expand: Animation = shrink
     }
 
     final class TabControl {
