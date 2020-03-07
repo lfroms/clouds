@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct DailyForecastView: View {
-    let data: DailyForecast
+    var data: DailyForecastItemData
 
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
@@ -30,6 +30,12 @@ struct DailyForecastView: View {
 
     private var roundedTemperature: Int {
         return Int(data.temperature.rounded() + 0.0)
+    }
+}
+
+extension DailyForecastView: Equatable {
+    static func == (lhs: DailyForecastView, rhs: DailyForecastView) -> Bool {
+        lhs.data == rhs.data
     }
 }
 

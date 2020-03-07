@@ -28,15 +28,13 @@ final class AppState: ObservableObject {
         
         let newCode: Int = newCode ?? 0
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            guard animated else {
-                self.iconCode = newCode
-                return
-            }
-            
-            withAnimation(.spring()) {
-                self.iconCode = newCode
-            }
+        guard animated else {
+            iconCode = newCode
+            return
+        }
+        
+        withAnimation(.spring()) {
+            self.iconCode = newCode
         }
     }
     

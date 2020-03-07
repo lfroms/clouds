@@ -21,7 +21,7 @@ struct AppStateToWeatherBinder: ViewModifier {
         self.weatherService = weatherService
 
         weatherCancellable = weatherService.didLoadUpdatedWeather.sink(receiveValue: setIconCodeToCurrentConditions)
-        appStateCancellable = appState.activeSectionDidChange.sink(receiveValue: changeIconCodeBasedOnSection)
+        appStateCancellable = appState.activeSectionDidChange.receive(on: RunLoop.main).sink(receiveValue: changeIconCodeBasedOnSection)
     }
 
     func body(content: Content) -> some View {

@@ -21,7 +21,6 @@ struct DrawerScrollView<Content>: UIViewControllerRepresentable, Equatable where
     }
 
     func updateUIViewController(_ viewController: MainPagingScrollViewController, context: Context) {
-        viewController.hostingController.rootView = AnyView(self.content())
         viewController.travelDistance = self.travelDistance
         viewController.updateScrollViewContentHeight()
         viewController.isLocked = self.locked

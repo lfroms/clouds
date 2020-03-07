@@ -1,17 +1,14 @@
 //
-//  DailyForecast.swift
+//  DailyForecastItemData.swift
 //  Forecast
 //
-//  Created by Lukas Romsicki on 2020-02-29.
+//  Created by Lukas Romsicki on 2020-03-07.
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
 import Foundation
-import SwiftDate
 
-struct DailyForecast {
-    let id = UUID()
-
+struct DailyForecastItemData: Equatable, Hashable {
     let when: String
     let iconCode: Int
     let temperature: Double

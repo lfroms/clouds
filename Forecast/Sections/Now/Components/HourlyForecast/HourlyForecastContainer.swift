@@ -18,11 +18,14 @@ struct HourlyForecastContainer: View {
     }
 
     private var items: [HourlyForecastItemData] {
-        guard let activeLocation = weatherService.activeLocation else {
+        guard
+            let activeLocation = weatherService.activeLocation,
+            let hours = activeLocation.hourlyForecast?.hours
+        else {
             return []
         }
 
-        return activeLocation.hourlyForecast?.hours?.compactMap {
+        return hours.compactMap {
             HourlyForecastItemData(
                 date: DateHelper.inUTCTime(time: $0.time).convertTo(region: .current),
                 symbolName: ForecastIcon.forCode($0.iconCode),
@@ -32,7 +35,7 @@ struct HourlyForecastContainer: View {
                 windSpeed: $0.wind?.speed,
                 pop: $0.precipProbability
             )
-        } ?? []
+        }
     }
 }
 

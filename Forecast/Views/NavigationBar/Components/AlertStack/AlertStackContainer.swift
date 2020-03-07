@@ -12,10 +12,13 @@ struct AlertStackContainer: View {
     @EnvironmentObject private var weatherService: WeatherService
     @State private var showWarningDetails: Bool = false
 
+    @ViewBuilder
     var body: some View {
-        AlertStack(alerts: alerts, action: handleAlertAction)
-            .equatable()
-            .sheet(isPresented: $showWarningDetails, content: renderSheet)
+        if alerts.count > 0 {
+            AlertStack(alerts: alerts, action: handleAlertAction)
+                .equatable()
+                .sheet(isPresented: $showWarningDetails, content: renderSheet)
+        }
     }
 
     private var alerts: [WeatherAlert] {

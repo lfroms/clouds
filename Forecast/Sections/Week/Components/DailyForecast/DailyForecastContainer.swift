@@ -1,37 +1,28 @@
 //
-//  DailyForecastGroup.swift
+//  DailyForecastContainer.swift
 //  Forecast
 //
-//  Created by Lukas Romsicki on 2020-03-01.
+//  Created by Lukas Romsicki on 2020-03-07.
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
 import SwiftUI
 
-struct DailyForecastGroup: View {
+struct DailyForecastContainer: View {
     @EnvironmentObject private var weatherService: WeatherService
 
     var body: some View {
-        VStack {
-            // Push content to bottom
-            Spacer()
-
-            HStack(alignment: .top, spacing: Dimension.WeekSection.cardSpacing) {
-                ForEach(self.days, id: \.id) { day in
-                    DailyForecastView(data: day)
-                }
-            }
-            .padding(Dimension.Header.padding)
-        }
+        DailyForecast(days: days)
+            .equatable()
     }
 
-    private var days: [DailyForecast] {
+    private var days: [DailyForecastItemData] {
         guard let days = weatherService.activeLocation?.dailyForecast?.days else {
             return []
         }
 
         return days.compactMap { day in
-            DailyForecast(
+            DailyForecastItemData(
                 when: day.when,
                 iconCode: day.iconCode,
                 temperature: day.temperature,
@@ -43,8 +34,8 @@ struct DailyForecastGroup: View {
     }
 }
 
-struct DailyForecastGroup_Previews: PreviewProvider {
+struct DailyForecastContainer_Previews: PreviewProvider {
     static var previews: some View {
-        DailyForecastGroup()
+        DailyForecastContainer()
     }
 }
