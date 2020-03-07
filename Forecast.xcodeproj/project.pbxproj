@@ -75,6 +75,8 @@
 		806A5BF024144E4C0093361D /* VisualState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806A5BEF24144E4C0093361D /* VisualState.swift */; };
 		806A5BF224144EC40093361D /* LocationPickerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806A5BF124144EC40093361D /* LocationPickerState.swift */; };
 		806A5BF424144F800093361D /* SettingsSheetState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806A5BF324144F800093361D /* SettingsSheetState.swift */; };
+		806A5BF8241468280093361D /* WeekSectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806A5BF7241468280093361D /* WeekSectionState.swift */; };
+		806A5BFA241468970093361D /* VisualStateToWeekSectionStateAndWeatherBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806A5BF9241468970093361D /* VisualStateToWeekSectionStateAndWeatherBinder.swift */; };
 		806EBCA223F2560600086F46 /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EBCA123F2560600086F46 /* LocationPickerViewController.swift */; };
 		80734AFB2410A435000693F4 /* MeasurementDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80734AFA2410A435000693F4 /* MeasurementDescriptor.swift */; };
 		80734AFE2410A512000693F4 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80734AFD2410A512000693F4 /* GridStack.swift */; };
@@ -229,6 +231,8 @@
 		806A5BEF24144E4C0093361D /* VisualState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualState.swift; sourceTree = "<group>"; };
 		806A5BF124144EC40093361D /* LocationPickerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerState.swift; sourceTree = "<group>"; };
 		806A5BF324144F800093361D /* SettingsSheetState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheetState.swift; sourceTree = "<group>"; };
+		806A5BF7241468280093361D /* WeekSectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSectionState.swift; sourceTree = "<group>"; };
+		806A5BF9241468970093361D /* VisualStateToWeekSectionStateAndWeatherBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualStateToWeekSectionStateAndWeatherBinder.swift; sourceTree = "<group>"; };
 		806EBCA123F2560600086F46 /* LocationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
 		80734AFA2410A435000693F4 /* MeasurementDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementDescriptor.swift; sourceTree = "<group>"; };
 		80734AFD2410A512000693F4 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
@@ -476,9 +480,10 @@
 			isa = PBXGroup;
 			children = (
 				80C395AE2378A1DA0004B71D /* AppState.swift */,
-				806A5BEF24144E4C0093361D /* VisualState.swift */,
 				806A5BF124144EC40093361D /* LocationPickerState.swift */,
 				806A5BF324144F800093361D /* SettingsSheetState.swift */,
+				806A5BEF24144E4C0093361D /* VisualState.swift */,
+				806A5BF7241468280093361D /* WeekSectionState.swift */,
 			);
 			path = States;
 			sourceTree = "<group>";
@@ -619,6 +624,7 @@
 			children = (
 				805D6A0724100E0A002DEBAC /* WeatherToLocationBinder.swift */,
 				805D6A09241015F1002DEBAC /* VisualStateToAppStateAndWeatherBinder.swift */,
+				806A5BF9241468970093361D /* VisualStateToWeekSectionStateAndWeatherBinder.swift */,
 			);
 			path = Binders;
 			sourceTree = "<group>";
@@ -1283,6 +1289,7 @@
 				80D16CF5241446F400AD8F4D /* DailyForecastPagingScrollViewContainer.swift in Sources */,
 				80E32BAE233454DD0087DBB3 /* SystemActivityIndicator.swift in Sources */,
 				80B8DB94232C7BBF00BAD200 /* WeatherBackground.swift in Sources */,
+				806A5BF8241468280093361D /* WeekSectionState.swift in Sources */,
 				80FB6C67240873250026DD83 /* LocationSearchService.swift in Sources */,
 				80EF84F6240F663B00D4037B /* Container.swift in Sources */,
 				8050327F22D25C7500D376C3 /* HighLowStack.swift in Sources */,
@@ -1357,6 +1364,7 @@
 				80A646C423F5E95800C80633 /* HostingView.swift in Sources */,
 				80DFF9FA23FA2B1100908B86 /* LocationPickerData.swift in Sources */,
 				803028D822CEE56D0053F639 /* ObservationView.swift in Sources */,
+				806A5BFA241468970093361D /* VisualStateToWeekSectionStateAndWeatherBinder.swift in Sources */,
 				80A646C223F5DAE400C80633 /* LocationSearchResultItem.swift in Sources */,
 				80C395A523787F660004B71D /* Date+TimeAgo.swift in Sources */,
 				80C777DE23FB4985004ABB2E /* LocationItemContainer.swift in Sources */,
