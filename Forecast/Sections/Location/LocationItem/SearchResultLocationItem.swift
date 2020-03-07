@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct SearchResultLocationItem: View {
-    @EnvironmentObject private var appState: AppState
     @EnvironmentObject private var weatherService: WeatherService
+    @EnvironmentObject private var locationPickerState: LocationPickerState
     @EnvironmentObject private var locationFavoritesService: LocationFavoritesService
 
     let location: Location
@@ -25,7 +25,7 @@ struct SearchResultLocationItem: View {
     }
 
     private func onPressAction() {
-        appState.toggleLocationPicker(animated: true)
+        locationPickerState.toggleLocationPicker(animated: true)
 
         locationFavoritesService.saveActiveLocation(location: location)
         weatherService.setShouldFetchUpdatedWeather()

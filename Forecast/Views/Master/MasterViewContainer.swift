@@ -10,6 +10,7 @@ import SwiftUI
 
 struct MasterViewContainer: Container {
     @EnvironmentObject var appState: AppState
+    @EnvironmentObject var settingsSheetState: SettingsSheetState
     @EnvironmentObject var weatherService: WeatherService
 
     var body: some View {
@@ -22,7 +23,7 @@ struct MasterViewContainer: Container {
                 .equatable()
         }
         .equatable()
-        .sheet(isPresented: $appState.showingSettingsSheet) {
+        .sheet(isPresented: $settingsSheetState.presented) {
             SettingsSection()
         }
     }

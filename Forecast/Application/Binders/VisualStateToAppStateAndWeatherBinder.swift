@@ -1,5 +1,5 @@
 //
-//  AppStateToWeatherBinder.swift
+//  VisualStateToAppStateAndWeatherBinder.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2020-03-04.
@@ -9,15 +9,17 @@
 import Combine
 import SwiftUI
 
-struct AppStateToWeatherBinder: ViewModifier {
+struct VisualStateToAppStateAndWeatherBinder: ViewModifier {
     private var appState: AppState
+    private var visualState: VisualState
     private var weatherService: WeatherService
 
     private lazy var weatherCancellable: AnyCancellable? = nil
     private lazy var appStateCancellable: AnyCancellable? = nil
 
-    init(appState: AppState, weatherService: WeatherService) {
+    init(appState: AppState, visualState: VisualState, weatherService: WeatherService) {
         self.appState = appState
+        self.visualState = visualState
         self.weatherService = weatherService
 
         weatherCancellable = weatherService.didLoadUpdatedWeather.sink(receiveValue: setIconCodeToCurrentConditions)
@@ -31,11 +33,11 @@ struct AppStateToWeatherBinder: ViewModifier {
     // MARK: - Binding Functions
 
     private func setIconCodeToCurrentConditions() {
-        appState.setIconCode(to: weatherService.activeLocation?.currentConditions?.iconCode, animated: true)
+        visualState.setIconCode(to: weatherService.activeLocation?.currentConditions?.iconCode, animated: true)
     }
 
     private func setIconCodeToFirstInDailyForecast() {
-        appState.setIconCode(to: weatherService.activeLocation?.dailyForecast?.days?.first?.iconCode, animated: true)
+        visualState.setIconCode(to: weatherService.activeLocation?.dailyForecast?.days?.first?.iconCode, animated: true)
     }
 
     private func changeIconCodeBasedOnSection() {

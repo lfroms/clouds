@@ -54,7 +54,7 @@
 		805D6A032410054A002DEBAC /* AppHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D6A022410054A002DEBAC /* AppHostingController.swift */; };
 		805D6A0524100A39002DEBAC /* CLLocationCoordinate2D+ToCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D6A0424100A39002DEBAC /* CLLocationCoordinate2D+ToCoordinate.swift */; };
 		805D6A0824100E0A002DEBAC /* WeatherToLocationBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D6A0724100E0A002DEBAC /* WeatherToLocationBinder.swift */; };
-		805D6A0A241015F1002DEBAC /* AppStateToWeatherBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D6A09241015F1002DEBAC /* AppStateToWeatherBinder.swift */; };
+		805D6A0A241015F1002DEBAC /* VisualStateToAppStateAndWeatherBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D6A09241015F1002DEBAC /* VisualStateToAppStateAndWeatherBinder.swift */; };
 		805D6A0C241039EF002DEBAC /* GraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D6A0B241039EF002DEBAC /* GraphQL.swift */; };
 		805D6A0E24104209002DEBAC /* AlertStackContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D6A0D24104209002DEBAC /* AlertStackContainer.swift */; };
 		805D6A1024104738002DEBAC /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D6A0F24104738002DEBAC /* DateHelper.swift */; };
@@ -72,6 +72,9 @@
 		80625423240C606A00638C2F /* UIScrollView+Clear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80625422240C606A00638C2F /* UIScrollView+Clear.swift */; };
 		80625427240C90CF00638C2F /* AppSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80625426240C90CF00638C2F /* AppSection.swift */; };
 		8066FDED2364EE030067F362 /* NowSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8066FDEC2364EE030067F362 /* NowSection.swift */; };
+		806A5BF024144E4C0093361D /* VisualState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806A5BEF24144E4C0093361D /* VisualState.swift */; };
+		806A5BF224144EC40093361D /* LocationPickerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806A5BF124144EC40093361D /* LocationPickerState.swift */; };
+		806A5BF424144F800093361D /* SettingsSheetState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806A5BF324144F800093361D /* SettingsSheetState.swift */; };
 		806EBCA223F2560600086F46 /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EBCA123F2560600086F46 /* LocationPickerViewController.swift */; };
 		80734AFB2410A435000693F4 /* MeasurementDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80734AFA2410A435000693F4 /* MeasurementDescriptor.swift */; };
 		80734AFE2410A512000693F4 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80734AFD2410A512000693F4 /* GridStack.swift */; };
@@ -205,7 +208,7 @@
 		805D6A022410054A002DEBAC /* AppHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHostingController.swift; sourceTree = "<group>"; };
 		805D6A0424100A39002DEBAC /* CLLocationCoordinate2D+ToCoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+ToCoordinate.swift"; sourceTree = "<group>"; };
 		805D6A0724100E0A002DEBAC /* WeatherToLocationBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherToLocationBinder.swift; sourceTree = "<group>"; };
-		805D6A09241015F1002DEBAC /* AppStateToWeatherBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateToWeatherBinder.swift; sourceTree = "<group>"; };
+		805D6A09241015F1002DEBAC /* VisualStateToAppStateAndWeatherBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualStateToAppStateAndWeatherBinder.swift; sourceTree = "<group>"; };
 		805D6A0B241039EF002DEBAC /* GraphQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQL.swift; sourceTree = "<group>"; };
 		805D6A0D24104209002DEBAC /* AlertStackContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertStackContainer.swift; sourceTree = "<group>"; };
 		805D6A0F24104738002DEBAC /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
@@ -223,6 +226,9 @@
 		80625422240C606A00638C2F /* UIScrollView+Clear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Clear.swift"; sourceTree = "<group>"; };
 		80625426240C90CF00638C2F /* AppSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSection.swift; sourceTree = "<group>"; };
 		8066FDEC2364EE030067F362 /* NowSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowSection.swift; sourceTree = "<group>"; };
+		806A5BEF24144E4C0093361D /* VisualState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualState.swift; sourceTree = "<group>"; };
+		806A5BF124144EC40093361D /* LocationPickerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerState.swift; sourceTree = "<group>"; };
+		806A5BF324144F800093361D /* SettingsSheetState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheetState.swift; sourceTree = "<group>"; };
 		806EBCA123F2560600086F46 /* LocationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
 		80734AFA2410A435000693F4 /* MeasurementDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementDescriptor.swift; sourceTree = "<group>"; };
 		80734AFD2410A512000693F4 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
@@ -470,6 +476,9 @@
 			isa = PBXGroup;
 			children = (
 				80C395AE2378A1DA0004B71D /* AppState.swift */,
+				806A5BEF24144E4C0093361D /* VisualState.swift */,
+				806A5BF124144EC40093361D /* LocationPickerState.swift */,
+				806A5BF324144F800093361D /* SettingsSheetState.swift */,
 			);
 			path = States;
 			sourceTree = "<group>";
@@ -609,7 +618,7 @@
 			isa = PBXGroup;
 			children = (
 				805D6A0724100E0A002DEBAC /* WeatherToLocationBinder.swift */,
-				805D6A09241015F1002DEBAC /* AppStateToWeatherBinder.swift */,
+				805D6A09241015F1002DEBAC /* VisualStateToAppStateAndWeatherBinder.swift */,
 			);
 			path = Binders;
 			sourceTree = "<group>";
@@ -1238,6 +1247,7 @@
 				80C395A8237888CD0004B71D /* IndicatorShape.swift in Sources */,
 				8020F9532363D2390029FEB6 /* MasterView.swift in Sources */,
 				80C395A323787B9B0004B71D /* ObservedAtTime.swift in Sources */,
+				806A5BF424144F800093361D /* SettingsSheetState.swift in Sources */,
 				8066FDED2364EE030067F362 /* NowSection.swift in Sources */,
 				80D1896D22D03A2F00E56DB1 /* HighLowView.swift in Sources */,
 				80C395B22378B2340004B71D /* RadarControls.swift in Sources */,
@@ -1250,6 +1260,7 @@
 				8099A20F23130CED00EE4F30 /* CustomSafariViewController.swift in Sources */,
 				80734AFE2410A512000693F4 /* GridStack.swift in Sources */,
 				8048092E23FB4BC30019ACC2 /* CurrentLocationItem.swift in Sources */,
+				806A5BF224144EC40093361D /* LocationPickerState.swift in Sources */,
 				802C0D9C236903C6009A22BA /* SunriseSunsetTime.swift in Sources */,
 				80504F782332DB4700DB4FAD /* HourlyForecastDetail.swift in Sources */,
 				80FECAF523778361008AC653 /* RadarSection.swift in Sources */,
@@ -1324,7 +1335,7 @@
 				80D871AF23F1F671001FBA94 /* UIFont+PreferredWithWeight.swift in Sources */,
 				805D6A0E24104209002DEBAC /* AlertStackContainer.swift in Sources */,
 				80C395B52378C6490004B71D /* RadarTileOverlay.swift in Sources */,
-				805D6A0A241015F1002DEBAC /* AppStateToWeatherBinder.swift in Sources */,
+				805D6A0A241015F1002DEBAC /* VisualStateToAppStateAndWeatherBinder.swift in Sources */,
 				80C395AD23789FDD0004B71D /* RoundedCornerShape.swift in Sources */,
 				801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */,
 				805D6A1324105708002DEBAC /* TabPreferenceData.swift in Sources */,
@@ -1341,6 +1352,7 @@
 				805A174A22C53ADB00E1B4E2 /* AppLayout.swift in Sources */,
 				80FB6C6D2408A6130026DD83 /* LocationItemStarButton.swift in Sources */,
 				8057DB512364F0F20087FBF7 /* AlertIndicator.swift in Sources */,
+				806A5BF024144E4C0093361D /* VisualState.swift in Sources */,
 				80985F5A240E1F1D00452D08 /* UnixTimestampTypealias.swift in Sources */,
 				80A646C423F5E95800C80633 /* HostingView.swift in Sources */,
 				80DFF9FA23FA2B1100908B86 /* LocationPickerData.swift in Sources */,

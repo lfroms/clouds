@@ -10,6 +10,7 @@ import SwiftUI
 
 struct LocationPickerSection: View {
     @EnvironmentObject private var appState: AppState
+    @EnvironmentObject private var locationPickerState: LocationPickerState
     @EnvironmentObject private var weatherService: WeatherService
     @EnvironmentObject private var locationService: LocationService
     @EnvironmentObject private var locationSearchService: LocationSearchService
@@ -33,11 +34,11 @@ struct LocationPickerSection: View {
     }
 
     private var searchOffset: CGSize {
-        return CGSize(width: 0, height: self.appState.showingLocationPicker ? 0 : Dimension.System.screenHeight)
+        return CGSize(width: 0, height: self.locationPickerState.presented ? 0 : Dimension.System.screenHeight)
     }
 
     private func handlePickerDismiss() {
-        self.appState.toggleLocationPicker(animated: true)
+        self.locationPickerState.toggleLocationPicker(animated: true)
         self.locationSearchService.searchQuery.clear()
     }
 }

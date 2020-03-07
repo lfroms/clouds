@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct WeatherBackground: View {
-    @EnvironmentObject private var appState: AppState
+    @EnvironmentObject private var visualState: VisualState
 
     @State private var alternateGradient: Bool = false
     @State private var gradientA: [Color] = []
@@ -21,17 +21,17 @@ struct WeatherBackground: View {
             LinearGradient(gradient: Gradient(colors: gradientB), startPoint: .topTrailing, endPoint: .bottomLeading)
                 .opacity(alternateGradient ? 0 : 1)
         }
-        .onReceive(appState.iconCodeDidChange, perform: self.animateGradient)
+        .onReceive(visualState.iconCodeDidChange, perform: self.animateGradient)
     }
 
     private static let colorPrefix = "color"
 
     private var highColorName: String {
-        "\(Self.colorPrefix)-\(appState.iconCode)-high"
+        "\(Self.colorPrefix)-\(visualState.iconCode)-high"
     }
 
     private var lowColorName: String {
-        "\(Self.colorPrefix)-\(appState.iconCode)-low"
+        "\(Self.colorPrefix)-\(visualState.iconCode)-low"
     }
 
     private var gradientSteps: [Color] {
@@ -52,7 +52,7 @@ struct WeatherBackground: View {
         alternateGradient.toggle()
     }
 
-    private func animateGradient(_: AppState.ObjectWillChangePublisher.Output) {
+    private func animateGradient(_: VisualState.ObjectWillChangePublisher.Output) {
         setGradient(steps: gradientSteps)
     }
 }
@@ -60,6 +60,6 @@ struct WeatherBackground: View {
 struct BackgroundColor_Previews: PreviewProvider {
     static var previews: some View {
         WeatherBackground()
-            .environmentObject(AppState())
+            .environmentObject(VisualState())
     }
 }

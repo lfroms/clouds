@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct DailyForecastPagingScrollViewContainer: View {
-    @EnvironmentObject private var appState: AppState
+    @EnvironmentObject private var visualState: VisualState
     @EnvironmentObject private var weatherService: WeatherService
 
     var body: some View {
@@ -20,7 +20,7 @@ struct DailyForecastPagingScrollViewContainer: View {
     }
 
     private func didChangePage(page: Int) {
-        appState.setIconCode(to: weatherService.activeLocation?.dailyForecast?.days?[page].iconCode, animated: true)
+        visualState.setIconCode(to: weatherService.activeLocation?.dailyForecast?.days?[page].iconCode, animated: true)
     }
 }
 

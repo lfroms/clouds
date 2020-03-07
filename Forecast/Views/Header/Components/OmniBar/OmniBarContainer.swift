@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct OmniBarContainer: Container {
-    @EnvironmentObject private var appState: AppState
+    @EnvironmentObject private var settingsSheetState: SettingsSheetState
+    @EnvironmentObject private var locationPickerState: LocationPickerState
     @EnvironmentObject private var locationService: LocationService
     @EnvironmentObject private var locationFavoritesService: LocationFavoritesService
     @EnvironmentObject private var locationSearchService: LocationSearchService
@@ -17,36 +18,36 @@ struct OmniBarContainer: Container {
     var body: some View {
         OmniBar(
             textFieldValue: textFieldValue,
-            readOnly: !appState.showingLocationPicker,
+            readOnly: !locationPickerState.presented,
             primaryIcon: primaryIcon,
             auxiliaryIcon: auxiliaryIcon,
             didBecomeActive: omniBarDidBecomeActive,
             auxiliaryAction: clearOrClose
         )
         .equatable()
-        .onReceive(appState.objectWillChange, perform: clearIfAboutToClose)
+        .onReceive(locationPickerState.objectWillChange, perform: clearIfAboutToClose)
     }
 
     // MARK: - Actions
 
     private func omniBarDidBecomeActive() {
-        appState.toggleLocationPicker(animated: true)
+        locationPickerState.toggleLocationPicker(animated: true)
     }
 
-    private func clearIfAboutToClose(_: AppState.ObjectWillChangePublisher.Output) {
-        if !appState.showingLocationPicker, !locationSearchService.searchQuery.isEmpty {
+    private func clearIfAboutToClose(_: LocationPickerState.ObjectWillChangePublisher.Output) {
+        if !locationPickerState.presented, !locationSearchService.searchQuery.isEmpty {
             locationSearchService.searchQuery = .empty
         }
     }
 
     private func clearOrClose() {
-        guard appState.showingLocationPicker else {
-            appState.showingSettingsSheet.toggle()
+        guard locationPickerState.presented else {
+            settingsSheetState.presented.toggle()
             return
         }
 
         if locationSearchService.searchQuery.isEmpty {
-            appState.toggleLocationPicker(animated: true)
+            locationPickerState.toggleLocationPicker(animated: true)
             return
         }
 
@@ -56,7 +57,7 @@ struct OmniBarContainer: Container {
     // MARK: - Text Field
 
     private var textFieldIsReadOnly: Bool {
-        !appState.showingLocationPicker
+        !locationPickerState.presented
     }
 
     private var textFieldValue: Binding<String> {
@@ -69,7 +70,7 @@ struct OmniBarContainer: Container {
     }
 
     private var textFieldTextToDisplay: String {
-        if appState.showingLocationPicker {
+        if locationPickerState.presented {
             return locationSearchService.searchQuery
         }
 
@@ -87,7 +88,7 @@ struct OmniBarContainer: Container {
     // MARK: - Icons
 
     private var primaryIcon: String {
-        if appState.showingLocationPicker || textFieldTextToDisplay.isEmpty {
+        if locationPickerState.presented || textFieldTextToDisplay.isEmpty {
             return SFSymbol.magnifyingGlass
         }
 
@@ -99,7 +100,7 @@ struct OmniBarContainer: Container {
     }
 
     private var auxiliaryIcon: String {
-        appState.showingLocationPicker
+        locationPickerState.presented
             ? SFSymbol.xMarkCircleFilled
             : SFSymbol.sliderHorizontal3
     }
@@ -108,7 +109,7 @@ struct OmniBarContainer: Container {
 struct OmniBarContainer_Previews: PreviewProvider {
     static var previews: some View {
         OmniBarContainer()
-            .environmentObject(AppState())
+            .environmentObject(LocationPickerState())
             .environmentObject(LocationSearchService())
     }
 }

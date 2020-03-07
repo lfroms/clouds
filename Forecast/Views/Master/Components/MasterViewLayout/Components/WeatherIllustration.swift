@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct WeatherIllustration: View {
-    @EnvironmentObject private var appState: AppState
+    @EnvironmentObject private var visualState: VisualState
 
     @State private var alternateImage: Bool = false
     @State private var imageA: String = ""
@@ -27,7 +27,7 @@ struct WeatherIllustration: View {
             }
         }
         .frame(width: Dimension.System.screenWidth)
-        .onReceive(appState.iconCodeDidChange, perform: self.animateImage)
+        .onReceive(visualState.iconCodeDidChange, perform: self.animateImage)
     }
 
     private let transition: AnyTransition = .asymmetric(
@@ -47,12 +47,12 @@ struct WeatherIllustration: View {
         alternateImage.toggle()
     }
 
-    private func animateImage(_: AppState.ObjectWillChangePublisher.Output) {
+    private func animateImage(_: VisualState.ObjectWillChangePublisher.Output) {
         setImage(name: imageName)
     }
 
     private var imageName: String {
-        "image-\(appState.iconCode)"
+        "image-\(visualState.iconCode)"
     }
 }
 

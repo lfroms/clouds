@@ -9,10 +9,10 @@
 import SwiftUI
 
 struct HeaderGradientContainer: Container {
-    @EnvironmentObject private var appState: AppState
+    @EnvironmentObject private var locationPickerState: LocationPickerState
 
     var body: some View {
-        HeaderGradient(style: appState.showingLocationPicker ? .prominent : .normal)
+        HeaderGradient(style: locationPickerState.presented ? .prominent : .normal)
             .equatable()
     }
 }

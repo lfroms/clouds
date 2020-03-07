@@ -10,6 +10,10 @@ import SwiftUI
 
 struct AppServices: ViewModifier {
     private static var appState: AppState = AppState()
+    private static var visualState: VisualState = VisualState()
+    private static var locationPickerState: LocationPickerState = LocationPickerState()
+    private static var settingsSheetState: SettingsSheetState = SettingsSheetState()
+
     private static var weatherService: WeatherService = WeatherService()
     private static var locationService: LocationService = LocationService()
     private static var locationSearchService: LocationSearchService = LocationSearchService()
@@ -19,6 +23,9 @@ struct AppServices: ViewModifier {
         content
             .colorScheme(.dark)
             .environmentObject(Self.appState)
+            .environmentObject(Self.visualState)
+            .environmentObject(Self.locationPickerState)
+            .environmentObject(Self.settingsSheetState)
             .environmentObject(Self.weatherService)
             .environmentObject(Self.locationService)
             .environmentObject(Self.locationSearchService)
@@ -29,8 +36,9 @@ struct AppServices: ViewModifier {
                 locationService: Self.locationService,
                 locationFavoritesService: Self.locationFavoritesService
             ))
-            .modifier(AppStateToWeatherBinder(
+            .modifier(VisualStateToAppStateAndWeatherBinder(
                 appState: Self.appState,
+                visualState: Self.visualState,
                 weatherService: Self.weatherService
             ))
     }
