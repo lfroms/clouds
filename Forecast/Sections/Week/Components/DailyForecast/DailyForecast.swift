@@ -18,7 +18,7 @@ struct DailyForecast: View {
 
             HStack(alignment: .top, spacing: Dimension.WeekSection.cardSpacing) {
                 ForEach(self.days, id: \.self) { day in
-                    DailyForecastView(data: day)
+                    DailyForecastItem(data: day)
                         .equatable()
                 }
             }

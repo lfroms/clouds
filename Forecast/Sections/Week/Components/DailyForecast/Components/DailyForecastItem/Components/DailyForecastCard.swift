@@ -34,10 +34,12 @@ struct DailyForecastCard: View {
                 HStack(alignment: .center, spacing: 10) {
                     if parsedWindSpeed != nil {
                         DailyForecastDetail(symbol: "wind", text: parsedWindSpeed!)
+                            .equatable()
                     }
 
                     if pop != nil {
                         DailyForecastDetail(symbol: "umbrella.fill", text: "\(self.pop!)%")
+                            .equatable()
                     }
                 }
             }
@@ -58,6 +60,8 @@ struct DailyForecastCard: View {
         return windSpeed
     }
 }
+
+extension DailyForecastCard: Equatable {}
 
 struct ForecastView_Previews: PreviewProvider {
     static var previews: some View {

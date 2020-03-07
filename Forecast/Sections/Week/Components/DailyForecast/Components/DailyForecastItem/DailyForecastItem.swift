@@ -1,5 +1,5 @@
 //
-//  DailyForecastView.swift
+//  DailyForecastItem.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-10-29.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DailyForecastView: View {
+struct DailyForecastItem: View {
     var data: DailyForecastItemData
 
     var body: some View {
@@ -25,6 +25,7 @@ struct DailyForecastView: View {
                 windSpeed: data.windSpeed,
                 pop: data.pop
             )
+            .equatable()
         }
     }
 
@@ -33,15 +34,15 @@ struct DailyForecastView: View {
     }
 }
 
-extension DailyForecastView: Equatable {
-    static func == (lhs: DailyForecastView, rhs: DailyForecastView) -> Bool {
+extension DailyForecastItem: Equatable {
+    static func == (lhs: DailyForecastItem, rhs: DailyForecastItem) -> Bool {
         lhs.data == rhs.data
     }
 }
 
 struct LabelledForecastView_Previews: PreviewProvider {
     static var previews: some View {
-        DailyForecastView(
+        DailyForecastItem(
             data: .init(
                 when: "Today",
                 iconCode: 6,

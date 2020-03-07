@@ -21,6 +21,8 @@ struct DailyForecastDetail: View {
     }
 }
 
+extension DailyForecastDetail: Equatable {}
+
 struct ForecastDetailView_Previews: PreviewProvider {
     static var previews: some View {
         DailyForecastDetail(symbol: "umbrella.fill", text: "25%")
