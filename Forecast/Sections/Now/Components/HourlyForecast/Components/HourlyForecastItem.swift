@@ -125,6 +125,12 @@ struct HourlyForecastItem: View {
     }
 }
 
+extension HourlyForecastItem: Equatable {
+    static func == (lhs: HourlyForecastItem, rhs: HourlyForecastItem) -> Bool {
+        lhs.viewModel == rhs.viewModel
+    }
+}
+
 struct HourlyForecastItem_Previews: PreviewProvider {
     static var previews: some View {
         HourlyForecastItem(
