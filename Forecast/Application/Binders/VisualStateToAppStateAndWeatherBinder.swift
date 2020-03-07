@@ -22,8 +22,14 @@ struct VisualStateToAppStateAndWeatherBinder: ViewModifier {
         self.visualState = visualState
         self.weatherService = weatherService
 
-        weatherCancellable = weatherService.didLoadUpdatedWeather.sink(receiveValue: setIconCodeToCurrentConditions)
-        appStateCancellable = appState.activeSectionDidChange.receive(on: RunLoop.main).sink(receiveValue: changeIconCodeBasedOnSection)
+        weatherCancellable = weatherService.didLoadUpdatedWeather
+            .receive(on: RunLoop.main)
+            .debounce(for: .seconds(0.2), scheduler: RunLoop.main)
+            .sink(receiveValue: changeIconCodeBasedOnSection)
+
+        appStateCancellable = appState.activeSectionDidChange
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: changeIconCodeBasedOnSection)
     }
 
     func body(content: Content) -> some View {
