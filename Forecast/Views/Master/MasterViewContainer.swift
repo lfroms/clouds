@@ -15,8 +15,7 @@ struct MasterViewContainer: Container {
 
     var body: some View {
         MasterView(handleExists: !self.appState.slidingPanelLocked) {
-            CurrentSection(section: self.$appState.activeSection)
-                .equatable()
+            CurrentSectionContainer()
         }
         .equatable()
         .sheet(isPresented: $settingsSheetState.presented) {

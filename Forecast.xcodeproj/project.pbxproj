@@ -78,6 +78,7 @@
 		806A5BF8241468280093361D /* WeekSectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806A5BF7241468280093361D /* WeekSectionState.swift */; };
 		806A5BFA241468970093361D /* VisualStateToWeekSectionStateAndWeatherBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806A5BF9241468970093361D /* VisualStateToWeekSectionStateAndWeatherBinder.swift */; };
 		806A5BFC24146C8B0093361D /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806A5BFB24146C8B0093361D /* Collection+Safe.swift */; };
+		806A5C00241481B90093361D /* CurrentSectionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806A5BFF241481B90093361D /* CurrentSectionContainer.swift */; };
 		806EBCA223F2560600086F46 /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EBCA123F2560600086F46 /* LocationPickerViewController.swift */; };
 		80734AFB2410A435000693F4 /* MeasurementDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80734AFA2410A435000693F4 /* MeasurementDescriptor.swift */; };
 		80734AFE2410A512000693F4 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80734AFD2410A512000693F4 /* GridStack.swift */; };
@@ -235,6 +236,7 @@
 		806A5BF7241468280093361D /* WeekSectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSectionState.swift; sourceTree = "<group>"; };
 		806A5BF9241468970093361D /* VisualStateToWeekSectionStateAndWeatherBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualStateToWeekSectionStateAndWeatherBinder.swift; sourceTree = "<group>"; };
 		806A5BFB24146C8B0093361D /* Collection+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
+		806A5BFF241481B90093361D /* CurrentSectionContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSectionContainer.swift; sourceTree = "<group>"; };
 		806EBCA123F2560600086F46 /* LocationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
 		80734AFA2410A435000693F4 /* MeasurementDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementDescriptor.swift; sourceTree = "<group>"; };
 		80734AFD2410A512000693F4 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
@@ -892,6 +894,7 @@
 				8038DB4723F0AC8700F7B033 /* Location */,
 				802048C5240AE2E600DFB842 /* Settings */,
 				802C0D972368FE32009A22BA /* CurrentSection.swift */,
+				806A5BFF241481B90093361D /* CurrentSectionContainer.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -1373,6 +1376,7 @@
 				80C395A523787F660004B71D /* Date+TimeAgo.swift in Sources */,
 				80C777DE23FB4985004ABB2E /* LocationItemContainer.swift in Sources */,
 				800908D82413694D0024300D /* DailyForecastContainer.swift in Sources */,
+				806A5C00241481B90093361D /* CurrentSectionContainer.swift in Sources */,
 				80C395AA23788A6B0004B71D /* AppActivityIndicator.swift in Sources */,
 				8076F72623651CD000FB85D1 /* SlidingPanel.swift in Sources */,
 				80EF84E7240F52F000D4037B /* MasterViewContainer.swift in Sources */,

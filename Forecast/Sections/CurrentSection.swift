@@ -8,23 +8,28 @@
 
 import SwiftUI
 
-struct CurrentSection: View, Equatable {
+struct CurrentSection: View {
     @Binding var section: AppSection
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            WeekSection()
-                .opacity(section == .week ? 1 : 0)
-
             NowSection()
                 .opacity(section == .now ? 1 : 0)
+                .animation(.easeInOut)
 
-//            RadarSection()
-//                .opacity(section == .radar ? 1 : 0)
+            WeekSection()
+                .opacity(section == .week ? 1 : 0)
+                .animation(.easeInOut)
+
+            if section == .radar {
+                RadarSection()
+            }
         }
         .frame(width: Dimension.System.screenWidth)
     }
+}
 
+extension CurrentSection: Equatable {
     static func == (lhs: CurrentSection, rhs: CurrentSection) -> Bool {
         lhs.section == rhs.section
     }
