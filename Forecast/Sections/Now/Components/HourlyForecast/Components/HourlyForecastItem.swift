@@ -50,15 +50,14 @@ struct HourlyForecastItem: View {
         .background(backgroundColor)
         .cornerRadius(30)
         .onTapGesture(perform: handleTapGesture)
+        .animation(AnimationPreset.Touch.expand)
     }
 
     private func handleTapGesture() {
         let generator = UISelectionFeedbackGenerator()
         generator.selectionChanged()
 
-        withAnimation(AnimationPreset.Touch.expand) {
-            expanded.toggle()
-        }
+        expanded.toggle()
 
         collapseAfter(seconds: 4)
     }
@@ -71,9 +70,7 @@ struct HourlyForecastItem: View {
         workItemService.pendingWorkItem?.cancel()
 
         let requestWorkItem = DispatchWorkItem {
-            withAnimation(AnimationPreset.Touch.expand) {
-                self.expanded = false
-            }
+            self.expanded = false
         }
 
         workItemService.pendingWorkItem = requestWorkItem
