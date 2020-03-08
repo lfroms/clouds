@@ -17,6 +17,8 @@ struct NowSection: View {
 
             HourlyForecastContainer()
         }
+        .transition(.identity)
+        .animation(nil)
     }
 }
 
