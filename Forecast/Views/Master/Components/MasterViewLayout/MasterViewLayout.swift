@@ -31,12 +31,16 @@ struct MasterViewLayout<Content: View>: View {
             VStack(alignment: .center, spacing: 0) {
                 content()
 
-                if handleExists {
-                    DrawerHandle(height: 20)
-                        .opacity(handleHidden ? 0 : 1)
-                        .animation(.easeInOut)
-                        .drawingGroup()
+                VStack {
+                    if handleExists {
+                        DrawerHandle(height: 20)
+                            .opacity(handleHidden ? 0 : 1)
+                            .animation(.easeInOut)
+                            .drawingGroup()
+                    }
                 }
+                .transition(.opacity)
+                .animation(.easeInOut)
             }
         }
     }
