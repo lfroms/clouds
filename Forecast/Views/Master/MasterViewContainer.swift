@@ -14,11 +14,7 @@ struct MasterViewContainer: Container {
     @EnvironmentObject var weatherService: WeatherService
 
     var body: some View {
-        MasterView(
-            usesStandardLayout: self.appState.activeSection == .radar,
-            handleExists: !self.appState.slidingPanelLocked,
-            handleHidden: self.weatherService.loading
-        ) {
+        MasterView(handleExists: !self.appState.slidingPanelLocked) {
             CurrentSection(section: self.$appState.activeSection)
                 .equatable()
         }
