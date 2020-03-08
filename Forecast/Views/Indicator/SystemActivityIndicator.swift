@@ -11,7 +11,7 @@ import UIKit
 
 struct SystemActivityIndicator: UIViewRepresentable {
     @Binding var animating: Bool
-    let style: UIActivityIndicatorView.Style
+    var style: UIActivityIndicatorView.Style
 
     func makeUIView(context: UIViewRepresentableContext<SystemActivityIndicator>) -> UIActivityIndicatorView {
         return UIActivityIndicatorView(style: style)

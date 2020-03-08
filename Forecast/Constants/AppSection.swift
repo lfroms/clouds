@@ -13,5 +13,9 @@ enum AppSection: String {
     case week = "Week"
     case radar = "Radar"
 
+    var name: String {
+        self.rawValue
+    }
+
     static let list: [AppSection] = [.now, .week, .radar]
 }

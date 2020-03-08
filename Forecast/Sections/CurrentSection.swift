@@ -11,17 +11,27 @@ import SwiftUI
 struct CurrentSection: View {
     @Binding var section: AppSection
 
-    @ViewBuilder
     var body: some View {
-        if section == .week {
-            WeekSection()
-        }
-        else if section == .radar {
-            RadarSection()
-        }
-        else {
+        ZStack(alignment: .bottom) {
             NowSection()
+                .opacity(section == .now ? 1 : 0)
+                .animation(.easeInOut)
+
+            WeekSection()
+                .opacity(section == .week ? 1 : 0)
+                .animation(.easeInOut)
+
+            if section == .radar {
+                RadarSection()
+            }
         }
+        .frame(width: Dimension.System.screenWidth)
+    }
+}
+
+extension CurrentSection: Equatable {
+    static func == (lhs: CurrentSection, rhs: CurrentSection) -> Bool {
+        lhs.section == rhs.section
     }
 }
 

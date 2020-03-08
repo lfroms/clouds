@@ -9,49 +9,35 @@
 import SwiftUI
 
 struct MasterView<Content: View>: View {
-    var useAsContainer: Bool = false
+    var handleExists: Bool
+    var handleHidden: Bool
 
-    var hasDrawerHandle: Bool
-    var drawerHandleHidden: Bool
+    var content: () -> Content
 
-    let iconCode: Int
-    let content: () -> Content
-
-    var body: some View {
-        Group {
-            if useAsContainer {
-                content()
-            } else {
-                StandardContentLayout
-            }
-        }
-        .clipShape(RoundedCornerShape(cornerRadius: 22, style: .continuous, corners: [.bottomLeft, .bottomRight]))
+    @inlinable init(handleExists: Bool = true, handleHidden: Bool = false, @ViewBuilder content: @escaping () -> Content) {
+        self.handleExists = handleExists
+        self.handleHidden = handleHidden
+        self.content = content
     }
 
-    private var StandardContentLayout: some View {
-        ZStack(alignment: .bottom) {
-            ZStack(alignment: .topTrailing) {
-                BackgroundColor()
-                WeatherIllustration()
-                    .padding(.top, Dimension.Header.illustrationTopPadding)
-            }
-
-            VStack(alignment: .center, spacing: 0) {
-                content()
-
-                if !hasDrawerHandle {
-                    DrawerHandle(height: 20)
-                        .opacity(drawerHandleHidden ? 0 : 1)
-                        .animation(.easeInOut)
-                }
-            }
+    var body: some View {
+        MasterViewLayout(handleExists: handleExists, handleHidden: handleHidden) {
+            self.content()
         }
+        .equatable()
+        .clipShape(RoundedCornerShape(cornerRadius: 22, style: .continuous, corners: [.bottomLeft, .bottomRight]))
+    }
+}
+
+extension MasterView: Equatable {
+    static func == (lhs: MasterView<Content>, rhs: MasterView<Content>) -> Bool {
+        lhs.handleExists == rhs.handleExists && lhs.handleHidden == rhs.handleHidden
     }
 }
 
 struct MasterView_Previews: PreviewProvider {
     static var previews: some View {
-        MasterView(hasDrawerHandle: false, drawerHandleHidden: false, iconCode: 6) {
+        MasterView(handleExists: false, handleHidden: false) {
             Text("Test content")
         }
     }

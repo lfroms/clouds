@@ -9,24 +9,24 @@
 import SwiftUI
 
 struct NavigationBar: View {
-    @Binding var activeSection: AppSection
-    let tabs: [AppSection]
-
     var body: some View {
         HStack(alignment: .center, spacing: 20) {
             ScrollView(.horizontal, showsIndicators: false) {
-                TabControl(activeTab: $activeSection, tabs: tabs)
+                TabControlContainer()
                     .padding(.leading, 20)
             }
-            AlertStack()
+
+            AlertStackContainer()
         }
         .frame(minHeight: 38)
         .padding(.trailing, 20)
     }
 }
 
+extension NavigationBar: Equatable {}
+
 struct NavigationBar_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationBar(activeSection: .constant(.now), tabs: [])
+        NavigationBar()
     }
 }

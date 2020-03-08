@@ -45,7 +45,6 @@ struct ShadowView: UIViewRepresentable {
     func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<ShadowView>) {}
 }
 
-#if DEBUG
 struct ShadowView_Previwws: PreviewProvider {
     static var previews: some View {
         ShadowView(
@@ -59,4 +58,3 @@ struct ShadowView_Previwws: PreviewProvider {
         )
     }
 }
-#endif

@@ -9,8 +9,10 @@
 import SwiftUI
 
 struct FavoriteLocationItem: View {
-    @EnvironmentObject private var weatherProvider: WeatherProvider
     @EnvironmentObject private var appState: AppState
+    @EnvironmentObject private var locationPickerState: LocationPickerState
+    @EnvironmentObject private var weatherService: WeatherService
+    @EnvironmentObject private var locationFavoritesService: LocationFavoritesService
 
     let location: Location
 
@@ -32,7 +34,7 @@ struct FavoriteLocationItem: View {
     }
 
     private var matchingLocation: ShortFormWeather? {
-        weatherProvider.favoriteLocations.first(where: { item in
+        weatherService.favoriteLocations.first(where: { item in
             item.coordinate == location.coordinate
         })
     }
@@ -52,15 +54,15 @@ struct FavoriteLocationItem: View {
     }
 
     private func onPressAction() {
-        appState.toggleLocationPicker(animated: true)
+        locationPickerState.toggleLocationPicker(animated: true)
 
-        UserSettings.saveActiveLocation(location: location)
-        weatherProvider.fetchDataWithDelay()
+        locationFavoritesService.saveActiveLocation(location: location)
+        weatherService.setShouldFetchUpdatedWeather()
     }
 
     private func removeFromFavorites() {
-        if appState.favoriteLocations.contains(location) {
-            appState.favoriteLocations.removeAll { $0 == location }
+        if locationFavoritesService.favoriteLocations.contains(location) {
+            locationFavoritesService.favoriteLocations.removeAll { $0 == location }
 
             return
         }

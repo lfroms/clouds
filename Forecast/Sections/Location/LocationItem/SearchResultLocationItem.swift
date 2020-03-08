@@ -9,8 +9,9 @@
 import SwiftUI
 
 struct SearchResultLocationItem: View {
-    @EnvironmentObject private var weatherProvider: WeatherProvider
-    @EnvironmentObject private var appState: AppState
+    @EnvironmentObject private var weatherService: WeatherService
+    @EnvironmentObject private var locationPickerState: LocationPickerState
+    @EnvironmentObject private var locationFavoritesService: LocationFavoritesService
 
     let location: Location
 
@@ -24,24 +25,24 @@ struct SearchResultLocationItem: View {
     }
 
     private func onPressAction() {
-        appState.toggleLocationPicker(animated: true)
+        locationPickerState.toggleLocationPicker(animated: true)
 
-        UserSettings.saveActiveLocation(location: location)
-        weatherProvider.fetchDataWithDelay()
+        locationFavoritesService.saveActiveLocation(location: location)
+        weatherService.setShouldFetchUpdatedWeather()
     }
 
     private var isFavorite: Bool {
-        appState.favoriteLocations.contains(location)
+        locationFavoritesService.favoriteLocations.contains(location)
     }
 
     private func toggleFavorite() {
-        if appState.favoriteLocations.contains(location) {
-            appState.favoriteLocations.removeAll { $0 == location }
+        if locationFavoritesService.favoriteLocations.contains(location) {
+            locationFavoritesService.favoriteLocations.removeAll { $0 == location }
 
             return
         }
 
-        appState.favoriteLocations.append(location)
+        locationFavoritesService.favoriteLocations.append(location)
     }
 }
 

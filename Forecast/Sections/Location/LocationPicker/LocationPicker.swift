@@ -10,13 +10,15 @@ import SwiftUI
 
 struct LocationPicker {
     @Binding private(set) var appState: AppState
-    @Binding private(set) var provider: WeatherProvider
-    @Binding private(set) var locationPickerState: LocationPickerState
+    @Binding private(set) var weatherService: WeatherService
+    @Binding private(set) var locationService: LocationService
+    @Binding private(set) var locationSearchService: LocationSearchService
+    @Binding private(set) var locationFavoritesService: LocationFavoritesService
 
     let didPerformDismiss: (() -> Void)?
 
     private var currentLocationName: String? {
-        guard let placemark = provider.locationManager.lastPlacemark else {
+        guard let placemark = locationService.lastPlacemark else {
             return nil
         }
 
@@ -24,7 +26,7 @@ struct LocationPicker {
     }
 
     private var currentRegionName: String? {
-        guard let placemark = provider.locationManager.lastPlacemark else {
+        guard let placemark = locationService.lastPlacemark else {
             return nil
         }
 
@@ -34,19 +36,19 @@ struct LocationPicker {
     private var locationPickerData: LocationPickerData {
         var currentLocation: Location?
 
-        if let name = currentLocationName, let regionName = currentRegionName, let location = provider.locationManager.lastLocation {
+        if let name = currentLocationName, let regionName = currentRegionName, let location = locationService.lastLocation {
             currentLocation = Location(name: name, regionName: regionName, coordinate: location.coordinate)
         }
 
         return LocationPickerData(
             currentLocation: currentLocation,
-            favoriteLocations: appState.favoriteLocations,
-            searchQuery: locationPickerState.searchQuery,
-            state: locationPickerState.searchQuery.isEmpty ? .normal : .searching,
-            searchResults: locationPickerState.locationResults,
-            loadingCurrentLocation: provider.loading,
-            loadingFavorites: provider.loading,
-            loadingSearch: locationPickerState.loading
+            favoriteLocations: locationFavoritesService.favoriteLocations,
+            searchQuery: locationSearchService.searchQuery,
+            state: locationSearchService.searchQuery.isEmpty ? .normal : .searching,
+            searchResults: locationSearchService.results,
+            loadingCurrentLocation: weatherService.loading,
+            loadingFavorites: weatherService.loading,
+            loadingSearch: locationSearchService.loading
         )
     }
 }

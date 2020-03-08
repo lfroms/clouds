@@ -122,7 +122,7 @@ class LocationPickerViewBuilder {
         stackView.addArrangedSubview(header)
         
         if loading {
-            let spinner = HostingView(rootView: LineActivityIndicator(color: .secondary))
+            let spinner = HostingView(rootView: AppActivityIndicator(color: .secondary))
             stackView.addArrangedSubview(spinner)
         }
         
