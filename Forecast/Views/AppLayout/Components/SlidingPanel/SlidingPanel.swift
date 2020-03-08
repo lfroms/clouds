@@ -11,18 +11,18 @@ import SwiftUI
 struct SlidingPanel<Content: View>: View {
     var travelDistance: CGFloat
     var locked: Bool = false
-    var content: Content
+    var content: () -> Content
 
-    @inlinable public init(travelDistance: CGFloat, locked: Bool, @ViewBuilder content: () -> Content) {
+    @inlinable public init(travelDistance: CGFloat, locked: Bool, @ViewBuilder content: @escaping () -> Content) {
         self.travelDistance = travelDistance
         self.locked = locked
-        self.content = content()
+        self.content = content
     }
 
     var body: some View {
         GeometryReader { (geometry: GeometryProxy) in
             DrawerScrollView(travelDistance: self.travelDistance, locked: self.locked) {
-                self.content
+                self.content()
                     .frame(height: geometry.size.height)
                     .edgesIgnoringSafeArea(.all)
             }

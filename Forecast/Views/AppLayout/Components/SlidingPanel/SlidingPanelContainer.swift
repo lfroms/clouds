@@ -19,8 +19,9 @@ struct SlidingPanelContainer<Content: View>: Container {
 
     var body: some View {
         SlidingPanel(travelDistance: travelDistance, locked: self.isLocked) {
-            content()
+            self.content()
         }
+        .equatable()
     }
 
     private var isLocked: Bool {

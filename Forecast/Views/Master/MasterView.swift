@@ -21,9 +21,11 @@ struct MasterView<Content: View>: View {
     }
 
     var body: some View {
-        MasterViewLayout(handleExists: handleExists, handleHidden: handleHidden, content: content)
-            .equatable()
-            .clipShape(RoundedCornerShape(cornerRadius: 22, style: .continuous, corners: [.bottomLeft, .bottomRight]))
+        MasterViewLayout(handleExists: handleExists, handleHidden: handleHidden) {
+            self.content()
+        }
+        .equatable()
+        .clipShape(RoundedCornerShape(cornerRadius: 22, style: .continuous, corners: [.bottomLeft, .bottomRight]))
     }
 }
 
