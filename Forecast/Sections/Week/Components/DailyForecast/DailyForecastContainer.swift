@@ -10,9 +10,10 @@ import SwiftUI
 
 struct DailyForecastContainer: View {
     @EnvironmentObject private var weatherService: WeatherService
+    @EnvironmentObject private var weekSectionState: WeekSectionState
 
     var body: some View {
-        DailyForecast(days: days)
+        DailyForecast(days: days, activeIndex: $weekSectionState.dayIndex)
             .equatable()
     }
 

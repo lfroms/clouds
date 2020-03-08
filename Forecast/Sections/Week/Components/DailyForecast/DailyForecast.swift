@@ -10,6 +10,7 @@ import SwiftUI
 
 struct DailyForecast: View {
     var days: [DailyForecastItemData]
+    @Binding var activeIndex: Int
 
     var body: some View {
         VStack {
@@ -17,9 +18,11 @@ struct DailyForecast: View {
             Spacer()
 
             HStack(alignment: .top, spacing: Dimension.WeekSection.cardSpacing) {
-                ForEach(self.days, id: \.self) { day in
+                ForEach(Array(self.days.enumerated()), id: \.element) { index, day in
                     DailyForecastItem(data: day)
                         .equatable()
+                        .opacity(index == self.activeIndex ? 1 : 0.45)
+                        .animation(.easeInOut)
                 }
             }
             .padding(Dimension.Header.padding)
@@ -29,12 +32,12 @@ struct DailyForecast: View {
 
 extension DailyForecast: Equatable {
     static func == (lhs: DailyForecast, rhs: DailyForecast) -> Bool {
-        lhs.days == rhs.days
+        lhs.days == rhs.days && lhs.activeIndex == rhs.activeIndex
     }
 }
 
 struct DailyForecast_Previews: PreviewProvider {
     static var previews: some View {
-        DailyForecast(days: [])
+        DailyForecast(days: [], activeIndex: .constant(0))
     }
 }
