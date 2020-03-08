@@ -28,8 +28,8 @@ struct AppLayout: View {
                     .equatable()
                     .padding(.bottom, 12)
             }
+            .overlay(LocationPickerSection())
 
-            LocationPickerSection()
             Header()
         }
     }

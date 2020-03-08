@@ -40,6 +40,7 @@ struct MeasurementItem: View {
             }
         }
         .frame(maxHeight: Dimension.MeasurementGrid.itemHeight)
+        .accessibilityElement(children: .combine)
     }
 }
 
