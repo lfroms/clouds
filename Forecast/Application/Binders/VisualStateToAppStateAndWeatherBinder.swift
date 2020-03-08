@@ -11,14 +11,16 @@ import SwiftUI
 
 struct VisualStateToAppStateAndWeatherBinder: ViewModifier {
     private var appState: AppState
+    private var weekSectionState: WeekSectionState
     private var visualState: VisualState
     private var weatherService: WeatherService
 
     private lazy var weatherCancellable: AnyCancellable? = nil
     private lazy var appStateCancellable: AnyCancellable? = nil
 
-    init(appState: AppState, visualState: VisualState, weatherService: WeatherService) {
+    init(appState: AppState, weekSectionState: WeekSectionState, visualState: VisualState, weatherService: WeatherService) {
         self.appState = appState
+        self.weekSectionState = weekSectionState
         self.visualState = visualState
         self.weatherService = weatherService
 
@@ -42,8 +44,11 @@ struct VisualStateToAppStateAndWeatherBinder: ViewModifier {
         visualState.setIconCode(to: weatherService.activeLocation?.currentConditions?.iconCode, animated: true)
     }
 
-    private func setIconCodeToFirstInDailyForecast() {
-        visualState.setIconCode(to: weatherService.activeLocation?.dailyForecast?.days?.first?.iconCode, animated: true)
+    private func setIconCodeToDailyForecast() {
+        visualState.setIconCode(
+            to: weatherService.activeLocation?.dailyForecast?.days?[safe: weekSectionState.dayIndex]?.iconCode,
+            animated: true
+        )
     }
 
     private func changeIconCodeBasedOnSection() {
@@ -51,7 +56,7 @@ struct VisualStateToAppStateAndWeatherBinder: ViewModifier {
         case .now:
             setIconCodeToCurrentConditions()
         case .week:
-            setIconCodeToFirstInDailyForecast()
+            setIconCodeToDailyForecast()
         case .radar:
             break
         }

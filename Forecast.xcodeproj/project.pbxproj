@@ -77,6 +77,7 @@
 		806A5BF424144F800093361D /* SettingsSheetState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806A5BF324144F800093361D /* SettingsSheetState.swift */; };
 		806A5BF8241468280093361D /* WeekSectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806A5BF7241468280093361D /* WeekSectionState.swift */; };
 		806A5BFA241468970093361D /* VisualStateToWeekSectionStateAndWeatherBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806A5BF9241468970093361D /* VisualStateToWeekSectionStateAndWeatherBinder.swift */; };
+		806A5BFC24146C8B0093361D /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806A5BFB24146C8B0093361D /* Collection+Safe.swift */; };
 		806EBCA223F2560600086F46 /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EBCA123F2560600086F46 /* LocationPickerViewController.swift */; };
 		80734AFB2410A435000693F4 /* MeasurementDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80734AFA2410A435000693F4 /* MeasurementDescriptor.swift */; };
 		80734AFE2410A512000693F4 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80734AFD2410A512000693F4 /* GridStack.swift */; };
@@ -233,6 +234,7 @@
 		806A5BF324144F800093361D /* SettingsSheetState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheetState.swift; sourceTree = "<group>"; };
 		806A5BF7241468280093361D /* WeekSectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSectionState.swift; sourceTree = "<group>"; };
 		806A5BF9241468970093361D /* VisualStateToWeekSectionStateAndWeatherBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualStateToWeekSectionStateAndWeatherBinder.swift; sourceTree = "<group>"; };
+		806A5BFB24146C8B0093361D /* Collection+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
 		806EBCA123F2560600086F46 /* LocationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
 		80734AFA2410A435000693F4 /* MeasurementDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementDescriptor.swift; sourceTree = "<group>"; };
 		80734AFD2410A512000693F4 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
@@ -1012,6 +1014,7 @@
 				8034A1A3240E0E6300DF02A1 /* CGFloat+One.swift */,
 				8031CBC5240DF39100C76FE3 /* Double+One.swift */,
 				80985F59240E1F1D00452D08 /* UnixTimestampTypealias.swift */,
+				806A5BFB24146C8B0093361D /* Collection+Safe.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1306,6 +1309,7 @@
 				8019F827240F4E1F00AFB0F1 /* MasterViewLayout.swift in Sources */,
 				802C0D982368FE32009A22BA /* CurrentSection.swift in Sources */,
 				80EF84F2240F59D200D4037B /* OverviewViewContainer.swift in Sources */,
+				806A5BFC24146C8B0093361D /* Collection+Safe.swift in Sources */,
 				8061291F23690883005EEB2A /* DailyForecastCard.swift in Sources */,
 				8039628322D6CC4B003FEAB3 /* HourlyForecastItemData.swift in Sources */,
 				80C777DA23FB48C9004ABB2E /* LocationItemLabels.swift in Sources */,

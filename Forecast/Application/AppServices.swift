@@ -40,6 +40,7 @@ struct AppServices: ViewModifier {
             ))
             .modifier(VisualStateToAppStateAndWeatherBinder(
                 appState: Self.appState,
+                weekSectionState: Self.weekSectionState,
                 visualState: Self.visualState,
                 weatherService: Self.weatherService
             ))
