@@ -15,6 +15,10 @@ final class Dimension {
         static let illustrationTopPadding: CGFloat = System.topSafeMargin
     }
 
+    final class MeasurementGrid {
+        static let itemHeight: CGFloat = 50
+    }
+
     final class Animation {
         static let shrinkAmount: CGFloat = 0.95
     }

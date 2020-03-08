@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct MeasurementItem: View {
+    @Environment(\.sizeCategory) var sizeCategory
+
     var descriptor: MeasurementDescriptor
 
     var body: some View {
@@ -20,28 +22,32 @@ struct MeasurementItem: View {
 
             VStack(alignment: .leading, spacing: 6) {
                 Text(descriptor.label)
-                    .font(.system(size: 12))
+                    .font(.caption)
                     .foregroundColor(.secondary)
                     .bold()
 
                 HStack(alignment: .lastTextBaseline, spacing: 4) {
                     if descriptor.prefix != nil {
                         Text(descriptor.prefix!)
-                            .font(.system(size: 14))
+                            .font(.footnote)
                             .fontWeight(.heavy)
                     }
 
                     Text(descriptor.value)
-                        .font(.system(size: 20))
+                        .font(.system(size: UIFontMetrics.default.scaledValue(for: 20)))
                         .fontWeight(.bold)
                 }
             }
         }
-        .frame(maxHeight: 50)
+        .frame(maxHeight: Dimension.MeasurementGrid.itemHeight)
     }
 }
 
-extension MeasurementItem: Equatable {}
+extension MeasurementItem: Equatable {
+    static func == (lhs: MeasurementItem, rhs: MeasurementItem) -> Bool {
+        lhs.sizeCategory == rhs.sizeCategory && lhs.descriptor == rhs.descriptor
+    }
+}
 
 struct CurrentConditionsItem_Previews: PreviewProvider {
     static var previews: some View {
