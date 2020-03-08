@@ -59,7 +59,7 @@ struct HeaderGradient: View, Equatable {
     }
 
     private var height: CGFloat {
-        Dimension.System.topSafeMargin + Dimension.Header.omniBarHeight + (Dimension.Header.padding * 2)
+        Dimension.System.topSafeMargin + Dimension.Header.omniBarHeight + (Dimension.Global.padding * 2)
     }
 }
 

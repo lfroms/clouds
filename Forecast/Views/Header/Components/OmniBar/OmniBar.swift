@@ -33,7 +33,7 @@ struct OmniBar: View, Equatable {
                 .equatable()
         }
         .font(Font.callout.weight(.bold))
-        .padding(.horizontal, Dimension.Header.padding)
+        .padding(.horizontal, Dimension.Global.padding)
         .foregroundColor(.white)
         .frame(height: Dimension.Header.omniBarHeight)
         .background(ShadowView(radius: 20, opacity: 0.3, color: .black, cornerRadius: 22))
@@ -91,7 +91,7 @@ struct OmniBar_Previews: PreviewProvider {
                 didBecomeActive: {},
                 auxiliaryAction: {}
             )
-            .padding(Dimension.Header.padding)
+            .padding(Dimension.Global.padding)
         }
         .edgesIgnoringSafeArea(.all)
     }

@@ -25,7 +25,7 @@ struct DailyForecast: View {
                         .animation(.easeInOut)
                 }
             }
-            .padding(Dimension.Header.padding)
+            .padding(Dimension.Global.padding)
         }
     }
 }

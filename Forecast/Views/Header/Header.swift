@@ -14,11 +14,11 @@ struct Header: View {
             HeaderGradientContainer()
                 .edgesIgnoringSafeArea(.top)
 
-            VStack(alignment: .leading, spacing: Dimension.Header.padding) {
+            VStack(alignment: .leading, spacing: Dimension.Global.padding) {
                 OmniBarContainer()
                 HeaderAccessoriesContainer()
             }
-            .padding(Dimension.Header.padding)
+            .padding(Dimension.Global.padding)
         }
     }
 }

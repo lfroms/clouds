@@ -19,7 +19,7 @@ class LocationPickerViewController: DismissableScrollViewController {
     }
 
     private lazy var topInset: CGFloat = {
-        (2 * Dimension.Header.padding) + Dimension.Header.omniBarHeight
+        (2 * Dimension.Global.padding) + Dimension.Header.omniBarHeight
     }()
 
     private lazy var mainStackView: UIStackView = {
@@ -72,14 +72,14 @@ class LocationPickerViewController: DismissableScrollViewController {
         scrollView.contentInset.top = topInset
         scrollView.verticalScrollIndicatorInsets.top = topInset
 
-        scrollView.layoutMargins.left = Dimension.Header.padding
-        scrollView.layoutMargins.right = Dimension.Header.padding
+        scrollView.layoutMargins.left = Dimension.Global.padding
+        scrollView.layoutMargins.right = Dimension.Global.padding
     }
 
     private func configureStackViewConstraints() {
         mainStackView.pinEdges([.leading, .trailing], to: scrollView, usingLayoutMargins: true)
 
-        mainStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Dimension.Header.padding).isActive = true
+        mainStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Dimension.Global.padding).isActive = true
         mainStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
     }
 }

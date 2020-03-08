@@ -9,8 +9,11 @@
 import SwiftUI
 
 final class Dimension {
-    final class Header {
+    final class Global {
         static let padding: CGFloat = 20
+    }
+
+    final class Header {
         static let omniBarHeight: CGFloat = 52
         static let illustrationTopPadding: CGFloat = System.topSafeMargin
     }
