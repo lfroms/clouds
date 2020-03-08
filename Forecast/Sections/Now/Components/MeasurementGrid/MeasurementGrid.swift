@@ -12,38 +12,24 @@ import SwiftUI
 struct MeasurementGrid: View {
     var measurements: [MeasurementDescriptor]
     var didCalculateHeight: ((CGFloat) -> Void)?
-    
+
     var body: some View {
-        calculateAndSetHeight()
-        
-        return GridStack(columns: 2, numberOfItems: measurements.count, spacingVertical: 22, spacingHorizontal: 0) { index in
+        GridStack(columns: 2, numberOfItems: measurements.count, spacingVertical: 22, spacingHorizontal: 0) { index in
             HStack {
                 MeasurementItem(descriptor: self.measurements[index])
                     .equatable()
-                
+
                 Spacer()
             }
         }
         .equatable()
         .padding(30)
+        .background(GeometryReader(content: useProxy))
     }
-    
-    private var numberOfRows: Int {
-        let numberOfRowsFloat = ceil(CGFloat(measurements.count) / 2)
-        return Int(numberOfRowsFloat)
-    }
-    
-    private func calculateAndSetHeight() {
-        // TODO: - Remove hardcoded values
-        
-        let rowHeight: Int = 50
-        let totalRowHeight = rowHeight * numberOfRows
-        
-        let paddingSize: Int = 22
-        let totalOuterPadding: Int = 2 * 30
-        let totalPadding = (paddingSize * (numberOfRows - 1)) + totalOuterPadding
-        
-        didCalculateHeight?(CGFloat(totalRowHeight + totalPadding))
+
+    private func useProxy(_ proxy: GeometryProxy) -> some View {
+        didCalculateHeight?(proxy.size.height)
+        return Rectangle().foregroundColor(Color.clear)
     }
 }
 
