@@ -23,7 +23,7 @@ struct SunriseSunsetTime: View, Equatable {
             Text(text)
         }
         .font(Font.subheadline.weight(.semibold))
-        .foregroundColor(.secondary)
+        .foregroundColor(Color.primary.opacity(0.7))
     }
 
     private var symbolName: String {

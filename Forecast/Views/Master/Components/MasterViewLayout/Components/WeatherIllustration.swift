@@ -26,7 +26,6 @@ struct WeatherIllustration: View {
                     .transition(transition)
             }
         }
-        .frame(width: Dimension.System.screenWidth)
         .onReceive(visualState.iconCodeDidChange, perform: self.animateImage)
     }
 

@@ -9,12 +9,13 @@
 import SwiftUI
 
 struct HeaderAccessoriesContainer: Container {
+    @EnvironmentObject private var appState: AppState
     @EnvironmentObject private var locationPickerState: LocationPickerState
     @EnvironmentObject private var weatherService: WeatherService
 
     var body: some View {
         HeaderAccessories(
-            hidden: locationPickerState.presented,
+            hidden: locationPickerState.presented || appState.activeSection != .now,
             sunriseSunset: sunriseSunset,
             observedAt: observedAt
         )
