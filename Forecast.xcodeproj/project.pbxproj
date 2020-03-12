@@ -1180,7 +1180,7 @@
 				};
 			};
 			buildConfigurationList = 805A173D22C53ADB00E1B4E2 /* Build configuration list for PBXProject "Forecast" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -1607,7 +1607,7 @@
 			repositoryURL = "https://github.com/apollographql/apollo-ios";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 0.23.1;
+				minimumVersion = 0.23.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
