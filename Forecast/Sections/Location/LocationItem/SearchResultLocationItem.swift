@@ -50,6 +50,7 @@ struct SearchResultLocationItem_Previews: PreviewProvider {
     static var previews: some View {
         SearchResultLocationItem(
             location: Location(
+                id: UUID(),
                 name: "Ottawa",
                 regionName: "ON, Canada",
                 coordinate: .init(latitude: 0.0, longitude: 0.0)

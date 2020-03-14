@@ -9,47 +9,7 @@
 import SwiftUI
 
 struct LocationPickerSection: View {
-    @EnvironmentObject private var locationPickerState: LocationPickerState
-
-    @EnvironmentObject private var weatherService: WeatherService
-    @EnvironmentObject private var locationService: LocationService
-    @EnvironmentObject private var locationSearchService: LocationSearchService
-    @EnvironmentObject private var locationFavoritesService: LocationFavoritesService
-
-    private var currentLocationName: String? {
-        guard let placemark = locationService.lastPlacemark else {
-            return nil
-        }
-
-        return placemark.locality
-    }
-
-    private var currentRegionName: String? {
-        guard let placemark = locationService.lastPlacemark else {
-            return nil
-        }
-
-        return LocationNameHelper.shared.createRegionNameFrom(placemark: placemark)
-    }
-
-    private var locationPickerData: LocationPickerData {
-        var currentLocation: Location?
-
-        if let name = currentLocationName, let regionName = currentRegionName, let location = locationService.lastLocation {
-            currentLocation = Location(name: name, regionName: regionName, coordinate: location.coordinate)
-        }
-
-        return LocationPickerData(
-            currentLocation: currentLocation,
-            favoriteLocations: locationFavoritesService.favoriteLocations,
-            searchQuery: locationSearchService.searchQuery,
-            state: locationSearchService.searchQuery.isEmpty ? .normal : .searching,
-            searchResults: locationSearchService.results,
-            loadingCurrentLocation: weatherService.loading,
-            loadingFavorites: weatherService.loading,
-            loadingSearch: locationSearchService.loading
-        )
-    }
+    var onDismiss: () -> Void
 
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -57,23 +17,27 @@ struct LocationPickerSection: View {
                 .clipShape(RoundedCornerShape(cornerRadius: 22, style: .continuous, corners: [.topLeft, .topRight]))
                 .edgesIgnoringSafeArea(.all)
 
-            LocationPicker(data: locationPickerData, didPerformDismiss: handlePickerDismiss)
-                .equatable()
+            ScrollView(.vertical) {
+                LocationPickerContainer()
+            }
+            .onDismiss(message: "Release to Dismiss", perform: self.onDismiss)
+            .padding(.top, topInset)
         }
-        .offset(searchOffset)
     }
 
-    private var searchOffset: CGSize {
-        return CGSize(width: 0, height: locationPickerState.presented ? 0 : Dimension.System.screenHeight)
+    private var topInset: CGFloat {
+        (2 * Dimension.Global.padding) + Dimension.Header.omniBarHeight
     }
+}
 
-    private func handlePickerDismiss() {
-        locationPickerState.toggleLocationPicker(animated: true)
+extension LocationPickerSection: Equatable {
+    static func == (lhs: LocationPickerSection, rhs: LocationPickerSection) -> Bool {
+        false
     }
 }
 
 struct Search_Previews: PreviewProvider {
     static var previews: some View {
-        LocationPickerSection()
+        LocationPickerSection(onDismiss: {})
     }
 }

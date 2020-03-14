@@ -24,6 +24,7 @@ struct LocationSearchResultItem_Previews: PreviewProvider {
     static var previews: some View {
         LocationSearchResultItem(
             location: Location(
+                id: UUID(),
                 name: "Ottawa",
                 regionName: "ON, Canada",
                 coordinate: .init(latitude: 0.0, longitude: 0.0)

@@ -36,7 +36,7 @@ extension AppActivityIndicator: Equatable {
     }
 }
 
-struct LineActivityIndicator_Previews: PreviewProvider {
+struct AppActivityIndicator_Previews: PreviewProvider {
     static var previews: some View {
         AppActivityIndicator()
     }

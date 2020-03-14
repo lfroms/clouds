@@ -10,6 +10,8 @@ import CoreLocation
 import Foundation
 
 struct Location: Codable {
+    let id: UUID
+
     let name: String
     let regionName: String
     let coordinate: CLLocationCoordinate2D
