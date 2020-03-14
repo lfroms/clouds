@@ -20,7 +20,7 @@ struct SearchResultsGroup: View {
 
     var body: some View {
         LocationPickerListSection(label: label, value: value, loading: $loading) {
-            ForEach(Array(self.results.enumerated()), id: \.element.id) { index, result in
+            ForEach(Array(self.results.enumerated()), id: \.element) { index, result in
                 LocationItem(
                     style: .search,
                     location: result,

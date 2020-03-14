@@ -20,7 +20,7 @@ struct FavoriteLocationsGroup: View {
             label: "Favourite locations",
             loading: .constant(false)
         ) {
-            ForEach(Array(self.locations.enumerated()), id: \.element.id) { index, favorite in
+            ForEach(Array(self.locations.enumerated()), id: \.element) { index, favorite in
                 LocationItem(
                     style: .favorite,
                     location: favorite,

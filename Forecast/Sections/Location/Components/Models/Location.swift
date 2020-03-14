@@ -9,13 +9,16 @@
 import CoreLocation
 import Foundation
 
-struct Location: Codable {
-    let id: UUID
-
+struct Location: Codable, Hashable {
     let name: String
     let regionName: String
     let coordinate: CLLocationCoordinate2D
     var isFavorite: Bool = false
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(coordinate.latitude)
+        hasher.combine(coordinate.longitude)
+    }
 }
 
 extension Location: Equatable {

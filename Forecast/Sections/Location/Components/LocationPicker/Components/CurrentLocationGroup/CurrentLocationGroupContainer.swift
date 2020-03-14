@@ -38,7 +38,7 @@ struct CurrentLocationGroupContainer: Container {
         }
 
         let regionName = LocationNameHelper.shared.createRegionNameFrom(placemark: lastPlacemark)
-        return Location(id: UUID(), name: cityName, regionName: regionName, coordinate: coordinate)
+        return Location(name: cityName, regionName: regionName, coordinate: coordinate)
     }
 
     private func didSelect(location: Location) {

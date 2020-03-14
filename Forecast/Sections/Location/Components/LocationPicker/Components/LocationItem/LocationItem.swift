@@ -101,7 +101,6 @@ struct LocationItemWithWeather_Previews: PreviewProvider {
         LocationItem(
             style: .current,
             location: Location(
-                id: UUID(),
                 name: "Ottawa",
                 regionName: "ON, Canada",
                 coordinate: .init(latitude: 0.0, longitude: 0.0)

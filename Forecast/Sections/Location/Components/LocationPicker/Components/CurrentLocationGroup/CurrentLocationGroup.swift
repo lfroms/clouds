@@ -42,7 +42,7 @@ extension CurrentLocationGroup: Equatable {
 struct CurrentLocationGroup_Previews: PreviewProvider {
     static var previews: some View {
         CurrentLocationGroup(
-            location: Location(id: UUID(), name: "Location", regionName: "Region", coordinate: .init()),
+            location: Location(name: "Location", regionName: "Region", coordinate: .init()),
             loading: .constant(false),
             onSelectLocation: { _ in }
         )

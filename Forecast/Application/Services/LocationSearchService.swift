@@ -48,7 +48,7 @@ final class LocationSearchService: NSObject, ObservableObject {
                 }
                 
                 let regionName = LocationNameHelper.shared.createRegionNameFrom(placemark: item.placemark)
-                return Location(id: UUID(), name: locality, regionName: regionName, coordinate: item.placemark.coordinate)
+                return Location(name: locality, regionName: regionName, coordinate: item.placemark.coordinate)
             }
             
             DispatchQueue.main.async {
