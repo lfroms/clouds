@@ -10,6 +10,7 @@ import SwiftUI
 
 struct LocationPickerSectionModal: View {
     @EnvironmentObject private var locationPickerState: LocationPickerState
+    @EnvironmentObject private var locationSearchService: LocationSearchService
 
     var body: some View {
         LocationPickerSection(onDismiss: self.handlePickerDismiss)
@@ -23,6 +24,7 @@ struct LocationPickerSectionModal: View {
 
     private func handlePickerDismiss() {
         locationPickerState.toggleLocationPicker(animated: true)
+        locationSearchService.searchQuery.clear()
     }
 }
 
