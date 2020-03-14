@@ -92,8 +92,10 @@ struct OmniBarContainer: Container {
             return SFSymbol.magnifyingGlass
         }
 
-        if locationFavoritesService.getActiveLocation() != nil {
-            return SFSymbol.starFilled
+        if let activeLocation = locationFavoritesService.getActiveLocation() {
+            let isFavorite = locationFavoritesService.favoriteLocations.contains(activeLocation)
+
+            return isFavorite ? SFSymbol.starFilled : SFSymbol.mapFilled
         }
 
         return SFSymbol.locationFilled
