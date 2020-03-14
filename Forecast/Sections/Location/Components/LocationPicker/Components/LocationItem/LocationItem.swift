@@ -62,6 +62,7 @@ struct LocationItem: View {
             .cornerRadius(14)
             .animation(AnimationPreset.Touch.shrink)
         }
+        .buttonStyle(PlainButtonStyle())
     }
 
     private var defaultColor: Color {
