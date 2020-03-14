@@ -17,7 +17,7 @@ struct CurrentLocationGroup: View {
 
     var body: some View {
         LocationPickerListSection(
-            label: "Current Location",
+            label: "Current location",
             loading: $loading
         ) {
             LocationItem(
