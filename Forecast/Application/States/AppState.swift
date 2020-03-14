@@ -19,6 +19,7 @@ final class AppState: ObservableObject {
             
             if oldValue != activeSection {
                 activeSectionDidChange.send()
+                UISelectionFeedbackGenerator().selectionChanged()
             }
         }
     }

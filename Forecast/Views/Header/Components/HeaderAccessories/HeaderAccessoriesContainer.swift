@@ -14,12 +14,20 @@ struct HeaderAccessoriesContainer: Container {
     @EnvironmentObject private var weatherService: WeatherService
 
     var body: some View {
-        HeaderAccessories(
-            hidden: locationPickerState.presented || appState.activeSection != .now,
-            sunriseSunset: sunriseSunset,
-            observedAt: observedAt
-        )
-        .equatable()
+        Group {
+            if !hidden {
+                HeaderAccessories(
+                    sunriseSunset: sunriseSunset,
+                    observedAt: observedAt
+                )
+                .equatable()
+                .transition(AnyTransition.opacity.animation(.easeInOut))
+            }
+        }
+    }
+
+    private var hidden: Bool {
+        locationPickerState.presented || appState.activeSection != .now
     }
 
     private var sunriseSunset: SunriseSunsetData? {
