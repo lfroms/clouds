@@ -36,6 +36,7 @@ struct LocationPicker: View {
                             weather: self.currentLocationWeather,
                             action: self.onSelectCurrentLocation
                         )
+                        .equatable()
                     }
                 }
 
@@ -49,6 +50,7 @@ struct LocationPicker: View {
                                 action: self.onSelectFavoriteLocation,
                                 onStar: self.onStar
                             )
+                            .equatable()
                         }
                     }
                 }
@@ -61,6 +63,7 @@ struct LocationPicker: View {
                             action: self.onSelectSearchResult,
                             onStar: self.onStar
                         )
+                        .equatable()
                     }
                 }
             }

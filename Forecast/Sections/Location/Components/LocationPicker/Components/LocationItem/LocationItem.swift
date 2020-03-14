@@ -79,7 +79,13 @@ struct LocationItem: View {
     }
 }
 
-extension LocationItem: Equatable {}
+extension LocationItem: Equatable {
+    static func == (lhs: LocationItem, rhs: LocationItem) -> Bool {
+        lhs.style == rhs.style
+            && lhs.location == rhs.location
+            && lhs.weather == rhs.weather
+    }
+}
 
 struct LocationItemWithWeather_Previews: PreviewProvider {
     static var previews: some View {

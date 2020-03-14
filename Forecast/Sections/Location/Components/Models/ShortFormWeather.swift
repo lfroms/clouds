@@ -9,7 +9,7 @@
 import CoreLocation
 import Foundation
 
-struct ShortFormWeather {
+struct ShortFormWeather: Equatable {
     let coordinate: CLLocationCoordinate2D
     let temperature: Double?
     let iconCode: Int?
