@@ -20,6 +20,13 @@ struct FavoriteLocationsGroup: View {
             label: "Favourite locations",
             loading: .constant(false)
         ) {
+            if self.locations.isEmpty {
+                Text("You haven't added any favourite locations.")
+                    .foregroundColor(.secondary)
+                    .font(.caption)
+                    .transition(AnyTransition.opacity.animation(.easeInOut))
+            }
+
             ForEach(Array(self.locations.enumerated()), id: \.element) { index, favorite in
                 LocationItem(
                     style: .favorite,
@@ -29,6 +36,7 @@ struct FavoriteLocationsGroup: View {
                     onStar: self.onDelete
                 )
                 .equatable()
+                .transition(.fadeAndScale)
             }
         }
     }

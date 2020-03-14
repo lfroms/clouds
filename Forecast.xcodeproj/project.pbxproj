@@ -30,6 +30,7 @@
 		803028E522CEE7970053F639 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028E422CEE7970053F639 /* OverviewView.swift */; };
 		80305321240E17FE00FDAC69 /* SunriseSunsetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80305320240E17FE00FDAC69 /* SunriseSunsetData.swift */; };
 		80305323240E182300FDAC69 /* ObservedAtData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80305322240E182300FDAC69 /* ObservedAtData.swift */; };
+		803181A4241D661C00F9C695 /* AnyTransition+Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803181A3241D661C00F9C695 /* AnyTransition+Presets.swift */; };
 		8031CBC3240DF2B400C76FE3 /* SFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8031CBC2240DF2B400C76FE3 /* SFSymbol.swift */; };
 		8031CBC6240DF39100C76FE3 /* Double+One.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8031CBC5240DF39100C76FE3 /* Double+One.swift */; };
 		8031CBC9240E035700C76FE3 /* OmniBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8031CBC8240E035700C76FE3 /* OmniBarContainer.swift */; };
@@ -190,6 +191,7 @@
 		803028E422CEE7970053F639 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		80305320240E17FE00FDAC69 /* SunriseSunsetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetData.swift; sourceTree = "<group>"; };
 		80305322240E182300FDAC69 /* ObservedAtData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedAtData.swift; sourceTree = "<group>"; };
+		803181A3241D661C00F9C695 /* AnyTransition+Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyTransition+Presets.swift"; sourceTree = "<group>"; };
 		8031CBC2240DF2B400C76FE3 /* SFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbol.swift; sourceTree = "<group>"; };
 		8031CBC5240DF39100C76FE3 /* Double+One.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+One.swift"; sourceTree = "<group>"; };
 		8031CBC8240E035700C76FE3 /* OmniBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarContainer.swift; sourceTree = "<group>"; };
@@ -856,6 +858,7 @@
 				80F07DDD23FB8012005C43A3 /* AnimationPreset.swift */,
 				80625426240C90CF00638C2F /* AppSection.swift */,
 				8031CBC2240DF2B400C76FE3 /* SFSymbol.swift */,
+				803181A3241D661C00F9C695 /* AnyTransition+Presets.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -1366,6 +1369,7 @@
 				805D6A0524100A39002DEBAC /* CLLocationCoordinate2D+ToCoordinate.swift in Sources */,
 				8057DB562364F12B0087FBF7 /* TabControl.swift in Sources */,
 				8057DB542364F10F0087FBF7 /* TabView.swift in Sources */,
+				803181A4241D661C00F9C695 /* AnyTransition+Presets.swift in Sources */,
 				80FA8FCC24117257004C9BDB /* MeasurementGridContainer.swift in Sources */,
 				8084FDA3241D3945006A57DC /* SearchResultsGroupContainer.swift in Sources */,
 				803028D522CEE42C0053F639 /* TemperatureView.swift in Sources */,

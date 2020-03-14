@@ -14,17 +14,13 @@ struct FavoriteLocationsGroupContainer: View {
     @EnvironmentObject private var locationFavoritesService: LocationFavoritesService
 
     var body: some View {
-        Group {
-            if !locationFavoritesService.favoriteLocations.isEmpty {
-                FavoriteLocationsGroup(
-                    locations: locationFavoritesService.favoriteLocations,
-                    locationsWeather: weatherService.favoriteLocations,
-                    onSelectLocation: didSelect(location:),
-                    onDelete: didDelete(location:)
-                )
-                .equatable()
-            }
-        }
+        FavoriteLocationsGroup(
+            locations: locationFavoritesService.favoriteLocations,
+            locationsWeather: weatherService.favoriteLocations,
+            onSelectLocation: didSelect(location:),
+            onDelete: didDelete(location:)
+        )
+        .equatable()
     }
 
     private func didSelect(location: Location) {

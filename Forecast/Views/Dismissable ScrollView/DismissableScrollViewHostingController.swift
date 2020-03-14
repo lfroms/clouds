@@ -56,6 +56,7 @@ class DismissableScrollViewHostingController<Content>: UIHostingController<Conte
         scrollView = findUIScrollView(view: view)
         scrollView?.delegate = self
         scrollView?.clipsToBounds = false
+        scrollView?.keyboardDismissMode = .onDrag
         scrollView?.addGestureRecognizer(panGestureRecognizer)
 
         super.viewDidAppear(animated)
@@ -97,10 +98,11 @@ class DismissableScrollViewHostingController<Content>: UIHostingController<Conte
             break
 
         case .ended, .cancelled:
+            releaseLabel.alpha = 0
+
             dismissAction()
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.releaseLabel.alpha = 0
                 self.scrollView?.alpha = 1
             }
 

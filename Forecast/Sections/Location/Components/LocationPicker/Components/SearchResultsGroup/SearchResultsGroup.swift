@@ -29,6 +29,7 @@ struct SearchResultsGroup: View {
                     onStar: self.onStarLocation
                 )
                 .equatable()
+                .transition(.fadeAndScale)
             }
         }
     }

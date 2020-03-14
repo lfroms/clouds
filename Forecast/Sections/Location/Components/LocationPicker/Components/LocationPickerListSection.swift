@@ -16,6 +16,13 @@ struct LocationPickerListSection<Content: View>: View {
 
     var content: () -> Content
 
+    init(label: String, value: String? = nil, loading: Binding<Bool>, @ViewBuilder content: @escaping () -> Content) {
+        self.label = label
+        self.value = value
+        self._loading = loading
+        self.content = content
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: Dimension.LocationPicker.itemSpacing) {
             HStack(alignment: .firstTextBaseline, spacing: Dimension.LocationPicker.itemSpacing) {
