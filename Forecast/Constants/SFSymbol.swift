@@ -11,6 +11,7 @@ import Foundation
 final class SFSymbol {
     static let magnifyingGlass: String = "magnifyingglass"
     static let starFilled: String = "star.fill"
+    static let mapFilled: String = "map.fill"
     static let locationFilled: String = "location.fill"
     static let xMarkCircleFilled: String = "xmark.circle.fill"
     static let sliderHorizontal3: String = "slider.horizontal.3"

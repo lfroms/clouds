@@ -11,33 +11,56 @@ import SwiftUI
 struct LocationPicker: View {
     @Binding var loading: Bool
     var currentLocation: Location?
+    var currentLocationWeather: ShortFormWeather?
     var favoriteLocations: [Location]
+    var favoriteLocationsWeather: [ShortFormWeather]?
     var searchQuery: String
     var searchResults: [Location]
+
+    var onSelectCurrentLocation: (Location) -> Void
+    var onSelectFavoriteLocation: (Location) -> Void
+    var onSelectSearchResult: (Location) -> Void
+    var onStar: (Location) -> Void
 
     var body: some View {
         let pluralizedResults = searchResults.count == 1 ? "result" : "results"
         let label = "\(searchResults.count) \(pluralizedResults) for"
 
-        return VStack(alignment: .leading, spacing: Dimension.LocationPicker.sectionSpacing) {
+        return VStack(alignment: HorizontalAlignment.leading, spacing: Dimension.LocationPicker.sectionSpacing) {
             if searchQuery.isEmpty {
                 if currentLocation != nil {
                     LocationPickerListSection(label: "Current location", loading: $loading) {
-                        CurrentLocationItem(icon: SFSymbol.locationFilled, location: self.currentLocation!)
+                        LocationItem(
+                            style: .current,
+                            location: self.currentLocation!,
+                            weather: self.currentLocationWeather,
+                            action: self.onSelectCurrentLocation
+                        )
                     }
                 }
 
                 if favoriteLocations.count > 0 {
                     LocationPickerListSection(label: "Favourite locations", loading: $loading) {
-                        ForEach(self.favoriteLocations, id: \.id) { location in
-                            FavoriteLocationItem(location: location)
+                        ForEach(Array(self.favoriteLocations.enumerated()), id: \.element.id) { index, favoriteLocation in
+                            LocationItem(
+                                style: .favorite,
+                                location: favoriteLocation,
+                                weather: self.favoriteLocationsWeather?[safe: index],
+                                action: self.onSelectFavoriteLocation,
+                                onStar: self.onStar
+                            )
                         }
                     }
                 }
             } else {
                 LocationPickerListSection(label: label, value: searchQuery, loading: $loading) {
                     ForEach(self.searchResults, id: \.id) { location in
-                        SearchResultLocationItem(location: location)
+                        LocationItem(
+                            style: .search,
+                            location: location,
+                            action: self.onSelectSearchResult,
+                            onStar: self.onStar
+                        )
                     }
                 }
             }
@@ -64,7 +87,11 @@ struct LocationPicker_Previews: PreviewProvider {
             currentLocation: nil,
             favoriteLocations: [],
             searchQuery: .empty,
-            searchResults: []
+            searchResults: [],
+            onSelectCurrentLocation: { _ in },
+            onSelectFavoriteLocation: { _ in },
+            onSelectSearchResult: { _ in },
+            onStar: { _ in }
         )
     }
 }

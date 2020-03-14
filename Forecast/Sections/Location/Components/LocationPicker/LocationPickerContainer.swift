@@ -18,9 +18,15 @@ struct LocationPickerContainer: Container {
         LocationPicker(
             loading: loading,
             currentLocation: currentLocation,
+            currentLocationWeather: weatherService.currentLocationShortForm,
             favoriteLocations: locationFavoritesService.favoriteLocations,
+            favoriteLocationsWeather: weatherService.favoriteLocations,
             searchQuery: locationSearchService.searchQuery,
-            searchResults: locationSearchService.results
+            searchResults: locationSearchService.results,
+            onSelectCurrentLocation: self.onSelectCurrentLocation,
+            onSelectFavoriteLocation: self.onSelectLocation,
+            onSelectSearchResult: self.onSelectLocation,
+            onStar: self.onStar
         )
         .equatable()
     }
@@ -40,6 +46,30 @@ struct LocationPickerContainer: Container {
 
         let regionName = LocationNameHelper.shared.createRegionNameFrom(placemark: lastPlacemark)
         return Location(id: UUID(), name: cityName, regionName: regionName, coordinate: coordinate)
+    }
+
+    private func onSelectCurrentLocation(_: Location) {
+//        locationPickerState.toggleLocationPicker(animated: true)
+
+        locationFavoritesService.clearActiveLocation()
+        weatherService.setShouldFetchUpdatedWeather()
+    }
+
+    private func onSelectLocation(_ location: Location) {
+//        locationPickerState.toggleLocationPicker(animated: true)
+
+        locationFavoritesService.saveActiveLocation(location: location)
+        weatherService.setShouldFetchUpdatedWeather()
+    }
+
+    private func onStar(_ location: Location) {
+        if locationFavoritesService.favoriteLocations.contains(location) {
+            locationFavoritesService.favoriteLocations.removeAll { $0 == location }
+
+            return
+        }
+
+        locationFavoritesService.favoriteLocations.append(location)
     }
 }
 

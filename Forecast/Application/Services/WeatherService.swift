@@ -15,6 +15,7 @@ import SwiftUI
 class WeatherService: ObservableObject {
     @Published private(set) var activeLocation: WeatherQuery.Data.ActiveLocationWeather?
     @Published private(set) var currentLocation: WeatherQuery.Data.CurrentLocationWeather?
+    @Published private(set) var currentLocationShortForm: ShortFormWeather?
     @Published private(set) var favoriteLocations: [ShortFormWeather] = []
     
     @Published private(set) var error: Error?
@@ -58,6 +59,7 @@ class WeatherService: ObservableObject {
                 if let data = graphQLResult.data {
                     self.activeLocation = data.activeLocationWeather
                     self.currentLocation = data.currentLocationWeather
+                    self.currentLocationShortForm = self.mapCurrentLocationWeather(coordinate: currentLocation)
                     self.favoriteLocations = self.mapBulkWeather(items: data.favoriteLocationWeather, coordinates: favoriteLocations.asGraphQLCoordinates)
                     
                     self.didLoadUpdatedWeather.send()
@@ -69,6 +71,18 @@ class WeatherService: ObservableObject {
             
             self.currentRequest = nil
         }
+    }
+    
+    private func mapCurrentLocationWeather(coordinate: CLLocationCoordinate2D?) -> ShortFormWeather? {
+        guard let coordinate = coordinate else {
+            return nil
+        }
+        
+        return ShortFormWeather(
+            coordinate: coordinate,
+            temperature: currentLocation?.currentConditions?.temperature,
+            iconCode: currentLocation?.currentConditions?.iconCode
+        )
     }
     
     private func mapBulkWeather(items: [WeatherQuery.Data.FavoriteLocationWeather?], coordinates: [Coordinate]) -> [ShortFormWeather] {
