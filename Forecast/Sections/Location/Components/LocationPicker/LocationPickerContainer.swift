@@ -14,6 +14,8 @@ struct LocationPickerContainer: Container {
     @EnvironmentObject private var locationSearchService: LocationSearchService
     @EnvironmentObject private var locationFavoritesService: LocationFavoritesService
 
+    var didFinishPickingLocation: () -> Void
+
     var body: some View {
         LocationPicker(
             loading: loading,
@@ -49,14 +51,14 @@ struct LocationPickerContainer: Container {
     }
 
     private func onSelectCurrentLocation(_: Location) {
-//        locationPickerState.toggleLocationPicker(animated: true)
+        didFinishPickingLocation()
 
         locationFavoritesService.clearActiveLocation()
         weatherService.setShouldFetchUpdatedWeather()
     }
 
     private func onSelectLocation(_ location: Location) {
-//        locationPickerState.toggleLocationPicker(animated: true)
+        didFinishPickingLocation()
 
         locationFavoritesService.saveActiveLocation(location: location)
         weatherService.setShouldFetchUpdatedWeather()
@@ -75,6 +77,6 @@ struct LocationPickerContainer: Container {
 
 struct LocationPickerContainer_Previews: PreviewProvider {
     static var previews: some View {
-        LocationPickerContainer()
+        LocationPickerContainer(didFinishPickingLocation: {})
     }
 }

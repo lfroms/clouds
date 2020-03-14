@@ -36,7 +36,14 @@ struct LocationItem: View {
     var body: some View {
         Button(action: { self.action(self.location) }) {
             HStack(alignment: .center, spacing: Dimension.Spacing.barItems) {
-                LocationItemIcon(name: style.symbolName)
+                if style == .favorite {
+                    LocationItemStarButton(isHighlighted: location.isFavorite, monochrome: true) {
+                        self.onStar?(self.location)
+                    }
+                } else {
+                    LocationItemIcon(name: style.symbolName)
+                }
+
                 LocationItemLabels(title: self.location.name, subtitle: self.location.regionName)
                 Spacer()
 

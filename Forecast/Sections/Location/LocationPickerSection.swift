@@ -18,7 +18,7 @@ struct LocationPickerSection: View {
                 .edgesIgnoringSafeArea(.all)
 
             ScrollView(.vertical) {
-                LocationPickerContainer()
+                LocationPickerContainer(didFinishPickingLocation: onDismiss)
             }
             .onDismiss(message: "Release to Dismiss", perform: self.onDismiss)
             .padding(.top, topInset)
@@ -36,7 +36,7 @@ extension LocationPickerSection: Equatable {
     }
 }
 
-struct Search_Previews: PreviewProvider {
+struct LocationPickerSection_Previews: PreviewProvider {
     static var previews: some View {
         LocationPickerSection(onDismiss: {})
     }
