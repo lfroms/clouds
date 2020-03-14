@@ -12,6 +12,7 @@ struct LocationItem: View {
     var style: Style
     var location: Location
     var weather: ShortFormWeather?
+    var favorite: Bool = false
 
     var action: (Location) -> Void
     var onStar: ((Location) -> Void)?
@@ -37,7 +38,7 @@ struct LocationItem: View {
         Button(action: { self.action(self.location) }) {
             HStack(alignment: .center, spacing: Dimension.Spacing.barItems) {
                 if style == .favorite {
-                    LocationItemStarButton(isHighlighted: location.isFavorite, monochrome: true) {
+                    LocationItemStarButton(isHighlighted: true, monochrome: true) {
                         self.onStar?(self.location)
                     }
                 } else {
@@ -48,7 +49,7 @@ struct LocationItem: View {
                 Spacer()
 
                 if style == .search {
-                    LocationItemStarButton(isHighlighted: location.isFavorite) {
+                    LocationItemStarButton(isHighlighted: self.favorite) {
                         self.onStar?(self.location)
                     }
                 } else {
@@ -91,6 +92,7 @@ extension LocationItem: Equatable {
         lhs.style == rhs.style
             && lhs.location == rhs.location
             && lhs.weather == rhs.weather
+            && lhs.favorite == rhs.favorite
     }
 }
 

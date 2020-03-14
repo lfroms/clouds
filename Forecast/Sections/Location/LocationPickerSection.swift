@@ -18,9 +18,10 @@ struct LocationPickerSection: View {
                 .edgesIgnoringSafeArea(.all)
 
             ScrollView(.vertical) {
-                LocationPickerContainer(didFinishPickingLocation: onDismiss)
+                LocationPicker()
+                    .equatable()
             }
-            .onDismiss(message: "Release to Dismiss", perform: self.onDismiss)
+            .onDismiss(message: "Release to Dismiss", perform: onDismiss)
             .padding(.top, topInset)
         }
     }
