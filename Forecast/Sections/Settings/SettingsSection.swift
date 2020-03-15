@@ -29,9 +29,11 @@ struct SettingsSection: View {
 
                         Spacer()
 
-                        DistanceIndicator(kilometers: 5)
-                            .padding(.bottom, -4)
-                            .foregroundColor(Color.white.opacity(0.8))
+                        if self.stationDistance != nil {
+                            DistanceIndicator(kilometers: self.stationDistance!)
+                                .padding(.bottom, -4)
+                                .foregroundColor(Color.white.opacity(0.8))
+                        }
                     }
                 }
             }
@@ -48,6 +50,14 @@ struct SettingsSection: View {
 
     private var stationName: String? {
         weatherService.activeLocation?.currentConditions?.station.name
+    }
+
+    private var stationDistance: Int? {
+        guard let metres = weatherService.activeLocation?.currentConditions?.station.distanceMetres else {
+            return nil
+        }
+
+        return metres / 1000
     }
 }
 

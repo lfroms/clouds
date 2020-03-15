@@ -25,6 +25,7 @@ query Weather($currentLocation: Coordinate, $activeLocation: Coordinate, $favori
                 code
                 latitude
                 longitude
+                distanceMetres
             }
             temperature
             humidity

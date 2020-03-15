@@ -258,6 +258,7 @@ public final class WeatherQuery: GraphQLQuery {
             code
             latitude
             longitude
+            distanceMetres
           }
           temperature
           humidity
@@ -944,6 +945,7 @@ public final class WeatherQuery: GraphQLQuery {
             GraphQLField("code", type: .nonNull(.scalar(String.self))),
             GraphQLField("latitude", type: .nonNull(.scalar(String.self))),
             GraphQLField("longitude", type: .nonNull(.scalar(String.self))),
+            GraphQLField("distanceMetres", type: .nonNull(.scalar(Int.self))),
           ]
 
           public private(set) var resultMap: ResultMap
@@ -952,8 +954,8 @@ public final class WeatherQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(name: String, code: String, latitude: String, longitude: String) {
-            self.init(unsafeResultMap: ["__typename": "Station", "name": name, "code": code, "latitude": latitude, "longitude": longitude])
+          public init(name: String, code: String, latitude: String, longitude: String, distanceMetres: Int) {
+            self.init(unsafeResultMap: ["__typename": "Station", "name": name, "code": code, "latitude": latitude, "longitude": longitude, "distanceMetres": distanceMetres])
           }
 
           public var __typename: String {
@@ -998,6 +1000,15 @@ public final class WeatherQuery: GraphQLQuery {
             }
             set {
               resultMap.updateValue(newValue, forKey: "longitude")
+            }
+          }
+
+          public var distanceMetres: Int {
+            get {
+              return resultMap["distanceMetres"]! as! Int
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "distanceMetres")
             }
           }
         }
