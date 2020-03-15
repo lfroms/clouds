@@ -30,6 +30,11 @@
 		803028E522CEE7970053F639 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028E422CEE7970053F639 /* OverviewView.swift */; };
 		80305321240E17FE00FDAC69 /* SunriseSunsetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80305320240E17FE00FDAC69 /* SunriseSunsetData.swift */; };
 		80305323240E182300FDAC69 /* ObservedAtData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80305322240E182300FDAC69 /* ObservedAtData.swift */; };
+		80311BB8241E9D2D004BC6B4 /* LabeledGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80311BB7241E9D2D004BC6B4 /* LabeledGroup.swift */; };
+		80311BBA241EA051004BC6B4 /* DistanceIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80311BB9241EA051004BC6B4 /* DistanceIndicator.swift */; };
+		80311BBC241EA6B5004BC6B4 /* AttributionText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80311BBB241EA6B5004BC6B4 /* AttributionText.swift */; };
+		80311BBE241EA715004BC6B4 /* AppMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80311BBD241EA715004BC6B4 /* AppMetadata.swift */; };
+		80311BC4241EA782004BC6B4 /* SettingsSheetCloseButtonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80311BC3241EA782004BC6B4 /* SettingsSheetCloseButtonRow.swift */; };
 		803181A4241D661C00F9C695 /* AnyTransition+Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803181A3241D661C00F9C695 /* AnyTransition+Presets.swift */; };
 		803181A8241D849500F9C695 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803181A7241D849500F9C695 /* AppColor.swift */; };
 		8031CBC3240DF2B400C76FE3 /* SFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8031CBC2240DF2B400C76FE3 /* SFSymbol.swift */; };
@@ -192,6 +197,11 @@
 		803028E422CEE7970053F639 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		80305320240E17FE00FDAC69 /* SunriseSunsetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetData.swift; sourceTree = "<group>"; };
 		80305322240E182300FDAC69 /* ObservedAtData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedAtData.swift; sourceTree = "<group>"; };
+		80311BB7241E9D2D004BC6B4 /* LabeledGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledGroup.swift; sourceTree = "<group>"; };
+		80311BB9241EA051004BC6B4 /* DistanceIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceIndicator.swift; sourceTree = "<group>"; };
+		80311BBB241EA6B5004BC6B4 /* AttributionText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributionText.swift; sourceTree = "<group>"; };
+		80311BBD241EA715004BC6B4 /* AppMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMetadata.swift; sourceTree = "<group>"; };
+		80311BC3241EA782004BC6B4 /* SettingsSheetCloseButtonRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheetCloseButtonRow.swift; sourceTree = "<group>"; };
 		803181A3241D661C00F9C695 /* AnyTransition+Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyTransition+Presets.swift"; sourceTree = "<group>"; };
 		803181A7241D849500F9C695 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		8031CBC2240DF2B400C76FE3 /* SFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbol.swift; sourceTree = "<group>"; };
@@ -403,6 +413,7 @@
 		802048C5240AE2E600DFB842 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				80311BB6241E9D0F004BC6B4 /* Components */,
 				802048C6240AE2F300DFB842 /* SettingsSection.swift */,
 			);
 			path = Settings;
@@ -531,6 +542,18 @@
 				80305322240E182300FDAC69 /* ObservedAtData.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		80311BB6241E9D0F004BC6B4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				80311BB7241E9D2D004BC6B4 /* LabeledGroup.swift */,
+				80311BB9241EA051004BC6B4 /* DistanceIndicator.swift */,
+				80311BBB241EA6B5004BC6B4 /* AttributionText.swift */,
+				80311BBD241EA715004BC6B4 /* AppMetadata.swift */,
+				80311BC3241EA782004BC6B4 /* SettingsSheetCloseButtonRow.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		8034A1A9240E10E000DF02A1 /* HeaderAccessories */ = {
@@ -1337,7 +1360,9 @@
 				805D6A0C241039EF002DEBAC /* GraphQL.swift in Sources */,
 				8061292A236915D4005EEB2A /* WeekSection.swift in Sources */,
 				803181A8241D849500F9C695 /* AppColor.swift in Sources */,
+				80311BBC241EA6B5004BC6B4 /* AttributionText.swift in Sources */,
 				8084FD9B241D391C006A57DC /* FavoriteLocationsGroup.swift in Sources */,
+				80311BB8241E9D2D004BC6B4 /* LabeledGroup.swift in Sources */,
 				80A646C623F5E98900C80633 /* UIStackView+SetBackground.swift in Sources */,
 				8031CBC6240DF39100C76FE3 /* Double+One.swift in Sources */,
 				8084FD9D241D3926006A57DC /* FavoriteLocationsGroupContainer.swift in Sources */,
@@ -1419,11 +1444,13 @@
 				80C816282363DEBB00D33669 /* OmniBarPlaceholder.swift in Sources */,
 				8084FD96241D38FB006A57DC /* CurrentLocationGroup.swift in Sources */,
 				80E5D62A2377721B004A1D6B /* String+IsInt.swift in Sources */,
+				80311BBE241EA715004BC6B4 /* AppMetadata.swift in Sources */,
 				8057DB582364F1370087FBF7 /* NavigationBar.swift in Sources */,
 				805A174A22C53ADB00E1B4E2 /* AppLayout.swift in Sources */,
 				80FB6C6D2408A6130026DD83 /* LocationItemStarButton.swift in Sources */,
 				8057DB512364F0F20087FBF7 /* AlertIndicator.swift in Sources */,
 				806A5BF024144E4C0093361D /* VisualState.swift in Sources */,
+				80311BBA241EA051004BC6B4 /* DistanceIndicator.swift in Sources */,
 				80985F5A240E1F1D00452D08 /* UnixTimestampTypealias.swift in Sources */,
 				80A646C423F5E95800C80633 /* HostingView.swift in Sources */,
 				803028D822CEE56D0053F639 /* ConditionView.swift in Sources */,
@@ -1433,6 +1460,7 @@
 				80C395A523787F660004B71D /* Date+TimeAgo.swift in Sources */,
 				800908D82413694D0024300D /* DailyForecastContainer.swift in Sources */,
 				806A5C00241481B90093361D /* CurrentSectionContainer.swift in Sources */,
+				80311BC4241EA782004BC6B4 /* SettingsSheetCloseButtonRow.swift in Sources */,
 				80C395AA23788A6B0004B71D /* AppActivityIndicator.swift in Sources */,
 				8076F72623651CD000FB85D1 /* SlidingPanel.swift in Sources */,
 				80EF84E7240F52F000D4037B /* MasterViewContainer.swift in Sources */,

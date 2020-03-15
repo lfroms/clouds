@@ -21,6 +21,8 @@ struct MasterViewContainer: Container {
         .sheet(isPresented: $settingsSheetState.presented) {
             SettingsSection()
                 .colorScheme(.dark)
+                .environmentObject(self.weatherService)
+                .environmentObject(self.settingsSheetState)
         }
     }
 }
