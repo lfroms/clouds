@@ -17,27 +17,17 @@ struct WeatherBackground: View {
 
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: gradientA), startPoint: .topTrailing, endPoint: .bottomLeading)
-            LinearGradient(gradient: Gradient(colors: gradientB), startPoint: .topTrailing, endPoint: .bottomLeading)
+            LinearGradient(gradient: Gradient(colors: gradientA), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: gradientB), startPoint: .top, endPoint: .bottom)
                 .opacity(alternateGradient ? 0 : 1)
         }
         .onReceive(visualState.iconCodeDidChange, perform: self.animateGradient)
     }
 
-    private static let colorPrefix = "color"
-
-    private var highColorName: String {
-        "\(Self.colorPrefix)-\(visualState.iconCode)-high"
-    }
-
-    private var lowColorName: String {
-        "\(Self.colorPrefix)-\(visualState.iconCode)-low"
-    }
-
     private var gradientSteps: [Color] {
         [
-            Color(highColorName),
-            Color(lowColorName)
+            AppColor.Weather.schemes[code: visualState.iconCode].upper.color,
+            AppColor.Weather.schemes[code: visualState.iconCode].lower.color
         ]
     }
 

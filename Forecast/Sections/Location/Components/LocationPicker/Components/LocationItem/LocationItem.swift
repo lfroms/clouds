@@ -77,14 +77,12 @@ struct LocationItem: View {
         return "\(Int(temperature.rounded() + 0.0))°"
     }
 
-    private static let colorPrefix = "color"
-
     private var color: Color? {
         guard let colorCode = weather?.iconCode else {
             return nil
         }
 
-        return Color("\(Self.colorPrefix)-\(colorCode)-low")
+        return AppColor.Weather.schemes[code: colorCode].lower.color
     }
 }
 
