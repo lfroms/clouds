@@ -11,7 +11,7 @@ import SwiftUI
 struct AppActivityIndicator: View {
     @State private var isAnimating: Bool = false
 
-    var color: Color = .primary
+    var color: Color = AppColor.Display.primary
 
     var body: some View {
         IndicatorShape(size: 12, weight: 2, color: color)

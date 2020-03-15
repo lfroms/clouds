@@ -14,7 +14,6 @@ struct LocationItemTemperature: View {
     var body: some View {
         Text(text)
             .font(Font.title.bold())
-            .foregroundColor(.primary)
     }
 }
 

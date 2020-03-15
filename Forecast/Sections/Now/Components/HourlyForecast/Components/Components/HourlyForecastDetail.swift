@@ -17,7 +17,6 @@ struct HourlyForecastDetail: View {
             Image(systemName: iconName).font(.system(size: 13, weight: .bold))
             Text(label)
                 .font(.system(size: 11, weight: .bold))
-                .foregroundColor(.primary)
                 .fixedSize()
         }
     }

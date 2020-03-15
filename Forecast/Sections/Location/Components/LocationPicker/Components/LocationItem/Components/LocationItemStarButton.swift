@@ -52,10 +52,10 @@ struct LocationItemStarButton: View {
         }
 
         if let monochrome = monochrome, monochrome {
-            return .primary
+            return .white
         }
 
-        return isHighlighted ? .yellow : .secondary
+        return isHighlighted ? .yellow : AppColor.Display.secondary
     }
 }
 

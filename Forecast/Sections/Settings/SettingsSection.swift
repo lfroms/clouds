@@ -10,7 +10,12 @@ import SwiftUI
 
 struct SettingsSection: View {
     var body: some View {
-        Text("Settings")
+        ZStack {
+            Color(red: 0.12, green: 0.12, blue: 0.12)
+                .edgesIgnoringSafeArea(.all)
+
+            Text("Settings")
+        }
     }
 }
 

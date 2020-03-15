@@ -17,7 +17,7 @@ struct HighLowView: View {
             renderIcon()
             renderTemperature()
         }
-        .opacity(0.6)
+        .foregroundColor(AppColor.Display.primary.opacity(0.6))
     }
 
     fileprivate func renderIcon() -> some View {

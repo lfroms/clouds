@@ -36,6 +36,7 @@ class DismissableScrollViewHostingController<Content>: UIHostingController<Conte
         label.text = message.uppercased()
         label.font = UIFont.preferredFont(for: .caption2, weight: .semibold)
         label.adjustsFontForContentSizeCategory = true
+        label.textColor = .white
         label.textAlignment = .center
         label.alpha = 0
         label.transform = self.initialReleaseLabelTransform
@@ -57,6 +58,8 @@ class DismissableScrollViewHostingController<Content>: UIHostingController<Conte
         scrollView?.delegate = self
         scrollView?.clipsToBounds = false
         scrollView?.keyboardDismissMode = .onDrag
+        scrollView?.backgroundColor = .clear
+        view.backgroundColor = .clear
         scrollView?.addGestureRecognizer(panGestureRecognizer)
 
         super.viewDidAppear(animated)

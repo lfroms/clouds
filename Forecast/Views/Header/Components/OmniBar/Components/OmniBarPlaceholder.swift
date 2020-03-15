@@ -12,7 +12,7 @@ struct OmniBarPlaceholder: View, Equatable {
     var body: some View {
         Text("Find a location")
             .fontWeight(.semibold)
-            .opacity(0.3)
+            .foregroundColor(AppColor.Display.placeholder)
     }
 }
 

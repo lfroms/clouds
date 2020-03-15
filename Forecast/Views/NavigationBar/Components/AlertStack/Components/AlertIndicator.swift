@@ -19,7 +19,6 @@ struct AlertIndicator: View {
 
             Image(systemName: alert.type.symbolName)
                 .font(Font.callout.bold())
-                .foregroundColor(.white)
         }
     }
 }

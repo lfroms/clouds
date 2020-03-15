@@ -45,11 +45,10 @@ struct DailyForecastCard: View {
             }
         }
         .padding(16)
-        .background(Color.white.opacity(0.15))
+        .background(AppColor.Display.primary.opacity(0.15))
         .cornerRadius(18)
         .frame(width: Dimension.WeekSection.dayCardWidth)
         .background(ShadowView(radius: 30, opacity: 0.08, color: .black, cornerRadius: 18))
-        .foregroundColor(.white)
     }
 
     private var parsedWindSpeed: String? {

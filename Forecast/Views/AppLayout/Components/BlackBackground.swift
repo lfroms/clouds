@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BlackBackground: View {
     var body: some View {
-        Color.black
+        AppColor.Control.viewBackground
     }
 }
 

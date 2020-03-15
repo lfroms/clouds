@@ -34,7 +34,6 @@ struct OmniBar: View, Equatable {
         }
         .font(Font.callout.weight(.bold))
         .padding(.horizontal, Dimension.Global.padding)
-        .foregroundColor(.white)
         .frame(height: Dimension.Header.omniBarHeight)
         .background(ShadowView(radius: 20, opacity: 0.3, color: .black, cornerRadius: 22))
         .background(BlurView(style: .light, tint: 0.3).cornerRadius(26))

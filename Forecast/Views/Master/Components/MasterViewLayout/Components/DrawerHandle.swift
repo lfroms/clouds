@@ -15,7 +15,7 @@ struct DrawerHandle: View {
         VStack(alignment: .center, spacing: 0) {
             Rectangle()
                 .frame(width: 60, height: 4)
-                .foregroundColor(Color.white.opacity(0.4))
+                .foregroundColor(AppColor.Control.subdued)
                 .background(Color.clear)
                 .cornerRadius(2)
         }

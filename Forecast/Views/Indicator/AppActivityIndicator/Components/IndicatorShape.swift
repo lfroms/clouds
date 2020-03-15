@@ -23,6 +23,6 @@ struct IndicatorShape: View {
 
 struct IndicatorShape_Previews: PreviewProvider {
     static var previews: some View {
-        IndicatorShape(size: 12, weight: 3, color: .primary)
+        IndicatorShape(size: 12, weight: 3, color: .white)
     }
 }

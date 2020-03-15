@@ -20,7 +20,7 @@ struct ObservedAtTime: View, Equatable {
     var body: some View {
         HStack(alignment: .lastTextBaseline, spacing: 5) {
             if loading {
-                AppActivityIndicator(color: Color.primary.opacity(0.7))
+                AppActivityIndicator(color: AppColor.Display.secondary)
                     .equatable()
 
             } else {
@@ -34,7 +34,7 @@ struct ObservedAtTime: View, Equatable {
             }
         }
         .font(Font.subheadline.weight(.semibold))
-        .foregroundColor(Color.primary.opacity(0.7))
+        .foregroundColor(AppColor.Display.secondary)
         .onAppear {
             self.updateText()
         }

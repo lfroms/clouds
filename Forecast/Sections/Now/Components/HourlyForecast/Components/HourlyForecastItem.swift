@@ -20,7 +20,7 @@ struct HourlyForecastItem: View {
             HStack(alignment: .firstTextBaseline, spacing: 2) {
                 FixedSizeText("\(data.date.toFormat("h"))")
                 FixedSizeText("\(data.date.toFormat("a").prefix(1).lowercased())")
-                    .foregroundColor(Color.primary.opacity(0.65))
+                    .foregroundColor(AppColor.Display.primary.opacity(0.65))
             }
             .font(Font.system(size: 14).weight(.bold))
 
@@ -40,7 +40,7 @@ struct HourlyForecastItem: View {
                 HStack(alignment: .firstTextBaseline, spacing: 0) {
                     Text("\(data.temperature)")
                     Text("°")
-                        .foregroundColor(Color.primary.opacity(0.64))
+                        .foregroundColor(AppColor.Display.primary.opacity(0.65))
                 }
                 .font(Font.system(size: 16).weight(.semibold))
             }
@@ -82,7 +82,7 @@ struct HourlyForecastItem: View {
     }
 
     private var backgroundColor: Color {
-        expanded ? Color.white.opacity(0.1) : Color.black.opacity(0.06)
+        expanded ? AppColor.Display.primary.opacity(0.1) : AppColor.Control.viewBackground.opacity(0.06)
     }
 
     private var height: CGFloat {

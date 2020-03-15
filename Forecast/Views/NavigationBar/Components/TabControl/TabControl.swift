@@ -41,7 +41,7 @@ struct TabControl: View {
             .frame(width: bounds.size.width, height: bounds.size.height)
             .fixedSize()
             .offset(x: bounds.minX, y: bounds.minY)
-            .foregroundColor(Color.primary.opacity(0.15))
+            .foregroundColor(AppColor.Control.extraSubdued)
             .animation(AnimationPreset.TabControl.backdropSlide)
     }
 }

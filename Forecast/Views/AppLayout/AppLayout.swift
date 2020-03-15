@@ -32,6 +32,7 @@ struct AppLayout: View {
 
             Header()
         }
+        .foregroundColor(AppColor.Display.primary)
     }
 }
 

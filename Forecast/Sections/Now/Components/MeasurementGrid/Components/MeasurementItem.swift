@@ -23,7 +23,7 @@ struct MeasurementItem: View {
             VStack(alignment: .leading, spacing: 6) {
                 Text(descriptor.label)
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(AppColor.Display.secondary)
                     .bold()
 
                 HStack(alignment: .lastTextBaseline, spacing: 4) {

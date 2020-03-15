@@ -15,7 +15,6 @@ struct DailyForecastItem: View {
         VStack(alignment: .leading, spacing: 5) {
             Text(data.when)
                 .font(Font.callout.bold())
-                .foregroundColor(.white)
                 .padding(.leading, 16)
 
             DailyForecastCard(

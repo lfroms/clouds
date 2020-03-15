@@ -22,7 +22,7 @@ struct OverviewView: View {
                     TemperatureView(value: temperature)
                         .equatable()
 
-                    ObservationView(observation: observation)
+                    ConditionView(condition: observation)
                         .equatable()
                         .lineLimit(2)
                 }

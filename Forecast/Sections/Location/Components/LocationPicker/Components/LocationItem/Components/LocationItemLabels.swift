@@ -16,11 +16,10 @@ struct LocationItemLabels: View {
         VStack(alignment: .leading, spacing: 0) {
             Text(title)
                 .font(Font.callout.weight(.bold))
-                .foregroundColor(.primary)
 
             Text(subtitle)
                 .font(Font.caption.bold())
-                .foregroundColor(Color.primary.opacity(0.6))
+                .foregroundColor(AppColor.Display.primary.opacity(0.6))
         }
     }
 }

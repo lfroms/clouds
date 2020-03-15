@@ -22,7 +22,7 @@ struct FavoriteLocationsGroup: View {
         ) {
             if self.locations.isEmpty {
                 Text("You haven't added any favourite locations.")
-                    .foregroundColor(.secondary)
+                    .foregroundColor(AppColor.Display.secondary)
                     .font(.caption)
                     .transition(AnyTransition.opacity.animation(.easeInOut))
             }
