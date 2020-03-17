@@ -10,6 +10,8 @@ import SwiftDate
 import SwiftUI
 
 struct HourlyForecastItem: View {
+    @Environment(\.locale) var locale
+
     private let workItemService = WorkItemService()
     @State var expanded: Bool = false
 
@@ -18,8 +20,8 @@ struct HourlyForecastItem: View {
     var body: some View {
         VStack(alignment: .center) {
             HStack(alignment: .firstTextBaseline, spacing: 2) {
-                FixedSizeText("\(data.date.toFormat("h"))")
-                FixedSizeText("\(data.date.toFormat("a").prefix(1).lowercased())")
+                FixedSizeText(formattedDate)
+                FixedSizeText(amPm)
                     .foregroundColor(AppColor.Display.primary.opacity(0.65))
             }
             .font(Font.system(size: 14).weight(.bold))
@@ -51,6 +53,21 @@ struct HourlyForecastItem: View {
         .cornerRadius(30)
         .onTapGesture(perform: handleTapGesture)
         .animation(AnimationPreset.Touch.expand)
+    }
+
+    private var formattedDate: String {
+        data.date.toFormat("h")
+    }
+
+    private var amPm: String {
+        let formatted = data.date.toFormat("h a").lowercased()
+        let splitOnSpace = formatted.split(separator: " ")
+
+        guard splitOnSpace.count >= 2 else {
+            return .empty
+        }
+
+        return String(splitOnSpace.last?.prefix(1) ?? "")
     }
 
     private func handleTapGesture() {
@@ -114,7 +131,7 @@ struct HourlyForecastItem: View {
 
 extension HourlyForecastItem: Equatable {
     static func == (lhs: HourlyForecastItem, rhs: HourlyForecastItem) -> Bool {
-        lhs.data == rhs.data
+        lhs.data == rhs.data && lhs.locale == rhs.locale
     }
 }
 
