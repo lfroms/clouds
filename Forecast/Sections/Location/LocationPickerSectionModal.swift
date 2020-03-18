@@ -13,13 +13,13 @@ struct LocationPickerSectionModal: View {
     @EnvironmentObject private var locationSearchService: LocationSearchService
 
     var body: some View {
-        LocationPickerSection(onDismiss: self.handlePickerDismiss)
-            .equatable()
-            .offset(searchOffset)
-    }
-
-    private var searchOffset: CGSize {
-        return CGSize(width: 0, height: locationPickerState.presented ? 0 : Dimension.System.screenHeight)
+        ZStack {
+            if self.$locationPickerState.presented.wrappedValue {
+                LocationPickerSection(onDismiss: self.handlePickerDismiss)
+                    .equatable()
+                    .transition(.move(edge: .bottom))
+            }
+        }
     }
 
     private func handlePickerDismiss() {
