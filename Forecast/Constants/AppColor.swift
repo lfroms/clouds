@@ -67,6 +67,7 @@ public final class AppColor {
             1: blueSky,
             2: blueSky,
             3: blueSky,
+            4: blueSky,
 
             6: dryCloud,
             7: dryCloud,
