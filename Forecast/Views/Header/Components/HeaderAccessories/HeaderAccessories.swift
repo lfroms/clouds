@@ -31,7 +31,7 @@ struct HeaderAccessories: View, Equatable {
             )
             .equatable()
         }
-        .shadow(color: Color.black.opacity(0.8), radius: 10, x: 0, y: 0)
+        .foregroundColor(AppColor.Display.secondaryBright)
     }
 
     // MARK: - Equatable

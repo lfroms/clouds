@@ -13,6 +13,7 @@ public final class AppColor {
     public final class Display {
         public static let primary = Color.white
         public static let secondary = primary.opacity(0.7)
+        public static let secondaryBright = primary.opacity(0.8)
         public static let placeholder = primary.opacity(0.3)
     }
 
