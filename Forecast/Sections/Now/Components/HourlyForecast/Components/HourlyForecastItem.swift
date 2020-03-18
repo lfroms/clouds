@@ -10,8 +10,6 @@ import SwiftDate
 import SwiftUI
 
 struct HourlyForecastItem: View {
-    @Environment(\.locale) var locale
-
     private let workItemService = WorkItemService()
     @State var expanded: Bool = false
 
@@ -136,7 +134,7 @@ struct HourlyForecastItem: View {
 
 extension HourlyForecastItem: Equatable {
     static func == (lhs: HourlyForecastItem, rhs: HourlyForecastItem) -> Bool {
-        lhs.data == rhs.data && lhs.locale == rhs.locale
+        lhs.data == rhs.data
     }
 }
 

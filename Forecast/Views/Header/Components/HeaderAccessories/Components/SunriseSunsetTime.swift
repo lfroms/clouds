@@ -10,8 +10,6 @@ import SwiftDate
 import SwiftUI
 
 struct SunriseSunsetTime: View {
-    @Environment(\.locale) private var locale
-
     var sunrise: DateInRegion
     var sunset: DateInRegion
 
@@ -49,7 +47,7 @@ struct SunriseSunsetTime: View {
 
 extension SunriseSunsetTime: Equatable {
     static func == (lhs: SunriseSunsetTime, rhs: SunriseSunsetTime) -> Bool {
-        lhs.locale == rhs.locale && lhs.sunrise == rhs.sunrise && lhs.sunset == rhs.sunset
+        lhs.sunrise == rhs.sunrise && lhs.sunset == rhs.sunset
     }
 }
 
