@@ -13,7 +13,7 @@ import SwiftUI
 final class AppState: ObservableObject {
     let activeSectionDidChange = PassthroughSubject<Void, Never>()
     
-    @Published var activeSection: AppSection = .now {
+    @Published private(set) var activeSection: AppSection = .now {
         didSet {
             slidingPanelLocked = activeSection != .now
             
@@ -24,7 +24,19 @@ final class AppState: ObservableObject {
         }
     }
     
-    @Published var detailsContentHeight: CGFloat = 0
+    func navigateToSection(_ section: AppSection, animated: Bool) {
+        guard animated else {
+            activeSection = section
+            return
+        }
+        
+        withAnimation(.easeInOut) {
+            activeSection = section
+        }
+    }
+    
+    // MARK: - Sliding Panel
     
     private(set) var slidingPanelLocked: Bool = false
+    @Published var detailsContentHeight: CGFloat = 0
 }

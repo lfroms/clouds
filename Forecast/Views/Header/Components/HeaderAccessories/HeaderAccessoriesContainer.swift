@@ -14,16 +14,12 @@ struct HeaderAccessoriesContainer: Container {
     @EnvironmentObject private var weatherService: WeatherService
 
     var body: some View {
-        Group {
-            if !hidden {
-                HeaderAccessories(
-                    sunriseSunset: sunriseSunset,
-                    observedAt: observedAt
-                )
-                .equatable()
-                .transition(AnyTransition.opacity.animation(.easeInOut))
-            }
-        }
+        HeaderAccessories(
+            sunriseSunset: sunriseSunset,
+            observedAt: observedAt
+        )
+        .equatable()
+        .opacity(hidden ? 0 : 1)
     }
 
     private var hidden: Bool {

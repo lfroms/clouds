@@ -12,7 +12,7 @@ struct CurrentSectionContainer: View {
     @EnvironmentObject private var appState: AppState
 
     var body: some View {
-        CurrentSection(section: $appState.activeSection)
+        CurrentSection(section: appState.activeSection)
             .equatable()
     }
 }

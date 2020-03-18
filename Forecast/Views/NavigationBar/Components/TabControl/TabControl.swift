@@ -14,13 +14,16 @@ struct TabControl: View {
     @State private var rects: RectDictionary = RectDictionary()
 
     var tabs: [AppSection]
-    @Binding var activeTab: AppSection
+    var activeTab: AppSection
+    var didChangeTab: (AppSection) -> Void
 
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: 0) {
             ForEach(self.tabs, id: \.self) { tab in
-                TabView(activeTab: self.$activeTab, tab: tab)
-                    .equatable()
+                TabView(tab: tab, active: tab == self.activeTab) {
+                    self.didChangeTab(tab)
+                }
+                .equatable()
             }
         }
         .backgroundPreferenceValue(TabPreferenceKey.self) { preferences in
@@ -54,6 +57,6 @@ extension TabControl: Equatable {
 
 struct TabControl_Previews: PreviewProvider {
     static var previews: some View {
-        TabControl(tabs: [.now, .week], activeTab: .constant(.now))
+        TabControl(tabs: [.now, .week], activeTab: .now, didChangeTab: { _ in })
     }
 }

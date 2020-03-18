@@ -9,17 +9,15 @@
 import SwiftUI
 
 struct CurrentSection: View {
-    @Binding var section: AppSection
+    var section: AppSection
 
     var body: some View {
         ZStack(alignment: .bottom) {
             NowSection()
                 .opacity(section == .now ? 1 : 0)
-                .animation(.easeInOut)
 
             WeekSection()
                 .opacity(section == .week ? 1 : 0)
-                .animation(.easeInOut)
 
             if section == .radar {
                 RadarSection()
@@ -37,6 +35,6 @@ extension CurrentSection: Equatable {
 
 struct ActiveTab_Previews: PreviewProvider {
     static var previews: some View {
-        CurrentSection(section: .constant(.now))
+        CurrentSection(section: .now)
     }
 }

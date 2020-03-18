@@ -9,14 +9,15 @@
 import SwiftUI
 
 struct TabView: View {
-    @Binding var activeTab: AppSection
     var tab: AppSection
+    var active: Bool
+    var onPress: () -> Void
 
     var body: some View {
-        Button(action: self.action) {
+        Button(action: self.onPress) {
             Text(self.tab.name)
                 .font(Font.callout.bold())
-                .opacity(opacity)
+                .opacity(self.active ? .one : 0.6)
                 .animation(.easeInOut(duration: 0.2))
                 .padding(.vertical, 6)
                 .padding(.horizontal, 16)
@@ -27,24 +28,16 @@ struct TabView: View {
                 )
         }
     }
-
-    private func action() {
-        self.activeTab = self.tab
-    }
-
-    private var opacity: Double {
-        self.activeTab == self.tab ? .one : 0.6
-    }
 }
 
 extension TabView: Equatable {
     static func == (lhs: TabView, rhs: TabView) -> Bool {
-        lhs.activeTab == rhs.activeTab && lhs.tab == rhs.tab
+        lhs.tab == rhs.tab && lhs.active == rhs.active
     }
 }
 
 struct TabView_Previews: PreviewProvider {
     static var previews: some View {
-        TabView(activeTab: .constant(.now), tab: .now)
+        TabView(tab: .now, active: true, onPress: {})
     }
 }

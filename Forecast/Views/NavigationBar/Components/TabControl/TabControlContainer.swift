@@ -12,8 +12,12 @@ struct TabControlContainer: View {
     @EnvironmentObject private var appState: AppState
 
     var body: some View {
-        TabControl(tabs: AppSection.list, activeTab: $appState.activeSection)
+        TabControl(tabs: AppSection.list, activeTab: appState.activeSection, didChangeTab: self.didChangeTab)
             .equatable()
+    }
+
+    private func didChangeTab(tab: AppSection) {
+        appState.navigateToSection(tab, animated: true)
     }
 }
 

@@ -35,9 +35,6 @@ struct ObservedAtTime: View, Equatable {
         }
         .font(Font.subheadline.weight(.semibold))
         .foregroundColor(AppColor.Display.secondary)
-        .onAppear {
-            self.updateText()
-        }
         .onReceive(timer) { _ in
             self.updateText()
         }
