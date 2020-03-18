@@ -49,5 +49,9 @@ struct AppServices: ViewModifier {
                 visualState: Self.visualState,
                 weatherService: Self.weatherService
             ))
+            .modifier(LocationSearchToLocationPickerBinder(
+                locationSearchService: Self.locationSearchService,
+                locationPickerState: Self.locationPickerState
+            ))
     }
 }
