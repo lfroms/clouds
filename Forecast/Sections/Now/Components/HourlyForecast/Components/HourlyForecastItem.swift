@@ -20,11 +20,11 @@ struct HourlyForecastItem: View {
     var body: some View {
         VStack(alignment: .center) {
             HStack(alignment: .firstTextBaseline, spacing: 2) {
-                FixedSizeText(formattedDate)
+                FixedSizeText(formattedHour)
                 FixedSizeText(amPm)
                     .foregroundColor(AppColor.Display.primary.opacity(0.65))
             }
-            .font(Font.system(size: 14).weight(.bold))
+            .font(Font.system(size: 14).weight(.semibold))
 
             Spacer()
 
@@ -40,11 +40,11 @@ struct HourlyForecastItem: View {
                 Spacer()
 
                 HStack(alignment: .firstTextBaseline, spacing: 0) {
-                    Text("\(data.temperature)")
-                    Text("°")
+                    FixedSizeText("\(data.temperature)")
+                    FixedSizeText("°")
                         .foregroundColor(AppColor.Display.primary.opacity(0.65))
                 }
-                .font(Font.system(size: 16).weight(.semibold))
+                .font(Font.system(size: 17).weight(.bold))
             }
         }
         .padding(.vertical, 18)
@@ -56,18 +56,23 @@ struct HourlyForecastItem: View {
     }
 
     private var formattedDate: String {
-        data.date.toFormat("h")
+        data.date.toFormat("h a").lowercased()
+    }
+
+    private var splitDate: [String.SubSequence] {
+        formattedDate.split(separator: " ")
+    }
+
+    private var formattedHour: String {
+        String(splitDate.first ?? "")
     }
 
     private var amPm: String {
-        let formatted = data.date.toFormat("h a").lowercased()
-        let splitOnSpace = formatted.split(separator: " ")
-
-        guard splitOnSpace.count >= 2 else {
+        guard splitDate.count >= 2 else {
             return .empty
         }
 
-        return String(splitOnSpace.last?.prefix(1) ?? "")
+        return String(splitDate.last ?? "")
     }
 
     private func handleTapGesture() {
