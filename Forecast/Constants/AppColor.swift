@@ -48,13 +48,19 @@ public final class AppColor {
             case liquidBlueGray = "gray_blue_liquid"
             case liquidLightBlueGray = "gray_blue_liquid_light"
 
+            case emptyGray = "gray_empty"
+            case emptyLightGray = "gray_empty_light"
+
             var color: Color {
                 Color(self.rawValue)
             }
         }
 
         private static let blueSky = ColorScheme(upper: .clearSkyLightBlue, lower: .clearSkyBlue)
+
         static let dryCloud = ColorScheme(upper: .dryCloudLightGray, lower: .dryCloudGray)
+        static let empty = ColorScheme(upper: .emptyLightGray, lower: .emptyGray)
+
         private static let wetCloud = ColorScheme(upper: .wetCloudLightGray, lower: .wetCloudGray)
         private static let storm = ColorScheme(upper: .stormLightGray, lower: .stormGray)
         private static let night = ColorScheme(upper: .nightSkyIndigo, lower: .nightSkyDeepIndigo)

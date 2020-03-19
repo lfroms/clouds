@@ -12,7 +12,12 @@ struct WeatherBackground: View {
     @EnvironmentObject private var visualState: VisualState
 
     @State private var alternateGradient: Bool = false
-    @State private var gradientA: [Color] = []
+
+    @State private var gradientA: [Color] = [
+        AppColor.Weather.empty.upper.color,
+        AppColor.Weather.empty.lower.color
+    ]
+
     @State private var gradientB: [Color] = []
 
     var body: some View {
@@ -34,8 +39,7 @@ struct WeatherBackground: View {
     private func setGradient(steps: [Color]) {
         if alternateGradient {
             gradientB = steps
-        }
-        else {
+        } else {
             gradientA = steps
         }
 
