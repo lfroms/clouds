@@ -17,6 +17,10 @@ final class Dimension {
         static let omniBarHeight: CGFloat = 52
         static let illustrationTopPadding: CGFloat = System.topSafeMargin
     }
+    
+    final class HourlyForecast {
+        static let spacing: CGFloat = 14
+    }
 
     final class MeasurementGrid {
         static let itemHeight: CGFloat = 50

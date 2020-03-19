@@ -10,20 +10,70 @@ import SwiftDate
 import SwiftUI
 
 struct HourlyForecast: View {
+    @State private var separatorFrame: CGRect = .zero
+    @State private var todayTextFrame: CGRect = .zero
+
     var items: [HourlyForecastItemData]
 
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(alignment: .top, spacing: 14) {
-                ForEach(items, id: \.self) { item in
-                    HourlyForecastItem(data: item)
-                        .equatable()
+        VStack(alignment: .leading) {
+            if !items.isEmpty {
+                ZStack(alignment: .leading) {
+                    Text("Today".uppercased())
+                        .background(GeometryGetter(rect: self.$todayTextFrame))
+                        .opacity(todayTextOpacity)
+                        .offset(x: todayTextOffset)
+
+                    Text("Tomorrow".uppercased())
+                        .offset(x: tomorrowTextOffset)
                 }
+                .padding(.leading, Dimension.Global.padding)
+                .font(Font.caption.weight(.bold))
+                .foregroundColor(AppColor.Display.secondary)
             }
-            .padding(.horizontal, 20)
-            .frame(minHeight: 0, maxHeight: .infinity, alignment: .top)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(alignment: .top, spacing: Dimension.HourlyForecast.spacing) {
+                    ForEach(items, id: \.self) { item in
+                        Group {
+                            if item.date.hour == 0 && item != self.items.first {
+                                HourlyForecastSeparator()
+                                    .background(GeometryGetter(rect: self.$separatorFrame))
+                            }
+
+                            HourlyForecastItem(data: item)
+                                .equatable()
+                        }
+                    }
+                }
+                .padding(.horizontal, Dimension.Global.padding)
+                .frame(minHeight: 0, maxHeight: .infinity, alignment: .top)
+            }
+            .frame(height: 140, alignment: .top)
         }
-        .frame(height: 140, alignment: .top)
+    }
+
+    // MARK: - Today/Tomorrow Label Animation Calculations
+
+    private var spaceAvailableForTodayLabel: CGFloat {
+        Dimension.Global.padding + Dimension.HourlyForecast.spacing + todayTextFrame.width
+    }
+
+    private var hasReachedTodayLabel: Bool {
+        separatorFrame.minX <= spaceAvailableForTodayLabel
+    }
+
+    private var todayTextOffset: CGFloat {
+        hasReachedTodayLabel ? separatorFrame.minX - spaceAvailableForTodayLabel : .zero
+    }
+
+    private var tomorrowTextOffset: CGFloat {
+        max(separatorFrame.minX - (Dimension.Global.padding - Dimension.HourlyForecast.spacing), .zero)
+    }
+
+    private var todayTextOpacity: Double {
+        let animationProgress = max(Double(separatorFrame.minX / spaceAvailableForTodayLabel), .zero)
+        return hasReachedTodayLabel ? animationProgress : .one
     }
 }
 

@@ -145,6 +145,7 @@
 		80D0D86722D6B56800B8C711 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D0D86522D6B56700B8C711 /* UserPreferences.swift */; };
 		80D16CF5241446F400AD8F4D /* DailyForecastPagingScrollViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D16CF4241446F400AD8F4D /* DailyForecastPagingScrollViewContainer.swift */; };
 		80D1896D22D03A2F00E56DB1 /* HighLowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D1896C22D03A2F00E56DB1 /* HighLowView.swift */; };
+		80D6346224230B3B00F7E96D /* GeometryGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D6346124230B3B00F7E96D /* GeometryGetter.swift */; };
 		80D871AF23F1F671001FBA94 /* UIFont+PreferredWithWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D871AE23F1F671001FBA94 /* UIFont+PreferredWithWeight.swift */; };
 		80D871B323F1FF1E001FBA94 /* TransparentTouchScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D871B223F1FF1E001FBA94 /* TransparentTouchScrollView.swift */; };
 		80D871B823F20F87001FBA94 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D871B723F20F87001FBA94 /* LocationService.swift */; };
@@ -164,6 +165,7 @@
 		80EF84F6240F663B00D4037B /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF84F5240F663B00D4037B /* Container.swift */; };
 		80F07DDC23FB7D0C005C43A3 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 80F07DDB23FB7D0C005C43A3 /* schema.json */; };
 		80F07DDE23FB8012005C43A3 /* AnimationPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F07DDD23FB8012005C43A3 /* AnimationPreset.swift */; };
+		80F558432422EC1C00906FCB /* HourlyForecastSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F558422422EC1C00906FCB /* HourlyForecastSeparator.swift */; };
 		80FA8FCC24117257004C9BDB /* MeasurementGridContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FA8FCB24117257004C9BDB /* MeasurementGridContainer.swift */; };
 		80FB6C67240873250026DD83 /* LocationSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB6C66240873250026DD83 /* LocationSearchService.swift */; };
 		80FB6C692408772C0026DD83 /* NSObject+Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB6C682408772C0026DD83 /* NSObject+Debounce.swift */; };
@@ -313,6 +315,7 @@
 		80D0D86522D6B56700B8C711 /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		80D16CF4241446F400AD8F4D /* DailyForecastPagingScrollViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastPagingScrollViewContainer.swift; sourceTree = "<group>"; };
 		80D1896C22D03A2F00E56DB1 /* HighLowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLowView.swift; sourceTree = "<group>"; };
+		80D6346124230B3B00F7E96D /* GeometryGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryGetter.swift; sourceTree = "<group>"; };
 		80D871AE23F1F671001FBA94 /* UIFont+PreferredWithWeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+PreferredWithWeight.swift"; sourceTree = "<group>"; };
 		80D871B223F1FF1E001FBA94 /* TransparentTouchScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparentTouchScrollView.swift; sourceTree = "<group>"; };
 		80D871B723F20F87001FBA94 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
@@ -332,6 +335,7 @@
 		80EF84F5240F663B00D4037B /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		80F07DDB23FB7D0C005C43A3 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		80F07DDD23FB8012005C43A3 /* AnimationPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationPreset.swift; sourceTree = "<group>"; };
+		80F558422422EC1C00906FCB /* HourlyForecastSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastSeparator.swift; sourceTree = "<group>"; };
 		80FA8FCB24117257004C9BDB /* MeasurementGridContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementGridContainer.swift; sourceTree = "<group>"; };
 		80FB6C66240873250026DD83 /* LocationSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchService.swift; sourceTree = "<group>"; };
 		80FB6C682408772C0026DD83 /* NSObject+Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Debounce.swift"; sourceTree = "<group>"; };
@@ -424,6 +428,7 @@
 		8020F9502363D1A10029FEB6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				80D6346024230B3100F7E96D /* GeometryGetter */,
 				8066FDE72364ECA90067F362 /* AppLayout */,
 				8020F9512363D2010029FEB6 /* Master */,
 				80734AFF2410A517000693F4 /* GridStack */,
@@ -1023,11 +1028,20 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		80D6346024230B3100F7E96D /* GeometryGetter */ = {
+			isa = PBXGroup;
+			children = (
+				80D6346124230B3B00F7E96D /* GeometryGetter.swift */,
+			);
+			path = GeometryGetter;
+			sourceTree = "<group>";
+		};
 		80D65CB32411865C00FB4021 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				80D65CB52411869400FB4021 /* Components */,
 				80D65CB42411868A00FB4021 /* Models */,
+				80F558422422EC1C00906FCB /* HourlyForecastSeparator.swift */,
 				805A1E6522D65ADB001B8CC3 /* HourlyForecastItem.swift */,
 			);
 			path = Components;
@@ -1409,6 +1423,7 @@
 				805D6A032410054A002DEBAC /* AppHostingController.swift in Sources */,
 				80E5D61C23773B46004A1D6B /* UIView+PinEdges.swift in Sources */,
 				80A016022376638900A72C2F /* MainPagingScrollViewController.swift in Sources */,
+				80F558432422EC1C00906FCB /* HourlyForecastSeparator.swift in Sources */,
 				8061292123690D06005EEB2A /* DailyForecastDetail.swift in Sources */,
 				80B1B3282376683A000EA6DD /* DrawerScrollView.swift in Sources */,
 				800908DA241369B30024300D /* DailyForecast.swift in Sources */,
@@ -1420,6 +1435,7 @@
 				8026FF5323779881007962DB /* MapView.swift in Sources */,
 				802A4303241C54AB0073C0DC /* DismissableScrollViewRepresentable.swift in Sources */,
 				8038DB4923F0ACAD00F7B033 /* LocationPickerSection.swift in Sources */,
+				80D6346224230B3B00F7E96D /* GeometryGetter.swift in Sources */,
 				8061292323690F5F005EEB2A /* DailyForecastItem.swift in Sources */,
 				80FC8AB023F0B1E800AEA26F /* HeaderAccessories.swift in Sources */,
 				80C816262363DCFE00D33669 /* OmniBarTextField.swift in Sources */,
