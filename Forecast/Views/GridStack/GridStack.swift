@@ -53,16 +53,6 @@ struct GridStack<Content: View>: View {
     }
 }
 
-extension GridStack: Equatable {
-    static func == (lhs: GridStack<Content>, rhs: GridStack<Content>) -> Bool {
-        lhs.columns == rhs.columns
-            && lhs.numberOfItems == rhs.numberOfItems
-            && lhs.spacingVertical == rhs.spacingVertical
-            && lhs.spacingHorizontal == rhs.spacingHorizontal
-            && lhs.alignment == rhs.alignment
-    }
-}
-
 struct GridStack_Previews: PreviewProvider {
     static var previews: some View {
         GridStack(columns: 2, numberOfItems: 2) { _ in

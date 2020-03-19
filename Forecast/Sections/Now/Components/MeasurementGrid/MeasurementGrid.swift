@@ -6,12 +6,11 @@
 //  Copyright © 2019 Lukas Romsicki. All rights reserved.
 //
 
-import Combine
 import SwiftUI
 
 struct MeasurementGrid: View {
     var measurements: [MeasurementDescriptor]
-    var didCalculateHeight: ((CGFloat) -> Void)?
+    var didCalculateHeight: (CGFloat) -> Void
 
     var body: some View {
         GridStack(columns: 2, numberOfItems: measurements.count, spacingVertical: 22, spacingHorizontal: 0) { index in
@@ -22,13 +21,12 @@ struct MeasurementGrid: View {
                 Spacer()
             }
         }
-        .equatable()
         .padding(30)
         .background(GeometryReader(content: useProxy))
     }
 
     private func useProxy(_ proxy: GeometryProxy) -> some View {
-        didCalculateHeight?(proxy.size.height)
+        didCalculateHeight(proxy.size.height)
         return Rectangle().foregroundColor(Color.clear)
     }
 }
@@ -41,6 +39,6 @@ extension MeasurementGrid: Equatable {
 
 struct CurrentConditionsView_Previews: PreviewProvider {
     static var previews: some View {
-        MeasurementGrid(measurements: [])
+        MeasurementGrid(measurements: [], didCalculateHeight: { _ in })
     }
 }

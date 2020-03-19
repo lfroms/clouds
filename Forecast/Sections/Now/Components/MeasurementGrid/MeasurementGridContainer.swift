@@ -20,8 +20,6 @@ struct MeasurementGridContainer: View {
                     didCalculateHeight: self.didCalculateHeight
                 )
                 .equatable()
-            } else {
-                EmptyView()
             }
         }
     }
