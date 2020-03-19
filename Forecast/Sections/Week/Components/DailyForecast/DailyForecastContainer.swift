@@ -13,8 +13,12 @@ struct DailyForecastContainer: View {
     @EnvironmentObject private var weekSectionState: WeekSectionState
 
     var body: some View {
-        DailyForecast(days: days, activeIndex: $weekSectionState.dayIndex)
-            .equatable()
+        Group {
+            if !days.isEmpty {
+                DailyForecast(days: days, activeIndex: $weekSectionState.dayIndex)
+                    .equatable()
+            }
+        }
     }
 
     private var days: [DailyForecastItemData] {
