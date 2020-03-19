@@ -79,6 +79,7 @@ public final class AppColor {
             6: dryCloud,
             7: dryCloud,
             8: dryCloud,
+            9: wetCloud,
             10: dryCloud,
 
             11: wetCloud,
