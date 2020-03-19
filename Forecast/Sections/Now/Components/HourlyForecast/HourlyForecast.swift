@@ -26,8 +26,10 @@ struct HourlyForecast: View {
                         .opacity(todayTextOpacity)
                         .offset(x: todayTextOffset)
 
-                    Text("Tomorrow".uppercased())
-                        .offset(x: tomorrowTextOffset)
+                    if self.separatorFrame != .zero {
+                        Text("Tomorrow".uppercased())
+                            .offset(x: tomorrowTextOffset)
+                    }
                 }
                 .padding(.leading, Dimension.Global.padding)
                 .font(Font.caption.weight(.bold))
@@ -64,7 +66,11 @@ struct HourlyForecast: View {
     }
 
     private var hasReachedTodayLabel: Bool {
-        separatorFrame.minX <= spaceAvailableForTodayLabel
+        guard separatorFrame != .zero else {
+            return false
+        }
+
+        return separatorFrame.minX <= spaceAvailableForTodayLabel
     }
 
     private var todayTextOffset: CGFloat {
