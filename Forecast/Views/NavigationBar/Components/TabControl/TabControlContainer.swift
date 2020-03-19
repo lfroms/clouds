@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct TabControlContainer: View {
+struct TabControlContainer: Container {
     @EnvironmentObject private var appState: AppState
 
     var body: some View {

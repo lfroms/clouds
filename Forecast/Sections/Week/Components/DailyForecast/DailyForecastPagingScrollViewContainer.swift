@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DailyForecastPagingScrollViewContainer: View {
+struct DailyForecastPagingScrollViewContainer: Container {
     @EnvironmentObject private var weekSectionState: WeekSectionState
 
     var body: some View {

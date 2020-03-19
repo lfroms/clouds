@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SearchResultsGroupContainer: View {
+struct SearchResultsGroupContainer: Container {
     @EnvironmentObject private var locationSearchService: LocationSearchService
     @EnvironmentObject private var locationFavoritesService: LocationFavoritesService
     @EnvironmentObject private var locationPickerState: LocationPickerState

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct OverviewViewContainer: View {
+struct OverviewViewContainer: Container {
     @EnvironmentObject private var weatherService: WeatherService
     
     var body: some View {

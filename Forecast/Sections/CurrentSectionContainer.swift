@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct CurrentSectionContainer: View {
+struct CurrentSectionContainer: Container {
     @EnvironmentObject private var appState: AppState
 
     var body: some View {

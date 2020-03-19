@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DailyForecastContainer: View {
+struct DailyForecastContainer: Container {
     @EnvironmentObject private var weatherService: WeatherService
     @EnvironmentObject private var weekSectionState: WeekSectionState
 

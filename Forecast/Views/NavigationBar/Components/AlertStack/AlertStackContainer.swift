@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct AlertStackContainer: View {
+struct AlertStackContainer: Container {
     @EnvironmentObject private var weatherService: WeatherService
     @State private var showWarningDetails: Bool = false
 

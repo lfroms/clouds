@@ -9,7 +9,7 @@
 import SwiftDate
 import SwiftUI
 
-struct HourlyForecastContainer: View {
+struct HourlyForecastContainer: Container {
     @EnvironmentObject private var weatherService: WeatherService
 
     var body: some View {
