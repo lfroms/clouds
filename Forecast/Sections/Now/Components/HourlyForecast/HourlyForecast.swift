@@ -20,7 +20,9 @@ struct HourlyForecast: View {
             if !items.isEmpty {
                 ZStack(alignment: .leading) {
                     Text("Today".uppercased())
-                        .background(GeometryGetter(rect: self.$todayTextFrame))
+                        .background(GeometryGetter(rect: self.$todayTextFrame) { oldRect, newRect in
+                            oldRect.width != newRect.width
+                        })
                         .opacity(todayTextOpacity)
                         .offset(x: todayTextOffset)
 
@@ -38,7 +40,9 @@ struct HourlyForecast: View {
                         Group {
                             if item.date.hour == 0 && item != self.items.first {
                                 HourlyForecastSeparator()
-                                    .background(GeometryGetter(rect: self.$separatorFrame))
+                                    .background(GeometryGetter(rect: self.$separatorFrame) { oldRect, newRect in
+                                        oldRect.minX != newRect.minX
+                                    })
                             }
 
                             HourlyForecastItem(data: item)

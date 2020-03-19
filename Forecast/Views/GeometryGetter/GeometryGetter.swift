@@ -10,6 +10,7 @@ import SwiftUI
 
 struct GeometryGetter: View {
     @Binding var rect: CGRect
+    var customCondition: (CGRect, CGRect) -> Bool
 
     var body: some View {
         return GeometryReader { geometry in
@@ -21,7 +22,7 @@ struct GeometryGetter: View {
         let newRect = geometry.frame(in: .global)
         let outputView = Rectangle().fill(Color.clear)
 
-        guard rect != newRect else {
+        guard rect != newRect, customCondition(rect, newRect) else {
             return outputView
         }
 
