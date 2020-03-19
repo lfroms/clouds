@@ -44,6 +44,10 @@ struct CurrentLocationGroupContainer: Container {
     private func didSelect(location: StoredLocation) {
         locationPickerState.toggleLocationPicker(animated: true)
 
+        guard locationFavoritesService.getActiveLocation() != nil else {
+            return
+        }
+
         locationFavoritesService.clearActiveLocation()
         weatherService.setShouldFetchUpdatedWeather()
     }
