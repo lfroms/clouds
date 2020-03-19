@@ -21,14 +21,14 @@ struct SearchResultsGroup: View {
     var body: some View {
         LocationPickerListSection(label: label, value: value, loading: $loading) {
             ForEach(Array(self.results.enumerated()), id: \.element) { index, result in
-                LocationSearchResult(
+                SearchResultLocationItem(
                     location: result,
                     favorite: self.favorites[safe: index] ?? false,
                     action: self.onSelectLocation,
                     onStar: self.onStarLocation
                 )
                 .equatable()
-                .transition(.fadeAndScale)
+                .transition(.fadeAndScale(index: index))
             }
         }
     }

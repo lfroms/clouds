@@ -28,7 +28,7 @@ struct FavoriteLocationsGroup: View {
             }
 
             ForEach(Array(self.locations.enumerated()), id: \.element) { index, favorite in
-                LocationItem(
+                WeatherLocationItem(
                     style: .favorite,
                     location: favorite,
                     weather: self.locationsWeather[safe: index],

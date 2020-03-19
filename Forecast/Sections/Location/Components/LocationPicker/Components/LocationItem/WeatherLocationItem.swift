@@ -1,5 +1,5 @@
 //
-//  LocationItem.swift
+//  WeatherLocationItem.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2020-02-13.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct LocationItem: View {
+struct WeatherLocationItem: View {
     var style: Style
     var location: StoredLocation
     var weather: ShortFormWeather?
@@ -32,32 +32,21 @@ struct LocationItem: View {
     }
 
     var body: some View {
-        Button(action: { self.action(self.location) }) {
-            HStack(alignment: .center, spacing: Dimension.Spacing.barItems) {
-                if style == .favorite {
-                    LocationItemStarButton(isHighlighted: true, monochrome: true) {
-                        self.onStar?(self.location)
-                    }
-                } else {
-                    LocationItemIcon(name: style.symbolName)
+        LocationItem(color: color, action: { self.action(self.location) }) {
+            if self.style == .favorite {
+                LocationItemStarButton(isHighlighted: true, monochrome: true) {
+                    self.onStar?(self.location)
                 }
-
-                LocationItemLabels(title: self.location.name, subtitle: self.location.regionName)
-                Spacer()
-
-                LocationItemTemperature(text: self.temperatureLabelText)
+            } else {
+                LocationItemIcon(name: self.style.symbolName)
             }
-            .padding(.horizontal, 20)
-            .frame(height: Dimension.LocationPicker.itemHeight)
-            .background(color ?? defaultColor)
-            .cornerRadius(14)
-            .animation(AnimationPreset.Touch.shrink)
-        }
-        .buttonStyle(PlainButtonStyle())
-    }
 
-    private var defaultColor: Color {
-        Color(white: 0.09)
+            LocationItemLabels(title: self.location.name, subtitle: self.location.regionName)
+
+            Spacer()
+
+            LocationItemTemperature(text: self.temperatureLabelText)
+        }
     }
 
     private var temperatureLabelText: String {
@@ -77,8 +66,8 @@ struct LocationItem: View {
     }
 }
 
-extension LocationItem: Equatable {
-    static func == (lhs: LocationItem, rhs: LocationItem) -> Bool {
+extension WeatherLocationItem: Equatable {
+    static func == (lhs: WeatherLocationItem, rhs: WeatherLocationItem) -> Bool {
         lhs.style == rhs.style
             && lhs.location == rhs.location
             && lhs.weather == rhs.weather
@@ -88,7 +77,7 @@ extension LocationItem: Equatable {
 
 struct LocationItemWithWeather_Previews: PreviewProvider {
     static var previews: some View {
-        LocationItem(
+        WeatherLocationItem(
             style: .current,
             location: StoredLocation(
                 name: "Ottawa",

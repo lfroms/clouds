@@ -20,7 +20,7 @@ struct CurrentLocationGroup: View {
             label: "Current location",
             loading: $loading
         ) {
-            LocationItem(
+            WeatherLocationItem(
                 style: .current,
                 location: self.location,
                 weather: self.locationWeather,

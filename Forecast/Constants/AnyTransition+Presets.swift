@@ -22,4 +22,13 @@ extension AnyTransition {
                 .combined(with: Self.opacity.animation(.easeInOut(duration: 0.24)))
         )
     }
+
+    static func fadeAndScale(index: Int) -> Self {
+        let delay = 0.01 * Double(index)
+
+        return Self
+            .scale(scale: 0.8)
+            .animation(Animation.easeInOut(duration: 0.16).delay(delay))
+            .combined(with: Self.opacity.animation(Animation.easeInOut(duration: 0.16).delay(delay)))
+    }
 }
