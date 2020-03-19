@@ -23,15 +23,15 @@ struct FavoriteLocationsGroupContainer: View {
         .equatable()
     }
 
-    private func didSelect(location: Location) {
+    private func didSelect(location: StoredLocation) {
         locationPickerState.toggleLocationPicker(animated: true)
 
         locationFavoritesService.saveActiveLocation(location: location)
         weatherService.setShouldFetchUpdatedWeather()
     }
 
-    private func didDelete(location: Location) {
-        locationFavoritesService.favoriteLocations.removeAll { $0 == location }
+    private func didDelete(location: StoredLocation) {
+        locationFavoritesService.removeFavorite(location: location)
     }
 }
 

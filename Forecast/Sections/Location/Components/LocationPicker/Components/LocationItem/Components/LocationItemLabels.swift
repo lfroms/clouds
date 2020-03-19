@@ -16,6 +16,8 @@ struct LocationItemLabels: View {
         VStack(alignment: .leading, spacing: 0) {
             Text(title)
                 .font(Font.callout.weight(.bold))
+                .lineLimit(1)
+                .truncationMode(.tail)
 
             Text(subtitle)
                 .font(Font.caption.bold())

@@ -10,17 +10,16 @@ import SwiftUI
 
 struct LocationItem: View {
     var style: Style
-    var location: Location
+    var location: StoredLocation
     var weather: ShortFormWeather?
     var favorite: Bool = false
 
-    var action: (Location) -> Void
-    var onStar: ((Location) -> Void)?
+    var action: (StoredLocation) -> Void
+    var onStar: ((StoredLocation) -> Void)?
 
     internal enum Style: String {
         case current
         case favorite
-        case search
 
         var symbolName: String {
             switch self {
@@ -28,8 +27,6 @@ struct LocationItem: View {
                 return SFSymbol.locationFilled
             case .favorite:
                 return SFSymbol.starFilled
-            case .search:
-                return SFSymbol.mapFilled
             }
         }
     }
@@ -48,13 +45,7 @@ struct LocationItem: View {
                 LocationItemLabels(title: self.location.name, subtitle: self.location.regionName)
                 Spacer()
 
-                if style == .search {
-                    LocationItemStarButton(isHighlighted: self.favorite) {
-                        self.onStar?(self.location)
-                    }
-                } else {
-                    LocationItemTemperature(text: self.temperatureLabelText)
-                }
+                LocationItemTemperature(text: self.temperatureLabelText)
             }
             .padding(.horizontal, 20)
             .frame(height: Dimension.LocationPicker.itemHeight)
@@ -99,10 +90,10 @@ struct LocationItemWithWeather_Previews: PreviewProvider {
     static var previews: some View {
         LocationItem(
             style: .current,
-            location: Location(
+            location: StoredLocation(
                 name: "Ottawa",
                 regionName: "ON, Canada",
-                coordinate: .init(latitude: 0.0, longitude: 0.0)
+                coordinate: .init()
             ),
             weather: nil,
             action: { _ in },

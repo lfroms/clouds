@@ -28,7 +28,7 @@ struct CurrentLocationGroupContainer: Container {
         }
     }
 
-    private var currentLocation: Location? {
+    private var currentLocation: StoredLocation? {
         guard
             let lastPlacemark = locationService.lastPlacemark,
             let cityName = lastPlacemark.locality,
@@ -38,10 +38,10 @@ struct CurrentLocationGroupContainer: Container {
         }
 
         let regionName = LocationNameHelper.shared.createRegionNameFrom(placemark: lastPlacemark)
-        return Location(name: cityName, regionName: regionName, coordinate: coordinate)
+        return StoredLocation(name: cityName, regionName: regionName, coordinate: coordinate)
     }
 
-    private func didSelect(location: Location) {
+    private func didSelect(location: StoredLocation) {
         locationPickerState.toggleLocationPicker(animated: true)
 
         locationFavoritesService.clearActiveLocation()

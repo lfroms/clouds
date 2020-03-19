@@ -12,17 +12,16 @@ struct SearchResultsGroup: View {
     var label: String
     var value: String
     @Binding var loading: Bool
-    var results: [Location]
+    var results: [RawLocation]
     var favorites: [Bool]
 
-    var onSelectLocation: (Location) -> Void
-    var onStarLocation: (Location) -> Void
+    var onSelectLocation: (RawLocation) -> Void
+    var onStarLocation: (RawLocation) -> Void
 
     var body: some View {
         LocationPickerListSection(label: label, value: value, loading: $loading) {
             ForEach(Array(self.results.enumerated()), id: \.element) { index, result in
-                LocationItem(
-                    style: .search,
+                LocationSearchResult(
                     location: result,
                     favorite: self.favorites[safe: index] ?? false,
                     action: self.onSelectLocation,

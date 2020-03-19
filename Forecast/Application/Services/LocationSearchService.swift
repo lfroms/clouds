@@ -12,48 +12,64 @@ import MapKit
 final class LocationSearchService: NSObject, ObservableObject {
     @Published var searchQuery: String = "" {
         didSet {
-            debounce(#selector(search), after: 0.5)
+            search()
         }
     }
     
-    @Published private(set) var results: [Location] = []
+    @Published private(set) var results: [Result] = []
     @Published private(set) var loading: Bool = false
     
-    @objc private func search() {
+    private lazy var searchCompleter: MKLocalSearchCompleter = {
+        let searchCompleter = MKLocalSearchCompleter()
+        searchCompleter.delegate = self
+        searchCompleter.resultTypes = .address
+        return searchCompleter
+    }()
+    
+    private func search() {
         guard !searchQuery.isEmpty else {
             results.removeAll()
             return
         }
         
-        loading = true
-        
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = searchQuery
-        request.resultTypes = .address
-        
-        let search = MKLocalSearch(request: request)
-        
-        search.start { response, _ in
-            DispatchQueue.main.async {
-                self.loading = false
-            }
-            
-            guard let mapItems = response?.mapItems else {
-                return
-            }
-            
-            let locations = mapItems.compactMap { item -> Location? in
-                guard let locality = item.placemark.locality else {
-                    return nil
-                }
-                
-                let regionName = LocationNameHelper.shared.createRegionNameFrom(placemark: item.placemark)
-                return Location(name: locality, regionName: regionName, coordinate: item.placemark.coordinate)
-            }
-            
-            DispatchQueue.main.async {
-                self.results = locations
-            }
+        debounce(#selector(setLoading), after: 0.5)
+        searchCompleter.queryFragment = searchQuery
+    }
+    
+    @objc private func setLoading() {
+        if searchCompleter.isSearching, !loading {
+            loading = true
         }
     }
+    
+    struct Result: Equatable, Hashable {
+        let title: String
+        let subtitle: String
+        
+        init(completion: MKLocalSearchCompletion) {
+            let components = completion.title.split(separator: ",", maxSplits: 1, omittingEmptySubsequences: true)
+            title = String(components.first ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+            subtitle = String(components.last ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+    }
+}
+
+extension LocationSearchService: MKLocalSearchCompleterDelegate {
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        if loading {
+            loading = false
+        }
+        
+        results = completer.results
+            .filter {
+                $0.title.contains(",")
+                    && $0.subtitle.isEmpty
+                    && $0.title.contains("Canada")
+            }
+            .compactMap {
+                Result(completion: $0)
+            }
+    }
+    
+    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {}
 }

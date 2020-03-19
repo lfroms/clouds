@@ -43,6 +43,7 @@
 		8031CBCC240E0B8D00C76FE3 /* HeaderGradientContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8031CBCB240E0B8D00C76FE3 /* HeaderGradientContainer.swift */; };
 		8034A1A4240E0E6400DF02A1 /* CGFloat+One.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8034A1A3240E0E6300DF02A1 /* CGFloat+One.swift */; };
 		8034A1A8240E10CB00DF02A1 /* HeaderAccessoriesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8034A1A7240E10CB00DF02A1 /* HeaderAccessoriesContainer.swift */; };
+		8038AA18242400BB0050202C /* LocationSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038AA17242400BB0050202C /* LocationSearchResult.swift */; };
 		8038DB4923F0ACAD00F7B033 /* LocationPickerSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038DB4823F0ACAD00F7B033 /* LocationPickerSection.swift */; };
 		8039628322D6CC4B003FEAB3 /* HourlyForecastItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8039628222D6CC4B003FEAB3 /* HourlyForecastItemData.swift */; };
 		8039628522D6CD6F003FEAB3 /* ForecastIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8039628422D6CD6F003FEAB3 /* ForecastIcon.swift */; };
@@ -105,6 +106,7 @@
 		80985F5A240E1F1D00452D08 /* UnixTimestampTypealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80985F59240E1F1D00452D08 /* UnixTimestampTypealias.swift */; };
 		8099A20D23130B8500EE4F30 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8099A20C23130B8500EE4F30 /* SafariView.swift */; };
 		8099A20F23130CED00EE4F30 /* CustomSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8099A20E23130CED00EE4F30 /* CustomSafariViewController.swift */; };
+		809AC4332423F72F009B7045 /* RawLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809AC4322423F72F009B7045 /* RawLocation.swift */; };
 		809C2A66241C63DA009FCF6A /* LocationPickerSectionModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C2A65241C63DA009FCF6A /* LocationPickerSectionModal.swift */; };
 		809C2A6A241C64C6009FCF6A /* LocationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C2A69241C64C6009FCF6A /* LocationPicker.swift */; };
 		80A016022376638900A72C2F /* MainPagingScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A016012376638900A72C2F /* MainPagingScrollViewController.swift */; };
@@ -213,6 +215,7 @@
 		8031CBCB240E0B8D00C76FE3 /* HeaderGradientContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderGradientContainer.swift; sourceTree = "<group>"; };
 		8034A1A3240E0E6300DF02A1 /* CGFloat+One.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+One.swift"; sourceTree = "<group>"; };
 		8034A1A7240E10CB00DF02A1 /* HeaderAccessoriesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderAccessoriesContainer.swift; sourceTree = "<group>"; };
+		8038AA17242400BB0050202C /* LocationSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchResult.swift; sourceTree = "<group>"; };
 		8038DB4823F0ACAD00F7B033 /* LocationPickerSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerSection.swift; sourceTree = "<group>"; };
 		8039628222D6CC4B003FEAB3 /* HourlyForecastItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastItemData.swift; sourceTree = "<group>"; };
 		8039628422D6CD6F003FEAB3 /* ForecastIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastIcon.swift; sourceTree = "<group>"; };
@@ -277,6 +280,7 @@
 		80985F59240E1F1D00452D08 /* UnixTimestampTypealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnixTimestampTypealias.swift; sourceTree = "<group>"; };
 		8099A20C23130B8500EE4F30 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		8099A20E23130CED00EE4F30 /* CustomSafariViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSafariViewController.swift; sourceTree = "<group>"; };
+		809AC4322423F72F009B7045 /* RawLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawLocation.swift; sourceTree = "<group>"; };
 		809C2A65241C63DA009FCF6A /* LocationPickerSectionModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerSectionModal.swift; sourceTree = "<group>"; };
 		809C2A69241C64C6009FCF6A /* LocationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPicker.swift; sourceTree = "<group>"; };
 		80A016012376638900A72C2F /* MainPagingScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagingScrollViewController.swift; sourceTree = "<group>"; };
@@ -870,6 +874,7 @@
 			isa = PBXGroup;
 			children = (
 				80B5E7A423FA3DDD001729E0 /* Location.swift */,
+				809AC4322423F72F009B7045 /* RawLocation.swift */,
 				80C777D623FB3BF7004ABB2E /* ShortFormWeather.swift */,
 			);
 			path = Models;
@@ -879,6 +884,7 @@
 			isa = PBXGroup;
 			children = (
 				80C777D823FB48A7004ABB2E /* Components */,
+				8038AA17242400BB0050202C /* LocationSearchResult.swift */,
 				8048092D23FB4BC30019ACC2 /* LocationItem.swift */,
 			);
 			path = LocationItem;
@@ -1420,6 +1426,7 @@
 				80FA8FCC24117257004C9BDB /* MeasurementGridContainer.swift in Sources */,
 				8084FDA3241D3945006A57DC /* SearchResultsGroupContainer.swift in Sources */,
 				803028D522CEE42C0053F639 /* TemperatureView.swift in Sources */,
+				8038AA18242400BB0050202C /* LocationSearchResult.swift in Sources */,
 				805D6A032410054A002DEBAC /* AppHostingController.swift in Sources */,
 				80E5D61C23773B46004A1D6B /* UIView+PinEdges.swift in Sources */,
 				80A016022376638900A72C2F /* MainPagingScrollViewController.swift in Sources */,
@@ -1436,6 +1443,7 @@
 				802A4303241C54AB0073C0DC /* DismissableScrollViewRepresentable.swift in Sources */,
 				8038DB4923F0ACAD00F7B033 /* LocationPickerSection.swift in Sources */,
 				80D6346224230B3B00F7E96D /* GeometryGetter.swift in Sources */,
+				809AC4332423F72F009B7045 /* RawLocation.swift in Sources */,
 				8061292323690F5F005EEB2A /* DailyForecastItem.swift in Sources */,
 				80FC8AB023F0B1E800AEA26F /* HeaderAccessories.swift in Sources */,
 				80C816262363DCFE00D33669 /* OmniBarTextField.swift in Sources */,

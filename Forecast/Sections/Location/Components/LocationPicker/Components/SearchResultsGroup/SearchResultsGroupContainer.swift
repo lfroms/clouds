@@ -19,12 +19,18 @@ struct SearchResultsGroupContainer: View {
             label: headerText,
             value: locationSearchService.searchQuery,
             loading: .constant(locationSearchService.loading),
-            results: locationSearchService.results,
+            results: results,
             favorites: favorites,
             onSelectLocation: didSelect(location:),
             onStarLocation: didStar(location:)
         )
         .equatable()
+    }
+
+    private var results: [RawLocation] {
+        locationSearchService.results.compactMap {
+            RawLocation(name: $0.title, regionName: $0.subtitle)
+        }
     }
 
     private var headerText: String {
@@ -36,25 +42,19 @@ struct SearchResultsGroupContainer: View {
 
     private var favorites: [Bool] {
         locationSearchService.results.map { result in
-            locationFavoritesService.favoriteLocations.contains(result)
+            locationFavoritesService.isFavorite(name: result.title, regionName: result.subtitle)
         }
     }
 
-    private func didSelect(location: Location) {
-        locationPickerState.toggleLocationPicker(animated: true)
-
-        locationFavoritesService.saveActiveLocation(location: location)
-        weatherService.setShouldFetchUpdatedWeather()
+    private func didSelect(location: RawLocation) {
+        locationFavoritesService.saveActiveLocation(location: location) {
+            self.locationPickerState.toggleLocationPicker(animated: true)
+            self.weatherService.setShouldFetchUpdatedWeather()
+        }
     }
 
-    private func didStar(location: Location) {
-        if locationFavoritesService.favoriteLocations.contains(location) {
-            locationFavoritesService.favoriteLocations.removeAll { $0 == location }
-
-            return
-        }
-
-        locationFavoritesService.favoriteLocations.append(location)
+    private func didStar(location: RawLocation) {
+        locationFavoritesService.toggleFavorite(location: location)
     }
 }
 

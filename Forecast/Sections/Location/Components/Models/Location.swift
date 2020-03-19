@@ -1,5 +1,5 @@
 //
-//  Location.swift
+//  StoredLocation.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2020-02-16.
@@ -9,11 +9,10 @@
 import CoreLocation
 import Foundation
 
-struct Location: Codable, Hashable {
+struct StoredLocation: Codable, Hashable {
     let name: String
     let regionName: String
     let coordinate: CLLocationCoordinate2D
-    var isFavorite: Bool = false
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(coordinate.latitude)
@@ -21,13 +20,12 @@ struct Location: Codable, Hashable {
     }
 }
 
-extension Location: Equatable {
-    static func == (lhs: Location, rhs: Location) -> Bool {
+extension StoredLocation: Equatable {
+    static func == (lhs: StoredLocation, rhs: StoredLocation) -> Bool {
         return
             lhs.name == rhs.name &&
             lhs.regionName == rhs.regionName &&
             lhs.coordinate.latitude == rhs.coordinate.latitude &&
-            lhs.coordinate.longitude == rhs.coordinate.longitude &&
-            lhs.isFavorite == rhs.isFavorite
+            lhs.coordinate.longitude == rhs.coordinate.longitude
     }
 }

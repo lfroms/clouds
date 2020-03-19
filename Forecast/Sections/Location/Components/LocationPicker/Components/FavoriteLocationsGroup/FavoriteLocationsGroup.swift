@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct FavoriteLocationsGroup: View {
-    var locations: [Location]
+    var locations: [StoredLocation]
     var locationsWeather: [ShortFormWeather]
 
-    var onSelectLocation: (Location) -> Void
-    var onDelete: (Location) -> Void
+    var onSelectLocation: (StoredLocation) -> Void
+    var onDelete: (StoredLocation) -> Void
 
     var body: some View {
         LocationPickerListSection(

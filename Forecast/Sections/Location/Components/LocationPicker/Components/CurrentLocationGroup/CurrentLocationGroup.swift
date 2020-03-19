@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct CurrentLocationGroup: View {
-    var location: Location
+    var location: StoredLocation
     var locationWeather: ShortFormWeather?
     @Binding var loading: Bool
 
-    var onSelectLocation: (Location) -> Void
+    var onSelectLocation: (StoredLocation) -> Void
 
     var body: some View {
         LocationPickerListSection(
@@ -42,7 +42,7 @@ extension CurrentLocationGroup: Equatable {
 struct CurrentLocationGroup_Previews: PreviewProvider {
     static var previews: some View {
         CurrentLocationGroup(
-            location: Location(name: "Location", regionName: "Region", coordinate: .init()),
+            location: StoredLocation(name: "Location", regionName: "Region", coordinate: .init()),
             loading: .constant(false),
             onSelectLocation: { _ in }
         )
