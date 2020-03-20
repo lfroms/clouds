@@ -26,7 +26,7 @@ struct HourlyForecast: View {
                         .opacity(todayTextOpacity)
                         .offset(x: todayTextOffset)
 
-                    if self.separatorFrame != .zero {
+                    if self.separatorFrame != .zero && self.items.first?.date.hour != 0 {
                         Text("Tomorrow".uppercased())
                             .offset(x: tomorrowTextOffset)
                     }
