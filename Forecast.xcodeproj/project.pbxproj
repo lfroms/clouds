@@ -110,6 +110,7 @@
 		809AC4332423F72F009B7045 /* RawLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809AC4322423F72F009B7045 /* RawLocation.swift */; };
 		809C2A66241C63DA009FCF6A /* LocationPickerSectionModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C2A65241C63DA009FCF6A /* LocationPickerSectionModal.swift */; };
 		809C2A6A241C64C6009FCF6A /* LocationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C2A69241C64C6009FCF6A /* LocationPicker.swift */; };
+		809C54DA24244F750028216E /* WeatherIllustrationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C54D924244F750028216E /* WeatherIllustrationImage.swift */; };
 		80A016022376638900A72C2F /* MainPagingScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A016012376638900A72C2F /* MainPagingScrollViewController.swift */; };
 		80A01605237665B700A72C2F /* TouchPassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A01604237665B700A72C2F /* TouchPassthroughView.swift */; };
 		80A646C423F5E95800C80633 /* HostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A646C323F5E95800C80633 /* HostingView.swift */; };
@@ -285,6 +286,7 @@
 		809AC4322423F72F009B7045 /* RawLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawLocation.swift; sourceTree = "<group>"; };
 		809C2A65241C63DA009FCF6A /* LocationPickerSectionModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerSectionModal.swift; sourceTree = "<group>"; };
 		809C2A69241C64C6009FCF6A /* LocationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPicker.swift; sourceTree = "<group>"; };
+		809C54D924244F750028216E /* WeatherIllustrationImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIllustrationImage.swift; sourceTree = "<group>"; };
 		80A016012376638900A72C2F /* MainPagingScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagingScrollViewController.swift; sourceTree = "<group>"; };
 		80A01604237665B700A72C2F /* TouchPassthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchPassthroughView.swift; sourceTree = "<group>"; };
 		80A646C323F5E95800C80633 /* HostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingView.swift; sourceTree = "<group>"; };
@@ -418,6 +420,7 @@
 				80B8DB91232C768000BAD200 /* WeatherIllustration.swift */,
 				80B8DB93232C7BBF00BAD200 /* WeatherBackground.swift */,
 				801BDBCF232D660C007FE4AB /* DrawerHandle.swift */,
+				809C54D924244F750028216E /* WeatherIllustrationImage.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1492,6 +1495,7 @@
 				800908D82413694D0024300D /* DailyForecastContainer.swift in Sources */,
 				806A5C00241481B90093361D /* CurrentSectionContainer.swift in Sources */,
 				80311BC4241EA782004BC6B4 /* SettingsSheetCloseButtonRow.swift in Sources */,
+				809C54DA24244F750028216E /* WeatherIllustrationImage.swift in Sources */,
 				80C395AA23788A6B0004B71D /* AppActivityIndicator.swift in Sources */,
 				8076F72623651CD000FB85D1 /* SlidingPanel.swift in Sources */,
 				80EF84E7240F52F000D4037B /* MasterViewContainer.swift in Sources */,

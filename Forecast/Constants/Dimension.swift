@@ -17,7 +17,7 @@ final class Dimension {
         static let omniBarHeight: CGFloat = 52
         static let illustrationTopPadding: CGFloat = System.topSafeMargin
     }
-    
+
     final class HourlyForecast {
         static let spacing: CGFloat = 14
     }
@@ -60,6 +60,10 @@ final class Dimension {
 
         static var screenWidth: CGFloat {
             return firstWindow?.frame.width ?? 0
+        }
+
+        static var deviceIsiPhone8: Bool {
+            Dimension.System.screenWidth <= 375 && UIScreen.main.nativeScale == 2
         }
     }
 }

@@ -18,11 +18,13 @@ struct WeatherIllustration: View {
     var body: some View {
         ZStack(alignment: .topTrailing) {
             if !imageA.isEmpty {
-                Image(imageA)
+                WeatherIllustrationImage(image: imageA, shouldScale: shouldScaleImage)
+                    .equatable()
                     .transition(transition)
             }
             if !imageB.isEmpty {
-                Image(imageB)
+                WeatherIllustrationImage(image: imageB, shouldScale: shouldScaleImage)
+                    .equatable()
                     .transition(transition)
             }
         }
@@ -52,6 +54,10 @@ struct WeatherIllustration: View {
 
     private var imageName: String {
         "image-\(visualState.iconCode)"
+    }
+
+    private var shouldScaleImage: Bool {
+        ![23, 24, 16, 17, 18].contains(visualState.iconCode)
     }
 }
 
