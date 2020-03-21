@@ -37,9 +37,9 @@ class WeatherService: ObservableObject {
     ) {
         if loading {
             currentRequest?.cancel()
+        } else {
+            loading = true
         }
-        
-        loading = true
         
         let activeLocation = activeLocation?.asGraphQLCoordinate ?? currentLocation?.asGraphQLCoordinate
         
@@ -52,11 +52,11 @@ class WeatherService: ObservableObject {
         )
         
         currentRequest = GraphQL.shared.apollo.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely) { result in
-            self.loading = false
-            
             switch result {
             case .success(let graphQLResult):
                 if let data = graphQLResult.data {
+                    self.loading = false
+                    
                     self.activeLocation = data.activeLocationWeather
                     self.currentLocation = data.currentLocationWeather
                     self.currentLocationShortForm = self.mapCurrentLocationWeather(coordinate: currentLocation)
@@ -68,8 +68,6 @@ class WeatherService: ObservableObject {
             case .failure(let error):
                 print(error)
             }
-            
-            self.currentRequest = nil
         }
     }
     
