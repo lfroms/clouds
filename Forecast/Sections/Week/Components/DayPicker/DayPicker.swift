@@ -18,6 +18,7 @@ struct DayPicker: View {
                 ForEach(Array(self.days.enumerated()), id: \.element.date.day) { index, day in
                     Button(action: { self.activeIndex = index }) {
                         DayPickerDateBubble(label: day.date.weekdayName(.short), day: day.date.day, active: index == self.activeIndex)
+                            .equatable()
                     }
                     .buttonStyle(PlainButtonStyle())
                 }

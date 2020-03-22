@@ -29,10 +29,12 @@ struct ConditionLayout: View {
                 VStack(alignment: .trailing, spacing: 6) {
                     if data.pop != nil {
                         ConditionIconDetail(symbol: SFSymbol.umbrellaFilled, text: "\(data.pop!)%")
+                            .equatable()
                     }
 
                     if data.windSpeed != nil {
                         ConditionIconDetail(symbol: SFSymbol.wind, text: "\(data.windSpeed!) km/h")
+                            .equatable()
                     }
                 }
             }
