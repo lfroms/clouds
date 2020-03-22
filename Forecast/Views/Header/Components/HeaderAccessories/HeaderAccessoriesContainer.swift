@@ -16,6 +16,7 @@ struct HeaderAccessoriesContainer: Container {
     var body: some View {
         HeaderAccessories(
             sunriseSunset: sunriseSunset,
+            sunriseSunsetHidden: sunriseSunsetHidden,
             observedAt: observedAt
         )
         .equatable()
@@ -23,7 +24,11 @@ struct HeaderAccessoriesContainer: Container {
     }
 
     private var hidden: Bool {
-        locationPickerState.presented || appState.activeSection != .now
+        locationPickerState.presented || appState.activeSection == .radar
+    }
+
+    private var sunriseSunsetHidden: Bool {
+        [.week, .radar].contains(appState.activeSection)
     }
 
     private var sunriseSunset: SunriseSunsetData? {

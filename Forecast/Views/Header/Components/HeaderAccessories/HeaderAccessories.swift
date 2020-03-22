@@ -10,6 +10,7 @@ import SwiftUI
 
 struct HeaderAccessories: View, Equatable {
     var sunriseSunset: SunriseSunsetData?
+    var sunriseSunsetHidden: Bool
     var observedAt: ObservedAtData
 
     var body: some View {
@@ -20,6 +21,7 @@ struct HeaderAccessories: View, Equatable {
                     sunset: sunriseSunset!.sunsetUTC
                 )
                 .equatable()
+                .opacity(sunriseSunsetHidden ? 0 : 1)
             }
 
             Spacer()
@@ -37,7 +39,9 @@ struct HeaderAccessories: View, Equatable {
     // MARK: - Equatable
 
     static func == (lhs: HeaderAccessories, rhs: HeaderAccessories) -> Bool {
-        lhs.sunriseSunset == rhs.sunriseSunset && lhs.observedAt == rhs.observedAt
+        lhs.sunriseSunset == rhs.sunriseSunset
+            && lhs.sunriseSunsetHidden == rhs.sunriseSunsetHidden
+            && lhs.observedAt == rhs.observedAt
     }
 }
 
@@ -45,6 +49,7 @@ struct HeaderAccessories_Previews: PreviewProvider {
     static var previews: some View {
         HeaderAccessories(
             sunriseSunset: nil,
+            sunriseSunsetHidden: false,
             observedAt: ObservedAtData(loading: false, timestamp: nil, action: {})
         )
     }
