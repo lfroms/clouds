@@ -42,9 +42,22 @@ final class Dimension {
     }
 
     final class WeekSection {
-        static let dayCardWidth: CGFloat = 215
-        static let cardSpacing: CGFloat = 14
-        static let pageSize = dayCardWidth + cardSpacing
+        final class DayPicker {
+            static let bubbleSize: CGFloat = 60
+            static let spacing: CGFloat = 12
+            static let pageSize: CGFloat = bubbleSize + spacing
+
+            static let indicatorSize: CGFloat = 10
+            static let indicatorSpacing: CGFloat = 8
+            static let bottomPadding: CGFloat = Global.padding
+            static let topPadding: CGFloat = 12
+
+            static let dayPickerVisualHeight: CGFloat
+                = bubbleSize + indicatorSpacing + indicatorSize
+
+            static let dayPickerTotalHeight: CGFloat
+                = bottomPadding + dayPickerVisualHeight + topPadding
+        }
     }
 
     final class System {

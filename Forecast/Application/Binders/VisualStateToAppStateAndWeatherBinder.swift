@@ -45,20 +45,33 @@ struct VisualStateToAppStateAndWeatherBinder: ViewModifier {
     }
 
     private func setIconCodeToDailyForecast() {
-        visualState.setIconCode(
-            to: weatherService.activeLocation?.dailyForecast?.days?[safe: weekSectionState.dayIndex]?.iconCode,
-            animated: true
-        )
+        let index = weekSectionState.dayIndex
+        let days = weatherService.activeLocation?.dailyForecast?.days
+
+        let day = days?[safe: index]
+
+        if day?.dayCondition == nil {
+            visualState.setIconCode(to: day?.nightCondition?.iconCode, animated: true)
+            return
+        }
+
+        let iconCode = weekSectionState.showingNightConditions ? day?.nightCondition?.iconCode : day?.dayCondition?.iconCode
+
+        visualState.setIconCode(to: iconCode, animated: true)
     }
 
     private func changeIconCodeBasedOnSection() {
         switch appState.activeSection {
         case .now:
             setIconCodeToCurrentConditions()
+            visualState.shrinkBackground = false
+
         case .week:
             setIconCodeToDailyForecast()
+            visualState.shrinkBackground = true
+
         case .radar:
-            break
+            visualState.shrinkBackground = false
         }
     }
 }

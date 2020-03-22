@@ -1,33 +1,36 @@
 //
-//  DailyForecastPagingScrollView.swift
+//  DayPickerPagingView.swift
 //  Forecast
 //
-//  Created by Lukas Romsicki on 2019-10-29.
-//  Copyright © 2019 Lukas Romsicki. All rights reserved.
+//  Created by Lukas Romsicki on 2020-03-22.
+//  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
 import SwiftUI
 
-struct DailyForecastPagingScrollView<Content: View>: UIViewRepresentable {
+struct DayPickerPagingView<Content: View>: UIViewRepresentable {
     internal typealias UIViewType = UIView
 
-    let pageWidth: CGFloat
-    let didChangePage: (Int) -> Void
+    let itemWidth: CGFloat
+    let spacing: CGFloat
+    @Binding var currentPage: Int
 
     let content: () -> Content
 
     @inlinable public init(
         pageWidth: CGFloat,
-        didChangePage: @escaping (_ page: Int) -> Void,
+        spacing: CGFloat,
+        currentPage: Binding<Int>,
         @ViewBuilder content: @escaping () -> Content
     ) {
-        self.pageWidth = pageWidth
-        self.didChangePage = didChangePage
+        self.itemWidth = pageWidth
+        self.spacing = spacing
+        self._currentPage = currentPage
         self.content = content
     }
 
     private let scrollView: UIScrollView = {
-        let v = UIScrollView()
+        let v = CustomPageSizeScrollView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.showsVerticalScrollIndicator = false
         v.showsHorizontalScrollIndicator = false
@@ -44,22 +47,40 @@ struct DailyForecastPagingScrollView<Content: View>: UIViewRepresentable {
         TouchPassthroughView()
     }()
 
+    var pageWidth: CGFloat {
+        itemWidth + spacing
+    }
+
+    var halfItemWidth: CGFloat {
+        itemWidth / 2
+    }
+
+    var halfPageWidth: CGFloat {
+        pageWidth / 2
+    }
+
     // MARK: - UIViewRepresentable
 
-    func makeUIView(context: UIViewRepresentableContext<DailyForecastPagingScrollView<Content>>) -> UIViewType {
+    func makeUIView(context: UIViewRepresentableContext<DayPickerPagingView<Content>>) -> UIViewType {
         touchPassthroughView.addSubview(scrollView)
 
         scrollView.delegate = context.coordinator
 
-        scrollView.pinEdges([.leading, .top, .bottom], to: touchPassthroughView)
+        scrollView.pinEdges([.top, .bottom], to: touchPassthroughView)
         scrollView.addConstraint(scrollView.widthAnchor.constraint(equalToConstant: pageWidth))
+        scrollView.leadingAnchor.constraint(
+            equalTo: touchPassthroughView.leadingAnchor,
+            constant: (Dimension.System.screenWidth / 2) - halfItemWidth
+        ).isActive = true
 
         configureAndAddContentView()
 
         return touchPassthroughView
     }
 
-    func updateUIView(_ uiView: UIViewType, context: UIViewRepresentableContext<DailyForecastPagingScrollView<Content>>) {}
+    func updateUIView(_ uiView: UIViewType, context: UIViewRepresentableContext<DayPickerPagingView<Content>>) {
+        context.coordinator.page(currentPage, scrollView: uiView.subviews.first as? UIScrollView)
+    }
 
     // MARK: - Content View
 
@@ -87,26 +108,15 @@ struct DailyForecastPagingScrollView<Content: View>: UIViewRepresentable {
 
     // MARK: - Coordinator
 
-    func makeCoordinator() -> DailyForecastPagingScrollView<Content>.Coordinator {
-        return Coordinator(didChangePage: didChangePage)
-    }
-
-    internal class Coordinator: NSObject, UIScrollViewDelegate {
-        private let didChangePage: (Int) -> Void
-
-        init(didChangePage: @escaping (Int) -> Void) {
-            self.didChangePage = didChangePage
-        }
-
-        func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-            let activePage = Int(scrollView.contentOffset.x / scrollView.bounds.size.width)
-            didChangePage(activePage)
-        }
+    func makeCoordinator() -> DayPickerPagingViewCoordinator<Content> {
+        return DayPickerPagingViewCoordinator(self)
     }
 }
 
-extension DailyForecastPagingScrollView: Equatable {
-    static func == (lhs: DailyForecastPagingScrollView<Content>, rhs: DailyForecastPagingScrollView<Content>) -> Bool {
-        lhs.pageWidth == rhs.pageWidth
+extension DayPickerPagingView: Equatable {
+    static func == (lhs: DayPickerPagingView<Content>, rhs: DayPickerPagingView<Content>) -> Bool {
+        lhs.itemWidth == rhs.itemWidth
+            && lhs.spacing == rhs.spacing
+            && lhs.currentPage == rhs.currentPage
     }
 }

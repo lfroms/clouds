@@ -10,7 +10,25 @@ import SwiftUI
 
 struct WeekSection: View {
     var body: some View {
-        DailyForecastPagingScrollViewContainer()
+        VStack(alignment: .leading, spacing: 0) {
+            HStack(alignment: .bottom, spacing: Dimension.Global.padding) {
+                DayNightSwitchContainer()
+                ConditionLayoutContainer()
+            }
+            .padding(Dimension.Global.padding)
+
+            VStack(alignment: .center, spacing: Dimension.WeekSection.DayPicker.indicatorSpacing) {
+                Rectangle()
+                    .foregroundColor(.white)
+                    .frame(width: 5, height: Dimension.WeekSection.DayPicker.indicatorSize)
+                    .cornerRadius(2.5)
+
+                DayPickerPagingViewContainer()
+            }
+            .frame(height: Dimension.WeekSection.DayPicker.dayPickerVisualHeight)
+            .padding(.bottom, Dimension.WeekSection.DayPicker.bottomPadding)
+            .padding(.top, Dimension.WeekSection.DayPicker.topPadding)
+        }
     }
 }
 

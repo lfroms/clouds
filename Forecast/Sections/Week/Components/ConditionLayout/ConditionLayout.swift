@@ -1,0 +1,66 @@
+//
+//  ConditionLayout.swift
+//  Forecast
+//
+//  Created by Lukas Romsicki on 2020-03-22.
+//  Copyright © 2020 Lukas Romsicki. All rights reserved.
+//
+
+import SwiftUI
+
+struct ConditionLayout: View {
+    var data: DailyForecastData.Condition
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(alignment: .bottom, spacing: 0) {
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("\(Int(data.temperature.rounded() + 0.0))°")
+                        .font(.system(size: UIFontMetrics.default.scaledValue(for: 39)))
+                        .fontWeight(.heavy)
+
+                    Text("\(data.summary)")
+                        .font(.body)
+                        .fontWeight(.bold)
+                }
+
+                Spacer(minLength: 10)
+
+                VStack(alignment: .trailing, spacing: 6) {
+                    if data.pop != nil {
+                        ConditionIconDetail(symbol: SFSymbol.umbrellaFilled, text: "\(data.pop!)%")
+                    }
+
+                    if data.windSpeed != nil {
+                        ConditionIconDetail(symbol: SFSymbol.wind, text: "\(data.windSpeed!) km/h")
+                    }
+                }
+            }
+
+            Text(data.description)
+                .font(.footnote)
+                .fontWeight(.semibold)
+        }
+    }
+}
+
+extension ConditionLayout: Equatable {
+    static func == (lhs: ConditionLayout, rhs: ConditionLayout) -> Bool {
+        lhs.data == rhs.data
+    }
+}
+
+struct ConditionLayout_Previews: PreviewProvider {
+    static var previews: some View {
+        ConditionLayout(data:
+            .init(
+                description: "Test description",
+                summary: "Test summary",
+                iconCode: 2,
+                temperature: 15,
+                windSpeed: nil,
+                pop: nil
+            )
+        )
+    }
+}

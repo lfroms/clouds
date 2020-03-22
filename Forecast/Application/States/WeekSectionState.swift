@@ -10,4 +10,5 @@ import Foundation
 
 final class WeekSectionState: ObservableObject {
     @Published var dayIndex: Int = 0
+    @Published var showingNightConditions: Bool = false
 }

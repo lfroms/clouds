@@ -68,18 +68,34 @@ query Weather($currentLocation: Coordinate, $activeLocation: Coordinate, $favori
         dailyForecast {
             time
             days {
-                when
-                summary
-                shortSummary
-                iconCode
-                precipProbability
-                temperature
-                humidex
-                windChill
-                winds {
-                    direction
-                    speed
-                    gust
+                time
+                dayCondition {
+                    summary
+                    shortSummary
+                    iconCode
+                    precipProbability
+                    temperature
+                    humidex
+                    windChill
+                    winds {
+                        direction
+                        speed
+                        gust
+                    }
+                }
+                nightCondition {
+                    summary
+                    shortSummary
+                    iconCode
+                    precipProbability
+                    temperature
+                    humidex
+                    windChill
+                    winds {
+                        direction
+                        speed
+                        gust
+                    }
                 }
             }
         }

@@ -21,12 +21,13 @@ struct WeatherBackground: View {
     @State private var gradientB: [Color] = []
 
     var body: some View {
-        ZStack {
-            LinearGradient(gradient: Gradient(colors: gradientA), startPoint: .top, endPoint: .bottom)
-            LinearGradient(gradient: Gradient(colors: gradientB), startPoint: .top, endPoint: .bottom)
-                .opacity(alternateGradient ? 0 : 1)
+        ZStack(alignment: .top) {
+            LinearGradient(gradient: Gradient(colors: self.gradientA), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: self.gradientB), startPoint: .top, endPoint: .bottom)
+                .opacity(self.alternateGradient ? 0 : 1)
         }
-        .onReceive(visualState.iconCodeDidChange, perform: self.animateGradient)
+        .modifier(ShrinkOnWeekSection(shrink: visualState.shrinkBackground))
+        .onReceive(self.visualState.iconCodeDidChange, perform: self.animateGradient)
     }
 
     private var gradientSteps: [Color] {

@@ -36,6 +36,15 @@ struct VisualStateToWeekSectionStateAndWeatherBinder: ViewModifier {
         let index = weekSectionState.dayIndex
         let days = weatherService.activeLocation?.dailyForecast?.days
 
-        visualState.setIconCode(to: days?[index].iconCode, animated: true)
+        let day = days?[safe: index]
+
+        if day?.dayCondition == nil {
+            visualState.setIconCode(to: day?.nightCondition?.iconCode, animated: true)
+            return
+        }
+
+        let iconCode = weekSectionState.showingNightConditions ? day?.nightCondition?.iconCode : day?.dayCondition?.iconCode
+
+        visualState.setIconCode(to: iconCode, animated: true)
     }
 }

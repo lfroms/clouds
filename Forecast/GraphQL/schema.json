@@ -1250,10 +1250,10 @@
       {
         "kind": "OBJECT",
         "name": "Day",
-        "description": "Forecasted conditions for a particular day in the future.",
+        "description": "Forecast daytime and nighttime conditions for a particular day.",
         "fields": [
           {
-            "name": "when",
+            "name": "time",
             "description": "",
             "args": [],
             "type": {
@@ -1261,13 +1261,48 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "String",
+                "name": "Int",
                 "ofType": null
               }
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
+          {
+            "name": "dayCondition",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "ForecastCondition",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "nightCondition",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "ForecastCondition",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "ForecastCondition",
+        "description": "Forecasted conditions for a particular day.",
+        "fields": [
           {
             "name": "longSummary",
             "description": "",

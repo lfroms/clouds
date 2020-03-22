@@ -2,8 +2,8 @@
 //  TouchPassthroughView.swift
 //  Forecast
 //
-//  Created by Lukas Romsicki on 2019-11-08.
-//  Copyright © 2019 Lukas Romsicki. All rights reserved.
+//  Created by Lukas Romsicki on 2020-03-22.
+//  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
 import UIKit

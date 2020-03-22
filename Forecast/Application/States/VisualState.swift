@@ -12,6 +12,7 @@ import SwiftUI
 final class VisualState: ObservableObject {
     let iconCodeDidChange = PassthroughSubject<Void, Never>()
     
+    @Published var shrinkBackground: Bool = false
     @Published private(set) var iconCode: Int = 6 {
         didSet {
             self.iconCodeDidChange.send()
