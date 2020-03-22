@@ -17,7 +17,7 @@ struct TabView: View {
         Button(action: self.onPress) {
             Text(self.tab.name)
                 .font(Font.callout.bold())
-                .opacity(self.active ? .one : 0.6)
+                .colorMultiply(active ? .black : .white)
                 .animation(.easeInOut(duration: 0.2))
                 .padding(.vertical, 6)
                 .padding(.horizontal, 16)

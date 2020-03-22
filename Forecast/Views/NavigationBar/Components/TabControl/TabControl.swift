@@ -36,7 +36,7 @@ struct TabControl: View {
         }
     }
 
-    func createBackdrop(_ geometry: GeometryProxy, _ preferences: [TabPreferenceData]) -> some View {
+    private func createBackdrop(_ geometry: GeometryProxy, _ preferences: [TabPreferenceData]) -> some View {
         let preference = preferences.first(where: { $0.activeTab == self.activeTab })
         let bounds = preference != nil ? geometry[preference!.bounds] : .zero
 
@@ -44,7 +44,7 @@ struct TabControl: View {
             .frame(width: bounds.size.width, height: bounds.size.height)
             .fixedSize()
             .offset(x: bounds.minX, y: bounds.minY)
-            .foregroundColor(AppColor.Control.extraSubdued)
+            .foregroundColor(.white)
             .animation(AnimationPreset.TabControl.backdropSlide)
     }
 }
