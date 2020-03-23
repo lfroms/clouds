@@ -35,7 +35,7 @@ struct DayPickerDateBubble: View, Equatable {
         }
     }
 
-    var background: some View {
+    private var background: some View {
         ZStack {
             Circle()
                 .foregroundColor(Color.white.opacity(0.14))
@@ -43,10 +43,24 @@ struct DayPickerDateBubble: View, Equatable {
             if active {
                 Circle()
                     .foregroundColor(Color.white)
-                    .transition(.asymmetric(insertion: AnyTransition.scale(scale: 0.7).combined(with: AnyTransition.opacity.animation(.easeIn(duration: 0.2))).animation(.spring(response: 0.2, dampingFraction: 0.4)),
-                                            removal: AnyTransition.opacity.animation(.easeInOut(duration: 0.16))))
+                    .transition(.asymmetric(insertion: insertionTransition, removal: removalTransition))
             }
         }
+    }
+
+    private var insertionTransition: AnyTransition {
+        AnyTransition
+            .scale(scale: 0.6)
+            .combined(
+                with: AnyTransition
+                    .opacity
+                    .animation(.easeIn(duration: 0.2))
+            )
+            .animation(.spring(response: 0.3, dampingFraction: 0.6))
+    }
+
+    private var removalTransition: AnyTransition {
+        AnyTransition.opacity.animation(.easeInOut(duration: 0.16))
     }
 }
 
