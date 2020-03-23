@@ -11,11 +11,18 @@ import SwiftUI
 final class DayPickerPagingViewCoordinator<Content: View>: NSObject, UIScrollViewDelegate {
     var parent: DayPickerPagingView<Content>
 
+    private let feedbackGenerator = UISelectionFeedbackGenerator()
+
     init(_ parent: DayPickerPagingView<Content>) {
         self.parent = parent
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView.bounds.width > 0 else {
+            // Prevent division by zero.
+            return
+        }
+        
         let adjustedContentOffset = scrollView.contentOffset.x + parent.halfPageWidth + parent.spacing
 
         var maximumIndex = Int(scrollView.contentSize.width / parent.pageWidth)
@@ -33,8 +40,10 @@ final class DayPickerPagingViewCoordinator<Content: View>: NSObject, UIScrollVie
             return
         }
 
+        feedbackGenerator.prepare()
+        feedbackGenerator.selectionChanged()
+
         parent.currentPage = newPage
-        UISelectionFeedbackGenerator().selectionChanged()
     }
 
     func page(_ page: Int, scrollView: UIScrollView?) {
