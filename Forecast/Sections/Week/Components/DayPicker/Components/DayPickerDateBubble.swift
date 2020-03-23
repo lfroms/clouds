@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DayPickerDateBubble: View, Equatable {
+struct DayPickerDateBubble: View {
     var label: String
     var day: Int
     var active: Bool
@@ -24,7 +24,8 @@ struct DayPickerDateBubble: View, Equatable {
                     .fixedSize()
 
                 Text("\(day)")
-                    .font(Font.system(size: 17, weight: .heavy, design: .default))
+                    .font(.body)
+                    .fontWeight(.heavy)
             }
             .foregroundColor(.white)
             .colorMultiply(active ? .black : .white)
@@ -61,6 +62,14 @@ struct DayPickerDateBubble: View, Equatable {
 
     private var removalTransition: AnyTransition {
         AnyTransition.opacity.animation(.easeInOut(duration: 0.16))
+    }
+}
+
+extension DayPickerDateBubble: Equatable {
+    static func == (lhs: DayPickerDateBubble, rhs: DayPickerDateBubble) -> Bool {
+        lhs.label == rhs.label
+            && lhs.day == rhs.day
+            && lhs.active == rhs.active
     }
 }
 
