@@ -10,6 +10,7 @@
 		800194DD232EDC8100066D37 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800194DC232EDC8100066D37 /* ShadowView.swift */; };
 		800194DF232EDCCF00066D37 /* UIShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800194DE232EDCCF00066D37 /* UIShadowView.swift */; };
 		800420D423FB11BB00C2879A /* String+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800420D323FB11BB00C2879A /* String+Empty.swift */; };
+		80042F1724284C2A005DA891 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 805A175022C53ADD00E1B4E2 /* LaunchScreen.storyboard */; };
 		8019F827240F4E1F00AFB0F1 /* MasterViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8019F826240F4E1F00AFB0F1 /* MasterViewLayout.swift */; };
 		801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801BDBCF232D660C007FE4AB /* DrawerHandle.swift */; };
 		802048C7240AE2F300DFB842 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802048C6240AE2F300DFB842 /* SettingsSection.swift */; };
@@ -58,7 +59,6 @@
 		805A174A22C53ADB00E1B4E2 /* AppLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A174922C53ADB00E1B4E2 /* AppLayout.swift */; };
 		805A174C22C53ADD00E1B4E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805A174B22C53ADD00E1B4E2 /* Assets.xcassets */; };
 		805A174F22C53ADD00E1B4E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805A174E22C53ADD00E1B4E2 /* Preview Assets.xcassets */; };
-		805A175222C53ADD00E1B4E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 805A175022C53ADD00E1B4E2 /* LaunchScreen.storyboard */; };
 		805A1E6622D65ADB001B8CC3 /* HourlyForecastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A1E6522D65ADB001B8CC3 /* HourlyForecastItem.swift */; };
 		805D6A032410054A002DEBAC /* AppHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D6A022410054A002DEBAC /* AppHostingController.swift */; };
 		805D6A0524100A39002DEBAC /* CLLocationCoordinate2D+ToCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D6A0424100A39002DEBAC /* CLLocationCoordinate2D+ToCoordinate.swift */; };
@@ -1370,7 +1370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80F07DDC23FB7D0C005C43A3 /* schema.json in Resources */,
-				805A175222C53ADD00E1B4E2 /* LaunchScreen.storyboard in Resources */,
+				80042F1724284C2A005DA891 /* LaunchScreen.storyboard in Resources */,
 				805D7BDC22D1244800A12C4D /* Images.xcassets in Resources */,
 				805D7BDA22D1243F00A12C4D /* Colors.xcassets in Resources */,
 				805A174F22C53ADD00E1B4E2 /* Preview Assets.xcassets in Resources */,
