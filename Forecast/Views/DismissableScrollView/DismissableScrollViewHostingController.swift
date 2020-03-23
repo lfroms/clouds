@@ -34,7 +34,7 @@ class DismissableScrollViewHostingController<Content>: UIHostingController<Conte
     private lazy var releaseLabel: UILabel = {
         let label = UILabel()
         label.text = message.uppercased()
-        label.font = UIFont.preferredFont(for: .caption2, weight: .semibold)
+        label.font = UIFont.preferredFont(forTextStyle: .caption2).semibold
         label.adjustsFontForContentSizeCategory = true
         label.textColor = .white
         label.textAlignment = .center
