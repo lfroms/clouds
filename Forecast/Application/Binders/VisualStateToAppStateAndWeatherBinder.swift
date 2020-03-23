@@ -50,8 +50,13 @@ struct VisualStateToAppStateAndWeatherBinder: ViewModifier {
 
         let day = days?[safe: index]
 
-        if day?.dayCondition == nil {
+        if day?.dayCondition == nil, day?.nightCondition != nil {
             visualState.setIconCode(to: day?.nightCondition?.iconCode, animated: true)
+            return
+        }
+
+        if day?.nightCondition == nil, day?.dayCondition != nil {
+            visualState.setIconCode(to: day?.dayCondition?.iconCode, animated: true)
             return
         }
 

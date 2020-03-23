@@ -54,8 +54,12 @@ struct ConditionLayoutContainer: Container {
             )
         }
 
-        if !weekSectionState.showingNightConditions, parsedDayCondition == nil {
+        if parsedDayCondition == nil, parsedNightCondition != nil {
             return parsedNightCondition
+        }
+
+        if parsedNightCondition == nil, parsedDayCondition != nil {
+            return parsedDayCondition
         }
 
         if weekSectionState.showingNightConditions {
