@@ -16,16 +16,19 @@ struct MapView: UIViewRepresentable {
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
 
-        if let safeAreaInsets = UIApplication.shared.windows.first?.safeAreaInsets {
-            // TODO: - Store these values as constants or calculate them.
-            let topInset = safeAreaInsets.top + 92 + 40
-            let layoutMargins = UIEdgeInsets(top: topInset, left: 5, bottom: 20 + 50, right: 5)
-
-            mapView.layoutMargins = layoutMargins
-        }
+        mapView.layoutMargins = UIEdgeInsets(
+            top: Dimension.Header.omniBarHeight + (2 * Dimension.Global.padding),
+            left: 8,
+            bottom: Dimension.Global.padding + 50,
+            right: 8
+        )
 
         mapView.delegate = context.coordinator
         mapView.pointOfInterestFilter = .excludingAll
+        mapView.showsUserLocation = true
+        mapView.showsScale = true
+        mapView.showsBuildings = false
+        mapView.showsTraffic = false
 
         return mapView
     }
@@ -45,7 +48,7 @@ struct MapView: UIViewRepresentable {
             mapView.renderer(for: overlay)?.alpha = 0
         }
 
-        mapView.renderer(for: context.coordinator.overlays[currentImage])?.alpha = 1
+        mapView.renderer(for: context.coordinator.overlays[currentImage])?.alpha = 0.5
     }
 
     func makeCoordinator() -> MapView.Coordinator {
@@ -59,9 +62,9 @@ struct MapView: UIViewRepresentable {
                     return
                 }
 
-                overlays = timestamps.map({ timeStamp in
+                overlays = timestamps.map { timeStamp in
                     RadarTileOverlay(timeStamp: timeStamp)
-                })
+                }
             }
         }
 

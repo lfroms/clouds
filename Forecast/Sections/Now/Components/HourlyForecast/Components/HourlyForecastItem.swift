@@ -20,18 +20,21 @@ struct HourlyForecastItem: View {
     var body: some View {
         VStack(alignment: .center) {
             HStack(alignment: .firstTextBaseline, spacing: 2) {
-                FixedSizeText(formattedHour)
-                FixedSizeText(amPm)
-                    .foregroundColor(AppColor.Display.primary.opacity(0.65))
+                Text(formattedHour)
+                Text(amPm)
+                    .foregroundColor(Color.white.opacity(0.65))
             }
             .font(Font.system(size: UIFontMetrics.default.scaledValue(for: 14)).weight(.semibold))
+            .frame(minWidth: 0, maxWidth: .infinity)
 
             Spacer()
 
             if expanded {
                 HourlyForecastDetail(iconName: SFSymbol.wind, label: getWindSpeedText())
+                    .frame(minWidth: 0, maxWidth: .infinity)
                 Spacer()
                 HourlyForecastDetail(iconName: SFSymbol.umbrellaFilled, label: data.pop)
+                    .frame(minWidth: 0, maxWidth: .infinity)
 
             } else {
                 Image(systemName: self.data.symbolName)
@@ -40,11 +43,12 @@ struct HourlyForecastItem: View {
                 Spacer()
 
                 HStack(alignment: .firstTextBaseline, spacing: 0) {
-                    FixedSizeText("\(data.temperature)")
-                    FixedSizeText("°")
-                        .foregroundColor(AppColor.Display.primary.opacity(0.65))
+                    Text("\(data.temperature)")
+                    Text("°")
+                        .foregroundColor(Color.white.opacity(0.65))
                 }
                 .font(Font.body.weight(.bold))
+                .frame(minWidth: 0, maxWidth: .infinity)
             }
         }
         .padding(.vertical, 18)
@@ -104,17 +108,11 @@ struct HourlyForecastItem: View {
     }
 
     private var backgroundColor: Color {
-        expanded ? AppColor.Display.primary.opacity(0.1) : AppColor.Control.viewBackground.opacity(0.06)
+        expanded ? Color.white.opacity(0.1) : AppColor.Control.viewBackground.opacity(0.06)
     }
 
     private var height: CGFloat {
         expanded ? 140 : 128
-    }
-
-    private func FixedSizeText(_ text: String) -> some View {
-        Text(text)
-            .lineLimit(1)
-            .fixedSize()
     }
 
     private func getWindSpeedText() -> String {

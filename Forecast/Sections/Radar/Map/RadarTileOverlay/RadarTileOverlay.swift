@@ -26,7 +26,7 @@ final class RadarTileOverlay: MKTileOverlay {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "tilecache.rainviewer.com"
-        components.path = "/v2/radar/\(timeStamp)/\(size)/\(path.z)/\(path.x)/\(path.y)/\(ColorScheme.nextradLevel3.rawValue)/0_1.png"
+        components.path = "/v2/radar/\(timeStamp)/\(size)/\(path.z)/\(path.x)/\(path.y)/\(ColorScheme.nextradLevel3.rawValue)/1_0.png"
 
         return components.url ?? super.url(forTilePath: path)
     }

@@ -16,8 +16,8 @@ struct HourlyForecastDetail: View {
         VStack(alignment: .center, spacing: 4) {
             Image(systemName: iconName).font(.system(size: 13, weight: .bold))
             Text(label)
-                .font(.system(size: 11, weight: .bold))
-                .fixedSize()
+                .font(.caption)
+                .fontWeight(.bold)
         }
     }
 }
