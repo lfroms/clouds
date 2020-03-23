@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ConditionLayoutContainer: View {
+struct ConditionLayoutContainer: Container {
     @EnvironmentObject private var weatherService: WeatherService
     @EnvironmentObject private var weekSectionState: WeekSectionState
 

@@ -9,17 +9,23 @@
 import SwiftUI
 
 struct ConditionView: View {
+    @Environment(\.sizeCategory) var sizeCategory
+
     var condition: String
 
     var body: some View {
         Text(condition)
-            .font(.system(size: 20))
+            .font(.system(size: UIFontMetrics.default.scaledValue(for: 20)))
             .fontWeight(.bold)
             .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
     }
 }
 
-extension ConditionView: Equatable {}
+extension ConditionView: Equatable {
+    static func == (lhs: ConditionView, rhs: ConditionView) -> Bool {
+        lhs.condition == rhs.condition && lhs.sizeCategory == rhs.sizeCategory
+    }
+}
 
 struct ConditionView_Previews: PreviewProvider {
     static var previews: some View {

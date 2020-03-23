@@ -10,6 +10,8 @@ import SwiftDate
 import SwiftUI
 
 struct HourlyForecastItem: View {
+    @Environment(\.sizeCategory) var sizeCategory
+
     private let workItemService = WorkItemService()
     @State var expanded: Bool = false
 
@@ -22,7 +24,7 @@ struct HourlyForecastItem: View {
                 FixedSizeText(amPm)
                     .foregroundColor(AppColor.Display.primary.opacity(0.65))
             }
-            .font(Font.system(size: 14).weight(.semibold))
+            .font(Font.system(size: UIFontMetrics.default.scaledValue(for: 14)).weight(.semibold))
 
             Spacer()
 
@@ -33,7 +35,7 @@ struct HourlyForecastItem: View {
 
             } else {
                 Image(systemName: self.data.symbolName)
-                    .font(.system(size: 23))
+                    .font(Font.system(size: UIFontMetrics.default.scaledValue(for: 23)))
 
                 Spacer()
 
@@ -42,7 +44,7 @@ struct HourlyForecastItem: View {
                     FixedSizeText("°")
                         .foregroundColor(AppColor.Display.primary.opacity(0.65))
                 }
-                .font(Font.system(size: 17).weight(.bold))
+                .font(Font.body.weight(.bold))
             }
         }
         .padding(.vertical, 18)
@@ -134,7 +136,7 @@ struct HourlyForecastItem: View {
 
 extension HourlyForecastItem: Equatable {
     static func == (lhs: HourlyForecastItem, rhs: HourlyForecastItem) -> Bool {
-        lhs.data == rhs.data
+        lhs.data == rhs.data && lhs.sizeCategory == rhs.sizeCategory
     }
 }
 
