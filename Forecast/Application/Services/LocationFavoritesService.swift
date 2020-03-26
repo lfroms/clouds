@@ -11,9 +11,14 @@ import MapKit
 import SwiftUI
 
 final class LocationFavoritesService: ObservableObject {
-    @Published private(set) var favoriteLocations: [StoredLocation] = getFavoriteLocations() {
-        didSet {
-            saveFavoriteLocations(newLocations: favoriteLocations)
+    private(set) var favoriteLocations: [StoredLocation] {
+        get {
+            getFavoriteLocations()
+        }
+        
+        set {
+            objectWillChange.send()
+            saveFavoriteLocations(newLocations: newValue)
         }
     }
     
