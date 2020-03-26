@@ -40,7 +40,7 @@ struct MeasurementGridContainer: Container {
         if let humidity = cc.humidity {
             let item = MeasurementDescriptor(
                 label: "Humidity",
-                value: "\(humidity)%",
+                value: "\(humidity * 100)%",
                 color: .blue
             )
             
