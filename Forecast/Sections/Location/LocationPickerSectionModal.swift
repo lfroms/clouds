@@ -13,7 +13,7 @@ struct LocationPickerSectionModal: View {
 
     var body: some View {
         ZStack {
-            if self.$locationPickerState.presented.wrappedValue {
+            if locationPickerState.presented {
                 LocationPickerSection(onDismiss: self.handlePickerDismiss)
                     .equatable()
                     .transition(.move(edge: .bottom))

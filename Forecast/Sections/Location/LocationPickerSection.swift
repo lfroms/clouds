@@ -21,7 +21,7 @@ struct LocationPickerSection: View {
                 LocationPicker()
                     .equatable()
             }
-            .onDismiss(message: "Release to Dismiss", perform: onDismiss)
+            .modifier(DismissableScrollViewModifier(message: "Release to Dismiss", dismissAction: onDismiss))
             .padding(.top, topInset)
         }
     }
