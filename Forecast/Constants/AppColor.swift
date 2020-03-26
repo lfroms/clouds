@@ -127,7 +127,13 @@ public final class AppColor {
 }
 
 extension AppColor.Weather.CodeMap {
-    subscript(code key: Int) -> AppColor.Weather.ColorScheme {
-        self[key, default: AppColor.Weather.dryCloud]
+    subscript(code key: Int?) -> AppColor.Weather.ColorScheme {
+        let defaultCode = AppColor.Weather.dryCloud
+
+        guard let code = key else {
+            return defaultCode
+        }
+
+        return self[code, default: defaultCode]
     }
 }

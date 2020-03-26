@@ -49,11 +49,11 @@ struct WeatherIllustration: View {
     }
 
     private func animateImage(_: VisualState.ObjectWillChangePublisher.Output) {
-        setImage(name: imageName)
-    }
+        guard let iconCode = visualState.iconCode else {
+            return
+        }
 
-    private var imageName: String {
-        "image-\(visualState.iconCode)"
+        setImage(name: "image-\(iconCode)")
     }
 
     private var shouldScaleImage: Bool {
