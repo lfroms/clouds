@@ -22,8 +22,8 @@ final class DayPickerPagingViewCoordinator<Content: View>: NSObject, UIScrollVie
             // Prevent division by zero.
             return
         }
-        
-        let adjustedContentOffset = scrollView.contentOffset.x + parent.halfPageWidth + parent.spacing
+
+        let adjustedContentOffset = scrollView.contentOffset.x + parent.halfPageWidth
 
         var maximumIndex = Int(scrollView.contentSize.width / parent.pageWidth)
         if maximumIndex > 0 {
