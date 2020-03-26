@@ -18,19 +18,19 @@ struct DayNightSwitchContainer: Container {
     }
 
     private var hasDay: Bool {
-        guard let currentDay = weatherService.activeLocation?.dailyForecast?.days?[safe: weekSectionState.dayIndex] else {
+        guard let currentDay = weatherService.activeLocation?.daily[safe: weekSectionState.dayIndex] else {
             return false
         }
 
-        return currentDay.dayCondition != nil
+        return currentDay.daytimeConditions != nil
     }
 
     private var hasNight: Bool {
-        guard let currentDay = weatherService.activeLocation?.dailyForecast?.days?[safe: weekSectionState.dayIndex] else {
+        guard let currentDay = weatherService.activeLocation?.daily[safe: weekSectionState.dayIndex] else {
             return false
         }
 
-        return currentDay.nightCondition != nil
+        return currentDay.nighttimeConditions != nil
     }
 }
 

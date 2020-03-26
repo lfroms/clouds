@@ -49,15 +49,15 @@ struct SettingsSection: View {
     }
 
     private var stationName: String? {
-        weatherService.activeLocation?.currentConditions?.station.name
+        weatherService.activeLocation?.location.stationName
     }
 
     private var stationDistance: Int? {
-        guard let metres = weatherService.activeLocation?.currentConditions?.station.distanceMetres else {
+        guard let metres = weatherService.activeLocation?.location.distance else {
             return nil
         }
 
-        return metres / 1000
+        return Int(metres) / 1000
     }
 }
 

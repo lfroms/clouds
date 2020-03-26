@@ -16,7 +16,7 @@
 		802048C7240AE2F300DFB842 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802048C6240AE2F300DFB842 /* SettingsSection.swift */; };
 		8020F9532363D2390029FEB6 /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020F9522363D2390029FEB6 /* MasterView.swift */; };
 		8026FF5323779881007962DB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026FF5223779881007962DB /* MapView.swift */; };
-		802A42FF241C534F0073C0DC /* ScrollView+OnDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A42FE241C534F0073C0DC /* ScrollView+OnDismiss.swift */; };
+		802A42FF241C534F0073C0DC /* DismissableScrollViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A42FE241C534F0073C0DC /* DismissableScrollViewModifier.swift */; };
 		802A4301241C53E10073C0DC /* DismissableScrollViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A4300241C53E10073C0DC /* DismissableScrollViewWrapper.swift */; };
 		802A4303241C54AB0073C0DC /* DismissableScrollViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A4302241C54AB0073C0DC /* DismissableScrollViewRepresentable.swift */; };
 		802A4305241C556A0073C0DC /* DismissableScrollViewHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A4304241C556A0073C0DC /* DismissableScrollViewHostingController.swift */; };
@@ -196,7 +196,7 @@
 		802048C6240AE2F300DFB842 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		8020F9522363D2390029FEB6 /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
 		8026FF5223779881007962DB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		802A42FE241C534F0073C0DC /* ScrollView+OnDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+OnDismiss.swift"; sourceTree = "<group>"; };
+		802A42FE241C534F0073C0DC /* DismissableScrollViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableScrollViewModifier.swift; sourceTree = "<group>"; };
 		802A4300241C53E10073C0DC /* DismissableScrollViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableScrollViewWrapper.swift; sourceTree = "<group>"; };
 		802A4302241C54AB0073C0DC /* DismissableScrollViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableScrollViewRepresentable.swift; sourceTree = "<group>"; };
 		802A4304241C556A0073C0DC /* DismissableScrollViewHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableScrollViewHostingController.swift; sourceTree = "<group>"; };
@@ -1266,7 +1266,7 @@
 		80FC8AB123F0B35C00AEA26F /* DismissableScrollView */ = {
 			isa = PBXGroup;
 			children = (
-				802A42FE241C534F0073C0DC /* ScrollView+OnDismiss.swift */,
+				802A42FE241C534F0073C0DC /* DismissableScrollViewModifier.swift */,
 				802A4300241C53E10073C0DC /* DismissableScrollViewWrapper.swift */,
 				802A4302241C54AB0073C0DC /* DismissableScrollViewRepresentable.swift */,
 				802A4304241C556A0073C0DC /* DismissableScrollViewHostingController.swift */,
@@ -1555,7 +1555,7 @@
 				80A646C423F5E95800C80633 /* HostingView.swift in Sources */,
 				803028D822CEE56D0053F639 /* ConditionView.swift in Sources */,
 				80EA87C32426EAC700CFDD10 /* DayPickerDateBubble.swift in Sources */,
-				802A42FF241C534F0073C0DC /* ScrollView+OnDismiss.swift in Sources */,
+				802A42FF241C534F0073C0DC /* DismissableScrollViewModifier.swift in Sources */,
 				802A4305241C556A0073C0DC /* DismissableScrollViewHostingController.swift in Sources */,
 				806A5BFA241468970093361D /* VisualStateToWeekSectionStateAndWeatherBinder.swift in Sources */,
 				80C395A523787F660004B71D /* Date+TimeAgo.swift in Sources */,
@@ -1714,7 +1714,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "Forecast/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8P8574Z65P;
 				ENABLE_PREVIEWS = YES;
@@ -1739,7 +1739,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "Forecast/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8P8574Z65P;
 				ENABLE_PREVIEWS = YES;

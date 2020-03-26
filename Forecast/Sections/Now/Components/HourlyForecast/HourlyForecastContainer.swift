@@ -19,21 +19,20 @@ struct HourlyForecastContainer: Container {
 
     private var items: [HourlyForecastItemData] {
         guard
-            let activeLocation = weatherService.activeLocation,
-            let hours = activeLocation.hourlyForecast?.hours
+            let activeLocation = weatherService.activeLocation
         else {
             return []
         }
 
-        return hours.compactMap {
+        return activeLocation.hourly.compactMap { (hour) -> HourlyForecastItemData in
             HourlyForecastItemData(
-                date: DateHelper.inUTCTime(time: $0.time).convertTo(region: .current),
-                symbolName: ForecastIcon.forCode($0.iconCode),
-                temperature: Int($0.temperature),
-                temperatureUnits: activeLocation.units.temperature,
-                windSpeedUnits: activeLocation.units.speed,
-                windSpeed: $0.wind?.speed,
-                pop: $0.precipProbability
+                date: DateHelper.inUTCTime(time: hour.time).convertTo(region: .current),
+                symbolName: ForecastIcon.forCode(hour.icon ?? 0),
+                temperature: Int(hour.temperature ?? 0),
+                temperatureUnits: "C",
+                windSpeedUnits: "km/h",
+                windSpeed: hour.wind.speed,
+                pop: Int((hour.precipProbability ?? 0) * 100)
             )
         }
     }

@@ -17,13 +17,17 @@ struct ConditionLayout: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(alignment: .bottom, spacing: 0) {
                 VStack(alignment: .leading, spacing: 0) {
-                    Text("\(Int(data.temperature.rounded() + 0.0))°")
-                        .font(.system(size: UIFontMetrics.default.scaledValue(for: 40)))
-                        .fontWeight(.heavy)
+                    if data.temperature != nil {
+                        Text("\(Int(data.temperature!.rounded() + 0.0))°")
+                            .font(.system(size: UIFontMetrics.default.scaledValue(for: 40)))
+                            .fontWeight(.heavy)
+                    }
 
-                    Text("\(data.summary)")
-                        .font(.body)
-                        .fontWeight(.bold)
+                    if data.summary != nil {
+                        Text("\(data.summary!)")
+                            .font(.body)
+                            .fontWeight(.bold)
+                    }
                 }
 
                 Spacer(minLength: 10)
@@ -41,9 +45,11 @@ struct ConditionLayout: View {
                 }
             }
 
-            Text(data.description)
-                .font(.footnote)
-                .fontWeight(.semibold)
+            if data.description != nil {
+                Text(data.description!)
+                    .font(.footnote)
+                    .fontWeight(.semibold)
+            }
         }
     }
 }

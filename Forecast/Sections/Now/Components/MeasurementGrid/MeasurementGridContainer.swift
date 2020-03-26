@@ -29,7 +29,7 @@ struct MeasurementGridContainer: Container {
     }
     
     private var measurements: [MeasurementDescriptor] {
-        guard let units = weatherService.activeLocation?.units, let cc = weatherService.activeLocation?.currentConditions else {
+        guard let cc = weatherService.activeLocation?.currently else {
             return []
         }
         
@@ -49,35 +49,26 @@ struct MeasurementGridContainer: Container {
         
         // MARK: - Atmospheric Pressure 📈
         
-        if let pressure = cc.pressure {
+        if let pressure = cc.pressure.value {
             let item = MeasurementDescriptor(
                 label: "Pressure",
-                value: "\(pressure) \(units.pressure)",
+                value: "\(pressure) kPa",
                 color: .green
             )
             
             observations.append(item)
         }
         
-        // MARK: - Wind Chill ❄️
+        // MARK: - Feels Like ☀️❄️
         
-        if let windChill = cc.windChill {
-            let item = MeasurementDescriptor(
-                label: "Wind Chill",
-                value: "\(windChill) °\(units.temperature)",
-                color: .blue
-            )
+        if let feelsLikeTemperature = cc.feelsLike.temperature, let feelsLikeType = cc.feelsLike.type {
+            let label = feelsLikeType == .humidex ? "Humidex" : "Wind Chill"
+            let color: Color = feelsLikeType == .humidex ? .orange : .blue
             
-            observations.append(item)
-        }
-        
-        // MARK: - Humidex ☀️
-        
-        if let humidex = cc.humidex {
             let item = MeasurementDescriptor(
-                label: "Humidex",
-                value: "\(humidex) °\(units.temperature)",
-                color: .orange
+                label: label,
+                value: "\(feelsLikeTemperature) °C",
+                color: color
             )
             
             observations.append(item)
@@ -85,21 +76,21 @@ struct MeasurementGridContainer: Container {
         
         // MARK: - Wind 💨
         
-        if let wind = cc.wind, let speed = wind.speed {
+        if let windSpeed = cc.wind.speed {
             let item = MeasurementDescriptor(
                 label: "Wind",
-                value: "\(speed) \(units.speed)",
+                value: "\(windSpeed) km/h",
                 color: .red,
-                prefix: wind.direction
+                prefix: cc.wind.direction
             )
             
             observations.append(item)
         }
         
-        if let gust = cc.wind?.gust {
+        if let windGust = cc.wind.gust {
             let item = MeasurementDescriptor(
                 label: "Wind Gust",
-                value: "\(gust) \(units.speed)",
+                value: "\(windGust) km/h",
                 color: .pink
             )
             
@@ -111,7 +102,7 @@ struct MeasurementGridContainer: Container {
         if let visibility = cc.visibility {
             let item = MeasurementDescriptor(
                 label: "Visibility",
-                value: "\(visibility) \(units.distance)",
+                value: "\(visibility) km",
                 color: .green
             )
             
@@ -123,7 +114,7 @@ struct MeasurementGridContainer: Container {
         if let dewPoint = cc.dewPoint {
             let item = MeasurementDescriptor(
                 label: "Dewpoint",
-                value: "\(dewPoint) °\(units.temperature)",
+                value: "\(dewPoint) °C",
                 color: .blue
             )
             

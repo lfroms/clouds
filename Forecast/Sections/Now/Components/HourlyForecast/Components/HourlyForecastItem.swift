@@ -33,7 +33,7 @@ struct HourlyForecastItem: View {
                 HourlyForecastDetail(iconName: SFSymbol.wind, label: getWindSpeedText())
                     .frame(minWidth: 0, maxWidth: .infinity)
                 Spacer()
-                HourlyForecastDetail(iconName: SFSymbol.umbrellaFilled, label: data.pop)
+                HourlyForecastDetail(iconName: SFSymbol.umbrellaFilled, label: "\(data.pop)%")
                     .frame(minWidth: 0, maxWidth: .infinity)
 
             } else {
@@ -148,7 +148,7 @@ struct HourlyForecastItem_Previews: PreviewProvider {
                 temperatureUnits: "C",
                 windSpeedUnits: "km/h",
                 windSpeed: "32",
-                pop: "Nil"
+                pop: 0
             )
         )
     }

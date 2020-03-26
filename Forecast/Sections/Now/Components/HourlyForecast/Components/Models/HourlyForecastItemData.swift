@@ -19,5 +19,5 @@ struct HourlyForecastItemData: Hashable {
     let windSpeedUnits: String
 
     var windSpeed: String?
-    var pop: String
+    var pop: Int
 }

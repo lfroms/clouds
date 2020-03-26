@@ -15,6 +15,8 @@ struct OmniBarAuxiliaryButton: View, Equatable {
     var body: some View {
         Button(action: action) {
             Image(systemName: icon)
+                .frame(height: Dimension.Header.omniBarHeight)
+                .padding(.trailing, Dimension.Global.padding)
         }
     }
 

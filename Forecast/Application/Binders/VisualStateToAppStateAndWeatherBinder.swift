@@ -41,28 +41,28 @@ struct VisualStateToAppStateAndWeatherBinder: ViewModifier {
     // MARK: - Binding Functions
 
     private func setIconCodeToCurrentConditions() {
-        visualState.setIconCode(to: weatherService.activeLocation?.currentConditions?.iconCode, animated: true)
+        visualState.setIconCode(to: weatherService.activeLocation?.currently.icon, animated: true)
     }
 
     private func setIconCodeToDailyForecast() {
         let index = weekSectionState.dayIndex
-        let days = weatherService.activeLocation?.dailyForecast?.days
+        let days = weatherService.activeLocation?.daily
 
         let day = days?[safe: index]
 
-        if day?.dayCondition == nil, day?.nightCondition != nil {
-            visualState.setIconCode(to: day?.nightCondition?.iconCode, animated: true)
+        if day?.daytimeConditions == nil, day?.nighttimeConditions != nil {
+            visualState.setIconCode(to: day?.nighttimeConditions?.icon, animated: true)
             return
         }
 
-        if day?.nightCondition == nil, day?.dayCondition != nil {
-            visualState.setIconCode(to: day?.dayCondition?.iconCode, animated: true)
+        if day?.nighttimeConditions == nil, day?.daytimeConditions != nil {
+            visualState.setIconCode(to: day?.daytimeConditions?.icon, animated: true)
             return
         }
 
-        let iconCode = weekSectionState.showingNightConditions ? day?.nightCondition?.iconCode : day?.dayCondition?.iconCode
+        let icon = weekSectionState.showingNightConditions ? day?.nighttimeConditions?.icon : day?.daytimeConditions?.icon
 
-        visualState.setIconCode(to: iconCode, animated: true)
+        visualState.setIconCode(to: icon, animated: true)
     }
 
     private func changeIconCodeBasedOnSection() {

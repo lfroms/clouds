@@ -1,129 +1,90 @@
-query Weather($currentLocation: Coordinate, $activeLocation: Coordinate, $favoriteCoordinates: [Coordinate!]!, $units: Units!, $language: Language!) {
-    currentLocationWeather: weatherByCoordinate(coordinate: $currentLocation, units: $units, language: $language) {
-        currentConditions {
+query Weather($currentLocation: CoordinateInput, $activeLocation: CoordinateInput, $favoriteCoordinates: [CoordinateInput!]!, $language: Language!) {
+    currentLocationWeather: weather(coordinate: $currentLocation, language: $language) {
+        currently {
             temperature
-            iconCode
+            icon
         }
     }
-    favoriteLocationWeather: bulkWeatherByCoordinates(coordinates: $favoriteCoordinates, units: $units, language: $language) {
-        currentConditions {
+    favoriteLocationWeather: bulkWeather(coordinates: $favoriteCoordinates, language: $language) {
+        currently {
             temperature
-            iconCode
+            icon
         }
     }
-    activeLocationWeather: weatherByCoordinate(coordinate: $activeLocation, units: $units, language: $language) {
+    activeLocationWeather: weather(coordinate: $activeLocation, language: $language) {
         location {
-            weatherFor
-            country
-            province
-            region
+            stationName
+            distance
         }
-        currentConditions {
+        alerts {
+            title
             time
-            station {
-                name
-                code
-                latitude
-                longitude
-                distanceMetres
-            }
+            type
+            uri
+        }
+        today {
+            sunriseTime
+            sunsetTime
+            highTemperature
+            lowTemperature
+        }
+        currently {
+            time
+            summary
+            icon
             temperature
             humidity
-            pressure
-            windChill
-            humidex
+            pressure {
+                value
+            }
+            feelsLike {
+                temperature
+                type
+            }
             wind {
-                direction
                 speed
+                direction
                 gust
             }
             visibility
             dewPoint
-            iconCode
+        }
+        hourly {
+            time
             summary
-        }
-        todaySummary {
-            high
-            low
-        }
-        units {
+            icon
             temperature
-            pressure
-            distance
-            speed
-        }
-        warnings {
-            url
-            events {
-                time
-                summary
-                type
-                priority
-            }
-        }
-        normals {
-            high
-            low
-        }
-        dailyForecast {
-            time
-            days {
-                time
-                dayCondition {
-                    summary
-                    shortSummary
-                    iconCode
-                    precipProbability
-                    temperature
-                    humidex
-                    windChill
-                    winds {
-                        direction
-                        speed
-                        gust
-                    }
-                }
-                nightCondition {
-                    summary
-                    shortSummary
-                    iconCode
-                    precipProbability
-                    temperature
-                    humidex
-                    windChill
-                    winds {
-                        direction
-                        speed
-                        gust
-                    }
-                }
-            }
-        }
-        hourlyForecast {
-            time
-            hours {
-                time
-                summary
-                iconCode
-                precipProbability
+            feelsLike {
                 temperature
-                humidex
-                windChill
-                wind {
-                    direction
-                    speed
-                    gust
-                }
+                type
+            }
+            precipProbability
+            wind {
+                speed
             }
         }
-        sun {
-            riseTime
-            setTime
-        }
-        yesterday {
-            high
-            low
-            precip
+        daily {
+            time
+            daytimeConditions {
+                summary
+                summaryClouds
+                icon
+                temperature
+                precipProbability
+                wind {
+                    speed
+                }
+            }
+            nighttimeConditions {
+                summary
+                summaryClouds
+                icon
+                temperature
+                precipProbability
+                wind {
+                    speed
+                }
+            }
         }
     }
 }

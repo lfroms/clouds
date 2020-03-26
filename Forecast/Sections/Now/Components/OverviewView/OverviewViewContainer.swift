@@ -22,7 +22,7 @@ struct OverviewViewContainer: Container {
     }
     
     var currentTemperature: String {
-        guard let temperature = weatherService.activeLocation?.currentConditions?.temperature else {
+        guard let temperature = weatherService.activeLocation?.currently.temperature else {
             return "--"
         }
         
@@ -30,11 +30,11 @@ struct OverviewViewContainer: Container {
     }
     
     var observation: String {
-        return weatherService.activeLocation?.currentConditions?.summary ?? ""
+        return weatherService.activeLocation?.currently.summary ?? ""
     }
     
     var forecastHigh: Int? {
-        guard let high = weatherService.activeLocation?.todaySummary?.high else {
+        guard let high = weatherService.activeLocation?.today.highTemperature else {
             return nil
         }
         
@@ -42,7 +42,7 @@ struct OverviewViewContainer: Container {
     }
     
     var forecastLow: Int? {
-        guard let low = weatherService.activeLocation?.todaySummary?.low else {
+        guard let low = weatherService.activeLocation?.today.lowTemperature else {
             return nil
         }
         
@@ -50,7 +50,7 @@ struct OverviewViewContainer: Container {
     }
     
     var dateStamp: Date {
-        let parsedUnixTime = Double(weatherService.activeLocation?.currentConditions?.time ?? 0)
+        let parsedUnixTime = Double(weatherService.activeLocation?.currently.time ?? 0)
         
         return Date(seconds: parsedUnixTime, region: .UTC)
             .convertTo(region: .current).date

@@ -47,8 +47,7 @@ class WeatherService: ObservableObject {
             currentLocation: currentLocation?.asGraphQLCoordinate,
             activeLocation: activeLocation,
             favoriteCoordinates: favoriteLocations.asGraphQLCoordinates,
-            units: .metric,
-            language: .e
+            language: .english
         )
         
         currentRequest = GraphQL.shared.apollo.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely) { result in
@@ -78,12 +77,12 @@ class WeatherService: ObservableObject {
         
         return ShortFormWeather(
             coordinate: coordinate,
-            temperature: currentLocation?.currentConditions?.temperature,
-            iconCode: currentLocation?.currentConditions?.iconCode
+            temperature: currentLocation?.currently.temperature,
+            iconCode: currentLocation?.currently.icon
         )
     }
     
-    private func mapBulkWeather(items: [WeatherQuery.Data.FavoriteLocationWeather?], coordinates: [Coordinate]) -> [ShortFormWeather] {
+    private func mapBulkWeather(items: [WeatherQuery.Data.FavoriteLocationWeather?], coordinates: [CoordinateInput]) -> [ShortFormWeather] {
         return items.enumerated().compactMap { index, weather in
             guard let weather = weather else {
                 return nil
@@ -94,8 +93,8 @@ class WeatherService: ObservableObject {
                     latitude: coordinates[index].latitude,
                     longitude: coordinates[index].longitude
                 ),
-                temperature: weather.currentConditions?.temperature,
-                iconCode: weather.currentConditions?.iconCode
+                temperature: weather.currently.temperature,
+                iconCode: weather.currently.icon
             )
         }
     }

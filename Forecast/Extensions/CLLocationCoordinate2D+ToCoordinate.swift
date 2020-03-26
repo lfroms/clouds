@@ -9,13 +9,13 @@
 import CoreLocation
 
 extension CLLocationCoordinate2D {
-    var asGraphQLCoordinate: Coordinate {
-        Coordinate(latitude: self.latitude, longitude: self.longitude)
+    var asGraphQLCoordinate: CoordinateInput {
+        CoordinateInput(latitude: self.latitude, longitude: self.longitude)
     }
 }
 
 extension Array where Element == CLLocationCoordinate2D {
-    var asGraphQLCoordinates: [Coordinate] {
+    var asGraphQLCoordinates: [CoordinateInput] {
         self.compactMap { coordinate in
             coordinate.asGraphQLCoordinate
         }

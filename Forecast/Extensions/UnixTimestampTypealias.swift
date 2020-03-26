@@ -8,4 +8,4 @@
 
 import Foundation
 
-typealias UnixTimestamp = Int
+typealias UnixTimestamp = Double

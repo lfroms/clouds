@@ -22,6 +22,7 @@ struct RadarControls: View {
                 Button(action: { self.isPlaying.toggle() }) {
                     Image(systemName: isPlaying ? "pause.fill" : "play.fill")
                         .font(Font.callout.weight(.semibold))
+                        .frame(height: 50)
                 }
 
                 Text("Image \(currentImage + 1) of \(totalImages)")
@@ -33,7 +34,7 @@ struct RadarControls: View {
                     .font(Font.subheadline.weight(.semibold))
                     .foregroundColor(AppColor.Display.secondary)
             }
-            .padding(16)
+            .padding(.horizontal, 16)
         }
         .frame(height: 50)
         .padding([.horizontal, .bottom], 20)
