@@ -30,7 +30,9 @@ struct DayPicker: View {
     }
 
     private var todayText: some View {
-        Text("Today".uppercased())
+        let text = days.first?.dayCondition == nil ? "Tonight" : "Today"
+
+        return Text(text.uppercased())
             .font(.caption)
             .fontWeight(.bold)
             .foregroundColor(Color.white.opacity(0.7))
