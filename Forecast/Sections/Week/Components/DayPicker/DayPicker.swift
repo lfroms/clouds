@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct DayPicker: View {
-    var days: [DailyForecastData]
+    var days: [DayPickerItem]
     @Binding var activeIndex: Int
 
     var body: some View {
@@ -30,7 +30,7 @@ struct DayPicker: View {
     }
 
     private var todayText: some View {
-        let text = days.first?.dayCondition == nil ? "Tonight" : "Today"
+        let text = days.first?.hasDayConditions ?? true ? "Today" : "Tonight"
 
         return Text(text.uppercased())
             .font(.caption)

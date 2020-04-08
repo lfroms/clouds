@@ -11,6 +11,7 @@
 		800194DF232EDCCF00066D37 /* UIShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800194DE232EDCCF00066D37 /* UIShadowView.swift */; };
 		800420D423FB11BB00C2879A /* String+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800420D323FB11BB00C2879A /* String+Empty.swift */; };
 		80042F1724284C2A005DA891 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 805A175022C53ADD00E1B4E2 /* LaunchScreen.storyboard */; };
+		8016AACF243E2F0D00220B81 /* DayPickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8016AACE243E2F0D00220B81 /* DayPickerItem.swift */; };
 		8019F827240F4E1F00AFB0F1 /* MasterViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8019F826240F4E1F00AFB0F1 /* MasterViewLayout.swift */; };
 		801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801BDBCF232D660C007FE4AB /* DrawerHandle.swift */; };
 		802048C7240AE2F300DFB842 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802048C6240AE2F300DFB842 /* SettingsSection.swift */; };
@@ -191,6 +192,7 @@
 		800194DC232EDC8100066D37 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		800194DE232EDCCF00066D37 /* UIShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIShadowView.swift; sourceTree = "<group>"; };
 		800420D323FB11BB00C2879A /* String+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Empty.swift"; sourceTree = "<group>"; };
+		8016AACE243E2F0D00220B81 /* DayPickerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerItem.swift; sourceTree = "<group>"; };
 		8019F826240F4E1F00AFB0F1 /* MasterViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewLayout.swift; sourceTree = "<group>"; };
 		801BDBCF232D660C007FE4AB /* DrawerHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerHandle.swift; sourceTree = "<group>"; };
 		802048C6240AE2F300DFB842 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
@@ -381,6 +383,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8016AACD243E2E7E00220B81 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8016AACE243E2F0D00220B81 /* DayPickerItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		8019F824240F4E0000AFB0F1 /* MasterViewLayout */ = {
 			isa = PBXGroup;
 			children = (
@@ -801,6 +811,7 @@
 		8087056E2427DF93001110B2 /* DayPicker */ = {
 			isa = PBXGroup;
 			children = (
+				8016AACD243E2E7E00220B81 /* Models */,
 				8087056F2427DFA2001110B2 /* Components */,
 				80EA87BE2426E93B00CFDD10 /* DayPicker.swift */,
 				80EA87C02426E94700CFDD10 /* DayPickerContainer.swift */,
@@ -1563,6 +1574,7 @@
 				80311BC4241EA782004BC6B4 /* SettingsSheetCloseButtonRow.swift in Sources */,
 				809C54DA24244F750028216E /* WeatherIllustrationImage.swift in Sources */,
 				80C395AA23788A6B0004B71D /* AppActivityIndicator.swift in Sources */,
+				8016AACF243E2F0D00220B81 /* DayPickerItem.swift in Sources */,
 				8076F72623651CD000FB85D1 /* SlidingPanel.swift in Sources */,
 				80EF84E7240F52F000D4037B /* MasterViewContainer.swift in Sources */,
 				80AAC0212427F09F00285C6D /* DayNightSwitchContainer.swift in Sources */,
@@ -1714,7 +1726,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "Forecast/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8P8574Z65P;
 				ENABLE_PREVIEWS = YES;
@@ -1739,7 +1751,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "Forecast/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8P8574Z65P;
 				ENABLE_PREVIEWS = YES;

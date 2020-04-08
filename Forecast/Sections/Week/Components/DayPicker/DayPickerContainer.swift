@@ -18,7 +18,7 @@ struct DayPickerContainer: Container {
             .equatable()
     }
 
-    private var days: [DailyForecastData] {
+    private var days: [DayPickerItem] {
         guard let days = weatherService.activeLocation?.daily else {
             return []
         }
@@ -27,7 +27,11 @@ struct DayPickerContainer: Container {
             let date = Date(seconds: Double(day.time), region: .UTC)
                 .convertTo(region: .current).date
 
-            return DailyForecastData(date: date, dayCondition: nil, nightCondition: nil)
+            return DayPickerItem(
+                date: date,
+                hasDayConditions: day.daytimeConditions != nil,
+                hasNightConditions: day.nighttimeConditions != nil
+            )
         }
     }
 }
