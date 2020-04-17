@@ -1881,8 +1881,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apollographql/apollo-ios";
 			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 0.23.2;
+				kind = exactVersion;
+				version = 0.25.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
