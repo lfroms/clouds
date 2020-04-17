@@ -138,7 +138,6 @@
 		80C395AD23789FDD0004B71D /* RoundedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */; };
 		80C395AF2378A1DA0004B71D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395AE2378A1DA0004B71D /* AppState.swift */; };
 		80C395B22378B2340004B71D /* RadarControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395B12378B2340004B71D /* RadarControls.swift */; };
-		80C395B52378C6490004B71D /* RadarTileOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395B42378C6490004B71D /* RadarTileOverlay.swift */; };
 		80C395B82378C7860004B71D /* TimestampStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395B72378C7860004B71D /* TimestampStore.swift */; };
 		80C777CB23FB2B74004ABB2E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777CA23FB2B74004ABB2E /* API.swift */; };
 		80C777CD23FB2BEC004ABB2E /* LocationFavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777CC23FB2BEC004ABB2E /* LocationFavoritesService.swift */; };
@@ -339,7 +338,6 @@
 		80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerShape.swift; sourceTree = "<group>"; };
 		80C395AE2378A1DA0004B71D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		80C395B12378B2340004B71D /* RadarControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarControls.swift; sourceTree = "<group>"; };
-		80C395B42378C6490004B71D /* RadarTileOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarTileOverlay.swift; sourceTree = "<group>"; };
 		80C395B72378C7860004B71D /* TimestampStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampStore.swift; sourceTree = "<group>"; };
 		80C777CA23FB2B74004ABB2E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		80C777CC23FB2BEC004ABB2E /* LocationFavoritesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFavoritesService.swift; sourceTree = "<group>"; };
@@ -486,7 +484,6 @@
 		8026FF5123779873007962DB /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				80C395B32378C63D0004B71D /* RadarTileOverlay */,
 				8026FF5223779881007962DB /* MapView.swift */,
 			);
 			path = Map;
@@ -1033,14 +1030,6 @@
 				80C395B12378B2340004B71D /* RadarControls.swift */,
 			);
 			path = RadarControls;
-			sourceTree = "<group>";
-		};
-		80C395B32378C63D0004B71D /* RadarTileOverlay */ = {
-			isa = PBXGroup;
-			children = (
-				80C395B42378C6490004B71D /* RadarTileOverlay.swift */,
-			);
-			path = RadarTileOverlay;
 			sourceTree = "<group>";
 		};
 		80C395B62378C75C0004B71D /* TimestampStore */ = {
@@ -1594,7 +1583,6 @@
 				80FED4EC2428106200FDC08B /* DayNightSwitchToggle.swift in Sources */,
 				8087056A2427D47E001110B2 /* DayPickerPagingViewCoordinator.swift in Sources */,
 				80AAC01C2427E09E00285C6D /* DailyForecastData.swift in Sources */,
-				80C395B52378C6490004B71D /* RadarTileOverlay.swift in Sources */,
 				805D6A0A241015F1002DEBAC /* VisualStateToAppStateAndWeatherBinder.swift in Sources */,
 				80C395AD23789FDD0004B71D /* RoundedCornerShape.swift in Sources */,
 				801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */,

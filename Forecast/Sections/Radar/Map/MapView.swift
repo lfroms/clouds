@@ -6,76 +6,62 @@
 //  Copyright © 2019 Lukas Romsicki. All rights reserved.
 //
 
-import MapKit
+import Mapbox
 import SwiftUI
 
 struct MapView: UIViewRepresentable {
     @Binding var timestamps: [Int]
     @Binding var currentImage: Int
 
-    func makeUIView(context: Context) -> MKMapView {
-        let mapView = MKMapView()
+    func makeUIView(context: Context) -> MGLMapView {
+        let url = URL(string: "mapbox://styles/lfroms/ck93iwg0y36jw1imnqmoe495o")
+        let mapView = MGLMapView()
+        mapView.translatesAutoresizingMaskIntoConstraints = true
+        mapView.styleURL = url
+        mapView.setCenter(CLLocationCoordinate2D(latitude: 45.5, longitude: -75.5), zoomLevel: 9, animated: false)
 
-        mapView.layoutMargins = UIEdgeInsets(
+        mapView.contentInset = UIEdgeInsets(
             top: Dimension.Header.omniBarHeight + (2 * Dimension.Global.padding),
             left: 8,
             bottom: Dimension.Global.padding + 50,
             right: 8
         )
 
-        mapView.delegate = context.coordinator
-        mapView.pointOfInterestFilter = .excludingAll
-        mapView.showsUserLocation = true
         mapView.showsScale = true
-        mapView.showsBuildings = false
-        mapView.showsTraffic = false
+        mapView.showsUserLocation = true
 
         return mapView
     }
 
-    func updateUIView(_ mapView: MKMapView, context: Context) {
-        if timestamps.count < 1 {
+    func updateUIView(_ mapView: MGLMapView, context: Context) {
+        guard
+            let currentTimestamp = timestamps[safe: currentImage],
+            let lastTimestamp = timestamps.last
+        else {
             return
         }
 
-        context.coordinator.timestamps = timestamps
+        let currentIdentifier = "radar-\(currentTimestamp)"
+        let previousTimestamp = timestamps[safe: currentImage - 1] ?? lastTimestamp
+        let previousIdentifier = "radar-\(previousTimestamp)"
 
-        if mapView.overlays.count < 1 {
-            mapView.addOverlays(context.coordinator.overlays, level: .aboveRoads)
-        }
+        mapView.style?.layer(withIdentifier: previousIdentifier)?.isVisible = false
 
-        mapView.overlays.forEach { overlay in
-            mapView.renderer(for: overlay)?.alpha = 0
-        }
+        if mapView.style?.source(withIdentifier: currentIdentifier) == nil,
+            mapView.style?.layer(withIdentifier: currentIdentifier) == nil {
+            let source = MGLRasterTileSource(
+                identifier: currentIdentifier,
+                tileURLTemplates: ["https://tilecache.rainviewer.com/v2/radar/\(currentTimestamp)/512/{z}/{x}/{y}/6/1_0.png"],
+                options: [.tileSize: 512]
+            )
 
-        mapView.renderer(for: context.coordinator.overlays[currentImage])?.alpha = 0.5
-    }
+            let rasterLayer = MGLRasterStyleLayer(identifier: currentIdentifier, source: source)
 
-    func makeCoordinator() -> MapView.Coordinator {
-        return Coordinator()
-    }
+            mapView.style?.addSource(source)
+            mapView.style?.addLayer(rasterLayer)
 
-    class Coordinator: NSObject, MKMapViewDelegate {
-        var timestamps: [Int] = [] {
-            didSet {
-                if oldValue == timestamps {
-                    return
-                }
-
-                overlays = timestamps.map { timeStamp in
-                    RadarTileOverlay(timeStamp: timeStamp)
-                }
-            }
-        }
-
-        var overlays: [RadarTileOverlay] = []
-
-        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-            guard let tileOverlay = overlay as? MKTileOverlay else {
-                return MKOverlayRenderer(overlay: overlay)
-            }
-
-            return MKTileOverlayRenderer(tileOverlay: tileOverlay)
+        } else {
+            mapView.style?.layer(withIdentifier: currentIdentifier)?.isVisible = true
         }
     }
 }
