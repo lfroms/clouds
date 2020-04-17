@@ -169,6 +169,47 @@ public enum FeelsLikeType: RawRepresentable, Equatable, Hashable, CaseIterable, 
   }
 }
 
+/// The provider to be used to retrieve radar timestamps.
+public enum RadarProvider: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  case msc
+  case rainviewer
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "msc": self = .msc
+      case "rainviewer": self = .rainviewer
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .msc: return "msc"
+      case .rainviewer: return "rainviewer"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: RadarProvider, rhs: RadarProvider) -> Bool {
+    switch (lhs, rhs) {
+      case (.msc, .msc): return true
+      case (.rainviewer, .rainviewer): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+
+  public static var allCases: [RadarProvider] {
+    return [
+      .msc,
+      .rainviewer,
+    ]
+  }
+}
+
 public final class WeatherQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
@@ -1539,6 +1580,56 @@ public final class WeatherQuery: GraphQLQuery {
             }
           }
         }
+      }
+    }
+  }
+}
+
+public final class RadarTimestampsQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query RadarTimestamps($provider: RadarProvider!) {
+      radarTimestamps(provider: $provider)
+    }
+    """
+
+  public let operationName: String = "RadarTimestamps"
+
+  public var provider: RadarProvider
+
+  public init(provider: RadarProvider) {
+    self.provider = provider
+  }
+
+  public var variables: GraphQLMap? {
+    return ["provider": provider]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("radarTimestamps", arguments: ["provider": GraphQLVariable("provider")], type: .nonNull(.list(.nonNull(.scalar(Double.self))))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(radarTimestamps: [Double]) {
+      self.init(unsafeResultMap: ["__typename": "Query", "radarTimestamps": radarTimestamps])
+    }
+
+    /// Get radar timestamps given a provider.
+    public var radarTimestamps: [Double] {
+      get {
+        return resultMap["radarTimestamps"]! as! [Double]
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "radarTimestamps")
       }
     }
   }

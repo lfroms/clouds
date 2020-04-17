@@ -94,6 +94,10 @@
 		8083A81B24494AFB00CE2E5E /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8083A81824494AFB00CE2E5E /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8083A81C24494AFB00CE2E5E /* MapboxMobileEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8083A81924494AFB00CE2E5E /* MapboxMobileEvents.framework */; };
 		8083A81D24494AFB00CE2E5E /* MapboxMobileEvents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8083A81924494AFB00CE2E5E /* MapboxMobileEvents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8083A820244A295300CE2E5E /* WMSResourceURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083A81F244A295300CE2E5E /* WMSResourceURL.swift */; };
+		8083A822244A3E8600CE2E5E /* EnvironmentCanadaRasterTileSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083A821244A3E8600CE2E5E /* EnvironmentCanadaRasterTileSource.swift */; };
+		8083A824244A579C00CE2E5E /* RadarTimestamps.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8083A823244A579C00CE2E5E /* RadarTimestamps.graphql */; };
+		8083A826244A5CF700CE2E5E /* RainviewerRasterTileSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083A825244A5CF700CE2E5E /* RainviewerRasterTileSource.swift */; };
 		8084FD96241D38FB006A57DC /* CurrentLocationGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084FD95241D38FB006A57DC /* CurrentLocationGroup.swift */; };
 		8084FD98241D3903006A57DC /* CurrentLocationGroupContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084FD97241D3903006A57DC /* CurrentLocationGroupContainer.swift */; };
 		8084FD9B241D391C006A57DC /* FavoriteLocationsGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084FD9A241D391C006A57DC /* FavoriteLocationsGroup.swift */; };
@@ -294,6 +298,10 @@
 		807B8E4B2377AAFD0075F131 /* MeasurementGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementGrid.swift; sourceTree = "<group>"; };
 		8083A81824494AFB00CE2E5E /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapbox.framework; path = Carthage/Build/iOS/Mapbox.framework; sourceTree = "<group>"; };
 		8083A81924494AFB00CE2E5E /* MapboxMobileEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapboxMobileEvents.framework; path = Carthage/Build/iOS/MapboxMobileEvents.framework; sourceTree = "<group>"; };
+		8083A81F244A295300CE2E5E /* WMSResourceURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMSResourceURL.swift; sourceTree = "<group>"; };
+		8083A821244A3E8600CE2E5E /* EnvironmentCanadaRasterTileSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentCanadaRasterTileSource.swift; sourceTree = "<group>"; };
+		8083A823244A579C00CE2E5E /* RadarTimestamps.graphql */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = text; path = RadarTimestamps.graphql; sourceTree = "<group>"; tabWidth = 2; };
+		8083A825244A5CF700CE2E5E /* RainviewerRasterTileSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainviewerRasterTileSource.swift; sourceTree = "<group>"; };
 		8084FD95241D38FB006A57DC /* CurrentLocationGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationGroup.swift; sourceTree = "<group>"; };
 		8084FD97241D3903006A57DC /* CurrentLocationGroupContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationGroupContainer.swift; sourceTree = "<group>"; };
 		8084FD9A241D391C006A57DC /* FavoriteLocationsGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocationsGroup.swift; sourceTree = "<group>"; };
@@ -484,6 +492,7 @@
 		8026FF5123779873007962DB /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				8083A81E244A289C00CE2E5E /* DataSources */,
 				8026FF5223779881007962DB /* MapView.swift */,
 			);
 			path = Map;
@@ -799,6 +808,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8083A81E244A289C00CE2E5E /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				8083A81F244A295300CE2E5E /* WMSResourceURL.swift */,
+				8083A825244A5CF700CE2E5E /* RainviewerRasterTileSource.swift */,
+				8083A821244A3E8600CE2E5E /* EnvironmentCanadaRasterTileSource.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
 		8084FD94241D38E5006A57DC /* CurrentLocationGroup */ = {
 			isa = PBXGroup;
 			children = (
@@ -1036,6 +1055,7 @@
 			isa = PBXGroup;
 			children = (
 				80C395B72378C7860004B71D /* TimestampStore.swift */,
+				8083A823244A579C00CE2E5E /* RadarTimestamps.graphql */,
 			);
 			path = TimestampStore;
 			sourceTree = "<group>";
@@ -1409,6 +1429,7 @@
 				805D7BDC22D1244800A12C4D /* Images.xcassets in Resources */,
 				805D7BDA22D1243F00A12C4D /* Colors.xcassets in Resources */,
 				805A174F22C53ADD00E1B4E2 /* Preview Assets.xcassets in Resources */,
+				8083A824244A579C00CE2E5E /* RadarTimestamps.graphql in Resources */,
 				809833B922F678BE001C1590 /* WeatherQuery.graphql in Resources */,
 				805A174C22C53ADD00E1B4E2 /* Assets.xcassets in Resources */,
 			);
@@ -1465,10 +1486,12 @@
 			files = (
 				805D6A0824100E0A002DEBAC /* WeatherToLocationBinder.swift in Sources */,
 				80AD070922D68E7B00220FEE /* WeatherService.swift in Sources */,
+				8083A822244A3E8600CE2E5E /* EnvironmentCanadaRasterTileSource.swift in Sources */,
 				8039628522D6CD6F003FEAB3 /* ForecastIcon.swift in Sources */,
 				8034A1A8240E10CB00DF02A1 /* HeaderAccessoriesContainer.swift in Sources */,
 				80C777DC23FB4938004ABB2E /* LocationItemIcon.swift in Sources */,
 				805A174622C53ADB00E1B4E2 /* AppDelegate.swift in Sources */,
+				8083A826244A5CF700CE2E5E /* RainviewerRasterTileSource.swift in Sources */,
 				80305323240E182300FDAC69 /* ObservedAtData.swift in Sources */,
 				80AAC02B2427F0F200285C6D /* ConditionIconDetail.swift in Sources */,
 				80EF84EE240F582100D4037B /* HourlyForecast.swift in Sources */,
@@ -1532,6 +1555,7 @@
 				8084FDA1241D393C006A57DC /* SearchResultsGroup.swift in Sources */,
 				80E5D628237765DF004A1D6B /* WeatherAlert.swift in Sources */,
 				80B8DB92232C768000BAD200 /* WeatherIllustration.swift in Sources */,
+				8083A820244A295300CE2E5E /* WMSResourceURL.swift in Sources */,
 				80C777CB23FB2B74004ABB2E /* API.swift in Sources */,
 				8057DB4E2364F0C40087FBF7 /* AlertStack.swift in Sources */,
 				80B5E7A523FA3DDD001729E0 /* Location.swift in Sources */,

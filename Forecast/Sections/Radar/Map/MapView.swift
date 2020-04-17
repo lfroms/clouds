@@ -10,11 +10,11 @@ import Mapbox
 import SwiftUI
 
 struct MapView: UIViewRepresentable {
-    @Binding var timestamps: [Int]
+    @Binding var timestamps: [Double]
     @Binding var currentImage: Int
 
     func makeUIView(context: Context) -> MGLMapView {
-        let url = URL(string: "mapbox://styles/lfroms/ck93iwg0y36jw1imnqmoe495o")
+        let url = URL(string: "mapbox://styles/lfroms/ck94ggph90nn61invox6h6207")
         let mapView = MGLMapView()
         mapView.translatesAutoresizingMaskIntoConstraints = true
         mapView.styleURL = url
@@ -29,6 +29,7 @@ struct MapView: UIViewRepresentable {
 
         mapView.showsScale = true
         mapView.showsUserLocation = true
+        mapView.maximumZoomLevel = 7
 
         return mapView
     }
@@ -49,13 +50,10 @@ struct MapView: UIViewRepresentable {
 
         if mapView.style?.source(withIdentifier: currentIdentifier) == nil,
             mapView.style?.layer(withIdentifier: currentIdentifier) == nil {
-            let source = MGLRasterTileSource(
-                identifier: currentIdentifier,
-                tileURLTemplates: ["https://tilecache.rainviewer.com/v2/radar/\(currentTimestamp)/512/{z}/{x}/{y}/6/1_0.png"],
-                options: [.tileSize: 512]
-            )
-
+            let source = EnvironmentCanadaRasterTileSource(identifier: currentIdentifier, date: Date(seconds: currentTimestamp))
             let rasterLayer = MGLRasterStyleLayer(identifier: currentIdentifier, source: source)
+
+            rasterLayer.rasterOpacity = NSExpression(forConstantValue: 0.75)
 
             mapView.style?.addSource(source)
             mapView.style?.addLayer(rasterLayer)

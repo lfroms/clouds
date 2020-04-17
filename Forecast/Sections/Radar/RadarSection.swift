@@ -42,6 +42,9 @@ struct RadarSection: View {
             RadarControls(isPlaying: $isPlaying, totalImages: timestampStore.timestamps.count, currentImage: $currentImageIndex)
         }
         .frame(width: UIScreen.main.bounds.width)
+        .onAppear {
+            self.timestampStore.getRadarTimestamps()
+        }
     }
 }
 
