@@ -27,7 +27,7 @@ final class EnvironmentCanadaRasterTileSource: MGLRasterTileSource {
             request: "GetMap",
             format: "image/png",
             transparent: true,
-            layer: "RADAR_1KM_RSNO",
+            layer: "RADAR_1KM_RRAI",
             tiled: true,
             date: date,
             coordinateReferenceSystem: "EPSG:3857",

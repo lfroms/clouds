@@ -300,7 +300,7 @@
 		8083A81924494AFB00CE2E5E /* MapboxMobileEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapboxMobileEvents.framework; path = Carthage/Build/iOS/MapboxMobileEvents.framework; sourceTree = "<group>"; };
 		8083A81F244A295300CE2E5E /* WMSResourceURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMSResourceURL.swift; sourceTree = "<group>"; };
 		8083A821244A3E8600CE2E5E /* EnvironmentCanadaRasterTileSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentCanadaRasterTileSource.swift; sourceTree = "<group>"; };
-		8083A823244A579C00CE2E5E /* RadarTimestamps.graphql */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = text; path = RadarTimestamps.graphql; sourceTree = "<group>"; tabWidth = 2; };
+		8083A823244A579C00CE2E5E /* RadarTimestamps.graphql */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = text; path = RadarTimestamps.graphql; sourceTree = "<group>"; tabWidth = 4; };
 		8083A825244A5CF700CE2E5E /* RainviewerRasterTileSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainviewerRasterTileSource.swift; sourceTree = "<group>"; };
 		8084FD95241D38FB006A57DC /* CurrentLocationGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationGroup.swift; sourceTree = "<group>"; };
 		8084FD97241D3903006A57DC /* CurrentLocationGroupContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationGroupContainer.swift; sourceTree = "<group>"; };
