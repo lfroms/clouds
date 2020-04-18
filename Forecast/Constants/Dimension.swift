@@ -11,6 +11,7 @@ import SwiftUI
 final class Dimension {
     final class Global {
         static let padding: CGFloat = 20
+        static let cornerRadius: CGFloat = 22
     }
 
     final class Header {
@@ -57,6 +58,16 @@ final class Dimension {
 
             static let dayPickerTotalHeight: CGFloat
                 = bottomPadding + dayPickerVisualHeight + topPadding
+        }
+    }
+
+    final class RadarSection {
+        final class RadarControls {
+            static let controlHeight: CGFloat = 48
+            static let spacing: CGFloat = 14
+            static let bottomPadding: CGFloat = Global.padding
+
+            static let totalHeight: CGFloat = controlHeight + spacing + bottomPadding
         }
     }
 

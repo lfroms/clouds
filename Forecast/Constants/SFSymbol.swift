@@ -31,4 +31,7 @@ final class SFSymbol {
 
     static let arrowUp: String = "arrow.up"
     static let arrowDown: String = "arrow.down"
+    
+    static let playFilled: String = "play.fill"
+    static let pauseFilled: String = "pause.fill"
 }

@@ -11,7 +11,7 @@ import SwiftUI
 
 struct RadarMapView: UIViewRepresentable {
     var currentImage: Int
-    var timestamps: [Date]
+    var dates: [Date]
     var activeLocationCoordinates: CLLocationCoordinate2D?
 
     func makeUIView(context: Context) -> MGLMapView {
@@ -26,9 +26,9 @@ struct RadarMapView: UIViewRepresentable {
 
         mapView.contentInset = UIEdgeInsets(
             top: Dimension.Header.omniBarHeight + (2 * Dimension.Global.padding),
-            left: 12,
-            bottom: Dimension.Global.padding + 50,
-            right: 12
+            left: 8,
+            bottom: 8,
+            right: 8
         )
 
         mapView.showsScale = true
@@ -41,7 +41,7 @@ struct RadarMapView: UIViewRepresentable {
     }
 
     func updateUIView(_ mapView: MGLMapView, context: Context) {
-        addRasterSources(for: timestamps, to: mapView)
+        addRasterSources(for: dates, to: mapView)
         showActiveRasterLayer(in: mapView)
     }
 
@@ -64,23 +64,31 @@ struct RadarMapView: UIViewRepresentable {
     }
 
     private func showActiveRasterLayer(in mapView: MGLMapView) {
-        guard
-            let currentTimestamp = timestamps[safe: currentImage],
-            let lastTimestamp = timestamps.last
-        else {
+        guard let currentTimestamp = dates[safe: currentImage] else {
             return
         }
 
         let currentIdentifier = identifier(for: currentTimestamp)
-        let previousTimestamp = timestamps[safe: currentImage - 1] ?? lastTimestamp
-        let previousIdentifier = identifier(for: previousTimestamp)
 
-        rasterLayer(withIdentifier: currentIdentifier, in: mapView)?.rasterOpacity = NSExpression(forConstantValue: 0.75)
-        rasterLayer(withIdentifier: previousIdentifier, in: mapView)?.rasterOpacity = NSExpression(forConstantValue: 0)
+        if let currentLayer = rasterLayer(withIdentifier: currentIdentifier, in: mapView) {
+            currentLayer.rasterOpacity = NSExpression(forConstantValue: 0.75)
+            hideAllLayersExcept(currentLayer, in: mapView)
+        }
     }
 
     private func rasterLayer(withIdentifier identifier: String, in mapView: MGLMapView) -> MGLRasterStyleLayer? {
         mapView.style?.layer(withIdentifier: identifier) as? MGLRasterStyleLayer
+    }
+
+    private func hideAllLayersExcept(_ layer: MGLRasterStyleLayer, in mapView: MGLMapView) {
+        mapView.style?.layers.forEach { layerInStyle in
+            let layerHideCandidate = layerInStyle as? MGLRasterStyleLayer
+
+            if layerHideCandidate?.identifier != layer.identifier,
+                layerHideCandidate?.rasterOpacity != NSExpression(forConstantValue: 0) {
+                layerHideCandidate?.rasterOpacity = NSExpression(forConstantValue: 0)
+            }
+        }
     }
 
     private func identifier(for date: Date) -> String {

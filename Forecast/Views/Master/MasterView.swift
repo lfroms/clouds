@@ -25,7 +25,7 @@ struct MasterView<Content: View>: View {
             self.content()
         }
         .equatable()
-        .clipShape(RoundedCornerShape(cornerRadius: 22, style: .continuous, corners: [.bottomLeft, .bottomRight]))
+        .clipShape(RoundedCornerShape(cornerRadius: Dimension.Global.cornerRadius, style: .continuous, corners: [.bottomLeft, .bottomRight]))
     }
 }
 

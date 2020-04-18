@@ -26,7 +26,7 @@ struct WeatherBackground: View {
             LinearGradient(gradient: Gradient(colors: self.gradientB), startPoint: .top, endPoint: .bottom)
                 .opacity(self.alternateGradient ? 0 : 1)
         }
-        .modifier(ShrinkOnWeekSection(shrink: visualState.shrinkBackground))
+        .modifier(ShrinkBackgroundForAppSection())
         .onReceive(self.visualState.iconCodeDidChange, perform: self.animateGradient)
     }
 

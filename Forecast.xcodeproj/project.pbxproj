@@ -98,6 +98,8 @@
 		8083A822244A3E8600CE2E5E /* EnvironmentCanadaRasterTileSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083A821244A3E8600CE2E5E /* EnvironmentCanadaRasterTileSource.swift */; };
 		8083A824244A579C00CE2E5E /* RadarTimestamps.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8083A823244A579C00CE2E5E /* RadarTimestamps.graphql */; };
 		8083A826244A5CF700CE2E5E /* RainviewerRasterTileSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083A825244A5CF700CE2E5E /* RainviewerRasterTileSource.swift */; };
+		8083A82D244B85A600CE2E5E /* RadarControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083A82C244B85A600CE2E5E /* RadarControls.swift */; };
+		8083A832244B85DB00CE2E5E /* RadarPlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083A831244B85DB00CE2E5E /* RadarPlayPauseButton.swift */; };
 		8084FD96241D38FB006A57DC /* CurrentLocationGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084FD95241D38FB006A57DC /* CurrentLocationGroup.swift */; };
 		8084FD98241D3903006A57DC /* CurrentLocationGroupContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084FD97241D3903006A57DC /* CurrentLocationGroupContainer.swift */; };
 		8084FD9B241D391C006A57DC /* FavoriteLocationsGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084FD9A241D391C006A57DC /* FavoriteLocationsGroup.swift */; };
@@ -110,6 +112,10 @@
 		8087056C2427D551001110B2 /* CustomPageSizeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8087056B2427D551001110B2 /* CustomPageSizeScrollView.swift */; };
 		8093C03F242720C500469406 /* DayPickerPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8093C03E242720C500469406 /* DayPickerPagingView.swift */; };
 		8093C0412427213D00469406 /* DayPickerPagingViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8093C0402427213D00469406 /* DayPickerPagingViewContainer.swift */; };
+		8095A2F2244B89CA008C494F /* RadarCurrentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095A2F1244B89CA008C494F /* RadarCurrentDate.swift */; };
+		8095A2F6244BA50B008C494F /* RadarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095A2F5244BA50B008C494F /* RadarService.swift */; };
+		8095A2F8244BA59D008C494F /* RadarMapViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095A2F7244BA59D008C494F /* RadarMapViewContainer.swift */; };
+		8095A2FB244BA9D9008C494F /* RadarAnimationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095A2FA244BA9D9008C494F /* RadarAnimationTimer.swift */; };
 		809833B922F678BE001C1590 /* WeatherQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 809833B822F678BE001C1590 /* WeatherQuery.graphql */; };
 		80985F5A240E1F1D00452D08 /* UnixTimestampTypealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80985F59240E1F1D00452D08 /* UnixTimestampTypealias.swift */; };
 		8099A20D23130B8500EE4F30 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8099A20C23130B8500EE4F30 /* SafariView.swift */; };
@@ -122,7 +128,7 @@
 		80A646C423F5E95800C80633 /* HostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A646C323F5E95800C80633 /* HostingView.swift */; };
 		80A646C623F5E98900C80633 /* UIStackView+SetBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A646C523F5E98900C80633 /* UIStackView+SetBackground.swift */; };
 		80AAC01C2427E09E00285C6D /* DailyForecastData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AAC01B2427E09E00285C6D /* DailyForecastData.swift */; };
-		80AAC01E2427EDD300285C6D /* ShrinkOnWeekSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AAC01D2427EDD300285C6D /* ShrinkOnWeekSection.swift */; };
+		80AAC01E2427EDD300285C6D /* ShrinkBackgroundForAppSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AAC01D2427EDD300285C6D /* ShrinkBackgroundForAppSection.swift */; };
 		80AAC0212427F09F00285C6D /* DayNightSwitchContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AAC0202427F09F00285C6D /* DayNightSwitchContainer.swift */; };
 		80AAC0232427F0A900285C6D /* DayNightSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AAC0222427F0A900285C6D /* DayNightSwitch.swift */; };
 		80AAC0262427F0D600285C6D /* ConditionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AAC0252427F0D600285C6D /* ConditionLayout.swift */; };
@@ -141,8 +147,6 @@
 		80C395AA23788A6B0004B71D /* AppActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395A923788A6B0004B71D /* AppActivityIndicator.swift */; };
 		80C395AD23789FDD0004B71D /* RoundedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */; };
 		80C395AF2378A1DA0004B71D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395AE2378A1DA0004B71D /* AppState.swift */; };
-		80C395B22378B2340004B71D /* RadarControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395B12378B2340004B71D /* RadarControls.swift */; };
-		80C395B82378C7860004B71D /* TimestampStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395B72378C7860004B71D /* TimestampStore.swift */; };
 		80C777CB23FB2B74004ABB2E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777CA23FB2B74004ABB2E /* API.swift */; };
 		80C777CD23FB2BEC004ABB2E /* LocationFavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777CC23FB2BEC004ABB2E /* LocationFavoritesService.swift */; };
 		80C777D323FB3415004ABB2E /* CLLocationCoordinate2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777D223FB3415004ABB2E /* CLLocationCoordinate2D.swift */; };
@@ -302,6 +306,8 @@
 		8083A821244A3E8600CE2E5E /* EnvironmentCanadaRasterTileSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentCanadaRasterTileSource.swift; sourceTree = "<group>"; };
 		8083A823244A579C00CE2E5E /* RadarTimestamps.graphql */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = text; path = RadarTimestamps.graphql; sourceTree = "<group>"; tabWidth = 4; };
 		8083A825244A5CF700CE2E5E /* RainviewerRasterTileSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainviewerRasterTileSource.swift; sourceTree = "<group>"; };
+		8083A82C244B85A600CE2E5E /* RadarControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarControls.swift; sourceTree = "<group>"; };
+		8083A831244B85DB00CE2E5E /* RadarPlayPauseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarPlayPauseButton.swift; sourceTree = "<group>"; };
 		8084FD95241D38FB006A57DC /* CurrentLocationGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationGroup.swift; sourceTree = "<group>"; };
 		8084FD97241D3903006A57DC /* CurrentLocationGroupContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationGroupContainer.swift; sourceTree = "<group>"; };
 		8084FD9A241D391C006A57DC /* FavoriteLocationsGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocationsGroup.swift; sourceTree = "<group>"; };
@@ -314,6 +320,10 @@
 		8087056B2427D551001110B2 /* CustomPageSizeScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageSizeScrollView.swift; sourceTree = "<group>"; };
 		8093C03E242720C500469406 /* DayPickerPagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerPagingView.swift; sourceTree = "<group>"; };
 		8093C0402427213D00469406 /* DayPickerPagingViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerPagingViewContainer.swift; sourceTree = "<group>"; };
+		8095A2F1244B89CA008C494F /* RadarCurrentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarCurrentDate.swift; sourceTree = "<group>"; };
+		8095A2F5244BA50B008C494F /* RadarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarService.swift; sourceTree = "<group>"; };
+		8095A2F7244BA59D008C494F /* RadarMapViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarMapViewContainer.swift; sourceTree = "<group>"; };
+		8095A2FA244BA9D9008C494F /* RadarAnimationTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarAnimationTimer.swift; sourceTree = "<group>"; };
 		809833B822F678BE001C1590 /* WeatherQuery.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WeatherQuery.graphql; sourceTree = "<group>"; };
 		80985F59240E1F1D00452D08 /* UnixTimestampTypealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnixTimestampTypealias.swift; sourceTree = "<group>"; };
 		8099A20C23130B8500EE4F30 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
@@ -326,7 +336,7 @@
 		80A646C323F5E95800C80633 /* HostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingView.swift; sourceTree = "<group>"; };
 		80A646C523F5E98900C80633 /* UIStackView+SetBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+SetBackground.swift"; sourceTree = "<group>"; };
 		80AAC01B2427E09E00285C6D /* DailyForecastData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastData.swift; sourceTree = "<group>"; };
-		80AAC01D2427EDD300285C6D /* ShrinkOnWeekSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShrinkOnWeekSection.swift; sourceTree = "<group>"; };
+		80AAC01D2427EDD300285C6D /* ShrinkBackgroundForAppSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShrinkBackgroundForAppSection.swift; sourceTree = "<group>"; };
 		80AAC0202427F09F00285C6D /* DayNightSwitchContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNightSwitchContainer.swift; sourceTree = "<group>"; };
 		80AAC0222427F0A900285C6D /* DayNightSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNightSwitch.swift; sourceTree = "<group>"; };
 		80AAC0252427F0D600285C6D /* ConditionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionLayout.swift; sourceTree = "<group>"; };
@@ -345,8 +355,6 @@
 		80C395A923788A6B0004B71D /* AppActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppActivityIndicator.swift; sourceTree = "<group>"; };
 		80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerShape.swift; sourceTree = "<group>"; };
 		80C395AE2378A1DA0004B71D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		80C395B12378B2340004B71D /* RadarControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarControls.swift; sourceTree = "<group>"; };
-		80C395B72378C7860004B71D /* TimestampStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampStore.swift; sourceTree = "<group>"; };
 		80C777CA23FB2B74004ABB2E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		80C777CC23FB2BEC004ABB2E /* LocationFavoritesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFavoritesService.swift; sourceTree = "<group>"; };
 		80C777D223FB3415004ABB2E /* CLLocationCoordinate2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationCoordinate2D.swift; sourceTree = "<group>"; };
@@ -436,7 +444,7 @@
 				80B8DB93232C7BBF00BAD200 /* WeatherBackground.swift */,
 				801BDBCF232D660C007FE4AB /* DrawerHandle.swift */,
 				809C54D924244F750028216E /* WeatherIllustrationImage.swift */,
-				80AAC01D2427EDD300285C6D /* ShrinkOnWeekSection.swift */,
+				80AAC01D2427EDD300285C6D /* ShrinkBackgroundForAppSection.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -487,15 +495,6 @@
 				800194DC232EDC8100066D37 /* ShadowView.swift */,
 			);
 			path = Shadow;
-			sourceTree = "<group>";
-		};
-		8026FF5123779873007962DB /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				8083A81E244A289C00CE2E5E /* DataSources */,
-				8026FF5223779881007962DB /* RadarMapView.swift */,
-			);
-			path = Map;
 			sourceTree = "<group>";
 		};
 		802C0D9A236903A8009A22BA /* Header */ = {
@@ -818,6 +817,33 @@
 			path = DataSources;
 			sourceTree = "<group>";
 		};
+		8083A828244B858100CE2E5E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8095A2F3244BA33A008C494F /* RadarMap */,
+				8083A829244B859100CE2E5E /* RadarControls */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		8083A829244B859100CE2E5E /* RadarControls */ = {
+			isa = PBXGroup;
+			children = (
+				8083A82E244B85C000CE2E5E /* Components */,
+				8083A82C244B85A600CE2E5E /* RadarControls.swift */,
+			);
+			path = RadarControls;
+			sourceTree = "<group>";
+		};
+		8083A82E244B85C000CE2E5E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8083A831244B85DB00CE2E5E /* RadarPlayPauseButton.swift */,
+				8095A2F1244B89CA008C494F /* RadarCurrentDate.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		8084FD94241D38E5006A57DC /* CurrentLocationGroup */ = {
 			isa = PBXGroup;
 			children = (
@@ -902,6 +928,34 @@
 				808705692427D47E001110B2 /* DayPickerPagingViewCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		8095A2F3244BA33A008C494F /* RadarMap */ = {
+			isa = PBXGroup;
+			children = (
+				8026FF5223779881007962DB /* RadarMapView.swift */,
+				8095A2F7244BA59D008C494F /* RadarMapViewContainer.swift */,
+			);
+			path = RadarMap;
+			sourceTree = "<group>";
+		};
+		8095A2F4244BA366008C494F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8095A2F9244BA9C8008C494F /* Helpers */,
+				8083A81E244A289C00CE2E5E /* DataSources */,
+				8083A823244A579C00CE2E5E /* RadarTimestamps.graphql */,
+				8095A2F5244BA50B008C494F /* RadarService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8095A2F9244BA9C8008C494F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8095A2FA244BA9D9008C494F /* RadarAnimationTimer.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		8099A20B23130B7400EE4F30 /* Safari */ = {
@@ -1043,23 +1097,6 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		80C395B02378B2240004B71D /* RadarControls */ = {
-			isa = PBXGroup;
-			children = (
-				80C395B12378B2340004B71D /* RadarControls.swift */,
-			);
-			path = RadarControls;
-			sourceTree = "<group>";
-		};
-		80C395B62378C75C0004B71D /* TimestampStore */ = {
-			isa = PBXGroup;
-			children = (
-				80C395B72378C7860004B71D /* TimestampStore.swift */,
-				8083A823244A579C00CE2E5E /* RadarTimestamps.graphql */,
-			);
-			path = TimestampStore;
-			sourceTree = "<group>";
-		};
 		80C667BF2377733E008E9A11 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
@@ -1095,9 +1132,8 @@
 		80C667C2237776AE008E9A11 /* Radar */ = {
 			isa = PBXGroup;
 			children = (
-				80C395B62378C75C0004B71D /* TimestampStore */,
-				80C395B02378B2240004B71D /* RadarControls */,
-				8026FF5123779873007962DB /* Map */,
+				8095A2F4244BA366008C494F /* Services */,
+				8083A828244B858100CE2E5E /* Components */,
 				80FECAF423778361008AC653 /* RadarSection.swift */,
 			);
 			path = Radar;
@@ -1494,6 +1530,7 @@
 				8083A826244A5CF700CE2E5E /* RainviewerRasterTileSource.swift in Sources */,
 				80305323240E182300FDAC69 /* ObservedAtData.swift in Sources */,
 				80AAC02B2427F0F200285C6D /* ConditionIconDetail.swift in Sources */,
+				8095A2F8244BA59D008C494F /* RadarMapViewContainer.swift in Sources */,
 				80EF84EE240F582100D4037B /* HourlyForecast.swift in Sources */,
 				805D6A1024104738002DEBAC /* DateHelper.swift in Sources */,
 				80C395AF2378A1DA0004B71D /* AppState.swift in Sources */,
@@ -1503,17 +1540,17 @@
 				806A5BF424144F800093361D /* SettingsSheetState.swift in Sources */,
 				8066FDED2364EE030067F362 /* NowSection.swift in Sources */,
 				80D1896D22D03A2F00E56DB1 /* HighLowView.swift in Sources */,
-				80C395B22378B2340004B71D /* RadarControls.swift in Sources */,
 				8031CBC3240DF2B400C76FE3 /* SFSymbol.swift in Sources */,
 				808705682427D45F001110B2 /* TouchPassthroughView.swift in Sources */,
 				807B8E4C2377AAFD0075F131 /* MeasurementGrid.swift in Sources */,
 				80FB6C692408772C0026DD83 /* NSObject+Debounce.swift in Sources */,
+				8095A2F6244BA50B008C494F /* RadarService.swift in Sources */,
 				80C777CD23FB2BEC004ABB2E /* LocationFavoritesService.swift in Sources */,
 				809C2A66241C63DA009FCF6A /* LocationPickerSectionModal.swift in Sources */,
 				80C777D723FB3BF7004ABB2E /* ShortFormWeather.swift in Sources */,
 				805D6A1724105E47002DEBAC /* TabControlContainer.swift in Sources */,
 				80AAC0282427F0DF00285C6D /* ConditionLayoutContainer.swift in Sources */,
-				80AAC01E2427EDD300285C6D /* ShrinkOnWeekSection.swift in Sources */,
+				80AAC01E2427EDD300285C6D /* ShrinkBackgroundForAppSection.swift in Sources */,
 				8099A20F23130CED00EE4F30 /* CustomSafariViewController.swift in Sources */,
 				80734AFE2410A512000693F4 /* GridStack.swift in Sources */,
 				8084FD98241D3903006A57DC /* CurrentLocationGroupContainer.swift in Sources */,
@@ -1541,6 +1578,7 @@
 				80C816202363D8C800D33669 /* BlackBackground.swift in Sources */,
 				8031CBCC240E0B8D00C76FE3 /* HeaderGradientContainer.swift in Sources */,
 				800420D423FB11BB00C2879A /* String+Empty.swift in Sources */,
+				8095A2F2244B89CA008C494F /* RadarCurrentDate.swift in Sources */,
 				80E0CB85241C673100D8A2D4 /* LocationPickerListSection.swift in Sources */,
 				80E32BAE233454DD0087DBB3 /* SystemActivityIndicator.swift in Sources */,
 				80B8DB94232C7BBF00BAD200 /* WeatherBackground.swift in Sources */,
@@ -1583,7 +1621,6 @@
 				80F558432422EC1C00906FCB /* HourlyForecastSeparator.swift in Sources */,
 				80B1B3282376683A000EA6DD /* DrawerScrollView.swift in Sources */,
 				80D871B323F1FF1E001FBA94 /* TransparentTouchScrollView.swift in Sources */,
-				80C395B82378C7860004B71D /* TimestampStore.swift in Sources */,
 				8099A20D23130B8500EE4F30 /* SafariView.swift in Sources */,
 				805A174822C53ADB00E1B4E2 /* SceneDelegate.swift in Sources */,
 				802A4301241C53E10073C0DC /* DismissableScrollViewWrapper.swift in Sources */,
@@ -1610,6 +1647,7 @@
 				805D6A0A241015F1002DEBAC /* VisualStateToAppStateAndWeatherBinder.swift in Sources */,
 				80C395AD23789FDD0004B71D /* RoundedCornerShape.swift in Sources */,
 				801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */,
+				8095A2FB244BA9D9008C494F /* RadarAnimationTimer.swift in Sources */,
 				805D6A1324105708002DEBAC /* TabPreferenceData.swift in Sources */,
 				80C8162F2363E6DF00D33669 /* HeaderGradient.swift in Sources */,
 				8093C0412427213D00469406 /* DayPickerPagingViewContainer.swift in Sources */,
@@ -1623,6 +1661,7 @@
 				80E5D62A2377721B004A1D6B /* String+IsInt.swift in Sources */,
 				80311BBE241EA715004BC6B4 /* AppMetadata.swift in Sources */,
 				8057DB582364F1370087FBF7 /* NavigationBar.swift in Sources */,
+				8083A832244B85DB00CE2E5E /* RadarPlayPauseButton.swift in Sources */,
 				805A174A22C53ADB00E1B4E2 /* AppLayout.swift in Sources */,
 				80FB6C6D2408A6130026DD83 /* LocationItemStarButton.swift in Sources */,
 				8057DB512364F0F20087FBF7 /* AlertIndicator.swift in Sources */,
@@ -1655,6 +1694,7 @@
 				8038AA1A242409670050202C /* LocationItem.swift in Sources */,
 				80AAC0262427F0D600285C6D /* ConditionLayout.swift in Sources */,
 				80EA87BF2426E93B00CFDD10 /* DayPicker.swift in Sources */,
+				8083A82D244B85A600CE2E5E /* RadarControls.swift in Sources */,
 				80D871B823F20F87001FBA94 /* LocationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
