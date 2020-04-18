@@ -1362,12 +1362,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 805A175622C53ADD00E1B4E2 /* Build configuration list for PBXNativeTarget "Forecast" */;
 			buildPhases = (
-				8083A813244949DF00CE2E5E /* Copy Carthage Frameworks */,
 				80AD070722D68C7400220FEE /* Generate Apollo GraphQL API */,
 				805A173E22C53ADB00E1B4E2 /* Sources */,
 				805A173F22C53ADB00E1B4E2 /* Frameworks */,
 				805A174022C53ADB00E1B4E2 /* Resources */,
 				8083A812244949A800CE2E5E /* Embed Frameworks */,
+				8083A813244949DF00CE2E5E /* Copy Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1793,7 +1793,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_ASSET_PATHS = "Forecast/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8P8574Z65P;
 				ENABLE_PREVIEWS = YES;
@@ -1822,7 +1822,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_ASSET_PATHS = "Forecast/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8P8574Z65P;
 				ENABLE_PREVIEWS = YES;

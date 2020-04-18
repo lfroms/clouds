@@ -34,11 +34,35 @@ struct RadarMapView: UIViewRepresentable {
         mapView.showsScale = true
         mapView.showsUserLocation = true
         mapView.maximumZoomLevel = 7
+        mapView.prefetchesTiles = true
 
         return mapView
     }
 
     func updateUIView(_ mapView: MGLMapView, context: Context) {
+        addRasterSources(for: timestamps, to: mapView)
+        showActiveRasterLayer(in: mapView)
+    }
+
+    private func addRasterSources(for dates: [Date], to mapView: MGLMapView) {
+        dates.enumerated().forEach { index, date in
+            let layerIdentifier = identifier(for: date)
+
+            guard mapView.style?.source(withIdentifier: layerIdentifier) == nil else {
+                return
+            }
+
+            let source = EnvironmentCanadaRasterTileSource(identifier: layerIdentifier, date: date)
+            let rasterLayer = MGLRasterStyleLayer(identifier: layerIdentifier, source: source)
+            rasterLayer.rasterOpacity = NSExpression(forConstantValue: index == 0 ? 0.75 : 0)
+            rasterLayer.rasterOpacityTransition = MGLTransition(duration: 0.15, delay: 0)
+
+            mapView.style?.addSource(source)
+            mapView.style?.addLayer(rasterLayer)
+        }
+    }
+
+    private func showActiveRasterLayer(in mapView: MGLMapView) {
         guard
             let currentTimestamp = timestamps[safe: currentImage],
             let lastTimestamp = timestamps.last
@@ -46,25 +70,20 @@ struct RadarMapView: UIViewRepresentable {
             return
         }
 
-        let currentIdentifier = "radar-\(currentTimestamp)"
+        let currentIdentifier = identifier(for: currentTimestamp)
         let previousTimestamp = timestamps[safe: currentImage - 1] ?? lastTimestamp
-        let previousIdentifier = "radar-\(previousTimestamp)"
+        let previousIdentifier = identifier(for: previousTimestamp)
 
-        mapView.style?.layer(withIdentifier: previousIdentifier)?.isVisible = false
+        rasterLayer(withIdentifier: currentIdentifier, in: mapView)?.rasterOpacity = NSExpression(forConstantValue: 0.75)
+        rasterLayer(withIdentifier: previousIdentifier, in: mapView)?.rasterOpacity = NSExpression(forConstantValue: 0)
+    }
 
-        if mapView.style?.source(withIdentifier: currentIdentifier) == nil,
-            mapView.style?.layer(withIdentifier: currentIdentifier) == nil {
-            let source = EnvironmentCanadaRasterTileSource(identifier: currentIdentifier, date: currentTimestamp)
-            let rasterLayer = MGLRasterStyleLayer(identifier: currentIdentifier, source: source)
+    private func rasterLayer(withIdentifier identifier: String, in mapView: MGLMapView) -> MGLRasterStyleLayer? {
+        mapView.style?.layer(withIdentifier: identifier) as? MGLRasterStyleLayer
+    }
 
-            rasterLayer.rasterOpacity = NSExpression(forConstantValue: 0.75)
-
-            mapView.style?.addSource(source)
-            mapView.style?.addLayer(rasterLayer)
-
-        } else {
-            mapView.style?.layer(withIdentifier: currentIdentifier)?.isVisible = true
-        }
+    private func identifier(for date: Date) -> String {
+        "radar-\(date.timeIntervalSince1970)"
     }
 }
 
