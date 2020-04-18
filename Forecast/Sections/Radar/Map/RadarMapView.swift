@@ -1,5 +1,5 @@
 //
-//  MapView.swift
+//  RadarMapView.swift
 //  Forecast
 //
 //  Created by Lukas Romsicki on 2019-11-09.
@@ -9,16 +9,20 @@
 import Mapbox
 import SwiftUI
 
-struct MapView: UIViewRepresentable {
-    @Binding var timestamps: [Double]
-    @Binding var currentImage: Int
+struct RadarMapView: UIViewRepresentable {
+    var currentImage: Int
+    var timestamps: [Date]
+    var activeLocationCoordinates: CLLocationCoordinate2D?
 
     func makeUIView(context: Context) -> MGLMapView {
         let url = URL(string: "mapbox://styles/lfroms/ck94ggph90nn61invox6h6207")
         let mapView = MGLMapView()
         mapView.translatesAutoresizingMaskIntoConstraints = true
         mapView.styleURL = url
-        mapView.setCenter(CLLocationCoordinate2D(latitude: 45.5, longitude: -75.5), zoomLevel: 9, animated: false)
+
+        if let currentCenter = activeLocationCoordinates {
+            mapView.setCenter(currentCenter, zoomLevel: 5, animated: false)
+        }
 
         mapView.contentInset = UIEdgeInsets(
             top: Dimension.Header.omniBarHeight + (2 * Dimension.Global.padding),
@@ -50,7 +54,7 @@ struct MapView: UIViewRepresentable {
 
         if mapView.style?.source(withIdentifier: currentIdentifier) == nil,
             mapView.style?.layer(withIdentifier: currentIdentifier) == nil {
-            let source = EnvironmentCanadaRasterTileSource(identifier: currentIdentifier, date: Date(seconds: currentTimestamp))
+            let source = EnvironmentCanadaRasterTileSource(identifier: currentIdentifier, date: currentTimestamp)
             let rasterLayer = MGLRasterStyleLayer(identifier: currentIdentifier, source: source)
 
             rasterLayer.rasterOpacity = NSExpression(forConstantValue: 0.75)
@@ -63,3 +67,5 @@ struct MapView: UIViewRepresentable {
         }
     }
 }
+
+extension RadarMapView: Equatable {}

@@ -16,7 +16,7 @@
 		801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801BDBCF232D660C007FE4AB /* DrawerHandle.swift */; };
 		802048C7240AE2F300DFB842 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802048C6240AE2F300DFB842 /* SettingsSection.swift */; };
 		8020F9532363D2390029FEB6 /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020F9522363D2390029FEB6 /* MasterView.swift */; };
-		8026FF5323779881007962DB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026FF5223779881007962DB /* MapView.swift */; };
+		8026FF5323779881007962DB /* RadarMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026FF5223779881007962DB /* RadarMapView.swift */; };
 		802A42FF241C534F0073C0DC /* DismissableScrollViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A42FE241C534F0073C0DC /* DismissableScrollViewModifier.swift */; };
 		802A4301241C53E10073C0DC /* DismissableScrollViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A4300241C53E10073C0DC /* DismissableScrollViewWrapper.swift */; };
 		802A4303241C54AB0073C0DC /* DismissableScrollViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A4302241C54AB0073C0DC /* DismissableScrollViewRepresentable.swift */; };
@@ -219,7 +219,7 @@
 		801BDBCF232D660C007FE4AB /* DrawerHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerHandle.swift; sourceTree = "<group>"; };
 		802048C6240AE2F300DFB842 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		8020F9522363D2390029FEB6 /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
-		8026FF5223779881007962DB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		8026FF5223779881007962DB /* RadarMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarMapView.swift; sourceTree = "<group>"; };
 		802A42FE241C534F0073C0DC /* DismissableScrollViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableScrollViewModifier.swift; sourceTree = "<group>"; };
 		802A4300241C53E10073C0DC /* DismissableScrollViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableScrollViewWrapper.swift; sourceTree = "<group>"; };
 		802A4302241C54AB0073C0DC /* DismissableScrollViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableScrollViewRepresentable.swift; sourceTree = "<group>"; };
@@ -493,7 +493,7 @@
 			isa = PBXGroup;
 			children = (
 				8083A81E244A289C00CE2E5E /* DataSources */,
-				8026FF5223779881007962DB /* MapView.swift */,
+				8026FF5223779881007962DB /* RadarMapView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -1587,7 +1587,7 @@
 				8099A20D23130B8500EE4F30 /* SafariView.swift in Sources */,
 				805A174822C53ADB00E1B4E2 /* SceneDelegate.swift in Sources */,
 				802A4301241C53E10073C0DC /* DismissableScrollViewWrapper.swift in Sources */,
-				8026FF5323779881007962DB /* MapView.swift in Sources */,
+				8026FF5323779881007962DB /* RadarMapView.swift in Sources */,
 				802A4303241C54AB0073C0DC /* DismissableScrollViewRepresentable.swift in Sources */,
 				8038DB4923F0ACAD00F7B033 /* LocationPickerSection.swift in Sources */,
 				80D6346224230B3B00F7E96D /* GeometryGetter.swift in Sources */,

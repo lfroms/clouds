@@ -7,6 +7,7 @@
 //
 
 import Combine
+import CoreLocation
 import SwiftUI
 
 struct RadarSection: View {
@@ -16,35 +17,54 @@ struct RadarSection: View {
     private var timer = LoadingTimer()
 
     @ObservedObject private var timestampStore = TimestampStore()
+    @EnvironmentObject private var locationFavoritesService: LocationFavoritesService
+    @EnvironmentObject private var locationService: LocationService
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            MapView(timestamps: $timestampStore.timestamps, currentImage: $currentImageIndex)
-                .onReceive(
-                    timer.publisher,
-                    perform: { _ in
-                        if !self.isPlaying {
-                            return
-                        }
-
-                        let newIndex = self.currentImageIndex + 1
-
-                        if newIndex >= self.timestampStore.timestamps.count {
-                            self.currentImageIndex = 0
-                        } else {
-                            self.currentImageIndex = newIndex
-                        }
+            RadarMapView(
+                currentImage: currentImageIndex,
+                timestamps: timestamps,
+                activeLocationCoordinates: currentCoordinates
+            )
+            .onReceive(
+                timer.publisher,
+                perform: { _ in
+                    if !self.isPlaying {
+                        return
                     }
-                )
-                .onAppear { self.timer.start() }
-                .onDisappear { self.timer.cancel() }
 
-            RadarControls(isPlaying: $isPlaying, totalImages: timestampStore.timestamps.count, currentImage: $currentImageIndex)
+                    let newIndex = self.currentImageIndex + 1
+
+                    if newIndex >= self.timestampStore.timestamps.count {
+                        self.currentImageIndex = 0
+                    } else {
+                        self.currentImageIndex = newIndex
+                    }
+                }
+            )
+            .onAppear { self.timer.start() }
+            .onDisappear { self.timer.cancel() }
+
+            RadarControls(
+                isPlaying: $isPlaying,
+                totalImages: timestampStore.timestamps.count,
+                currentImage: currentImageIndex,
+                imageDate: timestamps[safe: currentImageIndex]
+            )
         }
         .frame(width: UIScreen.main.bounds.width)
         .onAppear {
             self.timestampStore.getRadarTimestamps()
         }
+    }
+
+    private var timestamps: [Date] {
+        self.timestampStore.timestamps.compactMap { Date(seconds: $0) }
+    }
+
+    private var currentCoordinates: CLLocationCoordinate2D? {
+        self.locationFavoritesService.getActiveLocation()?.coordinate ?? self.locationService.lastLocation?.coordinate
     }
 }
 
