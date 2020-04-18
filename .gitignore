@@ -76,3 +76,6 @@ iOSInjectionProject/
 # Apollo node_modules
 node_modules
 .DS_Store
+
+# Carthage
+Carthage/

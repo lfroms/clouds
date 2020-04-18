@@ -6,38 +6,35 @@
 //  Copyright © 2019 Lukas Romsicki. All rights reserved.
 //
 
-import Combine
+import Apollo
 import Foundation
 
 final class TimestampStore: ObservableObject {
     private static let urlSource: String = "https://tilecache.rainviewer.com/api/maps.json"
     
-    @Published var timestamps: [Int] = []
+    @Published var timestamps: [Double] = []
     
-    private var getRadarTimestampsCancellable: Cancellable? {
+    private var cancellable: Apollo.Cancellable? {
         didSet { oldValue?.cancel() }
     }
     
     deinit {
-        getRadarTimestampsCancellable?.cancel()
-    }
-    
-    init() {
-        getRadarTimestamps()
+        cancellable?.cancel()
     }
     
     func getRadarTimestamps() {
-        guard let url = URL(string: Self.urlSource) else {
-            return
+        let query = RadarTimestampsQuery(provider: .msc)
+        
+        cancellable = GraphQL.shared.apollo.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely) { result in
+            switch result {
+            case .success(let graphQLResult):
+                if let data = graphQLResult.data {
+                    self.timestamps = data.radarTimestamps
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
         }
-        
-        let request = URLRequest(url: url)
-        
-        getRadarTimestampsCancellable = URLSession.shared.dataTaskPublisher(for: request)
-            .map { $0.data }
-            .decode(type: [Int].self, decoder: JSONDecoder())
-            .replaceError(with: [])
-            .receive(on: RunLoop.main)
-            .assign(to: \.timestamps, on: self)
     }
 }

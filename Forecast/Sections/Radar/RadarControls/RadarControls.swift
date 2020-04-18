@@ -6,12 +6,14 @@
 //  Copyright © 2019 Lukas Romsicki. All rights reserved.
 //
 
+import SwiftDate
 import SwiftUI
 
 struct RadarControls: View {
     @Binding var isPlaying: Bool
     var totalImages: Int
-    @Binding var currentImage: Int
+    var currentImage: Int
+    var imageDate: Date?
 
     var body: some View {
         ZStack {
@@ -30,7 +32,7 @@ struct RadarControls: View {
 
                 Spacer()
 
-                Text("2:30 PM")
+                Text(dateString)
                     .font(Font.subheadline.weight(.semibold))
                     .foregroundColor(AppColor.Display.secondary)
             }
@@ -39,10 +41,18 @@ struct RadarControls: View {
         .frame(height: 50)
         .padding([.horizontal, .bottom], 20)
     }
+
+    private var dateString: String {
+        guard let date = imageDate else {
+            return .empty
+        }
+
+        return date.in(region: .current).toFormat("h:mm a")
+    }
 }
 
 struct RadarControls_Previews: PreviewProvider {
     static var previews: some View {
-        RadarControls(isPlaying: .constant(false), totalImages: 10, currentImage: .constant(2))
+        RadarControls(isPlaying: .constant(false), totalImages: 10, currentImage: 2, imageDate: Date())
     }
 }
