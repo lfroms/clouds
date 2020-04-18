@@ -75,7 +75,7 @@ struct RadarSection_Previews: PreviewProvider {
 }
 
 class LoadingTimer {
-    let publisher = Timer.publish(every: 0.7, on: .main, in: .default)
+    let publisher = Timer.publish(every: 0.4, on: .main, in: .default)
     private var timerCancellable: Cancellable?
 
     func start() {

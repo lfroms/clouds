@@ -56,7 +56,7 @@ struct RadarMapView: UIViewRepresentable {
             let source = EnvironmentCanadaRasterTileSource(identifier: layerIdentifier, date: date)
             let rasterLayer = MGLRasterStyleLayer(identifier: layerIdentifier, source: source)
             rasterLayer.rasterOpacity = NSExpression(forConstantValue: index == 0 ? 0.75 : 0)
-            rasterLayer.rasterOpacityTransition = MGLTransition(duration: 0.15, delay: 0)
+            rasterLayer.rasterOpacityTransition = MGLTransition(duration: 0.1, delay: 0)
 
             mapView.style?.addSource(source)
             mapView.style?.addLayer(rasterLayer)
