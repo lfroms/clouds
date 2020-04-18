@@ -26,15 +26,16 @@ struct RadarMapView: UIViewRepresentable {
 
         mapView.contentInset = UIEdgeInsets(
             top: Dimension.Header.omniBarHeight + (2 * Dimension.Global.padding),
-            left: 8,
+            left: 12,
             bottom: Dimension.Global.padding + 50,
-            right: 8
+            right: 12
         )
 
         mapView.showsScale = true
         mapView.showsUserLocation = true
         mapView.maximumZoomLevel = 7
         mapView.prefetchesTiles = true
+        mapView.attributionButton.tintColor = .gray
 
         return mapView
     }
