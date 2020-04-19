@@ -15,9 +15,14 @@ struct OmniBarAuxiliaryButton: View, Equatable {
     var body: some View {
         Button(action: action) {
             Image(systemName: icon)
-                .frame(height: Dimension.Header.omniBarHeight)
-                .padding(.trailing, Dimension.Global.padding)
+                .frame(width: size, height: size)
+                .background(Circle().foregroundColor(Color.white.opacity(0.16)))
         }
+        .padding(.trailing, 5)
+    }
+
+    private var size: CGFloat {
+        Dimension.Header.omniBarHeight - 10
     }
 
     // MARK: - Equatable
