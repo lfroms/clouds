@@ -59,6 +59,7 @@ final class RadarService: ObservableObject {
             case .success(let graphQLResult):
                 if let data = graphQLResult.data {
                     self.dates = data.radarTimestamps.compactMap { Date(seconds: $0) }
+                    self.currentImageIndex = self.dates.count - 1
                 }
                 
             case .failure(let error):

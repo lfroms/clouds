@@ -55,8 +55,8 @@ struct RadarMapView: UIViewRepresentable {
 
             let source = EnvironmentCanadaRasterTileSource(identifier: layerIdentifier, date: date)
             let rasterLayer = MGLRasterStyleLayer(identifier: layerIdentifier, source: source)
-            rasterLayer.rasterOpacity = NSExpression(forConstantValue: index == 0 ? 0.75 : 0)
-            rasterLayer.rasterOpacityTransition = MGLTransition(duration: 0.1, delay: 0)
+            rasterLayer.rasterOpacity = NSExpression(forConstantValue: index == currentImage ? 0.75 : 0)
+            rasterLayer.rasterOpacityTransition = MGLTransition(duration: 0, delay: 0)
 
             mapView.style?.addSource(source)
             mapView.style?.addLayer(rasterLayer)
@@ -96,4 +96,10 @@ struct RadarMapView: UIViewRepresentable {
     }
 }
 
-extension RadarMapView: Equatable {}
+extension RadarMapView: Equatable {
+    static func == (lhs: RadarMapView, rhs: RadarMapView) -> Bool {
+        lhs.currentImage == rhs.currentImage
+            && lhs.dates == rhs.dates
+            && lhs.activeLocationCoordinates == rhs.activeLocationCoordinates
+    }
+}

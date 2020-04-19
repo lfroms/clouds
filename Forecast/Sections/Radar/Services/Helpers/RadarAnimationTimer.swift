@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 
 class RadarAnimationTimer {
-    let publisher = Timer.publish(every: 0.4, on: .main, in: .default)
+    let publisher = Timer.publish(every: 0.5, on: .main, in: .default)
     private var timerCancellable: Cancellable?
 
     func start() {
