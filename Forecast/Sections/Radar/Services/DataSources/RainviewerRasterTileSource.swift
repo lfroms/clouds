@@ -16,6 +16,7 @@ final class RainviewerRasterTileSource: MGLRasterTileSource {
     }
 
     private static func urlTemplate(for date: Date) -> String {
-        "https://tilecache.rainviewer.com/v2/radar/\(date.timeIntervalSince1970)/256/{z}/{x}/{y}/4/1_0.png"
+        let timestamp = Int(date.timeIntervalSince1970)
+        return "https://tilecache.rainviewer.com/v2/radar/\(timestamp)/256/{z}/{x}/{y}/4/0_0.png"
     }
 }
