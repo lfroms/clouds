@@ -25,7 +25,7 @@ struct LocationPickerListSection<Content: View>: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: Dimension.LocationPicker.itemSpacing) {
-            HStack(alignment: .firstTextBaseline, spacing: Dimension.LocationPicker.itemSpacing) {
+            HStack(alignment: .center, spacing: Dimension.LocationPicker.itemSpacing) {
                 HStack(alignment: .firstTextBaseline, spacing: 0) {
                     Text(label)
                         .font(.callout)
@@ -42,7 +42,8 @@ struct LocationPickerListSection<Content: View>: View {
                 Spacer()
 
                 if loading {
-                    AppActivityIndicator()
+                    AppActivityIndicator(style: .dark)
+                        .equatable()
                 }
             }
 

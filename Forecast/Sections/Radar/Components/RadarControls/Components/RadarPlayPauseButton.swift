@@ -20,7 +20,8 @@ struct RadarPlayPauseButton: View {
                     .frame(width: 48, height: 48)
 
                 if loading {
-                    AppActivityIndicator(color: .black)
+                    AppActivityIndicator(style: .light)
+                        .equatable()
                 } else {
                     Image(systemName: self.icon)
                         .font(Font.system(size: 18).weight(.semibold))

@@ -9,30 +9,22 @@
 import SwiftUI
 
 struct AppActivityIndicator: View {
-    @State private var isAnimating: Bool = false
+    var style: Style = .light
 
-    var color: Color = AppColor.Display.primary
+    enum Style {
+        case light
+        case dark
+    }
 
     var body: some View {
-        IndicatorShape(size: 12, weight: 2, color: color)
-            .rotationEffect(rotationEffect, anchor: .center)
-            .onAppear(perform: runAnimation)
-    }
-
-    private var rotationEffect: Angle {
-        .degrees(isAnimating ? 360 : 0)
-    }
-
-    private func runAnimation() {
-        withAnimation(Animation.linear(duration: 0.8).repeatForever(autoreverses: false)) {
-            self.isAnimating.toggle()
-        }
+        CustomSpinner(isWhite: style == .dark)
+            .frame(width: 12, height: 12)
     }
 }
 
 extension AppActivityIndicator: Equatable {
     static func == (lhs: AppActivityIndicator, rhs: AppActivityIndicator) -> Bool {
-        lhs.color == rhs.color
+        lhs.style == rhs.style
     }
 }
 

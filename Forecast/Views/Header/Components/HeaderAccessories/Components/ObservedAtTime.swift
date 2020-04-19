@@ -20,8 +20,9 @@ struct ObservedAtTime: View, Equatable {
     var body: some View {
         HStack(alignment: .lastTextBaseline, spacing: 5) {
             if loading {
-                AppActivityIndicator(color: AppColor.Display.secondaryBright)
+                AppActivityIndicator(style: .dark)
                     .equatable()
+                    .opacity(0.8)
 
             } else {
                 Image(systemName: SFSymbol.clockFilled)

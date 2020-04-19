@@ -11,6 +11,7 @@
 		800194DF232EDCCF00066D37 /* UIShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800194DE232EDCCF00066D37 /* UIShadowView.swift */; };
 		800420D423FB11BB00C2879A /* String+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800420D323FB11BB00C2879A /* String+Empty.swift */; };
 		80042F1724284C2A005DA891 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 805A175022C53ADD00E1B4E2 /* LaunchScreen.storyboard */; };
+		801662A7244BEA75003034DF /* CustomSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801662A6244BEA75003034DF /* CustomSpinner.swift */; };
 		8016AACF243E2F0D00220B81 /* DayPickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8016AACE243E2F0D00220B81 /* DayPickerItem.swift */; };
 		8019F827240F4E1F00AFB0F1 /* MasterViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8019F826240F4E1F00AFB0F1 /* MasterViewLayout.swift */; };
 		801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801BDBCF232D660C007FE4AB /* DrawerHandle.swift */; };
@@ -143,7 +144,6 @@
 		80C1693623FA435D00F22812 /* CLLocationCoordinate2D+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C1693523FA435D00F22812 /* CLLocationCoordinate2D+Codable.swift */; };
 		80C395A323787B9B0004B71D /* ObservedAtTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395A223787B9B0004B71D /* ObservedAtTime.swift */; };
 		80C395A523787F660004B71D /* Date+TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395A423787F660004B71D /* Date+TimeAgo.swift */; };
-		80C395A8237888CD0004B71D /* IndicatorShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395A7237888CD0004B71D /* IndicatorShape.swift */; };
 		80C395AA23788A6B0004B71D /* AppActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395A923788A6B0004B71D /* AppActivityIndicator.swift */; };
 		80C395AD23789FDD0004B71D /* RoundedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */; };
 		80C395AF2378A1DA0004B71D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395AE2378A1DA0004B71D /* AppState.swift */; };
@@ -218,6 +218,7 @@
 		800194DC232EDC8100066D37 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		800194DE232EDCCF00066D37 /* UIShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIShadowView.swift; sourceTree = "<group>"; };
 		800420D323FB11BB00C2879A /* String+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Empty.swift"; sourceTree = "<group>"; };
+		801662A6244BEA75003034DF /* CustomSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSpinner.swift; sourceTree = "<group>"; };
 		8016AACE243E2F0D00220B81 /* DayPickerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerItem.swift; sourceTree = "<group>"; };
 		8019F826240F4E1F00AFB0F1 /* MasterViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewLayout.swift; sourceTree = "<group>"; };
 		801BDBCF232D660C007FE4AB /* DrawerHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerHandle.swift; sourceTree = "<group>"; };
@@ -351,7 +352,6 @@
 		80C1693523FA435D00F22812 /* CLLocationCoordinate2D+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Codable.swift"; sourceTree = "<group>"; };
 		80C395A223787B9B0004B71D /* ObservedAtTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedAtTime.swift; sourceTree = "<group>"; };
 		80C395A423787F660004B71D /* Date+TimeAgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+TimeAgo.swift"; sourceTree = "<group>"; };
-		80C395A7237888CD0004B71D /* IndicatorShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorShape.swift; sourceTree = "<group>"; };
 		80C395A923788A6B0004B71D /* AppActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppActivityIndicator.swift; sourceTree = "<group>"; };
 		80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerShape.swift; sourceTree = "<group>"; };
 		80C395AE2378A1DA0004B71D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -518,7 +518,7 @@
 		802CA22A240EF43E009065C6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				80C395A7237888CD0004B71D /* IndicatorShape.swift */,
+				801662A6244BEA75003034DF /* CustomSpinner.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1534,7 +1534,6 @@
 				80EF84EE240F582100D4037B /* HourlyForecast.swift in Sources */,
 				805D6A1024104738002DEBAC /* DateHelper.swift in Sources */,
 				80C395AF2378A1DA0004B71D /* AppState.swift in Sources */,
-				80C395A8237888CD0004B71D /* IndicatorShape.swift in Sources */,
 				8020F9532363D2390029FEB6 /* MasterView.swift in Sources */,
 				80C395A323787B9B0004B71D /* ObservedAtTime.swift in Sources */,
 				806A5BF424144F800093361D /* SettingsSheetState.swift in Sources */,
@@ -1657,6 +1656,7 @@
 				80D0D86722D6B56800B8C711 /* UserPreferences.swift in Sources */,
 				8031CBC9240E035700C76FE3 /* OmniBarContainer.swift in Sources */,
 				80C816282363DEBB00D33669 /* OmniBarPlaceholder.swift in Sources */,
+				801662A7244BEA75003034DF /* CustomSpinner.swift in Sources */,
 				8084FD96241D38FB006A57DC /* CurrentLocationGroup.swift in Sources */,
 				80E5D62A2377721B004A1D6B /* String+IsInt.swift in Sources */,
 				80311BBE241EA715004BC6B4 /* AppMetadata.swift in Sources */,
