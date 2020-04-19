@@ -41,6 +41,7 @@ final class RadarService: ObservableObject {
     
     deinit {
         apolloCancellable?.cancel()
+        timerCancellable?.cancel()
     }
     
     // MARK: - Timestamps

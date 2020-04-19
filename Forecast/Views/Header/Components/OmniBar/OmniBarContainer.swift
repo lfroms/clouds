@@ -56,10 +56,6 @@ struct OmniBarContainer: Container {
 
     // MARK: - Text Field
 
-    private var textFieldIsReadOnly: Bool {
-        !locationPickerState.presented
-    }
-
     private var textFieldValue: Binding<String> {
         return .init(get: {
             self.textFieldTextToDisplay

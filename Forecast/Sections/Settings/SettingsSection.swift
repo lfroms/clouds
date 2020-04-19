@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct SettingsSection: View {
-    @EnvironmentObject private var settingsSheetState: SettingsSheetState
     @EnvironmentObject private var weatherService: WeatherService
 
     var body: some View {

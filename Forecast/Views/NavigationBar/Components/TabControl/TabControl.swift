@@ -9,10 +9,6 @@
 import SwiftUI
 
 struct TabControl: View {
-    private typealias RectDictionary = [AppSection: CGRect]
-
-    @State private var rects: RectDictionary = RectDictionary()
-
     var tabs: [AppSection]
     var activeTab: AppSection
     var didChangeTab: (AppSection) -> Void

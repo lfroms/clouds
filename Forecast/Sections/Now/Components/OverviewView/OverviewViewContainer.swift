@@ -48,13 +48,6 @@ struct OverviewViewContainer: Container {
         
         return Int(low.rounded())
     }
-    
-    var dateStamp: Date {
-        let parsedUnixTime = Double(weatherService.activeLocation?.currently.time ?? 0)
-        
-        return Date(seconds: parsedUnixTime, region: .UTC)
-            .convertTo(region: .current).date
-    }
 }
 
 struct OverviewViewContainer_Previews: PreviewProvider {

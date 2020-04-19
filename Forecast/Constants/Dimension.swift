@@ -46,7 +46,6 @@ final class Dimension {
         final class DayPicker {
             static let bubbleSize: CGFloat = 60
             static let spacing: CGFloat = 12
-            static let pageSize: CGFloat = bubbleSize + spacing
 
             static let indicatorSize: CGFloat = 10
             static let indicatorSpacing: CGFloat = 8
