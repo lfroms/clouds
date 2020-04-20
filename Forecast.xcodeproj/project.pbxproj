@@ -127,7 +127,6 @@
 		809C2A6A241C64C6009FCF6A /* LocationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C2A69241C64C6009FCF6A /* LocationPicker.swift */; };
 		809C54DA24244F750028216E /* WeatherIllustrationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C54D924244F750028216E /* WeatherIllustrationImage.swift */; };
 		80A016022376638900A72C2F /* MainPagingScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A016012376638900A72C2F /* MainPagingScrollViewController.swift */; };
-		80A646C423F5E95800C80633 /* HostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A646C323F5E95800C80633 /* HostingView.swift */; };
 		80A646C623F5E98900C80633 /* UIStackView+SetBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A646C523F5E98900C80633 /* UIStackView+SetBackground.swift */; };
 		80AAC01C2427E09E00285C6D /* DailyForecastData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AAC01B2427E09E00285C6D /* DailyForecastData.swift */; };
 		80AAC01E2427EDD300285C6D /* ShrinkBackgroundForAppSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AAC01D2427EDD300285C6D /* ShrinkBackgroundForAppSection.swift */; };
@@ -335,7 +334,6 @@
 		809C2A69241C64C6009FCF6A /* LocationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPicker.swift; sourceTree = "<group>"; };
 		809C54D924244F750028216E /* WeatherIllustrationImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIllustrationImage.swift; sourceTree = "<group>"; };
 		80A016012376638900A72C2F /* MainPagingScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagingScrollViewController.swift; sourceTree = "<group>"; };
-		80A646C323F5E95800C80633 /* HostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingView.swift; sourceTree = "<group>"; };
 		80A646C523F5E98900C80633 /* UIStackView+SetBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+SetBackground.swift"; sourceTree = "<group>"; };
 		80AAC01B2427E09E00285C6D /* DailyForecastData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastData.swift; sourceTree = "<group>"; };
 		80AAC01D2427EDD300285C6D /* ShrinkBackgroundForAppSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShrinkBackgroundForAppSection.swift; sourceTree = "<group>"; };
@@ -462,14 +460,13 @@
 		8020F9502363D1A10029FEB6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				80D6346024230B3100F7E96D /* GeometryGetter */,
 				8066FDE72364ECA90067F362 /* AppLayout */,
 				8020F9512363D2010029FEB6 /* Master */,
+				80D6346024230B3100F7E96D /* GeometryGetter */,
 				80734AFF2410A517000693F4 /* GridStack */,
 				802C0D9A236903A8009A22BA /* Header */,
 				8057DB4C2364F07E0087FBF7 /* NavigationBar */,
 				8026FF5023779019007962DB /* Shadow */,
-				80B5E7AA23FA3F6C001729E0 /* Hosting */,
 				80A016072376668800A72C2F /* DrawerScrollView */,
 				80FC8AB123F0B35C00AEA26F /* DismissableScrollView */,
 				8099A20B23130B7400EE4F30 /* Safari */,
@@ -528,6 +525,7 @@
 			isa = PBXGroup;
 			children = (
 				80AD070822D68E7B00220FEE /* WeatherService.swift */,
+				809833B822F678BE001C1590 /* WeatherQuery.graphql */,
 				80D871B723F20F87001FBA94 /* LocationService.swift */,
 				80FB6C66240873250026DD83 /* LocationSearchService.swift */,
 				80C777CC23FB2BEC004ABB2E /* LocationFavoritesService.swift */,
@@ -1038,7 +1036,6 @@
 				805D6A0B241039EF002DEBAC /* GraphQL.swift */,
 				80C777CA23FB2B74004ABB2E /* API.swift */,
 				80F07DDB23FB7D0C005C43A3 /* schema.json */,
-				809833B822F678BE001C1590 /* WeatherQuery.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -1074,14 +1071,6 @@
 				803181A3241D661C00F9C695 /* AnyTransition+Presets.swift */,
 			);
 			path = Constants;
-			sourceTree = "<group>";
-		};
-		80B5E7AA23FA3F6C001729E0 /* Hosting */ = {
-			isa = PBXGroup;
-			children = (
-				80A646C323F5E95800C80633 /* HostingView.swift */,
-			);
-			path = Hosting;
 			sourceTree = "<group>";
 		};
 		80B5E7AB23FA3F8C001729E0 /* Application */ = {
@@ -1669,7 +1658,6 @@
 				80311BBA241EA051004BC6B4 /* DistanceIndicator.swift in Sources */,
 				80985F5A240E1F1D00452D08 /* UnixTimestampTypealias.swift in Sources */,
 				8093C03F242720C500469406 /* DayPickerPagingView.swift in Sources */,
-				80A646C423F5E95800C80633 /* HostingView.swift in Sources */,
 				803028D822CEE56D0053F639 /* ConditionView.swift in Sources */,
 				80EA87C32426EAC700CFDD10 /* DayPickerDateBubble.swift in Sources */,
 				802A42FF241C534F0073C0DC /* DismissableScrollViewModifier.swift in Sources */,

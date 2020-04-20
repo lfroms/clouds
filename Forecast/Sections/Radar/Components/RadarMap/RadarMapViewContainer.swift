@@ -9,7 +9,7 @@
 import CoreLocation
 import SwiftUI
 
-struct RadarMapViewContainer: View {
+struct RadarMapViewContainer: Container {
     @EnvironmentObject private var locationFavoritesService: LocationFavoritesService
     @EnvironmentObject private var locationService: LocationService
 
