@@ -37,29 +37,45 @@ final class RadarService: ObservableObject {
                     self.runAnimation()
                 }
             }
+        
+        didBecomeActiveCancellable = NotificationCenter.default
+            .publisher(for: UIApplication.didBecomeActiveNotification)
+            .sink(receiveValue: didBecomeActive)
     }
     
     deinit {
         apolloCancellable?.cancel()
         timerCancellable?.cancel()
+        didBecomeActiveCancellable?.cancel()
     }
     
     // MARK: - Timestamps
     
     @Published var dates: [Date] = []
+    @Published var loading: Bool = false
+    
+    private var didBecomeActiveCancellable: Combine.Cancellable? {
+        didSet { oldValue?.cancel() }
+    }
     
     private var apolloCancellable: Apollo.Cancellable? {
         didSet { oldValue?.cancel() }
     }
     
+    private func didBecomeActive(_: Notification) {
+        getRadarTimestamps()
+    }
+    
     func getRadarTimestamps() {
         let query = RadarTimestampsQuery(provider: .msc)
+        loading = true
         
         apolloCancellable = GraphQL.shared.apollo.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely) { result in
             switch result {
             case .success(let graphQLResult):
                 if let data = graphQLResult.data {
                     self.dates = data.radarTimestamps.compactMap { Date(seconds: $0) }
+                    self.loading = false
                     self.currentImageIndex = self.dates.count - 1
                 }
                 

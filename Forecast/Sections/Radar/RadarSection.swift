@@ -18,7 +18,7 @@ struct RadarSection: View {
             RadarMapViewContainer(currentImage: $radarService.currentImageIndex, dates: radarService.dates)
 
             RadarControls(
-                loading: radarService.dates.isEmpty,
+                loading: radarService.loading || radarService.dates.isEmpty,
                 numberOfFrames: radarService.dates.count,
                 playing: $radarService.isPlaying,
                 currentFrame: $radarService.currentImageIndex,
