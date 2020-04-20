@@ -13,13 +13,15 @@ struct VisualStateToWeekSectionStateAndWeatherBinder: ViewModifier {
     private var weekSectionState: WeekSectionState
     private var visualState: VisualState
     private var weatherService: WeatherService
+    private var appState: AppState
 
     private lazy var weekStateCancellable: AnyCancellable? = nil
 
-    init(weekSectionState: WeekSectionState, visualState: VisualState, weatherService: WeatherService) {
+    init(weekSectionState: WeekSectionState, visualState: VisualState, weatherService: WeatherService, appState: AppState) {
         self.weekSectionState = weekSectionState
         self.visualState = visualState
         self.weatherService = weatherService
+        self.appState = appState
 
         weekStateCancellable = weekSectionState.objectWillChange
             .receive(on: RunLoop.main)
@@ -33,6 +35,10 @@ struct VisualStateToWeekSectionStateAndWeatherBinder: ViewModifier {
     // MARK: - Binding Functions
 
     private func setIconCodeToWeekSectionActiveDay() {
+        guard appState.activeSection == .week else {
+            return
+        }
+
         let index = weekSectionState.dayIndex
         let days = weatherService.activeLocation?.daily
 

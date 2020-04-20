@@ -66,17 +66,26 @@ struct VisualStateToAppStateAndWeatherBinder: ViewModifier {
     }
 
     private func changeIconCodeBasedOnSection() {
+        if appState.activeSection != .week {
+            resetWeekSection()
+        }
+
         switch appState.activeSection {
         case .now:
             setIconCodeToCurrentConditions()
-            visualState.shrinkBackground = false
 
         case .week:
             setIconCodeToDailyForecast()
-            visualState.shrinkBackground = true
 
         case .radar:
-            visualState.shrinkBackground = false
+            break
+        }
+    }
+
+    private func resetWeekSection() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            self.weekSectionState.dayIndex = 0
+            self.weekSectionState.showingNightConditions = false
         }
     }
 }

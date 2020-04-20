@@ -47,7 +47,8 @@ struct AppServices: ViewModifier {
             .modifier(VisualStateToWeekSectionStateAndWeatherBinder(
                 weekSectionState: Self.weekSectionState,
                 visualState: Self.visualState,
-                weatherService: Self.weatherService
+                weatherService: Self.weatherService,
+                appState: Self.appState
             ))
             .modifier(LocationSearchToLocationPickerBinder(
                 locationSearchService: Self.locationSearchService,
