@@ -46,7 +46,7 @@ struct RadarMapView: UIViewRepresentable {
     }
 
     private func addRasterSources(for dates: [Date], to mapView: MGLMapView) {
-        dates.enumerated().forEach { index, date in
+        dates.enumerated().reversed().forEach { index, date in
             let layerIdentifier = identifier(for: date)
 
             guard mapView.style?.source(withIdentifier: layerIdentifier) == nil else {
