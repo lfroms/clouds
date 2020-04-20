@@ -16,7 +16,19 @@ final class EnvironmentCanadaRasterTileSource: MGLRasterTileSource {
             return
         }
 
-        self.init(identifier: identifier, tileURLTemplates: [urlTemplate], options: [.tileSize: 256])
+        let attribution = MGLAttributionInfo(
+            title: NSAttributedString(string: "Environment and Climate Change Canada"),
+            url: URL(string: "https://www.canada.ca/en/environment-climate-change.html")
+        )
+
+        self.init(
+            identifier: identifier,
+            tileURLTemplates: [urlTemplate],
+            options: [
+                .tileSize: 256,
+                .attributionInfos: [attribution]
+            ]
+        )
     }
 
     private static func urlTemplate(for date: Date) -> String? {
