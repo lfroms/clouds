@@ -14,26 +14,21 @@ struct DayPickerDateBubble: View {
     var active: Bool
 
     var body: some View {
-        ZStack {
-            background
+        VStack(alignment: .center, spacing: 2) {
+            Text(label)
+                .font(.caption)
+                .fontWeight(.bold)
+                .fixedSize()
 
-            VStack(alignment: .center, spacing: 2) {
-                Text(label)
-                    .font(.caption)
-                    .fontWeight(.bold)
-                    .fixedSize()
-
-                Text("\(day)")
-                    .font(.body)
-                    .fontWeight(.heavy)
-            }
-            .foregroundColor(.white)
-            .colorMultiply(active ? .black : .white)
-            .animation(.easeInOut)
-            .frame(width: Dimension.WeekSection.DayPicker.bubbleSize, height: Dimension.WeekSection.DayPicker.bubbleSize)
-            .cornerRadius(Dimension.WeekSection.DayPicker.bubbleSize / 2)
-            .background(ShadowView(radius: 0, opacity: 0.0, color: .clear, cornerRadius: 18))
+            Text("\(day)")
+                .font(.body)
+                .fontWeight(.heavy)
         }
+        .foregroundColor(.white)
+        .colorMultiply(active ? .black : .white)
+        .animation(.easeInOut)
+        .frame(width: Dimension.WeekSection.DayPicker.bubbleSize, height: Dimension.WeekSection.DayPicker.bubbleSize)
+        .background(background)
     }
 
     private var background: some View {

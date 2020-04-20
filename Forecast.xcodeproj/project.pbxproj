@@ -51,6 +51,7 @@
 		8048092E23FB4BC30019ACC2 /* WeatherLocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8048092D23FB4BC30019ACC2 /* WeatherLocationItem.swift */; };
 		8050327F22D25C7500D376C3 /* HighLowStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050327E22D25C7500D376C3 /* HighLowStack.swift */; };
 		80504F782332DB4700DB4FAD /* HourlyForecastDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80504F772332DB4700DB4FAD /* HourlyForecastDetail.swift */; };
+		8056EE03244D3FC2004D0250 /* DayPickerContentSizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056EE02244D3FC2004D0250 /* DayPickerContentSizePreferenceKey.swift */; };
 		8057DB4E2364F0C40087FBF7 /* AlertStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8057DB4D2364F0C40087FBF7 /* AlertStack.swift */; };
 		8057DB512364F0F20087FBF7 /* AlertIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8057DB502364F0F20087FBF7 /* AlertIndicator.swift */; };
 		8057DB542364F10F0087FBF7 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8057DB532364F10F0087FBF7 /* TabView.swift */; };
@@ -257,6 +258,7 @@
 		8048092D23FB4BC30019ACC2 /* WeatherLocationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocationItem.swift; sourceTree = "<group>"; };
 		8050327E22D25C7500D376C3 /* HighLowStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLowStack.swift; sourceTree = "<group>"; };
 		80504F772332DB4700DB4FAD /* HourlyForecastDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastDetail.swift; sourceTree = "<group>"; };
+		8056EE02244D3FC2004D0250 /* DayPickerContentSizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerContentSizePreferenceKey.swift; sourceTree = "<group>"; };
 		8057DB4D2364F0C40087FBF7 /* AlertStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertStack.swift; sourceTree = "<group>"; };
 		8057DB502364F0F20087FBF7 /* AlertIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertIndicator.swift; sourceTree = "<group>"; };
 		8057DB532364F10F0087FBF7 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				8016AACE243E2F0D00220B81 /* DayPickerItem.swift */,
+				8056EE02244D3FC2004D0250 /* DayPickerContentSizePreferenceKey.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1545,6 +1548,7 @@
 				809C2A66241C63DA009FCF6A /* LocationPickerSectionModal.swift in Sources */,
 				80C777D723FB3BF7004ABB2E /* ShortFormWeather.swift in Sources */,
 				805D6A1724105E47002DEBAC /* TabControlContainer.swift in Sources */,
+				8056EE03244D3FC2004D0250 /* DayPickerContentSizePreferenceKey.swift in Sources */,
 				80AAC0282427F0DF00285C6D /* ConditionLayoutContainer.swift in Sources */,
 				80AAC01E2427EDD300285C6D /* ShrinkBackgroundForAppSection.swift in Sources */,
 				8099A20F23130CED00EE4F30 /* CustomSafariViewController.swift in Sources */,

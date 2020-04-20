@@ -26,6 +26,7 @@ struct DayPicker: View {
         }
         // Add trailing space so that last page can be paginated to.
         .padding(.trailing, Dimension.WeekSection.DayPicker.spacing)
+        .background(sizePreferenceKeyBackground)
         .overlay(todayText, alignment: .leading)
     }
 
@@ -38,6 +39,12 @@ struct DayPicker: View {
             .foregroundColor(Color.white.opacity(0.7))
             .padding(.trailing, 16)
             .alignmentGuide(.leading) { $0.width }
+    }
+
+    private var sizePreferenceKeyBackground: some View {
+        GeometryReader { geometry in
+            Color.clear.preference(key: DayPickerContentSizePreferenceKey.self, value: geometry.size)
+        }
     }
 }
 

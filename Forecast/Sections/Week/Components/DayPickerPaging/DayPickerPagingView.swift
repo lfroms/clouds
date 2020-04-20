@@ -14,6 +14,7 @@ struct DayPickerPagingView<Content: View>: UIViewRepresentable {
     let itemWidth: CGFloat
     let spacing: CGFloat
     @Binding var currentPage: Int
+    let size: CGSize
 
     let content: () -> Content
 
@@ -21,11 +22,13 @@ struct DayPickerPagingView<Content: View>: UIViewRepresentable {
         pageWidth: CGFloat,
         spacing: CGFloat,
         currentPage: Binding<Int>,
+        size: CGSize,
         @ViewBuilder content: @escaping () -> Content
     ) {
         self.itemWidth = pageWidth
         self.spacing = spacing
         self._currentPage = currentPage
+        self.size = size
         self.content = content
     }
 
@@ -79,6 +82,13 @@ struct DayPickerPagingView<Content: View>: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UIViewType, context: UIViewRepresentableContext<DayPickerPagingView<Content>>) {
+        if let scrollView = uiView.subviews.first as? UIScrollView {
+            // Set the hosting controller's view's size.
+            scrollView.subviews.first?.frame.size = size
+            scrollView.contentSize = size
+            scrollView.setNeedsLayout()
+        }
+
         context.coordinator.page(currentPage, scrollView: uiView.subviews.first as? UIScrollView)
     }
 
@@ -86,7 +96,7 @@ struct DayPickerPagingView<Content: View>: UIViewRepresentable {
 
     private func createContentView() -> UIView {
         let controller = UIHostingController(rootView: content())
-        controller.view.translatesAutoresizingMaskIntoConstraints = false
+        controller.view.translatesAutoresizingMaskIntoConstraints = true
         controller.view.backgroundColor = .clear
 
         return controller.view
@@ -95,14 +105,12 @@ struct DayPickerPagingView<Content: View>: UIViewRepresentable {
     private func configureAndAddContentView() {
         let contentView = createContentView()
         scrollView.addSubview(contentView)
-        scrollView.contentSize = contentView.intrinsicContentSize
 
         NSLayoutConstraint.activate([
             contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
     }
 
@@ -118,5 +126,6 @@ extension DayPickerPagingView: Equatable {
         lhs.itemWidth == rhs.itemWidth
             && lhs.spacing == rhs.spacing
             && lhs.currentPage == rhs.currentPage
+            && lhs.size == rhs.size
     }
 }

@@ -10,15 +10,27 @@ import SwiftUI
 
 struct DayPickerPagingViewContainer: Container {
     @EnvironmentObject private var weekSectionState: WeekSectionState
+    @State private var size: CGSize = .zero
 
     var body: some View {
         DayPickerPagingView(
             pageWidth: Dimension.WeekSection.DayPicker.bubbleSize,
             spacing: Dimension.WeekSection.DayPicker.spacing,
-            currentPage: $weekSectionState.dayIndex
+            currentPage: $weekSectionState.dayIndex,
+            size: size
         ) {
             DayPickerContainer()
         }
+        .equatable()
+        .onPreferenceChange(DayPickerContentSizePreferenceKey.self, perform: contentSizePreferenceDidChange)
+    }
+
+    private func contentSizePreferenceDidChange(_ preference: CGSize) {
+        guard preference != size else {
+            return
+        }
+
+        size = preference
     }
 }
 
