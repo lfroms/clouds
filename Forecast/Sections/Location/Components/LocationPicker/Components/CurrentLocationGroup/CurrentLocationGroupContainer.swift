@@ -44,7 +44,7 @@ struct CurrentLocationGroupContainer: Container {
     private func didSelect(location: StoredLocation) {
         locationPickerState.toggleLocationPicker(animated: true)
 
-        guard locationFavoritesService.getActiveLocation() != nil else {
+        guard locationFavoritesService.activeLocation != nil else {
             return
         }
 

@@ -27,7 +27,7 @@ struct RadarMapViewContainer: Container {
     }
 
     private var activeLocationCoordinates: CLLocationCoordinate2D? {
-        self.locationFavoritesService.getActiveLocation()?.coordinate ?? self.locationService.lastLocation?.coordinate
+        self.locationFavoritesService.activeLocation?.coordinate ?? self.locationService.lastLocation?.coordinate
     }
 }
 

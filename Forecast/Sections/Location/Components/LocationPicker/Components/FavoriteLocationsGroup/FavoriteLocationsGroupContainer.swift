@@ -26,11 +26,11 @@ struct FavoriteLocationsGroupContainer: Container {
     private func didSelect(location: StoredLocation) {
         locationPickerState.toggleLocationPicker(animated: true)
 
-        guard locationFavoritesService.getActiveLocation() != location else {
+        guard locationFavoritesService.activeLocation != location else {
             return
         }
 
-        locationFavoritesService.saveActiveLocation(location: location)
+        locationFavoritesService.setActiveLocation(to: location)
         weatherService.setShouldFetchUpdatedWeather()
     }
 

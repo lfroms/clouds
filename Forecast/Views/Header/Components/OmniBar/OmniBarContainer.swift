@@ -70,7 +70,7 @@ struct OmniBarContainer: Container {
             return locationSearchService.searchQuery
         }
 
-        if let activeLocation = locationFavoritesService.getActiveLocation() {
+        if let activeLocation = locationFavoritesService.activeLocation {
             return activeLocation.name
         }
 
@@ -88,7 +88,7 @@ struct OmniBarContainer: Container {
             return SFSymbol.magnifyingGlass
         }
 
-        if let activeLocation = locationFavoritesService.getActiveLocation() {
+        if let activeLocation = locationFavoritesService.activeLocation {
             let isFavorite = locationFavoritesService.favoriteLocations.contains(activeLocation)
 
             return isFavorite ? SFSymbol.starFilled : SFSymbol.mapFilled

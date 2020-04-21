@@ -21,13 +21,13 @@ struct AddToFavoritesGroupContainer: Container {
     }
 
     private func didPerformAction() {
-        if let activeLocation = locationFavoritesService.getActiveLocation() {
+        if let activeLocation = locationFavoritesService.activeLocation {
             locationFavoritesService.toggleFavorite(location: activeLocation)
         }
     }
 
     private var shouldShowGroup: Bool {
-        guard let activeLocation = locationFavoritesService.getActiveLocation() else {
+        guard let activeLocation = locationFavoritesService.activeLocation else {
             return false
         }
 
@@ -35,7 +35,7 @@ struct AddToFavoritesGroupContainer: Container {
     }
 
     private var locationName: String {
-        guard let activeLocation = locationFavoritesService.getActiveLocation() else {
+        guard let activeLocation = locationFavoritesService.activeLocation else {
             return .empty
         }
 

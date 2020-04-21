@@ -47,7 +47,7 @@ struct SearchResultsGroupContainer: Container {
     }
 
     private func didSelect(location: RawLocation) {
-        locationFavoritesService.saveActiveLocation(location: location) {
+        locationFavoritesService.setActiveLocation(to: location) {
             self.locationPickerState.toggleLocationPicker(animated: true)
             self.weatherService.setShouldFetchUpdatedWeather()
         }
