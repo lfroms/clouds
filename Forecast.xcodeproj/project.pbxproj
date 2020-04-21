@@ -13,6 +13,11 @@
 		80042F1724284C2A005DA891 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 805A175022C53ADD00E1B4E2 /* LaunchScreen.storyboard */; };
 		800A4D2F244F575100D8CD86 /* AddToFavoritesGroupContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A4D2E244F575100D8CD86 /* AddToFavoritesGroupContainer.swift */; };
 		800A4D31244F575E00D8CD86 /* AddToFavoritesGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A4D30244F575E00D8CD86 /* AddToFavoritesGroup.swift */; };
+		800A4D36244F83A800D8CD86 /* DataSourceGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A4D35244F83A800D8CD86 /* DataSourceGroup.swift */; };
+		800A4D39244F852800D8CD86 /* OptionsGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A4D38244F852800D8CD86 /* OptionsGroup.swift */; };
+		800A4D3C244F859C00D8CD86 /* OptionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A4D3B244F859C00D8CD86 /* OptionRow.swift */; };
+		800A4D40244F8E7D00D8CD86 /* SettingsRadarSourceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A4D3F244F8E7D00D8CD86 /* SettingsRadarSourceContainer.swift */; };
+		800A4D42244F8E8600D8CD86 /* SettingsRadarSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A4D41244F8E8600D8CD86 /* SettingsRadarSource.swift */; };
 		801662A7244BEA75003034DF /* CustomSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801662A6244BEA75003034DF /* CustomSpinner.swift */; };
 		8016AACF243E2F0D00220B81 /* DayPickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8016AACE243E2F0D00220B81 /* DayPickerItem.swift */; };
 		8019F827240F4E1F00AFB0F1 /* MasterViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8019F826240F4E1F00AFB0F1 /* MasterViewLayout.swift */; };
@@ -222,6 +227,11 @@
 		800420D323FB11BB00C2879A /* String+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Empty.swift"; sourceTree = "<group>"; };
 		800A4D2E244F575100D8CD86 /* AddToFavoritesGroupContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToFavoritesGroupContainer.swift; sourceTree = "<group>"; };
 		800A4D30244F575E00D8CD86 /* AddToFavoritesGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToFavoritesGroup.swift; sourceTree = "<group>"; };
+		800A4D35244F83A800D8CD86 /* DataSourceGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceGroup.swift; sourceTree = "<group>"; };
+		800A4D38244F852800D8CD86 /* OptionsGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsGroup.swift; sourceTree = "<group>"; };
+		800A4D3B244F859C00D8CD86 /* OptionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionRow.swift; sourceTree = "<group>"; };
+		800A4D3F244F8E7D00D8CD86 /* SettingsRadarSourceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRadarSourceContainer.swift; sourceTree = "<group>"; };
+		800A4D41244F8E8600D8CD86 /* SettingsRadarSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRadarSource.swift; sourceTree = "<group>"; };
 		801662A6244BEA75003034DF /* CustomSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSpinner.swift; sourceTree = "<group>"; };
 		8016AACE243E2F0D00220B81 /* DayPickerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerItem.swift; sourceTree = "<group>"; };
 		8019F826240F4E1F00AFB0F1 /* MasterViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewLayout.swift; sourceTree = "<group>"; };
@@ -433,6 +443,41 @@
 			path = AddToFavoritesGroup;
 			sourceTree = "<group>";
 		};
+		800A4D34244F839300D8CD86 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				800A4D3A244F857C00D8CD86 /* Components */,
+				800A4D35244F83A800D8CD86 /* DataSourceGroup.swift */,
+				800A4D38244F852800D8CD86 /* OptionsGroup.swift */,
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
+		800A4D3A244F857C00D8CD86 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				800A4D3B244F859C00D8CD86 /* OptionRow.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		800A4D3D244F8C5D00D8CD86 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				800A4D3E244F8E6900D8CD86 /* RadarSource */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		800A4D3E244F8E6900D8CD86 /* RadarSource */ = {
+			isa = PBXGroup;
+			children = (
+				800A4D41244F8E8600D8CD86 /* SettingsRadarSource.swift */,
+				800A4D3F244F8E7D00D8CD86 /* SettingsRadarSourceContainer.swift */,
+			);
+			path = RadarSource;
+			sourceTree = "<group>";
+		};
 		8016AACD243E2E7E00220B81 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -466,6 +511,7 @@
 		802048C5240AE2E600DFB842 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				800A4D3D244F8C5D00D8CD86 /* Pages */,
 				80311BB6241E9D0F004BC6B4 /* Components */,
 				802048C6240AE2F300DFB842 /* SettingsSection.swift */,
 			);
@@ -592,6 +638,7 @@
 		80311BB6241E9D0F004BC6B4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				800A4D34244F839300D8CD86 /* Groups */,
 				80311BB7241E9D2D004BC6B4 /* LabeledGroup.swift */,
 				80311BB9241EA051004BC6B4 /* DistanceIndicator.swift */,
 				80311BBB241EA6B5004BC6B4 /* AttributionText.swift */,
@@ -1540,6 +1587,7 @@
 				8095A2F8244BA59D008C494F /* RadarMapViewContainer.swift in Sources */,
 				80EF84EE240F582100D4037B /* HourlyForecast.swift in Sources */,
 				805D6A1024104738002DEBAC /* DateHelper.swift in Sources */,
+				800A4D42244F8E8600D8CD86 /* SettingsRadarSource.swift in Sources */,
 				80C395AF2378A1DA0004B71D /* AppState.swift in Sources */,
 				8020F9532363D2390029FEB6 /* MasterView.swift in Sources */,
 				80C395A323787B9B0004B71D /* ObservedAtTime.swift in Sources */,
@@ -1553,12 +1601,14 @@
 				8095A2F6244BA50B008C494F /* RadarService.swift in Sources */,
 				80C777CD23FB2BEC004ABB2E /* LocationFavoritesService.swift in Sources */,
 				809C2A66241C63DA009FCF6A /* LocationPickerSectionModal.swift in Sources */,
+				800A4D36244F83A800D8CD86 /* DataSourceGroup.swift in Sources */,
 				80C777D723FB3BF7004ABB2E /* ShortFormWeather.swift in Sources */,
 				805D6A1724105E47002DEBAC /* TabControlContainer.swift in Sources */,
 				8056EE03244D3FC2004D0250 /* DayPickerContentSizePreferenceKey.swift in Sources */,
 				80AAC0282427F0DF00285C6D /* ConditionLayoutContainer.swift in Sources */,
 				80AAC01E2427EDD300285C6D /* ShrinkBackgroundForAppSection.swift in Sources */,
 				8099A20F23130CED00EE4F30 /* CustomSafariViewController.swift in Sources */,
+				800A4D39244F852800D8CD86 /* OptionsGroup.swift in Sources */,
 				80734AFE2410A512000693F4 /* GridStack.swift in Sources */,
 				8084FD98241D3903006A57DC /* CurrentLocationGroupContainer.swift in Sources */,
 				8048092E23FB4BC30019ACC2 /* WeatherLocationItem.swift in Sources */,
@@ -1568,6 +1618,7 @@
 				80FECAF523778361008AC653 /* RadarSection.swift in Sources */,
 				807B8E4A2377A7250075F131 /* MeasurementItem.swift in Sources */,
 				8034A1A4240E0E6400DF02A1 /* CGFloat+One.swift in Sources */,
+				800A4D3C244F859C00D8CD86 /* OptionRow.swift in Sources */,
 				80734AFB2410A435000693F4 /* MeasurementDescriptor.swift in Sources */,
 				80625427240C90CF00638C2F /* AppSection.swift in Sources */,
 				8085B7B4232DD0D500D4AEE4 /* Comparable+Clamped.swift in Sources */,
@@ -1587,6 +1638,7 @@
 				800420D423FB11BB00C2879A /* String+Empty.swift in Sources */,
 				8095A2F2244B89CA008C494F /* RadarCurrentDate.swift in Sources */,
 				80E0CB85241C673100D8A2D4 /* LocationPickerListSection.swift in Sources */,
+				800A4D40244F8E7D00D8CD86 /* SettingsRadarSourceContainer.swift in Sources */,
 				80E32BAE233454DD0087DBB3 /* SystemActivityIndicator.swift in Sources */,
 				80B8DB94232C7BBF00BAD200 /* WeatherBackground.swift in Sources */,
 				806A5BF8241468280093361D /* WeekSectionState.swift in Sources */,

@@ -15,7 +15,7 @@ struct AddToFavoritesGroup: View {
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             Button(action: action) {
-                HStack(alignment: .lastTextBaseline, spacing: 8) {
+                HStack(alignment: .center, spacing: 8) {
                     Image(systemName: SFSymbol.plusCircleFilled)
 
                     Text("Add \(locationName) to favourites")

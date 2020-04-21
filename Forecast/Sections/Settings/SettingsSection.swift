@@ -9,54 +9,27 @@
 import SwiftUI
 
 struct SettingsSection: View {
-    @EnvironmentObject private var weatherService: WeatherService
-
     var body: some View {
-        VStack(alignment: .leading, spacing: 24.0) {
-            SettingsSheetCloseButtonRow()
+        NavigationView {
+            ScrollView(.vertical, showsIndicators: true) {
+                VStack(alignment: .leading, spacing: 24) {
+                    AppMetadata()
+                        .equatable()
+                        .frame(minWidth: 0, maxWidth: .infinity)
 
-            AppMetadata()
-                .equatable()
-                .frame(minWidth: 0, maxWidth: .infinity)
+                    DataSourceGroup()
 
-            if stationName != nil {
-                LabeledGroup(label: "Observed at") {
-                    HStack {
-                        Text(self.stationName!)
-                            .font(.body)
-                            .fontWeight(.semibold)
+                    Divider()
 
-                        Spacer()
-
-                        if self.stationDistance != nil {
-                            DistanceIndicator(kilometers: self.stationDistance!)
-                                .padding(.bottom, -4)
-                                .foregroundColor(Color.white.opacity(0.8))
-                        }
-                    }
+                    OptionsGroup()
                 }
+                .padding(20)
             }
-
-            AttributionText(attribution: "Data: Environment and Climate Change Canada")
-                .equatable()
+            .navigationBarItems(trailing: SettingsSheetCloseButtonRow())
+            .navigationBarTitle("", displayMode: .inline)
         }
-        .padding(20.0)
         .foregroundColor(.white)
-        .frame(minHeight: 0, maxHeight: .infinity, alignment: .top)
-        .background(Color(red: 0.12, green: 0.12, blue: 0.12)
-            .edgesIgnoringSafeArea(.all))
-    }
-
-    private var stationName: String? {
-        weatherService.activeLocation?.location.stationName
-    }
-
-    private var stationDistance: Int? {
-        guard let metres = weatherService.activeLocation?.location.distance else {
-            return nil
-        }
-
-        return Int(metres) / 1000
+        .background(Color(red: 0.12, green: 0.12, blue: 0.12).edgesIgnoringSafeArea(.all))
     }
 }
 
