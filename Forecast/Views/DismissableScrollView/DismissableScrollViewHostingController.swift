@@ -84,6 +84,10 @@ class DismissableScrollViewHostingController<Content>: UIHostingController<Conte
 
     @objc private func didPerformPanGesture(_ sender: UIPanGestureRecognizer) {
         guard let scrollView = scrollView, scrollView.contentOffset.y < 0 else {
+            if let scrollView = self.scrollView {
+                sender.setTranslation(CGPoint(x: 0, y: 0), in: scrollView)
+            }
+
             return
         }
 
