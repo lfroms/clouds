@@ -99,7 +99,7 @@ struct OmniBarContainer: Container {
 
     private var auxiliaryIcon: String {
         locationPickerState.presented
-            ? SFSymbol.xMarkCircleFilled
+            ? SFSymbol.xMark
             : SFSymbol.sliderHorizontal3
     }
 }

@@ -15,6 +15,7 @@ final class SFSymbol {
     static let mapFilled: String = "map.fill"
     static let locationFilled: String = "location.fill"
     static let xMarkCircleFilled: String = "xmark.circle.fill"
+    static let xMark: String = "xmark"
     static let sliderHorizontal3: String = "slider.horizontal.3"
     static let sunMaxFilled: String = "sun.max.fill"
     static let moonFilled: String = "moon.fill"
