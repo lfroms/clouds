@@ -10,8 +10,8 @@ import Combine
 import SwiftUI
 
 struct LocationSearchToLocationPickerBinder: ViewModifier {
-    private var locationSearchService: LocationSearchService
-    private var locationPickerState: LocationPickerState
+    private let locationSearchService: LocationSearchService
+    private let locationPickerState: LocationPickerState
 
     private lazy var locationPickerStateCancellable: AnyCancellable? = nil
 

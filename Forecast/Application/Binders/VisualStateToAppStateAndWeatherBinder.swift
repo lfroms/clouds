@@ -10,10 +10,10 @@ import Combine
 import SwiftUI
 
 struct VisualStateToAppStateAndWeatherBinder: ViewModifier {
-    private var appState: AppState
-    private var weekSectionState: WeekSectionState
-    private var visualState: VisualState
-    private var weatherService: WeatherService
+    private let appState: AppState
+    private let weekSectionState: WeekSectionState
+    private let visualState: VisualState
+    private let weatherService: WeatherService
 
     private lazy var weatherCancellable: AnyCancellable? = nil
     private lazy var appStateCancellable: AnyCancellable? = nil

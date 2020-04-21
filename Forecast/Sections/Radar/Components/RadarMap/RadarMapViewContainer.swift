@@ -12,6 +12,7 @@ import SwiftUI
 struct RadarMapViewContainer: Container {
     @EnvironmentObject private var locationFavoritesService: LocationFavoritesService
     @EnvironmentObject private var locationService: LocationService
+    @EnvironmentObject private var settingsSheetState: SettingsSheetState
 
     @Binding var currentImage: Int
     var dates: [Date]
@@ -20,6 +21,8 @@ struct RadarMapViewContainer: Container {
         RadarMapView(
             currentImage: currentImage,
             dates: dates,
+            overlayOpacity: settingsSheetState.radarOpacity,
+            dataSource: settingsSheetState.radarSource,
             activeLocationCoordinates: activeLocationCoordinates
         )
         .equatable()

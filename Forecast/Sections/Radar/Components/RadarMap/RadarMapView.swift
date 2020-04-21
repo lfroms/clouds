@@ -12,6 +12,8 @@ import SwiftUI
 struct RadarMapView: UIViewRepresentable {
     var currentImage: Int
     var dates: [Date]
+    var overlayOpacity: Double
+    var dataSource: RadarProvider
     var activeLocationCoordinates: CLLocationCoordinate2D?
 
     func makeUIView(context: Context) -> MGLMapView {
@@ -41,6 +43,11 @@ struct RadarMapView: UIViewRepresentable {
     }
 
     func updateUIView(_ mapView: MGLMapView, context: Context) {
+        if dataSource != context.coordinator.lastDataSource {
+            mapView.style?.layers.removeAll(where: { $0.identifier.contains("radar-") })
+            context.coordinator.lastDataSource = dataSource
+        }
+
         addRasterSources(for: dates, to: mapView)
         showActiveRasterLayer(in: mapView)
     }
@@ -49,17 +56,25 @@ struct RadarMapView: UIViewRepresentable {
         dates.enumerated().reversed().forEach { index, date in
             let layerIdentifier = identifier(for: date)
 
-            guard mapView.style?.source(withIdentifier: layerIdentifier) == nil else {
-                return
+            if mapView.style?.source(withIdentifier: layerIdentifier) == nil {
+                switch dataSource {
+                case .msc:
+                    let source = EnvironmentCanadaRasterTileSource(identifier: layerIdentifier, date: date)
+                    mapView.style?.addSource(source)
+                default:
+                    let source = RainviewerRasterTileSource(identifier: layerIdentifier, date: date)
+                    mapView.style?.addSource(source)
+                }
             }
 
-            let source = EnvironmentCanadaRasterTileSource(identifier: layerIdentifier, date: date)
-            let rasterLayer = MGLRasterStyleLayer(identifier: layerIdentifier, source: source)
-            rasterLayer.rasterOpacity = NSExpression(forConstantValue: index == currentImage ? 0.75 : 0)
-            rasterLayer.rasterOpacityTransition = MGLTransition(duration: 0, delay: 0)
+            if mapView.style?.layer(withIdentifier: layerIdentifier) == nil,
+                let source = mapView.style?.source(withIdentifier: layerIdentifier) {
+                let rasterLayer = MGLRasterStyleLayer(identifier: layerIdentifier, source: source)
+                rasterLayer.rasterOpacity = NSExpression(forConstantValue: index == currentImage ? overlayOpacity : 0)
+                rasterLayer.rasterOpacityTransition = MGLTransition(duration: 0, delay: 0)
 
-            mapView.style?.addSource(source)
-            mapView.style?.addLayer(rasterLayer)
+                mapView.style?.addLayer(rasterLayer)
+            }
         }
     }
 
@@ -71,7 +86,7 @@ struct RadarMapView: UIViewRepresentable {
         let currentIdentifier = identifier(for: currentTimestamp)
 
         if let currentLayer = rasterLayer(withIdentifier: currentIdentifier, in: mapView) {
-            currentLayer.rasterOpacity = NSExpression(forConstantValue: 0.75)
+            currentLayer.rasterOpacity = NSExpression(forConstantValue: overlayOpacity)
             hideAllLayersExcept(currentLayer, in: mapView)
         }
     }
@@ -92,7 +107,15 @@ struct RadarMapView: UIViewRepresentable {
     }
 
     private func identifier(for date: Date) -> String {
-        "radar-\(date.timeIntervalSince1970)"
+        "radar-\(date.timeIntervalSince1970)-\(dataSource.rawValue)"
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator()
+    }
+
+    class Coordinator: NSObject {
+        var lastDataSource: RadarProvider?
     }
 }
 
@@ -101,5 +124,7 @@ extension RadarMapView: Equatable {
         lhs.currentImage == rhs.currentImage
             && lhs.dates == rhs.dates
             && lhs.activeLocationCoordinates == rhs.activeLocationCoordinates
+            && lhs.overlayOpacity == rhs.overlayOpacity
+            && lhs.dataSource == rhs.dataSource
     }
 }

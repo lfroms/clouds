@@ -11,7 +11,7 @@ import CoreLocation
 import SwiftUI
 
 struct RadarSection: View {
-    @ObservedObject private var radarService = RadarService()
+    @EnvironmentObject private var radarService: RadarService
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -28,7 +28,7 @@ struct RadarSection: View {
             .padding([.horizontal, .bottom], Dimension.RadarSection.RadarControls.bottomPadding)
         }
         .onAppear {
-            self.radarService.getRadarTimestamps()
+            self.radarService.getRadarTimestamps(for: SettingsSheetState().radarSource)
         }
     }
 }

@@ -120,6 +120,7 @@
 		808705682427D45F001110B2 /* TouchPassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808705672427D45F001110B2 /* TouchPassthroughView.swift */; };
 		8087056A2427D47E001110B2 /* DayPickerPagingViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808705692427D47E001110B2 /* DayPickerPagingViewCoordinator.swift */; };
 		8087056C2427D551001110B2 /* CustomPageSizeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8087056B2427D551001110B2 /* CustomPageSizeScrollView.swift */; };
+		809010B1244FB3B0003E56B1 /* RadarToSettingsStateBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809010B0244FB3B0003E56B1 /* RadarToSettingsStateBinder.swift */; };
 		8093C03F242720C500469406 /* DayPickerPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8093C03E242720C500469406 /* DayPickerPagingView.swift */; };
 		8093C0412427213D00469406 /* DayPickerPagingViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8093C0402427213D00469406 /* DayPickerPagingViewContainer.swift */; };
 		8095A2F2244B89CA008C494F /* RadarCurrentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095A2F1244B89CA008C494F /* RadarCurrentDate.swift */; };
@@ -335,6 +336,7 @@
 		808705672427D45F001110B2 /* TouchPassthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchPassthroughView.swift; sourceTree = "<group>"; };
 		808705692427D47E001110B2 /* DayPickerPagingViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerPagingViewCoordinator.swift; sourceTree = "<group>"; };
 		8087056B2427D551001110B2 /* CustomPageSizeScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageSizeScrollView.swift; sourceTree = "<group>"; };
+		809010B0244FB3B0003E56B1 /* RadarToSettingsStateBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarToSettingsStateBinder.swift; sourceTree = "<group>"; };
 		8093C03E242720C500469406 /* DayPickerPagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerPagingView.swift; sourceTree = "<group>"; };
 		8093C0402427213D00469406 /* DayPickerPagingViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerPagingViewContainer.swift; sourceTree = "<group>"; };
 		8095A2F1244B89CA008C494F /* RadarCurrentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarCurrentDate.swift; sourceTree = "<group>"; };
@@ -590,6 +592,7 @@
 				80D871B723F20F87001FBA94 /* LocationService.swift */,
 				80FB6C66240873250026DD83 /* LocationSearchService.swift */,
 				80C777CC23FB2BEC004ABB2E /* LocationFavoritesService.swift */,
+				8095A2F5244BA50B008C494F /* RadarService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -758,6 +761,7 @@
 				80D899792421A92A00E3D6E8 /* LocationSearchToLocationPickerBinder.swift */,
 				805D6A09241015F1002DEBAC /* VisualStateToAppStateAndWeatherBinder.swift */,
 				806A5BF9241468970093361D /* VisualStateToWeekSectionStateAndWeatherBinder.swift */,
+				809010B0244FB3B0003E56B1 /* RadarToSettingsStateBinder.swift */,
 			);
 			path = Binders;
 			sourceTree = "<group>";
@@ -1006,7 +1010,6 @@
 				8095A2F9244BA9C8008C494F /* Helpers */,
 				8083A81E244A289C00CE2E5E /* DataSources */,
 				8083A823244A579C00CE2E5E /* RadarTimestamps.graphql */,
-				8095A2F5244BA50B008C494F /* RadarService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1745,6 +1748,7 @@
 				80EF84E7240F52F000D4037B /* MasterViewContainer.swift in Sources */,
 				80AAC0212427F09F00285C6D /* DayNightSwitchContainer.swift in Sources */,
 				805D6A152410572F002DEBAC /* TabPreferenceKey.swift in Sources */,
+				809010B1244FB3B0003E56B1 /* RadarToSettingsStateBinder.swift in Sources */,
 				80C777D323FB3415004ABB2E /* CLLocationCoordinate2D.swift in Sources */,
 				80C8162A2363E2D700D33669 /* OmniBarAuxiliaryButton.swift in Sources */,
 				80F07DDE23FB8012005C43A3 /* AnimationPreset.swift in Sources */,

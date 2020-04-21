@@ -10,9 +10,9 @@ import Combine
 import SwiftUI
 
 struct WeatherToLocationBinder: ViewModifier {
-    private var weatherService: WeatherService
-    private var locationService: LocationService
-    private var locationFavoritesService: LocationFavoritesService
+    private let weatherService: WeatherService
+    private let locationService: LocationService
+    private let locationFavoritesService: LocationFavoritesService
 
     private lazy var locationChangedCancellable: AnyCancellable? = nil
     private lazy var shouldLoadWeatherCancellable: AnyCancellable? = nil
