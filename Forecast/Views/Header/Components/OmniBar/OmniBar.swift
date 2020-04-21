@@ -39,7 +39,7 @@ struct OmniBar: View, Equatable {
         .background(BlurView(style: .light, tint: 0.3).cornerRadius(26))
         .gesture(gesture)
         .scaleEffect(scaleEffect)
-        .animation(scaleAnimation)
+        .animation(scaleAnimation, value: [isPressed])
     }
 
     // MARK: - Animations & Gestures

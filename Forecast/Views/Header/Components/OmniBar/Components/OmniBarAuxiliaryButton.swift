@@ -17,6 +17,7 @@ struct OmniBarAuxiliaryButton: View, Equatable {
             Image(systemName: icon)
                 .frame(width: size, height: size)
                 .background(Circle().foregroundColor(Color.white.opacity(0.16)))
+                .animation(nil)
         }
         .padding(.trailing, 5)
     }
