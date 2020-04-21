@@ -13,9 +13,10 @@ struct WeatherLocationItem: View {
     var location: StoredLocation
     var weather: ShortFormWeather?
     var favorite: Bool = false
+    var isEditing: Bool = false
 
     var action: (StoredLocation) -> Void
-    var onStar: ((StoredLocation) -> Void)?
+    var onDelete: ((StoredLocation) -> Void)?
 
     internal enum Style: String {
         case current
@@ -32,20 +33,21 @@ struct WeatherLocationItem: View {
     }
 
     var body: some View {
-        LocationItem(color: color, action: { self.action(self.location) }) {
-            if self.style == .favorite {
-                LocationItemStarButton(isHighlighted: true, monochrome: true) {
-                    self.onStar?(self.location)
-                }
-            } else {
-                LocationItemIcon(name: self.style.symbolName)
+        HStack(alignment: .center, spacing: 22) {
+            LocationItem(color: color, action: { self.action(self.location) }) {
+                LocationItemIcon(name: self.style == .favorite ? SFSymbol.starFilled : self.style.symbolName)
+                LocationItemLabels(title: self.location.name, subtitle: self.location.regionName)
+                Spacer()
+                LocationItemTemperature(text: self.temperatureLabelText)
             }
 
-            LocationItemLabels(title: self.location.name, subtitle: self.location.regionName)
-
-            Spacer()
-
-            LocationItemTemperature(text: self.temperatureLabelText)
+            if isEditing {
+                LocationItemDeleteButton {
+                    self.onDelete?(self.location)
+                }
+                .padding(.trailing, 6)
+                .transition(AnyTransition.opacity.animation(.easeInOut))
+            }
         }
     }
 
@@ -72,6 +74,7 @@ extension WeatherLocationItem: Equatable {
             && lhs.location == rhs.location
             && lhs.weather == rhs.weather
             && lhs.favorite == rhs.favorite
+            && lhs.isEditing == rhs.isEditing
     }
 }
 
@@ -86,7 +89,7 @@ struct LocationItemWithWeather_Previews: PreviewProvider {
             ),
             weather: nil,
             action: { _ in },
-            onStar: { _ in }
+            onDelete: { _ in }
         )
     }
 }

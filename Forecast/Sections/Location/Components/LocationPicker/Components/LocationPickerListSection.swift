@@ -14,12 +14,20 @@ struct LocationPickerListSection<Content: View>: View {
 
     @Binding var loading: Bool
 
+    var auxiliaryButton: (text: String, action: () -> Void)?
     var content: () -> Content
 
-    init(label: String, value: String? = nil, loading: Binding<Bool>, @ViewBuilder content: @escaping () -> Content) {
+    @inlinable init(
+        label: String,
+        value: String? = nil,
+        loading: Binding<Bool>,
+        auxiliaryButton: (text: String, action: () -> Void)? = nil,
+        @ViewBuilder content: @escaping () -> Content
+    ) {
         self.label = label
         self.value = value
         self._loading = loading
+        self.auxiliaryButton = auxiliaryButton
         self.content = content
     }
 
@@ -40,6 +48,15 @@ struct LocationPickerListSection<Content: View>: View {
                 }
 
                 Spacer()
+
+                if auxiliaryButton != nil {
+                    Button(action: auxiliaryButton!.action, label: {
+                        Text(auxiliaryButton!.text.uppercased())
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.white.opacity(0.6))
+                    })
+                }
 
                 if loading {
                     AppActivityIndicator(style: .dark)

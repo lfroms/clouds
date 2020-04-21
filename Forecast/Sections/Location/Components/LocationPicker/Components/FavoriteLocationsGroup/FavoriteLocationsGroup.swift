@@ -15,10 +15,13 @@ struct FavoriteLocationsGroup: View {
     var onSelectLocation: (StoredLocation) -> Void
     var onDelete: (StoredLocation) -> Void
 
+    @State private var isEditing: Bool = false
+
     var body: some View {
         LocationPickerListSection(
             label: "Favourite locations",
-            loading: .constant(false)
+            loading: .constant(false),
+            auxiliaryButton: auxiliaryButton
         ) {
             if self.locations.isEmpty {
                 Text("You haven't added any favourite locations.")
@@ -32,13 +35,38 @@ struct FavoriteLocationsGroup: View {
                     style: .favorite,
                     location: favorite,
                     weather: self.locationsWeather[safe: index],
+                    isEditing: self.isEditing,
                     action: self.onSelectLocation,
-                    onStar: self.onDelete
+                    onDelete: self.handleDelete(_:)
                 )
                 .equatable()
                 .transition(.fadeAndScale)
             }
         }
+        .onDisappear {
+            self.isEditing = false
+        }
+    }
+
+    private func handleDelete(_ location: StoredLocation) {
+        if locations.isEmpty {
+            isEditing = false
+        }
+
+        onDelete(location)
+    }
+
+    private var auxiliaryButton: (text: String, action: () -> Void)? {
+        guard !locations.isEmpty else {
+            return nil
+        }
+
+        return (
+            text: isEditing ? "Done" : "Edit",
+            action: {
+                self.isEditing.toggle()
+            }
+        )
     }
 }
 
