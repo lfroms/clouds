@@ -16,6 +16,7 @@ struct LocationPicker: View {
             if locationSearchService.searchQuery.isEmpty {
                 CurrentLocationGroupContainer()
                 FavoriteLocationsGroupContainer()
+                AddToFavoritesGroupContainer()
             } else {
                 SearchResultsGroupContainer()
             }

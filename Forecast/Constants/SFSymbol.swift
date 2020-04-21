@@ -35,5 +35,6 @@ final class SFSymbol {
     static let playFilled: String = "play.fill"
     static let pauseFilled: String = "pause.fill"
 
+    static let plusCircleFilled: String = "plus.circle.fill"
     static let minusCircleFilled: String = "minus.circle.fill"
 }

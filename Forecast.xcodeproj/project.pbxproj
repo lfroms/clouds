@@ -11,6 +11,8 @@
 		800194DF232EDCCF00066D37 /* UIShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800194DE232EDCCF00066D37 /* UIShadowView.swift */; };
 		800420D423FB11BB00C2879A /* String+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800420D323FB11BB00C2879A /* String+Empty.swift */; };
 		80042F1724284C2A005DA891 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 805A175022C53ADD00E1B4E2 /* LaunchScreen.storyboard */; };
+		800A4D2F244F575100D8CD86 /* AddToFavoritesGroupContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A4D2E244F575100D8CD86 /* AddToFavoritesGroupContainer.swift */; };
+		800A4D31244F575E00D8CD86 /* AddToFavoritesGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A4D30244F575E00D8CD86 /* AddToFavoritesGroup.swift */; };
 		801662A7244BEA75003034DF /* CustomSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801662A6244BEA75003034DF /* CustomSpinner.swift */; };
 		8016AACF243E2F0D00220B81 /* DayPickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8016AACE243E2F0D00220B81 /* DayPickerItem.swift */; };
 		8019F827240F4E1F00AFB0F1 /* MasterViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8019F826240F4E1F00AFB0F1 /* MasterViewLayout.swift */; };
@@ -218,6 +220,8 @@
 		800194DC232EDC8100066D37 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		800194DE232EDCCF00066D37 /* UIShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIShadowView.swift; sourceTree = "<group>"; };
 		800420D323FB11BB00C2879A /* String+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Empty.swift"; sourceTree = "<group>"; };
+		800A4D2E244F575100D8CD86 /* AddToFavoritesGroupContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToFavoritesGroupContainer.swift; sourceTree = "<group>"; };
+		800A4D30244F575E00D8CD86 /* AddToFavoritesGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToFavoritesGroup.swift; sourceTree = "<group>"; };
 		801662A6244BEA75003034DF /* CustomSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSpinner.swift; sourceTree = "<group>"; };
 		8016AACE243E2F0D00220B81 /* DayPickerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerItem.swift; sourceTree = "<group>"; };
 		8019F826240F4E1F00AFB0F1 /* MasterViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewLayout.swift; sourceTree = "<group>"; };
@@ -420,6 +424,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		800A4D2D244F573600D8CD86 /* AddToFavoritesGroup */ = {
+			isa = PBXGroup;
+			children = (
+				800A4D30244F575E00D8CD86 /* AddToFavoritesGroup.swift */,
+				800A4D2E244F575100D8CD86 /* AddToFavoritesGroupContainer.swift */,
+			);
+			path = AddToFavoritesGroup;
+			sourceTree = "<group>";
+		};
 		8016AACD243E2E7E00220B81 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1224,6 +1237,7 @@
 				80B5E7A823FA3E6A001729E0 /* LocationItem */,
 				8084FD94241D38E5006A57DC /* CurrentLocationGroup */,
 				8084FD99241D390F006A57DC /* FavoriteLocationsGroup */,
+				800A4D2D244F573600D8CD86 /* AddToFavoritesGroup */,
 				8084FD9E241D392A006A57DC /* SearchResultsGroup */,
 				80E0CB84241C673100D8A2D4 /* LocationPickerListSection.swift */,
 			);
@@ -1609,10 +1623,12 @@
 				8038AA18242400BB0050202C /* SearchResultLocationItem.swift in Sources */,
 				805D6A032410054A002DEBAC /* AppHostingController.swift in Sources */,
 				80AAC0232427F0A900285C6D /* DayNightSwitch.swift in Sources */,
+				800A4D2F244F575100D8CD86 /* AddToFavoritesGroupContainer.swift in Sources */,
 				80E5D61C23773B46004A1D6B /* UIView+PinEdges.swift in Sources */,
 				80A016022376638900A72C2F /* MainPagingScrollViewController.swift in Sources */,
 				80F558432422EC1C00906FCB /* HourlyForecastSeparator.swift in Sources */,
 				80B1B3282376683A000EA6DD /* DrawerScrollView.swift in Sources */,
+				800A4D31244F575E00D8CD86 /* AddToFavoritesGroup.swift in Sources */,
 				80D871B323F1FF1E001FBA94 /* TransparentTouchScrollView.swift in Sources */,
 				8099A20D23130B8500EE4F30 /* SafariView.swift in Sources */,
 				805A174822C53ADB00E1B4E2 /* SceneDelegate.swift in Sources */,
