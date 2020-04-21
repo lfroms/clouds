@@ -21,6 +21,7 @@ struct OptionsGroup: View {
                     }
                     .pickerStyle(SegmentedPickerStyle())
                 }
+                .disabled(true) // TODO: Implement
 
                 Divider()
 
