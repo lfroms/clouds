@@ -17,7 +17,7 @@ struct SettingsRadarSource: View {
                 LabeledGroup {
                     VStack(alignment: .leading, spacing: 14) {
                         Button(action: { self.selectedSource = .environmentCanada }) {
-                            OptionRow(symbolName: "map.fill", color: .red, label: "MSC (Canada & USA)") {
+                            OptionRow(symbolName: "map.fill", color: .red, label: "ECCC (Canada & USA)") {
                                 if self.selectedSource == .environmentCanada {
                                     Image(systemName: "checkmark.circle.fill")
                                 }
@@ -36,7 +36,7 @@ struct SettingsRadarSource: View {
                     }
                 }
 
-                Text("MSC: Meteorological Service of Canada")
+                Text("ECCC: Environment and Climate Change Canada")
                     .font(.caption)
                     .foregroundColor(AppColor.Display.secondary)
             }

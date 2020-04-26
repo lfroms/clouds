@@ -14,17 +14,6 @@ struct OptionsGroup: View {
     var body: some View {
         LabeledGroup(label: "Settings") {
             VStack(alignment: .leading, spacing: 14) {
-                OptionRow(symbolName: "thermometer", color: .blue, label: "Units") {
-                    Picker("Temperature Units", selection: self.$settingsSheetState.isImperial) {
-                        Text("Imperial").tag(true)
-                        Text("Metric").tag(false)
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                }
-                .disabled(true) // TODO: Implement
-
-                Divider()
-
                 OptionRow(symbolName: "viewfinder", color: .red, label: "Radar Opacity") {
                     Slider(value: self.$settingsSheetState.radarOpacity, in: 0.5...1.0, step: 0.12)
                 }
