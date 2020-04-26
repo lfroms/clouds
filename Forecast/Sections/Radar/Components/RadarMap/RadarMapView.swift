@@ -48,6 +48,11 @@ struct RadarMapView: UIViewRepresentable {
             context.coordinator.lastDataSource = dataSource
         }
 
+        if let newLocation = activeLocationCoordinates, newLocation != context.coordinator.lastLocation {
+            mapView.setCenter(newLocation, animated: true)
+            context.coordinator.lastLocation = newLocation
+        }
+
         addRasterSources(for: dates, to: mapView)
         showActiveRasterLayer(in: mapView)
     }
@@ -116,6 +121,7 @@ struct RadarMapView: UIViewRepresentable {
 
     class Coordinator: NSObject {
         var lastDataSource: RadarProvider?
+        var lastLocation: CLLocationCoordinate2D?
     }
 }
 
