@@ -14,6 +14,7 @@ struct WeatherAlert: Hashable, Equatable {
     var date: DateInRegion
     var type: WarningType
     var status: WarningStatus
+    var url: URL?
 
     internal enum WarningType: Equatable {
         case warning

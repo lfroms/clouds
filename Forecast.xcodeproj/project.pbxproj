@@ -58,6 +58,7 @@
 		8038DB4923F0ACAD00F7B033 /* LocationPickerSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038DB4823F0ACAD00F7B033 /* LocationPickerSection.swift */; };
 		8039628322D6CC4B003FEAB3 /* HourlyForecastItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8039628222D6CC4B003FEAB3 /* HourlyForecastItemData.swift */; };
 		8048092E23FB4BC30019ACC2 /* WeatherLocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8048092D23FB4BC30019ACC2 /* WeatherLocationItem.swift */; };
+		804AB0C324562070000CA915 /* AlertListCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AB0C224562070000CA915 /* AlertListCloseButton.swift */; };
 		8050327F22D25C7500D376C3 /* HighLowStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050327E22D25C7500D376C3 /* HighLowStack.swift */; };
 		80504F782332DB4700DB4FAD /* HourlyForecastDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80504F772332DB4700DB4FAD /* HourlyForecastDetail.swift */; };
 		8056EE03244D3FC2004D0250 /* DayPickerContentSizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056EE02244D3FC2004D0250 /* DayPickerContentSizePreferenceKey.swift */; };
@@ -125,6 +126,9 @@
 		8093C0412427213D00469406 /* DayPickerPagingViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8093C0402427213D00469406 /* DayPickerPagingViewContainer.swift */; };
 		8094307824560B43003632EC /* ResettableScrollViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80860F8D24560A330049BAEA /* ResettableScrollViewModifier.swift */; };
 		8094307924560B43003632EC /* ResettableScrollViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80860F8E24560A330049BAEA /* ResettableScrollViewRepresentable.swift */; };
+		8094307D24561452003632EC /* AlertListContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8094307C24561452003632EC /* AlertListContainer.swift */; };
+		8094307F24561459003632EC /* AlertList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8094307E24561459003632EC /* AlertList.swift */; };
+		8094308724561831003632EC /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8094308624561831003632EC /* AlertItem.swift */; };
 		8095A2F2244B89CA008C494F /* RadarCurrentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095A2F1244B89CA008C494F /* RadarCurrentDate.swift */; };
 		8095A2F6244BA50B008C494F /* RadarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095A2F5244BA50B008C494F /* RadarService.swift */; };
 		8095A2F8244BA59D008C494F /* RadarMapViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095A2F7244BA59D008C494F /* RadarMapViewContainer.swift */; };
@@ -272,6 +276,7 @@
 		8038DB4823F0ACAD00F7B033 /* LocationPickerSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerSection.swift; sourceTree = "<group>"; };
 		8039628222D6CC4B003FEAB3 /* HourlyForecastItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastItemData.swift; sourceTree = "<group>"; };
 		8048092D23FB4BC30019ACC2 /* WeatherLocationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocationItem.swift; sourceTree = "<group>"; };
+		804AB0C224562070000CA915 /* AlertListCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertListCloseButton.swift; sourceTree = "<group>"; };
 		8050327E22D25C7500D376C3 /* HighLowStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLowStack.swift; sourceTree = "<group>"; };
 		80504F772332DB4700DB4FAD /* HourlyForecastDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastDetail.swift; sourceTree = "<group>"; };
 		8056EE02244D3FC2004D0250 /* DayPickerContentSizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerContentSizePreferenceKey.swift; sourceTree = "<group>"; };
@@ -340,6 +345,9 @@
 		809010B0244FB3B0003E56B1 /* RadarToSettingsStateBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarToSettingsStateBinder.swift; sourceTree = "<group>"; };
 		8093C03E242720C500469406 /* DayPickerPagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerPagingView.swift; sourceTree = "<group>"; };
 		8093C0402427213D00469406 /* DayPickerPagingViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerPagingViewContainer.swift; sourceTree = "<group>"; };
+		8094307C24561452003632EC /* AlertListContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertListContainer.swift; sourceTree = "<group>"; };
+		8094307E24561459003632EC /* AlertList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertList.swift; sourceTree = "<group>"; };
+		8094308624561831003632EC /* AlertItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
 		8095A2F1244B89CA008C494F /* RadarCurrentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarCurrentDate.swift; sourceTree = "<group>"; };
 		8095A2F5244BA50B008C494F /* RadarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarService.swift; sourceTree = "<group>"; };
 		8095A2F7244BA59D008C494F /* RadarMapViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarMapViewContainer.swift; sourceTree = "<group>"; };
@@ -521,6 +529,7 @@
 		8020F9502363D1A10029FEB6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8094307B24561439003632EC /* AlertList */,
 				8066FDE72364ECA90067F362 /* AppLayout */,
 				8020F9512363D2010029FEB6 /* Master */,
 				80D6346024230B3100F7E96D /* GeometryGetter */,
@@ -999,6 +1008,25 @@
 				808705692427D47E001110B2 /* DayPickerPagingViewCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		8094307B24561439003632EC /* AlertList */ = {
+			isa = PBXGroup;
+			children = (
+				80943080245614A9003632EC /* Components */,
+				8094307E24561459003632EC /* AlertList.swift */,
+				8094307C24561452003632EC /* AlertListContainer.swift */,
+			);
+			path = AlertList;
+			sourceTree = "<group>";
+		};
+		80943080245614A9003632EC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8094308624561831003632EC /* AlertItem.swift */,
+				804AB0C224562070000CA915 /* AlertListCloseButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		8095A2F3244BA33A008C494F /* RadarMap */ = {
@@ -1609,9 +1637,12 @@
 				8099A20F23130CED00EE4F30 /* CustomSafariViewController.swift in Sources */,
 				800A4D39244F852800D8CD86 /* OptionsGroup.swift in Sources */,
 				80734AFE2410A512000693F4 /* GridStack.swift in Sources */,
+				804AB0C324562070000CA915 /* AlertListCloseButton.swift in Sources */,
 				8084FD98241D3903006A57DC /* CurrentLocationGroupContainer.swift in Sources */,
 				8048092E23FB4BC30019ACC2 /* WeatherLocationItem.swift in Sources */,
 				806A5BF224144EC40093361D /* LocationPickerState.swift in Sources */,
+				8094307F24561459003632EC /* AlertList.swift in Sources */,
+				8094307D24561452003632EC /* AlertListContainer.swift in Sources */,
 				802C0D9C236903C6009A22BA /* SunriseSunsetTime.swift in Sources */,
 				80504F782332DB4700DB4FAD /* HourlyForecastDetail.swift in Sources */,
 				80FECAF523778361008AC653 /* RadarSection.swift in Sources */,
@@ -1639,6 +1670,7 @@
 				8095A2F2244B89CA008C494F /* RadarCurrentDate.swift in Sources */,
 				80E0CB85241C673100D8A2D4 /* LocationPickerListSection.swift in Sources */,
 				802171842455255E00D6C958 /* WeatherImageStyle.swift in Sources */,
+				8094308724561831003632EC /* AlertItem.swift in Sources */,
 				800A4D40244F8E7D00D8CD86 /* SettingsRadarSourceContainer.swift in Sources */,
 				80E32BAE233454DD0087DBB3 /* SystemActivityIndicator.swift in Sources */,
 				80B8DB94232C7BBF00BAD200 /* WeatherBackground.swift in Sources */,

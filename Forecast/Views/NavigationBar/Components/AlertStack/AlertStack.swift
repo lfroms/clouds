@@ -10,12 +10,12 @@ import SwiftUI
 
 struct AlertStack: View {
     var alerts: [WeatherAlert]
-    var action: (WeatherAlert) -> Void
+    var action: () -> Void
 
     var body: some View {
         HStack(alignment: .center, spacing: 6) {
             ForEach(alerts, id: \.self) { alert in
-                Button(action: { self.action(alert) }) {
+                Button(action: self.action) {
                     AlertIndicator(alert: alert)
                         .equatable()
                 }
@@ -32,6 +32,6 @@ extension AlertStack: Equatable {
 
 struct AlertStack_Previews: PreviewProvider {
     static var previews: some View {
-        AlertStack(alerts: [], action: { _ in })
+        AlertStack(alerts: [], action: {})
     }
 }

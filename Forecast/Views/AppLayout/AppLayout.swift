@@ -23,6 +23,7 @@ struct AppLayout: View {
                     }
                     .edgesIgnoringSafeArea(.top)
                 }
+                .overlay(AlertListContainer())
 
                 NavigationBar()
                     .equatable()

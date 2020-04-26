@@ -32,7 +32,8 @@ struct AlertIndicator_Previews: PreviewProvider {
                 summary: .empty,
                 date: .init(),
                 type: .warning,
-                status: .active
+                status: .active,
+                url: URL(string: "https://weather.gc.ca")
             )
         )
     }

@@ -10,14 +10,13 @@ import SwiftUI
 
 struct AlertStackContainer: Container {
     @EnvironmentObject private var weatherService: WeatherService
-    @State private var showWarningDetails: Bool = false
+    @EnvironmentObject private var appState: AppState
 
     @ViewBuilder
     var body: some View {
         if alerts.count > 0 {
             AlertStack(alerts: alerts, action: handleAlertAction)
                 .equatable()
-                .sheet(isPresented: $showWarningDetails, content: renderSheet)
         }
     }
 
@@ -27,7 +26,8 @@ struct AlertStackContainer: Container {
                 summary: $0.title,
                 date: Date(seconds: $0.time).convertTo(region: .current),
                 type: warningTypeFor(event: $0),
-                status: warningStatusFor(event: $0)
+                status: warningStatusFor(event: $0),
+                url: URL(string: $0.url)
             )
         } ?? []
     }
@@ -52,18 +52,8 @@ struct AlertStackContainer: Container {
         }
     }
 
-    private func renderSheet() -> AnyView {
-        guard let urlString = weatherService.weather?.alerts.first?.url, let url = URL(string: urlString) else {
-            return AnyView(EmptyView())
-        }
-
-        return AnyView(SafariView(url: url, readerMode: true)
-            .edgesIgnoringSafeArea(.all)
-        )
-    }
-
-    private func handleAlertAction(alert: WeatherAlert) {
-        showWarningDetails.toggle()
+    private func handleAlertAction() {
+        appState.showingAlerts.toggle()
     }
 }
 

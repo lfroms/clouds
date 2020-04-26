@@ -39,6 +39,8 @@ final class SFSymbol {
     static let plusCircleFilled: String = "plus.circle.fill"
     static let minusCircleFilled: String = "minus.circle.fill"
 
+    static let chevronRight: String = "chevron.right"
+
     final class Forecast {
         static let sunny: String = "sun.max.fill"
         static let partlySunny: String = "cloud.sun.fill"
