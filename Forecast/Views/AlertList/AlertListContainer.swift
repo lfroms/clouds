@@ -19,7 +19,7 @@ struct AlertListContainer: View {
         ZStack(alignment: .bottom) {
             ZStack {
                 if appState.showingAlerts {
-                    Color.black.opacity(0.85).edgesIgnoringSafeArea(.all)
+                    Color.black.opacity(0.88).edgesIgnoringSafeArea(.all)
                         .transition(AnyTransition.opacity.animation(.easeInOut))
                 }
             }

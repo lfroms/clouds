@@ -15,7 +15,7 @@ struct AlertListCloseButton: View {
         Button(action: action) {
             Image(systemName: SFSymbol.xMark)
                 .foregroundColor(Color.white.opacity(0.8))
-                .font(Font.system(size: 12).weight(.bold))
+                .font(Font.system(size: 14).weight(.bold))
                 .frame(width: 37, height: 37, alignment: .center)
                 .background(Color.white.opacity(0.25))
                 .cornerRadius(.infinity)
