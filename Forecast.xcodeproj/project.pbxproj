@@ -41,7 +41,6 @@
 		803028D822CEE56D0053F639 /* ConditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028D722CEE56D0053F639 /* ConditionView.swift */; };
 		803028E522CEE7970053F639 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803028E422CEE7970053F639 /* OverviewView.swift */; };
 		80305321240E17FE00FDAC69 /* SunriseSunsetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80305320240E17FE00FDAC69 /* SunriseSunsetData.swift */; };
-		80305323240E182300FDAC69 /* ObservedAtData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80305322240E182300FDAC69 /* ObservedAtData.swift */; };
 		80311BB8241E9D2D004BC6B4 /* LabeledGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80311BB7241E9D2D004BC6B4 /* LabeledGroup.swift */; };
 		80311BBA241EA051004BC6B4 /* DistanceIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80311BB9241EA051004BC6B4 /* DistanceIndicator.swift */; };
 		80311BBC241EA6B5004BC6B4 /* AttributionText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80311BBB241EA6B5004BC6B4 /* AttributionText.swift */; };
@@ -153,7 +152,6 @@
 		80B8DB92232C768000BAD200 /* WeatherIllustration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B8DB91232C768000BAD200 /* WeatherIllustration.swift */; };
 		80B8DB94232C7BBF00BAD200 /* WeatherBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B8DB93232C7BBF00BAD200 /* WeatherBackground.swift */; };
 		80C1693623FA435D00F22812 /* CLLocationCoordinate2D+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C1693523FA435D00F22812 /* CLLocationCoordinate2D+Codable.swift */; };
-		80C395A323787B9B0004B71D /* ObservedAtTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395A223787B9B0004B71D /* ObservedAtTime.swift */; };
 		80C395A523787F660004B71D /* Date+TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395A423787F660004B71D /* Date+TimeAgo.swift */; };
 		80C395AA23788A6B0004B71D /* AppActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395A923788A6B0004B71D /* AppActivityIndicator.swift */; };
 		80C395AD23789FDD0004B71D /* RoundedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */; };
@@ -256,7 +254,6 @@
 		803028D722CEE56D0053F639 /* ConditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionView.swift; sourceTree = "<group>"; };
 		803028E422CEE7970053F639 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		80305320240E17FE00FDAC69 /* SunriseSunsetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetData.swift; sourceTree = "<group>"; };
-		80305322240E182300FDAC69 /* ObservedAtData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedAtData.swift; sourceTree = "<group>"; };
 		80311BB7241E9D2D004BC6B4 /* LabeledGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledGroup.swift; sourceTree = "<group>"; };
 		80311BB9241EA051004BC6B4 /* DistanceIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceIndicator.swift; sourceTree = "<group>"; };
 		80311BBB241EA6B5004BC6B4 /* AttributionText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributionText.swift; sourceTree = "<group>"; };
@@ -369,7 +366,6 @@
 		80B8DB91232C768000BAD200 /* WeatherIllustration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIllustration.swift; sourceTree = "<group>"; };
 		80B8DB93232C7BBF00BAD200 /* WeatherBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBackground.swift; sourceTree = "<group>"; };
 		80C1693523FA435D00F22812 /* CLLocationCoordinate2D+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Codable.swift"; sourceTree = "<group>"; };
-		80C395A223787B9B0004B71D /* ObservedAtTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedAtTime.swift; sourceTree = "<group>"; };
 		80C395A423787F660004B71D /* Date+TimeAgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+TimeAgo.swift"; sourceTree = "<group>"; };
 		80C395A923788A6B0004B71D /* AppActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppActivityIndicator.swift; sourceTree = "<group>"; };
 		80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerShape.swift; sourceTree = "<group>"; };
@@ -625,7 +621,6 @@
 			children = (
 				8030531F240E17F300FDAC69 /* Models */,
 				802C0D9B236903C6009A22BA /* SunriseSunsetTime.swift */,
-				80C395A223787B9B0004B71D /* ObservedAtTime.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -634,7 +629,6 @@
 			isa = PBXGroup;
 			children = (
 				80305320240E17FE00FDAC69 /* SunriseSunsetData.swift */,
-				80305322240E182300FDAC69 /* ObservedAtData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1578,14 +1572,12 @@
 				80C777DC23FB4938004ABB2E /* LocationItemIcon.swift in Sources */,
 				805A174622C53ADB00E1B4E2 /* AppDelegate.swift in Sources */,
 				8083A826244A5CF700CE2E5E /* RainviewerRasterTileSource.swift in Sources */,
-				80305323240E182300FDAC69 /* ObservedAtData.swift in Sources */,
 				80AAC02B2427F0F200285C6D /* ConditionIconDetail.swift in Sources */,
 				8095A2F8244BA59D008C494F /* RadarMapViewContainer.swift in Sources */,
 				80EF84EE240F582100D4037B /* HourlyForecast.swift in Sources */,
 				800A4D42244F8E8600D8CD86 /* SettingsRadarSource.swift in Sources */,
 				80C395AF2378A1DA0004B71D /* AppState.swift in Sources */,
 				8020F9532363D2390029FEB6 /* MasterView.swift in Sources */,
-				80C395A323787B9B0004B71D /* ObservedAtTime.swift in Sources */,
 				806A5BF424144F800093361D /* SettingsSheetState.swift in Sources */,
 				8066FDED2364EE030067F362 /* NowSection.swift in Sources */,
 				80D1896D22D03A2F00E56DB1 /* HighLowView.swift in Sources */,

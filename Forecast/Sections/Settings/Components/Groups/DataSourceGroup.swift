@@ -33,13 +33,28 @@ struct DataSourceGroup: View {
                 }
             }
 
-            AttributionText(attribution: "Data: Environment and Climate Change Canada")
-                .equatable()
+            VStack(alignment: .leading, spacing: 4) {
+                if lastUpdatedDate != nil {
+                    AttributionText(attribution: "Last updated: \(lastUpdatedDate!)")
+                        .equatable()
+                }
+
+                AttributionText(attribution: "Data: Environment and Climate Change Canada")
+                    .equatable()
+            }
         }
     }
 
     private var stationName: String? {
         weatherService.weather?.location.stationName
+    }
+
+    private var lastUpdatedDate: String? {
+        guard let stamp = weatherService.weather?.currently.time else {
+            return nil
+        }
+
+        return Date(seconds: stamp).in(region: .current).toFormat("EEEE, MMMM d 'at' h:mm a")
     }
 
     private var stationDistance: Int? {

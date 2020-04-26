@@ -17,7 +17,7 @@ struct HeaderAccessoriesContainer: Container {
         HeaderAccessories(
             sunriseSunset: sunriseSunset,
             sunriseSunsetHidden: sunriseSunsetHidden,
-            observedAt: observedAt
+            loading: weatherService.loading
         )
         .equatable()
         .opacity(hidden ? 0 : 1)
@@ -37,14 +37,6 @@ struct HeaderAccessoriesContainer: Container {
         }
 
         return SunriseSunsetData(sunrise: sunriseTime, sunset: sunsetTime)
-    }
-
-    private var observedAt: ObservedAtData {
-        ObservedAtData(
-            loading: weatherService.loading,
-            timestamp: weatherService.weather?.currently.time,
-            action: weatherService.setShouldFetchUpdatedWeather
-        )
     }
 }
 

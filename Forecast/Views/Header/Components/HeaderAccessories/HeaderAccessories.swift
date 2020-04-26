@@ -11,7 +11,7 @@ import SwiftUI
 struct HeaderAccessories: View, Equatable {
     var sunriseSunset: SunriseSunsetData?
     var sunriseSunsetHidden: Bool
-    var observedAt: ObservedAtData
+    var loading: Bool
 
     var body: some View {
         HStack {
@@ -26,12 +26,11 @@ struct HeaderAccessories: View, Equatable {
 
             Spacer()
 
-            ObservedAtTime(
-                loading: observedAt.loading,
-                date: observedAt.date,
-                action: observedAt.action
-            )
-            .equatable()
+            if loading {
+                AppActivityIndicator(style: .dark)
+                    .equatable()
+                    .opacity(0.8)
+            }
         }
         .foregroundColor(AppColor.Display.secondaryBright)
     }
@@ -41,7 +40,7 @@ struct HeaderAccessories: View, Equatable {
     static func == (lhs: HeaderAccessories, rhs: HeaderAccessories) -> Bool {
         lhs.sunriseSunset == rhs.sunriseSunset
             && lhs.sunriseSunsetHidden == rhs.sunriseSunsetHidden
-            && lhs.observedAt == rhs.observedAt
+            && lhs.loading == rhs.loading
     }
 }
 
@@ -50,7 +49,7 @@ struct HeaderAccessories_Previews: PreviewProvider {
         HeaderAccessories(
             sunriseSunset: nil,
             sunriseSunsetHidden: false,
-            observedAt: ObservedAtData(loading: false, timestamp: nil, action: {})
+            loading: false
         )
     }
 }
