@@ -12,7 +12,7 @@ struct WeatherLocationItem: View {
     var style: Style
     var location: StoredLocation
     var favorite: Bool = false
-    var isEditing: Bool = false
+    @Binding var isEditing: Bool
 
     var action: (StoredLocation) -> Void
     var onDelete: ((StoredLocation) -> Void)?
@@ -39,8 +39,10 @@ struct WeatherLocationItem: View {
                 LocationItemIcon(name: self.style == .favorite ? SFSymbol.starFilled : self.style.symbolName)
                 LocationItemLabels(title: self.location.name, subtitle: self.location.regionName)
                 Spacer()
-                LocationItemTemperature(text: self.temperatureLabelText)
-                    .animation(nil)
+
+                if self.temperatureLabelText != nil {
+                    LocationItemTemperature(text: self.temperatureLabelText!)
+                }
             }
 
             if isEditing {
@@ -56,9 +58,9 @@ struct WeatherLocationItem: View {
         }
     }
 
-    private var temperatureLabelText: String {
+    private var temperatureLabelText: String? {
         guard let temperature = viewModel.weather?.currently.temperature else {
-            return .empty
+            return nil
         }
 
         return "\(Int(temperature.rounded() + 0.0))°"
@@ -78,7 +80,6 @@ extension WeatherLocationItem: Equatable {
         lhs.style == rhs.style
             && lhs.location == rhs.location
             && lhs.favorite == rhs.favorite
-            && lhs.isEditing == rhs.isEditing
     }
 }
 
@@ -91,6 +92,7 @@ struct LocationItemWithWeather_Previews: PreviewProvider {
                 regionName: "ON, Canada",
                 coordinate: .init()
             ),
+            isEditing: .constant(false),
             action: { _ in },
             onDelete: { _ in }
         )

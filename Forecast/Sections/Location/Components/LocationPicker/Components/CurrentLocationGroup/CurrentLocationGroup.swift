@@ -22,6 +22,7 @@ struct CurrentLocationGroup: View {
             WeatherLocationItem(
                 style: .current,
                 location: self.location,
+                isEditing: .constant(false),
                 action: self.onSelectLocation
             )
             .equatable()

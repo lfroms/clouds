@@ -33,7 +33,7 @@ struct FavoriteLocationsGroup: View {
                 WeatherLocationItem(
                     style: .favorite,
                     location: favorite,
-                    isEditing: self.isEditing,
+                    isEditing: self.$isEditing,
                     action: self.onSelectLocation,
                     onDelete: self.handleDelete(_:)
                 )
