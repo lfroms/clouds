@@ -31,7 +31,6 @@
 		802171842455255E00D6C958 /* WeatherImageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802171832455255D00D6C958 /* WeatherImageStyle.swift */; };
 		8026FF5323779881007962DB /* RadarMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026FF5223779881007962DB /* RadarMapView.swift */; };
 		802A42FF241C534F0073C0DC /* DismissableScrollViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A42FE241C534F0073C0DC /* DismissableScrollViewModifier.swift */; };
-		802A4301241C53E10073C0DC /* DismissableScrollViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A4300241C53E10073C0DC /* DismissableScrollViewWrapper.swift */; };
 		802A4303241C54AB0073C0DC /* DismissableScrollViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A4302241C54AB0073C0DC /* DismissableScrollViewRepresentable.swift */; };
 		802A4305241C556A0073C0DC /* DismissableScrollViewHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A4304241C556A0073C0DC /* DismissableScrollViewHostingController.swift */; };
 		802C0D982368FE32009A22BA /* CurrentSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C0D972368FE32009A22BA /* CurrentSection.swift */; };
@@ -124,6 +123,8 @@
 		809010B1244FB3B0003E56B1 /* RadarToSettingsStateBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809010B0244FB3B0003E56B1 /* RadarToSettingsStateBinder.swift */; };
 		8093C03F242720C500469406 /* DayPickerPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8093C03E242720C500469406 /* DayPickerPagingView.swift */; };
 		8093C0412427213D00469406 /* DayPickerPagingViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8093C0402427213D00469406 /* DayPickerPagingViewContainer.swift */; };
+		8094307824560B43003632EC /* ResettableScrollViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80860F8D24560A330049BAEA /* ResettableScrollViewModifier.swift */; };
+		8094307924560B43003632EC /* ResettableScrollViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80860F8E24560A330049BAEA /* ResettableScrollViewRepresentable.swift */; };
 		8095A2F2244B89CA008C494F /* RadarCurrentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095A2F1244B89CA008C494F /* RadarCurrentDate.swift */; };
 		8095A2F6244BA50B008C494F /* RadarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095A2F5244BA50B008C494F /* RadarService.swift */; };
 		8095A2F8244BA59D008C494F /* RadarMapViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095A2F7244BA59D008C494F /* RadarMapViewContainer.swift */; };
@@ -244,7 +245,6 @@
 		802171832455255D00D6C958 /* WeatherImageStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherImageStyle.swift; sourceTree = "<group>"; };
 		8026FF5223779881007962DB /* RadarMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarMapView.swift; sourceTree = "<group>"; };
 		802A42FE241C534F0073C0DC /* DismissableScrollViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableScrollViewModifier.swift; sourceTree = "<group>"; };
-		802A4300241C53E10073C0DC /* DismissableScrollViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableScrollViewWrapper.swift; sourceTree = "<group>"; };
 		802A4302241C54AB0073C0DC /* DismissableScrollViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableScrollViewRepresentable.swift; sourceTree = "<group>"; };
 		802A4304241C556A0073C0DC /* DismissableScrollViewHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableScrollViewHostingController.swift; sourceTree = "<group>"; };
 		802C0D972368FE32009A22BA /* CurrentSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSection.swift; sourceTree = "<group>"; };
@@ -332,6 +332,8 @@
 		8084FDA0241D393C006A57DC /* SearchResultsGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsGroup.swift; sourceTree = "<group>"; };
 		8084FDA2241D3945006A57DC /* SearchResultsGroupContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsGroupContainer.swift; sourceTree = "<group>"; };
 		8085B7B3232DD0D500D4AEE4 /* Comparable+Clamped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Clamped.swift"; sourceTree = "<group>"; };
+		80860F8D24560A330049BAEA /* ResettableScrollViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResettableScrollViewModifier.swift; sourceTree = "<group>"; };
+		80860F8E24560A330049BAEA /* ResettableScrollViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResettableScrollViewRepresentable.swift; sourceTree = "<group>"; };
 		808705672427D45F001110B2 /* TouchPassthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchPassthroughView.swift; sourceTree = "<group>"; };
 		808705692427D47E001110B2 /* DayPickerPagingViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerPagingViewCoordinator.swift; sourceTree = "<group>"; };
 		8087056B2427D551001110B2 /* CustomPageSizeScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageSizeScrollView.swift; sourceTree = "<group>"; };
@@ -528,6 +530,7 @@
 				8026FF5023779019007962DB /* Shadow */,
 				80A016072376668800A72C2F /* DrawerScrollView */,
 				80FC8AB123F0B35C00AEA26F /* DismissableScrollView */,
+				80860F8B24560A290049BAEA /* ResettableScrollView */,
 				8099A20B23130B7400EE4F30 /* Safari */,
 				805D7BE022D1287100A12C4D /* Blur */,
 				8066FDE82364ECCE0067F362 /* Indicator */,
@@ -928,6 +931,15 @@
 				8084FDA2241D3945006A57DC /* SearchResultsGroupContainer.swift */,
 			);
 			path = SearchResultsGroup;
+			sourceTree = "<group>";
+		};
+		80860F8B24560A290049BAEA /* ResettableScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				80860F8D24560A330049BAEA /* ResettableScrollViewModifier.swift */,
+				80860F8E24560A330049BAEA /* ResettableScrollViewRepresentable.swift */,
+			);
+			path = ResettableScrollView;
 			sourceTree = "<group>";
 		};
 		8087056D2427DF71001110B2 /* Components */ = {
@@ -1398,7 +1410,6 @@
 			isa = PBXGroup;
 			children = (
 				802A42FE241C534F0073C0DC /* DismissableScrollViewModifier.swift */,
-				802A4300241C53E10073C0DC /* DismissableScrollViewWrapper.swift */,
 				802A4302241C54AB0073C0DC /* DismissableScrollViewRepresentable.swift */,
 				802A4304241C556A0073C0DC /* DismissableScrollViewHostingController.swift */,
 			);
@@ -1563,6 +1574,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8094307824560B43003632EC /* ResettableScrollViewModifier.swift in Sources */,
+				8094307924560B43003632EC /* ResettableScrollViewRepresentable.swift in Sources */,
 				8056EE05244E88F6004D0250 /* LocationItemDeleteButton.swift in Sources */,
 				805D6A0824100E0A002DEBAC /* WeatherToLocationBinder.swift in Sources */,
 				80AD070922D68E7B00220FEE /* WeatherService.swift in Sources */,
@@ -1671,7 +1684,6 @@
 				80D871B323F1FF1E001FBA94 /* TransparentTouchScrollView.swift in Sources */,
 				8099A20D23130B8500EE4F30 /* SafariView.swift in Sources */,
 				805A174822C53ADB00E1B4E2 /* SceneDelegate.swift in Sources */,
-				802A4301241C53E10073C0DC /* DismissableScrollViewWrapper.swift in Sources */,
 				8026FF5323779881007962DB /* RadarMapView.swift in Sources */,
 				802A4303241C54AB0073C0DC /* DismissableScrollViewRepresentable.swift in Sources */,
 				8038DB4923F0ACAD00F7B033 /* LocationPickerSection.swift in Sources */,
