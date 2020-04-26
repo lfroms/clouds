@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftDate
 
 struct SunriseSunsetData {
     private var sunrise: UnixTimestamp
@@ -18,12 +17,12 @@ struct SunriseSunsetData {
         self.sunset = sunset
     }
 
-    var sunriseUTC: DateInRegion {
-        DateHelper.inUTCTime(time: sunrise)
+    var sunriseUTC: Date {
+        Date(seconds: sunrise)
     }
 
-    var sunsetUTC: DateInRegion {
-        DateHelper.inUTCTime(time: sunset)
+    var sunsetUTC: Date {
+        Date(seconds: sunset)
     }
 }
 

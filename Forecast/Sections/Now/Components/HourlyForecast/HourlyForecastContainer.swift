@@ -6,7 +6,6 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
-import SwiftDate
 import SwiftUI
 
 struct HourlyForecastContainer: Container {
@@ -26,7 +25,7 @@ struct HourlyForecastContainer: Container {
 
         return activeLocation.hourly.compactMap { hour in
             HourlyForecastItemData(
-                date: DateHelper.inUTCTime(time: hour.time).convertTo(region: .current),
+                date: Date(seconds: hour.time).convertTo(region: .current),
                 symbolName: WeatherIconStyle[hour.icon.style, hour.icon.colorScheme],
                 temperature: Int(hour.temperature ?? 0),
                 temperatureUnits: "C",

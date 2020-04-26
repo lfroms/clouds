@@ -25,7 +25,7 @@ struct AlertStackContainer: Container {
         weatherService.weather?.alerts.compactMap {
             WeatherAlert(
                 summary: $0.title,
-                date: DateHelper.inUTCTime(time: $0.time),
+                date: Date(seconds: $0.time).convertTo(region: .current),
                 type: warningTypeFor(event: $0),
                 status: warningStatusFor(event: $0)
             )

@@ -36,7 +36,18 @@ struct CurrentLocationGroupContainer: Container {
             return nil
         }
 
-        let regionName = LocationNameHelper.shared.createRegionNameFrom(placemark: lastPlacemark)
+        var components: [String] = []
+
+        if let administrativeArea = lastPlacemark.administrativeArea {
+            components.append(administrativeArea)
+        }
+
+        if let country = lastPlacemark.country {
+            components.append(country)
+        }
+
+        let regionName = components.joined(separator: ", ")
+
         return StoredLocation(name: cityName, regionName: regionName, coordinate: coordinate)
     }
 

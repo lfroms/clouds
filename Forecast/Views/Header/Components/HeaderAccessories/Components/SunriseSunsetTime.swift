@@ -6,12 +6,11 @@
 //  Copyright © 2019 Lukas Romsicki. All rights reserved.
 //
 
-import SwiftDate
 import SwiftUI
 
 struct SunriseSunsetTime: View {
-    var sunrise: DateInRegion
-    var sunset: DateInRegion
+    var sunrise: Date
+    var sunset: Date
 
     private static let timeFormat: String = "h:mm a z"
 
@@ -52,6 +51,6 @@ extension SunriseSunsetTime: Equatable {
 
 struct RiseSetView_Previews: PreviewProvider {
     static var previews: some View {
-        SunriseSunsetTime(sunrise: DateInRegion(), sunset: DateInRegion())
+        SunriseSunsetTime(sunrise: Date(), sunset: Date())
     }
 }
