@@ -10,28 +10,30 @@ import Combine
 import SwiftUI
 
 final class VisualState: ObservableObject {
-    let iconCodeDidChange = PassthroughSubject<Void, Never>()
+    let appearanceDidChange = PassthroughSubject<Void, Never>()
     
-    @Published private(set) var iconCode: Int? = nil {
+    internal typealias Appearance = (style: IconStyle?, scheme: ColorScheme)
+    
+    @Published private(set) var appearance: Appearance = (nil, .empty) {
         didSet {
-            iconCodeDidChange.send()
+            appearanceDidChange.send()
         }
     }
     
-    func setIconCode(to newCode: Int?, animated: Bool) {
-        guard iconCode != newCode else {
+    func set(style: IconStyle?, colorScheme: ColorScheme?, animated: Bool) {
+        let newAppearance = (style: style, scheme: colorScheme ?? .empty)
+        
+        guard newAppearance != appearance else {
             return
         }
         
-        let newCode: Int = newCode ?? 0
-        
         guard animated else {
-            iconCode = newCode
+            appearance = newAppearance
             return
         }
         
         withAnimation(.spring()) {
-            self.iconCode = newCode
+            appearance = newAppearance
         }
     }
 }

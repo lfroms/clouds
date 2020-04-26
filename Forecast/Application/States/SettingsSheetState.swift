@@ -28,10 +28,10 @@ final class SettingsSheetState: ObservableObject {
     var radarSource: RadarProvider {
         get {
             if let value = UserDefaults.standard.string(forKey: Key.radarProvider) {
-                return RadarProvider(rawValue: value) ?? .msc
+                return RadarProvider(rawValue: value) ?? .environmentCanada
             }
 
-            return .msc
+            return .environmentCanada
         }
 
         set {

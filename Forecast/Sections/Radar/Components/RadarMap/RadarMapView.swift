@@ -58,7 +58,7 @@ struct RadarMapView: UIViewRepresentable {
 
             if mapView.style?.source(withIdentifier: layerIdentifier) == nil {
                 switch dataSource {
-                case .msc:
+                case .environmentCanada:
                     let source = EnvironmentCanadaRasterTileSource(identifier: layerIdentifier, date: date)
                     mapView.style?.addSource(source)
                 default:

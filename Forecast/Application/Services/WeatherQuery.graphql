@@ -1,26 +1,17 @@
-query Weather($currentLocation: CoordinateInput, $activeLocation: CoordinateInput, $favoriteCoordinates: [CoordinateInput!]!, $language: Language!) {
-    currentLocationWeather: weather(coordinate: $currentLocation, language: $language) {
-        currently {
-            temperature
-            icon
-        }
-    }
-    favoriteLocationWeather: bulkWeather(coordinates: $favoriteCoordinates, language: $language) {
-        currently {
-            temperature
-            icon
-        }
-    }
-    activeLocationWeather: weather(coordinate: $activeLocation, language: $language) {
+query Weather($latitude: Float!, $longitude: Float!) {
+    weather(latitude: $latitude, longitude: $longitude) {
         location {
             stationName
-            distance
+            coordinate {
+                latitude
+                longitude
+            }
         }
         alerts {
             title
             time
             type
-            uri
+            url
         }
         today {
             sunriseTime
@@ -31,7 +22,10 @@ query Weather($currentLocation: CoordinateInput, $activeLocation: CoordinateInpu
         currently {
             time
             summary
-            icon
+            icon {
+                style
+                colorScheme
+            }
             temperature
             humidity
             pressure {
@@ -52,7 +46,10 @@ query Weather($currentLocation: CoordinateInput, $activeLocation: CoordinateInpu
         hourly {
             time
             summary
-            icon
+            icon {
+                style
+                colorScheme
+            }
             temperature
             feelsLike {
                 temperature
@@ -68,7 +65,10 @@ query Weather($currentLocation: CoordinateInput, $activeLocation: CoordinateInpu
             daytimeConditions {
                 summary
                 summaryClouds
-                icon
+                icon {
+                    style
+                    colorScheme
+                }
                 temperature
                 precipProbability
                 wind {
@@ -78,7 +78,10 @@ query Weather($currentLocation: CoordinateInput, $activeLocation: CoordinateInpu
             nighttimeConditions {
                 summary
                 summaryClouds
-                icon
+                icon {
+                    style
+                    colorScheme
+                }
                 temperature
                 precipProbability
                 wind {

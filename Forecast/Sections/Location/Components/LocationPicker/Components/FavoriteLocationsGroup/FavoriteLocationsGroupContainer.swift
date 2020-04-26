@@ -16,7 +16,6 @@ struct FavoriteLocationsGroupContainer: Container {
     var body: some View {
         FavoriteLocationsGroup(
             locations: locationFavoritesService.favoriteLocations,
-            locationsWeather: weatherService.favoriteLocations,
             onSelectLocation: didSelect(location:),
             onDelete: didDelete(location:)
         )

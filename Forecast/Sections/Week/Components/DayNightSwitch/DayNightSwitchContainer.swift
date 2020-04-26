@@ -18,7 +18,7 @@ struct DayNightSwitchContainer: Container {
     }
 
     private var hasDay: Bool {
-        guard let currentDay = weatherService.activeLocation?.daily[safe: weekSectionState.dayIndex] else {
+        guard let currentDay = weatherService.weather?.daily[safe: weekSectionState.dayIndex] else {
             return false
         }
 
@@ -26,7 +26,7 @@ struct DayNightSwitchContainer: Container {
     }
 
     private var hasNight: Bool {
-        guard let currentDay = weatherService.activeLocation?.daily[safe: weekSectionState.dayIndex] else {
+        guard let currentDay = weatherService.weather?.daily[safe: weekSectionState.dayIndex] else {
             return false
         }
 

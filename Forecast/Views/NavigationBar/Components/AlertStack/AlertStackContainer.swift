@@ -22,7 +22,7 @@ struct AlertStackContainer: Container {
     }
 
     private var alerts: [WeatherAlert] {
-        weatherService.activeLocation?.alerts.compactMap {
+        weatherService.weather?.alerts.compactMap {
             WeatherAlert(
                 summary: $0.title,
                 date: DateHelper.inUTCTime(time: $0.time),
@@ -32,7 +32,7 @@ struct AlertStackContainer: Container {
         } ?? []
     }
 
-    private func warningTypeFor(event: WeatherQuery.Data.ActiveLocationWeather.Alert) -> WeatherAlert.WarningType {
+    private func warningTypeFor(event: WeatherQuery.Data.Weather.Alert) -> WeatherAlert.WarningType {
         switch event.type {
         case .warning:
             return .warning
@@ -43,7 +43,7 @@ struct AlertStackContainer: Container {
         }
     }
 
-    private func warningStatusFor(event: WeatherQuery.Data.ActiveLocationWeather.Alert) -> WeatherAlert.WarningStatus {
+    private func warningStatusFor(event: WeatherQuery.Data.Weather.Alert) -> WeatherAlert.WarningStatus {
         switch event.type {
         case .ended:
             return .ended
@@ -53,7 +53,7 @@ struct AlertStackContainer: Container {
     }
 
     private func renderSheet() -> AnyView {
-        guard let urlString = weatherService.activeLocation?.alerts.first?.uri, let url = URL(string: urlString) else {
+        guard let urlString = weatherService.weather?.alerts.first?.url, let url = URL(string: urlString) else {
             return AnyView(EmptyView())
         }
 

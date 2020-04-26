@@ -10,7 +10,6 @@ import SwiftUI
 
 struct FavoriteLocationsGroup: View {
     var locations: [StoredLocation]
-    var locationsWeather: [ShortFormWeather]
 
     var onSelectLocation: (StoredLocation) -> Void
     var onDelete: (StoredLocation) -> Void
@@ -30,11 +29,10 @@ struct FavoriteLocationsGroup: View {
                     .transition(AnyTransition.opacity.animation(.easeInOut))
             }
 
-            ForEach(Array(self.locations.enumerated()), id: \.element) { index, favorite in
+            ForEach(Array(self.locations.enumerated()), id: \.element) { _, favorite in
                 WeatherLocationItem(
                     style: .favorite,
                     location: favorite,
-                    weather: self.locationsWeather[safe: index],
                     isEditing: self.isEditing,
                     action: self.onSelectLocation,
                     onDelete: self.handleDelete(_:)
@@ -72,7 +70,7 @@ struct FavoriteLocationsGroup: View {
 
 extension FavoriteLocationsGroup: Equatable {
     static func == (lhs: FavoriteLocationsGroup, rhs: FavoriteLocationsGroup) -> Bool {
-        lhs.locations == rhs.locations && lhs.locationsWeather == rhs.locationsWeather
+        lhs.locations == rhs.locations
     }
 }
 
@@ -80,7 +78,6 @@ struct FavoriteLocationsGroup_Previews: PreviewProvider {
     static var previews: some View {
         FavoriteLocationsGroup(
             locations: [],
-            locationsWeather: [],
             onSelectLocation: { _ in },
             onDelete: { _ in }
         )

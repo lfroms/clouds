@@ -19,7 +19,6 @@ struct CurrentLocationGroupContainer: Container {
             if currentLocation != nil {
                 CurrentLocationGroup(
                     location: currentLocation!,
-                    locationWeather: weatherService.currentLocationShortForm,
                     loading: .constant(weatherService.loading),
                     onSelectLocation: didSelect(location:)
                 )

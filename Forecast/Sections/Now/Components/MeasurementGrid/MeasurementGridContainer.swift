@@ -29,7 +29,7 @@ struct MeasurementGridContainer: Container {
     }
     
     private var measurements: [MeasurementDescriptor] {
-        guard let cc = weatherService.activeLocation?.currently else {
+        guard let cc = weatherService.weather?.currently else {
             return []
         }
         

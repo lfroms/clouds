@@ -16,9 +16,9 @@ struct SettingsRadarSource: View {
             VStack(alignment: .leading, spacing: Dimension.Global.padding) {
                 LabeledGroup {
                     VStack(alignment: .leading, spacing: 14) {
-                        Button(action: { self.selectedSource = .msc }) {
+                        Button(action: { self.selectedSource = .environmentCanada }) {
                             OptionRow(symbolName: "map.fill", color: .red, label: "MSC (Canada & USA)") {
-                                if self.selectedSource == .msc {
+                                if self.selectedSource == .environmentCanada {
                                     Image(systemName: "checkmark.circle.fill")
                                 }
                             }
@@ -48,6 +48,6 @@ struct SettingsRadarSource: View {
 
 struct SettingsRadarSource_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsRadarSource(selectedSource: .constant(.msc))
+        SettingsRadarSource(selectedSource: .constant(.environmentCanada))
     }
 }

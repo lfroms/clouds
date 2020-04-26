@@ -6,10 +6,12 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
+import CoreLocation
 import SwiftUI
 
 struct DataSourceGroup: View {
     @EnvironmentObject private var weatherService: WeatherService
+    @EnvironmentObject private var locationService: LocationService
 
     var body: some View {
         VStack(alignment: .leading, spacing: Dimension.Global.padding) {
@@ -37,15 +39,24 @@ struct DataSourceGroup: View {
     }
 
     private var stationName: String? {
-        weatherService.activeLocation?.location.stationName
+        weatherService.weather?.location.stationName
     }
 
     private var stationDistance: Int? {
-        guard let metres = weatherService.activeLocation?.location.distance else {
+        guard
+            let latiude = weatherService.weather?.location.coordinate.latitude,
+            let longitude = weatherService.weather?.location.coordinate.longitude
+        else {
             return nil
         }
 
-        return Int(metres) / 1000
+        let stationLocation = CLLocation(latitude: latiude, longitude: longitude)
+
+        guard let distanceMetres = locationService.lastLocation?.distance(from: stationLocation) else {
+            return nil
+        }
+
+        return Int(distanceMetres / 1000)
     }
 }
 

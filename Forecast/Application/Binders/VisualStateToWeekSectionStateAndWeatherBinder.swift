@@ -40,22 +40,23 @@ struct VisualStateToWeekSectionStateAndWeatherBinder: ViewModifier {
         }
 
         let index = weekSectionState.dayIndex
-        let days = weatherService.activeLocation?.daily
+        let days = weatherService.weather?.daily
 
         let day = days?[safe: index]
 
         if day?.daytimeConditions == nil, day?.nighttimeConditions != nil {
-            visualState.setIconCode(to: day?.nighttimeConditions?.icon, animated: true)
+            visualState.set(style: day?.nighttimeConditions?.icon.style, colorScheme: day?.nighttimeConditions?.icon.colorScheme, animated: true)
             return
         }
 
         if day?.nighttimeConditions == nil, day?.daytimeConditions != nil {
-            visualState.setIconCode(to: day?.daytimeConditions?.icon, animated: true)
+            visualState.set(style: day?.daytimeConditions?.icon.style, colorScheme: day?.daytimeConditions?.icon.colorScheme, animated: true)
             return
         }
 
-        let icon = weekSectionState.showingNightConditions ? day?.nighttimeConditions?.icon : day?.daytimeConditions?.icon
+        let style = weekSectionState.showingNightConditions ? day?.nighttimeConditions?.icon.style : day?.daytimeConditions?.icon.style
+        let colorScheme = weekSectionState.showingNightConditions ? day?.nighttimeConditions?.icon.colorScheme : day?.daytimeConditions?.icon.colorScheme
 
-        visualState.setIconCode(to: icon, animated: true)
+        visualState.set(style: style, colorScheme: colorScheme, animated: true)
     }
 }

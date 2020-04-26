@@ -32,7 +32,7 @@ struct HeaderAccessoriesContainer: Container {
     }
 
     private var sunriseSunset: SunriseSunsetData? {
-        guard let sunriseTime = weatherService.activeLocation?.today.sunriseTime, let sunsetTime = weatherService.activeLocation?.today.sunsetTime else {
+        guard let sunriseTime = weatherService.weather?.today.sunriseTime, let sunsetTime = weatherService.weather?.today.sunsetTime else {
             return nil
         }
 
@@ -42,7 +42,7 @@ struct HeaderAccessoriesContainer: Container {
     private var observedAt: ObservedAtData {
         ObservedAtData(
             loading: weatherService.loading,
-            timestamp: weatherService.activeLocation?.currently.time,
+            timestamp: weatherService.weather?.currently.time,
             action: weatherService.setShouldFetchUpdatedWeather
         )
     }

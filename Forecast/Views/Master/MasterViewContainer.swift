@@ -12,6 +12,7 @@ struct MasterViewContainer: Container {
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var settingsSheetState: SettingsSheetState
     @EnvironmentObject var weatherService: WeatherService
+    @EnvironmentObject var locationService: LocationService
 
     var body: some View {
         MasterView(handleExists: !self.appState.slidingPanelLocked) {
@@ -23,6 +24,7 @@ struct MasterViewContainer: Container {
                 .colorScheme(.dark)
                 .environmentObject(self.weatherService)
                 .environmentObject(self.settingsSheetState)
+                .environmentObject(self.locationService)
         }
     }
 }

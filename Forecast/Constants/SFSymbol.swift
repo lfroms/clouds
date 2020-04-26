@@ -38,4 +38,27 @@ final class SFSymbol {
 
     static let plusCircleFilled: String = "plus.circle.fill"
     static let minusCircleFilled: String = "minus.circle.fill"
+
+    final class Forecast {
+        static let sunny: String = "sun.max.fill"
+        static let partlySunny: String = "cloud.sun.fill"
+        static let chanceOfShowers: String = "cloud.sun.rain.fill"
+        static let rainy: String = "cloud.rain.fill"
+        static let heavyRain: String = "cloud.heavyrain.fill"
+        static let drizzle: String = "cloud.drizzle.fill"
+        static let sleet: String = "cloud.sleet.fill"
+        static let haze: String = "sun.haze.fill"
+        static let fog: String = "cloud.fog.fill"
+        static let hail: String = "cloud.hail.fill"
+        static let thunderstorm: String = "cloud.bolt.rain.fill"
+        static let cloudy: String = "cloud.fill"
+        static let snow: String = "cloud.snow.fill"
+        static let moon: String = "moon.fill"
+        static let cloudyNight: String = "cloud.moon.fill"
+        static let rainyNight: String = "cloud.moon.rain.fill"
+        static let thunderstormNight: String = "cloud.moon.bolt.fill"
+        static let windy: String = "wind"
+        static let windSnow: String = "wind.snow"
+        static let smoke: String = "smoke.fill"
+    }
 }

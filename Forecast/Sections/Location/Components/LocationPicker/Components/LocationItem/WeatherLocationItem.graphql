@@ -1,0 +1,10 @@
+query WeatherLocationItem($latitude: Float!, $longitude: Float!) {
+    weather(latitude: $latitude, longitude: $longitude) {
+        currently {
+            temperature
+            icon {
+                colorScheme
+            }
+        }
+    }
+}

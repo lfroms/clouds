@@ -11,12 +11,13 @@ import SwiftUI
 struct WeatherLocationItem: View {
     var style: Style
     var location: StoredLocation
-    var weather: ShortFormWeather?
     var favorite: Bool = false
     var isEditing: Bool = false
 
     var action: (StoredLocation) -> Void
     var onDelete: ((StoredLocation) -> Void)?
+
+    @ObservedObject private var viewModel = WeatherLocationItemViewModel()
 
     internal enum Style: String {
         case current
@@ -39,6 +40,7 @@ struct WeatherLocationItem: View {
                 LocationItemLabels(title: self.location.name, subtitle: self.location.regionName)
                 Spacer()
                 LocationItemTemperature(text: self.temperatureLabelText)
+                    .animation(nil)
             }
 
             if isEditing {
@@ -49,10 +51,13 @@ struct WeatherLocationItem: View {
                 .transition(AnyTransition.opacity.animation(.easeInOut))
             }
         }
+        .onAppear {
+            self.viewModel.fetch(coordinate: self.location.coordinate)
+        }
     }
 
     private var temperatureLabelText: String {
-        guard let temperature = weather?.temperature else {
+        guard let temperature = viewModel.weather?.currently.temperature else {
             return .empty
         }
 
@@ -60,11 +65,11 @@ struct WeatherLocationItem: View {
     }
 
     private var color: Color? {
-        guard let colorCode = weather?.iconCode else {
+        guard let colorScheme = viewModel.weather?.currently.icon.colorScheme else {
             return nil
         }
 
-        return AppColor.Weather.schemes[code: colorCode].lower.color
+        return WeatherColorScheme[colorScheme].lower
     }
 }
 
@@ -72,7 +77,6 @@ extension WeatherLocationItem: Equatable {
     static func == (lhs: WeatherLocationItem, rhs: WeatherLocationItem) -> Bool {
         lhs.style == rhs.style
             && lhs.location == rhs.location
-            && lhs.weather == rhs.weather
             && lhs.favorite == rhs.favorite
             && lhs.isEditing == rhs.isEditing
     }
@@ -87,7 +91,6 @@ struct LocationItemWithWeather_Previews: PreviewProvider {
                 regionName: "ON, Canada",
                 coordinate: .init()
             ),
-            weather: nil,
             action: { _ in },
             onDelete: { _ in }
         )

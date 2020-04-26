@@ -9,20 +9,20 @@
 import SwiftUI
 
 struct WeatherIllustrationImage: View {
-    var image: String
+    var image: Image
     var shouldScale: Bool
 
     var body: some View {
         Group {
             if Dimension.System.deviceIsiPhone8 && shouldScale {
-                Image(image)
+                image
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: 300)
                     .offset(y: Dimension.Global.padding)
 
             } else {
-                Image(image)
+                image
             }
         }
     }
@@ -32,6 +32,6 @@ extension WeatherIllustrationImage: Equatable {}
 
 struct WeatherIllustrationImage_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherIllustrationImage(image: "image-0", shouldScale: true)
+        WeatherIllustrationImage(image: Image(""), shouldScale: true)
     }
 }

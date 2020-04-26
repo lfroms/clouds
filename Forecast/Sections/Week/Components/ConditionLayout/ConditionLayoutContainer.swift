@@ -23,7 +23,7 @@ struct ConditionLayoutContainer: Container {
 
     var data: DailyForecastData.Condition? {
         guard
-            let days = weatherService.activeLocation?.daily,
+            let days = weatherService.weather?.daily,
             let day = days[safe: weekSectionState.dayIndex]
         else {
             return nil
@@ -36,7 +36,7 @@ struct ConditionLayoutContainer: Container {
             parsedDayCondition = DailyForecastData.Condition(
                 description: dayCondition.summaryClouds,
                 summary: dayCondition.summary,
-                iconCode: dayCondition.icon,
+                colorScheme: dayCondition.icon.colorScheme,
                 temperature: dayCondition.temperature,
                 windSpeed: dayCondition.wind.speed,
                 pop: (dayCondition.precipProbability != nil) ? Int(dayCondition.precipProbability! * 100) : nil
@@ -47,7 +47,7 @@ struct ConditionLayoutContainer: Container {
             parsedNightCondition = DailyForecastData.Condition(
                 description: nightCondition.summaryClouds,
                 summary: nightCondition.summary,
-                iconCode: nightCondition.icon,
+                colorScheme: nightCondition.icon.colorScheme,
                 temperature: nightCondition.temperature,
                 windSpeed: nightCondition.wind.speed,
                 pop: (nightCondition.precipProbability != nil) ? Int(nightCondition.precipProbability! * 100) : nil

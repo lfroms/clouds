@@ -13,89 +13,50 @@ import Foundation
 import SwiftUI
 
 class WeatherService: ObservableObject {
-    @Published private(set) var activeLocation: WeatherQuery.Data.ActiveLocationWeather?
-    @Published private(set) var currentLocation: WeatherQuery.Data.CurrentLocationWeather?
-    @Published private(set) var currentLocationShortForm: ShortFormWeather?
-    @Published private(set) var favoriteLocations: [ShortFormWeather] = []
-    
-    @Published private(set) var error: Error?
+    @Published private(set) var weather: WeatherQuery.Data.Weather?
     @Published private(set) var loading: Bool = false
     
     let shouldLoadUpdatedWeather = PassthroughSubject<Void, Never>()
     let didLoadUpdatedWeather = PassthroughSubject<Void, Never>()
     
-    private var currentRequest: Apollo.Cancellable?
-    
     func setShouldFetchUpdatedWeather() {
         shouldLoadUpdatedWeather.send()
     }
     
-    func fetchData(
-        currentLocation: CLLocationCoordinate2D?,
-        activeLocation: CLLocationCoordinate2D?,
-        favoriteLocations: [CLLocationCoordinate2D]
-    ) {
+    private var request: Apollo.Cancellable?
+    
+    func fetch(selectedLocation: CLLocationCoordinate2D?, userLocation: CLLocationCoordinate2D?) {
+        var weatherQuery: WeatherQuery?
+        
+        if let selectedLocation = selectedLocation {
+            weatherQuery = WeatherQuery(latitude: selectedLocation.latitude, longitude: selectedLocation.longitude)
+        } else if let userLocation = userLocation {
+            weatherQuery = WeatherQuery(latitude: userLocation.latitude, longitude: userLocation.longitude)
+        }
+        
+        guard let query = weatherQuery else {
+            return
+        }
+        
         if loading {
-            currentRequest?.cancel()
+            request?.cancel()
         } else {
             loading = true
         }
         
-        let activeLocation = activeLocation?.asGraphQLCoordinate ?? currentLocation?.asGraphQLCoordinate
-        
-        let query = WeatherQuery(
-            currentLocation: currentLocation?.asGraphQLCoordinate,
-            activeLocation: activeLocation,
-            favoriteCoordinates: favoriteLocations.asGraphQLCoordinates,
-            language: .english
-        )
-        
-        currentRequest = GraphQL.shared.apollo.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely) { result in
+        request = GraphQL.shared.apollo.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely) { result in
+            self.loading = false
+            
             switch result {
             case .success(let graphQLResult):
                 if let data = graphQLResult.data {
-                    self.loading = false
-                    
-                    self.activeLocation = data.activeLocationWeather
-                    self.currentLocation = data.currentLocationWeather
-                    self.currentLocationShortForm = self.mapCurrentLocationWeather(coordinate: currentLocation)
-                    self.favoriteLocations = self.mapBulkWeather(items: data.favoriteLocationWeather, coordinates: favoriteLocations.asGraphQLCoordinates)
-                    
+                    self.weather = data.weather
                     self.didLoadUpdatedWeather.send()
                 }
                 
             case .failure(let error):
                 print(error)
             }
-        }
-    }
-    
-    private func mapCurrentLocationWeather(coordinate: CLLocationCoordinate2D?) -> ShortFormWeather? {
-        guard let coordinate = coordinate else {
-            return nil
-        }
-        
-        return ShortFormWeather(
-            coordinate: coordinate,
-            temperature: currentLocation?.currently.temperature,
-            iconCode: currentLocation?.currently.icon
-        )
-    }
-    
-    private func mapBulkWeather(items: [WeatherQuery.Data.FavoriteLocationWeather?], coordinates: [CoordinateInput]) -> [ShortFormWeather] {
-        return items.enumerated().compactMap { index, weather in
-            guard let weather = weather else {
-                return nil
-            }
-            
-            return ShortFormWeather(
-                coordinate: .init(
-                    latitude: coordinates[index].latitude,
-                    longitude: coordinates[index].longitude
-                ),
-                temperature: weather.currently.temperature,
-                iconCode: weather.currently.icon
-            )
         }
     }
 }

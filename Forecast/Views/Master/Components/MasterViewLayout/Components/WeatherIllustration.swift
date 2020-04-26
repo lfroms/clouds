@@ -12,23 +12,24 @@ struct WeatherIllustration: View {
     @EnvironmentObject private var visualState: VisualState
 
     @State private var alternateImage: Bool = false
-    @State private var imageA: String = ""
-    @State private var imageB: String = ""
+    @State private var imageA: Image?
+    @State private var imageB: Image?
 
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            if !imageA.isEmpty {
-                WeatherIllustrationImage(image: imageA, shouldScale: shouldScaleImage)
+            if imageA != nil {
+                WeatherIllustrationImage(image: imageA!, shouldScale: shouldScaleImage)
                     .equatable()
                     .transition(transition)
             }
-            if !imageB.isEmpty {
-                WeatherIllustrationImage(image: imageB, shouldScale: shouldScaleImage)
+
+            if imageB != nil {
+                WeatherIllustrationImage(image: imageB!, shouldScale: shouldScaleImage)
                     .equatable()
                     .transition(transition)
             }
         }
-        .onReceive(visualState.iconCodeDidChange, perform: self.animateImage)
+        .onReceive(visualState.appearanceDidChange, perform: self.animateImage)
     }
 
     private let transition: AnyTransition = .asymmetric(
@@ -36,28 +37,25 @@ struct WeatherIllustration: View {
         removal: .opacity
     )
 
-    private func setImage(name: String) {
+    private func setImage(_ image: Image?) {
         if alternateImage {
-            imageB = name
-            imageA.clear()
+            imageB = image
+            imageA = nil
+
         } else {
-            imageA = name
-            imageB.clear()
+            imageA = image
+            imageB = nil
         }
 
         alternateImage.toggle()
     }
 
     private func animateImage(_: VisualState.ObjectWillChangePublisher.Output) {
-        guard let iconCode = visualState.iconCode else {
-            return
-        }
-
-        setImage(name: "image-\(iconCode)")
+        setImage(WeatherImageStyle[visualState.appearance.style, visualState.appearance.scheme])
     }
 
     private var shouldScaleImage: Bool {
-        ![23, 24, 16, 17, 18].contains(visualState.iconCode)
+        ![.fog, .snow].contains(visualState.appearance.style)
     }
 }
 

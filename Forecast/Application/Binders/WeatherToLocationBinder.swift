@@ -46,10 +46,9 @@ struct WeatherToLocationBinder: ViewModifier {
     // MARK: - Binding Functions
 
     private func fetchWeather() {
-        weatherService.fetchData(
-            currentLocation: locationService.lastLocation?.coordinate,
-            activeLocation: locationFavoritesService.activeLocation?.coordinate,
-            favoriteLocations: locationFavoritesService.favoriteLocations.compactMap { $0.coordinate }
+        weatherService.fetch(
+            selectedLocation: locationFavoritesService.activeLocation?.coordinate,
+            userLocation: locationService.lastLocation?.coordinate
         )
     }
 

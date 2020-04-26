@@ -22,7 +22,7 @@ struct OverviewViewContainer: Container {
     }
     
     var currentTemperature: String {
-        guard let temperature = weatherService.activeLocation?.currently.temperature else {
+        guard let temperature = weatherService.weather?.currently.temperature else {
             return "--"
         }
         
@@ -30,11 +30,11 @@ struct OverviewViewContainer: Container {
     }
     
     var observation: String {
-        return weatherService.activeLocation?.currently.summary ?? ""
+        return weatherService.weather?.currently.summary ?? ""
     }
     
     var forecastHigh: Int? {
-        guard let high = weatherService.activeLocation?.today.highTemperature else {
+        guard let high = weatherService.weather?.today.highTemperature else {
             return nil
         }
         
@@ -42,7 +42,7 @@ struct OverviewViewContainer: Container {
     }
     
     var forecastLow: Int? {
-        guard let low = weatherService.activeLocation?.today.lowTemperature else {
+        guard let low = weatherService.weather?.today.lowTemperature else {
             return nil
         }
         

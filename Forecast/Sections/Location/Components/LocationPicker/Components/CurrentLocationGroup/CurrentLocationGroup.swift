@@ -10,7 +10,6 @@ import SwiftUI
 
 struct CurrentLocationGroup: View {
     var location: StoredLocation
-    var locationWeather: ShortFormWeather?
     @Binding var loading: Bool
 
     var onSelectLocation: (StoredLocation) -> Void
@@ -23,7 +22,6 @@ struct CurrentLocationGroup: View {
             WeatherLocationItem(
                 style: .current,
                 location: self.location,
-                weather: self.locationWeather,
                 action: self.onSelectLocation
             )
             .equatable()
@@ -33,9 +31,7 @@ struct CurrentLocationGroup: View {
 
 extension CurrentLocationGroup: Equatable {
     static func == (lhs: CurrentLocationGroup, rhs: CurrentLocationGroup) -> Bool {
-        lhs.location == rhs.location
-            && lhs.locationWeather == rhs.locationWeather
-            && lhs.loading == rhs.loading
+        lhs.location == rhs.location && lhs.loading == rhs.loading
     }
 }
 

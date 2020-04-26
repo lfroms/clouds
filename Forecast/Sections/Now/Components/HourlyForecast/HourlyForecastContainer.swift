@@ -19,15 +19,15 @@ struct HourlyForecastContainer: Container {
 
     private var items: [HourlyForecastItemData] {
         guard
-            let activeLocation = weatherService.activeLocation
+            let activeLocation = weatherService.weather
         else {
             return []
         }
 
-        return activeLocation.hourly.compactMap { (hour) -> HourlyForecastItemData in
+        return activeLocation.hourly.compactMap { hour in
             HourlyForecastItemData(
                 date: DateHelper.inUTCTime(time: hour.time).convertTo(region: .current),
-                symbolName: ForecastIcon.forCode(hour.icon ?? 0),
+                symbolName: WeatherIconStyle[hour.icon.style, hour.icon.colorScheme],
                 temperature: Int(hour.temperature ?? 0),
                 temperatureUnits: "C",
                 windSpeedUnits: "km/h",

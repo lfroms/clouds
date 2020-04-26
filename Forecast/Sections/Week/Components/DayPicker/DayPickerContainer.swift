@@ -19,7 +19,7 @@ struct DayPickerContainer: Container {
     }
 
     private var days: [DayPickerItem] {
-        guard let days = weatherService.activeLocation?.daily else {
+        guard let days = weatherService.weather?.daily else {
             return []
         }
 

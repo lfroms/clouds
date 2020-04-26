@@ -66,7 +66,7 @@ struct ConditionLayout_Previews: PreviewProvider {
             .init(
                 description: "Test description",
                 summary: "Test summary",
-                iconCode: 2,
+                colorScheme: .clearSky,
                 temperature: 15,
                 windSpeed: nil,
                 pop: nil

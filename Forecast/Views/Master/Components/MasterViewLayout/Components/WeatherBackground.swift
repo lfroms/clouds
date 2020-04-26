@@ -14,8 +14,8 @@ struct WeatherBackground: View {
     @State private var alternateGradient: Bool = false
 
     @State private var gradientA: [Color] = [
-        AppColor.Weather.empty.upper.color,
-        AppColor.Weather.empty.lower.color
+        WeatherColorScheme.empty.upper,
+        WeatherColorScheme.empty.lower
     ]
 
     @State private var gradientB: [Color] = []
@@ -27,13 +27,13 @@ struct WeatherBackground: View {
                 .opacity(self.alternateGradient ? 0 : 1)
         }
         .modifier(ShrinkBackgroundForAppSection())
-        .onReceive(self.visualState.iconCodeDidChange, perform: self.animateGradient)
+        .onReceive(self.visualState.appearanceDidChange, perform: self.animateGradient)
     }
 
     private var gradientSteps: [Color] {
         [
-            AppColor.Weather.schemes[code: visualState.iconCode].upper.color,
-            AppColor.Weather.schemes[code: visualState.iconCode].lower.color
+            WeatherColorScheme[visualState.appearance.scheme].upper,
+            WeatherColorScheme[visualState.appearance.scheme].lower
         ]
     }
 

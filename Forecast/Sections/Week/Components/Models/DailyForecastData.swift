@@ -16,7 +16,7 @@ struct DailyForecastData: Equatable {
     internal struct Condition: Equatable {
         let description: String?
         let summary: String?
-        let iconCode: Int?
+        let colorScheme: ColorScheme?
         let temperature: Double?
         let windSpeed: String?
         let pop: Int?
