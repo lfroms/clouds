@@ -56,7 +56,7 @@ struct HourlyForecastItem: View {
         .background(backgroundColor)
         .cornerRadius(30)
         .onTapGesture(perform: handleTapGesture)
-        .animation(AnimationPreset.Touch.expand)
+        .animation(AnimationPreset.Touch.expand, value: [expanded])
     }
 
     private var formattedDate: String {
