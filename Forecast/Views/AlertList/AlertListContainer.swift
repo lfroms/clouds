@@ -28,8 +28,7 @@ struct AlertListContainer: View {
                 if appState.showingAlerts {
                     AlertList(alerts: alerts, didSelect: self.didSelect(alert:), didClose: self.didClose)
                         .equatable()
-                        .padding(.horizontal, Dimension.Global.padding)
-                        .padding(.bottom, 10)
+                        .padding(Dimension.Global.padding)
                         .transition(AnyTransition.move(edge: .bottom).combined(with: alertListTransition))
                         .animation(.easeInOut)
                 }
