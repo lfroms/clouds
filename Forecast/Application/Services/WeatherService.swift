@@ -54,6 +54,10 @@ class WeatherService: ObservableObject {
                     self.didLoadUpdatedWeather.send()
                 }
                 
+                if let error = graphQLResult.errors?.first {
+                    Alert.display(title: "Error", message: error.description)
+                }
+                
             case .failure(let error):
                 print(error)
             }
