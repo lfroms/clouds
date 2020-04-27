@@ -28,7 +28,9 @@ struct WeatherToLocationBinder: ViewModifier {
             .debounce(for: .seconds(0.3), scheduler: RunLoop.main)
             .sink(receiveValue: fetchWeather)
 
-        shouldLoadWeatherCancellable = weatherService.shouldLoadUpdatedWeather.sink(receiveValue: fetchWeather)
+        shouldLoadWeatherCancellable = weatherService.shouldLoadUpdatedWeather
+            .debounce(for: .seconds(0.1), scheduler: RunLoop.main)
+            .sink(receiveValue: fetchWeather)
 
         didBecomeActiveCancellable = NotificationCenter.default
             .publisher(for: UIApplication.didBecomeActiveNotification)
