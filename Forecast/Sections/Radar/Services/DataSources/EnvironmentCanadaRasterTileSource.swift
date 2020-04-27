@@ -25,7 +25,7 @@ final class EnvironmentCanadaRasterTileSource: MGLRasterTileSource {
             identifier: identifier,
             tileURLTemplates: [urlTemplate],
             options: [
-                .tileSize: 256,
+                .tileSize: 1024,
                 .attributionInfos: [attribution]
             ]
         )
@@ -43,8 +43,8 @@ final class EnvironmentCanadaRasterTileSource: MGLRasterTileSource {
             tiled: true,
             date: date,
             coordinateReferenceSystem: "EPSG:3857",
-            width: 256,
-            height: 256,
+            width: 1024,
+            height: 1024,
             boundingBoxTemplate: "{bbox-epsg-3857}"
         ).string
     }
