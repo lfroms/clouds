@@ -142,7 +142,6 @@
 		809C2A66241C63DA009FCF6A /* LocationPickerSectionModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C2A65241C63DA009FCF6A /* LocationPickerSectionModal.swift */; };
 		809C2A6A241C64C6009FCF6A /* LocationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C2A69241C64C6009FCF6A /* LocationPicker.swift */; };
 		809C54DA24244F750028216E /* WeatherIllustrationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C54D924244F750028216E /* WeatherIllustrationImage.swift */; };
-		80A016022376638900A72C2F /* MainPagingScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A016012376638900A72C2F /* MainPagingScrollViewController.swift */; };
 		80A646C623F5E98900C80633 /* UIStackView+SetBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A646C523F5E98900C80633 /* UIStackView+SetBackground.swift */; };
 		80AAC01C2427E09E00285C6D /* DailyForecastData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AAC01B2427E09E00285C6D /* DailyForecastData.swift */; };
 		80AAC01E2427EDD300285C6D /* ShrinkBackgroundForAppSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AAC01D2427EDD300285C6D /* ShrinkBackgroundForAppSection.swift */; };
@@ -152,6 +151,7 @@
 		80AAC0282427F0DF00285C6D /* ConditionLayoutContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AAC0272427F0DF00285C6D /* ConditionLayoutContainer.swift */; };
 		80AAC02B2427F0F200285C6D /* ConditionIconDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AAC02A2427F0F200285C6D /* ConditionIconDetail.swift */; };
 		80AD070922D68E7B00220FEE /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD070822D68E7B00220FEE /* WeatherService.swift */; };
+		80AE94572457863200883E9E /* DrawerScrollViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE94562457863200883E9E /* DrawerScrollViewCoordinator.swift */; };
 		80B1B3282376683A000EA6DD /* DrawerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B1B3272376683A000EA6DD /* DrawerScrollView.swift */; };
 		80B5E7A223FA3DAF001729E0 /* UIStackView+AddArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B5E7A123FA3DAF001729E0 /* UIStackView+AddArrangedSubviews.swift */; };
 		80B5E7A523FA3DDD001729E0 /* StoredLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B5E7A423FA3DDD001729E0 /* StoredLocation.swift */; };
@@ -362,7 +362,6 @@
 		809C2A65241C63DA009FCF6A /* LocationPickerSectionModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerSectionModal.swift; sourceTree = "<group>"; };
 		809C2A69241C64C6009FCF6A /* LocationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPicker.swift; sourceTree = "<group>"; };
 		809C54D924244F750028216E /* WeatherIllustrationImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIllustrationImage.swift; sourceTree = "<group>"; };
-		80A016012376638900A72C2F /* MainPagingScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagingScrollViewController.swift; sourceTree = "<group>"; };
 		80A646C523F5E98900C80633 /* UIStackView+SetBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+SetBackground.swift"; sourceTree = "<group>"; };
 		80AAC01B2427E09E00285C6D /* DailyForecastData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastData.swift; sourceTree = "<group>"; };
 		80AAC01D2427EDD300285C6D /* ShrinkBackgroundForAppSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShrinkBackgroundForAppSection.swift; sourceTree = "<group>"; };
@@ -372,6 +371,7 @@
 		80AAC0272427F0DF00285C6D /* ConditionLayoutContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionLayoutContainer.swift; sourceTree = "<group>"; };
 		80AAC02A2427F0F200285C6D /* ConditionIconDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionIconDetail.swift; sourceTree = "<group>"; };
 		80AD070822D68E7B00220FEE /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		80AE94562457863200883E9E /* DrawerScrollViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerScrollViewCoordinator.swift; sourceTree = "<group>"; };
 		80B1B3272376683A000EA6DD /* DrawerScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerScrollView.swift; sourceTree = "<group>"; };
 		80B5E7A123FA3DAF001729E0 /* UIStackView+AddArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+AddArrangedSubviews.swift"; sourceTree = "<group>"; };
 		80B5E7A423FA3DDD001729E0 /* StoredLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredLocation.swift; sourceTree = "<group>"; };
@@ -794,7 +794,6 @@
 		805D6A202410A2DA002DEBAC /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				80A016012376638900A72C2F /* MainPagingScrollViewController.swift */,
 				80D871B223F1FF1E001FBA94 /* TransparentTouchScrollView.swift */,
 			);
 			path = Components;
@@ -1080,6 +1079,7 @@
 			children = (
 				805D6A202410A2DA002DEBAC /* Components */,
 				80B1B3272376683A000EA6DD /* DrawerScrollView.swift */,
+				80AE94562457863200883E9E /* DrawerScrollViewCoordinator.swift */,
 			);
 			name = DrawerScrollView;
 			path = PagingScrollView/DrawerScrollView;
@@ -1712,7 +1712,6 @@
 				80AAC0232427F0A900285C6D /* DayNightSwitch.swift in Sources */,
 				800A4D2F244F575100D8CD86 /* AddToFavoritesGroupContainer.swift in Sources */,
 				80E5D61C23773B46004A1D6B /* UIView+PinEdges.swift in Sources */,
-				80A016022376638900A72C2F /* MainPagingScrollViewController.swift in Sources */,
 				80F558432422EC1C00906FCB /* HourlyForecastSeparator.swift in Sources */,
 				80B1B3282376683A000EA6DD /* DrawerScrollView.swift in Sources */,
 				800A4D31244F575E00D8CD86 /* AddToFavoritesGroup.swift in Sources */,
@@ -1726,6 +1725,7 @@
 				809AC4332423F72F009B7045 /* RawLocation.swift in Sources */,
 				80FC8AB023F0B1E800AEA26F /* HeaderAccessories.swift in Sources */,
 				80C816262363DCFE00D33669 /* OmniBarTextField.swift in Sources */,
+				80AE94572457863200883E9E /* DrawerScrollViewCoordinator.swift in Sources */,
 				802C0D9E236903CD009A22BA /* Header.swift in Sources */,
 				80C777E023FB4A9B004ABB2E /* LocationItemTemperature.swift in Sources */,
 				80C816232363D9DA00D33669 /* OmniBar.swift in Sources */,

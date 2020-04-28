@@ -8,28 +8,64 @@
 
 import SwiftUI
 
-struct DrawerScrollView<Content>: UIViewControllerRepresentable, Equatable where Content: View {
-    var travelDistance: CGFloat
-    var locked: Bool = false
+struct DrawerScrollView<Content: View>: UIViewRepresentable {
+    @Binding internal var travelDistance: CGFloat
+    @Binding internal var locked: Bool
+    private var content: () -> Content
 
-    var content: () -> Content
-
-    func makeUIViewController(context: Context) -> MainPagingScrollViewController {
-        let vc = MainPagingScrollViewController()
-        vc.hostingController.rootView = AnyView(self.content())
-        return vc
+    @inlinable init(
+        travelDistance: Binding<CGFloat>,
+        locked: Binding<Bool>,
+        @ViewBuilder content: @escaping () -> Content
+    ) {
+        self._travelDistance = travelDistance
+        self._locked = locked
+        self.content = content
     }
 
-    func updateUIViewController(_ viewController: MainPagingScrollViewController, context: Context) {
-        viewController.travelDistance = self.travelDistance
-        viewController.updateScrollViewContentHeight()
-        viewController.isLocked = self.locked
+    private var hostingController: UIHostingController<AnyView> = {
+        let hostingController = UIHostingController(rootView: AnyView(EmptyView()))
+        hostingController.view.backgroundColor = .clear
+        return hostingController
+    }()
+
+    func makeUIView(context: Context) -> UIScrollView {
+        let scrollView = TransparentTouchScrollView()
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.alwaysBounceVertical = true
+        scrollView.alwaysBounceHorizontal = false
+        scrollView.isPagingEnabled = true
+        scrollView.insetsLayoutMarginsFromSafeArea = false
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.clipsToBounds = false
+
+        scrollView.delegate = context.coordinator
+        hostingController.rootView = AnyView(content())
+
+        scrollView.addSubview(hostingController.view)
+        hostingController.view.pinEdges([.all], to: scrollView)
+
+        return scrollView
     }
 
-    // MARK: - Equatable
+    func updateUIView(_ scrollView: UIScrollView, context: Context) {
+        let height = travelDistance + scrollView.frame.height
+        scrollView.contentSize.height = height
 
-    static func == (lhs: DrawerScrollView<Content>, rhs: DrawerScrollView<Content>) -> Bool {
-        lhs.travelDistance == rhs.travelDistance
-            && lhs.locked == rhs.locked
+        if scrollView.isScrollEnabled == locked {
+            scrollView.isScrollEnabled = !locked
+            scrollView.scrollToTop()
+        }
+    }
+
+    func makeCoordinator() -> DrawerScrollViewCoordinator<Content> {
+        DrawerScrollViewCoordinator<Content>(travelDistance: $travelDistance)
+    }
+}
+
+extension DrawerScrollView: Equatable {
+    static func == (lhs: DrawerScrollView, rhs: DrawerScrollView) -> Bool {
+        lhs.travelDistance == rhs.travelDistance && lhs.locked == rhs.locked
     }
 }

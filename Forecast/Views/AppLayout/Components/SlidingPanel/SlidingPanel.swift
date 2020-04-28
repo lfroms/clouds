@@ -9,19 +9,23 @@
 import SwiftUI
 
 struct SlidingPanel<Content: View>: View {
-    var travelDistance: CGFloat
-    var locked: Bool = false
-    var content: () -> Content
+    @Binding private var travelDistance: CGFloat
+    @Binding private var locked: Bool
+    private var content: () -> Content
 
-    @inlinable public init(travelDistance: CGFloat, locked: Bool, @ViewBuilder content: @escaping () -> Content) {
-        self.travelDistance = travelDistance
-        self.locked = locked
+    @inlinable init(
+        travelDistance: Binding<CGFloat>,
+        locked: Binding<Bool>,
+        @ViewBuilder content: @escaping () -> Content
+    ) {
+        self._travelDistance = travelDistance
+        self._locked = locked
         self.content = content
     }
 
     var body: some View {
         GeometryReader { (geometry: GeometryProxy) in
-            DrawerScrollView(travelDistance: self.travelDistance, locked: self.locked) {
+            DrawerScrollView(travelDistance: self.$travelDistance, locked: self.$locked) {
                 self.content()
                     .frame(height: geometry.size.height)
                     .edgesIgnoringSafeArea(.all)
@@ -39,7 +43,7 @@ extension SlidingPanel: Equatable {
 
 struct SlidingPanel_Previews: PreviewProvider {
     static var previews: some View {
-        SlidingPanel(travelDistance: 100, locked: false) {
+        SlidingPanel(travelDistance: .constant(100), locked: .constant(false)) {
             Text("Hello")
         }
     }

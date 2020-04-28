@@ -38,7 +38,7 @@ final class AppState: ObservableObject {
     
     // MARK: - Sliding Panel
     
-    private(set) lazy var slidingPanelLocked: Bool = activeSection != .now
+    @Published var slidingPanelLocked: Bool = false
     @Published var detailsContentHeight: CGFloat = 0
     
     @Published var showingAlerts: Bool = false
