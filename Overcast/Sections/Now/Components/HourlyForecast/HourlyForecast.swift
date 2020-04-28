@@ -52,10 +52,10 @@ struct HourlyForecast: View {
                         }
                     }
                 }
+                .modifier(ResetHourlyForecastScroll())
                 .padding(.horizontal, Dimension.Global.padding)
                 .frame(minHeight: 0, maxHeight: .infinity, alignment: .top)
             }
-            .modifier(ResettableScrollViewModifier())
             .frame(height: 140, alignment: .top)
         }
     }
