@@ -26,11 +26,14 @@ struct ResetHourlyForecastScroll: ViewModifier {
     }
 }
 
-struct IntrospectionView: UIViewRepresentable {
+private struct IntrospectionView: UIViewRepresentable {
     let customize: (UIScrollView) -> Void
 
     func makeUIView(context: Context) -> some UIView {
-        UIView(frame: .zero)
+        let view = UIView(frame: .zero)
+        view.isUserInteractionEnabled = false
+        view.isHidden = true
+        return view
     }
 
     func updateUIView(_ uiView: UIViewType, context: Context) {
@@ -42,13 +45,13 @@ struct IntrospectionView: UIViewRepresentable {
     }
 }
 
-extension View {
+private extension View {
     func introspectScrollView(customize: @escaping (UIScrollView) -> Void) -> some View {
-        overlay(IntrospectionView(customize: customize))
+        background(IntrospectionView(customize: customize))
     }
 }
 
-extension UIView {
+private extension UIView {
     func superview<T>(of type: T.Type) -> T? {
         return superview as? T ?? superview?.superview(of: type)
     }
