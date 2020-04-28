@@ -9,15 +9,18 @@
 import SwiftUI
 
 struct DrawerScrollView<Content: View>: UIViewRepresentable {
-    @Binding internal var travelDistance: CGFloat
-    @Binding internal var locked: Bool
+    @Binding private var isOpen: Bool
+    @Binding private var travelDistance: CGFloat
+    @Binding private var locked: Bool
     private var content: () -> Content
 
     @inlinable init(
+        isOpen: Binding<Bool>,
         travelDistance: Binding<CGFloat>,
         locked: Binding<Bool>,
         @ViewBuilder content: @escaping () -> Content
     ) {
+        self._isOpen = isOpen
         self._travelDistance = travelDistance
         self._locked = locked
         self.content = content
@@ -57,15 +60,32 @@ struct DrawerScrollView<Content: View>: UIViewRepresentable {
             scrollView.isScrollEnabled = !locked
             scrollView.scrollToTop()
         }
+
+        guard
+            !scrollView.isDragging,
+            !scrollView.isTracking,
+            !scrollView.isDecelerating,
+            scrollView.isScrollEnabled else {
+            return
+        }
+
+        if isOpen {
+            let bottomOffset = CGPoint(x: 0, y: travelDistance)
+            scrollView.setContentOffset(bottomOffset, animated: true)
+        } else {
+            scrollView.scrollToTop()
+        }
     }
 
     func makeCoordinator() -> DrawerScrollViewCoordinator<Content> {
-        DrawerScrollViewCoordinator<Content>(travelDistance: $travelDistance)
+        DrawerScrollViewCoordinator<Content>(isOpen: $isOpen, travelDistance: $travelDistance)
     }
 }
 
 extension DrawerScrollView: Equatable {
     static func == (lhs: DrawerScrollView, rhs: DrawerScrollView) -> Bool {
-        lhs.travelDistance == rhs.travelDistance && lhs.locked == rhs.locked
+        lhs.isOpen == rhs.isOpen
+            && lhs.travelDistance == rhs.travelDistance
+            && lhs.locked == rhs.locked
     }
 }

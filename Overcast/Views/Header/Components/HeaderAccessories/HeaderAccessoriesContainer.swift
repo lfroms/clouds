@@ -21,10 +21,11 @@ struct HeaderAccessoriesContainer: Container {
         )
         .equatable()
         .opacity(hidden ? 0 : 1)
+        .animation(.easeInOut(duration: 0.2), value: appState.drawerIsOpen)
     }
 
     private var hidden: Bool {
-        locationPickerState.presented || appState.activeSection == .radar
+        locationPickerState.presented || appState.activeSection == .radar || appState.drawerIsOpen
     }
 
     private var sunriseSunsetHidden: Bool {

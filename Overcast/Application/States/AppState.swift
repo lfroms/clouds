@@ -40,6 +40,9 @@ final class AppState: ObservableObject {
     
     @Published var slidingPanelLocked: Bool = false
     @Published var detailsContentHeight: CGFloat = 0
+    @Published var drawerIsOpen: Bool = false
+    
+    // MARK: - Alerts
     
     @Published var showingAlerts: Bool = false
 }

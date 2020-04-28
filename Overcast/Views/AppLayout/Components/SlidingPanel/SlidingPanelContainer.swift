@@ -18,7 +18,11 @@ struct SlidingPanelContainer<Content: View>: Container {
     }
 
     var body: some View {
-        SlidingPanel(travelDistance: $appState.detailsContentHeight, locked: $appState.slidingPanelLocked) {
+        SlidingPanel(
+            isOpen: $appState.drawerIsOpen,
+            travelDistance: $appState.detailsContentHeight,
+            locked: $appState.slidingPanelLocked
+        ) {
             self.content()
         }
         .equatable()

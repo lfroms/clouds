@@ -9,17 +9,17 @@
 import SwiftUI
 
 struct AppServices: ViewModifier {
-    private static let appState: AppState = AppState()
-    private static let visualState: VisualState = VisualState()
-    private static let weekSectionState: WeekSectionState = WeekSectionState()
-    private static let locationPickerState: LocationPickerState = LocationPickerState()
-    private static let settingsSheetState: SettingsSheetState = SettingsSheetState()
+    internal static let appState: AppState = AppState()
+    internal static let visualState: VisualState = VisualState()
+    internal static let weekSectionState: WeekSectionState = WeekSectionState()
+    internal static let locationPickerState: LocationPickerState = LocationPickerState()
+    internal static let settingsSheetState: SettingsSheetState = SettingsSheetState()
 
-    private static let weatherService: WeatherService = WeatherService()
-    private static let locationService: LocationService = LocationService()
-    private static let locationSearchService: LocationSearchService = LocationSearchService()
-    private static let locationFavoritesService: LocationFavoritesService = LocationFavoritesService()
-    private static let radarService: RadarService = RadarService()
+    internal static let weatherService: WeatherService = WeatherService()
+    internal static let locationService: LocationService = LocationService()
+    internal static let locationSearchService: LocationSearchService = LocationSearchService()
+    internal static let locationFavoritesService: LocationFavoritesService = LocationFavoritesService()
+    internal static let radarService: RadarService = RadarService()
 
     func body(content: Content) -> some View {
         content

@@ -10,11 +10,13 @@ import CoreHaptics
 import SwiftUI
 
 final class DrawerScrollViewCoordinator<Content: View>: NSObject, UIScrollViewDelegate {
+    @Binding private var isOpen: Bool
     @Binding private var travelDistance: CGFloat
 
     private var engine: CHHapticEngine?
 
-    init(travelDistance: Binding<CGFloat>) {
+    init(isOpen: Binding<Bool>, travelDistance: Binding<CGFloat>) {
+        self._isOpen = isOpen
         self._travelDistance = travelDistance
         super.init()
         initHapticEngine()
@@ -58,6 +60,12 @@ final class DrawerScrollViewCoordinator<Content: View>: NSObject, UIScrollViewDe
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentOffset = scrollView.contentOffset.y
         scrollView.isPagingEnabled = !isOffsetBeyondPage(yContentOffset: contentOffset)
+
+        let newOpenState = scrollView.contentOffset.y > travelDistance / 2
+
+        if isOpen != newOpenState {
+            isOpen = newOpenState
+        }
     }
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
