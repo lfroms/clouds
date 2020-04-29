@@ -40,9 +40,9 @@ class WeatherService: ObservableObject {
         
         if loading {
             request?.cancel()
-        } else {
-            loading = true
         }
+        
+        loading = true
         
         request = GraphQL.shared.apollo.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely) { result in
             self.loading = false
@@ -59,7 +59,11 @@ class WeatherService: ObservableObject {
                 }
                 
             case .failure(let error):
-                print(error)
+                guard !error.localizedDescription.contains("cancelled") else {
+                    return
+                }
+                
+                Alert.display(title: "Oops!", message: "Something broke. Make sure your device is online and try again.")
             }
         }
     }

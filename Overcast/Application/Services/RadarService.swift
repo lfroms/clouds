@@ -66,8 +66,16 @@ final class RadarService: ObservableObject {
                     self.currentImageIndex = self.dates.count - 1
                 }
                 
+                if let error = graphQLResult.errors?.first {
+                    Alert.display(title: "Error", message: error.description)
+                }
+                
             case .failure(let error):
-                print(error)
+                guard !error.localizedDescription.contains("cancelled") else {
+                    return
+                }
+                
+                Alert.display(title: "Oops!", message: "Something broke. Make sure your device is online and try again.")
             }
         }
     }
