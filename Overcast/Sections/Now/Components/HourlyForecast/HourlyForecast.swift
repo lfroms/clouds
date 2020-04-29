@@ -19,15 +19,15 @@ struct HourlyForecast: View {
         VStack(alignment: .leading) {
             if !items.isEmpty {
                 ZStack(alignment: .leading) {
-                    Text("Today".uppercased())
+                    Text(allHoursAreForTomorrow ? "TOMORROW" : "TODAY")
                         .background(GeometryGetter(rect: self.$todayTextFrame) { oldRect, newRect in
                             oldRect.width != newRect.width
                         })
                         .opacity(todayTextOpacity)
                         .offset(x: todayTextOffset)
 
-                    if self.separatorFrame != .zero && self.items.first?.date.hour != 0 {
-                        Text("Tomorrow".uppercased())
+                    if self.separatorFrame != .zero && !allHoursAreForTomorrow {
+                        Text("TOMORROW")
                             .offset(x: tomorrowTextOffset)
                     }
                 }
@@ -85,6 +85,10 @@ struct HourlyForecast: View {
     private var todayTextOpacity: Double {
         let animationProgress = max(Double(separatorFrame.minX / spaceAvailableForTodayLabel), .zero)
         return hasReachedTodayLabel ? animationProgress : .one
+    }
+
+    private var allHoursAreForTomorrow: Bool {
+        items.first?.date.hour == 0
     }
 }
 
