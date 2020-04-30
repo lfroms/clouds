@@ -79,3 +79,15 @@ node_modules
 
 # Carthage
 Carthage/
+
+# Fastlane
+# fastlane specific
+**/fastlane/report.xml
+
+# deliver temporary files
+**/fastlane/Preview.html
+
+# snapshot generated screenshots
+**/fastlane/screenshots
+
+**/fastlane/test_output
