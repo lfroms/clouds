@@ -1917,7 +1917,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_ASSET_PATHS = "Overcast/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8P8574Z65P;
 				ENABLE_PREVIEWS = YES;
@@ -1931,7 +1931,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.5.3;
+				MARKETING_VERSION = 0.5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.romsicki.forecast;
 				PRODUCT_NAME = Clouds;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1946,7 +1946,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_ASSET_PATHS = "Overcast/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8P8574Z65P;
 				ENABLE_PREVIEWS = YES;
@@ -1960,7 +1960,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.5.3;
+				MARKETING_VERSION = 0.5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.romsicki.forecast;
 				PRODUCT_NAME = Clouds;
 				PROVISIONING_PROFILE_SPECIFIER = "";
