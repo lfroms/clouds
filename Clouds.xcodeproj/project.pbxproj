@@ -201,6 +201,9 @@
 		80F07DDE23FB8012005C43A3 /* AnimationPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F07DDD23FB8012005C43A3 /* AnimationPreset.swift */; };
 		80F44810245B590B007AC77B /* CloudsScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F4480F245B590B007AC77B /* CloudsScreenshots.swift */; };
 		80F44818245B591D007AC77B /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F44817245B591D007AC77B /* SnapshotHelper.swift */; };
+		80F4481A245B60B3007AC77B /* DynamicStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F44819245B60B3007AC77B /* DynamicStubs.swift */; };
+		80F44820245B60FF007AC77B /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 80F4481F245B60FF007AC77B /* Swifter */; };
+		80F44822245B6132007AC77B /* WeatherFixtureJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F44821245B6132007AC77B /* WeatherFixtureJSON.swift */; };
 		80F558432422EC1C00906FCB /* HourlyForecastSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F558422422EC1C00906FCB /* HourlyForecastSeparator.swift */; };
 		80FA8FCC24117257004C9BDB /* MeasurementGridContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FA8FCB24117257004C9BDB /* MeasurementGridContainer.swift */; };
 		80FB6C67240873250026DD83 /* LocationSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB6C66240873250026DD83 /* LocationSearchService.swift */; };
@@ -432,6 +435,8 @@
 		80F4480F245B590B007AC77B /* CloudsScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudsScreenshots.swift; sourceTree = "<group>"; };
 		80F44811245B590B007AC77B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80F44817245B591D007AC77B /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		80F44819245B60B3007AC77B /* DynamicStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicStubs.swift; sourceTree = "<group>"; };
+		80F44821245B6132007AC77B /* WeatherFixtureJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherFixtureJSON.swift; sourceTree = "<group>"; };
 		80F558422422EC1C00906FCB /* HourlyForecastSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastSeparator.swift; sourceTree = "<group>"; };
 		80FA8FCB24117257004C9BDB /* MeasurementGridContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementGridContainer.swift; sourceTree = "<group>"; };
 		80FB6C66240873250026DD83 /* LocationSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchService.swift; sourceTree = "<group>"; };
@@ -459,6 +464,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80F44820245B60FF007AC77B /* Swifter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1457,6 +1463,8 @@
 				80F4480F245B590B007AC77B /* CloudsScreenshots.swift */,
 				80F44817245B591D007AC77B /* SnapshotHelper.swift */,
 				80F44811245B590B007AC77B /* Info.plist */,
+				80F44819245B60B3007AC77B /* DynamicStubs.swift */,
+				80F44821245B6132007AC77B /* WeatherFixtureJSON.swift */,
 			);
 			path = CloudsScreenshots;
 			sourceTree = "<group>";
@@ -1540,6 +1548,9 @@
 				80F44813245B590B007AC77B /* PBXTargetDependency */,
 			);
 			name = CloudsScreenshots;
+			packageProductDependencies = (
+				80F4481F245B60FF007AC77B /* Swifter */,
+			);
 			productName = CloudsScreenshots;
 			productReference = 80F4480D245B590A007AC77B /* CloudsScreenshots.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -1575,6 +1586,7 @@
 			packageReferences = (
 				80D0CE7F235B6D95002A3EFD /* XCRemoteSwiftPackageReference "SwiftDate" */,
 				80D0CE82235B6DA5002A3EFD /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				80F4481E245B60FF007AC77B /* XCRemoteSwiftPackageReference "swifter" */,
 			);
 			productRefGroup = 805A174322C53ADB00E1B4E2 /* Products */;
 			projectDirPath = "";
@@ -1852,6 +1864,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80F44822245B6132007AC77B /* WeatherFixtureJSON.swift in Sources */,
+				80F4481A245B60B3007AC77B /* DynamicStubs.swift in Sources */,
 				80F44810245B590B007AC77B /* CloudsScreenshots.swift in Sources */,
 				80F44818245B591D007AC77B /* SnapshotHelper.swift in Sources */,
 			);
@@ -2140,6 +2154,14 @@
 				version = 0.26.0;
 			};
 		};
+		80F4481E245B60FF007AC77B /* XCRemoteSwiftPackageReference "swifter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/httpswift/swifter";
+			requirement = {
+				branch = stable;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2152,6 +2174,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 80D0CE82235B6DA5002A3EFD /* XCRemoteSwiftPackageReference "apollo-ios" */;
 			productName = Apollo;
+		};
+		80F4481F245B60FF007AC77B /* Swifter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 80F4481E245B60FF007AC77B /* XCRemoteSwiftPackageReference "swifter" */;
+			productName = Swifter;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

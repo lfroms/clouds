@@ -18,5 +18,13 @@ final class GraphQL {
     private let serverAddress = "https://forecast-data.herokuapp.com/graphql"
     #endif
 
-    private(set) lazy var apollo = ApolloClient(url: URL(string: serverAddress)!)
+    private var serverURL: URL? {
+        if ProcessInfo.processInfo.arguments.contains("UI_TESTING") {
+            return URL(string: "http://localhost:8080/graphql")
+        } else {
+            return URL(string: serverAddress)
+        }
+    }
+
+    private(set) lazy var apollo = ApolloClient(url: serverURL!)
 }

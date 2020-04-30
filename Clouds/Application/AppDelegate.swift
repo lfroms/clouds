@@ -11,7 +11,34 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        if ProcessInfo.processInfo.arguments.contains("UI_TESTING") {
+            let locationFavoritesService = LocationFavoritesService()
+
+            locationFavoritesService.clearActiveLocation()
+            locationFavoritesService.clearFavoriteLocations()
+            locationFavoritesService.toggleFavorite(location: StoredLocation(
+                name: "Montréal",
+                regionName: "QC, Canada",
+                coordinate: .init(latitude: 45.5017, longitude: -73.5673)
+            ))
+
+            locationFavoritesService.toggleFavorite(
+                location: StoredLocation(
+                    name: "Toronto",
+                    regionName: "ON, Canada",
+                    coordinate: .init(latitude: 43.6532, longitude: 79.3832)
+                )
+            )
+
+            locationFavoritesService.toggleFavorite(
+                location: StoredLocation(
+                    name: "Vancouver",
+                    regionName: "BC, Canada",
+                    coordinate: .init(latitude: 49.2827, longitude: 123.1207)
+                )
+            )
+        }
+
         return true
     }
 

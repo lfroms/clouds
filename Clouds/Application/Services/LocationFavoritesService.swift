@@ -46,6 +46,10 @@ final class LocationFavoritesService: ObservableObject {
         saveLocation(nil, forKey: .activeLocation)
     }
     
+    public func clearFavoriteLocations() {
+        favoriteLocations = []
+    }
+    
     // MARK: - RawLocation Coordinate Lookup
     
     private func getCoordinatesFor(location: RawLocation, completion: @escaping (CLLocationCoordinate2D) -> Void) {
