@@ -25,6 +25,12 @@ class CloudsScreenshots: XCTestCase {
         try! stubs.server.start()
 
         setupSnapshot(app)
+
+        addUIInterruptionMonitor(withDescription: "Allow “Clouds” to use your location?") { element in
+            element.buttons["Allow While Using App"].tap()
+            self.app.tap()
+            return true
+        }
     }
 
     override func tearDownWithError() throws {

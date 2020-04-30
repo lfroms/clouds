@@ -14,7 +14,7 @@ struct RandomWeatherFixtureJSON {
     }
 
     private static func randomColorScheme() -> String {
-        ["wetCloud", "dryCloud", "clearSky", "night"].randomElement()!
+        ["dryCloud", "clearSky", "night"].randomElement()!
     }
 
     let jsonString = """
