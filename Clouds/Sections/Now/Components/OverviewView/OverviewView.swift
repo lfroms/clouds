@@ -33,7 +33,6 @@ struct OverviewView: View {
                     .equatable()
             }
         }
-        .accessibility(identifier: "now.overview")
     }
 }
 

@@ -16,6 +16,7 @@ struct AppLayout: View {
 
                 SlidingPanelContainer {
                     MasterViewContainer()
+                        .accessibility(identifier: "master")
                 }
                 .edgesIgnoringSafeArea(.top)
             }
