@@ -21,6 +21,7 @@ struct DayPicker: View {
                             .equatable()
                     }
                     .buttonStyle(PlainButtonStyle())
+                    .accessibility(identifier: "week.daypicker.datebubble")
                 }
             }
         }

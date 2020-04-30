@@ -31,6 +31,7 @@ struct LocationItem<Content: View>: View {
             .animation(AnimationPreset.Touch.shrink)
         }
         .buttonStyle(PlainButtonStyle())
+        .accessibility(identifier: "locationpicker.item")
     }
 }
 

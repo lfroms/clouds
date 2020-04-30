@@ -28,6 +28,7 @@ struct TabView: View {
                     transform: { [TabPreferenceData(activeTab: self.tab, bounds: $0)] }
                 )
         }
+        .accessibility(identifier: "navigationbar.button")
     }
 }
 

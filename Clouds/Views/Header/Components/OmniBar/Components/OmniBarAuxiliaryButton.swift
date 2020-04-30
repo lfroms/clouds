@@ -19,6 +19,7 @@ struct OmniBarAuxiliaryButton: View, Equatable {
                 .background(Circle().foregroundColor(Color.white.opacity(0.16)))
                 .animation(nil)
         }
+        .accessibility(identifier: "omnibar.auxiliarybutton")
         .padding(.trailing, 5)
     }
 

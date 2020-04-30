@@ -40,6 +40,7 @@ struct OmniBar: View, Equatable {
         .gesture(gesture)
         .scaleEffect(scaleEffect)
         .animation(scaleAnimation, value: [isPressed])
+        .accessibility(identifier: "omnibar")
     }
 
     // MARK: - Animations & Gestures

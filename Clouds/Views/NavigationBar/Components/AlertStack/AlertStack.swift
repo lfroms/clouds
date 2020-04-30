@@ -19,6 +19,7 @@ struct AlertStack: View {
                     AlertIndicator(alert: alert)
                         .equatable()
                 }
+                .accessibility(identifier: "navigationbar.alertstack.indicator")
             }
         }
     }
