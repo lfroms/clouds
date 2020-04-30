@@ -109,11 +109,11 @@ struct MeasurementGridContainer: Container {
             observations.append(item)
         }
         
-        // MARK: - Dewpoint 🌡
+        // MARK: - Dew Point 🌡
         
         if let dewPoint = cc.dewPoint {
             let item = MeasurementDescriptor(
-                label: "Dewpoint",
+                label: "Dew Point",
                 value: "\(dewPoint) °C",
                 color: .blue
             )
