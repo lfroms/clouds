@@ -23,10 +23,8 @@ class CloudsScreenshots: XCTestCase {
         app.launchArguments += ["UI_TESTING"]
 
         try! stubs.server.start()
-        stubs.stubRequest(path: "/graphql", jsonData: WeatherFixtureJSON().jsonData!)
 
         setupSnapshot(app)
-        app.launch()
     }
 
     override func tearDownWithError() throws {
@@ -36,6 +34,9 @@ class CloudsScreenshots: XCTestCase {
     }
 
     func testNow() throws {
+        stubs.stubRequest(path: "/graphql", jsonData: WeatherFixtureJSON().jsonData!)
+        app.launch()
+
         app.textFields["omnibar"].tap()
         app.scrollViews.buttons.matching(identifier: "locationpicker.item").element(boundBy: 0).tap()
 
@@ -43,6 +44,9 @@ class CloudsScreenshots: XCTestCase {
     }
 
     func testDetails() throws {
+        stubs.stubRequest(path: "/graphql", jsonData: WeatherFixtureJSON().jsonData!)
+        app.launch()
+
         app.scrollViews.otherElements["master"].swipeUp()
         snapshot("02NowDetails")
 
@@ -50,6 +54,9 @@ class CloudsScreenshots: XCTestCase {
     }
 
     func testAlerts() throws {
+        stubs.stubRequest(path: "/graphql", jsonData: WeatherFixtureJSON().jsonData!)
+        app.launch()
+
         app.buttons["navigationbar.alertstack.indicator"].firstMatch.tap()
         snapshot("03Alerts")
 
@@ -57,6 +64,9 @@ class CloudsScreenshots: XCTestCase {
     }
 
     func testWeek() throws {
+        stubs.stubRequest(path: "/graphql", jsonData: WeatherFixtureJSON().jsonData!)
+        app.launch()
+
         app.textFields["omnibar"].tap()
         app.scrollViews.buttons.matching(identifier: "locationpicker.item").element(boundBy: 1).tap()
         app.scrollViews.buttons.matching(identifier: "navigationbar.button").element(boundBy: 1).tap(after: 2, in: self)
@@ -65,6 +75,9 @@ class CloudsScreenshots: XCTestCase {
     }
 
     func testRadar() throws {
+        stubs.stubRequest(path: "/graphql", jsonData: WeatherFixtureJSON().jsonData!)
+        app.launch()
+
         app.textFields["omnibar"].tap()
         app.scrollViews.buttons.matching(identifier: "locationpicker.item").element(boundBy: 3).tap()
         app.scrollViews.buttons.matching(identifier: "navigationbar.button").element(boundBy: 2).tap(after: 2, in: self)
@@ -72,6 +85,9 @@ class CloudsScreenshots: XCTestCase {
     }
 
     func testLocationPicker() throws {
+        stubs.stubRequest(path: "/graphql", jsonData: WeatherFixtureJSON().jsonData!)
+        app.launch()
+
         app.textFields["omnibar"].tap()
         snapshot("06LocationPicker")
     }
