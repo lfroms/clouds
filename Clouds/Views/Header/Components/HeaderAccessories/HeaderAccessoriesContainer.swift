@@ -25,7 +25,9 @@ struct HeaderAccessoriesContainer: Container {
     }
 
     private var hidden: Bool {
-        locationPickerState.presented || appState.activeSection == .radar || appState.drawerIsOpen
+        locationPickerState.presented
+            || appState.activeSection == .radar
+            || appState.drawerIsOpen
     }
 
     private var sunriseSunsetHidden: Bool {
@@ -33,7 +35,10 @@ struct HeaderAccessoriesContainer: Container {
     }
 
     private var sunriseSunset: SunriseSunsetData? {
-        guard let sunriseTime = weatherService.weather?.today.sunriseTime, let sunsetTime = weatherService.weather?.today.sunsetTime else {
+        guard
+            let sunriseTime = weatherService.weather?.today.sunriseTime,
+            let sunsetTime = weatherService.weather?.today.sunsetTime
+        else {
             return nil
         }
 
