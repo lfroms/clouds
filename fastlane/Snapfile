@@ -27,3 +27,8 @@ clear_previous_screenshots(true)
 
 # For more information about all available options run
 # fastlane action snapshot
+
+skip_open_summary(true)
+reinstall_app(true)
+erase_simulator(true)
+dark_mode(false)
