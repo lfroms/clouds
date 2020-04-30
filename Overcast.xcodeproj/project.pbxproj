@@ -287,7 +287,7 @@
 		8057DB532364F10F0087FBF7 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		8057DB552364F12B0087FBF7 /* TabControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabControl.swift; sourceTree = "<group>"; };
 		8057DB572364F1370087FBF7 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
-		805A174222C53ADB00E1B4E2 /* Overcast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Overcast.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		805A174222C53ADB00E1B4E2 /* Clouds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clouds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		805A174522C53ADB00E1B4E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		805A174722C53ADB00E1B4E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		805A174922C53ADB00E1B4E2 /* AppLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLayout.swift; sourceTree = "<group>"; };
@@ -718,7 +718,7 @@
 		805A174322C53ADB00E1B4E2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				805A174222C53ADB00E1B4E2 /* Overcast.app */,
+				805A174222C53ADB00E1B4E2 /* Clouds.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1488,7 +1488,7 @@
 				80D0CE83235B6DA5002A3EFD /* Apollo */,
 			);
 			productName = Forecast;
-			productReference = 805A174222C53ADB00E1B4E2 /* Overcast.app */;
+			productReference = 805A174222C53ADB00E1B4E2 /* Clouds.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1933,7 +1933,7 @@
 				);
 				MARKETING_VERSION = 0.5.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.romsicki.forecast;
-				PRODUCT_NAME = Overcast;
+				PRODUCT_NAME = Clouds;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1962,7 +1962,7 @@
 				);
 				MARKETING_VERSION = 0.5.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.romsicki.forecast;
-				PRODUCT_NAME = Overcast;
+				PRODUCT_NAME = Clouds;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
