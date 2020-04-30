@@ -14,6 +14,7 @@ struct HourlyForecastContainer: Container {
     var body: some View {
         HourlyForecast(items: items)
             .equatable()
+            .overlay(weatherService.weather?.currently.temperature != nil && items.isEmpty ? hourlyForecastUnavailable : nil, alignment: .center)
     }
 
     private var items: [HourlyForecastItemData] {
@@ -34,6 +35,13 @@ struct HourlyForecastContainer: Container {
                 pop: Int((hour.precipProbability ?? 0) * 100)
             )
         }
+    }
+
+    private var hourlyForecastUnavailable: some View {
+        Text("Hourly Forecast Unavailable")
+            .font(.subheadline)
+            .fontWeight(.bold)
+            .foregroundColor(Color.white.opacity(0.6))
     }
 }
 
