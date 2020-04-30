@@ -97,6 +97,7 @@
 		806A5BFA241468970093361D /* VisualStateToWeekSectionStateAndWeatherBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806A5BF9241468970093361D /* VisualStateToWeekSectionStateAndWeatherBinder.swift */; };
 		806A5BFC24146C8B0093361D /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806A5BFB24146C8B0093361D /* Collection+Safe.swift */; };
 		806A5C00241481B90093361D /* CurrentSectionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806A5BFF241481B90093361D /* CurrentSectionContainer.swift */; };
+		80700FE6245B7FAC00033AF9 /* RandomWeatherFixtureJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80700FE5245B7FAC00033AF9 /* RandomWeatherFixtureJSON.swift */; };
 		80734AFB2410A435000693F4 /* MeasurementDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80734AFA2410A435000693F4 /* MeasurementDescriptor.swift */; };
 		80734AFE2410A512000693F4 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80734AFD2410A512000693F4 /* GridStack.swift */; };
 		8076F72623651CD000FB85D1 /* SlidingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076F72523651CD000FB85D1 /* SlidingPanel.swift */; };
@@ -204,6 +205,7 @@
 		80F4481A245B60B3007AC77B /* DynamicStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F44819245B60B3007AC77B /* DynamicStubs.swift */; };
 		80F44820245B60FF007AC77B /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 80F4481F245B60FF007AC77B /* Swifter */; };
 		80F44822245B6132007AC77B /* WeatherFixtureJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F44821245B6132007AC77B /* WeatherFixtureJSON.swift */; };
+		80F44826245B73F2007AC77B /* RadarFixtureJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F44825245B73F2007AC77B /* RadarFixtureJSON.swift */; };
 		80F558432422EC1C00906FCB /* HourlyForecastSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F558422422EC1C00906FCB /* HourlyForecastSeparator.swift */; };
 		80FA8FCC24117257004C9BDB /* MeasurementGridContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FA8FCB24117257004C9BDB /* MeasurementGridContainer.swift */; };
 		80FB6C67240873250026DD83 /* LocationSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB6C66240873250026DD83 /* LocationSearchService.swift */; };
@@ -333,6 +335,7 @@
 		806A5BF9241468970093361D /* VisualStateToWeekSectionStateAndWeatherBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualStateToWeekSectionStateAndWeatherBinder.swift; sourceTree = "<group>"; };
 		806A5BFB24146C8B0093361D /* Collection+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
 		806A5BFF241481B90093361D /* CurrentSectionContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSectionContainer.swift; sourceTree = "<group>"; };
+		80700FE5245B7FAC00033AF9 /* RandomWeatherFixtureJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomWeatherFixtureJSON.swift; sourceTree = "<group>"; };
 		80734AFA2410A435000693F4 /* MeasurementDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementDescriptor.swift; sourceTree = "<group>"; };
 		80734AFD2410A512000693F4 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
 		8076F72523651CD000FB85D1 /* SlidingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingPanel.swift; sourceTree = "<group>"; };
@@ -437,6 +440,7 @@
 		80F44817245B591D007AC77B /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		80F44819245B60B3007AC77B /* DynamicStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicStubs.swift; sourceTree = "<group>"; };
 		80F44821245B6132007AC77B /* WeatherFixtureJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherFixtureJSON.swift; sourceTree = "<group>"; };
+		80F44825245B73F2007AC77B /* RadarFixtureJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarFixtureJSON.swift; sourceTree = "<group>"; };
 		80F558422422EC1C00906FCB /* HourlyForecastSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastSeparator.swift; sourceTree = "<group>"; };
 		80FA8FCB24117257004C9BDB /* MeasurementGridContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementGridContainer.swift; sourceTree = "<group>"; };
 		80FB6C66240873250026DD83 /* LocationSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchService.swift; sourceTree = "<group>"; };
@@ -1465,6 +1469,8 @@
 				80F44811245B590B007AC77B /* Info.plist */,
 				80F44819245B60B3007AC77B /* DynamicStubs.swift */,
 				80F44821245B6132007AC77B /* WeatherFixtureJSON.swift */,
+				80700FE5245B7FAC00033AF9 /* RandomWeatherFixtureJSON.swift */,
+				80F44825245B73F2007AC77B /* RadarFixtureJSON.swift */,
 			);
 			path = CloudsScreenshots;
 			sourceTree = "<group>";
@@ -1866,8 +1872,10 @@
 			files = (
 				80F44822245B6132007AC77B /* WeatherFixtureJSON.swift in Sources */,
 				80F4481A245B60B3007AC77B /* DynamicStubs.swift in Sources */,
+				80700FE6245B7FAC00033AF9 /* RandomWeatherFixtureJSON.swift in Sources */,
 				80F44810245B590B007AC77B /* CloudsScreenshots.swift in Sources */,
 				80F44818245B591D007AC77B /* SnapshotHelper.swift in Sources */,
+				80F44826245B73F2007AC77B /* RadarFixtureJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

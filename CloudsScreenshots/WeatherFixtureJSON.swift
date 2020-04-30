@@ -42,8 +42,8 @@ struct WeatherFixtureJSON {
               "today": {
                 "__typename": "Today",
                 "sunriseTime": 1588254720,
-                "sunsetTime": 1588306020,
-                "highTemperature": null,
+                "sunsetTime": 1589502240,
+                "highTemperature": 27,
                 "lowTemperature": 16
               },
               "currently": {
@@ -55,7 +55,7 @@ struct WeatherFixtureJSON {
                   "style": "partlyCloudy",
                   "colorScheme": "clearSky"
                 },
-                "temperature": 22.4,
+                "temperature": 21,
                 "humidity": 0.76,
                 "pressure": {
                   "__typename": "Pressure",

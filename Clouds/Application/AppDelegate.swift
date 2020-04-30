@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 location: StoredLocation(
                     name: "Toronto",
                     regionName: "ON, Canada",
-                    coordinate: .init(latitude: 43.6532, longitude: 79.3832)
+                    coordinate: .init(latitude: 43.6532, longitude: -79.3832)
                 )
             )
 
@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 location: StoredLocation(
                     name: "Vancouver",
                     regionName: "BC, Canada",
-                    coordinate: .init(latitude: 49.2827, longitude: 123.1207)
+                    coordinate: .init(latitude: 49.2827, longitude: -123.1207)
                 )
             )
         }

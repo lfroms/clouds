@@ -24,4 +24,13 @@ class DynamicStubs {
 
         server.post[path] = response
     }
+
+    func stubRandomWeatherResponse() {
+        let response: ((HttpRequest) -> HttpResponse) = { _ in
+            let json = try? JSONSerialization.jsonObject(with: RandomWeatherFixtureJSON().jsonData!, options: .mutableContainers)
+            return HttpResponse.ok(.json(json as AnyObject))
+        }
+
+        server.post["/graphql"] = response
+    }
 }

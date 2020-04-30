@@ -69,23 +69,31 @@ class CloudsScreenshots: XCTestCase {
 
         app.textFields["omnibar"].tap()
         app.scrollViews.buttons.matching(identifier: "locationpicker.item").element(boundBy: 1).tap()
-        app.scrollViews.buttons.matching(identifier: "navigationbar.button").element(boundBy: 1).tap(after: 2, in: self)
+        app.scrollViews.buttons.matching(identifier: "navigationbar.button").element(boundBy: 1).tapWhenReady(in: self)
         app.scrollViews.buttons.matching(identifier: "week.daypicker.datebubble").element(boundBy: 2).tap()
         snapshot("04Week")
     }
 
     func testRadar() throws {
         stubs.stubRequest(path: "/graphql", jsonData: WeatherFixtureJSON().jsonData!)
+
         app.launch()
+        app.tap()
 
         app.textFields["omnibar"].tap()
         app.scrollViews.buttons.matching(identifier: "locationpicker.item").element(boundBy: 3).tap()
-        app.scrollViews.buttons.matching(identifier: "navigationbar.button").element(boundBy: 2).tap(after: 2, in: self)
+
+        sleep(UInt32(2))
+
+        stubs.stubRequest(path: "/graphql", jsonData: RadarFixtureJSON().jsonData!)
+
+        app.scrollViews.buttons.matching(identifier: "navigationbar.button").element(boundBy: 2).tapWhenReady(in: self)
+
         snapshot("05Radar")
     }
 
     func testLocationPicker() throws {
-        stubs.stubRequest(path: "/graphql", jsonData: WeatherFixtureJSON().jsonData!)
+        stubs.stubRandomWeatherResponse()
         app.launch()
 
         app.textFields["omnibar"].tap()
@@ -94,7 +102,7 @@ class CloudsScreenshots: XCTestCase {
 }
 
 extension XCUIElement {
-    func tap(after delay: TimeInterval, in testCase: XCTestCase) {
+    func tapWhenReady(in testCase: XCTestCase) {
         let predicate = NSPredicate(format: "isHittable == 1")
         testCase.expectation(for: predicate, evaluatedWith: self, handler: nil)
         testCase.waitForExpectations(timeout: 10, handler: nil)
