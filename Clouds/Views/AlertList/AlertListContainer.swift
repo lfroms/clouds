@@ -21,6 +21,9 @@ struct AlertListContainer: View {
                 if appState.showingAlerts {
                     Color.black.opacity(0.88).edgesIgnoringSafeArea(.all)
                         .transition(AnyTransition.opacity.animation(.easeInOut))
+                        .onTapGesture {
+                            self.appState.showingAlerts = false
+                        }
                 }
             }
 

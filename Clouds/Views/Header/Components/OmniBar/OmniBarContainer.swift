@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct OmniBarContainer: Container {
+    @EnvironmentObject private var appState: AppState
     @EnvironmentObject private var settingsSheetState: SettingsSheetState
     @EnvironmentObject private var locationPickerState: LocationPickerState
     @EnvironmentObject private var locationService: LocationService
@@ -31,6 +32,10 @@ struct OmniBarContainer: Container {
     // MARK: - Actions
 
     private func omniBarDidBecomeActive() {
+        if appState.showingAlerts {
+            appState.showingAlerts = false
+        }
+
         locationPickerState.toggleLocationPicker(animated: true)
     }
 
