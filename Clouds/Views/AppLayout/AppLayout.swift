@@ -10,29 +10,24 @@ import SwiftUI
 
 struct AppLayout: View {
     var body: some View {
-        ZStack(alignment: .top) {
-            BlackBackground()
-                .edgesIgnoringSafeArea(.all)
+        VStack(alignment: .leading, spacing: 12) {
+            ZStack(alignment: .bottom) {
+                MeasurementGridContainer()
 
-            VStack(alignment: .leading, spacing: 12) {
-                ZStack(alignment: .bottom) {
-                    MeasurementGridContainer()
-
-                    SlidingPanelContainer {
-                        MasterViewContainer()
-                    }
-                    .edgesIgnoringSafeArea(.top)
+                SlidingPanelContainer {
+                    MasterViewContainer()
                 }
-                .overlay(AlertListContainer())
-
-                NavigationBar()
-                    .equatable()
-                    .padding(.bottom, 12)
+                .edgesIgnoringSafeArea(.top)
             }
-            .overlay(LocationPickerSectionModal())
+            .overlay(AlertListContainer())
 
-            Header()
+            NavigationBar()
+                .equatable()
+                .padding(.bottom, 12)
         }
+        .overlay(LocationPickerSectionModal())
+        .overlay(Header(), alignment: .top)
+        .background(BlackBackground().edgesIgnoringSafeArea(.all))
         .foregroundColor(AppColor.Display.primary)
     }
 }
