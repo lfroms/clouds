@@ -1,0 +1,83 @@
+{
+  "device_frame_version": "latest",
+  "default": {
+    "background": "./background.jpg",
+    "padding": "50x40",
+    "keyword": {
+      "font": "./fonts/SF-Pro-Display-Heavy.otf",
+      "color": "#dddddd"
+    },
+    "title": {
+      "font": "./fonts/SF-Pro-Display-Medium.otf",
+      "color": "#dddddd"
+    },
+    "font_scale_factor": 0.05,
+    "stack_title": true,
+    "title_below_image": false,
+    "show_complete_frame": false
+  },
+
+  "data": [{
+      "filter": "iPhone 8",
+      "title_min_height": "22%"
+    },
+    {
+      "filter": "iPhone 8 Plus",
+      "title_min_height": "22%"
+    },
+    {
+      "filter": "iPhone 11",
+      "title_min_height": "26%",
+      "padding": "30x40"
+    },
+    {
+      "filter": "iPhone 11 Pro",
+      "title_min_height": "26%",
+      "padding": "30x40"
+    },
+    {
+      "filter": "iPhone 11 Pro Max",
+      "title_min_height": "26%",
+      "padding": "30x40"
+    },
+    {
+      "filter": "Now",
+      "title": {
+        "text": "Weather, reimagined."
+      },
+      "keyword": {
+        "text": "Clouds"
+      }
+    },
+    {
+      "filter": "Details",
+      "title": {
+        "text": "All the details you'll ever need"
+      }
+    },
+    {
+      "filter": "Alerts",
+      "title": {
+        "text": "The latest weather alerts, at a glance"
+      }
+    },
+    {
+      "filter": "Week",
+      "title": {
+        "text": "Intuitive 7-day forecast"
+      }
+    },
+    {
+      "filter": "Radar",
+      "title": {
+        "text": "Fast, high-resolution radar imagery"
+      }
+    },
+    {
+      "filter": "LocationPicker",
+      "title": {
+        "text": "All your favourite cities in one place"
+      }
+    }
+  ]
+}
