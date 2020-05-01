@@ -82,8 +82,8 @@ struct WeatherFixtureJSON {
                   "summary": "Periods of rain",
                   "icon": {
                     "__typename": "Icon",
-                    "style": "rain",
-                    "colorScheme": "wetCloud"
+                    "style": "partlyCloudy",
+                    "colorScheme": "clearSky"
                   },
                   "temperature": 18,
                   "feelsLike": {
@@ -103,8 +103,8 @@ struct WeatherFixtureJSON {
                   "summary": "Rain",
                   "icon": {
                     "__typename": "Icon",
-                    "style": "rain",
-                    "colorScheme": "wetCloud"
+                    "style": "partlyCloudy",
+                    "colorScheme": "clearSky"
                   },
                   "temperature": 16,
                   "feelsLike": {
@@ -124,8 +124,8 @@ struct WeatherFixtureJSON {
                   "summary": "Rain",
                   "icon": {
                     "__typename": "Icon",
-                    "style": "rain",
-                    "colorScheme": "wetCloud"
+                    "style": "partlyCloudy",
+                    "colorScheme": "clearSky"
                   },
                   "temperature": 15,
                   "feelsLike": {
@@ -145,8 +145,8 @@ struct WeatherFixtureJSON {
                   "summary": "Rain",
                   "icon": {
                     "__typename": "Icon",
-                    "style": "rain",
-                    "colorScheme": "wetCloud"
+                    "style": "clear",
+                    "colorScheme": "night"
                   },
                   "temperature": 13,
                   "feelsLike": {
@@ -166,8 +166,8 @@ struct WeatherFixtureJSON {
                   "summary": "Rain",
                   "icon": {
                     "__typename": "Icon",
-                    "style": "rain",
-                    "colorScheme": "wetCloud"
+                    "style": "clear",
+                    "colorScheme": "night"
                   },
                   "temperature": 13,
                   "feelsLike": {
@@ -187,8 +187,8 @@ struct WeatherFixtureJSON {
                   "summary": "Rain",
                   "icon": {
                     "__typename": "Icon",
-                    "style": "rain",
-                    "colorScheme": "wetCloud"
+                    "style": "clear",
+                    "colorScheme": "night"
                   },
                   "temperature": 13,
                   "feelsLike": {
@@ -208,8 +208,8 @@ struct WeatherFixtureJSON {
                   "summary": "Rain",
                   "icon": {
                     "__typename": "Icon",
-                    "style": "rain",
-                    "colorScheme": "wetCloud"
+                    "style": "clear",
+                    "colorScheme": "night"
                   },
                   "temperature": 13,
                   "feelsLike": {
@@ -229,8 +229,8 @@ struct WeatherFixtureJSON {
                   "summary": "Rain",
                   "icon": {
                     "__typename": "Icon",
-                    "style": "rain",
-                    "colorScheme": "wetCloud"
+                    "style": "clear",
+                    "colorScheme": "night"
                   },
                   "temperature": 13,
                   "feelsLike": {

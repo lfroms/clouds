@@ -49,9 +49,11 @@ class CloudsScreenshots: XCTestCase {
     }
 
     func testDetails() throws {
-        stubs.stubRequest(path: "/graphql", jsonData: WeatherFixtureJSON().jsonData!)
+        stubs.stubRequest(path: "/graphql", jsonData: VancouverWeatherFixtureJSON().jsonData!)
         launchApp()
 
+        app.textFields["omnibar"].tapWhenReady(in: self)
+        app.scrollViews.buttons.matching(identifier: "locationpicker.item").element(boundBy: 3).tapWhenReady(in: self)
         app.scrollViews.otherElements["master"].swipeUp()
         snapshot("02NowDetails")
 
@@ -62,6 +64,8 @@ class CloudsScreenshots: XCTestCase {
         stubs.stubRequest(path: "/graphql", jsonData: WeatherFixtureJSON().jsonData!)
         launchApp()
 
+        app.textFields["omnibar"].tapWhenReady(in: self)
+        app.scrollViews.buttons.matching(identifier: "locationpicker.item").element(boundBy: 0).tapWhenReady(in: self)
         app.buttons.matching(identifier: "navigationbar.alertstack.indicator").element(boundBy: 0).tapWhenReady(in: self)
         snapshot("03Alerts")
 
