@@ -20,6 +20,7 @@ struct AlertListCloseButton: View {
                 .background(Color.white.opacity(0.25))
                 .cornerRadius(.infinity)
         }
+        .accessibility(identifier: "alertlist.close")
     }
 }
 
