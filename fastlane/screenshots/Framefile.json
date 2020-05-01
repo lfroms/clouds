@@ -17,7 +17,8 @@
     "show_complete_frame": false
   },
 
-  "data": [{
+  "data": [
+    {
       "filter": "iPhone 8",
       "title_min_height": "22%"
     },
@@ -41,40 +42,40 @@
       "padding": "30x40"
     },
     {
-      "filter": "Now",
-      "title": {
-        "text": "Weather, reimagined."
-      },
+      "filter": "01Now",
       "keyword": {
         "text": "Clouds"
+      },
+      "title": {
+        "text": "Weather, reimagined."
       }
     },
     {
-      "filter": "Details",
+      "filter": "02NowDetails",
       "title": {
         "text": "All the details you'll ever need"
       }
     },
     {
-      "filter": "Alerts",
+      "filter": "03Alerts",
       "title": {
         "text": "The latest weather alerts, at a glance"
       }
     },
     {
-      "filter": "Week",
+      "filter": "04Week",
       "title": {
         "text": "Intuitive 7-day forecast"
       }
     },
     {
-      "filter": "Radar",
+      "filter": "05Radar",
       "title": {
         "text": "Fast, high-resolution radar imagery"
       }
     },
     {
-      "filter": "LocationPicker",
+      "filter": "06LocationPicker",
       "title": {
         "text": "All your favourite cities in one place"
       }
