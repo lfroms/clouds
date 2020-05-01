@@ -16,6 +16,8 @@ struct RadarMapView: UIViewRepresentable {
     var dataSource: RadarProvider
     var activeLocationCoordinates: CLLocationCoordinate2D?
 
+    @State private var loaded: Bool = false
+
     func makeUIView(context: Context) -> MGLMapView {
         let url = URL(string: "mapbox://styles/lfroms/ck94ggph90nn61invox6h6207")
         let mapView = MGLMapView()
@@ -36,13 +38,18 @@ struct RadarMapView: UIViewRepresentable {
         mapView.showsScale = true
         mapView.showsUserLocation = true
         mapView.maximumZoomLevel = 7
-        mapView.prefetchesTiles = true
+        mapView.prefetchesTiles = false
         mapView.attributionButton.tintColor = .gray
+        mapView.delegate = context.coordinator
 
         return mapView
     }
 
     func updateUIView(_ mapView: MGLMapView, context: Context) {
+        guard loaded else {
+            return
+        }
+
         if dataSource != context.coordinator.lastDataSource {
             mapView.style?.layers.removeAll(where: { $0.identifier.contains("radar-") })
             context.coordinator.lastDataSource = dataSource
@@ -53,8 +60,23 @@ struct RadarMapView: UIViewRepresentable {
             context.coordinator.lastLocation = newLocation
         }
 
+        cleanUpOldLayers(in: mapView)
         addRasterSources(for: dates, to: mapView)
         showActiveRasterLayer(in: mapView)
+    }
+
+    private func cleanUpOldLayers(in mapView: MGLMapView) {
+        let identifiersToKeep = dates.compactMap { identifier(for: $0) }
+
+        mapView.style?.sources.forEach { source in
+            if source.identifier.contains("radar"), !identifiersToKeep.contains(source.identifier) {
+                mapView.style?.removeSource(source)
+            }
+        }
+
+        mapView.style?.layers.removeAll {
+            $0.identifier.contains("radar") && !identifiersToKeep.contains($0.identifier)
+        }
     }
 
     private func addRasterSources(for dates: [Date], to mapView: MGLMapView) {
@@ -116,12 +138,22 @@ struct RadarMapView: UIViewRepresentable {
     }
 
     func makeCoordinator() -> Coordinator {
-        Coordinator()
+        Coordinator(loaded: $loaded)
     }
 
-    class Coordinator: NSObject {
+    class Coordinator: NSObject, MGLMapViewDelegate {
         var lastDataSource: RadarProvider?
         var lastLocation: CLLocationCoordinate2D?
+
+        @Binding var loaded: Bool
+
+        init(loaded: Binding<Bool>) {
+            self._loaded = loaded
+        }
+
+        func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
+            loaded = true
+        }
     }
 }
 
