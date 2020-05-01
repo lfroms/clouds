@@ -19,12 +19,16 @@ struct HourlyForecast: View {
         VStack(alignment: .leading) {
             if !items.isEmpty {
                 ZStack(alignment: .leading) {
-                    Text(allHoursAreForTomorrow ? "TOMORROW" : "TODAY")
-                        .background(GeometryGetter(rect: self.$todayTextFrame) { oldRect, newRect in
-                            oldRect.width != newRect.width
+                    if !allHoursAreForTomorrow {
+                        Text("TODAY")
+                            .background(GeometryGetter(rect: self.$todayTextFrame) { oldRect, newRect in
+                                oldRect.width != newRect.width
                         })
-                        .opacity(todayTextOpacity)
-                        .offset(x: todayTextOffset)
+                            .opacity(todayTextOpacity)
+                            .offset(x: todayTextOffset)
+                    } else {
+                        Text("TOMORROW")
+                    }
 
                     if self.separatorFrame != .zero && !allHoursAreForTomorrow {
                         Text("TOMORROW")
