@@ -13,7 +13,7 @@ final class GraphQL {
     static let shared = GraphQL()
 
     #if DEBUG
-    private let serverAddress = "https://forecast-data-staging.herokuapp.com/graphql"
+    private let serverAddress = "https://nimbus-data-staging.herokuapp.com/graphql"
     #else
     private let serverAddress = "https://forecast-data.herokuapp.com/graphql"
     #endif

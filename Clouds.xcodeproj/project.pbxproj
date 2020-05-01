@@ -87,6 +87,8 @@
 		805D7BDC22D1244800A12C4D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805D7BDB22D1244800A12C4D /* Images.xcassets */; };
 		805D7BE222D1287900A12C4D /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D7BE122D1287900A12C4D /* BlurView.swift */; };
 		8061292A236915D4005EEB2A /* WeekSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80612929236915D4005EEB2A /* WeekSection.swift */; };
+		80617945245CE319003DB747 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80617944245CE319003DB747 /* AppEnvironment.swift */; };
+		80617947245CE327003DB747 /* Seeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80617946245CE327003DB747 /* Seeder.swift */; };
 		80625423240C606A00638C2F /* UIScrollView+Clear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80625422240C606A00638C2F /* UIScrollView+Clear.swift */; };
 		80625427240C90CF00638C2F /* AppSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80625426240C90CF00638C2F /* AppSection.swift */; };
 		8066FDED2364EE030067F362 /* NowSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8066FDEC2364EE030067F362 /* NowSection.swift */; };
@@ -327,6 +329,8 @@
 		805D7BDB22D1244800A12C4D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		805D7BE122D1287900A12C4D /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		80612929236915D4005EEB2A /* WeekSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSection.swift; sourceTree = "<group>"; };
+		80617944245CE319003DB747 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		80617946245CE327003DB747 /* Seeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seeder.swift; sourceTree = "<group>"; };
 		80625422240C606A00638C2F /* UIScrollView+Clear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Clear.swift"; sourceTree = "<group>"; };
 		80625426240C90CF00638C2F /* AppSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSection.swift; sourceTree = "<group>"; };
 		8066FDEC2364EE030067F362 /* NowSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowSection.swift; sourceTree = "<group>"; };
@@ -853,6 +857,15 @@
 			path = Blur;
 			sourceTree = "<group>";
 		};
+		80617943245CE30C003DB747 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				80617944245CE319003DB747 /* AppEnvironment.swift */,
+				80617946245CE327003DB747 /* Seeder.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
 		8066FDE72364ECA90067F362 /* AppLayout */ = {
 			isa = PBXGroup;
 			children = (
@@ -1209,6 +1222,7 @@
 			children = (
 				805D6A0624100DE4002DEBAC /* Binders */,
 				805D69FF24100519002DEBAC /* Controllers */,
+				80617943245CE30C003DB747 /* Environment */,
 				802FB9A6241000BC0056D614 /* Services */,
 				802FB9A7241000E90056D614 /* States */,
 				804AB0C4245629D7000CA915 /* Alert.swift */,
@@ -1768,6 +1782,7 @@
 				8083A820244A295300CE2E5E /* WMSResourceURL.swift in Sources */,
 				80C777CB23FB2B74004ABB2E /* API.swift in Sources */,
 				8057DB4E2364F0C40087FBF7 /* AlertStack.swift in Sources */,
+				80617945245CE319003DB747 /* AppEnvironment.swift in Sources */,
 				80B5E7A523FA3DDD001729E0 /* StoredLocation.swift in Sources */,
 				8019F827240F4E1F00AFB0F1 /* MasterViewLayout.swift in Sources */,
 				802C0D982368FE32009A22BA /* CurrentSection.swift in Sources */,
@@ -1846,6 +1861,7 @@
 				802A42FF241C534F0073C0DC /* DismissableScrollViewModifier.swift in Sources */,
 				802A4305241C556A0073C0DC /* DismissableScrollViewHostingController.swift in Sources */,
 				806A5BFA241468970093361D /* VisualStateToWeekSectionStateAndWeatherBinder.swift in Sources */,
+				80617947245CE327003DB747 /* Seeder.swift in Sources */,
 				80C395A523787F660004B71D /* Date+TimeAgo.swift in Sources */,
 				806A5C00241481B90093361D /* CurrentSectionContainer.swift in Sources */,
 				80311BC4241EA782004BC6B4 /* SettingsSheetCloseButtonRow.swift in Sources */,
