@@ -65,8 +65,7 @@
       </PostActions>
       <Testables>
          <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "80F4480C245B590A007AC77B"

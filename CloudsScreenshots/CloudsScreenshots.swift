@@ -54,6 +54,9 @@ class CloudsScreenshots: XCTestCase {
 
         app.textFields["omnibar"].tapWhenReady(in: self)
         app.scrollViews.buttons.matching(identifier: "locationpicker.item").element(boundBy: 3).tapWhenReady(in: self)
+
+        sleep(UInt32(3))
+
         app.scrollViews.otherElements["master"].swipeUp()
         snapshot("02NowDetails")
 
