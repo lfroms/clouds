@@ -585,7 +585,22 @@ struct WeatherFixtureJSON {
                 {
                   "__typename": "Daily",
                   "time": 1588219200,
-                  "daytimeConditions": null,
+                  "daytimeConditions": {
+                    "__typename": "HalfDayCondition",
+                    "summary": "Chance of showers",
+                    "summaryClouds": "Cloudy with 30 percent chance of showers.",
+                    "icon": {
+                      "__typename": "Icon",
+                      "style": "rain",
+                      "colorScheme": "wetCloud"
+                    },
+                    "temperature": 20,
+                    "precipProbability": 0.3,
+                    "wind": {
+                      "__typename": "Wind",
+                      "speed": null
+                    }
+                  },
                   "nighttimeConditions": {
                     "__typename": "HalfDayCondition",
                     "summary": "Periods of rain",
@@ -595,11 +610,11 @@ struct WeatherFixtureJSON {
                       "style": "rain",
                       "colorScheme": "wetCloud"
                     },
-                    "temperature": 11,
+                    "temperature": 7,
                     "precipProbability": null,
                     "wind": {
                       "__typename": "Wind",
-                      "speed": "20"
+                      "speed": null
                     }
                   }
                 },
