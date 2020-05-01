@@ -81,9 +81,7 @@ class CloudsScreenshots: XCTestCase {
 
     func testRadar() throws {
         stubs.stubRequest(path: "/graphql", jsonData: WeatherFixtureJSON().jsonData!)
-
         launchApp()
-        app.tapWhenReady(in: self)
 
         app.textFields["omnibar"].tapWhenReady(in: self)
         app.scrollViews.buttons.matching(identifier: "locationpicker.item").element(boundBy: 0).tapWhenReady(in: self)
