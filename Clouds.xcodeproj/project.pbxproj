@@ -89,6 +89,10 @@
 		8061292A236915D4005EEB2A /* WeekSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80612929236915D4005EEB2A /* WeekSection.swift */; };
 		80617945245CE319003DB747 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80617944245CE319003DB747 /* AppEnvironment.swift */; };
 		80617947245CE327003DB747 /* Seeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80617946245CE327003DB747 /* Seeder.swift */; };
+		80617949245CE64F003DB747 /* AboutGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80617948245CE64F003DB747 /* AboutGroup.swift */; };
+		8061794E245CE9B7003DB747 /* SettingsPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8061794D245CE9B7003DB747 /* SettingsPrivacy.swift */; };
+		80617950245CEAD8003DB747 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8061794F245CEAD8003DB747 /* WebView.swift */; };
+		80617952245CEFAE003DB747 /* SettingsChangelog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80617951245CEFAE003DB747 /* SettingsChangelog.swift */; };
 		80625423240C606A00638C2F /* UIScrollView+Clear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80625422240C606A00638C2F /* UIScrollView+Clear.swift */; };
 		80625427240C90CF00638C2F /* AppSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80625426240C90CF00638C2F /* AppSection.swift */; };
 		8066FDED2364EE030067F362 /* NowSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8066FDEC2364EE030067F362 /* NowSection.swift */; };
@@ -331,6 +335,10 @@
 		80612929236915D4005EEB2A /* WeekSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSection.swift; sourceTree = "<group>"; };
 		80617944245CE319003DB747 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		80617946245CE327003DB747 /* Seeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seeder.swift; sourceTree = "<group>"; };
+		80617948245CE64F003DB747 /* AboutGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutGroup.swift; sourceTree = "<group>"; };
+		8061794D245CE9B7003DB747 /* SettingsPrivacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPrivacy.swift; sourceTree = "<group>"; };
+		8061794F245CEAD8003DB747 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		80617951245CEFAE003DB747 /* SettingsChangelog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChangelog.swift; sourceTree = "<group>"; };
 		80625422240C606A00638C2F /* UIScrollView+Clear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Clear.swift"; sourceTree = "<group>"; };
 		80625426240C90CF00638C2F /* AppSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSection.swift; sourceTree = "<group>"; };
 		8066FDEC2364EE030067F362 /* NowSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowSection.swift; sourceTree = "<group>"; };
@@ -496,6 +504,7 @@
 			isa = PBXGroup;
 			children = (
 				800A4D3A244F857C00D8CD86 /* Components */,
+				80617948245CE64F003DB747 /* AboutGroup.swift */,
 				800A4D35244F83A800D8CD86 /* DataSourceGroup.swift */,
 				800A4D38244F852800D8CD86 /* OptionsGroup.swift */,
 			);
@@ -513,6 +522,8 @@
 		800A4D3D244F8C5D00D8CD86 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				8061794A245CE7EA003DB747 /* Changelog */,
+				8061794C245CE99A003DB747 /* Privacy */,
 				800A4D3E244F8E6900D8CD86 /* RadarSource */,
 			);
 			path = Pages;
@@ -866,6 +877,22 @@
 			path = Environment;
 			sourceTree = "<group>";
 		};
+		8061794A245CE7EA003DB747 /* Changelog */ = {
+			isa = PBXGroup;
+			children = (
+				80617951245CEFAE003DB747 /* SettingsChangelog.swift */,
+			);
+			path = Changelog;
+			sourceTree = "<group>";
+		};
+		8061794C245CE99A003DB747 /* Privacy */ = {
+			isa = PBXGroup;
+			children = (
+				8061794D245CE9B7003DB747 /* SettingsPrivacy.swift */,
+			);
+			path = Privacy;
+			sourceTree = "<group>";
+		};
 		8066FDE72364ECA90067F362 /* AppLayout */ = {
 			isa = PBXGroup;
 			children = (
@@ -1102,6 +1129,7 @@
 			children = (
 				8099A20C23130B8500EE4F30 /* SafariView.swift */,
 				8099A20E23130CED00EE4F30 /* CustomSafariViewController.swift */,
+				8061794F245CEAD8003DB747 /* WebView.swift */,
 			);
 			path = Safari;
 			sourceTree = "<group>";
@@ -1773,6 +1801,7 @@
 				809C2A6A241C64C6009FCF6A /* LocationPicker.swift in Sources */,
 				80EF84F6240F663B00D4037B /* Container.swift in Sources */,
 				8050327F22D25C7500D376C3 /* HighLowStack.swift in Sources */,
+				80617952245CEFAE003DB747 /* SettingsChangelog.swift in Sources */,
 				805A1E6622D65ADB001B8CC3 /* HourlyForecastItem.swift in Sources */,
 				800194DF232EDCCF00066D37 /* UIShadowView.swift in Sources */,
 				802048C7240AE2F300DFB842 /* SettingsSection.swift in Sources */,
@@ -1800,6 +1829,7 @@
 				8084FDA3241D3945006A57DC /* SearchResultsGroupContainer.swift in Sources */,
 				803028D522CEE42C0053F639 /* TemperatureView.swift in Sources */,
 				8038AA18242400BB0050202C /* SearchResultLocationItem.swift in Sources */,
+				80617949245CE64F003DB747 /* AboutGroup.swift in Sources */,
 				805D6A032410054A002DEBAC /* AppHostingController.swift in Sources */,
 				80AAC0232427F0A900285C6D /* DayNightSwitch.swift in Sources */,
 				800A4D2F244F575100D8CD86 /* AddToFavoritesGroupContainer.swift in Sources */,
@@ -1865,9 +1895,11 @@
 				80C395A523787F660004B71D /* Date+TimeAgo.swift in Sources */,
 				806A5C00241481B90093361D /* CurrentSectionContainer.swift in Sources */,
 				80311BC4241EA782004BC6B4 /* SettingsSheetCloseButtonRow.swift in Sources */,
+				80617950245CEAD8003DB747 /* WebView.swift in Sources */,
 				809C54DA24244F750028216E /* WeatherIllustrationImage.swift in Sources */,
 				80D09C862457EFE700D617D8 /* ResetHourlyForecastScroll.swift in Sources */,
 				80C395AA23788A6B0004B71D /* AppActivityIndicator.swift in Sources */,
+				8061794E245CE9B7003DB747 /* SettingsPrivacy.swift in Sources */,
 				8016AACF243E2F0D00220B81 /* DayPickerItem.swift in Sources */,
 				8076F72623651CD000FB85D1 /* SlidingPanel.swift in Sources */,
 				80EF84E7240F52F000D4037B /* MasterViewContainer.swift in Sources */,

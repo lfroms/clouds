@@ -15,14 +15,31 @@ struct AppMetadata: View {
                 .cornerRadius(12)
                 .shadow(radius: 16)
 
-            Text(appName)
-                .font(.largeTitle)
-                .fontWeight(.bold)
+            VStack(alignment: .center, spacing: 0) {
+                Text(appName)
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+
+                if marketingVersion != nil && buildNumber != nil {
+                    Text("\(marketingVersion!) (\(buildNumber!))")
+                        .font(.caption)
+                        .fontWeight(.regular)
+                        .foregroundColor(Color.white.opacity(0.6))
+                }
+            }
         }
     }
 
     private var appName: String {
         Bundle.main.displayName ?? "App Name"
+    }
+
+    private var marketingVersion: String? {
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+    }
+
+    private var buildNumber: String? {
+        Bundle.main.infoDictionary?["CFBundleVersion"] as? String
     }
 }
 

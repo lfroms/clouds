@@ -22,6 +22,7 @@ struct SettingsSection: View {
                     Divider()
 
                     OptionsGroup()
+                    AboutGroup()
                 }
                 .padding(20)
             }
