@@ -27,7 +27,7 @@ struct SettingsRadarSource: View {
                         Divider()
 
                         Button(action: { self.selectedSource = .rainviewer }) {
-                            OptionRow(symbolName: "globe", color: .blue, label: "Rainviewer (Global)") {
+                            OptionRow(symbolName: "globe", color: .blue, label: "RainViewer (Global)") {
                                 if self.selectedSource == .rainviewer {
                                     Image(systemName: "checkmark.circle.fill")
                                 }
