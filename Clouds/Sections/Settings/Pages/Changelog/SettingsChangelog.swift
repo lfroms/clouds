@@ -11,7 +11,7 @@ import SwiftUI
 struct SettingsChangelog: View {
     @State private var loading: Bool = false
 
-    private static let request = URLRequest(url: URL(string: "https://cloudsapp.romsicki.com/app/changelog")!, cachePolicy: .reloadIgnoringLocalCacheData)
+    private static let request = URLRequest(url: URL(string: "https://cloudsapp.romsicki.com/changelog")!, cachePolicy: .reloadIgnoringLocalCacheData)
 
     var body: some View {
         WebView(request: Self.request, loading: $loading)

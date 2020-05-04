@@ -11,7 +11,7 @@ import SwiftUI
 struct SettingsPrivacy: View {
     @State private var loading: Bool = false
 
-    private static let request = URLRequest(url: URL(string: "https://cloudsapp.romsicki.com/app/privacy")!, cachePolicy: .reloadIgnoringLocalCacheData)
+    private static let request = URLRequest(url: URL(string: "https://cloudsapp.romsicki.com/privacy")!, cachePolicy: .reloadIgnoringLocalCacheData)
 
     var body: some View {
         WebView(request: Self.request, loading: $loading)
