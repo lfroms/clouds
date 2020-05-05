@@ -18,7 +18,7 @@ struct SearchResultsGroupContainer: Container {
         SearchResultsGroup(
             label: headerText,
             value: locationSearchService.searchQuery,
-            loading: .constant(locationSearchService.loading),
+            loading: .constant(false),
             results: results,
             favorites: favorites,
             onSelectLocation: didSelect(location:),

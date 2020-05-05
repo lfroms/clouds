@@ -6,40 +6,32 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
-import Foundation
+import Combine
 import MapKit
 
 final class LocationSearchService: NSObject, ObservableObject {
-    @Published var searchQuery: String = "" {
-        didSet {
-            search()
-        }
-    }
-    
+    @Published var searchQuery: String = ""
     @Published private(set) var results: [Result] = []
-    @Published private(set) var loading: Bool = false
     
-    private lazy var searchCompleter: MKLocalSearchCompleter = {
-        let searchCompleter = MKLocalSearchCompleter()
-        searchCompleter.delegate = self
-        searchCompleter.resultTypes = .address
-        return searchCompleter
-    }()
+    let completer: MKLocalSearchCompleter
+    var cancellable: AnyCancellable?
     
-    private func search() {
-        guard !searchQuery.isEmpty else {
-            results.removeAll()
-            return
-        }
+    override init() {
+        completer = MKLocalSearchCompleter()
+        super.init()
+        completer.resultTypes = .address
         
-        debounce(#selector(setLoading), after: 0.5)
-        searchCompleter.queryFragment = searchQuery
-    }
-    
-    @objc private func setLoading() {
-        if searchCompleter.isSearching, !loading {
-            loading = true
-        }
+        cancellable = $searchQuery
+            .removeDuplicates()
+            .sink {
+                if $0.isEmpty {
+                    self.results = []
+                } else {
+                    self.completer.queryFragment = $0
+                }
+            }
+        
+        completer.delegate = self
     }
     
     struct Result: Equatable, Hashable {
@@ -56,10 +48,6 @@ final class LocationSearchService: NSObject, ObservableObject {
 
 extension LocationSearchService: MKLocalSearchCompleterDelegate {
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        if loading {
-            loading = false
-        }
-        
         results = completer.results
             .filter {
                 $0.title.contains(",")
@@ -71,5 +59,7 @@ extension LocationSearchService: MKLocalSearchCompleterDelegate {
             }
     }
     
-    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {}
+    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
+        Alert.display(title: "Error", message: error.localizedDescription)
+    }
 }
