@@ -65,6 +65,6 @@ extension LocationSearchService: MKLocalSearchCompleterDelegate {
             report.context = "Location Search"
         }
         
-        Alert.display(title: "Error", message: error.localizedDescription)
+        SystemAlert.display(title: "Error", message: error.localizedDescription)
     }
 }

@@ -11,14 +11,24 @@ import Foundation
 final class Seeder {
     static let shared = Seeder()
 
-    let locationFavoritesService = LocationFavoritesService()
+    var locationFavoritesService = LocationFavoritesService()
 
     func eraseLocationFavorites() {
         locationFavoritesService.clearActiveLocation()
         locationFavoritesService.clearFavoriteLocations()
     }
 
-    func seedLocationFavorites() {
+    func seedLocationFavorites(setActive: Bool = false) {
+        if setActive {
+            locationFavoritesService.setActiveLocation(to:
+                StoredLocation(
+                    name: "Montréal",
+                    regionName: "QC, Canada",
+                    coordinate: .init(latitude: 45.5017, longitude: -73.5673)
+                )
+            )
+        }
+
         locationFavoritesService.toggleFavorite(location: StoredLocation(
             name: "Montréal",
             regionName: "QC, Canada",

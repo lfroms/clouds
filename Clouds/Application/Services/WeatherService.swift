@@ -56,7 +56,7 @@ class WeatherService: ObservableObject {
                 }
                 
                 if let error = graphQLResult.errors?.first {
-                    Alert.display(title: "Error", message: error.description)
+                    SystemAlert.display(title: "Error", message: error.description)
                 }
                 
             case .failure(let error):
@@ -71,7 +71,7 @@ class WeatherService: ObservableObject {
                     return
                 }
                 
-                Alert.display(title: "Oops!", message: "Something broke. Make sure your device is online and try again.")
+                SystemAlert.display(title: "Oops!", message: "Something broke. Make sure your device is online and try again.")
             }
         }
     }

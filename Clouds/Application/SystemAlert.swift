@@ -1,5 +1,5 @@
 //
-//  Alert.swift
+//  SystemAlert.swift
 //  Clouds
 //
 //  Created by Lukas Romsicki on 2020-04-15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class Alert {
+final class SystemAlert {
     public static func display(title: String, message: String) {
         let alertController = UIAlertController(
             title: title,
