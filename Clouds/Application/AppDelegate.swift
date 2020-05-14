@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         #endif
 
+        configureBugsnag()
+
         return true
     }
 

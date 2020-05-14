@@ -7,6 +7,7 @@
 //
 
 import Apollo
+import Bugsnag
 import Combine
 import SwiftUI
 
@@ -71,6 +72,11 @@ final class RadarService: ObservableObject {
                 }
                 
             case .failure(let error):
+                Bugsnag.notifyError(NSError(domain: "com.romsicki", code: 2)) { report in
+                    report.errorClass = "Network Error - Radar"
+                    report.errorMessage = error.localizedDescription
+                }
+                
                 guard !error.localizedDescription.contains("cancelled") else {
                     return
                 }

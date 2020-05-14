@@ -18,6 +18,9 @@
 		800A4D3C244F859C00D8CD86 /* OptionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A4D3B244F859C00D8CD86 /* OptionRow.swift */; };
 		800A4D40244F8E7D00D8CD86 /* SettingsRadarSourceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A4D3F244F8E7D00D8CD86 /* SettingsRadarSourceContainer.swift */; };
 		800A4D42244F8E8600D8CD86 /* SettingsRadarSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A4D41244F8E8600D8CD86 /* SettingsRadarSource.swift */; };
+		801156F2246CC87700A72BA4 /* Bugsnag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801156F1246CC87700A72BA4 /* Bugsnag.framework */; };
+		801156F3246CC87700A72BA4 /* Bugsnag.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 801156F1246CC87700A72BA4 /* Bugsnag.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		801156F5246CC8A500A72BA4 /* AppDelegate+Bugsnag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801156F4246CC8A500A72BA4 /* AppDelegate+Bugsnag.swift */; };
 		801662A7244BEA75003034DF /* CustomSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801662A6244BEA75003034DF /* CustomSpinner.swift */; };
 		8016AACF243E2F0D00220B81 /* DayPickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8016AACE243E2F0D00220B81 /* DayPickerItem.swift */; };
 		8019F827240F4E1F00AFB0F1 /* MasterViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8019F826240F4E1F00AFB0F1 /* MasterViewLayout.swift */; };
@@ -244,6 +247,7 @@
 			files = (
 				8083A81D24494AFB00CE2E5E /* MapboxMobileEvents.framework in Embed Frameworks */,
 				8083A81B24494AFB00CE2E5E /* Mapbox.framework in Embed Frameworks */,
+				801156F3246CC87700A72BA4 /* Bugsnag.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +265,8 @@
 		800A4D3B244F859C00D8CD86 /* OptionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionRow.swift; sourceTree = "<group>"; };
 		800A4D3F244F8E7D00D8CD86 /* SettingsRadarSourceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRadarSourceContainer.swift; sourceTree = "<group>"; };
 		800A4D41244F8E8600D8CD86 /* SettingsRadarSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRadarSource.swift; sourceTree = "<group>"; };
+		801156F1246CC87700A72BA4 /* Bugsnag.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugsnag.framework; path = Carthage/Build/iOS/Bugsnag.framework; sourceTree = "<group>"; };
+		801156F4246CC8A500A72BA4 /* AppDelegate+Bugsnag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Bugsnag.swift"; sourceTree = "<group>"; };
 		801662A6244BEA75003034DF /* CustomSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSpinner.swift; sourceTree = "<group>"; };
 		8016AACE243E2F0D00220B81 /* DayPickerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerItem.swift; sourceTree = "<group>"; };
 		8019F826240F4E1F00AFB0F1 /* MasterViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewLayout.swift; sourceTree = "<group>"; };
@@ -477,6 +483,7 @@
 				80D0CE81235B6D95002A3EFD /* SwiftDate in Frameworks */,
 				80D0CE84235B6DA5002A3EFD /* Apollo in Frameworks */,
 				8083A81A24494AFB00CE2E5E /* Mapbox.framework in Frameworks */,
+				801156F2246CC87700A72BA4 /* Bugsnag.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -949,6 +956,7 @@
 		8083A80B244949A800CE2E5E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				801156F1246CC87700A72BA4 /* Bugsnag.framework */,
 				8083A81824494AFB00CE2E5E /* Mapbox.framework */,
 				8083A81924494AFB00CE2E5E /* MapboxMobileEvents.framework */,
 			);
@@ -1256,6 +1264,7 @@
 				804AB0C4245629D7000CA915 /* Alert.swift */,
 				80EC5E49240FFFBD00E3F815 /* AppServices.swift */,
 				805A174522C53ADB00E1B4E2 /* AppDelegate.swift */,
+				801156F4246CC8A500A72BA4 /* AppDelegate+Bugsnag.swift */,
 				805A174722C53ADB00E1B4E2 /* SceneDelegate.swift */,
 			);
 			path = Application;
@@ -1873,6 +1882,7 @@
 				805D7BE222D1287900A12C4D /* BlurView.swift in Sources */,
 				8031CBC9240E035700C76FE3 /* OmniBarContainer.swift in Sources */,
 				80C816282363DEBB00D33669 /* OmniBarPlaceholder.swift in Sources */,
+				801156F5246CC8A500A72BA4 /* AppDelegate+Bugsnag.swift in Sources */,
 				801662A7244BEA75003034DF /* CustomSpinner.swift in Sources */,
 				8084FD96241D38FB006A57DC /* CurrentLocationGroup.swift in Sources */,
 				80E5D62A2377721B004A1D6B /* String+IsInt.swift in Sources */,

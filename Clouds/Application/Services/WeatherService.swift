@@ -7,6 +7,7 @@
 //
 
 import Apollo
+import Bugsnag
 import Combine
 import CoreLocation
 import Foundation
@@ -59,6 +60,13 @@ class WeatherService: ObservableObject {
                 }
                 
             case .failure(let error):
+                Bugsnag.notifyError(NSError(domain: "com.romsicki", code: 1)) { report in
+                    report.errorClass = "Network Error - Main Weather"
+                    report.errorMessage = error.localizedDescription
+                    report.addAttribute("latitude", withValue: weatherQuery?.latitude, toTabWithName: "weather")
+                    report.addAttribute("longitude", withValue: weatherQuery?.longitude, toTabWithName: "weather")
+                }
+                
                 guard !error.localizedDescription.contains("cancelled") else {
                     return
                 }

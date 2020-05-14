@@ -6,6 +6,7 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
+import Bugsnag
 import Combine
 import MapKit
 
@@ -60,6 +61,10 @@ extension LocationSearchService: MKLocalSearchCompleterDelegate {
     }
     
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
+        Bugsnag.notifyError(error) { report in
+            report.context = "Location Search"
+        }
+        
         Alert.display(title: "Error", message: error.localizedDescription)
     }
 }
