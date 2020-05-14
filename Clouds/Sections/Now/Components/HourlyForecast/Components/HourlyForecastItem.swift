@@ -21,7 +21,9 @@ struct HourlyForecastItem: View {
         VStack(alignment: .center) {
             HStack(alignment: .firstTextBaseline, spacing: 2) {
                 Text(formattedHour)
+                    .fixedSize(horizontal: true, vertical: false)
                 Text(amPm)
+                    .fixedSize(horizontal: true, vertical: false)
                     .foregroundColor(Color.white.opacity(0.65))
             }
             .font(Font.system(size: UIFontMetrics.default.scaledValue(for: 14)).weight(.semibold))
