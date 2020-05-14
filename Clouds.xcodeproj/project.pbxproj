@@ -18,8 +18,6 @@
 		800A4D3C244F859C00D8CD86 /* OptionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A4D3B244F859C00D8CD86 /* OptionRow.swift */; };
 		800A4D40244F8E7D00D8CD86 /* SettingsRadarSourceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A4D3F244F8E7D00D8CD86 /* SettingsRadarSourceContainer.swift */; };
 		800A4D42244F8E8600D8CD86 /* SettingsRadarSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A4D41244F8E8600D8CD86 /* SettingsRadarSource.swift */; };
-		801156F2246CC87700A72BA4 /* Bugsnag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801156F1246CC87700A72BA4 /* Bugsnag.framework */; };
-		801156F3246CC87700A72BA4 /* Bugsnag.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 801156F1246CC87700A72BA4 /* Bugsnag.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		801156F5246CC8A500A72BA4 /* AppDelegate+Bugsnag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801156F4246CC8A500A72BA4 /* AppDelegate+Bugsnag.swift */; };
 		801662A7244BEA75003034DF /* CustomSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801662A6244BEA75003034DF /* CustomSpinner.swift */; };
 		8016AACF243E2F0D00220B81 /* DayPickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8016AACE243E2F0D00220B81 /* DayPickerItem.swift */; };
@@ -199,6 +197,8 @@
 		80E5D61E23774150004A1D6B /* UIScrollView+ScrollToTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5D61D23774150004A1D6B /* UIScrollView+ScrollToTop.swift */; };
 		80E5D628237765DF004A1D6B /* WeatherAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5D627237765DF004A1D6B /* WeatherAlert.swift */; };
 		80E5D62A2377721B004A1D6B /* String+IsInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5D6292377721B004A1D6B /* String+IsInt.swift */; };
+		80E70BDC246CE43E0098B701 /* Bugsnag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801156F1246CC87700A72BA4 /* Bugsnag.framework */; };
+		80E70BDD246CE43E0098B701 /* Bugsnag.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 801156F1246CC87700A72BA4 /* Bugsnag.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		80EA87BF2426E93B00CFDD10 /* DayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EA87BE2426E93B00CFDD10 /* DayPicker.swift */; };
 		80EA87C12426E94700CFDD10 /* DayPickerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EA87C02426E94700CFDD10 /* DayPickerContainer.swift */; };
 		80EA87C32426EAC700CFDD10 /* DayPickerDateBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EA87C22426EAC700CFDD10 /* DayPickerDateBubble.swift */; };
@@ -247,7 +247,7 @@
 			files = (
 				8083A81D24494AFB00CE2E5E /* MapboxMobileEvents.framework in Embed Frameworks */,
 				8083A81B24494AFB00CE2E5E /* Mapbox.framework in Embed Frameworks */,
-				801156F3246CC87700A72BA4 /* Bugsnag.framework in Embed Frameworks */,
+				80E70BDD246CE43E0098B701 /* Bugsnag.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,7 +483,7 @@
 				80D0CE81235B6D95002A3EFD /* SwiftDate in Frameworks */,
 				80D0CE84235B6DA5002A3EFD /* Apollo in Frameworks */,
 				8083A81A24494AFB00CE2E5E /* Mapbox.framework in Frameworks */,
-				801156F2246CC87700A72BA4 /* Bugsnag.framework in Frameworks */,
+				80E70BDC246CE43E0098B701 /* Bugsnag.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1699,6 +1699,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Mapbox.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/MapboxMobileEvents.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Bugsnag.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputFileListPaths = (
