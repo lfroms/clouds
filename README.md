@@ -97,7 +97,7 @@ Right now, Clouds is only available in English (Canada). While this accounts for
 
 ## Releases
 
-Clouds is released to the Apple App Store on a regular basis, provided that there are enough changes to justify a new release. Pressing bug fixes will be released promptly.
+Clouds is released to the Apple App Store on a regular basis, provided that there are enough changes to justify a new release. Pressing bug fixes will be released promptly. GitHub releases correspond to App Store releases. Release notes will be collected in _draft_ GitHub releases prior to submission. GitHub releases represent the cutoff for all code in a release, and any code pushed to `master` afterwards will be considered for the _next_ release.
 
 [Fastlane](https://fastlane.tools) is used to take automated screenshots for the App Store listing. Everything in the `fastlane` directory can be ignored, as there is a specific process for taking these screenshots that has not yet been documented.
 
