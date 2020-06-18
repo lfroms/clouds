@@ -1,6 +1,6 @@
 ---
 name: Design improvement
-about: Suggest an idea for this project
+about: Submit designs for this app
 title: ''
 labels: design
 assignees: ''
