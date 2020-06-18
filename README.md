@@ -5,7 +5,7 @@
   <br>
 </h1>
 
-<h4 align="center">A unique weather experience for iOS created with Swift and SwiftUI. Open source.</h4>
+<h4 align="center">A unique weather experience for iOS, written in Swift and built using SwiftUI. Open source.</h4>
 
 <p align="center">
   <a href="https://github.com/lfroms/clouds/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/lfroms/clouds"></a>
@@ -28,7 +28,7 @@
 </p>
 
 <p align="center">
-  <img alt="Get Clouds on the Apple App Store" src="./media/app_store.svg">
+  <a href="https://apps.apple.com/ca/app/clouds/id1511249500"><img alt="Get Clouds on the Apple App Store" src="./media/app_store.svg"></a>
 </p>
 
 ## About
@@ -71,25 +71,25 @@ Then, navigate into the cloned repository:
 cd clouds
 ```
 
-Clouds primarily uses Swift Package Manager to manage dependencies. However, some dependences (namely the [Mapbox SDK](https://docs.mapbox.com/ios/maps/overview/)) are installed using [Carthage](https://github.com/Carthage/Carthage). If you don't already have Carthage installed, you should install it before proceeding.
+Clouds primarily uses Swift Package Manager to manage dependencies. However, some dependences (namely the [Mapbox SDK](https://docs.mapbox.com/ios/maps/overview/)) are installed using [Carthage](https://github.com/Carthage/Carthage). If you don't already have Carthage installed, you should install it before proceeding. Once Carthage is installed, run the following command to checkout and build the dependencies:
 
 ```sh
 carthage bootstrap
 ```
 
-You can then open the Xcode project (named `Clouds.xcodeproj`) Xcode.
+You can then open the Xcode project (named `Clouds.xcodeproj`) in Xcode.
 
 ## Contributing
 
 ### Code
-If you have any improvements that you'd like to make to Clouds, please create a branch and open a pull request! This project is meant to be community-driven. It cannot evolve without your help! Please be mindful of the software architecture. It can't be maintained if you're the only person that is able to understand what it does.  When in doubt, try to mimic the existing architecture. If you think that the architecture can be improved, please [open an issue](https://github.com/lfroms/clouds/issues/new/choose).
+If you have any improvements that you'd like to make to Clouds, please create a branch and open a pull request! This project is meant to be community-driven. It cannot evolve without your help! Please be mindful of the software architecture. It can't be maintained if you're the only person that is able to understand what it does.  When in doubt, try to mimic the existing architecture. If you think that the architecture can be improved, please [open an issue](https://github.com/lfroms/clouds/issues/new/choose). Current architecture and decisions are documented in the [Wiki](https://github.com/lfroms/clouds/wiki).
 
 Oh, and please write tests. There aren't any tests right now, but I simply don't have the capacity to write them. All new contributions _should_ be tested.
 
-Code should be linted using [SwiftLint](https://github.com/realm/SwiftLint). Please ensure that you've executed SwiftLint with the default ruleset before pushing your changes.
+Code should be linted using [SwiftLint](https://github.com/realm/SwiftLint). Please ensure that you've executed SwiftLint (or SwiftFormat for Xcode, at least) with the default ruleset before pushing your changes. Eventually, this will be configured to run in a GitHub Action.
 
 ### Design
-Are you a designer? Do you think parts of the app's design can be improved? Please [open an issue](https://github.com/lfroms/clouds/issues/new/choose) with your design ideas! Clouds should be the best-looking weather app around. Try to keep the design language consistent. Your design should look like it is meant for this particualr app!
+Are you a designer? Do you think parts of the app's design can be improved? Please [open an issue](https://github.com/lfroms/clouds/issues/new/choose) with your design ideas! Clouds should be the best-looking weather app around. Try to keep the design language consistent. Your design should seamlessly fit in with the rest of the app.
 
 ### Documentation
 Clouds needs better documentation! The [Wiki](https://github.com/lfroms/clouds/wiki) sure could use some help. Think the README needs some more information? Add it!
