@@ -86,6 +86,8 @@ If you have any improvements that you'd like to make to Clouds, please create a 
 
 Oh, and please write tests. There aren't any tests right now, but I simply don't have the capacity to write them. All new contributions _should_ be tested.
 
+Code should be linted using [SwiftLint](https://github.com/realm/SwiftLint). Please ensure that you've executed SwiftLint with the default ruleset before pushing your changes.
+
 ### Design
 Are you a designer? Do you think parts of the app's design can be improved? Please [open an issue](https://github.com/lfroms/clouds/issues/new/choose) with your design ideas! Clouds should be the best-looking weather app around. Try to keep the design language consistent. Your design should look like it is meant for this particualr app!
 
