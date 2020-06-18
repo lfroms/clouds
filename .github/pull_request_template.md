@@ -15,6 +15,7 @@
 <!-- Provide step-by-step instructions to test this change, in a numbered list. -->
 
 ### Checklist
+- [ ] I've added the appropriate status labels to this PR, and I've self-assigned it.
 - [ ] I have tested my own changes locally.
 - [ ] If this changes any of the app's behaviour, I've made it easy for users to transition to the new behaviour.
 - [ ] I have added test cases, if needed.
