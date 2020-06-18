@@ -87,10 +87,19 @@ If you have any improvements that you'd like to make to Clouds, please create a 
 Oh, and please write tests. There aren't any tests right now, but I simply don't have the capacity to write them. All new contributions _should_ be tested.
 
 ### Design
-Are you a designer? Do you think parts of the app's design can be improved? Please [open an issue](https://github.com/lfroms/clouds/issues/new/choose) with your design ideas! Clouds should be the best-looking weather app around.
+Are you a designer? Do you think parts of the app's design can be improved? Please [open an issue](https://github.com/lfroms/clouds/issues/new/choose) with your design ideas! Clouds should be the best-looking weather app around. Try to keep the design language consistent. Your design should look like it is meant for this particualr app!
 
 ### Documentation
 Clouds needs better documentation! The [Wiki](https://github.com/lfroms/clouds/wiki) sure could use some help. Think the README needs some more information? Add it!
+
+### Localization
+Right now, Clouds is only available in English (Canada). While this accounts for most users in the currently supported regions, it simply isn't enough to reach a global audience.
+
+## Releases
+
+Clouds is released to the Apple App Store on a regular basis, provided that there are enough changes to justify a new release. Pressing bug fixes will be released promptly.
+
+[Fastlane](https://fastlane.tools) is used to take automated screenshots for the App Store listing. Everything in the `fastlane` directory can be ignored, as there is a specific process for taking these screenshots that has not yet been documented.
 
 ## License
 
