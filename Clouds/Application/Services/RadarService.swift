@@ -13,24 +13,24 @@ import SwiftUI
 
 final class RadarService: ObservableObject {
     // MARK: - Animation
-    
+
     @Published var currentImageIndex: Int = 0
     @Published var isPlaying: Bool = false
-    
+
     private let timer = RadarAnimationTimer()
-    
+
     private var timerCancellable: AnyCancellable? {
         didSet { oldValue?.cancel() }
     }
-    
+
     private func runAnimation() {
         let newIndex = currentImageIndex + 1
         currentImageIndex = newIndex >= dates.count ? 0 : newIndex
     }
-    
+
     init() {
         timer.start()
-        
+
         timerCancellable = timer.publisher
             .receive(on: RunLoop.main)
             .sink { _ in
@@ -39,25 +39,25 @@ final class RadarService: ObservableObject {
                 }
             }
     }
-    
+
     deinit {
         apolloCancellable?.cancel()
         timerCancellable?.cancel()
     }
-    
+
     // MARK: - Timestamps
-    
+
     @Published var dates: [Date] = []
     @Published var loading: Bool = false
-    
+
     private var apolloCancellable: Apollo.Cancellable? {
         didSet { oldValue?.cancel() }
     }
-    
+
     func getRadarTimestamps(for provider: RadarProvider) {
         let query = RadarTimestampsQuery(provider: provider)
         loading = true
-        
+
         apolloCancellable = GraphQL.shared.apollo.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely) { result in
             switch result {
             case .success(let graphQLResult):
@@ -66,21 +66,21 @@ final class RadarService: ObservableObject {
                     self.loading = false
                     self.currentImageIndex = self.dates.count - 1
                 }
-                
+
                 if let error = graphQLResult.errors?.first {
                     SystemAlert.display(title: "Error", message: error.description)
                 }
-                
+
             case .failure(let error):
                 Bugsnag.notifyError(NSError(domain: "com.romsicki", code: 2)) { report in
                     report.errorClass = "Network Error - Radar"
                     report.errorMessage = error.localizedDescription
                 }
-                
+
                 guard !error.localizedDescription.contains("cancelled") else {
                     return
                 }
-                
+
                 SystemAlert.display(title: "Oops!", message: "Something broke. Make sure your device is online and try again.")
             }
         }

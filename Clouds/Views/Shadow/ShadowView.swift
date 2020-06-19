@@ -36,7 +36,7 @@ struct ShadowView: UIViewRepresentable {
 
         NSLayoutConstraint.activate([
             shadowView.heightAnchor.constraint(equalTo: view.heightAnchor),
-            shadowView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            shadowView.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
 
         return view
@@ -45,7 +45,7 @@ struct ShadowView: UIViewRepresentable {
     func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<ShadowView>) {}
 }
 
-struct ShadowView_Previwws: PreviewProvider {
+struct ShadowView_Previews: PreviewProvider {
     static var previews: some View {
         ShadowView(
             offset: CGSize(width: 0, height: 0),

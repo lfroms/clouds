@@ -12,7 +12,7 @@ struct OmniBarTextField<Placeholder: View & Equatable>: View, Equatable {
     @Binding var text: String
 
     var placeholder: Placeholder
-    var commit: () -> () = {}
+    var commit: () -> Void = {}
 
     var body: some View {
         ZStack(alignment: .leading) {

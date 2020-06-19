@@ -13,15 +13,15 @@ import MapKit
 final class LocationSearchService: NSObject, ObservableObject {
     @Published var searchQuery: String = ""
     @Published private(set) var results: [Result] = []
-    
+
     let completer: MKLocalSearchCompleter
     var cancellable: AnyCancellable?
-    
+
     override init() {
         completer = MKLocalSearchCompleter()
         super.init()
         completer.resultTypes = .address
-        
+
         cancellable = $searchQuery
             .removeDuplicates()
             .sink {
@@ -31,14 +31,14 @@ final class LocationSearchService: NSObject, ObservableObject {
                     self.completer.queryFragment = $0
                 }
             }
-        
+
         completer.delegate = self
     }
-    
+
     struct Result: Equatable, Hashable {
         let title: String
         let subtitle: String
-        
+
         init(completion: MKLocalSearchCompletion) {
             let components = completion.title.split(separator: ",", maxSplits: 1, omittingEmptySubsequences: true)
             title = String(components.first ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
@@ -59,12 +59,12 @@ extension LocationSearchService: MKLocalSearchCompleterDelegate {
                 Result(completion: $0)
             }
     }
-    
+
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
         Bugsnag.notifyError(error) { report in
             report.context = "Location Search"
         }
-        
+
         SystemAlert.display(title: "Error", message: error.localizedDescription)
     }
 }

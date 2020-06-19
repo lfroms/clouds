@@ -33,17 +33,17 @@ struct DayPickerPagingView<Content: View>: UIViewRepresentable {
     }
 
     private let scrollView: UIScrollView = {
-        let v = CustomPageSizeScrollView()
-        v.translatesAutoresizingMaskIntoConstraints = false
-        v.showsVerticalScrollIndicator = false
-        v.showsHorizontalScrollIndicator = false
-        v.alwaysBounceVertical = false
-        v.alwaysBounceHorizontal = true
-        v.isPagingEnabled = true
-        v.clipsToBounds = false
-        v.insetsLayoutMarginsFromSafeArea = false
-        v.contentInsetAdjustmentBehavior = .never
-        return v
+        let view = CustomPageSizeScrollView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.showsVerticalScrollIndicator = false
+        view.showsHorizontalScrollIndicator = false
+        view.alwaysBounceVertical = false
+        view.alwaysBounceHorizontal = true
+        view.isPagingEnabled = true
+        view.clipsToBounds = false
+        view.insetsLayoutMarginsFromSafeArea = false
+        view.contentInsetAdjustmentBehavior = .never
+        return view
     }()
 
     private let touchPassthroughView: TouchPassthroughView = {

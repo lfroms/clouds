@@ -48,7 +48,7 @@ struct WMSResourceURL {
             URLQueryItem(name: "time", value: date.toISO()),
             URLQueryItem(name: "crs", value: coordinateReferenceSystem),
             URLQueryItem(name: "width", value: String(width)),
-            URLQueryItem(name: "height", value: String(height)),
+            URLQueryItem(name: "height", value: String(height))
         ]
 
         return components

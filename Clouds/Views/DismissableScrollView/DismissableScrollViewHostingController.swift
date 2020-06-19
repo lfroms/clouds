@@ -123,9 +123,9 @@ class DismissableScrollViewHostingController<Content>: UIHostingController<Conte
             return (view as? UIScrollView)
         }
 
-        for v in view?.subviews ?? [] {
-            if let vc = findUIScrollView(view: v) {
-                return vc
+        for subview in view?.subviews ?? [] {
+            if let viewController = findUIScrollView(view: subview) {
+                return viewController
             }
         }
 

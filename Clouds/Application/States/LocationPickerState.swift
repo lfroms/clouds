@@ -11,13 +11,13 @@ import SwiftUI
 
 final class LocationPickerState: ObservableObject {
     @Published var presented: Bool = false
-    
+
     func toggleLocationPicker(animated: Bool) {
         guard animated else {
             presented.toggle()
             return
         }
-        
+
         withAnimation(.spring()) {
             self.presented.toggle()
         }
