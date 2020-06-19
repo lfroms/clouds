@@ -74,7 +74,7 @@ cd clouds
 Clouds primarily uses Swift Package Manager to manage dependencies. However, some dependences (namely the [Mapbox SDK](https://docs.mapbox.com/ios/maps/overview/)) are installed using [Carthage](https://github.com/Carthage/Carthage). If you don't already have Carthage installed, you should install it before proceeding. Once Carthage is installed, run the following command to checkout and build the dependencies:
 
 ```sh
-carthage bootstrap
+carthage update --platform ios
 ```
 
 You can then open the Xcode project (named `Clouds.xcodeproj`) in Xcode.
