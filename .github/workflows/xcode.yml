@@ -1,0 +1,37 @@
+name: Xcode
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+    paths:
+      - ".github/workflows/xcode.yml"
+      - "Clouds/**"
+      - "Clouds.xcodeproj/**"
+      - Cartfile
+      - Cartfile.resolved
+
+jobs:
+  build:
+    name: Build
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache Dependencies
+        uses: actions/cache@v2
+        id: carthage-cache
+        with:
+          path: Carthage
+          key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-carthage-
+
+      - name: Install Carthage Dependencies
+        if: steps.carthage-cache.outputs.cache-hit != 'true'
+        run: carthage bootstrap --no-use-binaries --platform iOS --cache-builds
+
+      - name: Build App
+        run: set -o pipefail && xcodebuild clean build -project Clouds.xcodeproj -scheme Clouds -configuration Debug CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO | xcpretty --simple
