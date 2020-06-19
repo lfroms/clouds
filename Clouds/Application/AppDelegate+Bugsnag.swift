@@ -20,6 +20,10 @@ extension AppDelegate {
         configuration.releaseStage = "production"
         #endif
 
+        guard !AppEnvironment.isUITesting else {
+            return
+        }
+
         Bugsnag.start(with: configuration)
     }
 }

@@ -15,9 +15,37 @@
 
 default_platform(:ios)
 
-platform :ios do
-  desc "Generate new localized screenshots"
-  lane :screenshots do
-    capture_screenshots(scheme: "CloudsScreenshots")
-  end
+desc 'Generate new localized screenshots'
+lane :screenshots do
+  capture_screenshots(scheme: 'CloudsScreenshots')
+end
+
+desc 'Runs UI tests'
+lane :test_ui do
+  set_info_plist_value(
+    path: './Clouds/Info.plist',
+    key: 'NSAppTransportSecurity', 
+    subkey: 'NSAllowsLocalNetworking', 
+    value: true, 
+    output_file_name: './Clouds/Info.plist'
+  )
+
+  # Run the tests
+  run_tests(
+    project: 'Clouds.xcodeproj',
+    scheme: 'CloudsUITests',
+    device: 'iPhone 11 Pro',
+    reinstall_app: true,
+    clean: true,
+    configuration: 'Debug',
+    prelaunch_simulator: true,
+  )
+end
+
+desc 'Lints Swift code'
+lane :lint do
+  swiftlint(
+    mode: :lint,
+    config_file: '.swiftlint.yml'
+  )
 end

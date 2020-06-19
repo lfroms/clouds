@@ -15,12 +15,21 @@ Install _fastlane_ using
 or alternatively using `brew cask install fastlane`
 
 # Available Actions
-## iOS
-### ios screenshots
+### screenshots
 ```
-fastlane ios screenshots
+fastlane screenshots
 ```
 Generate new localized screenshots
+### test_ui
+```
+fastlane test_ui
+```
+Runs UI tests
+### lint
+```
+fastlane lint
+```
+Lints Swift code
 
 ----
 
