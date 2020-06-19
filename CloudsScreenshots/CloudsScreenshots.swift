@@ -117,12 +117,3 @@ class CloudsScreenshots: XCTestCase {
         app.tap()
     }
 }
-
-extension XCUIElement {
-    func tapWhenReady(in testCase: XCTestCase) {
-        let predicate = NSPredicate(format: "isHittable == 1")
-        testCase.expectation(for: predicate, evaluatedWith: self, handler: nil)
-        testCase.waitForExpectations(timeout: 10, handler: nil)
-        tap()
-    }
-}
