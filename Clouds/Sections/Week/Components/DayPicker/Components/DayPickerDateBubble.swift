@@ -23,6 +23,7 @@ struct DayPickerDateBubble: View {
             Text("\(day)")
                 .font(.body)
                 .fontWeight(.heavy)
+                .fixedSize()
         }
         .foregroundColor(.white)
         .colorMultiply(active ? .black : .white)
