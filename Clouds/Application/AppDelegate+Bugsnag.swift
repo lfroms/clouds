@@ -11,8 +11,7 @@ import Foundation
 
 extension AppDelegate {
     internal func configureBugsnag() {
-        let configuration = BugsnagConfiguration()
-        configuration.apiKey = "202b8ddb3f0943ad3c5dc0c842dc8ed7"
+        let configuration = BugsnagConfiguration("202b8ddb3f0943ad3c5dc0c842dc8ed7")
 
         #if DEBUG
         configuration.releaseStage = "development"

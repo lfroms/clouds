@@ -60,12 +60,13 @@ class WeatherService: ObservableObject {
                 }
 
             case .failure(let error):
-                Bugsnag.notifyError(NSError(domain: "com.romsicki", code: 1)) { report in
-                    report.errorClass = "CloudsNetworkError"
-                    report.context = "Main Weather Query"
-                    report.errorMessage = error.localizedDescription
-                    report.addAttribute("latitude", withValue: weatherQuery?.latitude, toTabWithName: "weather")
-                    report.addAttribute("longitude", withValue: weatherQuery?.longitude, toTabWithName: "weather")
+                let exception = NSException(name: NSExceptionName("CloudsNetworkError"), reason: error.localizedDescription)
+
+                Bugsnag.notify(exception) { event in
+                    event.context = "Main Weather Query"
+                    event.addMetadata(weatherQuery?.latitude, key: "latitude", section: "weather")
+                    event.addMetadata(weatherQuery?.longitude, key: "longitude", section: "weather")
+                    return true
                 }
 
                 guard !error.localizedDescription.contains("cancelled") else {

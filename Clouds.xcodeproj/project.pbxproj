@@ -30,6 +30,7 @@
 		80162DD0249C43C600D33ACB /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 80162DCF249C43C600D33ACB /* Swifter */; };
 		801662A7244BEA75003034DF /* CustomSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801662A6244BEA75003034DF /* CustomSpinner.swift */; };
 		8016AACF243E2F0D00220B81 /* DayPickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8016AACE243E2F0D00220B81 /* DayPickerItem.swift */; };
+		8016D2F224EC687200FD4A5F /* Bugsnag in Frameworks */ = {isa = PBXBuildFile; productRef = 8016D2F124EC687200FD4A5F /* Bugsnag */; };
 		8019F827240F4E1F00AFB0F1 /* MasterViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8019F826240F4E1F00AFB0F1 /* MasterViewLayout.swift */; };
 		801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801BDBCF232D660C007FE4AB /* DrawerHandle.swift */; };
 		802048C7240AE2F300DFB842 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802048C6240AE2F300DFB842 /* SettingsSection.swift */; };
@@ -206,8 +207,6 @@
 		80E5D61E23774150004A1D6B /* UIScrollView+ScrollToTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5D61D23774150004A1D6B /* UIScrollView+ScrollToTop.swift */; };
 		80E5D628237765DF004A1D6B /* WeatherAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5D627237765DF004A1D6B /* WeatherAlert.swift */; };
 		80E5D62A2377721B004A1D6B /* String+IsInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5D6292377721B004A1D6B /* String+IsInt.swift */; };
-		80E70BDC246CE43E0098B701 /* Bugsnag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801156F1246CC87700A72BA4 /* Bugsnag.framework */; };
-		80E70BDD246CE43E0098B701 /* Bugsnag.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 801156F1246CC87700A72BA4 /* Bugsnag.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		80EA87BF2426E93B00CFDD10 /* DayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EA87BE2426E93B00CFDD10 /* DayPicker.swift */; };
 		80EA87C12426E94700CFDD10 /* DayPickerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EA87C02426E94700CFDD10 /* DayPickerContainer.swift */; };
 		80EA87C32426EAC700CFDD10 /* DayPickerDateBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EA87C22426EAC700CFDD10 /* DayPickerDateBubble.swift */; };
@@ -263,7 +262,6 @@
 			files = (
 				8083A81D24494AFB00CE2E5E /* MapboxMobileEvents.framework in Embed Frameworks */,
 				8083A81B24494AFB00CE2E5E /* Mapbox.framework in Embed Frameworks */,
-				80E70BDD246CE43E0098B701 /* Bugsnag.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -510,9 +508,9 @@
 			files = (
 				8083A81C24494AFB00CE2E5E /* MapboxMobileEvents.framework in Frameworks */,
 				80D0CE81235B6D95002A3EFD /* SwiftDate in Frameworks */,
+				8016D2F224EC687200FD4A5F /* Bugsnag in Frameworks */,
 				80D0CE84235B6DA5002A3EFD /* Apollo in Frameworks */,
 				8083A81A24494AFB00CE2E5E /* Mapbox.framework in Frameworks */,
-				80E70BDC246CE43E0098B701 /* Bugsnag.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1663,6 +1661,7 @@
 			packageProductDependencies = (
 				80D0CE80235B6D95002A3EFD /* SwiftDate */,
 				80D0CE83235B6DA5002A3EFD /* Apollo */,
+				8016D2F124EC687200FD4A5F /* Bugsnag */,
 			);
 			productName = Forecast;
 			productReference = 805A174222C53ADB00E1B4E2 /* Clouds.app */;
@@ -1725,6 +1724,7 @@
 				80D0CE7F235B6D95002A3EFD /* XCRemoteSwiftPackageReference "SwiftDate" */,
 				80D0CE82235B6DA5002A3EFD /* XCRemoteSwiftPackageReference "apollo-ios" */,
 				80F4481E245B60FF007AC77B /* XCRemoteSwiftPackageReference "swifter" */,
+				8016D2F024EC687200FD4A5F /* XCRemoteSwiftPackageReference "bugsnag-cocoa" */,
 			);
 			productRefGroup = 805A174322C53ADB00E1B4E2 /* Products */;
 			projectDirPath = "";
@@ -1783,7 +1783,6 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Mapbox.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/MapboxMobileEvents.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Bugsnag.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputFileListPaths = (
@@ -2365,6 +2364,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8016D2F024EC687200FD4A5F /* XCRemoteSwiftPackageReference "bugsnag-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bugsnag/bugsnag-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.3;
+			};
+		};
 		80D0CE7F235B6D95002A3EFD /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/malcommac/SwiftDate";
@@ -2396,6 +2403,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 80F4481E245B60FF007AC77B /* XCRemoteSwiftPackageReference "swifter" */;
 			productName = Swifter;
+		};
+		8016D2F124EC687200FD4A5F /* Bugsnag */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8016D2F024EC687200FD4A5F /* XCRemoteSwiftPackageReference "bugsnag-cocoa" */;
+			productName = Bugsnag;
 		};
 		80D0CE80235B6D95002A3EFD /* SwiftDate */ = {
 			isa = XCSwiftPackageProductDependency;

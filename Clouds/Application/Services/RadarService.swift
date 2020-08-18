@@ -74,10 +74,11 @@ final class RadarService: ObservableObject {
                 }
 
             case .failure(let error):
-                Bugsnag.notifyError(NSError(domain: "com.romsicki", code: 2)) { report in
-                    report.errorClass = "CloudsNetworkError"
-                    report.context = "Radar Timestamps Query"
-                    report.errorMessage = error.localizedDescription
+                let exception = NSException(name: NSExceptionName("CloudsNetworkError"), reason: error.localizedDescription)
+
+                Bugsnag.notify(exception) { event in
+                    event.context = "Radar Timestamps Query"
+                    return true
                 }
 
                 guard !error.localizedDescription.contains("cancelled") else {
