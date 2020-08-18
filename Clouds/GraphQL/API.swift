@@ -456,9 +456,11 @@ public final class WeatherQuery: GraphQLQuery {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["Query"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("weather", arguments: ["latitude": GraphQLVariable("latitude"), "longitude": GraphQLVariable("longitude")], type: .object(Weather.selections)),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("weather", arguments: ["latitude": GraphQLVariable("latitude"), "longitude": GraphQLVariable("longitude")], type: .object(Weather.selections)),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
@@ -483,15 +485,17 @@ public final class WeatherQuery: GraphQLQuery {
     public struct Weather: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["Weather"]
 
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("location", type: .nonNull(.object(Location.selections))),
-        GraphQLField("alerts", type: .nonNull(.list(.nonNull(.object(Alert.selections))))),
-        GraphQLField("today", type: .nonNull(.object(Today.selections))),
-        GraphQLField("currently", type: .nonNull(.object(Currently.selections))),
-        GraphQLField("hourly", type: .nonNull(.list(.nonNull(.object(Hourly.selections))))),
-        GraphQLField("daily", type: .nonNull(.list(.nonNull(.object(Daily.selections))))),
-      ]
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("location", type: .nonNull(.object(Location.selections))),
+          GraphQLField("alerts", type: .nonNull(.list(.nonNull(.object(Alert.selections))))),
+          GraphQLField("today", type: .nonNull(.object(Today.selections))),
+          GraphQLField("currently", type: .nonNull(.object(Currently.selections))),
+          GraphQLField("hourly", type: .nonNull(.list(.nonNull(.object(Hourly.selections))))),
+          GraphQLField("daily", type: .nonNull(.list(.nonNull(.object(Daily.selections))))),
+        ]
+      }
 
       public private(set) var resultMap: ResultMap
 
@@ -569,11 +573,13 @@ public final class WeatherQuery: GraphQLQuery {
       public struct Location: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["Location"]
 
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("stationName", type: .scalar(String.self)),
-          GraphQLField("coordinate", type: .nonNull(.object(Coordinate.selections))),
-        ]
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("stationName", type: .scalar(String.self)),
+            GraphQLField("coordinate", type: .nonNull(.object(Coordinate.selections))),
+          ]
+        }
 
         public private(set) var resultMap: ResultMap
 
@@ -615,11 +621,13 @@ public final class WeatherQuery: GraphQLQuery {
         public struct Coordinate: GraphQLSelectionSet {
           public static let possibleTypes: [String] = ["Coordinate"]
 
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("latitude", type: .nonNull(.scalar(Double.self))),
-            GraphQLField("longitude", type: .nonNull(.scalar(Double.self))),
-          ]
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("latitude", type: .nonNull(.scalar(Double.self))),
+              GraphQLField("longitude", type: .nonNull(.scalar(Double.self))),
+            ]
+          }
 
           public private(set) var resultMap: ResultMap
 
@@ -663,13 +671,15 @@ public final class WeatherQuery: GraphQLQuery {
       public struct Alert: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["Alert"]
 
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("title", type: .nonNull(.scalar(String.self))),
-          GraphQLField("time", type: .nonNull(.scalar(Double.self))),
-          GraphQLField("type", type: .nonNull(.scalar(AlertType.self))),
-          GraphQLField("url", type: .nonNull(.scalar(String.self))),
-        ]
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("title", type: .nonNull(.scalar(String.self))),
+            GraphQLField("time", type: .nonNull(.scalar(Double.self))),
+            GraphQLField("type", type: .nonNull(.scalar(AlertType.self))),
+            GraphQLField("url", type: .nonNull(.scalar(String.self))),
+          ]
+        }
 
         public private(set) var resultMap: ResultMap
 
@@ -730,13 +740,15 @@ public final class WeatherQuery: GraphQLQuery {
       public struct Today: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["Today"]
 
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("sunriseTime", type: .scalar(Double.self)),
-          GraphQLField("sunsetTime", type: .scalar(Double.self)),
-          GraphQLField("highTemperature", type: .scalar(Double.self)),
-          GraphQLField("lowTemperature", type: .scalar(Double.self)),
-        ]
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("sunriseTime", type: .scalar(Double.self)),
+            GraphQLField("sunsetTime", type: .scalar(Double.self)),
+            GraphQLField("highTemperature", type: .scalar(Double.self)),
+            GraphQLField("lowTemperature", type: .scalar(Double.self)),
+          ]
+        }
 
         public private(set) var resultMap: ResultMap
 
@@ -797,19 +809,21 @@ public final class WeatherQuery: GraphQLQuery {
       public struct Currently: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["Currently"]
 
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("time", type: .nonNull(.scalar(Double.self))),
-          GraphQLField("summary", type: .scalar(String.self)),
-          GraphQLField("icon", type: .nonNull(.object(Icon.selections))),
-          GraphQLField("temperature", type: .scalar(Double.self)),
-          GraphQLField("humidity", type: .scalar(Double.self)),
-          GraphQLField("pressure", type: .nonNull(.object(Pressure.selections))),
-          GraphQLField("feelsLike", type: .nonNull(.object(FeelsLike.selections))),
-          GraphQLField("wind", type: .nonNull(.object(Wind.selections))),
-          GraphQLField("visibility", type: .scalar(Double.self)),
-          GraphQLField("dewPoint", type: .scalar(Double.self)),
-        ]
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("time", type: .nonNull(.scalar(Double.self))),
+            GraphQLField("summary", type: .scalar(String.self)),
+            GraphQLField("icon", type: .nonNull(.object(Icon.selections))),
+            GraphQLField("temperature", type: .scalar(Double.self)),
+            GraphQLField("humidity", type: .scalar(Double.self)),
+            GraphQLField("pressure", type: .nonNull(.object(Pressure.selections))),
+            GraphQLField("feelsLike", type: .nonNull(.object(FeelsLike.selections))),
+            GraphQLField("wind", type: .nonNull(.object(Wind.selections))),
+            GraphQLField("visibility", type: .scalar(Double.self)),
+            GraphQLField("dewPoint", type: .scalar(Double.self)),
+          ]
+        }
 
         public private(set) var resultMap: ResultMap
 
@@ -923,11 +937,13 @@ public final class WeatherQuery: GraphQLQuery {
         public struct Icon: GraphQLSelectionSet {
           public static let possibleTypes: [String] = ["Icon"]
 
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("style", type: .scalar(IconStyle.self)),
-            GraphQLField("colorScheme", type: .nonNull(.scalar(ColorScheme.self))),
-          ]
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("style", type: .scalar(IconStyle.self)),
+              GraphQLField("colorScheme", type: .nonNull(.scalar(ColorScheme.self))),
+            ]
+          }
 
           public private(set) var resultMap: ResultMap
 
@@ -970,10 +986,12 @@ public final class WeatherQuery: GraphQLQuery {
         public struct Pressure: GraphQLSelectionSet {
           public static let possibleTypes: [String] = ["Pressure"]
 
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("value", type: .scalar(Double.self)),
-          ]
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("value", type: .scalar(Double.self)),
+            ]
+          }
 
           public private(set) var resultMap: ResultMap
 
@@ -1007,11 +1025,13 @@ public final class WeatherQuery: GraphQLQuery {
         public struct FeelsLike: GraphQLSelectionSet {
           public static let possibleTypes: [String] = ["FeelsLike"]
 
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("temperature", type: .scalar(Double.self)),
-            GraphQLField("type", type: .scalar(FeelsLikeType.self)),
-          ]
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("temperature", type: .scalar(Double.self)),
+              GraphQLField("type", type: .scalar(FeelsLikeType.self)),
+            ]
+          }
 
           public private(set) var resultMap: ResultMap
 
@@ -1054,12 +1074,14 @@ public final class WeatherQuery: GraphQLQuery {
         public struct Wind: GraphQLSelectionSet {
           public static let possibleTypes: [String] = ["Wind"]
 
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("speed", type: .scalar(String.self)),
-            GraphQLField("direction", type: .scalar(String.self)),
-            GraphQLField("gust", type: .scalar(Double.self)),
-          ]
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("speed", type: .scalar(String.self)),
+              GraphQLField("direction", type: .scalar(String.self)),
+              GraphQLField("gust", type: .scalar(Double.self)),
+            ]
+          }
 
           public private(set) var resultMap: ResultMap
 
@@ -1112,16 +1134,18 @@ public final class WeatherQuery: GraphQLQuery {
       public struct Hourly: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["Hourly"]
 
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("time", type: .nonNull(.scalar(Double.self))),
-          GraphQLField("summary", type: .scalar(String.self)),
-          GraphQLField("icon", type: .nonNull(.object(Icon.selections))),
-          GraphQLField("temperature", type: .scalar(Double.self)),
-          GraphQLField("feelsLike", type: .nonNull(.object(FeelsLike.selections))),
-          GraphQLField("precipProbability", type: .scalar(Double.self)),
-          GraphQLField("wind", type: .nonNull(.object(Wind.selections))),
-        ]
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("time", type: .nonNull(.scalar(Double.self))),
+            GraphQLField("summary", type: .scalar(String.self)),
+            GraphQLField("icon", type: .nonNull(.object(Icon.selections))),
+            GraphQLField("temperature", type: .scalar(Double.self)),
+            GraphQLField("feelsLike", type: .nonNull(.object(FeelsLike.selections))),
+            GraphQLField("precipProbability", type: .scalar(Double.self)),
+            GraphQLField("wind", type: .nonNull(.object(Wind.selections))),
+          ]
+        }
 
         public private(set) var resultMap: ResultMap
 
@@ -1208,11 +1232,13 @@ public final class WeatherQuery: GraphQLQuery {
         public struct Icon: GraphQLSelectionSet {
           public static let possibleTypes: [String] = ["Icon"]
 
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("style", type: .scalar(IconStyle.self)),
-            GraphQLField("colorScheme", type: .nonNull(.scalar(ColorScheme.self))),
-          ]
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("style", type: .scalar(IconStyle.self)),
+              GraphQLField("colorScheme", type: .nonNull(.scalar(ColorScheme.self))),
+            ]
+          }
 
           public private(set) var resultMap: ResultMap
 
@@ -1255,11 +1281,13 @@ public final class WeatherQuery: GraphQLQuery {
         public struct FeelsLike: GraphQLSelectionSet {
           public static let possibleTypes: [String] = ["FeelsLike"]
 
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("temperature", type: .scalar(Double.self)),
-            GraphQLField("type", type: .scalar(FeelsLikeType.self)),
-          ]
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("temperature", type: .scalar(Double.self)),
+              GraphQLField("type", type: .scalar(FeelsLikeType.self)),
+            ]
+          }
 
           public private(set) var resultMap: ResultMap
 
@@ -1302,10 +1330,12 @@ public final class WeatherQuery: GraphQLQuery {
         public struct Wind: GraphQLSelectionSet {
           public static let possibleTypes: [String] = ["Wind"]
 
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("speed", type: .scalar(String.self)),
-          ]
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("speed", type: .scalar(String.self)),
+            ]
+          }
 
           public private(set) var resultMap: ResultMap
 
@@ -1340,12 +1370,14 @@ public final class WeatherQuery: GraphQLQuery {
       public struct Daily: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["Daily"]
 
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("time", type: .nonNull(.scalar(Double.self))),
-          GraphQLField("daytimeConditions", type: .object(DaytimeCondition.selections)),
-          GraphQLField("nighttimeConditions", type: .object(NighttimeCondition.selections)),
-        ]
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("time", type: .nonNull(.scalar(Double.self))),
+            GraphQLField("daytimeConditions", type: .object(DaytimeCondition.selections)),
+            GraphQLField("nighttimeConditions", type: .object(NighttimeCondition.selections)),
+          ]
+        }
 
         public private(set) var resultMap: ResultMap
 
@@ -1396,15 +1428,17 @@ public final class WeatherQuery: GraphQLQuery {
         public struct DaytimeCondition: GraphQLSelectionSet {
           public static let possibleTypes: [String] = ["HalfDayCondition"]
 
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("summary", type: .scalar(String.self)),
-            GraphQLField("summaryClouds", type: .scalar(String.self)),
-            GraphQLField("icon", type: .nonNull(.object(Icon.selections))),
-            GraphQLField("temperature", type: .scalar(Double.self)),
-            GraphQLField("precipProbability", type: .scalar(Double.self)),
-            GraphQLField("wind", type: .nonNull(.object(Wind.selections))),
-          ]
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("summary", type: .scalar(String.self)),
+              GraphQLField("summaryClouds", type: .scalar(String.self)),
+              GraphQLField("icon", type: .nonNull(.object(Icon.selections))),
+              GraphQLField("temperature", type: .scalar(Double.self)),
+              GraphQLField("precipProbability", type: .scalar(Double.self)),
+              GraphQLField("wind", type: .nonNull(.object(Wind.selections))),
+            ]
+          }
 
           public private(set) var resultMap: ResultMap
 
@@ -1482,11 +1516,13 @@ public final class WeatherQuery: GraphQLQuery {
           public struct Icon: GraphQLSelectionSet {
             public static let possibleTypes: [String] = ["Icon"]
 
-            public static let selections: [GraphQLSelection] = [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("style", type: .scalar(IconStyle.self)),
-              GraphQLField("colorScheme", type: .nonNull(.scalar(ColorScheme.self))),
-            ]
+            public static var selections: [GraphQLSelection] {
+              return [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("style", type: .scalar(IconStyle.self)),
+                GraphQLField("colorScheme", type: .nonNull(.scalar(ColorScheme.self))),
+              ]
+            }
 
             public private(set) var resultMap: ResultMap
 
@@ -1529,10 +1565,12 @@ public final class WeatherQuery: GraphQLQuery {
           public struct Wind: GraphQLSelectionSet {
             public static let possibleTypes: [String] = ["Wind"]
 
-            public static let selections: [GraphQLSelection] = [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("speed", type: .scalar(String.self)),
-            ]
+            public static var selections: [GraphQLSelection] {
+              return [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("speed", type: .scalar(String.self)),
+              ]
+            }
 
             public private(set) var resultMap: ResultMap
 
@@ -1567,15 +1605,17 @@ public final class WeatherQuery: GraphQLQuery {
         public struct NighttimeCondition: GraphQLSelectionSet {
           public static let possibleTypes: [String] = ["HalfDayCondition"]
 
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("summary", type: .scalar(String.self)),
-            GraphQLField("summaryClouds", type: .scalar(String.self)),
-            GraphQLField("icon", type: .nonNull(.object(Icon.selections))),
-            GraphQLField("temperature", type: .scalar(Double.self)),
-            GraphQLField("precipProbability", type: .scalar(Double.self)),
-            GraphQLField("wind", type: .nonNull(.object(Wind.selections))),
-          ]
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("summary", type: .scalar(String.self)),
+              GraphQLField("summaryClouds", type: .scalar(String.self)),
+              GraphQLField("icon", type: .nonNull(.object(Icon.selections))),
+              GraphQLField("temperature", type: .scalar(Double.self)),
+              GraphQLField("precipProbability", type: .scalar(Double.self)),
+              GraphQLField("wind", type: .nonNull(.object(Wind.selections))),
+            ]
+          }
 
           public private(set) var resultMap: ResultMap
 
@@ -1653,11 +1693,13 @@ public final class WeatherQuery: GraphQLQuery {
           public struct Icon: GraphQLSelectionSet {
             public static let possibleTypes: [String] = ["Icon"]
 
-            public static let selections: [GraphQLSelection] = [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("style", type: .scalar(IconStyle.self)),
-              GraphQLField("colorScheme", type: .nonNull(.scalar(ColorScheme.self))),
-            ]
+            public static var selections: [GraphQLSelection] {
+              return [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("style", type: .scalar(IconStyle.self)),
+                GraphQLField("colorScheme", type: .nonNull(.scalar(ColorScheme.self))),
+              ]
+            }
 
             public private(set) var resultMap: ResultMap
 
@@ -1700,10 +1742,12 @@ public final class WeatherQuery: GraphQLQuery {
           public struct Wind: GraphQLSelectionSet {
             public static let possibleTypes: [String] = ["Wind"]
 
-            public static let selections: [GraphQLSelection] = [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("speed", type: .scalar(String.self)),
-            ]
+            public static var selections: [GraphQLSelection] {
+              return [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("speed", type: .scalar(String.self)),
+              ]
+            }
 
             public private(set) var resultMap: ResultMap
 
@@ -1775,9 +1819,11 @@ public final class WeatherLocationItemQuery: GraphQLQuery {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["Query"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("weather", arguments: ["latitude": GraphQLVariable("latitude"), "longitude": GraphQLVariable("longitude")], type: .object(Weather.selections)),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("weather", arguments: ["latitude": GraphQLVariable("latitude"), "longitude": GraphQLVariable("longitude")], type: .object(Weather.selections)),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
@@ -1802,10 +1848,12 @@ public final class WeatherLocationItemQuery: GraphQLQuery {
     public struct Weather: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["Weather"]
 
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("currently", type: .nonNull(.object(Currently.selections))),
-      ]
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("currently", type: .nonNull(.object(Currently.selections))),
+        ]
+      }
 
       public private(set) var resultMap: ResultMap
 
@@ -1838,11 +1886,13 @@ public final class WeatherLocationItemQuery: GraphQLQuery {
       public struct Currently: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["Currently"]
 
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("temperature", type: .scalar(Double.self)),
-          GraphQLField("icon", type: .nonNull(.object(Icon.selections))),
-        ]
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("temperature", type: .scalar(Double.self)),
+            GraphQLField("icon", type: .nonNull(.object(Icon.selections))),
+          ]
+        }
 
         public private(set) var resultMap: ResultMap
 
@@ -1884,10 +1934,12 @@ public final class WeatherLocationItemQuery: GraphQLQuery {
         public struct Icon: GraphQLSelectionSet {
           public static let possibleTypes: [String] = ["Icon"]
 
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("colorScheme", type: .nonNull(.scalar(ColorScheme.self))),
-          ]
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("colorScheme", type: .nonNull(.scalar(ColorScheme.self))),
+            ]
+          }
 
           public private(set) var resultMap: ResultMap
 
@@ -1946,9 +1998,11 @@ public final class RadarTimestampsQuery: GraphQLQuery {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["Query"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("radarTimestamps", arguments: ["provider": GraphQLVariable("provider")], type: .nonNull(.list(.nonNull(.scalar(Double.self))))),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("radarTimestamps", arguments: ["provider": GraphQLVariable("provider")], type: .nonNull(.list(.nonNull(.scalar(Double.self))))),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
