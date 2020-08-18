@@ -73,7 +73,8 @@ final class RadarService: ObservableObject {
 
             case .failure(let error):
                 Bugsnag.notifyError(NSError(domain: "com.romsicki", code: 2)) { report in
-                    report.errorClass = "Network Error - Radar"
+                    report.errorClass = "CloudsNetworkError"
+                    report.context = "Radar Timestamps Query"
                     report.errorMessage = error.localizedDescription
                 }
 
