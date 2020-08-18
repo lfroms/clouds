@@ -15,6 +15,7 @@ struct RadarMapView: UIViewRepresentable {
     var overlayOpacity: Double
     var dataSource: RadarProvider
     var activeLocationCoordinates: CLLocationCoordinate2D?
+    var lazy: Bool = false
 
     @State private var loaded: Bool = false
 
@@ -61,7 +62,13 @@ struct RadarMapView: UIViewRepresentable {
         }
 
         cleanUpOldLayers(in: mapView)
-        addRasterSources(for: dates, to: mapView)
+
+        if lazy, dates.count > 0 {
+            addRasterSource(for: dates[currentImage], to: mapView)
+        } else {
+            addRasterSources(for: dates, to: mapView)
+        }
+
         showActiveRasterLayer(in: mapView)
     }
 
@@ -79,29 +86,33 @@ struct RadarMapView: UIViewRepresentable {
         }
     }
 
+    private func addRasterSource(for date: Date, to mapView: MGLMapView, visibleInitially: Bool = true) {
+        let layerIdentifier = identifier(for: date)
+
+        if mapView.style?.source(withIdentifier: layerIdentifier) == nil {
+            switch dataSource {
+            case .environmentCanada:
+                let source = EnvironmentCanadaRasterTileSource(identifier: layerIdentifier, date: date)
+                mapView.style?.addSource(source)
+            default:
+                let source = RainviewerRasterTileSource(identifier: layerIdentifier, date: date)
+                mapView.style?.addSource(source)
+            }
+        }
+
+        if mapView.style?.layer(withIdentifier: layerIdentifier) == nil,
+            let source = mapView.style?.source(withIdentifier: layerIdentifier) {
+            let rasterLayer = MGLRasterStyleLayer(identifier: layerIdentifier, source: source)
+            rasterLayer.rasterOpacity = NSExpression(forConstantValue: visibleInitially ? overlayOpacity : 0)
+            rasterLayer.rasterOpacityTransition = MGLTransition(duration: 0, delay: 0)
+
+            mapView.style?.addLayer(rasterLayer)
+        }
+    }
+
     private func addRasterSources(for dates: [Date], to mapView: MGLMapView) {
         dates.enumerated().reversed().forEach { index, date in
-            let layerIdentifier = identifier(for: date)
-
-            if mapView.style?.source(withIdentifier: layerIdentifier) == nil {
-                switch dataSource {
-                case .environmentCanada:
-                    let source = EnvironmentCanadaRasterTileSource(identifier: layerIdentifier, date: date)
-                    mapView.style?.addSource(source)
-                default:
-                    let source = RainviewerRasterTileSource(identifier: layerIdentifier, date: date)
-                    mapView.style?.addSource(source)
-                }
-            }
-
-            if mapView.style?.layer(withIdentifier: layerIdentifier) == nil,
-                let source = mapView.style?.source(withIdentifier: layerIdentifier) {
-                let rasterLayer = MGLRasterStyleLayer(identifier: layerIdentifier, source: source)
-                rasterLayer.rasterOpacity = NSExpression(forConstantValue: index == currentImage ? overlayOpacity : 0)
-                rasterLayer.rasterOpacityTransition = MGLTransition(duration: 0, delay: 0)
-
-                mapView.style?.addLayer(rasterLayer)
-            }
+            addRasterSource(for: date, to: mapView, visibleInitially: index == currentImage)
         }
     }
 
@@ -164,5 +175,6 @@ extension RadarMapView: Equatable {
             && lhs.activeLocationCoordinates == rhs.activeLocationCoordinates
             && lhs.overlayOpacity == rhs.overlayOpacity
             && lhs.dataSource == rhs.dataSource
+            && lhs.lazy == rhs.lazy
     }
 }

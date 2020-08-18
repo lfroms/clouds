@@ -16,6 +16,7 @@ final class RadarService: ObservableObject {
 
     @Published var currentImageIndex: Int = 0
     @Published var isPlaying: Bool = false
+    @Published var shouldLazyLoadImages = false
 
     private let timer = RadarAnimationTimer()
 
@@ -57,6 +58,7 @@ final class RadarService: ObservableObject {
     func getRadarTimestamps(for provider: RadarProvider) {
         let query = RadarTimestampsQuery(provider: provider)
         loading = true
+        shouldLazyLoadImages = provider == .environmentCanada
 
         apolloCancellable = GraphQL.shared.apollo.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely) { result in
             switch result {
