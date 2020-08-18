@@ -16,6 +16,7 @@ struct RadarMapViewContainer: Container {
 
     @Binding var currentImage: Int
     var dates: [Date]
+    var shouldLazyLoadImages: Bool = false
 
     var body: some View {
         RadarMapView(
@@ -23,7 +24,8 @@ struct RadarMapViewContainer: Container {
             dates: dates,
             overlayOpacity: settingsSheetState.radarOpacity,
             dataSource: settingsSheetState.radarSource,
-            activeLocationCoordinates: activeLocationCoordinates
+            activeLocationCoordinates: activeLocationCoordinates,
+            lazy: shouldLazyLoadImages
         )
         .equatable()
         .clipShape(RoundedCornerShape(cornerRadius: Dimension.Global.cornerRadius, style: .continuous, corners: [.bottomLeft, .bottomRight]))
