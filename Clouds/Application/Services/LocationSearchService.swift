@@ -61,8 +61,9 @@ extension LocationSearchService: MKLocalSearchCompleterDelegate {
     }
 
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
-        Bugsnag.notifyError(error) { report in
-            report.context = "Location Search"
+        Bugsnag.notifyError(error) { event in
+            event.context = "Location Search"
+            return true
         }
 
         SystemAlert.display(title: "Error", message: error.localizedDescription)
