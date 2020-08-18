@@ -17,8 +17,9 @@ struct AlertItem: View {
             HStack(alignment: .center, spacing: 0) {
                 VStack(alignment: .leading, spacing: 1) {
                     Text(data.summary)
-                        .font(.callout)
-                        .fontWeight(.heavy)
+                        .lineLimit(1)
+                        .font(Font.callout.weight(.heavy))
+                        .minimumScaleFactor(0.1)
 
                     Text(data.date.toFormat("MMMM d 'at' h:mm a"))
                         .font(.caption)
