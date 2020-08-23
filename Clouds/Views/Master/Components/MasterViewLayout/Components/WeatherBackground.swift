@@ -27,7 +27,9 @@ struct WeatherBackground: View {
                 .opacity(self.alternateGradient ? 0 : 1)
         }
         .modifier(ShrinkBackgroundForAppSection())
-        .onReceive(self.visualState.appearanceDidChange, perform: self.animateGradient)
+        .onChange(of: visualState.appearance) { _ in
+            setGradient(steps: gradientSteps)
+        }
     }
 
     private var gradientSteps: [Color] {

@@ -186,6 +186,7 @@
 		80C8162A2363E2D700D33669 /* OmniBarAuxiliaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816292363E2D700D33669 /* OmniBarAuxiliaryButton.swift */; };
 		80C8162F2363E6DF00D33669 /* HeaderGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8162E2363E6DE00D33669 /* HeaderGradient.swift */; };
 		80CFBC0B24F206560024B1FD /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CFBC0A24F206560024B1FD /* Debouncer.swift */; };
+		80CFBC0E24F334960024B1FD /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CFBC0D24F334960024B1FD /* Appearance.swift */; };
 		80D09C862457EFE700D617D8 /* ResetHourlyForecastScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D09C852457EFE700D617D8 /* ResetHourlyForecastScroll.swift */; };
 		80D0CE81235B6D95002A3EFD /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 80D0CE80235B6D95002A3EFD /* SwiftDate */; };
 		80D0CE84235B6DA5002A3EFD /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 80D0CE83235B6DA5002A3EFD /* Apollo */; };
@@ -436,6 +437,7 @@
 		80C816292363E2D700D33669 /* OmniBarAuxiliaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarAuxiliaryButton.swift; sourceTree = "<group>"; };
 		80C8162E2363E6DE00D33669 /* HeaderGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderGradient.swift; sourceTree = "<group>"; };
 		80CFBC0A24F206560024B1FD /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
+		80CFBC0D24F334960024B1FD /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		80D09C852457EFE700D617D8 /* ResetHourlyForecastScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetHourlyForecastScroll.swift; sourceTree = "<group>"; };
 		80D1896C22D03A2F00E56DB1 /* HighLowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLowView.swift; sourceTree = "<group>"; };
 		80D6346124230B3B00F7E96D /* GeometryGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryGetter.swift; sourceTree = "<group>"; };
@@ -700,6 +702,7 @@
 		802FB9A7241000E90056D614 /* States */ = {
 			isa = PBXGroup;
 			children = (
+				80CFBC0C24F334710024B1FD /* Models */,
 				80C395AE2378A1DA0004B71D /* AppState.swift */,
 				806A5BF124144EC40093361D /* LocationPickerState.swift */,
 				806A5BF324144F800093361D /* SettingsSheetState.swift */,
@@ -1356,6 +1359,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		80CFBC0C24F334710024B1FD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				80CFBC0D24F334960024B1FD /* Appearance.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		80D6346024230B3100F7E96D /* GeometryGetter */ = {
 			isa = PBXGroup;
 			children = (
@@ -1954,6 +1965,7 @@
 				80C395A523787F660004B71D /* Date+TimeAgo.swift in Sources */,
 				806A5C00241481B90093361D /* CurrentSectionContainer.swift in Sources */,
 				80311BC4241EA782004BC6B4 /* SettingsSheetCloseButtonRow.swift in Sources */,
+				80CFBC0E24F334960024B1FD /* Appearance.swift in Sources */,
 				80617950245CEAD8003DB747 /* WebView.swift in Sources */,
 				809C54DA24244F750028216E /* WeatherIllustrationImage.swift in Sources */,
 				80D09C862457EFE700D617D8 /* ResetHourlyForecastScroll.swift in Sources */,

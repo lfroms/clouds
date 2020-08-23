@@ -30,7 +30,9 @@ struct WeatherIllustration: View {
             }
         }
         .animation(.spring())
-        .onReceive(visualState.appearanceDidChange, perform: self.animateImage)
+        .onChange(of: visualState.appearance) { newAppearance in
+            setImage(WeatherImageStyle[newAppearance.style, newAppearance.scheme])
+        }
     }
 
     private let transition: AnyTransition = .asymmetric(
@@ -49,10 +51,6 @@ struct WeatherIllustration: View {
         }
 
         alternateImage.toggle()
-    }
-
-    private func animateImage(_: VisualState.ObjectWillChangePublisher.Output) {
-        setImage(WeatherImageStyle[visualState.appearance.style, visualState.appearance.scheme])
     }
 
     private var shouldScaleImage: Bool {

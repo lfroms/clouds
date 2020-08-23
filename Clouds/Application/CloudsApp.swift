@@ -119,8 +119,7 @@ struct CloudsApp: App {
     private func setIconCodeToCurrentConditions() {
         visualState.set(
             style: weatherService.weather?.currently.icon.style,
-            colorScheme: weatherService.weather?.currently.icon.colorScheme,
-            animated: true
+            colorScheme: weatherService.weather?.currently.icon.colorScheme
         )
     }
 
@@ -133,8 +132,7 @@ struct CloudsApp: App {
         if day?.daytimeConditions == nil, day?.nighttimeConditions != nil {
             visualState.set(
                 style: day?.nighttimeConditions?.icon.style,
-                colorScheme: day?.nighttimeConditions?.icon.colorScheme,
-                animated: true
+                colorScheme: day?.nighttimeConditions?.icon.colorScheme
             )
 
             return
@@ -143,8 +141,7 @@ struct CloudsApp: App {
         if day?.nighttimeConditions == nil, day?.daytimeConditions != nil {
             visualState.set(
                 style: day?.daytimeConditions?.icon.style,
-                colorScheme: day?.daytimeConditions?.icon.colorScheme,
-                animated: true
+                colorScheme: day?.daytimeConditions?.icon.colorScheme
             )
 
             return
@@ -153,7 +150,7 @@ struct CloudsApp: App {
         let style = weekSectionState.showingNightConditions ? day?.nighttimeConditions?.icon.style : day?.daytimeConditions?.icon.style
         let colorScheme = weekSectionState.showingNightConditions ? day?.nighttimeConditions?.icon.colorScheme : day?.daytimeConditions?.icon.colorScheme
 
-        visualState.set(style: style, colorScheme: colorScheme, animated: true)
+        visualState.set(style: style, colorScheme: colorScheme)
     }
 
     private func changeIconCodeBasedOnSection() {
@@ -193,19 +190,19 @@ struct CloudsApp: App {
         let day = days?[safe: index]
 
         if day?.daytimeConditions == nil, day?.nighttimeConditions != nil {
-            visualState.set(style: day?.nighttimeConditions?.icon.style, colorScheme: day?.nighttimeConditions?.icon.colorScheme, animated: true)
+            visualState.set(style: day?.nighttimeConditions?.icon.style, colorScheme: day?.nighttimeConditions?.icon.colorScheme)
             return
         }
 
         if day?.nighttimeConditions == nil, day?.daytimeConditions != nil {
-            visualState.set(style: day?.daytimeConditions?.icon.style, colorScheme: day?.daytimeConditions?.icon.colorScheme, animated: true)
+            visualState.set(style: day?.daytimeConditions?.icon.style, colorScheme: day?.daytimeConditions?.icon.colorScheme)
             return
         }
 
         let style = weekSectionState.showingNightConditions ? day?.nighttimeConditions?.icon.style : day?.daytimeConditions?.icon.style
         let colorScheme = weekSectionState.showingNightConditions ? day?.nighttimeConditions?.icon.colorScheme : day?.daytimeConditions?.icon.colorScheme
 
-        visualState.set(style: style, colorScheme: colorScheme, animated: true)
+        visualState.set(style: style, colorScheme: colorScheme)
     }
 
     // MARK: - Location Picker
