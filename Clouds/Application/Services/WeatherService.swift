@@ -17,13 +17,6 @@ class WeatherService: ObservableObject {
     @Published private(set) var weather: WeatherQuery.Data.Weather?
     @Published private(set) var loading: Bool = false
 
-    let shouldLoadUpdatedWeather = PassthroughSubject<Void, Never>()
-    let didLoadUpdatedWeather = PassthroughSubject<Void, Never>()
-
-    func setShouldFetchUpdatedWeather() {
-        shouldLoadUpdatedWeather.send()
-    }
-
     private var request: Apollo.Cancellable?
 
     func fetch(selectedLocation: CLLocationCoordinate2D?, userLocation: CLLocationCoordinate2D?) {
@@ -52,7 +45,6 @@ class WeatherService: ObservableObject {
             case .success(let graphQLResult):
                 if let data = graphQLResult.data {
                     self.weather = data.weather
-                    self.didLoadUpdatedWeather.send()
                 }
 
                 if let error = graphQLResult.errors?.first {

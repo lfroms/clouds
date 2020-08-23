@@ -6,14 +6,11 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
-import Combine
 import CoreLocation
 import Foundation
 
 class LocationService: NSObject, ObservableObject {
     private let locationManager = CLLocationManager()
-
-    let locationDidChange = PassthroughSubject<Void, Never>()
 
     override init() {
         super.init()
@@ -25,13 +22,7 @@ class LocationService: NSObject, ObservableObject {
     }
 
     @Published var locationStatus: CLAuthorizationStatus?
-    @Published var lastLocation: CLLocation? {
-        didSet {
-            if oldValue?.coordinate != self.lastLocation?.coordinate {
-                self.locationDidChange.send()
-            }
-        }
-    }
+    @Published var lastLocation: CLLocation?
 
     @Published var lastPlacemark: CLPlacemark?
 

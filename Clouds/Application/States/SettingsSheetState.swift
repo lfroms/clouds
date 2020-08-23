@@ -6,13 +6,10 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
-import Combine
 import Foundation
 
 final class SettingsSheetState: ObservableObject {
     @Published var presented: Bool = false
-
-    let radarSourceDidChange = PassthroughSubject<Void, Never>()
 
     var isImperial: Bool {
         get {
@@ -36,7 +33,6 @@ final class SettingsSheetState: ObservableObject {
 
         set {
             objectWillChange.send()
-            radarSourceDidChange.send()
             UserDefaults.standard.set(newValue.rawValue, forKey: Key.radarProvider)
         }
     }

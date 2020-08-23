@@ -6,7 +6,7 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
-import Combine
+import CoreLocation
 import SwiftUI
 
 @main
@@ -25,8 +25,6 @@ struct CloudsApp: App {
     @StateObject private var locationFavoritesService: LocationFavoritesService = LocationFavoritesService()
     @StateObject private var radarService: RadarService = RadarService()
 
-    let debouncer = Debouncer(timeInterval: 0.3)
-
     var body: some Scene {
         WindowGroup {
             AppLayout()
@@ -41,66 +39,77 @@ struct CloudsApp: App {
                 .environmentObject(locationSearchService)
                 .environmentObject(locationFavoritesService)
                 .environmentObject(radarService)
-                .onChange(of: locationService.lastLocation?.coordinate) { coordinate in
-                    weatherService.fetch(
-                        selectedLocation: locationFavoritesService.activeLocation?.coordinate,
-                        userLocation: coordinate
-                    )
-                }
-                .onAppear(perform: didBecomeActive)
+
+                .onAppear(perform: applicationDidBecomeActive)
                 .onChange(of: scenePhase) { phase in
                     switch phase {
                     case .active:
-                        didBecomeActive()
+                        applicationDidBecomeActive()
                     default:
-                        didEnterBackground()
+                        applicationDidBecomeInactive()
                     }
                 }
-                .onReceive(weatherService.shouldLoadUpdatedWeather.debounce(for: .seconds(0.15), scheduler: RunLoop.main)) { _ in
-                    fetchWeather()
+
+                .onChange(of: locationService.lastLocation?.coordinate) { newCoordinate in
+                    guard locationFavoritesService.activeLocation == nil else {
+                        return
+                    }
+
+                    fetchUpdatedWeatherData(coordinate: newCoordinate)
                 }
-                .onReceive(weatherService.didLoadUpdatedWeather.receive(on: RunLoop.main).debounce(for: .seconds(0.2), scheduler: RunLoop.main), perform: changeIconCodeBasedOnSection)
+
+                .onChange(of: locationFavoritesService.activeLocation) { newLocation in
+                    fetchUpdatedWeatherData(coordinate: newLocation?.coordinate)
+                }
+
+                .onChange(of: weatherService.loading) { newLoading in
+                    if newLoading == false {
+                        changeIconCodeBasedOnSection()
+                    }
+                }
+
                 .onChange(of: weekSectionState.dayIndex) { _ in
-                    debouncer.renewInterval()
-                    debouncer.handler = setIconCodeToWeekSectionActiveDay
+                    setIconCodeToWeekSectionActiveDay()
                 }
 
                 .onChange(of: appState.activeSection) { _ in
-                    didChangeAppSection()
+                    radarService.isPlaying = false
                     changeIconCodeBasedOnSection()
                 }
 
                 .onChange(of: weekSectionState.showingNightConditions) { _ in
                     setIconCodeToWeekSectionActiveDay()
                 }
-                .onChange(of: locationPickerState.presented, perform: { _ in
+
+                .onChange(of: locationPickerState.presented) { _ in
                     didChangeLocationPickerState()
-                })
+                }
+
                 .onChange(of: settingsSheetState.radarSource) { _ in
                     getRadarTimestamps()
                 }
         }
     }
 
-    // MARK: - Binding Functions
+    private func fetchUpdatedWeatherData(coordinate: CLLocationCoordinate2D? = nil) {
+        let userLocation = coordinate ?? locationService.lastLocation?.coordinate
 
-    private func fetchWeather() {
         weatherService.fetch(
             selectedLocation: locationFavoritesService.activeLocation?.coordinate,
-            userLocation: locationService.lastLocation?.coordinate
+            userLocation: userLocation
         )
     }
 
-    private func didBecomeActive() {
+    private func applicationDidBecomeActive() {
         if appState.activeSection == .radar {
             getRadarTimestamps()
         }
 
         locationService.startUpdatingLocation()
-        fetchWeather()
+        fetchUpdatedWeatherData()
     }
 
-    private func didEnterBackground() {
+    private func applicationDidBecomeInactive() {
         radarService.isPlaying = false
         locationService.stopUpdatingLocation()
     }
@@ -210,15 +219,12 @@ struct CloudsApp: App {
         }
 
         locationSearchService.searchQuery.clear()
+        fetchUpdatedWeatherData()
     }
 
     // MARK: - Radar
 
     private func getRadarTimestamps() {
         radarService.getRadarTimestamps(for: settingsSheetState.radarSource)
-    }
-
-    private func didChangeAppSection() {
-        radarService.isPlaying = false
     }
 }

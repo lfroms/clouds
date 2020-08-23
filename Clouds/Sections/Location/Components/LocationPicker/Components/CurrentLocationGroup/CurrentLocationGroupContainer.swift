@@ -59,7 +59,6 @@ struct CurrentLocationGroupContainer: Container {
         }
 
         locationFavoritesService.clearActiveLocation()
-        weatherService.setShouldFetchUpdatedWeather()
     }
 }
 
