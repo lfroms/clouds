@@ -185,8 +185,8 @@
 		80C816282363DEBB00D33669 /* OmniBarPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816272363DEBB00D33669 /* OmniBarPlaceholder.swift */; };
 		80C8162A2363E2D700D33669 /* OmniBarAuxiliaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C816292363E2D700D33669 /* OmniBarAuxiliaryButton.swift */; };
 		80C8162F2363E6DF00D33669 /* HeaderGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8162E2363E6DE00D33669 /* HeaderGradient.swift */; };
-		80CFBC0B24F206560024B1FD /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CFBC0A24F206560024B1FD /* Debouncer.swift */; };
 		80CFBC0E24F334960024B1FD /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CFBC0D24F334960024B1FD /* Appearance.swift */; };
+		80CFBC1024F3379F0024B1FD /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CFBC0F24F3379F0024B1FD /* Debouncer.swift */; };
 		80D09C862457EFE700D617D8 /* ResetHourlyForecastScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D09C852457EFE700D617D8 /* ResetHourlyForecastScroll.swift */; };
 		80D0CE81235B6D95002A3EFD /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 80D0CE80235B6D95002A3EFD /* SwiftDate */; };
 		80D0CE84235B6DA5002A3EFD /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 80D0CE83235B6DA5002A3EFD /* Apollo */; };
@@ -436,8 +436,8 @@
 		80C816272363DEBB00D33669 /* OmniBarPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarPlaceholder.swift; sourceTree = "<group>"; };
 		80C816292363E2D700D33669 /* OmniBarAuxiliaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarAuxiliaryButton.swift; sourceTree = "<group>"; };
 		80C8162E2363E6DE00D33669 /* HeaderGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderGradient.swift; sourceTree = "<group>"; };
-		80CFBC0A24F206560024B1FD /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		80CFBC0D24F334960024B1FD /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		80CFBC0F24F3379F0024B1FD /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		80D09C852457EFE700D617D8 /* ResetHourlyForecastScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetHourlyForecastScroll.swift; sourceTree = "<group>"; };
 		80D1896C22D03A2F00E56DB1 /* HighLowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLowView.swift; sourceTree = "<group>"; };
 		80D6346124230B3B00F7E96D /* GeometryGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryGetter.swift; sourceTree = "<group>"; };
@@ -1279,7 +1279,7 @@
 				802FB9A7241000E90056D614 /* States */,
 				804AB0C4245629D7000CA915 /* SystemAlert.swift */,
 				8038D98524A6E92B00FC1B59 /* CloudsApp.swift */,
-				80CFBC0A24F206560024B1FD /* Debouncer.swift */,
+				80CFBC0F24F3379F0024B1FD /* Debouncer.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1819,6 +1819,7 @@
 				8066FDED2364EE030067F362 /* NowSection.swift in Sources */,
 				80D1896D22D03A2F00E56DB1 /* HighLowView.swift in Sources */,
 				8031CBC3240DF2B400C76FE3 /* SFSymbol.swift in Sources */,
+				80CFBC1024F3379F0024B1FD /* Debouncer.swift in Sources */,
 				808705682427D45F001110B2 /* TouchPassthroughView.swift in Sources */,
 				807B8E4C2377AAFD0075F131 /* MeasurementGrid.swift in Sources */,
 				80FB6C692408772C0026DD83 /* NSObject+Debounce.swift in Sources */,
@@ -1835,7 +1836,6 @@
 				80734AFE2410A512000693F4 /* GridStack.swift in Sources */,
 				804AB0C324562070000CA915 /* AlertListCloseButton.swift in Sources */,
 				8084FD98241D3903006A57DC /* CurrentLocationGroupContainer.swift in Sources */,
-				80CFBC0B24F206560024B1FD /* Debouncer.swift in Sources */,
 				8048092E23FB4BC30019ACC2 /* WeatherLocationItem.swift in Sources */,
 				806A5BF224144EC40093361D /* LocationPickerState.swift in Sources */,
 				8094307F24561459003632EC /* AlertList.swift in Sources */,

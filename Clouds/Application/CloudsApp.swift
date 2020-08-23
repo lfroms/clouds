@@ -25,6 +25,8 @@ struct CloudsApp: App {
     @StateObject private var locationFavoritesService: LocationFavoritesService = LocationFavoritesService()
     @StateObject private var radarService: RadarService = RadarService()
 
+    private let visualStateDebouncer = Debouncer(delay: 0.3)
+
     var body: some Scene {
         WindowGroup {
             AppLayout()
@@ -64,7 +66,7 @@ struct CloudsApp: App {
 
                 .onChange(of: weatherService.loading) { newLoading in
                     if newLoading == false {
-                        changeIconCodeBasedOnSection()
+                        visualStateDebouncer.run(action: changeIconCodeBasedOnSection)
                     }
                 }
 
