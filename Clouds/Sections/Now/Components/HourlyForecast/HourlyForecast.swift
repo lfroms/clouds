@@ -41,7 +41,7 @@ struct HourlyForecast: View {
             }
 
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(alignment: .top, spacing: Dimension.HourlyForecast.spacing) {
+                LazyHStack(alignment: .top, spacing: Dimension.HourlyForecast.spacing) {
                     ForEach(items, id: \.self) { item in
                         Group {
                             if item.date.hour == 0 && item != self.items.first {

@@ -19,7 +19,7 @@ struct AlertListContainer: View {
         ZStack(alignment: .bottom) {
             ZStack {
                 if appState.showingAlerts {
-                    Color.black.opacity(0.88).edgesIgnoringSafeArea(.all)
+                    Color.black.opacity(0.88).ignoresSafeArea(.all)
                         .transition(AnyTransition.opacity.animation(.easeInOut))
                         .onTapGesture {
                             self.appState.showingAlerts = false
@@ -39,7 +39,7 @@ struct AlertListContainer: View {
         }
         .sheet(isPresented: $showingSheet) {
             SafariView(url: self.currentURL)
-                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea(.all)
         }
     }
 

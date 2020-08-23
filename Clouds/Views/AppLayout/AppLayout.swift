@@ -18,7 +18,7 @@ struct AppLayout: View {
                     MasterViewContainer()
                         .accessibility(identifier: "master")
                 }
-                .edgesIgnoringSafeArea(.top)
+                .ignoresSafeArea(.container)
             }
             .overlay(AlertListContainer())
 
@@ -28,7 +28,7 @@ struct AppLayout: View {
         }
         .overlay(LocationPickerSectionModal())
         .overlay(Header(), alignment: .top)
-        .background(BlackBackground().edgesIgnoringSafeArea(.all))
+        .background(BlackBackground().ignoresSafeArea(.all))
         .foregroundColor(AppColor.Display.primary)
     }
 }

@@ -18,7 +18,7 @@ struct AlertListCloseButton: View {
                 .font(Font.system(size: 14).weight(.bold))
                 .frame(width: 37, height: 37, alignment: .center)
                 .background(Color.white.opacity(0.25))
-                .cornerRadius(.infinity)
+                .cornerRadius(18.5)
         }
         .accessibility(identifier: "alertlist.close")
     }

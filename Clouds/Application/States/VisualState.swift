@@ -32,8 +32,6 @@ final class VisualState: ObservableObject {
             return
         }
 
-        withAnimation(.spring()) {
-            appearance = newAppearance
-        }
+        appearance = newAppearance
     }
 }

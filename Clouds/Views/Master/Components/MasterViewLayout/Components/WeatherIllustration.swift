@@ -29,11 +29,12 @@ struct WeatherIllustration: View {
                     .transition(transition)
             }
         }
+        .animation(.spring())
         .onReceive(visualState.appearanceDidChange, perform: self.animateImage)
     }
 
     private let transition: AnyTransition = .asymmetric(
-        insertion: AnyTransition.opacity.combined(with: .move(edge: .trailing)),
+        insertion: AnyTransition.move(edge: .trailing).combined(with: .opacity),
         removal: .opacity
     )
 

@@ -19,10 +19,7 @@ struct MasterViewContainer: Container {
         .equatable()
         .sheet(isPresented: $settingsSheetState.presented) {
             SettingsSection()
-                .colorScheme(.dark)
-                .environmentObject(AppServices.weatherService)
-                .environmentObject(self.settingsSheetState)
-                .environmentObject(AppServices.locationService)
+                .preferredColorScheme(.dark)
         }
     }
 }

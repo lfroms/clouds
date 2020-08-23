@@ -31,7 +31,7 @@ struct SlidingPanel<Content: View>: View {
             DrawerScrollView(isOpen: self.$isOpen, travelDistance: self.$travelDistance, locked: self.$locked) {
                 self.content()
                     .frame(height: geometry.size.height)
-                    .edgesIgnoringSafeArea(.all)
+                    .ignoresSafeArea(.all)
             }
             .equatable()
         }
