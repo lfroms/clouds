@@ -30,6 +30,12 @@ final class DayPickerPagingViewCoordinator<Content: View>: NSObject, UIScrollVie
             maximumIndex -= 1
         }
 
+        let isDragging = userIsDraggingScrollView(scrollView)
+
+        if isDragging != parent.dragging {
+            parent.dragging = isDragging
+        }
+
         let newPage = Int(adjustedContentOffset / scrollView.bounds.size.width)
 
         guard
@@ -59,5 +65,9 @@ final class DayPickerPagingViewCoordinator<Content: View>: NSObject, UIScrollVie
 
     private func scrollViewIsMoving(_ scrollView: UIScrollView) -> Bool {
         scrollView.isTracking || scrollView.isDragging || scrollView.isDecelerating
+    }
+
+    private func userIsDraggingScrollView(_ scrollView: UIScrollView) -> Bool {
+        scrollView.isDragging && scrollView.isTracking
     }
 }

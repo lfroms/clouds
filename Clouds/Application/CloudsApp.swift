@@ -71,7 +71,17 @@ struct CloudsApp: App {
                 }
 
                 .onChange(of: weekSectionState.dayIndex) { _ in
-                    setIconCodeToWeekSectionActiveDay()
+                    if !weekSectionState.dragging {
+                        visualStateDebouncer.run {
+                            setIconCodeToWeekSectionActiveDay()
+                        }
+                    }
+                }
+
+                .onChange(of: weekSectionState.dragging) { isDragging in
+                    if !isDragging {
+                        setIconCodeToWeekSectionActiveDay()
+                    }
                 }
 
                 .onChange(of: appState.activeSection) { _ in

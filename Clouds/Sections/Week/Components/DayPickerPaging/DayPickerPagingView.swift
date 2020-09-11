@@ -14,6 +14,7 @@ struct DayPickerPagingView<Content: View>: UIViewRepresentable {
     let itemWidth: CGFloat
     let spacing: CGFloat
     @Binding var currentPage: Int
+    @Binding var dragging: Bool
     let size: CGSize
 
     let content: () -> Content
@@ -22,12 +23,14 @@ struct DayPickerPagingView<Content: View>: UIViewRepresentable {
         pageWidth: CGFloat,
         spacing: CGFloat,
         currentPage: Binding<Int>,
+        dragging: Binding<Bool>,
         size: CGSize,
         @ViewBuilder content: @escaping () -> Content
     ) {
         self.itemWidth = pageWidth
         self.spacing = spacing
         self._currentPage = currentPage
+        self._dragging = dragging
         self.size = size
         self.content = content
     }
