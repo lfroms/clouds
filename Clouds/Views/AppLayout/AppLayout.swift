@@ -18,7 +18,6 @@ struct AppLayout: View {
                     MasterViewContainer()
                         .accessibility(identifier: "master")
                 }
-                .ignoresSafeArea(.container)
             }
             .overlay(AlertListContainer())
 

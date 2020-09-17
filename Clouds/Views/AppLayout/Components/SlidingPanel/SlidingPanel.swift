@@ -30,8 +30,8 @@ struct SlidingPanel<Content: View>: View {
         GeometryReader { (geometry: GeometryProxy) in
             DrawerScrollView(isOpen: self.$isOpen, travelDistance: self.$travelDistance, locked: self.$locked) {
                 self.content()
-                    .frame(height: geometry.size.height)
-                    .ignoresSafeArea(.all)
+                    .frame(height: geometry.size.height + geometry.safeAreaInsets.top)
+                    .padding(.top, geometry.safeAreaInsets.top * -1)
             }
             .equatable()
         }
