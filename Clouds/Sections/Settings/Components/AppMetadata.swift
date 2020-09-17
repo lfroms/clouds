@@ -44,9 +44,6 @@ struct AppMetadata: View {
     }
 
     private func seedTestData() {
-        Seeder.shared.locationFavoritesService = AppServices.locationFavoritesService
-        AppServices.weatherService.setShouldFetchUpdatedWeather()
-
         Seeder.shared.eraseLocationFavorites()
         Seeder.shared.seedLocationFavorites(setActive: true)
     }

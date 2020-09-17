@@ -43,17 +43,17 @@ struct HourlyForecast: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: Dimension.HourlyForecast.spacing) {
                     ForEach(items, id: \.self) { item in
-                        Group {
-                            if item.date.hour == 0 && item != self.items.first {
-                                HourlyForecastSeparator()
-                                    .background(GeometryGetter(rect: self.$separatorFrame) { oldRect, newRect in
+                        if item.date.hour == 0 && item != self.items.first {
+                            HourlyForecastSeparator()
+                                .background(
+                                    GeometryGetter(rect: self.$separatorFrame) { oldRect, newRect in
                                         oldRect.minX != newRect.minX
-                                    })
-                            }
-
-                            HourlyForecastItem(data: item)
-                                .equatable()
+                                    }
+                                )
                         }
+
+                        HourlyForecastItem(data: item)
+                            .equatable()
                     }
                 }
                 .modifier(ResetHourlyForecastScroll())

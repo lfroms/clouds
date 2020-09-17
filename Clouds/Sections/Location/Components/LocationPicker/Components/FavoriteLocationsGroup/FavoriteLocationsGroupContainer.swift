@@ -30,7 +30,6 @@ struct FavoriteLocationsGroupContainer: Container {
         }
 
         locationFavoritesService.setActiveLocation(to: location)
-        weatherService.setShouldFetchUpdatedWeather()
     }
 
     private func didDelete(location: StoredLocation) {

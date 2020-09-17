@@ -18,16 +18,23 @@ struct WeatherBackground: View {
         WeatherColorScheme.empty.lower
     ]
 
-    @State private var gradientB: [Color] = []
+    @State private var gradientB: [Color] = [
+        WeatherColorScheme.empty.upper,
+        WeatherColorScheme.empty.lower
+    ]
 
     var body: some View {
         ZStack(alignment: .top) {
             LinearGradient(gradient: Gradient(colors: self.gradientA), startPoint: .top, endPoint: .bottom)
+                .id("firstColor")
             LinearGradient(gradient: Gradient(colors: self.gradientB), startPoint: .top, endPoint: .bottom)
+                .id("secondColor")
                 .opacity(self.alternateGradient ? 0 : 1)
         }
         .modifier(ShrinkBackgroundForAppSection())
-        .onReceive(self.visualState.appearanceDidChange, perform: self.animateGradient)
+        .onChange(of: visualState.appearance) { _ in
+            setGradient(steps: gradientSteps)
+        }
     }
 
     private var gradientSteps: [Color] {

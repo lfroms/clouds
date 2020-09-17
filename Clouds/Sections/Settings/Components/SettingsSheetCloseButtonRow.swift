@@ -22,7 +22,7 @@ struct SettingsSheetCloseButtonRow: View {
                     .font(Font.system(size: 12).weight(.bold))
                     .frame(width: 30, height: 30, alignment: .center)
                     .background(Color.white.opacity(0.12))
-                    .cornerRadius(.infinity)
+                    .cornerRadius(15)
             }
         }
     }

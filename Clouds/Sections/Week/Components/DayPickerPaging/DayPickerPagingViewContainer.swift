@@ -17,6 +17,7 @@ struct DayPickerPagingViewContainer: Container {
             pageWidth: Dimension.WeekSection.DayPicker.bubbleSize,
             spacing: Dimension.WeekSection.DayPicker.spacing,
             currentPage: $weekSectionState.dayIndex,
+            dragging: $weekSectionState.dragging,
             size: size
         ) {
             DayPickerContainer()

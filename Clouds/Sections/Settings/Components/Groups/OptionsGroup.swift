@@ -20,7 +20,7 @@ struct OptionsGroup: View {
 
                 Divider()
 
-                NavigationLink(destination: SettingsRadarSourceContainer().environmentObject(self.settingsSheetState)) {
+                NavigationLink(destination: SettingsRadarSourceContainer()) {
                     OptionRow(symbolName: "globe", color: .green, label: "Radar Source") {
                         Image(systemName: "chevron.right")
                     }
