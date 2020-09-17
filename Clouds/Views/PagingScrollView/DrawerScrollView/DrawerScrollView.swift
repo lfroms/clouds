@@ -44,10 +44,14 @@ struct DrawerScrollView<Content: View>: UIViewRepresentable {
         scrollView.clipsToBounds = false
 
         scrollView.delegate = context.coordinator
-        hostingController.rootView = AnyView(content())
 
-        scrollView.addSubview(hostingController.view)
-        hostingController.view.pinEdges([.all], to: scrollView)
+        if let subview = UIHostingController(rootView: content()).view {
+            subview.frame = scrollView.bounds
+            subview.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            subview.backgroundColor = .clear
+
+            scrollView.addSubview(subview)
+        }
 
         return scrollView
     }
