@@ -25,7 +25,8 @@ struct CloudsApp: App {
     @StateObject private var locationFavoritesService: LocationFavoritesService = LocationFavoritesService()
     @StateObject private var radarService: RadarService = RadarService()
 
-    private let visualStateDebouncer = Debouncer(delay: 0.3)
+    private let standardVisualStateDebouncer = Debouncer(delay: 0.18)
+    private let weekSectionVisualStateDebouncer = Debouncer(delay: 0.3)
 
     var body: some Scene {
         WindowGroup {
@@ -65,12 +66,14 @@ struct CloudsApp: App {
                 }
 
                 .onChange(of: weatherService.weather.debugDescription) { _ in
-                    changeIconCodeBasedOnSection()
+                    standardVisualStateDebouncer.run {
+                        changeIconCodeBasedOnSection()
+                    }
                 }
 
                 .onChange(of: weekSectionState.dayIndex) { _ in
                     if weekSectionState.dragging {
-                        visualStateDebouncer.run {
+                        weekSectionVisualStateDebouncer.run {
                             setIconCodeToWeekSectionActiveDay()
                         }
                     } else {
