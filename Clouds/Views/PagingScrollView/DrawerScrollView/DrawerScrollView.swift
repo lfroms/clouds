@@ -26,12 +26,6 @@ struct DrawerScrollView<Content: View>: UIViewRepresentable {
         self.content = content
     }
 
-    private var hostingController: UIHostingController<AnyView> = {
-        let hostingController = UIHostingController(rootView: AnyView(EmptyView()))
-        hostingController.view.backgroundColor = .clear
-        return hostingController
-    }()
-
     func makeUIView(context: Context) -> UIScrollView {
         let scrollView = TransparentTouchScrollView()
         scrollView.showsVerticalScrollIndicator = false
