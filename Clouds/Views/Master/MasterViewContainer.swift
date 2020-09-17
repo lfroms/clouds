@@ -19,6 +19,7 @@ struct MasterViewContainer: Container {
         .equatable()
         .sheet(isPresented: $settingsSheetState.presented) {
             SettingsSection()
+                .environmentObject(self.settingsSheetState)
                 .preferredColorScheme(.dark)
         }
     }
