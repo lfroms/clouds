@@ -12,7 +12,6 @@ struct AlertListContainer: View {
     @EnvironmentObject private var weatherService: WeatherService
     @EnvironmentObject private var appState: AppState
 
-    @State private var showingSheet: Bool = false
     @State private var currentURL: URL?
 
     var body: some View {
@@ -29,17 +28,13 @@ struct AlertListContainer: View {
 
             ZStack {
                 if appState.showingAlerts {
-                    AlertList(alerts: alerts, didSelect: self.didSelect(alert:), didClose: self.didClose)
+                    AlertList(alerts: alerts, didClose: self.didClose)
                         .equatable()
                         .padding(Dimension.Global.padding)
                         .transition(AnyTransition.move(edge: .bottom).combined(with: alertListTransition))
                         .animation(.easeInOut)
                 }
             }
-        }
-        .sheet(isPresented: $showingSheet) {
-            SafariView(url: self.currentURL)
-                .ignoresSafeArea(.container)
         }
     }
 
@@ -48,11 +43,6 @@ struct AlertListContainer: View {
             insertion: AnyTransition.opacity.animation(Animation.easeInOut.delay(0.1)),
             removal: AnyTransition.opacity.animation(Animation.easeInOut(duration: 0.2))
         )
-    }
-
-    private func didSelect(alert: WeatherAlert) {
-        currentURL = alert.url
-        showingSheet.toggle()
     }
 
     private func didClose() {

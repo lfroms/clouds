@@ -147,8 +147,6 @@
 		8095A2FB244BA9D9008C494F /* RadarAnimationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095A2FA244BA9D9008C494F /* RadarAnimationTimer.swift */; };
 		809833B922F678BE001C1590 /* WeatherQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 809833B822F678BE001C1590 /* WeatherQuery.graphql */; };
 		80985F5A240E1F1D00452D08 /* UnixTimestampTypealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80985F59240E1F1D00452D08 /* UnixTimestampTypealias.swift */; };
-		8099A20D23130B8500EE4F30 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8099A20C23130B8500EE4F30 /* SafariView.swift */; };
-		8099A20F23130CED00EE4F30 /* CustomSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8099A20E23130CED00EE4F30 /* CustomSafariViewController.swift */; };
 		809AC4332423F72F009B7045 /* RawLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809AC4322423F72F009B7045 /* RawLocation.swift */; };
 		809C2A66241C63DA009FCF6A /* LocationPickerSectionModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C2A65241C63DA009FCF6A /* LocationPickerSectionModal.swift */; };
 		809C2A6A241C64C6009FCF6A /* LocationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C2A69241C64C6009FCF6A /* LocationPicker.swift */; };
@@ -398,8 +396,6 @@
 		8095A2FA244BA9D9008C494F /* RadarAnimationTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarAnimationTimer.swift; sourceTree = "<group>"; };
 		809833B822F678BE001C1590 /* WeatherQuery.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WeatherQuery.graphql; sourceTree = "<group>"; };
 		80985F59240E1F1D00452D08 /* UnixTimestampTypealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnixTimestampTypealias.swift; sourceTree = "<group>"; };
-		8099A20C23130B8500EE4F30 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
-		8099A20E23130CED00EE4F30 /* CustomSafariViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSafariViewController.swift; sourceTree = "<group>"; };
 		809AC4322423F72F009B7045 /* RawLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawLocation.swift; sourceTree = "<group>"; };
 		809C2A65241C63DA009FCF6A /* LocationPickerSectionModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerSectionModal.swift; sourceTree = "<group>"; };
 		809C2A69241C64C6009FCF6A /* LocationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPicker.swift; sourceTree = "<group>"; };
@@ -1153,8 +1149,6 @@
 		8099A20B23130B7400EE4F30 /* Safari */ = {
 			isa = PBXGroup;
 			children = (
-				8099A20C23130B8500EE4F30 /* SafariView.swift */,
-				8099A20E23130CED00EE4F30 /* CustomSafariViewController.swift */,
 				8061794F245CEAD8003DB747 /* WebView.swift */,
 			);
 			path = Safari;
@@ -1831,7 +1825,6 @@
 				8056EE03244D3FC2004D0250 /* DayPickerContentSizePreferenceKey.swift in Sources */,
 				80AAC0282427F0DF00285C6D /* ConditionLayoutContainer.swift in Sources */,
 				80AAC01E2427EDD300285C6D /* ShrinkBackgroundForAppSection.swift in Sources */,
-				8099A20F23130CED00EE4F30 /* CustomSafariViewController.swift in Sources */,
 				800A4D39244F852800D8CD86 /* OptionsGroup.swift in Sources */,
 				80734AFE2410A512000693F4 /* GridStack.swift in Sources */,
 				804AB0C324562070000CA915 /* AlertListCloseButton.swift in Sources */,
@@ -1911,7 +1904,6 @@
 				80B1B3282376683A000EA6DD /* DrawerScrollView.swift in Sources */,
 				800A4D31244F575E00D8CD86 /* AddToFavoritesGroup.swift in Sources */,
 				80D871B323F1FF1E001FBA94 /* TransparentTouchScrollView.swift in Sources */,
-				8099A20D23130B8500EE4F30 /* SafariView.swift in Sources */,
 				8026FF5323779881007962DB /* RadarMapView.swift in Sources */,
 				802A4303241C54AB0073C0DC /* DismissableScrollViewRepresentable.swift in Sources */,
 				8038DB4923F0ACAD00F7B033 /* LocationPickerSection.swift in Sources */,

@@ -10,7 +10,6 @@ import SwiftUI
 
 struct AlertList: View {
     var alerts: [WeatherAlert]
-    var didSelect: (WeatherAlert) -> Void
     var didClose: () -> Void
 
     var body: some View {
@@ -20,7 +19,9 @@ struct AlertList: View {
 
             VStack(alignment: .leading, spacing: 12) {
                 ForEach(alerts, id: \.self) { alert in
-                    AlertItem(data: alert, action: { self.didSelect(alert) })
+                    Link(destination: alert.url ?? URL(string: "https://weather.gc.ca")!) {
+                        AlertItem(data: alert)
+                    }
                 }
             }
         }
@@ -35,6 +36,6 @@ extension AlertList: Equatable {
 
 struct AlertList_Previews: PreviewProvider {
     static var previews: some View {
-        AlertList(alerts: [], didSelect: { _ in }, didClose: {})
+        AlertList(alerts: [], didClose: {})
     }
 }
