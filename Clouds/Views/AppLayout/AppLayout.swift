@@ -27,7 +27,7 @@ struct AppLayout: View {
         }
         .overlay(LocationPickerSectionModal())
         .overlay(Header(), alignment: .top)
-        .background(BlackBackground().ignoresSafeArea(.all))
+        .background(BlackBackground().ignoresSafeArea(.container))
         .foregroundColor(AppColor.Display.primary)
     }
 }

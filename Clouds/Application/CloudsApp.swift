@@ -99,6 +99,7 @@ struct CloudsApp: App {
                 .onChange(of: settingsSheetState.radarSource) { _ in
                     getRadarTimestamps()
                 }
+                .ignoresSafeArea(.keyboard)
         }
     }
 

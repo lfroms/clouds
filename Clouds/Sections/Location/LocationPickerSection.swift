@@ -15,7 +15,7 @@ struct LocationPickerSection: View {
         ZStack(alignment: .topLeading) {
             BlackBackground()
                 .clipShape(RoundedCornerShape(cornerRadius: Dimension.Global.cornerRadius, style: .continuous, corners: [.topLeft, .topRight]))
-                .ignoresSafeArea(.all)
+                .ignoresSafeArea(.container)
 
             ScrollView(.vertical) {
                 LocationPicker()

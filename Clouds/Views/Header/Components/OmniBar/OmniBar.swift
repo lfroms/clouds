@@ -93,6 +93,6 @@ struct OmniBar_Previews: PreviewProvider {
             )
             .padding(Dimension.Global.padding)
         }
-        .ignoresSafeArea(.all)
+        .ignoresSafeArea(.container)
     }
 }

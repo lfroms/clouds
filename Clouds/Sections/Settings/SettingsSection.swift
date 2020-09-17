@@ -29,7 +29,7 @@ struct SettingsSection: View {
             .navigationBarTitle("", displayMode: .inline)
         }
         .foregroundColor(.white)
-        .background(Color(red: 0.12, green: 0.12, blue: 0.12).ignoresSafeArea(.all))
+        .background(Color(red: 0.12, green: 0.12, blue: 0.12).ignoresSafeArea(.container))
     }
 }
 

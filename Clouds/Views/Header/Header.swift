@@ -12,7 +12,7 @@ struct Header: View {
     var body: some View {
         ZStack(alignment: .top) {
             HeaderGradientContainer()
-                .ignoresSafeArea(.all)
+                .ignoresSafeArea(.container)
 
             VStack(alignment: .leading, spacing: Dimension.Global.padding) {
                 OmniBarContainer()

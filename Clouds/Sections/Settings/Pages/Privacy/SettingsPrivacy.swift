@@ -16,7 +16,7 @@ struct SettingsPrivacy: View {
     var body: some View {
         WebView(request: Self.request, loading: $loading)
             .equatable()
-            .ignoresSafeArea(.all)
+            .ignoresSafeArea(.container)
             .navigationBarTitle("Privacy Policy")
             .navigationBarItems(trailing: loading ? AppActivityIndicator(style: .dark) : nil)
     }
