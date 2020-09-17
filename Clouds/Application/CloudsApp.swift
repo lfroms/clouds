@@ -64,22 +64,16 @@ struct CloudsApp: App {
                     fetchUpdatedWeatherData(coordinate: newLocation?.coordinate)
                 }
 
-                .onChange(of: weatherService.loading) { newLoading in
-                    if newLoading == false {
-                        visualStateDebouncer.run(action: changeIconCodeBasedOnSection)
-                    }
+                .onChange(of: weatherService.weather.debugDescription) { _ in
+                    changeIconCodeBasedOnSection()
                 }
 
                 .onChange(of: weekSectionState.dayIndex) { _ in
-                    if !weekSectionState.dragging {
+                    if weekSectionState.dragging {
                         visualStateDebouncer.run {
                             setIconCodeToWeekSectionActiveDay()
                         }
-                    }
-                }
-
-                .onChange(of: weekSectionState.dragging) { isDragging in
-                    if !isDragging {
+                    } else {
                         setIconCodeToWeekSectionActiveDay()
                     }
                 }
@@ -93,8 +87,10 @@ struct CloudsApp: App {
                     setIconCodeToWeekSectionActiveDay()
                 }
 
-                .onChange(of: locationPickerState.presented) { _ in
-                    didChangeLocationPickerState()
+                .onChange(of: locationPickerState.presented) { newPresented in
+                    if newPresented {
+                        didChangeLocationPickerState()
+                    }
                 }
 
                 .onChange(of: settingsSheetState.radarSource) { _ in
@@ -118,7 +114,10 @@ struct CloudsApp: App {
         }
 
         locationService.startUpdatingLocation()
-        fetchUpdatedWeatherData()
+
+        if locationService.locationStatus != .authorizedWhenInUse || locationFavoritesService.activeLocation != nil {
+            fetchUpdatedWeatherData()
+        }
     }
 
     private func applicationDidBecomeInactive() {
@@ -220,10 +219,7 @@ struct CloudsApp: App {
     // MARK: - Location Picker
 
     private func didChangeLocationPickerState() {
-        guard
-            locationPickerState.presented,
-            !locationSearchService.searchQuery.isEmpty
-        else {
+        guard !locationSearchService.searchQuery.isEmpty else {
             return
         }
 
