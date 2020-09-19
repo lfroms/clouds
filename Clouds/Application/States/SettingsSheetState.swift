@@ -6,6 +6,7 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
+import CloudsAPI
 import Foundation
 
 final class SettingsSheetState: ObservableObject {
@@ -22,10 +23,10 @@ final class SettingsSheetState: ObservableObject {
         }
     }
 
-    var radarSource: RadarProvider {
+    var radarSource: CloudsAPI.RadarProvider {
         get {
             if let value = UserDefaults.standard.string(forKey: Key.radarProvider) {
-                return RadarProvider(rawValue: value) ?? .environmentCanada
+                return CloudsAPI.RadarProvider(rawValue: value) ?? .environmentCanada
             }
 
             return .environmentCanada

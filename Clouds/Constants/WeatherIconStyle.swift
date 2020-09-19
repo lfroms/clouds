@@ -6,10 +6,11 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
+import CloudsAPI
 import struct SwiftUI.Image
 
 final class WeatherIconStyle {
-    typealias Source = IconStyle
+    typealias Source = CloudsAPI.IconStyle
 
     private static let defaultIcon = SFSymbol.Forecast.sunny
 

@@ -6,10 +6,11 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
+import CloudsAPI
 import struct SwiftUI.Color
 
 enum WeatherColorScheme: String {
-    typealias Source = ColorScheme
+    typealias Source = CloudsAPI.ColorScheme
 
     case clearSkyBlue = "blue_sky"
     case clearSkyLightBlue = "blue_sky_light"

@@ -10,6 +10,7 @@ excluded:
   - media
   - CloudsUITests
   - CloudsScreenshots
+  - CloudsAPI/Sources/Generated
 line_length: 200
 type_name:
   min_length: 3

@@ -6,9 +6,10 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
+import CloudsAPI
 import Foundation
 
 struct Appearance: Equatable {
-    let style: IconStyle?
-    let scheme: ColorScheme
+    let style: CloudsAPI.IconStyle?
+    let scheme: CloudsAPI.ColorScheme
 }

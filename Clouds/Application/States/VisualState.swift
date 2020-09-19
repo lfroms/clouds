@@ -6,13 +6,14 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
+import CloudsAPI
 import Combine
 import SwiftUI
 
 final class VisualState: ObservableObject {
     @Published private(set) var appearance: Appearance = Appearance(style: nil, scheme: .empty)
 
-    func set(style: IconStyle?, colorScheme: ColorScheme?) {
+    func set(style: CloudsAPI.IconStyle?, colorScheme: CloudsAPI.ColorScheme?) {
         let newAppearance = Appearance(style: style, scheme: colorScheme ?? .empty)
 
         guard newAppearance != appearance else {

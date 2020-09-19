@@ -6,6 +6,7 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
+import CloudsAPI
 import SwiftUI
 
 struct AlertListContainer: View {
@@ -65,7 +66,7 @@ struct AlertListContainer: View {
         }
     }
 
-    private func warningTypeFor(event: WeatherQuery.Data.Weather.Alert) -> WeatherAlert.WarningType {
+    private func warningTypeFor(event: CloudsAPI.WeatherQuery.Data.Weather.Alert) -> WeatherAlert.WarningType {
         switch event.type {
         case .warning:
             return .warning
@@ -76,7 +77,7 @@ struct AlertListContainer: View {
         }
     }
 
-    private func warningStatusFor(event: WeatherQuery.Data.Weather.Alert) -> WeatherAlert.WarningStatus {
+    private func warningStatusFor(event: CloudsAPI.WeatherQuery.Data.Weather.Alert) -> WeatherAlert.WarningStatus {
         switch event.type {
         case .ended:
             return .ended

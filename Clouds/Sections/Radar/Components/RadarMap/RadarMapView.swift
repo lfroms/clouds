@@ -6,6 +6,7 @@
 //  Copyright © 2019 Lukas Romsicki. All rights reserved.
 //
 
+import CloudsAPI
 import Mapbox
 import SwiftUI
 
@@ -13,7 +14,7 @@ struct RadarMapView: UIViewRepresentable {
     var currentImage: Int
     var dates: [Date]
     var overlayOpacity: Double
-    var dataSource: RadarProvider
+    var dataSource: CloudsAPI.RadarProvider
     var activeLocationCoordinates: CLLocationCoordinate2D?
     var lazy: Bool = false
 
@@ -153,7 +154,7 @@ struct RadarMapView: UIViewRepresentable {
     }
 
     class Coordinator: NSObject, MGLMapViewDelegate {
-        var lastDataSource: RadarProvider?
+        var lastDataSource: CloudsAPI.RadarProvider?
         var lastLocation: CLLocationCoordinate2D?
 
         @Binding var loaded: Bool
