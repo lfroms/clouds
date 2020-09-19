@@ -6,8 +6,8 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
-import Apollo
 import Bugsnag
+import CloudsAPI
 import Combine
 import SwiftUI
 
@@ -42,25 +42,21 @@ final class RadarService: ObservableObject {
     }
 
     deinit {
-        apolloCancellable?.cancel()
         timerCancellable?.cancel()
     }
+
+    private let client = CloudsAPI.Client()
 
     // MARK: - Timestamps
 
     @Published var dates: [Date] = []
     @Published var loading: Bool = false
 
-    private var apolloCancellable: Apollo.Cancellable? {
-        didSet { oldValue?.cancel() }
-    }
-
-    func getRadarTimestamps(for provider: RadarProvider) {
-        let query = RadarTimestampsQuery(provider: provider)
+    func getRadarTimestamps(for provider: CloudsAPI.RadarProvider) {
         loading = true
         shouldLazyLoadImages = provider == .environmentCanada
 
-        apolloCancellable = GraphQL.shared.apollo.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely) { result in
+        client.fetchRadarTimestamps(provider: provider) { result in
             switch result {
             case .success(let graphQLResult):
                 if let data = graphQLResult.data {

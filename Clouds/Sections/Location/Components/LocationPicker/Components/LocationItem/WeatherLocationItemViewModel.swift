@@ -6,26 +6,22 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
-import Apollo
+import CloudsAPI
 import CoreLocation
 import SwiftUI
 
 final class WeatherLocationItemViewModel: ObservableObject {
-    @Published private(set) var weather: WeatherLocationItemQuery.Data.Weather?
+    @Published private(set) var weather: CloudsAPI.WeatherLocationItemQuery.Data.Weather?
     @Published private(set) var loading: Bool = false
 
-    private var request: Apollo.Cancellable?
+    private let client = CloudsAPI.Client()
 
     func fetch(coordinate: CLLocationCoordinate2D) {
-        if loading {
-            request?.cancel()
-        } else {
+        if !loading {
             loading = true
         }
 
-        let query = WeatherLocationItemQuery(latitude: coordinate.latitude, longitude: coordinate.longitude)
-
-        request = GraphQL.shared.apollo.fetch(query: query, cachePolicy: .returnCacheDataAndFetch) { result in
+        client.fetchWeatherLocationItem(latitude: coordinate.latitude, longitude: coordinate.longitude) { result in
             self.loading = false
 
             switch result {

@@ -6,6 +6,7 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
+import CloudsAPI
 import Foundation
 
 struct DailyForecastData: Equatable {
@@ -16,7 +17,7 @@ struct DailyForecastData: Equatable {
     internal struct Condition: Equatable {
         let description: String?
         let summary: String?
-        let colorScheme: ColorScheme?
+        let colorScheme: CloudsAPI.ColorScheme?
         let temperature: Double?
         let windSpeed: String?
         let pop: Int?

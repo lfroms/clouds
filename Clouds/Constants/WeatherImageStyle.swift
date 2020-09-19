@@ -6,10 +6,11 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
+import CloudsAPI
 import struct SwiftUI.Image
 
 enum WeatherImageStyle: String {
-    typealias Source = IconStyle
+    typealias Source = CloudsAPI.IconStyle
 
     case clear
     case clearNight = "clear_night"

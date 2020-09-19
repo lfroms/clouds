@@ -6,39 +6,38 @@
 //  Copyright © 2019 Lukas Romsicki. All rights reserved.
 //
 
-import Apollo
 import Bugsnag
+import CloudsAPI
 import Combine
 import CoreLocation
 import Foundation
 import SwiftUI
 
 class WeatherService: ObservableObject {
-    @Published private(set) var weather: WeatherQuery.Data.Weather?
+    @Published private(set) var weather: CloudsAPI.WeatherQuery.Data.Weather?
     @Published private(set) var loading: Bool = false
 
-    private var request: Apollo.Cancellable?
+    private let client = CloudsAPI.Client()
 
     func fetch(selectedLocation: CLLocationCoordinate2D?, userLocation: CLLocationCoordinate2D?) {
-        var weatherQuery: WeatherQuery?
+        var latitude: Double?
+        var longitude: Double?
 
         if let selectedLocation = selectedLocation {
-            weatherQuery = WeatherQuery(latitude: selectedLocation.latitude, longitude: selectedLocation.longitude)
+            latitude = selectedLocation.latitude
+            longitude = selectedLocation.longitude
         } else if let userLocation = userLocation {
-            weatherQuery = WeatherQuery(latitude: userLocation.latitude, longitude: userLocation.longitude)
+            latitude = userLocation.latitude
+            longitude = userLocation.longitude
         }
 
-        guard let query = weatherQuery else {
+        guard latitude != nil, longitude != nil else {
             return
-        }
-
-        if loading {
-            request?.cancel()
         }
 
         loading = true
 
-        request = GraphQL.shared.apollo.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely) { result in
+        client.fetchWeather(latitude: latitude!, longitude: longitude!) { result in
             self.loading = false
 
             switch result {
@@ -56,8 +55,8 @@ class WeatherService: ObservableObject {
 
                 Bugsnag.notify(exception) { event in
                     event.context = "Main Weather Query"
-                    event.addMetadata(weatherQuery?.latitude, key: "latitude", section: "weather")
-                    event.addMetadata(weatherQuery?.longitude, key: "longitude", section: "weather")
+                    event.addMetadata(latitude, key: "latitude", section: "weather")
+                    event.addMetadata(longitude, key: "longitude", section: "weather")
                     return true
                 }
 

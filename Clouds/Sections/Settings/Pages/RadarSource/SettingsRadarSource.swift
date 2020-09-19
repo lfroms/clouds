@@ -6,10 +6,11 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
+import CloudsAPI
 import SwiftUI
 
 struct SettingsRadarSource: View {
-    @Binding var selectedSource: RadarProvider
+    @Binding var selectedSource: CloudsAPI.RadarProvider
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
