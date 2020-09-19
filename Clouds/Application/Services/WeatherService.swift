@@ -17,25 +17,24 @@ class WeatherService: ObservableObject {
     @Published private(set) var weather: CloudsAPI.WeatherQuery.Data.Weather?
     @Published private(set) var loading: Bool = false
 
+    private let client = CloudsAPI.Client()
+
     func fetch(selectedLocation: CLLocationCoordinate2D?, userLocation: CLLocationCoordinate2D?) {
-        var latitude: Double?
-        var longitude: Double?
+        var weatherQuery: CloudsAPI.WeatherQuery?
 
         if let selectedLocation = selectedLocation {
-            latitude = selectedLocation.latitude
-            longitude = selectedLocation.longitude
+            weatherQuery = CloudsAPI.WeatherQuery(latitude: selectedLocation.latitude, longitude: selectedLocation.longitude)
         } else if let userLocation = userLocation {
-            latitude = userLocation.latitude
-            longitude = userLocation.longitude
+            weatherQuery = CloudsAPI.WeatherQuery(latitude: userLocation.latitude, longitude: userLocation.longitude)
         }
 
-        guard latitude != nil, longitude != nil else {
+        guard let query = weatherQuery else {
             return
         }
 
         loading = true
 
-        CloudsAPI.Client.shared.fetchWeather(latitude: latitude!, longitude: longitude!) { result in
+        _ = client.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely) { result in
             self.loading = false
 
             switch result {
@@ -53,8 +52,8 @@ class WeatherService: ObservableObject {
 
                 Bugsnag.notify(exception) { event in
                     event.context = "Main Weather Query"
-                    event.addMetadata(latitude, key: "latitude", section: "weather")
-                    event.addMetadata(longitude, key: "longitude", section: "weather")
+                    event.addMetadata(query.latitude, key: "latitude", section: "weather")
+                    event.addMetadata(query.longitude, key: "longitude", section: "weather")
                     return true
                 }
 

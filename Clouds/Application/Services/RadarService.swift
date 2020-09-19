@@ -29,6 +29,8 @@ final class RadarService: ObservableObject {
         currentImageIndex = newIndex >= dates.count ? 0 : newIndex
     }
 
+    private let client = CloudsAPI.Client()
+
     init() {
         timer.start()
 
@@ -54,7 +56,9 @@ final class RadarService: ObservableObject {
         loading = true
         shouldLazyLoadImages = provider == .environmentCanada
 
-        CloudsAPI.Client.shared.fetchRadarTimestamps(provider: provider) { result in
+        let query = CloudsAPI.RadarTimestampsQuery(provider: provider)
+
+        _ = client.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely) { result in
             switch result {
             case .success(let graphQLResult):
                 if let data = graphQLResult.data {
