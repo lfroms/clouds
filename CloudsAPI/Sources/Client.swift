@@ -29,7 +29,7 @@ public extension CloudsAPI {
             resultHandler: @escaping (Result<GraphQLResult<WeatherQuery.Data>, Error>) -> Void
         ) {
             let query = WeatherQuery(latitude: latitude, longitude: longitude)
-            client.fetch(query: query, resultHandler: resultHandler)
+            client.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely, resultHandler: resultHandler)
         }
 
         public func fetchWeatherLocationItem(
@@ -38,7 +38,7 @@ public extension CloudsAPI {
             resultHandler: @escaping (Result<GraphQLResult<WeatherLocationItemQuery.Data>, Error>) -> Void
         ) {
             let query = WeatherLocationItemQuery(latitude: latitude, longitude: longitude)
-            client.fetch(query: query, resultHandler: resultHandler)
+            client.fetch(query: query, cachePolicy: .returnCacheDataAndFetch, resultHandler: resultHandler)
         }
 
         public func fetchRadarTimestamps(
@@ -47,7 +47,7 @@ public extension CloudsAPI {
 
         ) {
             let query = RadarTimestampsQuery(provider: provider)
-            client.fetch(query: query, resultHandler: resultHandler)
+            client.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely, resultHandler: resultHandler)
         }
     }
 }
