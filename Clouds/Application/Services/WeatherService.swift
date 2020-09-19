@@ -17,8 +17,6 @@ class WeatherService: ObservableObject {
     @Published private(set) var weather: CloudsAPI.WeatherQuery.Data.Weather?
     @Published private(set) var loading: Bool = false
 
-    private let client = CloudsAPI.Client()
-
     func fetch(selectedLocation: CLLocationCoordinate2D?, userLocation: CLLocationCoordinate2D?) {
         var latitude: Double?
         var longitude: Double?
@@ -37,7 +35,7 @@ class WeatherService: ObservableObject {
 
         loading = true
 
-        client.fetchWeather(latitude: latitude!, longitude: longitude!) { result in
+        CloudsAPI.Client.shared.fetchWeather(latitude: latitude!, longitude: longitude!) { result in
             self.loading = false
 
             switch result {

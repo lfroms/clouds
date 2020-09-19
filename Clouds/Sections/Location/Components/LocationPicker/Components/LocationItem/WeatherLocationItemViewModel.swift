@@ -14,14 +14,12 @@ final class WeatherLocationItemViewModel: ObservableObject {
     @Published private(set) var weather: CloudsAPI.WeatherLocationItemQuery.Data.Weather?
     @Published private(set) var loading: Bool = false
 
-    private let client = CloudsAPI.Client()
-
     func fetch(coordinate: CLLocationCoordinate2D) {
         if !loading {
             loading = true
         }
 
-        client.fetchWeatherLocationItem(latitude: coordinate.latitude, longitude: coordinate.longitude) { result in
+        CloudsAPI.Client.shared.fetchWeatherLocationItem(latitude: coordinate.latitude, longitude: coordinate.longitude) { result in
             self.loading = false
 
             switch result {

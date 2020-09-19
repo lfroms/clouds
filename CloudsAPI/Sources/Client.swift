@@ -11,6 +11,8 @@ import Foundation
 
 public extension CloudsAPI {
     class Client {
+        public static let shared = Client()
+
         #if DEBUG
         private let serverAddress = "https://nimbus-data-staging.herokuapp.com/graphql"
         #else
@@ -19,7 +21,7 @@ public extension CloudsAPI {
 
         private let client: ApolloClient
 
-        public init() {
+        private init() {
             client = ApolloClient(url: URL(string: serverAddress)!)
         }
 

@@ -45,8 +45,6 @@ final class RadarService: ObservableObject {
         timerCancellable?.cancel()
     }
 
-    private let client = CloudsAPI.Client()
-
     // MARK: - Timestamps
 
     @Published var dates: [Date] = []
@@ -56,7 +54,7 @@ final class RadarService: ObservableObject {
         loading = true
         shouldLazyLoadImages = provider == .environmentCanada
 
-        client.fetchRadarTimestamps(provider: provider) { result in
+        CloudsAPI.Client.shared.fetchRadarTimestamps(provider: provider) { result in
             switch result {
             case .success(let graphQLResult):
                 if let data = graphQLResult.data {
