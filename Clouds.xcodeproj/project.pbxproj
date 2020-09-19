@@ -39,7 +39,7 @@
 		8021718224551C9600D6C958 /* WeatherIconStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8021718124551C9600D6C958 /* WeatherIconStyle.swift */; };
 		802171842455255E00D6C958 /* WeatherImageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802171832455255D00D6C958 /* WeatherImageStyle.swift */; };
 		8026FF5323779881007962DB /* RadarMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026FF5223779881007962DB /* RadarMapView.swift */; };
-		802739BD25157EC500E02891 /* CloudsNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 802739BB25157EC500E02891 /* CloudsNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		802739BD25157EC500E02891 /* CloudsAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 802739BB25157EC500E02891 /* CloudsAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		80273A1D2515917300E02891 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80273A1C2515917300E02891 /* Client.swift */; };
 		80273A33251592AF00E02891 /* CloudsAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 802739B925157EC500E02891 /* CloudsAPI.framework */; };
 		80273A34251592AF00E02891 /* CloudsAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 802739B925157EC500E02891 /* CloudsAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -299,7 +299,7 @@
 		802171832455255D00D6C958 /* WeatherImageStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherImageStyle.swift; sourceTree = "<group>"; };
 		8026FF5223779881007962DB /* RadarMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarMapView.swift; sourceTree = "<group>"; };
 		802739B925157EC500E02891 /* CloudsAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CloudsAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		802739BB25157EC500E02891 /* CloudsNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsNetworking.h; sourceTree = "<group>"; };
+		802739BB25157EC500E02891 /* CloudsAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsAPI.h; sourceTree = "<group>"; };
 		802739BC25157EC500E02891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80273A1C2515917300E02891 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		80273A802515990E00E02891 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -681,7 +681,7 @@
 			children = (
 				802739CD25157FEA00E02891 /* GraphQL */,
 				802739CF251580F400E02891 /* Sources */,
-				802739BB25157EC500E02891 /* CloudsNetworking.h */,
+				802739BB25157EC500E02891 /* CloudsAPI.h */,
 				802739BC25157EC500E02891 /* Info.plist */,
 				80F07DDB23FB7D0C005C43A3 /* schema.json */,
 			);
@@ -1637,7 +1637,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				802739BD25157EC500E02891 /* CloudsNetworking.h in Headers */,
+				802739BD25157EC500E02891 /* CloudsAPI.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1683,7 +1683,7 @@
 			packageProductDependencies = (
 				80273A8E25159BE300E02891 /* Apollo */,
 			);
-			productName = CloudsNetworking;
+			productName = CloudsAPI;
 			productReference = 802739B925157EC500E02891 /* CloudsAPI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
@@ -2192,7 +2192,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DEFINES_MODULE = YES;
@@ -2224,7 +2224,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DEFINES_MODULE = YES;
