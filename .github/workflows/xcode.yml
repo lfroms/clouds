@@ -26,6 +26,9 @@ jobs:
           MAPBOX_SDK_PACKAGE_TOKEN: ${{ secrets.MAPBOX_SDK_PACKAGE_TOKEN }}
         run: echo -e "machine api.mapbox.com\n login mapbox\n password $MAPBOX_SDK_PACKAGE_TOKEN" > ~/.netrc
 
+      - name: Select Xcode Version
+        run: sudo xcode-select -switch /Applications/Xcode_12.app
+
       - name: Cache Dependencies
         uses: actions/cache@v2
         id: carthage-cache
