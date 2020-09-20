@@ -12,7 +12,7 @@ extension UIFont {
     var bold: UIFont { return withWeight(.bold) }
     var semibold: UIFont { return withWeight(.semibold) }
 
-    private func withWeight(_ weight: UIFont.Weight) -> UIFont {
+    func withWeight(_ weight: UIFont.Weight) -> UIFont {
         var attributes = fontDescriptor.fontAttributes
         var traits = (attributes[.traits] as? [UIFontDescriptor.TraitKey: Any]) ?? [:]
 

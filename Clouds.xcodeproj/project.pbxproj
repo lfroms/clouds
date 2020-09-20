@@ -139,7 +139,6 @@
 		8084FDA3241D3945006A57DC /* SearchResultsGroupContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084FDA2241D3945006A57DC /* SearchResultsGroupContainer.swift */; };
 		8085B7B4232DD0D500D4AEE4 /* Comparable+Clamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8085B7B3232DD0D500D4AEE4 /* Comparable+Clamped.swift */; };
 		808705682427D45F001110B2 /* TouchPassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808705672427D45F001110B2 /* TouchPassthroughView.swift */; };
-		8087056A2427D47E001110B2 /* DayPickerPagingViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808705692427D47E001110B2 /* DayPickerPagingViewCoordinator.swift */; };
 		8087056C2427D551001110B2 /* CustomPageSizeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8087056B2427D551001110B2 /* CustomPageSizeScrollView.swift */; };
 		8093C03F242720C500469406 /* DayPickerPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8093C03E242720C500469406 /* DayPickerPagingView.swift */; };
 		8093C0412427213D00469406 /* DayPickerPagingViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8093C0402427213D00469406 /* DayPickerPagingViewContainer.swift */; };
@@ -397,7 +396,6 @@
 		8084FDA2241D3945006A57DC /* SearchResultsGroupContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsGroupContainer.swift; sourceTree = "<group>"; };
 		8085B7B3232DD0D500D4AEE4 /* Comparable+Clamped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Clamped.swift"; sourceTree = "<group>"; };
 		808705672427D45F001110B2 /* TouchPassthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchPassthroughView.swift; sourceTree = "<group>"; };
-		808705692427D47E001110B2 /* DayPickerPagingViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerPagingViewCoordinator.swift; sourceTree = "<group>"; };
 		8087056B2427D551001110B2 /* CustomPageSizeScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageSizeScrollView.swift; sourceTree = "<group>"; };
 		8093C03E242720C500469406 /* DayPickerPagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerPagingView.swift; sourceTree = "<group>"; };
 		8093C0402427213D00469406 /* DayPickerPagingViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerPagingViewContainer.swift; sourceTree = "<group>"; };
@@ -1134,7 +1132,6 @@
 		808705702427DFB0001110B2 /* DayPickerPaging */ = {
 			isa = PBXGroup;
 			children = (
-				808705722427DFCF001110B2 /* Coordinator */,
 				808705712427DFBF001110B2 /* Components */,
 				8093C03E242720C500469406 /* DayPickerPagingView.swift */,
 				8093C0402427213D00469406 /* DayPickerPagingViewContainer.swift */,
@@ -1149,14 +1146,6 @@
 				808705672427D45F001110B2 /* TouchPassthroughView.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		808705722427DFCF001110B2 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				808705692427D47E001110B2 /* DayPickerPagingViewCoordinator.swift */,
-			);
-			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		8094307B24561439003632EC /* AlertList */ = {
@@ -2040,7 +2029,6 @@
 				802171802455187D00D6C958 /* WeatherLocationItemViewModel.swift in Sources */,
 				805D6A0E24104209002DEBAC /* AlertStackContainer.swift in Sources */,
 				80FED4EC2428106200FDC08B /* DayNightSwitchToggle.swift in Sources */,
-				8087056A2427D47E001110B2 /* DayPickerPagingViewCoordinator.swift in Sources */,
 				80AAC01C2427E09E00285C6D /* DailyForecastData.swift in Sources */,
 				80C395AD23789FDD0004B71D /* RoundedCornerShape.swift in Sources */,
 				801BDBD0232D660C007FE4AB /* DrawerHandle.swift in Sources */,
@@ -2388,7 +2376,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.romsicki.clouds;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.romsicki.clouds-dev";
 				PRODUCT_NAME = Clouds;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -2417,7 +2405,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.romsicki.clouds;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.romsicki.clouds-dev";
 				PRODUCT_NAME = Clouds;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

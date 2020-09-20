@@ -14,16 +14,16 @@ struct DayPicker: View {
 
     var body: some View {
         HStack(spacing: Dimension.WeekSection.DayPicker.spacing) {
-            if !days.isEmpty {
-                ForEach(Array(self.days.enumerated()), id: \.element.date.day) { index, day in
-                    Button(action: { self.activeIndex = index }) {
-                        DayPickerDateBubble(label: day.date.weekdayName(.short), day: day.date.day, active: index == self.activeIndex)
-                            .equatable()
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    .accessibility(identifier: "week.daypicker.datebubble")
-                }
-            }
+//            if !days.isEmpty {
+//                ForEach(Array(self.days.enumerated()), id: \.element.date.day) { index, day in
+//                    Button(action: { self.activeIndex = index }) {
+//                        DayPickerDateBubble(label: day.date.weekdayName(.short), day: day.date.day, active: index == self.activeIndex)
+//                            .equatable()
+//                    }
+//                    .buttonStyle(PlainButtonStyle())
+//                    .accessibility(identifier: "week.daypicker.datebubble")
+//                }
+//            }
         }
         // Add trailing space so that last page can be paginated to.
         .padding(.trailing, Dimension.WeekSection.DayPicker.spacing)

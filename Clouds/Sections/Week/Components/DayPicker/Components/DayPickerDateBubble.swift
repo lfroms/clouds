@@ -38,9 +38,15 @@ struct DayPickerDateBubble: View {
                 .foregroundColor(Color.white.opacity(0.14))
 
             if active {
+                ZStack {
                 Circle()
                     .foregroundColor(Color.white)
-                    .transition(.asymmetric(insertion: insertionTransition, removal: removalTransition))
+//                    .transition(.asymmetric(insertion: insertionTransition, removal: removalTransition))
+                    .animation(.easeInOut)
+                    .transition(.scale)
+            }
+                .animation(.easeInOut)
+                .transition(.scale)
             }
         }
     }
