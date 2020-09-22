@@ -31,8 +31,18 @@ struct DayPickerPagingView: UIViewRepresentable {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.contentInset = makeContentInsets()
+        scrollView.clipsToBounds = false
         scrollView.delegate = context.coordinator
         scrollView.decelerationRate = .fast
+
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.spacing = spacing
+
+        scrollView.addSubview(stackView)
+        stackView.pinEdges(to: scrollView)
+
         return scrollView
     }
 
@@ -41,21 +51,49 @@ struct DayPickerPagingView: UIViewRepresentable {
         return UIEdgeInsets(top: 0, left: horizontalInset, bottom: 0, right: horizontalInset)
     }
 
-    func updateUIView(_ uiView: UIScrollView, context: Context) {
-        uiView.subviews.forEach { $0.removeFromSuperview() }
+    private func stackView(in scrollView: UIScrollView) -> UIStackView? {
+        return scrollView.subviews.first as? UIStackView
+    }
 
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .horizontal
-        stack.spacing = Dimension.WeekSection.DayPicker.spacing
+    private func dayPickerItemViews(in stackView: UIStackView) -> [DayPickerItemView]? {
+        return stackView.subviews as? [DayPickerItemView]
+    }
+
+    func updateUIView(_ uiView: UIScrollView, context: Context) {
+        guard let stackView = stackView(in: uiView) else {
+            return
+        }
+
+        markActiveView(stackView: stackView)
+
+        if !uiView.isTracking, !uiView.isDecelerating {
+            scrollToActiveView(scrollView: uiView, context: context)
+        }
+
+        guard context.coordinator.previousItems != items else {
+            return
+        }
+
+        context.coordinator.previousItems = items
+        stackView.clear()
 
         items.forEach {
             let item = DayPickerItemView(frame: CGRect(x: 0, y: 0, width: pageSize, height: pageSize), data: $0)
-            stack.addArrangedSubview(item)
+            stackView.addArrangedSubview(item)
         }
+    }
 
-        uiView.addSubview(stack)
-        stack.pinEdges(to: uiView)
+    private func markActiveView(stackView: UIStackView) {
+        if let dayPickerItemViews = dayPickerItemViews(in: stackView) {
+            dayPickerItemViews.enumerated().forEach { index, view in
+                view.data.active = index == selection
+            }
+        }
+    }
+
+    private func scrollToActiveView(scrollView: UIScrollView, context: Context) {
+        let offsetOfPage = context.coordinator.offsetOfPage(at: selection, width: pageSize, spacing: spacing, in: scrollView)
+        scrollView.scrollRectToVisible(CGRect(x: offsetOfPage, y: 0, width: pageSize, height: pageSize), animated: false)
     }
 
     func makeCoordinator() -> Coordinator {
@@ -65,6 +103,8 @@ struct DayPickerPagingView: UIViewRepresentable {
     final class Coordinator: NSObject, UIScrollViewDelegate {
         private let parent: DayPickerPagingView
         private let feedbackGenerator = UISelectionFeedbackGenerator()
+
+        var previousItems: [DayPickerPagingView.Item] = []
 
         init(_ parent: DayPickerPagingView) {
             self.parent = parent
@@ -101,7 +141,7 @@ struct DayPickerPagingView: UIViewRepresentable {
             return Int(round(offsetIncludingInset / pageWidth))
         }
 
-        private func offsetOfPage(at index: Int, width: CGFloat, spacing: CGFloat, in scrollView: UIScrollView) -> CGFloat {
+        public func offsetOfPage(at index: Int, width: CGFloat, spacing: CGFloat, in scrollView: UIScrollView) -> CGFloat {
             let visibleWidth = scrollView.bounds.size.width - scrollView.contentInset.left - scrollView.contentInset.right
             let halfVisibleWidth = visibleWidth / 2
 
@@ -181,10 +221,16 @@ private final class DayPickerItemView: UIView {
     }()
 
     private func animateChanges() {
-        UIView.animate(withDuration: 0.2) { [self] in
-            topLabel.textColor = data.active ? .black : .white
-            bottomLabel.textColor = data.active ? .black : .white
-            activeCircleView.alpha = data.active ? 1 : 0
+        UIView.transition(with: topLabel, duration: 0.2, options: .transitionCrossDissolve) {
+            self.topLabel.textColor = self.data.active ? .black : .white
+        }
+
+        UIView.transition(with: bottomLabel, duration: 0.2, options: .transitionCrossDissolve) {
+            self.bottomLabel.textColor = self.data.active ? .black : .white
+        }
+
+        UIView.animate(withDuration: 0.2) {
+            self.activeCircleView.alpha = self.data.active ? 1 : 0
         }
 
         if data.active {
