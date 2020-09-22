@@ -193,6 +193,7 @@
 		80D871B823F20F87001FBA94 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D871B723F20F87001FBA94 /* LocationService.swift */; };
 		80D92C3F251A94B700FE3774 /* DayPickerItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D92C3E251A94B700FE3774 /* DayPickerItemView.swift */; };
 		80D92C48251A950000FE3774 /* DayPickerPagingViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D92C47251A950000FE3774 /* DayPickerPagingViewCoordinator.swift */; };
+		80D92C4D251AA0F700FE3774 /* FadeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D92C4C251AA0F700FE3774 /* FadeButton.swift */; };
 		80E0CB85241C673100D8A2D4 /* LocationPickerListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0CB84241C673100D8A2D4 /* LocationPickerListSection.swift */; };
 		80E32BAE233454DD0087DBB3 /* SystemActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E32BAD233454DD0087DBB3 /* SystemActivityIndicator.swift */; };
 		80E5D61C23773B46004A1D6B /* UIView+PinEdges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5D61B23773B46004A1D6B /* UIView+PinEdges.swift */; };
@@ -444,6 +445,7 @@
 		80D871B723F20F87001FBA94 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		80D92C3E251A94B700FE3774 /* DayPickerItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerItemView.swift; sourceTree = "<group>"; };
 		80D92C47251A950000FE3774 /* DayPickerPagingViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerPagingViewCoordinator.swift; sourceTree = "<group>"; };
+		80D92C4C251AA0F700FE3774 /* FadeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeButton.swift; sourceTree = "<group>"; };
 		80E0CB84241C673100D8A2D4 /* LocationPickerListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerListSection.swift; sourceTree = "<group>"; };
 		80E32BAD233454DD0087DBB3 /* SystemActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemActivityIndicator.swift; sourceTree = "<group>"; };
 		80E5D61B23773B46004A1D6B /* UIView+PinEdges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+PinEdges.swift"; sourceTree = "<group>"; };
@@ -1105,6 +1107,7 @@
 			isa = PBXGroup;
 			children = (
 				80D92C3E251A94B700FE3774 /* DayPickerItemView.swift */,
+				80D92C4C251AA0F700FE3774 /* FadeButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1992,6 +1995,7 @@
 				80305321240E17FE00FDAC69 /* SunriseSunsetData.swift in Sources */,
 				80FC8ABA23F0B80700AEA26F /* Dimension.swift in Sources */,
 				803028E522CEE7970053F639 /* OverviewView.swift in Sources */,
+				80D92C4D251AA0F700FE3774 /* FadeButton.swift in Sources */,
 				80D871AF23F1F671001FBA94 /* UIFont+PreferredWithWeight.swift in Sources */,
 				802171802455187D00D6C958 /* WeatherLocationItemViewModel.swift in Sources */,
 				805D6A0E24104209002DEBAC /* AlertStackContainer.swift in Sources */,

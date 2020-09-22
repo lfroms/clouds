@@ -18,9 +18,14 @@ struct DayPickerPagingViewContainer: Container {
             pageSize: Dimension.WeekSection.DayPicker.bubbleSize,
             spacing: Dimension.WeekSection.DayPicker.spacing,
             items: dates,
-            selection: $weekSectionState.dayIndex
+            selection: $weekSectionState.dayIndex,
+            didSelectItemWithIndex: didSelectItemWithIndex(index:)
         )
         .equatable()
+    }
+
+    private func didSelectItemWithIndex(index: Int) {
+        weekSectionState.dayIndex = index
     }
 
     private var dates: [DayPickerPagingView.Item] {

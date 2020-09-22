@@ -31,6 +31,7 @@ final class DayPickerPagingViewCoordinator: NSObject, UIScrollViewDelegate {
         let maximumIndex = Int(scrollView.contentSize.width / parent.pageSize) - 1
 
         guard
+            scrollView.isTracking || scrollView.isDragging,
             targetPageIndex != parent.selection,
             targetPageIndex >= 0,
             targetPageIndex < maximumIndex
@@ -50,7 +51,7 @@ final class DayPickerPagingViewCoordinator: NSObject, UIScrollViewDelegate {
         return Int(round(offsetIncludingInset / pageWidth))
     }
 
-    public func offsetOfPage(at index: Int, width: CGFloat, spacing: CGFloat, in scrollView: UIScrollView) -> CGFloat {
+    private func offsetOfPage(at index: Int, width: CGFloat, spacing: CGFloat, in scrollView: UIScrollView) -> CGFloat {
         let visibleWidth = scrollView.bounds.size.width - scrollView.contentInset.left - scrollView.contentInset.right
         let halfVisibleWidth = visibleWidth / 2
 

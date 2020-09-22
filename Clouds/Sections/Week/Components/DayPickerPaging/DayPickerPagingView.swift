@@ -9,6 +9,12 @@
 import SwiftUI
 import UIKit
 
+final class CancellableTouchScrollView: UIScrollView {
+    override func touchesShouldCancel(in view: UIView) -> Bool {
+        return true
+    }
+}
+
 struct DayPickerPagingView: UIViewRepresentable {
     internal typealias UIViewType = UIScrollView
 
@@ -18,6 +24,8 @@ struct DayPickerPagingView: UIViewRepresentable {
 
     @Binding var selection: Int
 
+    let didSelectItemWithIndex: (_: Int) -> Void
+
     struct Item: Equatable {
         let day: String
         let date: Int
@@ -25,7 +33,7 @@ struct DayPickerPagingView: UIViewRepresentable {
     }
 
     func makeUIView(context: Context) -> UIScrollView {
-        let scrollView = UIScrollView()
+        let scrollView = CancellableTouchScrollView()
         scrollView.alwaysBounceHorizontal = true
         scrollView.alwaysBounceVertical = false
         scrollView.showsHorizontalScrollIndicator = false
@@ -34,6 +42,7 @@ struct DayPickerPagingView: UIViewRepresentable {
         scrollView.clipsToBounds = false
         scrollView.delegate = context.coordinator
         scrollView.decelerationRate = .fast
+        scrollView.delaysContentTouches = false
 
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -90,15 +99,19 @@ struct DayPickerPagingView: UIViewRepresentable {
         context.coordinator.previousItems = items
         stackView.clear()
 
-        items.forEach {
-            let item = DayPickerItemView(frame: CGRect(x: 0, y: 0, width: pageSize, height: pageSize), data: $0)
+        items.enumerated().forEach { index, data in
+            let item = DayPickerItemView(frame: CGRect(x: 0, y: 0, width: pageSize, height: pageSize), data: data) {
+                didSelectItemWithIndex(index)
+            }
+
             stackView.addArrangedSubview(item)
         }
     }
 
     private func scrollToActiveView(scrollView: UIScrollView, context: Context) {
-        let offsetOfPage = context.coordinator.offsetOfPage(at: selection, width: pageSize, spacing: spacing, in: scrollView)
-        scrollView.scrollRectToVisible(CGRect(x: offsetOfPage, y: 0, width: pageSize, height: pageSize), animated: false)
+        let totalPageSize = pageSize + spacing
+        let horizontalOffset = totalPageSize * CGFloat(selection)
+        scrollView.scrollRectToVisible(CGRect(x: horizontalOffset, y: 0, width: pageSize, height: pageSize), animated: true)
     }
 
     func makeCoordinator() -> DayPickerPagingViewCoordinator {
