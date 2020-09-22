@@ -9,25 +9,20 @@
 import SwiftUI
 import UIKit
 
-struct DateItem: Hashable {
-    let day: String
-    let date: Int
-}
-
-struct DateItemViewModel {
-    var day: String
-    var date: Int
-    var active: Bool = false
-}
-
 struct DayPickerPagingView: UIViewRepresentable {
     internal typealias UIViewType = UIScrollView
 
     let pageSize: CGFloat
     let spacing: CGFloat
-    let items: [DateItem]
+    let items: [Item]
 
     @Binding var selection: Int
+
+    struct Item: Equatable {
+        let day: String
+        let date: Int
+        var active: Bool = false
+    }
 
     func makeUIView(context: Context) -> UIScrollView {
         let scrollView = UIScrollView()
@@ -55,9 +50,7 @@ struct DayPickerPagingView: UIViewRepresentable {
         stack.spacing = Dimension.WeekSection.DayPicker.spacing
 
         items.forEach {
-            let item = DateCell()
-            item.translatesAutoresizingMaskIntoConstraints = false
-            item.data = DateItemViewModel(day: $0.day, date: $0.date)
+            let item = DayPickerItemView(frame: CGRect(x: 0, y: 0, width: pageSize, height: pageSize), data: $0)
             stack.addArrangedSubview(item)
         }
 
@@ -124,32 +117,32 @@ struct DayPickerPagingView: UIViewRepresentable {
 
 extension DayPickerPagingView: Equatable {
     static func == (lhs: DayPickerPagingView, rhs: DayPickerPagingView) -> Bool {
-        lhs.items == rhs.items
+        lhs.items == rhs.items && lhs.selection == rhs.selection
     }
 }
 
-private final class DateCell: UIView {
-    var data: DateItemViewModel? {
+private final class DayPickerItemView: UIView {
+    var data: DayPickerPagingView.Item {
         didSet {
-            if let data = data {
-                UIView.animate(withDuration: 0.2) {
-                    self.topLabel.textColor = data.active ? .black : .white
-                    self.bottomLabel.textColor = data.active ? .black : .white
-                    self.activeCircleView.alpha = data.active ? 1 : 0
-                }
-
-                if data.active {
-                    activeCircleView.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
-                    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 1) {
-                        self.activeCircleView.transform = CGAffineTransform(scaleX: 1, y: 1)
-                    }
-                }
-
-                topLabel.text = data.day
-                bottomLabel.text = String(data.date)
-            }
+            setTexts()
+            animateChanges()
         }
     }
+
+    private lazy var stackView: UIStackView = {
+        let view = UIStackView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .vertical
+        view.alignment = .center
+        view.spacing = 2
+        return view
+    }()
+
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     private lazy var topLabel: UILabel = {
         let label = UILabel()
@@ -187,48 +180,67 @@ private final class DateCell: UIView {
         return view
     }()
 
-    override init(frame: CGRect) {
+    private func animateChanges() {
+        UIView.animate(withDuration: 0.2) { [self] in
+            topLabel.textColor = data.active ? .black : .white
+            bottomLabel.textColor = data.active ? .black : .white
+            activeCircleView.alpha = data.active ? 1 : 0
+        }
+
+        if data.active {
+            activeCircleView.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 1) {
+                self.activeCircleView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
+        }
+    }
+
+    private func setTexts() {
+        topLabel.text = data.day
+        bottomLabel.text = String(data.date)
+    }
+
+    init(frame: CGRect, data: DayPickerPagingView.Item) {
+        self.data = data
+
         super.init(frame: frame)
+        translatesAutoresizingMaskIntoConstraints = false
+        clipsToBounds = false
 
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.alignment = .center
-        stack.spacing = 2
+        stackView.addArrangedSubview(topLabel)
+        stackView.addArrangedSubview(bottomLabel)
 
-        stack.addArrangedSubview(topLabel)
-        stack.addArrangedSubview(bottomLabel)
-
-        let innerView = UIView()
-        innerView.translatesAutoresizingMaskIntoConstraints = false
-        innerView.addSubview(stack)
-
-        stack.pinEdges([.leading, .trailing], to: innerView, usingLayoutMargins: false)
-        stack.centerYAnchor.constraint(equalTo: innerView.centerYAnchor).isActive = true
+        containerView.addSubview(stackView)
 
         addSubview(circleView)
         addSubview(activeCircleView)
-        addSubview(innerView)
+        addSubview(containerView)
 
-        clipsToBounds = false
+        configureConstraints()
+        setTexts()
+    }
 
-        innerView.heightAnchor.constraint(equalToConstant: Dimension.WeekSection.DayPicker.bubbleSize).isActive = true
-        innerView.widthAnchor.constraint(equalToConstant: Dimension.WeekSection.DayPicker.bubbleSize).isActive = true
-        innerView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        innerView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+    private func configureConstraints() {
+        stackView.pinEdges([.leading, .trailing], to: containerView, usingLayoutMargins: false)
+        stackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
 
-        circleView.heightAnchor.constraint(equalToConstant: Dimension.WeekSection.DayPicker.bubbleSize).isActive = true
-        circleView.widthAnchor.constraint(equalToConstant: Dimension.WeekSection.DayPicker.bubbleSize).isActive = true
+        containerView.heightAnchor.constraint(equalToConstant: frame.height).isActive = true
+        containerView.widthAnchor.constraint(equalToConstant: frame.width).isActive = true
+        containerView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        containerView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+
+        circleView.heightAnchor.constraint(equalToConstant: frame.height).isActive = true
+        circleView.widthAnchor.constraint(equalToConstant: frame.width).isActive = true
         circleView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         circleView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
 
-        activeCircleView.heightAnchor.constraint(equalToConstant: Dimension.WeekSection.DayPicker.bubbleSize).isActive = true
-        activeCircleView.widthAnchor.constraint(equalToConstant: Dimension.WeekSection.DayPicker.bubbleSize).isActive = true
+        activeCircleView.heightAnchor.constraint(equalToConstant: frame.height).isActive = true
+        activeCircleView.widthAnchor.constraint(equalToConstant: frame.width).isActive = true
         activeCircleView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         activeCircleView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
 
-        widthAnchor.constraint(equalToConstant: Dimension.WeekSection.DayPicker.bubbleSize).isActive = true
-        heightAnchor.constraint(equalToConstant: Dimension.WeekSection.DayPicker.bubbleSize).isActive = true
+        heightAnchor.constraint(equalToConstant: frame.height).isActive = true
+        widthAnchor.constraint(equalToConstant: frame.width).isActive = true
     }
 
     required init?(coder: NSCoder) {

@@ -23,7 +23,7 @@ struct DayPickerPagingViewContainer: Container {
         .equatable()
     }
 
-    private var dates: [DateItem] {
+    private var dates: [DayPickerPagingView.Item] {
         guard let days = weatherService.weather?.daily else {
             return []
         }
@@ -32,7 +32,7 @@ struct DayPickerPagingViewContainer: Container {
             let date = Date(seconds: Double(day.time), region: .UTC)
                 .convertTo(region: .current).date
 
-            return DateItem(day: date.weekdayName(.short), date: date.day)
+            return DayPickerPagingView.Item(day: date.weekdayName(.short), date: date.day)
         }
     }
 }
