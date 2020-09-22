@@ -21,112 +21,87 @@ struct DateItemViewModel {
 }
 
 struct DayPickerPagingView: UIViewRepresentable {
-    internal typealias UIViewType = UICollectionView
+    internal typealias UIViewType = UIScrollView
 
     @Binding var items: [DateItem]
     @Binding var selection: Int
 
-    func makeUIView(context: Context) -> UICollectionView {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout(collectionView: UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())))
-        let layout = createLayout(collectionView: collectionView)
-        collectionView.setCollectionViewLayout(layout, animated: false)
-
-        collectionView.register(DateCell.self, forCellWithReuseIdentifier: "Cell")
-        collectionView.decelerationRate = .normal
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.clipsToBounds = false
-        collectionView.showsVerticalScrollIndicator = false
-
-        let dataSource = UICollectionViewDiffableDataSource<Int, DateItem>(collectionView: collectionView) { (collectionView, indexPath, data) -> UICollectionViewCell? in
-            // swiftlint:disable force_cast
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! DateCell
-            cell.data = DateItemViewModel(day: data.day, date: data.date)
-            return cell
-        }
-
-        context.coordinator.dataSource = dataSource
-        collectionView.dataSource = dataSource
-        collectionView.delegate = context.coordinator
-
-        return collectionView
+    func makeUIView(context: Context) -> UIScrollView {
+        let scrollView = UIScrollView()
+        scrollView.alwaysBounceHorizontal = true
+        scrollView.alwaysBounceVertical = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.contentInset = makeContentInsets()
+        scrollView.delegate = context.coordinator
+        scrollView.decelerationRate = .fast
+        return scrollView
     }
 
-    func createLayout(collectionView: UICollectionView) -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout { (_: Int, _: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            let itemWidth = Dimension.WeekSection.DayPicker.bubbleSize + Dimension.WeekSection.DayPicker.spacing
-            let itemHeight = Dimension.WeekSection.DayPicker.bubbleSize
-
-            let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(itemWidth), heightDimension: .absolute(itemHeight))
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-            let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(itemWidth), heightDimension: .absolute(itemHeight))
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-
-            let section = NSCollectionLayoutSection(group: group)
-            section.orthogonalScrollingBehavior = .groupPagingCentered
-
-            section.visibleItemsInvalidationHandler = { visibleItems, offset, _ in
-                let leadingMargin = Dimension.System.screenWidth / 2
-                let page = Int((offset.x + leadingMargin) / itemWidth)
-//                mainSectionDidScroll(page: page)
-
-                guard
-                    selection != page
-                //            (0...items.count).contains(page)
-                else {
-                    return
-                }
-
-                feedbackGenerator.prepare()
-                feedbackGenerator.selectionChanged()
-
-                selection = page
-                visibleItems.forEach { item in
-                    guard let cell = collectionView.cellForItem(at: item.indexPath) as? DateCell else { return }
-                    if item.frame.contains(.init(x: CGFloat(page) * itemWidth, y: 20)) {
-                        cell.data?.active = true
-                    } else {
-                        cell.data?.active = false
-                    }
-                }
-            }
-
-            return section
-        }
-
-        return layout
+    private func makeContentInsets() -> UIEdgeInsets {
+        let horizontalInset = (Dimension.System.screenWidth / 2) - (Dimension.WeekSection.DayPicker.bubbleSize / 2)
+        return UIEdgeInsets(top: 0, left: horizontalInset, bottom: 0, right: horizontalInset)
     }
 
-    private let feedbackGenerator = UISelectionFeedbackGenerator()
+    func updateUIView(_ uiView: UIScrollView, context: Context) {
+        uiView.subviews.forEach { $0.removeFromSuperview() }
 
-    func mainSectionDidScroll(page: Int) {
-        guard
-            selection != page
-//            (0...items.count).contains(page)
-        else {
-            return
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.spacing = Dimension.WeekSection.DayPicker.spacing
+
+        items.forEach {
+            let item = DateCell()
+            item.translatesAutoresizingMaskIntoConstraints = false
+            item.data = DateItemViewModel(day: $0.day, date: $0.date)
+            stack.addArrangedSubview(item)
         }
 
-        feedbackGenerator.prepare()
-        feedbackGenerator.selectionChanged()
+        uiView.addSubview(stack)
 
-        selection = page
-    }
-
-    func updateUIView(_ uiView: UICollectionView, context: Context) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, DateItem>()
-        snapshot.appendSections([0])
-        snapshot.appendItems(items)
-
-        context.coordinator.dataSource.apply(snapshot, animatingDifferences: false)
+        stack.pinEdges(to: uiView)
+        uiView.contentSize = stack.intrinsicContentSize
     }
 
     func makeCoordinator() -> Coordinator {
-        return Coordinator()
+        return Coordinator(self)
     }
 
-    final class Coordinator: NSObject, UICollectionViewDelegate {
-        var dataSource: UICollectionViewDiffableDataSource<Int, DateItem>!
+    final class Coordinator: NSObject, UIScrollViewDelegate {
+        private let parent: DayPickerPagingView
+
+        init(_ parent: DayPickerPagingView) {
+            self.parent = parent
+        }
+
+        func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+            let pageWidth = Dimension.WeekSection.DayPicker.bubbleSize
+            let spacing = Dimension.WeekSection.DayPicker.spacing
+
+            let targetPageIndex = indexOfPage(at: targetContentOffset.pointee.x, width: pageWidth, spacing: spacing, in: scrollView)
+            let newTargetOffset = offsetOfPage(at: targetPageIndex, width: pageWidth, spacing: spacing, in: scrollView)
+
+            targetContentOffset.pointee = CGPoint(x: newTargetOffset, y: 0)
+        }
+
+        private func indexOfPage(at offset: CGFloat, width: CGFloat, spacing: CGFloat, in scrollView: UIScrollView) -> Int {
+            let pageWidth = width + spacing
+            let offsetIncludingInset = offset + scrollView.contentInset.left
+            return Int(round(offsetIncludingInset / pageWidth))
+        }
+
+        private func offsetOfPage(at index: Int, width: CGFloat, spacing: CGFloat, in scrollView: UIScrollView) -> CGFloat {
+            let visibleWidth = scrollView.bounds.size.width - scrollView.contentInset.left - scrollView.contentInset.right
+            let halfVisibleWidth = visibleWidth / 2
+
+            let pageWidth = width + spacing
+            let halfItemWidth = width / 2
+
+            let offsetOfPage = CGFloat(index) * pageWidth
+
+            return offsetOfPage - scrollView.contentInset.left + halfItemWidth - halfVisibleWidth
+        }
     }
 }
 
@@ -136,7 +111,7 @@ extension DayPickerPagingView: Equatable {
     }
 }
 
-private final class DateCell: UICollectionViewCell {
+private final class DateCell: UIView {
     var data: DateItemViewModel? {
         didSet {
             if let data = data {
@@ -214,26 +189,29 @@ private final class DateCell: UICollectionViewCell {
         stack.pinEdges([.leading, .trailing], to: innerView, usingLayoutMargins: false)
         stack.centerYAnchor.constraint(equalTo: innerView.centerYAnchor).isActive = true
 
-        contentView.addSubview(circleView)
-        contentView.addSubview(activeCircleView)
-        contentView.addSubview(innerView)
+        addSubview(circleView)
+        addSubview(activeCircleView)
+        addSubview(innerView)
 
-        contentView.clipsToBounds = false
+        clipsToBounds = false
 
         innerView.heightAnchor.constraint(equalToConstant: Dimension.WeekSection.DayPicker.bubbleSize).isActive = true
         innerView.widthAnchor.constraint(equalToConstant: Dimension.WeekSection.DayPicker.bubbleSize).isActive = true
-        innerView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        innerView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        innerView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        innerView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
 
         circleView.heightAnchor.constraint(equalToConstant: Dimension.WeekSection.DayPicker.bubbleSize).isActive = true
         circleView.widthAnchor.constraint(equalToConstant: Dimension.WeekSection.DayPicker.bubbleSize).isActive = true
-        circleView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        circleView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        circleView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        circleView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
 
         activeCircleView.heightAnchor.constraint(equalToConstant: Dimension.WeekSection.DayPicker.bubbleSize).isActive = true
         activeCircleView.widthAnchor.constraint(equalToConstant: Dimension.WeekSection.DayPicker.bubbleSize).isActive = true
-        activeCircleView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        activeCircleView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        activeCircleView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        activeCircleView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+
+        widthAnchor.constraint(equalToConstant: Dimension.WeekSection.DayPicker.bubbleSize).isActive = true
+        heightAnchor.constraint(equalToConstant: Dimension.WeekSection.DayPicker.bubbleSize).isActive = true
     }
 
     required init?(coder: NSCoder) {
