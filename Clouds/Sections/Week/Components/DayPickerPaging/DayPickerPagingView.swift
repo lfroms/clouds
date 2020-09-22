@@ -56,6 +56,7 @@ struct DayPickerPagingView: UIViewRepresentable {
 
         let leadingLabel = UILabel()
         leadingLabel.font = UIFont.preferredFont(forTextStyle: .caption1).withWeight(.bold)
+        leadingLabel.adjustsFontForContentSizeCategory = true
         leadingLabel.textColor = UIColor(white: 1, alpha: 0.7)
         leadingLabel.text = leadingLabelText.uppercased()
         leadingLabel.textAlignment = .right
@@ -90,8 +91,8 @@ struct DayPickerPagingView: UIViewRepresentable {
             return
         }
 
-        markActiveView(stackView: stackView)
         renderItems(stackView: stackView, scrollView: uiView, context: context)
+        markActiveView(stackView: stackView)
         leadingLabel(in: uiView)?.text = leadingLabelText.uppercased()
 
         if !context.coordinator.scrollViewIsMoving(uiView), uiView.layer.animation(forKey: "bounds") == nil {

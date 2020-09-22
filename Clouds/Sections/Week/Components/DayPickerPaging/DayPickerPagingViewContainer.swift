@@ -32,7 +32,7 @@ struct DayPickerPagingViewContainer: Container {
 
     private var leadingLabelText: String {
         guard let days = weatherService.weather?.daily else {
-            return "Today"
+            return .empty
         }
 
         return days.first?.daytimeConditions != nil ? "Today" : "Tonight"
