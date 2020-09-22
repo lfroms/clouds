@@ -90,10 +90,10 @@ struct DayPickerPagingView: UIViewRepresentable {
         }
 
         markActiveView(stackView: stackView)
-        renderItems(stackView: stackView, context: context)
+        renderItems(stackView: stackView, scrollView: uiView, context: context)
         leadingLabel(in: uiView)?.text = leadingLabelText.uppercased()
 
-        if !uiView.isTracking, !uiView.isDecelerating {
+        if !context.coordinator.scrollViewIsMoving(uiView), uiView.layer.animation(forKey: "bounds") == nil {
             scrollToActiveView(scrollView: uiView, stackView: stackView, context: context)
         }
     }
@@ -104,11 +104,15 @@ struct DayPickerPagingView: UIViewRepresentable {
         }
 
         dayPickerItemViews.enumerated().forEach { index, view in
-            view.data.active = index == selection
+            let shouldMarkActive = index == selection
+
+            if view.data.active != shouldMarkActive {
+                view.data.active = shouldMarkActive
+            }
         }
     }
 
-    private func renderItems(stackView: UIStackView, context: Context) {
+    private func renderItems(stackView: UIStackView, scrollView: UIScrollView, context: Context) {
         guard context.coordinator.previousItems != items else {
             return
         }
@@ -119,6 +123,10 @@ struct DayPickerPagingView: UIViewRepresentable {
         items.enumerated().forEach { index, data in
             let item = DayPickerItemView(frame: CGRect(x: 0, y: 0, width: pageSize, height: pageSize), data: data) {
                 didSelectItemWithIndex(index)
+
+                if scrollView.layer.animation(forKey: "bounds") == nil {
+                    scrollToActiveView(scrollView: scrollView, stackView: stackView, context: context)
+                }
             }
 
             stackView.addArrangedSubview(item)
@@ -127,7 +135,9 @@ struct DayPickerPagingView: UIViewRepresentable {
 
     private func scrollToActiveView(scrollView: UIScrollView, stackView: UIStackView, context: Context) {
         if let targetFrame = dayPickerItemViews(in: stackView)?[safe: selection]?.frame {
-            scrollView.scrollRectToVisible(targetFrame, animated: true)
+            DispatchQueue.main.async {
+                scrollView.scrollRectToVisible(targetFrame, animated: true)
+            }
         }
     }
 

@@ -63,7 +63,7 @@ final class DayPickerPagingViewCoordinator: NSObject, UIScrollViewDelegate {
         return offsetOfPage - scrollView.contentInset.left + halfItemWidth - halfVisibleWidth
     }
 
-    private func scrollViewIsMoving(_ scrollView: UIScrollView) -> Bool {
+    public func scrollViewIsMoving(_ scrollView: UIScrollView) -> Bool {
         scrollView.isTracking || scrollView.isDragging || scrollView.isDecelerating
     }
 }
