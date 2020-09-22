@@ -23,7 +23,10 @@ struct DateItemViewModel {
 struct DayPickerPagingView: UIViewRepresentable {
     internal typealias UIViewType = UIScrollView
 
-    @Binding var items: [DateItem]
+    let pageSize: CGFloat
+    let spacing: CGFloat
+    let items: [DateItem]
+
     @Binding var selection: Int
 
     func makeUIView(context: Context) -> UIScrollView {
@@ -59,9 +62,7 @@ struct DayPickerPagingView: UIViewRepresentable {
         }
 
         uiView.addSubview(stack)
-
         stack.pinEdges(to: uiView)
-        uiView.contentSize = stack.intrinsicContentSize
     }
 
     func makeCoordinator() -> Coordinator {
@@ -70,19 +71,35 @@ struct DayPickerPagingView: UIViewRepresentable {
 
     final class Coordinator: NSObject, UIScrollViewDelegate {
         private let parent: DayPickerPagingView
+        private let feedbackGenerator = UISelectionFeedbackGenerator()
 
         init(_ parent: DayPickerPagingView) {
             self.parent = parent
         }
 
         func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-            let pageWidth = Dimension.WeekSection.DayPicker.bubbleSize
-            let spacing = Dimension.WeekSection.DayPicker.spacing
-
-            let targetPageIndex = indexOfPage(at: targetContentOffset.pointee.x, width: pageWidth, spacing: spacing, in: scrollView)
-            let newTargetOffset = offsetOfPage(at: targetPageIndex, width: pageWidth, spacing: spacing, in: scrollView)
+            let targetPageIndex = indexOfPage(at: targetContentOffset.pointee.x, width: parent.pageSize, spacing: parent.spacing, in: scrollView)
+            let newTargetOffset = offsetOfPage(at: targetPageIndex, width: parent.pageSize, spacing: parent.spacing, in: scrollView)
 
             targetContentOffset.pointee = CGPoint(x: newTargetOffset, y: 0)
+        }
+
+        func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            let targetPageIndex = indexOfPage(at: scrollView.contentOffset.x, width: parent.pageSize, spacing: parent.spacing, in: scrollView)
+            let maximumIndex = Int(scrollView.contentSize.width / parent.pageSize) - 1
+
+            guard
+                targetPageIndex != parent.selection,
+                targetPageIndex >= 0,
+                targetPageIndex < maximumIndex
+            else {
+                return
+            }
+
+            feedbackGenerator.prepare()
+            feedbackGenerator.selectionChanged()
+
+            parent.selection = targetPageIndex
         }
 
         private func indexOfPage(at offset: CGFloat, width: CGFloat, spacing: CGFloat, in scrollView: UIScrollView) -> Int {

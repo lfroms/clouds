@@ -15,7 +15,9 @@ struct DayPickerPagingViewContainer: Container {
 
     var body: some View {
         DayPickerPagingView(
-            items: .constant(dates),
+            pageSize: Dimension.WeekSection.DayPicker.bubbleSize,
+            spacing: Dimension.WeekSection.DayPicker.spacing,
+            items: dates,
             selection: $weekSectionState.dayIndex
         )
         .equatable()
