@@ -18,6 +18,7 @@ struct DayPickerPagingViewContainer: Container {
             pageSize: Dimension.WeekSection.DayPicker.bubbleSize,
             spacing: Dimension.WeekSection.DayPicker.spacing,
             items: dates,
+            leadingLabelText: leadingLabelText,
             selection: $weekSectionState.dayIndex,
             didSelectItemWithIndex: didSelectItemWithIndex(index:)
         )
@@ -26,6 +27,14 @@ struct DayPickerPagingViewContainer: Container {
 
     private func didSelectItemWithIndex(index: Int) {
         weekSectionState.dayIndex = index
+    }
+
+    private var leadingLabelText: String {
+        guard let days = weatherService.weather?.daily else {
+            return "Today"
+        }
+
+        return days.first?.daytimeConditions != nil ? "Today" : "Tonight"
     }
 
     private var dates: [DayPickerPagingView.Item] {

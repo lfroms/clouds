@@ -21,6 +21,7 @@ struct DayPickerPagingView: UIViewRepresentable {
     let pageSize: CGFloat
     let spacing: CGFloat
     let items: [Item]
+    let leadingLabelText: String
 
     @Binding var selection: Int
 
@@ -52,6 +53,17 @@ struct DayPickerPagingView: UIViewRepresentable {
         scrollView.addSubview(stackView)
         stackView.pinEdges(to: scrollView)
 
+        let leadingLabel = UILabel()
+        leadingLabel.font = UIFont.preferredFont(forTextStyle: .caption1).withWeight(.bold)
+        leadingLabel.textColor = UIColor(white: 1, alpha: 0.7)
+        leadingLabel.text = leadingLabelText.uppercased()
+        leadingLabel.textAlignment = .right
+        leadingLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        scrollView.addSubview(leadingLabel)
+        leadingLabel.trailingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: -16).isActive = true
+        leadingLabel.centerYAnchor.constraint(equalTo: stackView.centerYAnchor).isActive = true
+
         return scrollView
     }
 
@@ -62,6 +74,10 @@ struct DayPickerPagingView: UIViewRepresentable {
 
     private func stackView(in scrollView: UIScrollView) -> UIStackView? {
         return scrollView.subviews.first as? UIStackView
+    }
+
+    private func leadingLabel(in scrollView: UIScrollView) -> UILabel? {
+        return scrollView.subviews.last as? UILabel
     }
 
     private func dayPickerItemViews(in stackView: UIStackView) -> [DayPickerItemView]? {
@@ -75,9 +91,10 @@ struct DayPickerPagingView: UIViewRepresentable {
 
         markActiveView(stackView: stackView)
         renderItems(stackView: stackView, context: context)
+        leadingLabel(in: uiView)?.text = leadingLabelText.uppercased()
 
         if !uiView.isTracking, !uiView.isDecelerating {
-            scrollToActiveView(scrollView: uiView, context: context)
+            scrollToActiveView(scrollView: uiView, stackView: stackView, context: context)
         }
     }
 
@@ -108,10 +125,10 @@ struct DayPickerPagingView: UIViewRepresentable {
         }
     }
 
-    private func scrollToActiveView(scrollView: UIScrollView, context: Context) {
-        let totalPageSize = pageSize + spacing
-        let horizontalOffset = totalPageSize * CGFloat(selection)
-        scrollView.scrollRectToVisible(CGRect(x: horizontalOffset, y: 0, width: pageSize, height: pageSize), animated: true)
+    private func scrollToActiveView(scrollView: UIScrollView, stackView: UIStackView, context: Context) {
+        if let targetFrame = dayPickerItemViews(in: stackView)?[safe: selection]?.frame {
+            scrollView.scrollRectToVisible(targetFrame, animated: true)
+        }
     }
 
     func makeCoordinator() -> DayPickerPagingViewCoordinator {
@@ -121,6 +138,8 @@ struct DayPickerPagingView: UIViewRepresentable {
 
 extension DayPickerPagingView: Equatable {
     static func == (lhs: DayPickerPagingView, rhs: DayPickerPagingView) -> Bool {
-        lhs.items == rhs.items && lhs.selection == rhs.selection
+        lhs.items == rhs.items
+            && lhs.selection == rhs.selection
+            && lhs.leadingLabelText == rhs.leadingLabelText
     }
 }
