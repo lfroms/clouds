@@ -65,11 +65,24 @@ struct DayPickerPagingView: UIViewRepresentable {
         }
 
         markActiveView(stackView: stackView)
+        renderItems(stackView: stackView, context: context)
 
         if !uiView.isTracking, !uiView.isDecelerating {
             scrollToActiveView(scrollView: uiView, context: context)
         }
+    }
 
+    private func markActiveView(stackView: UIStackView) {
+        guard let dayPickerItemViews = dayPickerItemViews(in: stackView) else {
+            return
+        }
+
+        dayPickerItemViews.enumerated().forEach { index, view in
+            view.data.active = index == selection
+        }
+    }
+
+    private func renderItems(stackView: UIStackView, context: Context) {
         guard context.coordinator.previousItems != items else {
             return
         }
@@ -80,14 +93,6 @@ struct DayPickerPagingView: UIViewRepresentable {
         items.forEach {
             let item = DayPickerItemView(frame: CGRect(x: 0, y: 0, width: pageSize, height: pageSize), data: $0)
             stackView.addArrangedSubview(item)
-        }
-    }
-
-    private func markActiveView(stackView: UIStackView) {
-        if let dayPickerItemViews = dayPickerItemViews(in: stackView) {
-            dayPickerItemViews.enumerated().forEach { index, view in
-                view.data.active = index == selection
-            }
         }
     }
 
