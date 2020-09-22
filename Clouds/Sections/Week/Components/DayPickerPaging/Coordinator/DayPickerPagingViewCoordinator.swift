@@ -2,46 +2,45 @@
 //  DayPickerPagingViewCoordinator.swift
 //  Clouds
 //
-//  Created by Lukas Romsicki on 2020-03-22.
+//  Created by Lukas Romsicki on 2020-09-22.
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
-import SwiftUI
+import Foundation
+import UIKit
 
-final class DayPickerPagingViewCoordinator<Content: View>: NSObject, UIScrollViewDelegate {
-    var parent: DayPickerPagingView<Content>
-
+final class DayPickerPagingViewCoordinator: NSObject, UIScrollViewDelegate {
+    private let parent: DayPickerPagingView
     private let feedbackGenerator = UISelectionFeedbackGenerator()
 
-    init(_ parent: DayPickerPagingView<Content>) {
+    var previousItems: [DayPickerPagingView.Item] = []
+
+    init(_ parent: DayPickerPagingView) {
         self.parent = parent
     }
 
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let targetPageIndex = indexOfPage(at: targetContentOffset.pointee.x, width: parent.pageSize, spacing: parent.spacing, in: scrollView)
+        let newTargetOffset = offsetOfPage(at: targetPageIndex, width: parent.pageSize, spacing: parent.spacing, in: scrollView)
+
+        targetContentOffset.pointee = CGPoint(x: newTargetOffset, y: 0)
+    }
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard scrollView.bounds.width > 0 else {
-            // Prevent division by zero.
-            return
-        }
+        let targetPageIndex = indexOfPage(at: scrollView.contentOffset.x, width: parent.pageSize, spacing: parent.spacing, in: scrollView)
+        let maximumIndex = Int(scrollView.contentSize.width / parent.pageSize) - 1
 
-        let adjustedContentOffset = scrollView.contentOffset.x + parent.halfPageWidth
-
-        var maximumIndex = Int(scrollView.contentSize.width / parent.pageWidth)
-        if maximumIndex > 0 {
-            maximumIndex -= 1
-        }
-
-        let isDragging = userIsDraggingScrollView(scrollView)
+        let isDragging = scrollViewBeingDragged(scrollView)
 
         if isDragging != parent.dragging {
             parent.dragging = isDragging
         }
 
-        let newPage = Int(adjustedContentOffset / scrollView.bounds.size.width)
-
         guard
-            newPage != parent.currentPage,
             scrollViewIsMoving(scrollView),
-            (0...maximumIndex).contains(newPage)
+            targetPageIndex != parent.selection,
+            targetPageIndex >= 0,
+            targetPageIndex < maximumIndex
         else {
             return
         }
@@ -49,25 +48,32 @@ final class DayPickerPagingViewCoordinator<Content: View>: NSObject, UIScrollVie
         feedbackGenerator.prepare()
         feedbackGenerator.selectionChanged()
 
-        parent.currentPage = newPage
+        parent.selection = targetPageIndex
     }
 
-    func page(_ page: Int, scrollView: UIScrollView?) {
-        guard let scrollView = scrollView, !scrollViewIsMoving(scrollView) else {
-            return
-        }
-
-        let targetOffset = CGFloat(page) * parent.pageWidth
-        let targetRect = CGRect(x: targetOffset, y: .zero, width: parent.pageWidth, height: parent.itemWidth)
-
-        scrollView.scrollRectToVisible(targetRect, animated: true)
+    private func indexOfPage(at offset: CGFloat, width: CGFloat, spacing: CGFloat, in scrollView: UIScrollView) -> Int {
+        let pageWidth = width + spacing
+        let offsetIncludingInset = offset + scrollView.contentInset.left
+        return Int(round(offsetIncludingInset / pageWidth))
     }
 
-    private func scrollViewIsMoving(_ scrollView: UIScrollView) -> Bool {
+    private func offsetOfPage(at index: Int, width: CGFloat, spacing: CGFloat, in scrollView: UIScrollView) -> CGFloat {
+        let visibleWidth = scrollView.bounds.size.width - scrollView.contentInset.left - scrollView.contentInset.right
+        let halfVisibleWidth = visibleWidth / 2
+
+        let pageWidth = width + spacing
+        let halfItemWidth = width / 2
+
+        let offsetOfPage = CGFloat(index) * pageWidth
+
+        return offsetOfPage - scrollView.contentInset.left + halfItemWidth - halfVisibleWidth
+    }
+
+    public func scrollViewIsMoving(_ scrollView: UIScrollView) -> Bool {
         scrollView.isTracking || scrollView.isDragging || scrollView.isDecelerating
     }
 
-    private func userIsDraggingScrollView(_ scrollView: UIScrollView) -> Bool {
-        scrollView.isDragging && scrollView.isTracking
+    private func scrollViewBeingDragged(_ scrollView: UIScrollView) -> Bool {
+        scrollView.isTracking || scrollView.isDragging
     }
 }

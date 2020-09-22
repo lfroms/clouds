@@ -10,28 +10,45 @@ import SwiftUI
 
 struct DayPickerPagingViewContainer: Container {
     @EnvironmentObject private var weekSectionState: WeekSectionState
+    @EnvironmentObject private var weatherService: WeatherService
     @State private var size: CGSize = .zero
 
     var body: some View {
         DayPickerPagingView(
-            pageWidth: Dimension.WeekSection.DayPicker.bubbleSize,
+            pageSize: Dimension.WeekSection.DayPicker.bubbleSize,
             spacing: Dimension.WeekSection.DayPicker.spacing,
-            currentPage: $weekSectionState.dayIndex,
+            items: dates,
+            leadingLabelText: leadingLabelText,
+            selection: $weekSectionState.dayIndex,
             dragging: $weekSectionState.dragging,
-            size: size
-        ) {
-            DayPickerContainer()
-        }
+            didSelectItemWithIndex: didSelectItemWithIndex(index:)
+        )
         .equatable()
-        .onPreferenceChange(DayPickerContentSizePreferenceKey.self, perform: contentSizePreferenceDidChange)
     }
 
-    private func contentSizePreferenceDidChange(_ preference: CGSize) {
-        guard preference != size else {
-            return
+    private func didSelectItemWithIndex(index: Int) {
+        weekSectionState.dayIndex = index
+    }
+
+    private var leadingLabelText: String {
+        guard let days = weatherService.weather?.daily else {
+            return .empty
         }
 
-        size = preference
+        return days.first?.daytimeConditions != nil ? "Today" : "Tonight"
+    }
+
+    private var dates: [DayPickerPagingView.Item] {
+        guard let days = weatherService.weather?.daily else {
+            return []
+        }
+
+        return days.compactMap { day in
+            let date = Date(seconds: Double(day.time), region: .UTC)
+                .convertTo(region: .current).date
+
+            return DayPickerPagingView.Item(day: date.weekdayName(.short), date: date.day)
+        }
     }
 }
 
