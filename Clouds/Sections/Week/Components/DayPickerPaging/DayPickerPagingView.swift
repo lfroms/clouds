@@ -24,6 +24,7 @@ struct DayPickerPagingView: UIViewRepresentable {
     let leadingLabelText: String
 
     @Binding var selection: Int
+    @Binding var dragging: Bool
 
     let didSelectItemWithIndex: (_: Int) -> Void
 

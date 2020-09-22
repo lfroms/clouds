@@ -20,6 +20,7 @@ struct DayPickerPagingViewContainer: Container {
             items: dates,
             leadingLabelText: leadingLabelText,
             selection: $weekSectionState.dayIndex,
+            dragging: $weekSectionState.dragging,
             didSelectItemWithIndex: didSelectItemWithIndex(index:)
         )
         .equatable()
