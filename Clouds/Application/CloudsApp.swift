@@ -6,6 +6,8 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
+import AppCenter
+import AppCenterAnalytics
 import CoreLocation
 import SwiftUI
 
@@ -27,6 +29,10 @@ struct CloudsApp: App {
 
     private let standardVisualStateDebouncer = Debouncer(delay: 0.18)
     private let weekSectionVisualStateDebouncer = Debouncer(delay: 0.3)
+
+    init() {
+        MSAppCenter.start(AppEnvironment.appCenterApiKey, withServices: [MSAnalytics.self])
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -81,24 +87,45 @@ struct CloudsApp: App {
                     }
                 }
 
-                .onChange(of: appState.activeSection) { _ in
+                .onChange(of: appState.activeSection) { newSection in
                     radarService.isPlaying = false
                     changeIconCodeBasedOnSection()
+
+                    MSAnalytics.trackEvent("Tab changed", withProperties: ["Tab": newSection.rawValue])
                 }
 
-                .onChange(of: weekSectionState.showingNightConditions) { _ in
+                .onChange(of: weekSectionState.showingNightConditions) { showingNight in
                     setIconCodeToWeekSectionActiveDay()
+
+                    MSAnalytics.trackEvent("Night conditions toggled", withProperties: ["Showing night": String(showingNight)])
                 }
 
-                .onChange(of: locationPickerState.presented) { newPresented in
-                    if newPresented {
+                .onChange(of: locationPickerState.presented) { presented in
+                    if presented {
                         didChangeLocationPickerState()
                     }
+
+                    MSAnalytics.trackEvent(presented ? "Location picker opened" : "Location picker closed")
                 }
 
-                .onChange(of: settingsSheetState.radarSource) { _ in
+                .onChange(of: settingsSheetState.radarSource) { newSource in
                     getRadarTimestamps()
+
+                    MSAnalytics.trackEvent("Radar source changed", withProperties: ["Source": newSource.rawValue])
                 }
+
+                .onChange(of: appState.drawerIsOpen) { open in
+                    MSAnalytics.trackEvent(open ? "Drawer opened" : "Drawer closed")
+                }
+
+                .onChange(of: settingsSheetState.presented) { open in
+                    MSAnalytics.trackEvent(open ? "Settings opened" : "Settings closed")
+                }
+
+                .onChange(of: radarService.isPlaying) { playing in
+                    MSAnalytics.trackEvent(playing ? "Radar animation started" : "Radar animation stopped")
+                }
+
                 .ignoresSafeArea(.keyboard)
         }
     }
