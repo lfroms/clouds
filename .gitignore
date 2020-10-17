@@ -92,3 +92,4 @@ Carthage/
 **/fastlane/screenshots/*.html
 
 **/fastlane/test_output
+Clouds/Secrets.plist

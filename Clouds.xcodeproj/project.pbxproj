@@ -49,6 +49,8 @@
 		802A4303241C54AB0073C0DC /* DismissableScrollViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A4302241C54AB0073C0DC /* DismissableScrollViewRepresentable.swift */; };
 		802A4305241C556A0073C0DC /* DismissableScrollViewHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A4304241C556A0073C0DC /* DismissableScrollViewHostingController.swift */; };
 		802C082B253B3D5700913021 /* AppCenterAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 802C082A253B3D5700913021 /* AppCenterAnalytics */; };
+		802C089D253B64A200913021 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 802C089C253B64A200913021 /* Secrets.plist */; };
+		802C08A6253B65CE00913021 /* SecretsSample.plist in Resources */ = {isa = PBXBuildFile; fileRef = 802C08A5253B65CE00913021 /* SecretsSample.plist */; };
 		802C0D982368FE32009A22BA /* CurrentSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C0D972368FE32009A22BA /* CurrentSection.swift */; };
 		802C0D9C236903C6009A22BA /* SunriseSunsetTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C0D9B236903C6009A22BA /* SunriseSunsetTime.swift */; };
 		802C0D9E236903CD009A22BA /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C0D9D236903CD009A22BA /* Header.swift */; };
@@ -301,6 +303,8 @@
 		802A42FE241C534F0073C0DC /* DismissableScrollViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableScrollViewModifier.swift; sourceTree = "<group>"; };
 		802A4302241C54AB0073C0DC /* DismissableScrollViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableScrollViewRepresentable.swift; sourceTree = "<group>"; };
 		802A4304241C556A0073C0DC /* DismissableScrollViewHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableScrollViewHostingController.swift; sourceTree = "<group>"; };
+		802C089C253B64A200913021 /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
+		802C08A5253B65CE00913021 /* SecretsSample.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SecretsSample.plist; sourceTree = "<group>"; };
 		802C0D972368FE32009A22BA /* CurrentSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSection.swift; sourceTree = "<group>"; };
 		802C0D9B236903C6009A22BA /* SunriseSunsetTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetTime.swift; sourceTree = "<group>"; };
 		802C0D9D236903CD009A22BA /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
@@ -876,6 +880,8 @@
 				805D7BDB22D1244800A12C4D /* Images.xcassets */,
 				805A175022C53ADD00E1B4E2 /* LaunchScreen.storyboard */,
 				805A175322C53ADD00E1B4E2 /* Info.plist */,
+				802C089C253B64A200913021 /* Secrets.plist */,
+				802C08A5253B65CE00913021 /* SecretsSample.plist */,
 				805A174D22C53ADD00E1B4E2 /* Preview Content */,
 			);
 			path = Clouds;
@@ -1654,6 +1660,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 805A175622C53ADD00E1B4E2 /* Build configuration list for PBXNativeTarget "Clouds" */;
 			buildPhases = (
+				802C08A4253B657300913021 /* Create Secrets Property List */,
 				80273A79251598BD00E02891 /* SwiftLint */,
 				805A173E22C53ADB00E1B4E2 /* Sources */,
 				805A173F22C53ADB00E1B4E2 /* Frameworks */,
@@ -1703,7 +1710,7 @@
 		805A173A22C53ADB00E1B4E2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Lukas Romsicki";
 				TargetAttributes = {
@@ -1772,12 +1779,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				802C08A6253B65CE00913021 /* SecretsSample.plist in Resources */,
 				8021717E245517FE00D6C958 /* WeatherLocationItem.graphql in Resources */,
 				80F07DDC23FB7D0C005C43A3 /* schema.json in Resources */,
 				80042F1724284C2A005DA891 /* LaunchScreen.storyboard in Resources */,
 				805D7BDC22D1244800A12C4D /* Images.xcassets in Resources */,
 				805D7BDA22D1243F00A12C4D /* Colors.xcassets in Resources */,
 				805A174F22C53ADD00E1B4E2 /* Preview Assets.xcassets in Resources */,
+				802C089D253B64A200913021 /* Secrets.plist in Resources */,
 				8083A824244A579C00CE2E5E /* RadarTimestamps.graphql in Resources */,
 				809833B922F678BE001C1590 /* Weather.graphql in Resources */,
 				805A174C22C53ADD00E1B4E2 /* Assets.xcassets in Resources */,
@@ -1831,6 +1840,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which mint >/dev/null; then\n  mint run swiftlint\nelse\n  echo \"warning: Mint not installed.\"\nfi\n";
+		};
+		802C08A4253B657300913021 /* Create Secrets Property List */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Create Secrets Property List";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "CONFIG_FILE_BASE_NAME=\"Secrets\"\n\nCONFIG_FILE_NAME=${CONFIG_FILE_BASE_NAME}.plist\nSAMPLE_CONFIG_FILE_NAME=${CONFIG_FILE_BASE_NAME}Sample.plist\n\nCONFIG_FILE_PATH=$SRCROOT/$PRODUCT_NAME/$CONFIG_FILE_NAME\nSAMPLE_CONFIG_FILE_PATH=$SRCROOT/$PRODUCT_NAME/$SAMPLE_CONFIG_FILE_NAME\n\nif [ -f \"$CONFIG_FILE_PATH\" ]; then\n  echo \"$CONFIG_FILE_PATH exists.\"\nelse\n  echo \"$CONFIG_FILE_PATH does not exist, copying sample\"\n  cp -v \"${SAMPLE_CONFIG_FILE_PATH}\" \"${CONFIG_FILE_PATH}\"\nfi\n";
 		};
 		8083A813244949DF00CE2E5E /* Copy Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
