@@ -18,9 +18,9 @@ struct MasterViewContainer: Container {
         }
         .equatable()
         .sheet(isPresented: $settingsSheetState.presented) {
-            // Using AnyView solves issues with missing EnvironmentObjects
-            AnyView(SettingsSection())
+            SettingsSection()
                 .preferredColorScheme(.dark)
+                .environmentObject(settingsSheetState)
         }
     }
 }
