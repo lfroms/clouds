@@ -31,7 +31,7 @@ struct CloudsApp: App {
     private let weekSectionVisualStateDebouncer = Debouncer(delay: 0.3)
 
     init() {
-        MSAppCenter.start(AppEnvironment.appCenterApiKey, withServices: [MSAnalytics.self])
+        AppCenter.start(withAppSecret: AppEnvironment.appCenterApiKey, services: [Analytics.self])
     }
 
     var body: some Scene {
@@ -91,13 +91,13 @@ struct CloudsApp: App {
                     radarService.isPlaying = false
                     changeIconCodeBasedOnSection()
 
-                    MSAnalytics.trackEvent("Tab changed", withProperties: ["Tab": newSection.rawValue])
+                    Analytics.trackEvent("Tab changed", withProperties: ["Tab": newSection.rawValue])
                 }
 
                 .onChange(of: weekSectionState.showingNightConditions) { showingNight in
                     setIconCodeToWeekSectionActiveDay()
 
-                    MSAnalytics.trackEvent("Night conditions toggled", withProperties: ["Showing night": String(showingNight)])
+                    Analytics.trackEvent("Night conditions toggled", withProperties: ["Showing night": String(showingNight)])
                 }
 
                 .onChange(of: locationPickerState.presented) { presented in
@@ -105,25 +105,25 @@ struct CloudsApp: App {
                         didChangeLocationPickerState()
                     }
 
-                    MSAnalytics.trackEvent(presented ? "Location picker opened" : "Location picker closed")
+                    Analytics.trackEvent(presented ? "Location picker opened" : "Location picker closed")
                 }
 
                 .onChange(of: settingsSheetState.radarSource) { newSource in
                     getRadarTimestamps()
 
-                    MSAnalytics.trackEvent("Radar source changed", withProperties: ["Source": newSource.rawValue])
+                    Analytics.trackEvent("Radar source changed", withProperties: ["Source": newSource.rawValue])
                 }
 
                 .onChange(of: appState.drawerIsOpen) { open in
-                    MSAnalytics.trackEvent(open ? "Drawer opened" : "Drawer closed")
+                    Analytics.trackEvent(open ? "Drawer opened" : "Drawer closed")
                 }
 
                 .onChange(of: settingsSheetState.presented) { open in
-                    MSAnalytics.trackEvent(open ? "Settings opened" : "Settings closed")
+                    Analytics.trackEvent(open ? "Settings opened" : "Settings closed")
                 }
 
                 .onChange(of: radarService.isPlaying) { playing in
-                    MSAnalytics.trackEvent(playing ? "Radar animation started" : "Radar animation stopped")
+                    Analytics.trackEvent(playing ? "Radar animation started" : "Radar animation stopped")
                 }
 
                 .ignoresSafeArea(.keyboard)
