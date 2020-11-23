@@ -2027,4 +2027,217 @@ public enum CloudsAPI {
       }
     }
   }
+
+  public final class WidgetWeatherQuery: GraphQLQuery {
+    /// The raw GraphQL definition of this operation.
+    public let operationDefinition: String =
+      """
+      query WidgetWeather($latitude: Float!, $longitude: Float!) {
+        weather(latitude: $latitude, longitude: $longitude) {
+          __typename
+          currently {
+            __typename
+            summary
+            icon {
+              __typename
+              style
+              colorScheme
+            }
+            temperature
+          }
+        }
+      }
+      """
+
+    public let operationName: String = "WidgetWeather"
+
+    public var latitude: Double
+    public var longitude: Double
+
+    public init(latitude: Double, longitude: Double) {
+      self.latitude = latitude
+      self.longitude = longitude
+    }
+
+    public var variables: GraphQLMap? {
+      return ["latitude": latitude, "longitude": longitude]
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Query"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("weather", arguments: ["latitude": GraphQLVariable("latitude"), "longitude": GraphQLVariable("longitude")], type: .object(Weather.selections)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(weather: Weather? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Query", "weather": weather.flatMap { (value: Weather) -> ResultMap in value.resultMap }])
+      }
+
+      /// Returns the weather for a specific location.
+      public var weather: Weather? {
+        get {
+          return (resultMap["weather"] as? ResultMap).flatMap { Weather(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "weather")
+        }
+      }
+
+      public struct Weather: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["Weather"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("currently", type: .nonNull(.object(Currently.selections))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(currently: Currently) {
+          self.init(unsafeResultMap: ["__typename": "Weather", "currently": currently.resultMap])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var currently: Currently {
+          get {
+            return Currently(unsafeResultMap: resultMap["currently"]! as! ResultMap)
+          }
+          set {
+            resultMap.updateValue(newValue.resultMap, forKey: "currently")
+          }
+        }
+
+        public struct Currently: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["Currently"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("summary", type: .scalar(String.self)),
+              GraphQLField("icon", type: .nonNull(.object(Icon.selections))),
+              GraphQLField("temperature", type: .scalar(Double.self)),
+            ]
+          }
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(summary: String? = nil, icon: Icon, temperature: Double? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Currently", "summary": summary, "icon": icon.resultMap, "temperature": temperature])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var summary: String? {
+            get {
+              return resultMap["summary"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "summary")
+            }
+          }
+
+          public var icon: Icon {
+            get {
+              return Icon(unsafeResultMap: resultMap["icon"]! as! ResultMap)
+            }
+            set {
+              resultMap.updateValue(newValue.resultMap, forKey: "icon")
+            }
+          }
+
+          public var temperature: Double? {
+            get {
+              return resultMap["temperature"] as? Double
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "temperature")
+            }
+          }
+
+          public struct Icon: GraphQLSelectionSet {
+            public static let possibleTypes: [String] = ["Icon"]
+
+            public static var selections: [GraphQLSelection] {
+              return [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("style", type: .scalar(IconStyle.self)),
+                GraphQLField("colorScheme", type: .nonNull(.scalar(ColorScheme.self))),
+              ]
+            }
+
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public init(style: IconStyle? = nil, colorScheme: ColorScheme) {
+              self.init(unsafeResultMap: ["__typename": "Icon", "style": style, "colorScheme": colorScheme])
+            }
+
+            public var __typename: String {
+              get {
+                return resultMap["__typename"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            public var style: IconStyle? {
+              get {
+                return resultMap["style"] as? IconStyle
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "style")
+              }
+            }
+
+            public var colorScheme: ColorScheme {
+              get {
+                return resultMap["colorScheme"]! as! ColorScheme
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "colorScheme")
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
