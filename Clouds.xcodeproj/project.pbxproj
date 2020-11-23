@@ -131,6 +131,8 @@
 		80803261256B60A40098D959 /* WeatherImageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802171832455255D00D6C958 /* WeatherImageStyle.swift */; };
 		8080326A256B60BD0098D959 /* CloudsAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 802739B925157EC500E02891 /* CloudsAPI.framework */; };
 		8080326B256B60BD0098D959 /* CloudsAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 802739B925157EC500E02891 /* CloudsAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8080327B256B62C80098D959 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805D7BD922D1243F00A12C4D /* Colors.xcassets */; };
+		8080327F256B62CF0098D959 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805D7BDB22D1244800A12C4D /* Images.xcassets */; };
 		8083A81A24494AFB00CE2E5E /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8083A81824494AFB00CE2E5E /* Mapbox.framework */; };
 		8083A81B24494AFB00CE2E5E /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8083A81824494AFB00CE2E5E /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8083A81C24494AFB00CE2E5E /* MapboxMobileEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8083A81924494AFB00CE2E5E /* MapboxMobileEvents.framework */; };
@@ -1935,7 +1937,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8080327F256B62CF0098D959 /* Images.xcassets in Resources */,
 				80D91D61256AFD1A007CA020 /* Assets.xcassets in Resources */,
+				8080327B256B62C80098D959 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
