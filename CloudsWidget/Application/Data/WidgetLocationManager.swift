@@ -18,6 +18,7 @@ class WidgetLocationManager: NSObject, CLLocationManagerDelegate {
         DispatchQueue.main.async {
             self.locationManager = CLLocationManager()
             self.locationManager?.delegate = self
+            self.locationManager?.desiredAccuracy = kCLLocationAccuracyThreeKilometers
 
             if self.locationManager?.authorizationStatus == .notDetermined {
                 self.locationManager?.requestWhenInUseAuthorization()
