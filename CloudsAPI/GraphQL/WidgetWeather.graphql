@@ -1,0 +1,12 @@
+query WidgetWeather($latitude: Float!, $longitude: Float!) {
+    weather(latitude: $latitude, longitude: $longitude) {
+        currently {
+            summary
+            icon {
+                style
+                colorScheme
+            }
+            temperature
+        }
+    }
+}
