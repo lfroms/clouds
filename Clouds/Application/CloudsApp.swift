@@ -8,6 +8,7 @@
 
 import AppCenter
 import AppCenterAnalytics
+import Bugsnag
 import CoreLocation
 import SwiftUI
 
@@ -15,23 +16,32 @@ import SwiftUI
 struct CloudsApp: App {
     @Environment(\.scenePhase) private var scenePhase
 
-    @StateObject private var appState: AppState = AppState()
-    @StateObject private var visualState: VisualState = VisualState()
-    @StateObject private var weekSectionState: WeekSectionState = WeekSectionState()
-    @StateObject private var locationPickerState: LocationPickerState = LocationPickerState()
-    @StateObject private var settingsSheetState: SettingsSheetState = SettingsSheetState()
+    @StateObject private var appState = AppState()
+    @StateObject private var visualState = VisualState()
+    @StateObject private var weekSectionState = WeekSectionState()
+    @StateObject private var locationPickerState = LocationPickerState()
+    @StateObject private var settingsSheetState = SettingsSheetState()
 
-    @StateObject private var weatherService: WeatherService = WeatherService()
-    @StateObject private var locationService: LocationService = LocationService()
-    @StateObject private var locationSearchService: LocationSearchService = LocationSearchService()
-    @StateObject private var locationFavoritesService: LocationFavoritesService = LocationFavoritesService()
-    @StateObject private var radarService: RadarService = RadarService()
+    @StateObject private var weatherService = WeatherService()
+    @StateObject private var locationService = LocationService()
+    @StateObject private var locationSearchService = LocationSearchService()
+    @StateObject private var locationFavoritesService = LocationFavoritesService()
+    @StateObject private var radarService = RadarService()
 
     private let standardVisualStateDebouncer = Debouncer(delay: 0.18)
     private let weekSectionVisualStateDebouncer = Debouncer(delay: 0.3)
 
     init() {
-        AppCenter.start(withAppSecret: AppEnvironment.appCenterApiKey, services: [Analytics.self])
+        if AppEnvironment.production {
+            AppCenter.start(withAppSecret: AppEnvironment.appCenterApiKey, services: [Analytics.self])
+        }
+
+        let configuration = BugsnagConfiguration(AppEnvironment.bugsnagApiKey)
+        configuration.releaseStage = AppEnvironment.production ? "production" : "development"
+
+        if !AppEnvironment.isUITesting {
+            Bugsnag.start(with: configuration)
+        }
     }
 
     var body: some Scene {

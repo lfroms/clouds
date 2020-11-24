@@ -21,7 +21,23 @@ final class AppEnvironment {
         ProcessInfo.processInfo.arguments.contains("UI_TESTING")
     }
 
+    static var development: Bool {
+        #if DEBUG
+        return true
+        #else
+        return false
+        #endif
+    }
+
+    static var production: Bool {
+        !development
+    }
+
     static var appCenterApiKey: String? {
         secrets?.object(forKey: "AppCenterKey") as? String
+    }
+
+    static var bugsnagApiKey: String? {
+        secrets?.object(forKey: "BugsnagKey") as? String
     }
 }
