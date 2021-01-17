@@ -33,7 +33,7 @@
 
 ## About
 
-Clouds is a weather app, unlike any weather app. It's written in [SwiftUI](https://developer.apple.com/xcode/swiftui/), a declarative framework for building user interfaces for iOS. Unlike most weather apps, Clouds uses a custom (soon-to-be open source) GraphQL-powered weather data aggregation service, _Nimbus_.
+Clouds is a weather app, unlike any weather app. It's written in [SwiftUI](https://developer.apple.com/xcode/swiftui/), a declarative framework for building user interfaces for iOS. Unlike most weather apps, Clouds uses a custom GraphQL-powered weather data aggregation service, [Nimbus](https://github.com/lfroms/nimbus).
 
 ### Vision & Goals
 
