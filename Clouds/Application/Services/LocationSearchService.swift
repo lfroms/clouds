@@ -40,9 +40,8 @@ final class LocationSearchService: NSObject, ObservableObject {
         let subtitle: String
 
         init(completion: MKLocalSearchCompletion) {
-            let components = completion.title.split(separator: ",", maxSplits: 1, omittingEmptySubsequences: true)
-            title = String(components.first ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
-            subtitle = String(components.last ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+            title = completion.title.trimmingCharacters(in: .whitespacesAndNewlines)
+            subtitle = completion.subtitle.trimmingCharacters(in: .whitespacesAndNewlines)
         }
     }
 }
@@ -51,9 +50,8 @@ extension LocationSearchService: MKLocalSearchCompleterDelegate {
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
         results = completer.results
             .filter {
-                $0.title.contains(",")
-                    && $0.subtitle.isEmpty
-                    && $0.title.contains("Canada")
+                $0.subtitle.components(separatedBy: ",").count - 1 < 2
+                    && $0.subtitle.contains("Canada")
             }
             .compactMap {
                 Result(completion: $0)
