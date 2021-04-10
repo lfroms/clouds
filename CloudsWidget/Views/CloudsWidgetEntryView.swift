@@ -28,6 +28,11 @@ struct CloudsWidgetEntryView: View {
                     Text("\(temperature!)°")
                         .font(.largeTitle)
                         .fontWeight(.heavy)
+                } else {
+                    Text("––")
+                        .font(.largeTitle)
+                        .fontWeight(.semibold)
+                        .opacity(0.5)
                 }
 
                 Text(entry.description ?? "No weather data")
