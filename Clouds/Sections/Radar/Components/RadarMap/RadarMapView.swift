@@ -31,7 +31,7 @@ struct RadarMapView: UIViewRepresentable {
         }
 
         mapView.contentInset = UIEdgeInsets(
-            top: Dimension.Header.omniBarHeight + (2 * Dimension.Global.padding),
+            top: Dimension.Header.omniBarHeight + Dimension.System.topSafeMargin + (2 * Dimension.Global.padding),
             left: 8,
             bottom: 8,
             right: 8
