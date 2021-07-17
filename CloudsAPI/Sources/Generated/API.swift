@@ -281,6 +281,51 @@ public enum CloudsAPI {
     }
   }
 
+  public enum Tendency: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+    public typealias RawValue = String
+    case rising
+    case falling
+    case stable
+    /// Auto generated constant for unknown enum values
+    case __unknown(RawValue)
+
+    public init?(rawValue: RawValue) {
+      switch rawValue {
+        case "rising": self = .rising
+        case "falling": self = .falling
+        case "stable": self = .stable
+        default: self = .__unknown(rawValue)
+      }
+    }
+
+    public var rawValue: RawValue {
+      switch self {
+        case .rising: return "rising"
+        case .falling: return "falling"
+        case .stable: return "stable"
+        case .__unknown(let value): return value
+      }
+    }
+
+    public static func == (lhs: Tendency, rhs: Tendency) -> Bool {
+      switch (lhs, rhs) {
+        case (.rising, .rising): return true
+        case (.falling, .falling): return true
+        case (.stable, .stable): return true
+        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+        default: return false
+      }
+    }
+
+    public static var allCases: [Tendency] {
+      return [
+        .rising,
+        .falling,
+        .stable,
+      ]
+    }
+  }
+
   public enum FeelsLikeType: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
     public typealias RawValue = String
     case humidex
@@ -417,6 +462,7 @@ public enum CloudsAPI {
             pressure {
               __typename
               value
+              tendency
             }
             feelsLike {
               __typename
@@ -1044,6 +1090,7 @@ public enum CloudsAPI {
               return [
                 GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
                 GraphQLField("value", type: .scalar(Double.self)),
+                GraphQLField("tendency", type: .scalar(Tendency.self)),
               ]
             }
 
@@ -1053,8 +1100,8 @@ public enum CloudsAPI {
               self.resultMap = unsafeResultMap
             }
 
-            public init(value: Double? = nil) {
-              self.init(unsafeResultMap: ["__typename": "Pressure", "value": value])
+            public init(value: Double? = nil, tendency: Tendency? = nil) {
+              self.init(unsafeResultMap: ["__typename": "Pressure", "value": value, "tendency": tendency])
             }
 
             public var __typename: String {
@@ -1072,6 +1119,15 @@ public enum CloudsAPI {
               }
               set {
                 resultMap.updateValue(newValue, forKey: "value")
+              }
+            }
+
+            public var tendency: Tendency? {
+              get {
+                return resultMap["tendency"] as? Tendency
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "tendency")
               }
             }
           }
