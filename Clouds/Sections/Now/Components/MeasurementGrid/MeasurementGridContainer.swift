@@ -6,6 +6,7 @@
 //  Copyright © 2020 Lukas Romsicki. All rights reserved.
 //
 
+import CloudsAPI
 import SwiftUI
 
 struct MeasurementGridContainer: Container {
@@ -25,7 +26,7 @@ struct MeasurementGridContainer: Container {
     }
 
     private func didCalculateHeight(height: CGFloat) {
-        self.appState.detailsContentHeight = height
+        appState.detailsContentHeight = height
     }
 
     private var measurements: [MeasurementDescriptor] {
@@ -49,10 +50,12 @@ struct MeasurementGridContainer: Container {
 
         // MARK: - Atmospheric Pressure 📈
 
-        if let pressure = currentConditions.pressure.value {
+        if let pressure = currentConditions.pressure.value, let tendency = currentConditions.pressure.tendency {
+            let tendencyArrow = arrow(for: tendency)
+
             let item = MeasurementDescriptor(
                 label: "Pressure",
-                value: "\(pressure) kPa",
+                value: "\(pressure) kPa\(tendencyArrow)",
                 color: .green
             )
 
@@ -122,6 +125,17 @@ struct MeasurementGridContainer: Container {
         }
 
         return observations
+    }
+
+    private func arrow(for tendency: CloudsAPI.Tendency) -> String {
+        switch tendency {
+        case .rising:
+            return " ↑"
+        case .falling:
+            return " ↓"
+        default:
+            return ""
+        }
     }
 }
 

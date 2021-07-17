@@ -44,8 +44,7 @@ struct DayPickerPagingViewContainer: Container {
         }
 
         return days.compactMap { day in
-            let date = Date(seconds: Double(day.time), region: .UTC)
-                .convertTo(region: .current).date
+            let date = Date(seconds: Double(day.time), region: .UTC).date
 
             return DayPickerPagingView.Item(day: date.weekdayName(.short), date: date.day)
         }

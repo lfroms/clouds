@@ -30,6 +30,7 @@ query Weather($latitude: Float!, $longitude: Float!) {
             humidity
             pressure {
                 value
+                tendency
             }
             feelsLike {
                 temperature
