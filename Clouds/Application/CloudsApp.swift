@@ -10,6 +10,7 @@ import AppCenter
 import AppCenterAnalytics
 import Bugsnag
 import CoreLocation
+import MapboxMaps
 import SwiftUI
 
 @main
@@ -38,6 +39,10 @@ struct CloudsApp: App {
 
         let configuration = BugsnagConfiguration(AppEnvironment.bugsnagApiKey)
         configuration.releaseStage = AppEnvironment.production ? "production" : "development"
+
+        if let mapboxApiKey = AppEnvironment.mapboxApiKey {
+            ResourceOptionsManager.default.resourceOptions.accessToken = mapboxApiKey
+        }
 
         if !AppEnvironment.isUITesting {
             Bugsnag.start(with: configuration)

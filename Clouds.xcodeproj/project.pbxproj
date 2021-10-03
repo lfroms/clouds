@@ -154,6 +154,7 @@
 		8095A2F6244BA50B008C494F /* RadarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095A2F5244BA50B008C494F /* RadarService.swift */; };
 		8095A2F8244BA59D008C494F /* RadarMapViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095A2F7244BA59D008C494F /* RadarMapViewContainer.swift */; };
 		8095A2FB244BA9D9008C494F /* RadarAnimationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095A2FA244BA9D9008C494F /* RadarAnimationTimer.swift */; };
+		809776C1270A43270000BF6F /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 809776C0270A43270000BF6F /* MapboxMaps */; };
 		809833B922F678BE001C1590 /* Weather.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 809833B822F678BE001C1590 /* Weather.graphql */; };
 		80985F5A240E1F1D00452D08 /* UnixTimestampTypealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80985F59240E1F1D00452D08 /* UnixTimestampTypealias.swift */; };
 		809AC4332423F72F009B7045 /* RawLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809AC4322423F72F009B7045 /* RawLocation.swift */; };
@@ -552,6 +553,7 @@
 				802C082B253B3D5700913021 /* AppCenterAnalytics in Frameworks */,
 				80273AA32515A13400E02891 /* Bugsnag in Frameworks */,
 				80D0CE81235B6D95002A3EFD /* SwiftDate in Frameworks */,
+				809776C1270A43270000BF6F /* MapboxMaps in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1774,6 +1776,7 @@
 				80D0CE80235B6D95002A3EFD /* SwiftDate */,
 				80273AA22515A13400E02891 /* Bugsnag */,
 				802C082A253B3D5700913021 /* AppCenterAnalytics */,
+				809776C0270A43270000BF6F /* MapboxMaps */,
 			);
 			productName = Forecast;
 			productReference = 805A174222C53ADB00E1B4E2 /* Clouds.app */;
@@ -1863,6 +1866,7 @@
 				80F4481E245B60FF007AC77B /* XCRemoteSwiftPackageReference "swifter" */,
 				8016D2F024EC687200FD4A5F /* XCRemoteSwiftPackageReference "bugsnag-cocoa" */,
 				802C0829253B3D5700913021 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */,
+				809776BF270A43260000BF6F /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
 			);
 			productRefGroup = 805A174322C53ADB00E1B4E2 /* Products */;
 			projectDirPath = "";
@@ -2718,6 +2722,14 @@
 				version = 4.2.0;
 			};
 		};
+		809776BF270A43260000BF6F /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mapbox/mapbox-maps-ios";
+			requirement = {
+				kind = exactVersion;
+				version = "10.0.0-rc.9";
+			};
+		};
 		80D0CE7F235B6D95002A3EFD /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/malcommac/SwiftDate";
@@ -2764,6 +2776,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 802C0829253B3D5700913021 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
 			productName = AppCenterAnalytics;
+		};
+		809776C0270A43270000BF6F /* MapboxMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 809776BF270A43260000BF6F /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */;
+			productName = MapboxMaps;
 		};
 		80D0CE80235B6D95002A3EFD /* SwiftDate */ = {
 			isa = XCSwiftPackageProductDependency;
