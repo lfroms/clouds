@@ -132,10 +132,6 @@
 		8080326A256B60BD0098D959 /* CloudsAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 802739B925157EC500E02891 /* CloudsAPI.framework */; };
 		8080327B256B62C80098D959 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805D7BD922D1243F00A12C4D /* Colors.xcassets */; };
 		8080327F256B62CF0098D959 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805D7BDB22D1244800A12C4D /* Images.xcassets */; };
-		8083A81A24494AFB00CE2E5E /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8083A81824494AFB00CE2E5E /* Mapbox.framework */; };
-		8083A81B24494AFB00CE2E5E /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8083A81824494AFB00CE2E5E /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8083A81C24494AFB00CE2E5E /* MapboxMobileEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8083A81924494AFB00CE2E5E /* MapboxMobileEvents.framework */; };
-		8083A81D24494AFB00CE2E5E /* MapboxMobileEvents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8083A81924494AFB00CE2E5E /* MapboxMobileEvents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8083A820244A295300CE2E5E /* WMSResourceURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083A81F244A295300CE2E5E /* WMSResourceURL.swift */; };
 		8083A822244A3E8600CE2E5E /* EnvironmentCanadaRasterTileSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083A821244A3E8600CE2E5E /* EnvironmentCanadaRasterTileSource.swift */; };
 		8083A824244A579C00CE2E5E /* RadarTimestamps.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8083A823244A579C00CE2E5E /* RadarTimestamps.graphql */; };
@@ -287,9 +283,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8083A81D24494AFB00CE2E5E /* MapboxMobileEvents.framework in Embed Frameworks */,
 				80273A34251592AF00E02891 /* CloudsAPI.framework in Embed Frameworks */,
-				8083A81B24494AFB00CE2E5E /* Mapbox.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,12 +548,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8083A81C24494AFB00CE2E5E /* MapboxMobileEvents.framework in Frameworks */,
 				80273A33251592AF00E02891 /* CloudsAPI.framework in Frameworks */,
 				802C082B253B3D5700913021 /* AppCenterAnalytics in Frameworks */,
 				80273AA32515A13400E02891 /* Bugsnag in Frameworks */,
 				80D0CE81235B6D95002A3EFD /* SwiftDate in Frameworks */,
-				8083A81A24494AFB00CE2E5E /* Mapbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1769,7 +1761,6 @@
 				805A173F22C53ADB00E1B4E2 /* Frameworks */,
 				805A174022C53ADB00E1B4E2 /* Resources */,
 				8083A812244949A800CE2E5E /* Embed Frameworks */,
-				8083A813244949DF00CE2E5E /* Copy Carthage Frameworks */,
 				80D91D69256AFD1A007CA020 /* Embed App Extensions */,
 			);
 			buildRules = (
@@ -1997,26 +1988,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "CONFIG_FILE_BASE_NAME=\"Secrets\"\n\nCONFIG_FILE_NAME=${CONFIG_FILE_BASE_NAME}.plist\nSAMPLE_CONFIG_FILE_NAME=${CONFIG_FILE_BASE_NAME}Sample.plist\n\nCONFIG_FILE_PATH=$SRCROOT/$PRODUCT_NAME/$CONFIG_FILE_NAME\nSAMPLE_CONFIG_FILE_PATH=$SRCROOT/$PRODUCT_NAME/$SAMPLE_CONFIG_FILE_NAME\n\nif [ -f \"$CONFIG_FILE_PATH\" ]; then\n  echo \"$CONFIG_FILE_PATH exists.\"\nelse\n  echo \"$CONFIG_FILE_PATH does not exist, copying sample\"\n  cp -v \"${SAMPLE_CONFIG_FILE_PATH}\" \"${CONFIG_FILE_PATH}\"\nfi\n";
-		};
-		8083A813244949DF00CE2E5E /* Copy Carthage Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Mapbox.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/MapboxMobileEvents.framework",
-			);
-			name = "Copy Carthage Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
