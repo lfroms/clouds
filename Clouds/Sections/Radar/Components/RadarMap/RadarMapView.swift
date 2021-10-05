@@ -35,6 +35,8 @@ struct RadarMapView: UIViewRepresentable {
         mapView.ornaments.options.scaleBar.margins = CGPoint(x: edgeContentInset, y: topContentInset)
         mapView.ornaments.options.scaleBar.visibility = .visible
         mapView.ornaments.options.compass.margins = CGPoint(x: edgeContentInset, y: topContentInset)
+        mapView.ornaments.options.logo.margins = CGPoint(x: 16, y: 16)
+        mapView.ornaments.options.attributionButton.margins = CGPoint(x: 8, y: 16)
 
         mapView.camera.options.maxZoom = 7
         mapView.location.options.puckType = .puck2D()
@@ -65,28 +67,16 @@ struct RadarMapView: UIViewRepresentable {
     }
 
     private func addRasterSourceLayers(for style: Style) {
-        guard let currentDate = dates[safe: currentImage] else {
-            return
+        if let currentDate = currentDate {
+            addTileSource(for: currentDate, to: style)
         }
 
-        if dataSource == .environmentCanada {
-            let tileSource = EnvironmentCanadaRasterTileSource(id: identifier(for: currentDate), date: currentDate)
-            addTileSource(tileSource, for: currentDate, to: style)
-
-            if let nextDate = nextDate {
-                let tileSource = EnvironmentCanadaRasterTileSource(id: identifier(for: nextDate), date: nextDate)
-                addTileSource(tileSource, for: nextDate, to: style)
-            }
+        if let nextDate = nextDate {
+            addTileSource(for: nextDate, to: style)
         }
 
-        if dataSource == .rainviewer {
-            let tileSource = RainviewerRasterTileSource(id: identifier(for: currentDate), date: currentDate)
-            addTileSource(tileSource, for: currentDate, to: style)
-
-            if let nextDate = nextDate {
-                let tileSource = RainviewerRasterTileSource(id: identifier(for: nextDate), date: nextDate)
-                addTileSource(tileSource, for: nextDate, to: style)
-            }
+        if let previousDate = previousDate {
+            addTileSource(for: previousDate, to: style)
         }
     }
 
@@ -104,9 +94,20 @@ struct RadarMapView: UIViewRepresentable {
         }
     }
 
-    private func addTileSource(_ tileSource: TileSource, for date: Date, to style: Style) {
-        try? style.addSource(tileSource.source, id: identifier(for: date))
-        try? style.addLayer(tileSource.layer, layerPosition: .below("puck"))
+    private func addTileSource(for date: Date, to style: Style) {
+        let id = identifier(for: date)
+
+        if dataSource == .environmentCanada {
+            let tileSource = EnvironmentCanadaRasterTileSource(id: id, date: date)
+            try? style.addSource(tileSource.source, id: id)
+            try? style.addLayer(tileSource.layer, layerPosition: .below("puck"))
+        }
+
+        if dataSource == .rainviewer {
+            let tileSource = RainviewerRasterTileSource(id: id, date: date)
+            try? style.addSource(tileSource.source, id: id)
+            try? style.addLayer(tileSource.layer, layerPosition: .below("puck"))
+        }
     }
 
     private func radarLayerIdentifiers(for style: Style) -> [LayerInfo] {
@@ -115,8 +116,16 @@ struct RadarMapView: UIViewRepresentable {
         }
     }
 
+    private var previousDate: Date? {
+        dates[safe: currentImage - 1] ?? dates.last
+    }
+
+    private var currentDate: Date? {
+        dates[safe: currentImage]
+    }
+
     private var nextDate: Date? {
-        dates[safe: currentImage + 1] ?? dates[safe: 0]
+        dates[safe: currentImage + 1] ?? dates.first
     }
 
     private func identifier(for date: Date) -> String {
