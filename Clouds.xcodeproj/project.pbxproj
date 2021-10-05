@@ -79,6 +79,7 @@
 		8048092E23FB4BC30019ACC2 /* WeatherLocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8048092D23FB4BC30019ACC2 /* WeatherLocationItem.swift */; };
 		804AB0C324562070000CA915 /* AlertListCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AB0C224562070000CA915 /* AlertListCloseButton.swift */; };
 		804AB0C5245629D7000CA915 /* SystemAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AB0C4245629D7000CA915 /* SystemAlert.swift */; };
+		805019B1270BEBA10032677E /* TileSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805019B0270BEBA10032677E /* TileSource.swift */; };
 		8050327F22D25C7500D376C3 /* HighLowStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050327E22D25C7500D376C3 /* HighLowStack.swift */; };
 		80504F782332DB4700DB4FAD /* HourlyForecastDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80504F772332DB4700DB4FAD /* HourlyForecastDetail.swift */; };
 		8056EE05244E88F6004D0250 /* LocationItemDeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056EE04244E88F6004D0250 /* LocationItemDeleteButton.swift */; };
@@ -132,10 +133,6 @@
 		8080326A256B60BD0098D959 /* CloudsAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 802739B925157EC500E02891 /* CloudsAPI.framework */; };
 		8080327B256B62C80098D959 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805D7BD922D1243F00A12C4D /* Colors.xcassets */; };
 		8080327F256B62CF0098D959 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805D7BDB22D1244800A12C4D /* Images.xcassets */; };
-		8083A81A24494AFB00CE2E5E /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8083A81824494AFB00CE2E5E /* Mapbox.framework */; };
-		8083A81B24494AFB00CE2E5E /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8083A81824494AFB00CE2E5E /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8083A81C24494AFB00CE2E5E /* MapboxMobileEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8083A81924494AFB00CE2E5E /* MapboxMobileEvents.framework */; };
-		8083A81D24494AFB00CE2E5E /* MapboxMobileEvents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8083A81924494AFB00CE2E5E /* MapboxMobileEvents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8083A820244A295300CE2E5E /* WMSResourceURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083A81F244A295300CE2E5E /* WMSResourceURL.swift */; };
 		8083A822244A3E8600CE2E5E /* EnvironmentCanadaRasterTileSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083A821244A3E8600CE2E5E /* EnvironmentCanadaRasterTileSource.swift */; };
 		8083A824244A579C00CE2E5E /* RadarTimestamps.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8083A823244A579C00CE2E5E /* RadarTimestamps.graphql */; };
@@ -158,6 +155,7 @@
 		8095A2F6244BA50B008C494F /* RadarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095A2F5244BA50B008C494F /* RadarService.swift */; };
 		8095A2F8244BA59D008C494F /* RadarMapViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095A2F7244BA59D008C494F /* RadarMapViewContainer.swift */; };
 		8095A2FB244BA9D9008C494F /* RadarAnimationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095A2FA244BA9D9008C494F /* RadarAnimationTimer.swift */; };
+		809776C1270A43270000BF6F /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 809776C0270A43270000BF6F /* MapboxMaps */; };
 		809833B922F678BE001C1590 /* Weather.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 809833B822F678BE001C1590 /* Weather.graphql */; };
 		80985F5A240E1F1D00452D08 /* UnixTimestampTypealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80985F59240E1F1D00452D08 /* UnixTimestampTypealias.swift */; };
 		809AC4332423F72F009B7045 /* RawLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809AC4322423F72F009B7045 /* RawLocation.swift */; };
@@ -185,7 +183,6 @@
 		80C395AD23789FDD0004B71D /* RoundedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */; };
 		80C395AF2378A1DA0004B71D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395AE2378A1DA0004B71D /* AppState.swift */; };
 		80C777CD23FB2BEC004ABB2E /* LocationFavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777CC23FB2BEC004ABB2E /* LocationFavoritesService.swift */; };
-		80C777D323FB3415004ABB2E /* CLLocationCoordinate2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777D223FB3415004ABB2E /* CLLocationCoordinate2D.swift */; };
 		80C777DA23FB48C9004ABB2E /* LocationItemLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777D923FB48C9004ABB2E /* LocationItemLabels.swift */; };
 		80C777DC23FB4938004ABB2E /* LocationItemIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777DB23FB4938004ABB2E /* LocationItemIcon.swift */; };
 		80C777E023FB4A9B004ABB2E /* LocationItemTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777DF23FB4A9B004ABB2E /* LocationItemTemperature.swift */; };
@@ -287,9 +284,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8083A81D24494AFB00CE2E5E /* MapboxMobileEvents.framework in Embed Frameworks */,
 				80273A34251592AF00E02891 /* CloudsAPI.framework in Embed Frameworks */,
-				8083A81B24494AFB00CE2E5E /* Mapbox.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,6 +367,7 @@
 		8048092D23FB4BC30019ACC2 /* WeatherLocationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocationItem.swift; sourceTree = "<group>"; };
 		804AB0C224562070000CA915 /* AlertListCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertListCloseButton.swift; sourceTree = "<group>"; };
 		804AB0C4245629D7000CA915 /* SystemAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemAlert.swift; sourceTree = "<group>"; };
+		805019B0270BEBA10032677E /* TileSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileSource.swift; sourceTree = "<group>"; };
 		8050327E22D25C7500D376C3 /* HighLowStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLowStack.swift; sourceTree = "<group>"; };
 		80504F772332DB4700DB4FAD /* HourlyForecastDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastDetail.swift; sourceTree = "<group>"; };
 		8056EE04244E88F6004D0250 /* LocationItemDeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationItemDeleteButton.swift; sourceTree = "<group>"; };
@@ -424,8 +420,6 @@
 		80803240256B60610098D959 /* WeatherEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherEntry.swift; sourceTree = "<group>"; };
 		80803241256B60610098D959 /* WidgetLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetLocationManager.swift; sourceTree = "<group>"; };
 		80803253256B607E0098D959 /* WidgetWeather.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = WidgetWeather.graphql; sourceTree = "<group>"; };
-		8083A81824494AFB00CE2E5E /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapbox.framework; path = Carthage/Build/iOS/Mapbox.framework; sourceTree = "<group>"; };
-		8083A81924494AFB00CE2E5E /* MapboxMobileEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapboxMobileEvents.framework; path = Carthage/Build/iOS/MapboxMobileEvents.framework; sourceTree = "<group>"; };
 		8083A81F244A295300CE2E5E /* WMSResourceURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMSResourceURL.swift; sourceTree = "<group>"; };
 		8083A821244A3E8600CE2E5E /* EnvironmentCanadaRasterTileSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentCanadaRasterTileSource.swift; sourceTree = "<group>"; };
 		8083A823244A579C00CE2E5E /* RadarTimestamps.graphql */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = text; path = RadarTimestamps.graphql; sourceTree = "<group>"; tabWidth = 4; };
@@ -475,7 +469,6 @@
 		80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerShape.swift; sourceTree = "<group>"; };
 		80C395AE2378A1DA0004B71D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		80C777CC23FB2BEC004ABB2E /* LocationFavoritesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFavoritesService.swift; sourceTree = "<group>"; };
-		80C777D223FB3415004ABB2E /* CLLocationCoordinate2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationCoordinate2D.swift; sourceTree = "<group>"; };
 		80C777D923FB48C9004ABB2E /* LocationItemLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationItemLabels.swift; sourceTree = "<group>"; };
 		80C777DB23FB4938004ABB2E /* LocationItemIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationItemIcon.swift; sourceTree = "<group>"; };
 		80C777DF23FB4A9B004ABB2E /* LocationItemTemperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationItemTemperature.swift; sourceTree = "<group>"; };
@@ -554,12 +547,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8083A81C24494AFB00CE2E5E /* MapboxMobileEvents.framework in Frameworks */,
 				80273A33251592AF00E02891 /* CloudsAPI.framework in Frameworks */,
 				802C082B253B3D5700913021 /* AppCenterAnalytics in Frameworks */,
 				80273AA32515A13400E02891 /* Bugsnag in Frameworks */,
 				80D0CE81235B6D95002A3EFD /* SwiftDate in Frameworks */,
-				8083A81A24494AFB00CE2E5E /* Mapbox.framework in Frameworks */,
+				809776C1270A43270000BF6F /* MapboxMaps in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1109,8 +1101,6 @@
 		8083A80B244949A800CE2E5E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8083A81824494AFB00CE2E5E /* Mapbox.framework */,
-				8083A81924494AFB00CE2E5E /* MapboxMobileEvents.framework */,
 				80D91D59256AFD17007CA020 /* WidgetKit.framework */,
 				80D91D5B256AFD18007CA020 /* SwiftUI.framework */,
 			);
@@ -1123,6 +1113,7 @@
 				8083A81F244A295300CE2E5E /* WMSResourceURL.swift */,
 				8083A825244A5CF700CE2E5E /* RainviewerRasterTileSource.swift */,
 				8083A821244A3E8600CE2E5E /* EnvironmentCanadaRasterTileSource.swift */,
+				805019B0270BEBA10032677E /* TileSource.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -1551,7 +1542,6 @@
 				80B5E7A123FA3DAF001729E0 /* UIStackView+AddArrangedSubviews.swift */,
 				80C1693523FA435D00F22812 /* CLLocationCoordinate2D+Codable.swift */,
 				800420D323FB11BB00C2879A /* String+Empty.swift */,
-				80C777D223FB3415004ABB2E /* CLLocationCoordinate2D.swift */,
 				80FB6C682408772C0026DD83 /* NSObject+Debounce.swift */,
 				80625422240C606A00638C2F /* UIScrollView+Clear.swift */,
 				8034A1A3240E0E6300DF02A1 /* CGFloat+One.swift */,
@@ -1769,7 +1759,6 @@
 				805A173F22C53ADB00E1B4E2 /* Frameworks */,
 				805A174022C53ADB00E1B4E2 /* Resources */,
 				8083A812244949A800CE2E5E /* Embed Frameworks */,
-				8083A813244949DF00CE2E5E /* Copy Carthage Frameworks */,
 				80D91D69256AFD1A007CA020 /* Embed App Extensions */,
 			);
 			buildRules = (
@@ -1783,6 +1772,7 @@
 				80D0CE80235B6D95002A3EFD /* SwiftDate */,
 				80273AA22515A13400E02891 /* Bugsnag */,
 				802C082A253B3D5700913021 /* AppCenterAnalytics */,
+				809776C0270A43270000BF6F /* MapboxMaps */,
 			);
 			productName = Forecast;
 			productReference = 805A174222C53ADB00E1B4E2 /* Clouds.app */;
@@ -1872,6 +1862,7 @@
 				80F4481E245B60FF007AC77B /* XCRemoteSwiftPackageReference "swifter" */,
 				8016D2F024EC687200FD4A5F /* XCRemoteSwiftPackageReference "bugsnag-cocoa" */,
 				802C0829253B3D5700913021 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */,
+				809776BF270A43260000BF6F /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
 			);
 			productRefGroup = 805A174322C53ADB00E1B4E2 /* Products */;
 			projectDirPath = "";
@@ -1998,26 +1989,6 @@
 			shellPath = /bin/sh;
 			shellScript = "CONFIG_FILE_BASE_NAME=\"Secrets\"\n\nCONFIG_FILE_NAME=${CONFIG_FILE_BASE_NAME}.plist\nSAMPLE_CONFIG_FILE_NAME=${CONFIG_FILE_BASE_NAME}Sample.plist\n\nCONFIG_FILE_PATH=$SRCROOT/$PRODUCT_NAME/$CONFIG_FILE_NAME\nSAMPLE_CONFIG_FILE_PATH=$SRCROOT/$PRODUCT_NAME/$SAMPLE_CONFIG_FILE_NAME\n\nif [ -f \"$CONFIG_FILE_PATH\" ]; then\n  echo \"$CONFIG_FILE_PATH exists.\"\nelse\n  echo \"$CONFIG_FILE_PATH does not exist, copying sample\"\n  cp -v \"${SAMPLE_CONFIG_FILE_PATH}\" \"${CONFIG_FILE_PATH}\"\nfi\n";
 		};
-		8083A813244949DF00CE2E5E /* Copy Carthage Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Mapbox.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/MapboxMobileEvents.framework",
-			);
-			name = "Copy Carthage Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2078,6 +2049,7 @@
 				80734AFE2410A512000693F4 /* GridStack.swift in Sources */,
 				804AB0C324562070000CA915 /* AlertListCloseButton.swift in Sources */,
 				8084FD98241D3903006A57DC /* CurrentLocationGroupContainer.swift in Sources */,
+				805019B1270BEBA10032677E /* TileSource.swift in Sources */,
 				8048092E23FB4BC30019ACC2 /* WeatherLocationItem.swift in Sources */,
 				806A5BF224144EC40093361D /* LocationPickerState.swift in Sources */,
 				8094307F24561459003632EC /* AlertList.swift in Sources */,
@@ -2213,7 +2185,6 @@
 				80AAC0212427F09F00285C6D /* DayNightSwitchContainer.swift in Sources */,
 				804AB0C5245629D7000CA915 /* SystemAlert.swift in Sources */,
 				805D6A152410572F002DEBAC /* TabPreferenceKey.swift in Sources */,
-				80C777D323FB3415004ABB2E /* CLLocationCoordinate2D.swift in Sources */,
 				80C8162A2363E2D700D33669 /* OmniBarAuxiliaryButton.swift in Sources */,
 				80F07DDE23FB8012005C43A3 /* AnimationPreset.swift in Sources */,
 				80EF84F0240F586A00D4037B /* HourlyForecastContainer.swift in Sources */,
@@ -2530,10 +2501,6 @@
 				DEVELOPMENT_ASSET_PATHS = "Clouds/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8P8574Z65P;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = Clouds/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2541,7 +2508,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.5.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.romsicki.clouds;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.romsicki.clouds-dev";
 				PRODUCT_NAME = Clouds;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -2561,10 +2528,6 @@
 				DEVELOPMENT_ASSET_PATHS = "Clouds/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8P8574Z65P;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = Clouds/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2598,7 +2561,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.5.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.romsicki.clouds.CloudsWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.romsicki.clouds-dev.CloudsWidget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -2747,6 +2710,14 @@
 				version = 4.2.0;
 			};
 		};
+		809776BF270A43260000BF6F /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mapbox/mapbox-maps-ios";
+			requirement = {
+				kind = exactVersion;
+				version = "10.0.0-rc.9";
+			};
+		};
 		80D0CE7F235B6D95002A3EFD /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/malcommac/SwiftDate";
@@ -2793,6 +2764,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 802C0829253B3D5700913021 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
 			productName = AppCenterAnalytics;
+		};
+		809776C0270A43270000BF6F /* MapboxMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 809776BF270A43260000BF6F /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */;
+			productName = MapboxMaps;
 		};
 		80D0CE80235B6D95002A3EFD /* SwiftDate */ = {
 			isa = XCSwiftPackageProductDependency;

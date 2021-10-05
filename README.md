@@ -71,13 +71,7 @@ Then, navigate into the cloned repository:
 cd clouds
 ```
 
-If it's your first time contributing, you'll need to register for a Mapbox account and [create a new access token](https://docs.mapbox.com/ios/maps/overview/#configure-credentials) and add it to your `~/.netrc` file. The article linked describes how to create such a file and how to format it. This secret is automatically configured in GitHub Actions runs.
-
-Clouds primarily uses Swift Package Manager to manage dependencies. However, some dependences (namely the [Mapbox SDK](https://docs.mapbox.com/ios/maps/overview/)) are installed using [Carthage](https://github.com/Carthage/Carthage). If you don't already have Carthage installed, you should install it before proceeding. Once Carthage is installed, run the following command to install the dependencies. Make sure you include the `--use-netrc` option to use the credentials you configured earlier.
-
-```sh
-carthage bootstrap --platform ios --use-netrc
-```
+If it's your first time contributing, you'll need to register for a Mapbox account and [create a new access token](https://docs.mapbox.com/ios/maps/overview/#configure-credentials) and add it to your `~/.netrc` file. The article linked describes how to create such a file and how to format it. Setting up this credential is _required_ to be able to download the Mapbox SDK Swift Package Manager package. This secret is automatically configured in GitHub Actions runs.
 
 You can then open the Xcode project (named `Clouds.xcodeproj`) in Xcode.
 

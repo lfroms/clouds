@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Clouds</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -22,8 +24,6 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>MGLMapboxAccessToken</key>
-	<string>pk.eyJ1IjoibGZyb21zIiwiYSI6ImNqbTNza2g2dDFudnoza281bWFpZjV6cXgifQ.lpNCGlnjijpFLyQq04lrlQ</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>$(PRODUCT_NAME) can automatically fetch the most accurate weather data using your current location.</string>
 	<key>UIApplicationSceneManifest</key>

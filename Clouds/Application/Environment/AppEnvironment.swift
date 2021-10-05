@@ -40,4 +40,8 @@ final class AppEnvironment {
     static var bugsnagApiKey: String? {
         secrets?.object(forKey: "BugsnagKey") as? String
     }
+
+    static var mapboxApiKey: String? {
+        secrets?.object(forKey: "MapboxKey") as? String
+    }
 }

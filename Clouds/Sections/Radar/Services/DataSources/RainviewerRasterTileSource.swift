@@ -7,15 +7,37 @@
 //
 
 import Foundation
-import Mapbox
+import MapboxMaps
 
-final class RainviewerRasterTileSource: MGLRasterTileSource {
-    convenience init(identifier: String, date: Date) {
-        let urlTemplate = Self.urlTemplate(for: date)
-        self.init(identifier: identifier, tileURLTemplates: [urlTemplate], options: [.tileSize: 512])
+final class RainviewerRasterTileSource: TileSource {
+    private let id: String
+    private let date: Date
+
+    init(id: String, date: Date) {
+        self.id = id
+        self.date = date
     }
 
-    private static func urlTemplate(for date: Date) -> String {
+    var layer: RasterLayer {
+        var layer = RasterLayer(id: id)
+        layer.source = id
+        layer.rasterOpacity = .constant(0)
+        layer.rasterOpacityTransition = StyleTransition(duration: 0, delay: 0)
+
+        return layer
+    }
+
+    var source: RasterSource {
+        var source = RasterSource()
+        source.tiles = [urlTemplate(for: date)]
+        source.attribution = "RainViewer"
+        source.tileSize = 512
+        source.volatile = true
+
+        return source
+    }
+
+    private func urlTemplate(for date: Date) -> String {
         let timestamp = Int(date.timeIntervalSince1970)
         return "https://tilecache.rainviewer.com/v2/radar/\(timestamp)/512/{z}/{x}/{y}/4/0_0.png"
     }
