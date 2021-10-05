@@ -182,7 +182,6 @@
 		80C395AD23789FDD0004B71D /* RoundedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */; };
 		80C395AF2378A1DA0004B71D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C395AE2378A1DA0004B71D /* AppState.swift */; };
 		80C777CD23FB2BEC004ABB2E /* LocationFavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777CC23FB2BEC004ABB2E /* LocationFavoritesService.swift */; };
-		80C777D323FB3415004ABB2E /* CLLocationCoordinate2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777D223FB3415004ABB2E /* CLLocationCoordinate2D.swift */; };
 		80C777DA23FB48C9004ABB2E /* LocationItemLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777D923FB48C9004ABB2E /* LocationItemLabels.swift */; };
 		80C777DC23FB4938004ABB2E /* LocationItemIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777DB23FB4938004ABB2E /* LocationItemIcon.swift */; };
 		80C777E023FB4A9B004ABB2E /* LocationItemTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C777DF23FB4A9B004ABB2E /* LocationItemTemperature.swift */; };
@@ -419,8 +418,6 @@
 		80803240256B60610098D959 /* WeatherEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherEntry.swift; sourceTree = "<group>"; };
 		80803241256B60610098D959 /* WidgetLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetLocationManager.swift; sourceTree = "<group>"; };
 		80803253256B607E0098D959 /* WidgetWeather.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = WidgetWeather.graphql; sourceTree = "<group>"; };
-		8083A81824494AFB00CE2E5E /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapbox.framework; path = Carthage/Build/iOS/Mapbox.framework; sourceTree = "<group>"; };
-		8083A81924494AFB00CE2E5E /* MapboxMobileEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapboxMobileEvents.framework; path = Carthage/Build/iOS/MapboxMobileEvents.framework; sourceTree = "<group>"; };
 		8083A81F244A295300CE2E5E /* WMSResourceURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMSResourceURL.swift; sourceTree = "<group>"; };
 		8083A821244A3E8600CE2E5E /* EnvironmentCanadaRasterTileSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentCanadaRasterTileSource.swift; sourceTree = "<group>"; };
 		8083A823244A579C00CE2E5E /* RadarTimestamps.graphql */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = text; path = RadarTimestamps.graphql; sourceTree = "<group>"; tabWidth = 4; };
@@ -470,7 +467,6 @@
 		80C395AC23789FDD0004B71D /* RoundedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerShape.swift; sourceTree = "<group>"; };
 		80C395AE2378A1DA0004B71D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		80C777CC23FB2BEC004ABB2E /* LocationFavoritesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFavoritesService.swift; sourceTree = "<group>"; };
-		80C777D223FB3415004ABB2E /* CLLocationCoordinate2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationCoordinate2D.swift; sourceTree = "<group>"; };
 		80C777D923FB48C9004ABB2E /* LocationItemLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationItemLabels.swift; sourceTree = "<group>"; };
 		80C777DB23FB4938004ABB2E /* LocationItemIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationItemIcon.swift; sourceTree = "<group>"; };
 		80C777DF23FB4A9B004ABB2E /* LocationItemTemperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationItemTemperature.swift; sourceTree = "<group>"; };
@@ -1103,8 +1099,6 @@
 		8083A80B244949A800CE2E5E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8083A81824494AFB00CE2E5E /* Mapbox.framework */,
-				8083A81924494AFB00CE2E5E /* MapboxMobileEvents.framework */,
 				80D91D59256AFD17007CA020 /* WidgetKit.framework */,
 				80D91D5B256AFD18007CA020 /* SwiftUI.framework */,
 			);
@@ -1545,7 +1539,6 @@
 				80B5E7A123FA3DAF001729E0 /* UIStackView+AddArrangedSubviews.swift */,
 				80C1693523FA435D00F22812 /* CLLocationCoordinate2D+Codable.swift */,
 				800420D323FB11BB00C2879A /* String+Empty.swift */,
-				80C777D223FB3415004ABB2E /* CLLocationCoordinate2D.swift */,
 				80FB6C682408772C0026DD83 /* NSObject+Debounce.swift */,
 				80625422240C606A00638C2F /* UIScrollView+Clear.swift */,
 				8034A1A3240E0E6300DF02A1 /* CGFloat+One.swift */,
@@ -2188,7 +2181,6 @@
 				80AAC0212427F09F00285C6D /* DayNightSwitchContainer.swift in Sources */,
 				804AB0C5245629D7000CA915 /* SystemAlert.swift in Sources */,
 				805D6A152410572F002DEBAC /* TabPreferenceKey.swift in Sources */,
-				80C777D323FB3415004ABB2E /* CLLocationCoordinate2D.swift in Sources */,
 				80C8162A2363E2D700D33669 /* OmniBarAuxiliaryButton.swift in Sources */,
 				80F07DDE23FB8012005C43A3 /* AnimationPreset.swift in Sources */,
 				80EF84F0240F586A00D4037B /* HourlyForecastContainer.swift in Sources */,
@@ -2505,10 +2497,6 @@
 				DEVELOPMENT_ASSET_PATHS = "Clouds/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8P8574Z65P;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = Clouds/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2536,10 +2524,6 @@
 				DEVELOPMENT_ASSET_PATHS = "Clouds/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8P8574Z65P;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = Clouds/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (

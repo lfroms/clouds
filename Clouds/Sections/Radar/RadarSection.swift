@@ -17,8 +17,7 @@ struct RadarSection: View {
         VStack(alignment: .leading, spacing: 12) {
             RadarMapViewContainer(
                 currentImage: $radarService.currentImageIndex,
-                dates: radarService.dates,
-                shouldLazyLoadImages: radarService.shouldLazyLoadImages
+                dates: radarService.dates
             )
 
             RadarControls(

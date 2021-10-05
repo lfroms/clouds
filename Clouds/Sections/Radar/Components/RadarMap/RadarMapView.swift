@@ -7,7 +7,7 @@
 //
 
 import CloudsAPI
-import Mapbox
+import MapboxMaps
 import SwiftUI
 
 struct RadarMapView: UIViewRepresentable {
@@ -16,156 +16,103 @@ struct RadarMapView: UIViewRepresentable {
     var overlayOpacity: Double
     var dataSource: CloudsAPI.RadarProvider
     var activeLocationCoordinates: CLLocationCoordinate2D?
-    var lazy: Bool = false
 
-    @State private var loaded: Bool = false
+    // MARK: - UIViewRepresentable
 
-    func makeUIView(context: Context) -> MGLMapView {
-        let url = URL(string: "mapbox://styles/lfroms/ck94ggph90nn61invox6h6207")
-        let mapView = MGLMapView()
-        mapView.translatesAutoresizingMaskIntoConstraints = true
-        mapView.styleURL = url
-
-        if let currentCenter = activeLocationCoordinates {
-            mapView.setCenter(currentCenter, zoomLevel: 5, animated: false)
-        }
-
-        mapView.contentInset = UIEdgeInsets(
-            top: Dimension.Header.omniBarHeight + Dimension.System.topSafeMargin + (2 * Dimension.Global.padding),
-            left: 8,
-            bottom: 8,
-            right: 8
+    func makeUIView(context: Context) -> MapView {
+        let mapInitOptions = MapInitOptions(
+            cameraOptions: CameraOptions(
+                center: activeLocationCoordinates,
+                zoom: 5
+            ),
+            styleURI: StyleURI(rawValue: "mapbox://styles/lfroms/ck94ggph90nn61invox6h6207")!
         )
 
-        mapView.showsScale = true
-        mapView.showsUserLocation = true
-        mapView.maximumZoomLevel = 7
-        mapView.prefetchesTiles = false
-        mapView.attributionButton.tintColor = .gray
-        mapView.delegate = context.coordinator
+        let mapView = MapView(frame: .zero, mapInitOptions: mapInitOptions)
+        mapView.translatesAutoresizingMaskIntoConstraints = true
+
+        let topContentInset: CGFloat = Dimension.Header.omniBarHeight + Dimension.System.topSafeMargin + (2 * Dimension.Global.padding)
+        let edgeContentInset: CGFloat = Dimension.Global.padding
+
+        mapView.ornaments.options.scaleBar.margins = CGPoint(x: edgeContentInset, y: topContentInset)
+        mapView.ornaments.options.scaleBar.visibility = .visible
+        mapView.ornaments.options.compass.margins = CGPoint(x: edgeContentInset, y: topContentInset)
+
+        mapView.camera.options.maxZoom = 7
+        mapView.location.options.puckType = .puck2D()
 
         return mapView
     }
 
-    func updateUIView(_ mapView: MGLMapView, context: Context) {
-        guard loaded else {
-            return
-        }
+    func updateUIView(_ mapView: MapView, context: Context) {
+        let style = mapView.mapboxMap.style
 
-        if dataSource != context.coordinator.lastDataSource {
-            mapView.style?.layers.removeAll(where: { $0.identifier.contains("radar-") })
-            context.coordinator.lastDataSource = dataSource
-        }
+        updateCameraOnLocationChange(in: mapView, context: context)
+        addRasterSourceLayers(for: style)
+        updateOpacityOfActiveLayer(for: style)
+    }
 
+    // MARK: - Custom functions
+
+    private func updateCameraOnLocationChange(in mapView: MapView, context: Context) {
         if let newLocation = activeLocationCoordinates, newLocation != context.coordinator.lastLocation {
-            mapView.setCenter(newLocation, animated: true)
+            mapView.camera.ease(to: CameraOptions(center: newLocation), duration: 0.4)
             context.coordinator.lastLocation = newLocation
         }
-
-        cleanUpOldLayers(in: mapView)
-
-        if lazy, dates.count > 0 {
-            addRasterSource(for: dates[currentImage], to: mapView)
-        } else {
-            addRasterSources(for: dates, to: mapView)
-        }
-
-        showActiveRasterLayer(in: mapView)
     }
 
-    private func cleanUpOldLayers(in mapView: MGLMapView) {
-        let identifiersToKeep = dates.compactMap { identifier(for: $0) }
+    private func addRasterSourceLayers(for style: Style) {
+        if dataSource == .environmentCanada {
+            dates.forEach { date in
+                let tileSet = EnvironmentCanadaRasterTileSet(id: identifier(for: date), date: date)
 
-        mapView.style?.sources.forEach { source in
-            if source.identifier.contains("radar"), !identifiersToKeep.contains(source.identifier) {
-                mapView.style?.removeSource(source)
+                try? style.addSource(tileSet.source, id: identifier(for: date))
+                try? style.addLayer(tileSet.layer)
             }
         }
 
-        mapView.style?.layers.removeAll {
-            $0.identifier.contains("radar") && !identifiersToKeep.contains($0.identifier)
-        }
-    }
+        if dataSource == .rainviewer {
+            dates.forEach { date in
+                let tileSet = RainviewerRasterTileSource(id: identifier(for: date), date: date)
 
-    private func addRasterSource(for date: Date, to mapView: MGLMapView, visibleInitially: Bool = true) {
-        let layerIdentifier = identifier(for: date)
-
-        if mapView.style?.source(withIdentifier: layerIdentifier) == nil {
-            switch dataSource {
-            case .environmentCanada:
-                let source = EnvironmentCanadaRasterTileSource(identifier: layerIdentifier, date: date)
-                mapView.style?.addSource(source)
-            default:
-                let source = RainviewerRasterTileSource(identifier: layerIdentifier, date: date)
-                mapView.style?.addSource(source)
+                try? style.addSource(tileSet.source, id: identifier(for: date))
+                try? style.addLayer(tileSet.layer)
             }
         }
-
-        if mapView.style?.layer(withIdentifier: layerIdentifier) == nil,
-            let source = mapView.style?.source(withIdentifier: layerIdentifier) {
-            let rasterLayer = MGLRasterStyleLayer(identifier: layerIdentifier, source: source)
-            rasterLayer.rasterOpacity = NSExpression(forConstantValue: visibleInitially ? overlayOpacity : 0)
-            rasterLayer.rasterOpacityTransition = MGLTransition(duration: 0, delay: 0)
-
-            mapView.style?.addLayer(rasterLayer)
-        }
     }
 
-    private func addRasterSources(for dates: [Date], to mapView: MGLMapView) {
-        dates.enumerated().reversed().forEach { index, date in
-            addRasterSource(for: date, to: mapView, visibleInitially: index == currentImage)
-        }
-    }
-
-    private func showActiveRasterLayer(in mapView: MGLMapView) {
-        guard let currentTimestamp = dates[safe: currentImage] else {
+    private func updateOpacityOfActiveLayer(for style: Style) {
+        guard let currentDate = dates[safe: currentImage] else {
             return
         }
 
-        let currentIdentifier = identifier(for: currentTimestamp)
+        radarLayerIdentifiers(for: style).forEach { layerInfo in
+            try? style.updateLayer(withId: layerInfo.id) { (layer: inout RasterLayer) in
+                let layerVisible = layerInfo.id == identifier(for: currentDate)
 
-        if let currentLayer = rasterLayer(withIdentifier: currentIdentifier, in: mapView) {
-            currentLayer.rasterOpacity = NSExpression(forConstantValue: overlayOpacity)
-            hideAllLayersExcept(currentLayer, in: mapView)
+                layer.rasterOpacity = .constant(layerVisible ? overlayOpacity : 0)
+            }
         }
     }
 
-    private func rasterLayer(withIdentifier identifier: String, in mapView: MGLMapView) -> MGLRasterStyleLayer? {
-        mapView.style?.layer(withIdentifier: identifier) as? MGLRasterStyleLayer
-    }
-
-    private func hideAllLayersExcept(_ layer: MGLRasterStyleLayer, in mapView: MGLMapView) {
-        mapView.style?.layers.forEach { layerInStyle in
-            let layerHideCandidate = layerInStyle as? MGLRasterStyleLayer
-
-            if layerHideCandidate?.identifier != layer.identifier,
-                layerHideCandidate?.rasterOpacity != NSExpression(forConstantValue: 0) {
-                layerHideCandidate?.rasterOpacity = NSExpression(forConstantValue: 0)
-            }
+    private func radarLayerIdentifiers(for style: Style) -> [LayerInfo] {
+        style.allLayerIdentifiers.filter { layerInfo in
+            layerInfo.id.starts(with: "radar-")
         }
     }
 
     private func identifier(for date: Date) -> String {
         "radar-\(date.timeIntervalSince1970)-\(dataSource.rawValue)"
     }
+}
 
+extension RadarMapView {
     func makeCoordinator() -> Coordinator {
-        Coordinator(loaded: $loaded)
+        Coordinator()
     }
 
-    class Coordinator: NSObject, MGLMapViewDelegate {
-        var lastDataSource: CloudsAPI.RadarProvider?
+    class Coordinator: NSObject {
         var lastLocation: CLLocationCoordinate2D?
-
-        @Binding var loaded: Bool
-
-        init(loaded: Binding<Bool>) {
-            self._loaded = loaded
-        }
-
-        func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
-            loaded = true
-        }
     }
 }
 
@@ -176,6 +123,5 @@ extension RadarMapView: Equatable {
             && lhs.activeLocationCoordinates == rhs.activeLocationCoordinates
             && lhs.overlayOpacity == rhs.overlayOpacity
             && lhs.dataSource == rhs.dataSource
-            && lhs.lazy == rhs.lazy
     }
 }

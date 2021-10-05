@@ -7,31 +7,36 @@
 //
 
 import Foundation
-import Mapbox
+import MapboxMaps
 
-final class EnvironmentCanadaRasterTileSource: MGLRasterTileSource {
-    convenience init(identifier: String, date: Date) {
-        guard let urlTemplate = Self.urlTemplate(for: date) else {
-            self.init(identifier: identifier, tileURLTemplates: [])
-            return
-        }
+final class EnvironmentCanadaRasterTileSet {
+    private let id: String
+    private let date: Date
 
-        let attribution = MGLAttributionInfo(
-            title: NSAttributedString(string: "Environment and Climate Change Canada"),
-            url: URL(string: "https://www.canada.ca/en/environment-climate-change.html")
-        )
-
-        self.init(
-            identifier: identifier,
-            tileURLTemplates: [urlTemplate],
-            options: [
-                .tileSize: 1024,
-                .attributionInfos: [attribution]
-            ]
-        )
+    init(id: String, date: Date) {
+        self.id = id
+        self.date = date
     }
 
-    private static func urlTemplate(for date: Date) -> String? {
+    var layer: RasterLayer {
+        var layer = RasterLayer(id: id)
+        layer.source = id
+        layer.rasterOpacity = .constant(0)
+        layer.rasterOpacityTransition = StyleTransition(duration: 0, delay: 0)
+
+        return layer
+    }
+
+    var source: RasterSource {
+        var source = RasterSource()
+        source.tiles = [urlTemplate(for: date)]
+        source.attribution = "Environment and Climate Change Canada"
+        source.tileSize = 1024
+
+        return source
+    }
+
+    private func urlTemplate(for date: Date) -> String {
         WMSResourceURL(
             host: "geo.weather.gc.ca",
             path: "geomet",
@@ -46,6 +51,6 @@ final class EnvironmentCanadaRasterTileSource: MGLRasterTileSource {
             width: 1024,
             height: 1024,
             boundingBoxTemplate: "{bbox-epsg-3857}"
-        ).string
+        ).string!
     }
 }
