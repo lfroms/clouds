@@ -17,8 +17,6 @@ struct RadarMapView: UIViewRepresentable {
     var dataSource: CloudsAPI.RadarProvider
     var activeLocationCoordinates: CLLocationCoordinate2D?
 
-    // MARK: - UIViewRepresentable
-
     func makeUIView(context: Context) -> MapView {
         let mapInitOptions = MapInitOptions(
             cameraOptions: CameraOptions(
@@ -41,6 +39,13 @@ struct RadarMapView: UIViewRepresentable {
         mapView.camera.options.maxZoom = 7
         mapView.location.options.puckType = .puck2D()
 
+        mapView.mapboxMap.onNext(.mapLoaded) { _ in
+            let style = mapView.mapboxMap.style
+
+            addRasterSourceLayers(for: style)
+            updateOpacityOfActiveLayer(for: style)
+        }
+
         return mapView
     }
 
@@ -52,8 +57,6 @@ struct RadarMapView: UIViewRepresentable {
         updateOpacityOfActiveLayer(for: style)
     }
 
-    // MARK: - Custom functions
-
     private func updateCameraOnLocationChange(in mapView: MapView, context: Context) {
         if let newLocation = activeLocationCoordinates, newLocation != context.coordinator.lastLocation {
             mapView.camera.ease(to: CameraOptions(center: newLocation), duration: 0.4)
@@ -62,21 +65,27 @@ struct RadarMapView: UIViewRepresentable {
     }
 
     private func addRasterSourceLayers(for style: Style) {
-        if dataSource == .environmentCanada {
-            dates.forEach { date in
-                let tileSet = EnvironmentCanadaRasterTileSet(id: identifier(for: date), date: date)
+        guard let currentDate = dates[safe: currentImage] else {
+            return
+        }
 
-                try? style.addSource(tileSet.source, id: identifier(for: date))
-                try? style.addLayer(tileSet.layer)
+        if dataSource == .environmentCanada {
+            let tileSource = EnvironmentCanadaRasterTileSource(id: identifier(for: currentDate), date: currentDate)
+            addTileSource(tileSource, for: currentDate, to: style)
+
+            if let nextDate = nextDate {
+                let tileSource = EnvironmentCanadaRasterTileSource(id: identifier(for: nextDate), date: nextDate)
+                addTileSource(tileSource, for: nextDate, to: style)
             }
         }
 
         if dataSource == .rainviewer {
-            dates.forEach { date in
-                let tileSet = RainviewerRasterTileSource(id: identifier(for: date), date: date)
+            let tileSource = RainviewerRasterTileSource(id: identifier(for: currentDate), date: currentDate)
+            addTileSource(tileSource, for: currentDate, to: style)
 
-                try? style.addSource(tileSet.source, id: identifier(for: date))
-                try? style.addLayer(tileSet.layer)
+            if let nextDate = nextDate {
+                let tileSource = RainviewerRasterTileSource(id: identifier(for: nextDate), date: nextDate)
+                addTileSource(tileSource, for: nextDate, to: style)
             }
         }
     }
@@ -95,10 +104,19 @@ struct RadarMapView: UIViewRepresentable {
         }
     }
 
+    private func addTileSource(_ tileSource: TileSource, for date: Date, to style: Style) {
+        try? style.addSource(tileSource.source, id: identifier(for: date))
+        try? style.addLayer(tileSource.layer, layerPosition: .below("puck"))
+    }
+
     private func radarLayerIdentifiers(for style: Style) -> [LayerInfo] {
         style.allLayerIdentifiers.filter { layerInfo in
             layerInfo.id.starts(with: "radar-")
         }
+    }
+
+    private var nextDate: Date? {
+        dates[safe: currentImage + 1] ?? dates[safe: 0]
     }
 
     private func identifier(for date: Date) -> String {

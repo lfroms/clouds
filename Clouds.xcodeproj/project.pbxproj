@@ -79,6 +79,7 @@
 		8048092E23FB4BC30019ACC2 /* WeatherLocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8048092D23FB4BC30019ACC2 /* WeatherLocationItem.swift */; };
 		804AB0C324562070000CA915 /* AlertListCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AB0C224562070000CA915 /* AlertListCloseButton.swift */; };
 		804AB0C5245629D7000CA915 /* SystemAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AB0C4245629D7000CA915 /* SystemAlert.swift */; };
+		805019B1270BEBA10032677E /* TileSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805019B0270BEBA10032677E /* TileSource.swift */; };
 		8050327F22D25C7500D376C3 /* HighLowStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050327E22D25C7500D376C3 /* HighLowStack.swift */; };
 		80504F782332DB4700DB4FAD /* HourlyForecastDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80504F772332DB4700DB4FAD /* HourlyForecastDetail.swift */; };
 		8056EE05244E88F6004D0250 /* LocationItemDeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056EE04244E88F6004D0250 /* LocationItemDeleteButton.swift */; };
@@ -366,6 +367,7 @@
 		8048092D23FB4BC30019ACC2 /* WeatherLocationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocationItem.swift; sourceTree = "<group>"; };
 		804AB0C224562070000CA915 /* AlertListCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertListCloseButton.swift; sourceTree = "<group>"; };
 		804AB0C4245629D7000CA915 /* SystemAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemAlert.swift; sourceTree = "<group>"; };
+		805019B0270BEBA10032677E /* TileSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileSource.swift; sourceTree = "<group>"; };
 		8050327E22D25C7500D376C3 /* HighLowStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLowStack.swift; sourceTree = "<group>"; };
 		80504F772332DB4700DB4FAD /* HourlyForecastDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastDetail.swift; sourceTree = "<group>"; };
 		8056EE04244E88F6004D0250 /* LocationItemDeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationItemDeleteButton.swift; sourceTree = "<group>"; };
@@ -1111,6 +1113,7 @@
 				8083A81F244A295300CE2E5E /* WMSResourceURL.swift */,
 				8083A825244A5CF700CE2E5E /* RainviewerRasterTileSource.swift */,
 				8083A821244A3E8600CE2E5E /* EnvironmentCanadaRasterTileSource.swift */,
+				805019B0270BEBA10032677E /* TileSource.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -2046,6 +2049,7 @@
 				80734AFE2410A512000693F4 /* GridStack.swift in Sources */,
 				804AB0C324562070000CA915 /* AlertListCloseButton.swift in Sources */,
 				8084FD98241D3903006A57DC /* CurrentLocationGroupContainer.swift in Sources */,
+				805019B1270BEBA10032677E /* TileSource.swift in Sources */,
 				8048092E23FB4BC30019ACC2 /* WeatherLocationItem.swift in Sources */,
 				806A5BF224144EC40093361D /* LocationPickerState.swift in Sources */,
 				8094307F24561459003632EC /* AlertList.swift in Sources */,
@@ -2504,7 +2508,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.5.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.romsicki.clouds;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.romsicki.clouds-dev";
 				PRODUCT_NAME = Clouds;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -2557,7 +2561,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.5.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.romsicki.clouds.CloudsWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.romsicki.clouds-dev.CloudsWidget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;

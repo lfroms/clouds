@@ -9,7 +9,7 @@
 import Foundation
 import MapboxMaps
 
-final class RainviewerRasterTileSource {
+final class RainviewerRasterTileSource: TileSource {
     private let id: String
     private let date: Date
 
@@ -32,6 +32,7 @@ final class RainviewerRasterTileSource {
         source.tiles = [urlTemplate(for: date)]
         source.attribution = "RainViewer"
         source.tileSize = 512
+        source.volatile = true
 
         return source
     }

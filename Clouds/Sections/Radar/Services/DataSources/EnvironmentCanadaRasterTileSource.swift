@@ -9,7 +9,7 @@
 import Foundation
 import MapboxMaps
 
-final class EnvironmentCanadaRasterTileSet {
+final class EnvironmentCanadaRasterTileSource: TileSource {
     private let id: String
     private let date: Date
 
@@ -32,6 +32,7 @@ final class EnvironmentCanadaRasterTileSet {
         source.tiles = [urlTemplate(for: date)]
         source.attribution = "Environment and Climate Change Canada"
         source.tileSize = 1024
+        source.volatile = true
 
         return source
     }
