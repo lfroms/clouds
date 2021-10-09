@@ -38,7 +38,7 @@ struct RadarMapView: UIViewRepresentable {
         mapView.ornaments.options.logo.margins = CGPoint(x: 16, y: 16)
         mapView.ornaments.options.attributionButton.margins = CGPoint(x: 8, y: 16)
 
-        mapView.camera.options.maxZoom = 7
+        try? mapView.mapboxMap.setCameraBounds(with: CameraBoundsOptions(maxZoom: 7))
         mapView.location.options.puckType = .puck2D()
 
         mapView.mapboxMap.onNext(.mapLoaded) { _ in
@@ -86,7 +86,7 @@ struct RadarMapView: UIViewRepresentable {
         }
 
         radarLayerIdentifiers(for: style).forEach { layerInfo in
-            try? style.updateLayer(withId: layerInfo.id) { (layer: inout RasterLayer) in
+            try? style.updateLayer(withId: layerInfo.id, type: RasterLayer.self) { (layer: inout RasterLayer) in
                 let layerVisible = layerInfo.id == identifier(for: currentDate)
 
                 layer.rasterOpacity = .constant(layerVisible ? overlayOpacity : 0)
