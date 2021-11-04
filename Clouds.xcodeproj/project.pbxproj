@@ -2699,7 +2699,7 @@
 			repositoryURL = "https://github.com/bugsnag/bugsnag-cocoa";
 			requirement = {
 				kind = exactVersion;
-				version = 6.14.0;
+				version = 6.14.3;
 			};
 		};
 		802C0829253B3D5700913021 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */ = {
