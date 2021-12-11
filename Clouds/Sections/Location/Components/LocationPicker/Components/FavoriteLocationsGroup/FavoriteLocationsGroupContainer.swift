@@ -10,7 +10,6 @@ import SwiftUI
 
 struct FavoriteLocationsGroupContainer: Container {
     @EnvironmentObject private var locationPickerState: LocationPickerState
-    @EnvironmentObject private var weatherService: WeatherService
     @EnvironmentObject private var locationFavoritesService: LocationFavoritesService
 
     var body: some View {

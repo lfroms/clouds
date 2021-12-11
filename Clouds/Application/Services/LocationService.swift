@@ -42,6 +42,14 @@ extension LocationService: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
+
+        guard
+            location.coordinate.latitude != self.lastLocation?.coordinate.latitude ||
+            location.coordinate.longitude != self.lastLocation?.coordinate.longitude
+        else {
+            return
+        }
+
         self.lastLocation = location
 
         self.getPlace(for: location) { placemark in

@@ -160,10 +160,7 @@ struct CloudsApp: App {
         }
 
         locationService.startUpdatingLocation()
-
-        if locationService.locationStatus != .authorizedWhenInUse || locationFavoritesService.activeLocation != nil {
-            fetchUpdatedWeatherData()
-        }
+        fetchUpdatedWeatherData()
     }
 
     private func applicationDidBecomeInactive() {
@@ -270,7 +267,6 @@ struct CloudsApp: App {
         }
 
         locationSearchService.searchQuery.clear()
-        fetchUpdatedWeatherData()
     }
 
     // MARK: - Radar
