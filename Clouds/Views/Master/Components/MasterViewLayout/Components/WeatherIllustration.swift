@@ -18,13 +18,13 @@ struct WeatherIllustration: View {
     var body: some View {
         ZStack(alignment: .topTrailing) {
             if imageA != nil {
-                WeatherIllustrationImage(image: imageA!, shouldScale: shouldScaleImage)
+                WeatherIllustrationImage(image: imageA!, useSmallSize: shouldUseSmallSize)
                     .equatable()
                     .transition(transition)
             }
 
             if imageB != nil {
-                WeatherIllustrationImage(image: imageB!, shouldScale: shouldScaleImage)
+                WeatherIllustrationImage(image: imageB!, useSmallSize: shouldUseSmallSize)
                     .equatable()
                     .transition(transition)
             }
@@ -53,8 +53,8 @@ struct WeatherIllustration: View {
         alternateImage.toggle()
     }
 
-    private var shouldScaleImage: Bool {
-        ![.fog, .snow].contains(visualState.appearance.style)
+    private var shouldUseSmallSize: Bool {
+        Dimension.System.deviceIsiPhone8 && ![.fog, .snow].contains(visualState.appearance.style)
     }
 }
 

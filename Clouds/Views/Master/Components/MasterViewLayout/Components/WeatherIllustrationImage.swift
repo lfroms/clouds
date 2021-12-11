@@ -10,19 +10,21 @@ import SwiftUI
 
 struct WeatherIllustrationImage: View {
     var image: Image
-    var shouldScale: Bool
+    var useSmallSize: Bool
 
     var body: some View {
         Group {
-            if Dimension.System.deviceIsiPhone8 && shouldScale {
+            if useSmallSize {
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: 300)
                     .offset(y: Dimension.Global.padding)
-
             } else {
                 image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .offset(y: Dimension.Global.padding)
             }
         }
     }
@@ -32,6 +34,6 @@ extension WeatherIllustrationImage: Equatable {}
 
 struct WeatherIllustrationImage_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherIllustrationImage(image: Image(""), shouldScale: true)
+        WeatherIllustrationImage(image: Image(""), useSmallSize: true)
     }
 }
