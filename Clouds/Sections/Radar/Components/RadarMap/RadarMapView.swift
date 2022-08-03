@@ -41,7 +41,7 @@ struct RadarMapView: UIViewRepresentable {
         try? mapView.mapboxMap.setCameraBounds(with: CameraBoundsOptions(maxZoom: 7))
         mapView.location.options.puckType = .puck2D()
 
-        mapView.mapboxMap.onNext(.mapLoaded) { _ in
+        mapView.mapboxMap.onNext(event: .mapLoaded) { _ in
             let style = mapView.mapboxMap.style
 
             addRasterSourceLayers(for: style)
