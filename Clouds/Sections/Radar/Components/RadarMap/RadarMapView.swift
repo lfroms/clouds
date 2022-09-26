@@ -39,7 +39,7 @@ struct RadarMapView: UIViewRepresentable {
         mapView.ornaments.options.attributionButton.margins = CGPoint(x: 8, y: 16)
 
         try? mapView.mapboxMap.setCameraBounds(with: CameraBoundsOptions(maxZoom: 7))
-        mapView.location.options.puckType = .puck2D()
+        mapView.location.options.puckType = .puck2D(Puck2DConfiguration(pulsing: .default))
 
         mapView.mapboxMap.onNext(event: .mapLoaded) { _ in
             let style = mapView.mapboxMap.style
