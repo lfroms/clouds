@@ -139,6 +139,7 @@
 		8083A826244A5CF700CE2E5E /* RainviewerRasterTileSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083A825244A5CF700CE2E5E /* RainviewerRasterTileSource.swift */; };
 		8083A82D244B85A600CE2E5E /* RadarControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083A82C244B85A600CE2E5E /* RadarControls.swift */; };
 		8083A832244B85DB00CE2E5E /* RadarPlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083A831244B85DB00CE2E5E /* RadarPlayPauseButton.swift */; };
+		8083D23228F47504003F1CE1 /* SunsetSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D23128F47504003F1CE1 /* SunsetSheet.swift */; };
 		8084FD96241D38FB006A57DC /* CurrentLocationGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084FD95241D38FB006A57DC /* CurrentLocationGroup.swift */; };
 		8084FD98241D3903006A57DC /* CurrentLocationGroupContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084FD97241D3903006A57DC /* CurrentLocationGroupContainer.swift */; };
 		8084FD9B241D391C006A57DC /* FavoriteLocationsGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084FD9A241D391C006A57DC /* FavoriteLocationsGroup.swift */; };
@@ -426,6 +427,7 @@
 		8083A825244A5CF700CE2E5E /* RainviewerRasterTileSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainviewerRasterTileSource.swift; sourceTree = "<group>"; };
 		8083A82C244B85A600CE2E5E /* RadarControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarControls.swift; sourceTree = "<group>"; };
 		8083A831244B85DB00CE2E5E /* RadarPlayPauseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarPlayPauseButton.swift; sourceTree = "<group>"; };
+		8083D23128F47504003F1CE1 /* SunsetSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunsetSheet.swift; sourceTree = "<group>"; };
 		8084FD95241D38FB006A57DC /* CurrentLocationGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationGroup.swift; sourceTree = "<group>"; };
 		8084FD97241D3903006A57DC /* CurrentLocationGroupContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationGroupContainer.swift; sourceTree = "<group>"; };
 		8084FD9A241D391C006A57DC /* FavoriteLocationsGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocationsGroup.swift; sourceTree = "<group>"; };
@@ -1363,6 +1365,7 @@
 				802FB9A6241000BC0056D614 /* Services */,
 				802FB9A7241000E90056D614 /* States */,
 				804AB0C4245629D7000CA915 /* SystemAlert.swift */,
+				8083D23128F47504003F1CE1 /* SunsetSheet.swift */,
 				8038D98524A6E92B00FC1B59 /* CloudsApp.swift */,
 				80CFBC0F24F3379F0024B1FD /* Debouncer.swift */,
 			);
@@ -2170,6 +2173,7 @@
 				803028D822CEE56D0053F639 /* ConditionView.swift in Sources */,
 				802A42FF241C534F0073C0DC /* DismissableScrollViewModifier.swift in Sources */,
 				802A4305241C556A0073C0DC /* DismissableScrollViewHostingController.swift in Sources */,
+				8083D23228F47504003F1CE1 /* SunsetSheet.swift in Sources */,
 				80617947245CE327003DB747 /* Seeder.swift in Sources */,
 				80C395A523787F660004B71D /* Date+TimeAgo.swift in Sources */,
 				806A5C00241481B90093361D /* CurrentSectionContainer.swift in Sources */,
@@ -2497,7 +2501,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 46;
+				CURRENT_PROJECT_VERSION = 47;
 				DEVELOPMENT_ASSET_PATHS = "Clouds/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8P8574Z65P;
 				ENABLE_PREVIEWS = YES;
@@ -2507,7 +2511,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.4;
+				MARKETING_VERSION = 1.6.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.romsicki.clouds-dev";
 				PRODUCT_NAME = Clouds;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2524,7 +2528,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 46;
+				CURRENT_PROJECT_VERSION = 47;
 				DEVELOPMENT_ASSET_PATHS = "Clouds/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8P8574Z65P;
 				ENABLE_PREVIEWS = YES;
@@ -2534,7 +2538,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.4;
+				MARKETING_VERSION = 1.6.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.romsicki.clouds;
 				PRODUCT_NAME = Clouds;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2551,7 +2555,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 46;
+				CURRENT_PROJECT_VERSION = 47;
 				DEVELOPMENT_TEAM = 8P8574Z65P;
 				INFOPLIST_FILE = CloudsWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -2560,7 +2564,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.6.4;
+				MARKETING_VERSION = 1.6.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.romsicki.clouds-dev.CloudsWidget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2576,7 +2580,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 46;
+				CURRENT_PROJECT_VERSION = 47;
 				DEVELOPMENT_TEAM = 8P8574Z65P;
 				INFOPLIST_FILE = CloudsWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -2585,7 +2589,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.6.4;
+				MARKETING_VERSION = 1.6.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.romsicki.clouds.CloudsWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

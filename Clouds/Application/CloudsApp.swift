@@ -29,6 +29,9 @@ struct CloudsApp: App {
     @StateObject private var locationFavoritesService = LocationFavoritesService()
     @StateObject private var radarService = RadarService()
 
+    @AppStorage("sunsetSheetDismissed") private var sunsetSheetDismissed = false
+    @State private var sunsetSheetVisible = false
+
     private let standardVisualStateDebouncer = Debouncer(delay: 0.18)
     private let weekSectionVisualStateDebouncer = Debouncer(delay: 0.3)
 
@@ -142,6 +145,16 @@ struct CloudsApp: App {
                 }
 
                 .ignoresSafeArea(.keyboard)
+
+                .sheet(isPresented: $sunsetSheetVisible) {
+                    SunsetSheet()
+                }
+
+                .onAppear {
+                    if !sunsetSheetDismissed {
+                        sunsetSheetVisible = true
+                    }
+                }
         }
     }
 
