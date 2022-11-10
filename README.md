@@ -27,10 +27,6 @@
   <img alt="Clouds screenshots" src="./media/screenshots.png" width="50%">
 </p>
 
-<p align="center">
-  <a href="https://apps.apple.com/ca/app/clouds/id1511249500"><img alt="Get Clouds on the Apple App Store" src="./media/app_store.svg"></a>
-</p>
-
 ## About
 
 Clouds is a weather app, unlike any weather app. It's written in [SwiftUI](https://developer.apple.com/xcode/swiftui/), a declarative framework for building user interfaces for iOS. Unlike most weather apps, Clouds uses a custom GraphQL-powered weather data aggregation service, [Nimbus](https://github.com/lfroms/nimbus).
@@ -43,6 +39,10 @@ Clouds is a weather app, unlike any weather app. It's written in [SwiftUI](https
 * **Unique.** Clouds should be as different from other weather apps as possible. It should provide a 'breath of fresh air' for users.
 * **Fast.** It should boot instantly and weather data should appear as quickly as possible. The user should not need to worry about the data loading process.
 * **Smooth.** There should be virtually zero user interface bugs. Bugs are frustrating to the user.
+
+## Status
+
+As of October 31, 2022, Clouds is sunset and is no longer available for download. However, the source code remains available and contributions are still welcome. For local development, you will need an instance of [Nimbus](https://github.com/lfroms/nimbus) running.
 
 ## Supported Regions
 
